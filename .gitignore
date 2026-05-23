@@ -1,8 +1,16 @@
+.DS_Store
 node_modules/
+
+# Obsolete superseded build + cruft. Remove locally (see DEPLOY.md step 1).
+thedeependhq/
+deependhq-content/
+deploy/
 .next/
 out/
 dist/
-deploy/
-.astro/
-.DS_Store
-*.log
+build.sh
+package.json
+package-lock.json
+.nvmrc
+design-canvas.jsx
+Deliverables.html

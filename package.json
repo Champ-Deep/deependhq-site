@@ -1,9 +1,0 @@
-{
-  "name": "deependhq-site",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Deepend HQ. Next.js homepage + Astro content site, merged into one static Cloudflare Pages deployment.",
-  "scripts": {
-    "build": "bash ./build.sh"
-  }
-}
