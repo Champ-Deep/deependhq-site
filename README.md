@@ -1,16 +1,21 @@
 # deependhq.com
 
-Personal site for Sreedeep Surapaneni. Hybrid build, one deployment.
+The Deep End. Personal site for Sreedeep Surapaneni.
 
-- `thedeependhq/` : Next.js 15/16 homepage. Static export. Cinematic Terminal design.
-- `deependhq-content/` : Astro content site. /journey, /toolkit, /journey/field-notes.
-- `build.sh` : builds both, merges static output into `deploy/`.
-- `worker/` (inside thedeependhq) : optional Cloudflare Worker router, unused in the
-  default single-project deploy. Kept for a future split into two origins.
+Built from the Gotham Workshop design system. A no-build static site: four
+HTML pages that render React components in the browser via Babel standalone.
+Nothing to compile, nothing to install.
+
+## Pages
+- index.html        homepage (Hero, Shipping Now, How I Think, Ecosystem, Proof, more)
+- journey.html      the daily build-in-public feed
+- toolkit.html      tools, repos, skills, resources
+- field-notes.html  characters, plot lines, themes, callbacks
+
+Shared across pages: Nav.jsx, Footer.jsx, styles.css, styles-x.css, data.js.
 
 ## Deploy
+Cloudflare Pages, no build step. See DEPLOY.md.
 
-One Cloudflare Pages project. See `DEPLOY.md` for the full walkthrough.
-
-Build command: `npm run build`
-Output directory: `deploy`
+## Edit content
+All copy and data lives in data.js. Components are the .jsx files.

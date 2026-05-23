@@ -1,64 +1,64 @@
 # Deepend HQ: Deploy Runbook
 
-Target: deependhq.com on Cloudflare Pages. One project, one deployment.
-Repo: github.com/Champ-Deep/deependhq-site
+The site is the Gotham Workshop kit. It is a no-build static site: four HTML
+pages that render React components in the browser. There is nothing to compile
+and nothing to install. Deploying it is just uploading a folder.
 
-## What is in here
-- `thedeependhq/` : Next.js homepage, configured for static export.
-- `deependhq-content/` : Astro content site. /journey, /toolkit, /journey/field-notes.
-- `build.sh` : builds both projects, merges their static output into `deploy/`.
-- `package.json` : root. `npm run build` runs build.sh.
-- `.nvmrc` : pins Node 22 for the Cloudflare build image.
+## Step 1: Clean the folder
 
-## Prerequisites
-- Node 20 or newer (22 recommended) and git on your machine.
-- The GitHub repo Champ-Deep/deependhq-site.
-- Cloudflare account (Deep@championsmail.com) with deependhq.com already on Cloudflare DNS.
+The earlier Next.js and Astro build is still sitting in this folder. The build
+environment could not delete it, but your Mac can. From Terminal:
 
-## Step 1: Push the code to GitHub
-From inside this `deependhq-site/` folder:
 ```
-git init
-git add .
-git commit -m "Deepend HQ: homepage + content site"
-git branch -M main
-git remote add origin https://github.com/Champ-Deep/deependhq-site.git
-git push -u origin main
+cd "/Users/deep/Celsus/Efforts/Active/TheDeepEndHQ/deependhq-site"
+rm -rf .git thedeependhq deependhq-content deploy node_modules \
+       build.sh package.json package-lock.json .nvmrc \
+       design-canvas.jsx Deliverables.html
 ```
-If the repo already has commits, run `git pull --rebase origin main` first. If it is an empty scaffold, a force push is fine.
 
-## Step 2: Test the build locally (optional but recommended)
+After this the folder holds only the site: four HTML pages, the .jsx
+components, styles.css, styles-x.css, data.js, README.md, DEPLOY.md.
+
+## Step 2: Deploy to Cloudflare Pages
+
+Pick one. Option A is the fastest.
+
+### Option A: Dashboard upload (no CLI, no GitHub)
+1. dash.cloudflare.com, then Workers and Pages, then Create, then Pages, then "Upload assets".
+2. Project name: `deependhq`
+3. Drag the whole `deependhq-site` folder into the uploader.
+4. Click Deploy. Live on a `*.pages.dev` URL in under a minute.
+
+### Option B: Wrangler CLI
 ```
-npm run build
-npx serve deploy
+cd "/Users/deep/Celsus/Efforts/Active/TheDeepEndHQ/deependhq-site"
+npx wrangler pages deploy . --project-name deependhq
 ```
-Open the localhost URL it prints. `deploy/` is the full merged static site. Do not open `deploy/index.html` directly as a file, the asset paths are absolute.
+The first run opens a browser to authorize Wrangler with your Cloudflare account.
 
-## Step 3: Create the Cloudflare Pages project
-1. dash.cloudflare.com, then Workers and Pages, then Create, then Pages, then Connect to Git.
-2. Select the Champ-Deep/deependhq-site repo, branch `main`.
-3. Build settings:
-   - Framework preset: None
-   - Build command: `npm run build`
-   - Build output directory: `deploy`
-   - Root directory: leave as `/`
-4. Environment variables: none required. The `.nvmrc` pins Node 22. If the build still picks an old Node, add `NODE_VERSION` = `22`.
-5. Save and Deploy. First build runs about 3 to 6 minutes (it installs and builds both sub-projects).
+### Option C: Git-connected (auto-deploy on every change)
+Push the cleaned folder to github.com/Champ-Deep/deependhq-site, then in
+Cloudflare Pages connect the repo. Build command: leave EMPTY. Output
+directory: `/`. Framework preset: None.
 
-## Step 4: Verify the preview
-The build produces a `deependhq-site.pages.dev` URL. Check:
-- Homepage renders dark, with the hero and the 12 company cards.
-- /journey, /toolkit, /journey/field-notes all load.
-- Nav moves cleanly between the homepage and the content pages.
+## Step 3: Attach the domain
 
-## Step 5: Attach the custom domain
-Pages project, then Custom domains, then Set up a domain. Add `deependhq.com` and `www.deependhq.com`. Cloudflare creates the DNS records automatically because the zone is already on Cloudflare. SSL provisions within a few minutes.
+Pages project, then Custom domains, then add `deependhq.com` and
+`www.deependhq.com`. Cloudflare creates the DNS automatically because the zone
+is already on Cloudflare. SSL provisions within a few minutes.
 
-Done. Every push to `main` now auto-deploys.
+## How the URLs map
+- `index.html` to `/`
+- `journey.html` to `/journey`
+- `toolkit.html` to `/toolkit`
+- `field-notes.html` to `/field-notes`
+
+Cloudflare Pages serves the `.html` files extensionless automatically.
 
 ## Notes
-- /blog 404s for now. The blog and EmDash CMS are a later phase. The homepage "How I Think" cards point to `/blog/#` placeholders.
-- `thedeependhq/worker/` is an optional Cloudflare Worker router, unused in this single-project deploy. Keep it for a future split into two independently deployed origins.
-- Email for deep@deependhq.com is separate. See `Efforts/Active/Inbox-Operations/deependhq-Setup-Plan.md`, section 5 (Cloudflare Email Routing).
-- Alternative without Git: `npx wrangler pages deploy deploy --project-name deependhq-site` after running `npm run build` locally.
-- Once pushed to GitHub you can delete this local `deependhq-site/` folder to keep the vault lean. GitHub and Cloudflare become the live copies.
+- All copy and data lives in `data.js`. Edit there, redeploy.
+- The site loads React and Babel from a CDN and renders in the browser. It
+  works as-is. If you later want a faster first paint, the JSX can be
+  pre-compiled without changing the design. Optional, not needed to ship.
+- The full Gotham Workshop design system is kept as reference one folder up,
+  at `Efforts/Active/TheDeepEndHQ/Gotham Workshop Design System/`.
