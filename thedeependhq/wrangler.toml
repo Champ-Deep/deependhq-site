@@ -1,0 +1,12 @@
+# Cloudflare Worker config for the deependhq.com edge router.
+
+name = "deependhq-router"
+main = "worker/router.js"
+compatibility_date = "2026-05-01"
+
+# Route the Worker in front of the production domain.
+# Uncomment and adjust the zone_name once the domain is live on Cloudflare.
+#
+# [[routes]]
+# pattern = "deependhq.com/*"
+# zone_name = "deependhq.com"

@@ -1,0 +1,22 @@
+---
+const year = new Date().getFullYear();
+const socials = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sreedeep-surapaneni" },
+  { label: "GitHub", href: "https://github.com/Champ-Deep" },
+  { label: "Bluesky", href: "https://bsky.app/profile/sreedeep-sura.bsky.social" },
+];
+---
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-meta">
+      <strong>Sreedeep Surapaneni</strong> &middot; {year}
+    </p>
+    <ul class="footer-links">
+      {socials.map((social) => (
+        <li>
+          <a class="footer-link" href={social.href} rel="me noopener" target="_blank">{social.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</footer>

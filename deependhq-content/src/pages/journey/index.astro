@@ -1,0 +1,132 @@
+---
+import Base from "../../layouts/Base.astro";
+import journeyData from "../../data/journey.json";
+
+interface JourneyEntry {
+  date: string;
+  day_number: number;
+  shipping_now: string;
+  yesterday_thread: string;
+  raw_thought: string;
+  mood: string;
+  story_arcs: string[];
+  arc_color: string;
+}
+
+const entries = journeyData as JourneyEntry[];
+
+const sorted = [...entries].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+
+const arcSet = new Set<string>();
+for (const entry of sorted) {
+  for (const arc of entry.story_arcs) {
+    arcSet.add(arc);
+  }
+}
+const arcs = ["All", ...Array.from(arcSet)];
+
+function formatDate(iso: string): string {
+  const d = new Date(iso + "T00:00:00Z");
+  return d.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+---
+<Base
+  title="The Journey | deependhq"
+  description="Day by day, build by build. The public log of Sreedeep Surapaneni building 12 companies."
+>
+  <div class="section wrap-feed">
+    <header class="page-header">
+      <h1>The Journey</h1>
+      <p class="page-subtitle">Day by day. Build by build.</p>
+    </header>
+
+    <div class="filter-bar" role="group" aria-label="Filter by story arc">
+      {arcs.map((arc, i) => (
+        <button
+          type="button"
+          class:list={["filter-pill", { "is-active": i === 0 }]}
+          data-arc-filter={arc}
+          aria-pressed={i === 0 ? "true" : "false"}
+        >
+          {arc}
+        </button>
+      ))}
+    </div>
+
+    <div class="journey-feed" id="journey-feed">
+      {sorted.map((entry) => (
+        <article
+          class="journey-card"
+          data-arc={entry.arc_color}
+          data-arcs={entry.story_arcs.join("|")}
+        >
+          <div class="journey-top">
+            <span class="day-pill" data-arc={entry.arc_color}>
+              DAY {entry.day_number}
+            </span>
+            <span class="journey-date">{formatDate(entry.date)}</span>
+            <span class="journey-mood" aria-hidden="true">{entry.mood}</span>
+          </div>
+
+          <p class="shipping-line">
+            <span class="shipping-prompt">&gt;_ </span>{entry.shipping_now}
+          </p>
+
+          {entry.yesterday_thread && (
+            <p class="yesterday-thread">{entry.yesterday_thread}</p>
+          )}
+
+          {entry.raw_thought && (
+            <p class="raw-thought">{entry.raw_thought}</p>
+          )}
+
+          <div class="journey-arcs">
+            {entry.story_arcs.map((arc) => (
+              <span class:list={["pill", `pill-${entry.arc_color}`]}>{arc}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="journey-empty" id="journey-empty" hidden>
+      No entries for this story arc yet.
+    </p>
+  </div>
+
+  <script>
+    const pills = document.querySelectorAll<HTMLButtonElement>("[data-arc-filter]");
+    const cards = document.querySelectorAll<HTMLElement>(".journey-card");
+    const empty = document.getElementById("journey-empty");
+
+    function applyFilter(filter: string): void {
+      let visible = 0;
+      cards.forEach((card) => {
+        const arcs = (card.dataset.arcs || "").split("|");
+        const show = filter === "All" || arcs.includes(filter);
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    pills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        pills.forEach((p) => {
+          p.classList.remove("is-active");
+          p.setAttribute("aria-pressed", "false");
+        });
+        pill.classList.add("is-active");
+        pill.setAttribute("aria-pressed", "true");
+        applyFilter(pill.dataset.arcFilter || "All");
+      });
+    });
+  </script>
+</Base>

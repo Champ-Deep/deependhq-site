@@ -1,0 +1,135 @@
+---
+import Base from "../../layouts/Base.astro";
+import fieldNotes from "../../data/field-notes.json";
+
+interface Character {
+  name: string;
+  role: string;
+  since: string;
+  note: string;
+  status: string;
+}
+interface Plotline {
+  name: string;
+  status: string;
+  since: string;
+  description: string;
+}
+interface Theme {
+  title: string;
+  note: string;
+}
+interface Callback {
+  from: string;
+  fromLabel: string;
+  to: string;
+  toLabel: string;
+}
+
+const characters = fieldNotes.characters as Character[];
+const plotlines = fieldNotes.plotlines as Plotline[];
+const themes = fieldNotes.themes as Theme[];
+const callbacks = fieldNotes.callbacks as Callback[];
+
+const statusKey: Record<string, string> = {
+  "Rising Action": "rising",
+  Climax: "climax",
+  Resolution: "resolution",
+  Dormant: "dormant",
+};
+---
+<Base
+  title="Field Notes | deependhq"
+  description="The characters, arcs, and themes of building 12 companies in public."
+>
+  <div class="section wrap-wide">
+    <header class="page-header">
+      <h1>Field Notes</h1>
+      <p class="page-subtitle">
+        The characters, arcs, and themes of building 12 companies in public.
+      </p>
+    </header>
+
+    <section class="field-section" aria-labelledby="characters-heading">
+      <h2 id="characters-heading">Characters</h2>
+      <p class="field-section-intro">
+        The recurring people in the story. Status dots show who is active right now.
+      </p>
+      <ul class="character-list">
+        {characters.map((c) => (
+          <li class="character-item">
+            <span
+              class="status-dot"
+              data-status={c.status}
+              title={`Status: ${c.status}`}
+            ></span>
+            <div class="character-body">
+              <span class="character-name">{c.name}</span>{" "}
+              <span class="character-role">{c.role}.</span>{" "}
+              <span class="character-since">Active since {c.since}.</span>
+              <p class="character-note">{c.note}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="field-section" aria-labelledby="plotlines-heading">
+      <h2 id="plotlines-heading">Plot Lines</h2>
+      <p class="field-section-intro">
+        The active narrative arcs. Each one is somewhere between starting and shipped.
+      </p>
+      <div class="plotline-list">
+        {plotlines.map((p) => (
+          <article class="plotline-card">
+            <div class="plotline-head">
+              <span class="plotline-name">{p.name}</span>
+              <span class="status-tag" data-status={statusKey[p.status] ?? "dormant"}>
+                {p.status}
+              </span>
+              <span class="plotline-since">Since {p.since}</span>
+            </div>
+            <p class="plotline-desc">{p.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="field-section" aria-labelledby="themes-heading">
+      <h2 id="themes-heading">Themes</h2>
+      <p class="field-section-intro">
+        The operating principles that keep showing up across every company.
+      </p>
+      <ul class="theme-list">
+        {themes.map((t) => (
+          <li class="theme-item">
+            <span class="theme-title">{t.title}</span>
+            <p class="theme-note">{t.note}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="field-section" aria-labelledby="callbacks-heading">
+      <h2 id="callbacks-heading">Callbacks</h2>
+      <p class="field-section-intro">
+        Cross-references. Where a recent day echoes an earlier one.
+      </p>
+      <ul class="callback-list">
+        {callbacks.map((cb) => (
+          <li class="callback-item">
+            <span class="callback-node">
+              <span class="callback-day">{cb.from}</span>
+              <span class="callback-label">{cb.fromLabel}</span>
+            </span>
+            <span class="callback-arrow" aria-hidden="true">&gt;&gt;</span>
+            <span class="callback-node callback-to">
+              <span class="callback-day">{cb.to}</span>
+              <span class="callback-label">{cb.toLabel}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>

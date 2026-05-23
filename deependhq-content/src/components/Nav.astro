@@ -1,0 +1,33 @@
+---
+const { pathname } = Astro.url;
+const links = [
+  { label: "Home", href: "https://deependhq.com/", match: null },
+  { label: "Journey", href: "/journey", match: "/journey" },
+  { label: "Toolkit", href: "/toolkit", match: "/toolkit" },
+  { label: "Field Notes", href: "/journey/field-notes", match: "/journey/field-notes" },
+];
+
+function isActive(match: string | null): boolean {
+  if (!match) return false;
+  const path = pathname.replace(/\/$/, "") || "/";
+  return path === match;
+}
+---
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-wordmark" href="https://deependhq.com/">deependhq</a>
+    <ul class="nav-links">
+      {links.map((link) => (
+        <li>
+          <a
+            class:list={["nav-link", { "is-active": isActive(link.match) }]}
+            href={link.href}
+            aria-current={isActive(link.match) ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

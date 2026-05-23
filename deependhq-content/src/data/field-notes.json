@@ -1,0 +1,29 @@
+{
+  "characters": [
+    {"name":"The Chief","role":"Dad and Group patriarch","since":"Day 1","note":"Makes directives. Unlocks budgets. Keeps everyone honest.","status":"active"},
+    {"name":"Charles","role":"Team lead, Assassins","since":"Day 12","note":"Runs the Lake B2B and Ampliz sales engine.","status":"active"},
+    {"name":"Gary","role":"Head of Sales, SPAN and Phoenix","since":"Day 30","note":"Weekly syncs. Pipeline obsessed.","status":"active"},
+    {"name":"Jules","role":"AI coding agent","since":"Day 150","note":"Picks up GitHub issues automatically. Never complains.","status":"active"},
+    {"name":"Murugan","role":"Nurturing Specialist, Phoenix","since":"Day 45","note":"The quiet closer.","status":"active"}
+  ],
+  "plotlines": [
+    {"name":"The AI SDR Experiment","status":"Rising Action","since":"Day 60","description":"Can an AI stack replace a human SDR? 90-day test on SPAN. ChampMail done. ChampGraph is the last blocker."},
+    {"name":"The Growth Stack Pivot","status":"Climax","since":"Day 120","description":"Lake B2B stops selling data, starts selling growth. Category creation in progress."},
+    {"name":"Building in Public","status":"Rising Action","since":"Day 1","description":"This entire site. The meta-arc."},
+    {"name":"The Restructure","status":"Resolution","since":"Day 170","description":"Four sales teams, four leaders, one operating rhythm. Shipped."},
+    {"name":"ChampOps: The Autonomous Loop","status":"Rising Action","since":"Day 140","description":"Feedback widget to triage to Jules to deploy. Zero-human maintenance."}
+  ],
+  "themes": [
+    {"title":"Automate the boring, narrate the interesting","note":"the ChampOps philosophy applied to everything."},
+    {"title":"Category creation beats feature competition","note":"Lake B2B growth stack, not better data."},
+    {"title":"Retention beats hiring","note":"keeping Yoga, Umasum, Ramya beat replacing them twice over."},
+    {"title":"The vault is the brain","note":"one Obsidian graph for 12 companies. Structure is strategy."},
+    {"title":"Ship the loop, not the feature","note":"ChampOps, social triage, morning routine. Systems, not tasks."}
+  ],
+  "callbacks": [
+    {"from":"Day 193","fromLabel":"TheDeepEndHQ design","to":"Day 1","toLabel":"the decision to build in public"},
+    {"from":"Day 190","fromLabel":"Growth Stack positioning","to":"Day 120","toLabel":"first 'we sell growth, not data' meeting"},
+    {"from":"Day 188","fromLabel":"Cirralogix retention","to":"Day 92","toLabel":"first restructuring conversation"},
+    {"from":"Day 191","fromLabel":"ChampOps zero-intervention","to":"Day 140","toLabel":"first widget deployment"}
+  ]
+}
