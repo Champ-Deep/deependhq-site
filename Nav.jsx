@@ -43,7 +43,7 @@ const Nav = ({ active = 'now' }) => {
         <a href="#book" className="dh-btn dh-btn-primary dh-btn-sm"
            onClick={(e) => {
              e.preventDefault();
-             window.dispatchEvent(new CustomEvent('dh:book'));
+             window.open('https://calendly.com/deep-championsmail', '_blank');
            }}>
           Book a call
         </a>
