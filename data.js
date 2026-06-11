@@ -1,6 +1,6 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-11T21:32:19.871Z
+// Built 2026-06-11T22:02:56.171Z
 
 window.DH_DATA = {
   "brand": {
@@ -326,38 +326,38 @@ window.DH_DATA = {
     }
   ],
   "now": {
-    "updated": "2026-06-03",
+    "updated": "2026-06-12",
     "note": "A snapshot of what has my attention right now. Updated when the work changes, not on a schedule. Inspired by the /now page movement.",
     "focus": [
       {
-        "k": "BUILDING",
-        "color": "green",
-        "text": "The AI SDR stack. ChampGraph is unblocked, so the 90-day live experiment on SPAN can finally start."
-      },
-      {
-        "k": "BUILDING",
-        "color": "green",
-        "text": "This site's autonomy. /now, /writing, and a daily pipeline that publishes from the vault without me."
-      },
-      {
         "k": "SHIPPING",
         "color": "green",
-        "text": "The Longevity wellness platform. Closed-beta Web PWA, hard deadline mid-June."
+        "text": "This site now publishes itself. Nightly loop: daily note to authored entry to SSH push to live, with verification. The meta-project ate its own tail."
       },
       {
-        "k": "THINKING",
-        "color": "blue",
-        "text": "Whether four standalone sales Monday meetings survive contact with a deal that touches two channels."
-      },
-      {
-        "k": "THINKING",
-        "color": "blue",
-        "text": "How far the ChampOps loop can go before a human is genuinely needed in the maintenance path."
-      },
-      {
-        "k": "WINNING",
+        "k": "LAUNCHING",
         "color": "gold",
-        "text": "Lake B2B is no longer \"we sell data.\" It is the B2B growth stack. The category language finally landed."
+        "text": "Longevity closed beta. A 12-Age biomarker wellness platform, web PWA, opening to the first cohort mid-June."
+      },
+      {
+        "k": "DECIDING",
+        "color": "blue",
+        "text": "Champ IQ v1 scope. Every prerequisite is finally green. The week the AI SDR stops being a roadmap and becomes a launch."
+      },
+      {
+        "k": "RUNNING",
+        "color": "green",
+        "text": "A World Cup moment campaign on the consumer data track. 72-hour sprint cadence, host-metro segments, the same machine pivots to the next moment after."
+      },
+      {
+        "k": "BUILDING",
+        "color": "blue",
+        "text": "The brand-owner KRA framework. Evidence-based reviews, five worked examples in, an org design that survives contact with real people."
+      },
+      {
+        "k": "HIRING",
+        "color": "muted",
+        "text": "A Chief Campaign Officer. Deliverability specialists wanted. The outbound machine needs an owner."
       }
     ]
   },
@@ -399,7 +399,7 @@ window.DH_DATA = {
     "location": "Bangalore, IN",
     "time_ist": "03:02 IST",
     "weather": "24°C · clear",
-    "last_ship": "carrier ICP rebuild · just now",
+    "last_ship": "autopublish v2 · ssh loop · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -411,20 +411,20 @@ window.DH_DATA = {
   "status_board": {
     "now": [
       {
-        "text": "AI SDR live-pipeline test. The 90-day clock starts now that ChampGraph cleared.",
-        "tag": "AI SDR"
-      },
-      {
-        "text": "deependhq.com autonomy. Daily publish from the vault and GitHub.",
+        "text": "deependhq autopublish v2. SSH deploy keys, nightly authoring, live verification.",
         "tag": "TheDeepEndHQ"
       },
       {
-        "text": "Longevity closed-beta. Web PWA, mid-June deadline.",
+        "text": "Longevity closed beta. Final 72 hours before the first cohort.",
         "tag": "Longevity"
       },
       {
-        "text": "Onboarding growth marketers across four brands.",
-        "tag": "Champions Ops"
+        "text": "Champ IQ v1 scope decision. All prereqs cleared, launch week.",
+        "tag": "AI SDR"
+      },
+      {
+        "text": "World Cup consumer sprint. Host-metro segments, 72-hour cadence.",
+        "tag": "Lake B2B"
       }
     ],
     "recently": [
@@ -447,19 +447,19 @@ window.DH_DATA = {
     ],
     "soon": [
       {
-        "text": "AI SDR 90-day experiment formally kicks off.",
-        "tag": "this week"
+        "text": "Longevity closed beta opens to the first cohort.",
+        "tag": "Jun 14"
       },
       {
-        "text": "Longevity closed beta opens.",
-        "tag": "mid-June"
+        "text": "AI SDR 90-day live experiment formally kicks off.",
+        "tag": "this month"
       },
       {
-        "text": "Champions Ranch corporate retreats go to market.",
-        "tag": "soon"
+        "text": "An EU-India trade platform JV signs in Brussels.",
+        "tag": "Jun 24"
       },
       {
-        "text": "Weekly narrative · the autonomy loop.",
+        "text": "Weekly narrative · the week the site started writing itself.",
         "tag": "Sunday"
       }
     ]
@@ -467,15 +467,19 @@ window.DH_DATA = {
   "stack": [
     {
       "layer": "Frontend",
-      "what": "React 18 · Babel standalone · no build step"
+      "what": "No-build React · Babel standalone · four static pages"
     },
     {
       "layer": "Content",
-      "what": "Obsidian vault · content.json · daily auto-publish"
+      "what": "content.json -> build-data.mjs -> data.js · one source of truth"
+    },
+    {
+      "layer": "Publish",
+      "what": "Claude nightly · SSH deploy key · fresh clone · push = deploy"
     },
     {
       "layer": "Edge",
-      "what": "Cloudflare Pages · D1 · R2 · KV · Workers"
+      "what": "Cloudflare Workers · static assets · Workers Builds from main"
     },
     {
       "layer": "Vault",
@@ -483,15 +487,11 @@ window.DH_DATA = {
     },
     {
       "layer": "AI",
-      "what": "Claude · Cowork · Jules · ChampGraph · ChampMail"
+      "what": "Anthropic · Jules · ChampGraph · ChampMail"
     },
     {
       "layer": "Type",
       "what": "Fraunces · Inter · JetBrains Mono"
-    },
-    {
-      "layer": "Color",
-      "what": "Gotham, Matrix, Arc, Champion gold, Bone"
     },
     {
       "layer": "Built at",
@@ -624,7 +624,7 @@ window.DH_DATA = {
     {
       "title": "ChampMail",
       "description": "Email outreach automation with human-cadence sending and Stalwart SMTP.",
-      "url": "#",
+      "url": "https://github.com/Champ-Deep/ChampMail",
       "category": "tool",
       "featured": true
     },
@@ -638,14 +638,14 @@ window.DH_DATA = {
     {
       "title": "ChampGraph",
       "description": "Knowledge graph per prospect. Neo4j/FalkorDB. The brain behind the AI SDR.",
-      "url": "#",
+      "url": "https://github.com/Champ-Deep/Graphiti-knowledge-graph",
       "category": "tool",
       "featured": false
     },
     {
-      "title": "Social Automator",
-      "description": "Auto-triage DMs, auto-send Zoom links, daily social hygiene at 5 PM IST.",
-      "url": "#",
+      "title": "B2B Pulse",
+      "description": "LinkedIn and Meta engagement automator. Powers the 5 PM IST daily social triage.",
+      "url": "https://github.com/Champ-Deep/B2B-Pulse",
       "category": "tool",
       "featured": false
     },
@@ -718,6 +718,83 @@ window.DH_DATA = {
       "url": "#",
       "category": "resource",
       "featured": true
+    },
+    {
+      "title": "ChampLens",
+      "description": "QR-to-video AR business card platform. Scan a card, meet a person.",
+      "url": "https://github.com/Champ-Deep/ChampLens",
+      "category": "repo",
+      "featured": true
+    },
+    {
+      "title": "ChampIQ",
+      "description": "The AI SDR orchestration layer. Graph-driven prospecting across every channel.",
+      "url": "https://github.com/Champ-Deep/ChampIQ",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "LakeStream",
+      "description": "Template-based web scraper for B2B data enrichment. YouTube transcripts included.",
+      "url": "https://github.com/Champ-Deep/LakeStream",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "5-Level Email Personalizer",
+      "description": "White-labeled personalization engine. Multi-model variations with an eval harness.",
+      "url": "https://github.com/Champ-Deep/five-level-email-personalizer",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "ChamPDF",
+      "description": "PDF tooling for the presales floor.",
+      "url": "https://github.com/Champ-Deep/ChamPDF",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "Event Scout",
+      "description": "Mobile PWA for event contact capture. Business card scanner plus AI chat.",
+      "url": "https://github.com/Champ-Deep/event-scout",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "Champ Obscura",
+      "description": "Headless browser for AI agents and web scraping.",
+      "url": "https://github.com/Champ-Deep/Champ-obscura",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "LakeCurrent",
+      "description": "A search API alternative from Lake B2B.",
+      "url": "https://github.com/Champ-Deep/LakeCurrent",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "ChampQuest",
+      "description": "Rewarding task tracking for teams. Now being reborn as a ranch scavenger JRPG.",
+      "url": "https://github.com/Champ-Deep/ChampQuest",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "SlideSmith",
+      "description": "A craftsman of slides. Like a blacksmith, but for presentations.",
+      "url": "https://github.com/Champ-Deep/LakeB2B-SlideSmith",
+      "category": "repo",
+      "featured": false
+    },
+    {
+      "title": "ChampVideo",
+      "description": "Automated avatar video studio for the group brands.",
+      "url": "https://github.com/Champ-Deep/champvideo",
+      "category": "repo",
+      "featured": false
     }
   ],
   "tools": [

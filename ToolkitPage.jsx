@@ -73,7 +73,7 @@ const ToolkitPage = () => {
         </div>
       </div>
 
-      <nav className="dh-tab-bar">
+      <nav className="dh-tab-bar dh-rail-mobile-only">
         {CATEGORIES.map((c) => {
           const count = c.id === 'all' ? items.length : (counts[c.id] || 0);
           return (
@@ -89,6 +89,8 @@ const ToolkitPage = () => {
         })}
       </nav>
 
+      <div className="dh-rail-layout">
+      <div>
       <div className="dh-toolkit-grid">
         {filtered.map((item) => (
           <a
@@ -119,6 +121,49 @@ const ToolkitPage = () => {
           <span>nothing matched "{q || filter}". try another verb.</span>
         </div>
       )}
+      </div>
+
+      <aside className="dh-rail" aria-label="toolkit context">
+        <window.RailProgress label="Drawer position" />
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">Categories</p>
+          <div className="dh-rail-nav dh-rail-filters">
+            {CATEGORIES.map((c) => {
+              const count = c.id === 'all' ? items.length : (counts[c.id] || 0);
+              return (
+                <button key={c.id} className={filter === c.id ? 'active' : ''} onClick={() => { setFilter(c.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                  {c.label.toLowerCase()} <span className="dh-rail-count">{count}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">Key</p>
+          <ul className="dh-rail-legend">
+            <li><span className="dh-rail-swatch dh-rail-swatch-green" />tool · runs the operation</li>
+            <li><span className="dh-rail-swatch dh-rail-swatch-blue" />repo · code on GitHub</li>
+            <li><span className="dh-rail-swatch dh-rail-swatch-gold" />skill · an AI workflow</li>
+            <li><span className="dh-rail-swatch dh-rail-swatch-muted" />resource · ideas, frameworks</li>
+          </ul>
+        </div>
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">Numbers</p>
+          <div className="dh-rail-stats">
+            <div className="dh-rail-stat"><span className="dh-rail-stat-num">{items.length}</span><span className="dh-rail-stat-lab">in the drawer</span></div>
+            <div className="dh-rail-stat"><span className="dh-rail-stat-num">{items.filter((i) => i.url.startsWith('http')).length}</span><span className="dh-rail-stat-lab">public links</span></div>
+            <div className="dh-rail-stat"><span className="dh-rail-stat-num">{items.filter((i) => i.featured).length}</span><span className="dh-rail-stat-lab">daily drivers</span></div>
+            <div className="dh-rail-stat"><span className="dh-rail-stat-num">{items.filter((i) => i.url === '#').length}</span><span className="dh-rail-stat-lab">internal</span></div>
+          </div>
+        </div>
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">All of it</p>
+          <ul className="dh-rail-nav">
+            <li><a href="https://github.com/Champ-Deep" target="_blank" rel="noreferrer">github.com/Champ-Deep ↗</a></li>
+          </ul>
+        </div>
+      </aside>
+      </div>
     </main>
   );
 };

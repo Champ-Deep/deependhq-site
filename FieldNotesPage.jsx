@@ -13,8 +13,22 @@ const PLOT_STATUS = {
   'Dormant':       { color: 'muted', glyph: '⏸' },
 };
 
+const FN_SECTIONS = [
+  { id: 'tools', label: 'Tools' },
+  { id: 'plotlines', label: 'Plot lines' },
+  { id: 'themes', label: 'Themes' },
+  { id: 'lexicon', label: 'Lexicon' },
+  { id: 'locations', label: 'Locations' },
+  { id: 'callbacks', label: 'Callbacks' },
+];
+
 const FieldNotesPage = () => {
   const D = window.DH_DATA;
+  const active = window.useScrollSpy(FN_SECTIONS.map((s) => s.id));
+  const counts = {
+    tools: (D.tools || []).length, plotlines: D.plotlines.length, themes: D.themes.length,
+    lexicon: D.lexicon.length, locations: D.locations.length, callbacks: D.callbacks.length,
+  };
 
   return (
     <main className="dh-page">
@@ -25,15 +39,13 @@ const FieldNotesPage = () => {
         <p className="dh-page-meta dh-mono">a wiki, not a blog · last revised day {D.brand.today_day}</p>
       </header>
 
-      <nav className="dh-toc">
-        <a href="#tools">Tools</a>
-        <a href="#plotlines">Plot lines</a>
-        <a href="#themes">Themes</a>
-        <a href="#lexicon">Lexicon</a>
-        <a href="#locations">Locations</a>
-        <a href="#callbacks">Callbacks</a>
+      {/* mobile: keep the simple TOC */}
+      <nav className="dh-toc dh-rail-mobile-only">
+        {FN_SECTIONS.map((s) => <a key={s.id} href={`#${s.id}`}>{s.label}</a>)}
       </nav>
 
+      <div className="dh-rail-layout">
+      <div>
       {/* Tools — the systems and agents that run the operation. People stay in the vault, not on the public site. */}
       <section id="tools" className="dh-wiki-section">
         <h2 className="dh-wiki-title">Tools</h2>
@@ -152,6 +164,30 @@ const FieldNotesPage = () => {
           ))}
         </ul>
       </section>
+      </div>
+
+      <aside className="dh-rail" aria-label="field notes context">
+        <window.RailProgress />
+        <window.RailToc items={FN_SECTIONS.map((s) => ({ ...s, count: counts[s.id] }))} active={active} />
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">Plot status key</p>
+          <ul className="dh-rail-legend">
+            <li><span className="dh-rail-swatch dh-rail-swatch-blue" />↗ rising action</li>
+            <li><span className="dh-rail-swatch dh-rail-swatch-gold" />★ climax</li>
+            <li><span className="dh-rail-swatch dh-rail-swatch-green" />✓ resolution</li>
+            <li><span className="dh-rail-swatch dh-rail-swatch-muted" />⏸ dormant</li>
+          </ul>
+        </div>
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">Cross-links</p>
+          <ul className="dh-rail-nav">
+            <li><a href="journey.html">The journey →</a></li>
+            <li><a href="writing.html">The writing →</a></li>
+            <li><a href="toolkit.html">The toolkit →</a></li>
+          </ul>
+        </div>
+      </aside>
+      </div>
     </main>
   );
 };

@@ -31,10 +31,11 @@ const NowPage = () => {
         <p className="dh-page-sub">A snapshot, not a feed. The honest answer to "what are you working on?"</p>
       </header>
 
-      <div className="dh-narrow">
+      <div className="dh-rail-layout">
+      <div>
         {now.note && <p className="dh-now-note">{now.note}</p>}
 
-        <div className="dh-now-grid">
+        <div className="dh-now-grid" id="focus">
           {now.focus.map((f, i) => (
             <article key={i} className={`dh-now-card dh-now-${f.color || 'muted'}`}>
               <p className="dh-now-k">{f.k}</p>
@@ -44,7 +45,7 @@ const NowPage = () => {
         </div>
 
         {Array.isArray(D.off_hours) && D.off_hours.length > 0 && (
-          <section>
+          <section id="offclock">
             <p className="dh-now-subhead">Off the clock</p>
             <div className="dh-now-grid">
               {D.off_hours.map((o, i) => (
@@ -57,7 +58,7 @@ const NowPage = () => {
           </section>
         )}
 
-        <dl className="dh-now-basics">
+        <dl className="dh-now-basics" id="basics">
           {basics.map(([label, value]) => (
             <div key={label} className="dh-now-basic">
               <dt>{label}</dt>
@@ -69,6 +70,34 @@ const NowPage = () => {
         {prettyUpdated && (
           <p className="dh-now-updated"><span className="dh-gt">&gt;_</span>last updated {prettyUpdated} · this page is inspired by the /now movement</p>
         )}
+      </div>
+
+      <aside className="dh-rail" aria-label="now context">
+        <window.RailProgress />
+        <window.RailToc
+          items={[
+            { id: 'focus', label: 'In focus', count: now.focus.length },
+            { id: 'offclock', label: 'Off the clock', count: (D.off_hours || []).length },
+            { id: 'basics', label: 'The basics' },
+          ]}
+          active={window.useScrollSpy(['focus', 'offclock', 'basics'])}
+        />
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">Live strip</p>
+          <ul className="dh-rail-legend">
+            <li><span className="dh-rail-swatch dh-rail-swatch-green" />{s.state || 'shipping'}</li>
+            {s.last_ship && <li><span className="dh-rail-swatch dh-rail-swatch-gold" />{s.last_ship}</li>}
+            {s.location && <li><span className="dh-rail-swatch dh-rail-swatch-blue" />{s.location}</li>}
+          </ul>
+        </div>
+        <div className="dh-rail-block">
+          <p className="dh-rail-k">Go deeper</p>
+          <ul className="dh-rail-nav">
+            <li><a href="journey.html">today's entry →</a></li>
+            <li><a href="writing.html">weekly narratives →</a></li>
+          </ul>
+        </div>
+      </aside>
       </div>
     </main>
   );
