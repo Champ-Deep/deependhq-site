@@ -42,8 +42,8 @@ Scheduled task `deependhq-daily-publish` runs at **01:30 IST daily**. It:
 4. On Sundays, optionally authors a weekly narrative into `posts[]`.
 5. Runs `bash scripts/publish.sh` — fresh shallow clone over SSH using the
    repo-scoped deploy key at `Other/.secrets/deploy_key_deependhq-site` (vault),
-   rsyncs this worktree onto it, commits, pushes `initial-site`. Cloudflare
-   Pages redeploys.
+   rsyncs this worktree onto it, commits, pushes `main`. Cloudflare Workers
+   Builds redeploys.
 6. Verifies: fetches `https://deependhq.com/data.js` and confirms `today_date`
    matches the published entry. Reports loudly if not.
 
@@ -63,8 +63,11 @@ This is a personal-brand surface, not a company page.
 
 ## Deploy note
 
-Cloudflare Pages project `deependhq` deploys from this GitHub repo
-(`Champ-Deep/deependhq-site`), branch `initial-site`.
+deependhq.com is served by Cloudflare **Worker** `deependhq` (static assets),
+built from this GitHub repo via Workers Builds. **Production branch: `main`**
+(the repo default). Pushes to other branches only create preview builds — this
+is exactly how the June catch-up publish initially "succeeded" without going
+live (it pushed `initial-site`). `initial-site` is legacy; publish to `main`.
 
 Two publish paths (see AUTOPUBLISH-TEMPLATE.md for the full design):
 

@@ -17,7 +17,7 @@
 # REUSABLE TEMPLATE
 # Works for any static microsite. Override via env vars:
 #   PUBLISH_REPO         owner/repo               (default Champ-Deep/deependhq-site)
-#   PUBLISH_BRANCH       branch CF Pages deploys  (default initial-site)
+#   PUBLISH_BRANCH       branch CF deploys        (default main — Workers Builds production branch)
 #   PUBLISH_SRC          worktree dir             (default: parent of this script)
 #   PUBLISH_KEY_FILE     private deploy key       (default: <vault>/Other/.secrets/deploy_key_<repo-name>)
 #   PUBLISH_KNOWN_HOSTS  pinned host keys         (default: <vault>/Other/.secrets/github_known_hosts)
@@ -27,7 +27,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="${PUBLISH_SRC:-$(dirname "$SCRIPT_DIR")}"
 REPO="${PUBLISH_REPO:-Champ-Deep/deependhq-site}"
-BRANCH="${PUBLISH_BRANCH:-initial-site}"
+BRANCH="${PUBLISH_BRANCH:-main}"
 REPO_NAME="${REPO##*/}"
 MSG="${PUBLISH_MSG:-site: publish $(date +%F)}"
 

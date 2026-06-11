@@ -9,7 +9,7 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BRANCH="${PUBLISH_BRANCH:-initial-site}"
+BRANCH="${PUBLISH_BRANCH:-main}"
 LOG_PREFIX="[deependhq-native-publish $(date '+%F %T')]"
 
 cd "$REPO_DIR"
@@ -27,5 +27,6 @@ if git diff --cached --quiet; then
 fi
 
 git commit -m "site: native publish $(date +%F)"
-git push origin "$BRANCH"
+# Push whatever branch is checked out onto the production branch.
+git push origin "HEAD:$BRANCH"
 echo "$LOG_PREFIX pushed $(git rev-parse --short HEAD) to $BRANCH. Cloudflare Pages will redeploy."
