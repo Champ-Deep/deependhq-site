@@ -21,12 +21,12 @@ const FieldNotesPage = () => {
       <header className="dh-page-head">
         <div className="dh-eyebrow"><span className="dh-eyebrow-dot dh-eyebrow-dot-blue" /> Field notes</div>
         <h1 className="dh-page-title">Field Notes.</h1>
-        <p className="dh-page-sub">The characters, arcs, and themes of building 12 companies in public.</p>
+        <p className="dh-page-sub">The tools, arcs, and themes of building 12 companies in public.</p>
         <p className="dh-page-meta dh-mono">a wiki, not a blog · last revised day {D.brand.today_day}</p>
       </header>
 
       <nav className="dh-toc">
-        <a href="#characters">Characters</a>
+        <a href="#tools">Tools</a>
         <a href="#plotlines">Plot lines</a>
         <a href="#themes">Themes</a>
         <a href="#lexicon">Lexicon</a>
@@ -34,25 +34,18 @@ const FieldNotesPage = () => {
         <a href="#callbacks">Callbacks</a>
       </nav>
 
-      {/* Characters */}
-      <section id="characters" className="dh-wiki-section">
-        <h2 className="dh-wiki-title">Characters</h2>
-        <p className="dh-wiki-lede">People who keep appearing in the narrative.</p>
-        <div className="dh-cast">
-          {D.characters.map((c) => (
-            <article key={c.name} className={`dh-cast-card dh-cast-${STATUS_DOT[c.status].color}`}>
-              <div className="dh-cast-head">
-                <div className={`dh-monogram dh-monogram-${STATUS_DOT[c.status].color}`}>
-                  <span>{c.initials}</span>
-                  <span className={`dh-status-dot dh-status-${STATUS_DOT[c.status].color} dh-monogram-dot`} />
-                </div>
-                <div className="dh-cast-id">
-                  <h3 className="dh-cast-name">{c.name}</h3>
-                  <p className="dh-cast-role">{c.role}</p>
-                </div>
-                <span className="dh-cast-since">first seen<br/><span className="dh-mono">day {c.since}</span></span>
+      {/* Tools — the systems and agents that run the operation. People stay in the vault, not on the public site. */}
+      <section id="tools" className="dh-wiki-section">
+        <h2 className="dh-wiki-title">Tools</h2>
+        <p className="dh-wiki-lede">The systems and agents I use to operate. People stay in the vault. Tools go on the site.</p>
+        <div className="dh-loc-grid">
+          {(D.tools || []).map((t) => (
+            <article key={t.name} className="dh-loc">
+              <div className="dh-loc-head">
+                <h3 className="dh-loc-name">{t.name}</h3>
+                <span className="dh-loc-where">{t.kind}</span>
               </div>
-              <p className="dh-cast-blurb">{c.blurb}</p>
+              <p className="dh-loc-what">{t.what}</p>
             </article>
           ))}
         </div>

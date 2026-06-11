@@ -1,8 +1,9 @@
-// data.js — GENERATED FILE. Do not edit by hand.
-// Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-11T21:32:19.871Z
-
-window.DH_DATA = {
+{
+  "_meta": {
+    "note": "SOURCE OF TRUTH for deependhq.com. Edit this file (or let the daily pipeline edit it), then run `node scripts/build-data.mjs` to regenerate data.js. The HTML pages load data.js, never this file.",
+    "public_naming_rule": "NEVER name real team members on this public surface. Anonymize to roles ('a sales lead', 'the SEO team'). Refer to the founder's father as 'Chief' only. See feedback memory deependhq-public-naming.",
+    "day_one": "2025-11-01"
+  },
   "brand": {
     "today_day": 223,
     "today_date": "2026-06-11",
@@ -1039,4 +1040,4 @@ window.DH_DATA = {
       ]
     }
   ]
-};
+}

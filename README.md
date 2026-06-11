@@ -1,6 +1,6 @@
 # deependhq.com
 
-The Deep End. Personal site for Sreedeep Surapaneni.
+[[The [[Sreedeep Surapaneni|Deep]] End]]. Personal site for [[Sreedeep Surapaneni]].
 
 Built from the Gotham Workshop design system. A no-build static site: four
 HTML pages that render React components in the browser via Babel standalone.
@@ -15,7 +15,7 @@ Nothing to compile, nothing to install.
 Shared across pages: Nav.jsx, Footer.jsx, styles.css, styles-x.css, data.js.
 
 ## Deploy
-Cloudflare Pages, no build step. See DEPLOY.md.
+Cloudflare Pages, no build step. See [[DEPLOY]].md.
 
 ## Edit content
 All copy and data lives in data.js. Components are the .jsx files.

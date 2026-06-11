@@ -1,6 +1,12 @@
 .DS_Store
 node_modules/
 
+# Pipeline scratch (per-day entry handoffs, never published)
+scripts/.entry-*.json
+scripts/.entry-tmp.json
+scripts/.weekly-publish.mjs
+scripts/pending-entry.json
+
 # Obsolete superseded build + cruft. Remove locally (see DEPLOY.md step 1).
 thedeependhq/
 deependhq-content/
@@ -14,10 +20,3 @@ package-lock.json
 .nvmrc
 design-canvas.jsx
 Deliverables.html
-
-# wrangler files
-.wrangler
-.dev.vars*
-!.dev.vars.example
-.env*
-!.env.example
