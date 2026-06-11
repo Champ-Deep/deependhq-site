@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>og image</title>
+  <link rel="stylesheet" href="colors_and_type.css">
+  <style>
+    html, body { margin: 0; background: var(--color-bg); }
+    .og { width: 1200px; height: 630px; box-sizing: border-box; padding: 80px; display: flex; flex-direction: column; justify-content: space-between; background:
+      radial-gradient(1200px 600px at 80% -20%, rgba(48,224,96,0.10), transparent 60%), var(--color-bg); }
+    .og-top { display: flex; align-items: center; gap: 14px; font-family: var(--font-code); color: var(--color-text-secondary); font-size: 26px; }
+    .og-gt { color: var(--color-accent-primary); font-weight: 600; }
+    .og-tag { display: inline-block; font-family: var(--font-code); font-size: 22px; color: var(--color-accent-secondary); border: 1px solid var(--color-border); border-radius: 100px; padding: 6px 18px; margin-bottom: 24px; }
+    .og-title { font-family: var(--font-display); font-weight: 800; color: var(--color-text-primary); font-size: 78px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: 1000px; }
+    .og-sub { font-family: var(--font-body); color: var(--color-text-secondary); font-size: 30px; margin: 24px 0 0; max-width: 940px; }
+    .og-foot { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 24px; color: var(--color-text-secondary); }
+    .og-foot b { color: var(--color-text-primary); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="og" id="og">
+    <div class="og-top"><span class="og-gt">deep&nbsp;&gt;_</span> <span>deependhq.com</span></div>
+    <div>
+      <span class="og-tag" id="tag">building in public</span>
+      <h1 class="og-title" id="title">Past the hype cycle. Into the infrastructure.</h1>
+      <p class="og-sub" id="sub">Group CMO at Champions Group. 12 companies, one vault, shipped in public.</p>
+    </div>
+    <div class="og-foot"><span id="meta">day 214</span><span><b>sreedeep surapaneni</b></span></div>
+  </div>
+  <script>
+    // Render any variant from query params, e.g.
+    // og.html?title=Four%20sales%20teams&sub=...&tag=week%2028&meta=days%20191-197
+    const q = new URLSearchParams(location.search);
+    const set = (id, key) => { const v = q.get(key); if (v) document.getElementById(id).textContent = v; };
+    set('title', 'title'); set('sub', 'sub'); set('tag', 'tag'); set('meta', 'meta');
+  </script>
+</body>
+</html>

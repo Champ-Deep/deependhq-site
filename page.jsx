@@ -19,10 +19,16 @@ const PageShell = ({ pageId }) => {
   if (pageId === 'journey')     Body = <JourneyPage />;
   else if (pageId === 'toolkit') Body = <ToolkitPage />;
   else if (pageId === 'field-notes') Body = <FieldNotesPage />;
+  else if (pageId === 'now')     Body = <NowPage />;
+  else if (pageId === 'writing') Body = <WritingPage />;
+  else if (pageId === 'post')    Body = <PostPage />;
+
+  // A single post lives under the Writing section, so highlight Writing for it.
+  const navActive = pageId === 'post' ? 'writing' : pageId;
 
   return (
     <div className="dh-app">
-      <Nav active={pageId} />
+      <Nav active={navActive} />
       {Body}
       <Footer />
       {toast && (

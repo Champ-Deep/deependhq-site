@@ -1,14 +1,7 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "deependhq",
-  "compatibility_date": "2026-05-23",
-  "observability": {
-    "enabled": true
-  },
+  "compatibility_date": "2026-05-24",
   "assets": {
     "directory": "."
-  },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  }
 }

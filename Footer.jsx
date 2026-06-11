@@ -99,7 +99,9 @@ const Footer = () => {
             <div className="dh-foot-smcol">
               <span className="dh-foot-sm-h">site</span>
               <a href="index.html">Home</a>
+              <a href="now.html">Now</a>
               <a href="journey.html">Journey</a>
+              <a href="writing.html">Writing</a>
               <a href="field-notes.html">Field notes</a>
               <a href="toolkit.html">Toolkit</a>
               <a href="#dispatch">The dispatch</a>

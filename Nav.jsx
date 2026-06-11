@@ -1,10 +1,11 @@
 // Nav.jsx — sticky top, blurred Gotham, Matrix-green active link
 // Multi-page: links resolve to file paths (index.html, journey.html, etc.)
 
-const Nav = ({ active = 'now' }) => {
+const Nav = ({ active = 'home' }) => {
   const links = [
-    { id: 'now',        label: 'Now',         href: 'index.html#now' },
+    { id: 'now',        label: 'Now',         href: 'now.html' },
     { id: 'journey',    label: 'Journey',     href: 'journey.html' },
+    { id: 'writing',    label: 'Writing',     href: 'writing.html' },
     { id: 'field-notes',label: 'Field Notes', href: 'field-notes.html' },
     { id: 'toolkit',    label: 'Toolkit',     href: 'toolkit.html' },
   ];
@@ -12,7 +13,7 @@ const Nav = ({ active = 'now' }) => {
   const [open, setOpen] = React.useState(false);
 
   const onLinkClick = (e, l) => {
-    // If we are linking to a section on the current page (index.html#now),
+    // If we are linking to a section on the current page (e.g. index.html#now),
     // smooth-scroll instead of navigating.
     if (l.href.startsWith('index.html#') && (location.pathname.endsWith('index.html') || location.pathname.endsWith('/website/') || location.pathname.endsWith('/'))) {
       const id = l.href.split('#')[1];

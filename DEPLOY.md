@@ -17,7 +17,7 @@ rm -rf .git thedeependhq deependhq-content deploy node_modules \
 ```
 
 After this the folder holds only the site: four HTML pages, the .jsx
-components, styles.css, styles-x.css, data.js, README.md, DEPLOY.md.
+components, styles.css, styles-x.css, data.js, [[README]].md, DEPLOY.md.
 
 ## Step 2: Deploy to Cloudflare Pages
 

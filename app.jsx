@@ -3,7 +3,7 @@
 const { useState, useEffect } = React;
 
 const App = () => {
-  const [active, setActive] = useState('now');
+  const [active, setActive] = useState('home');
   const [toast, setToast] = useState(null);
 
   useEffect(() => {
@@ -17,12 +17,12 @@ const App = () => {
 
   // Track which section is in view for nav highlight
   useEffect(() => {
-    const map = { hero: 'now', now: 'now', think: 'now', ecosystem: 'now', proof: 'now', book: 'now' };
+    const map = { hero: 'home', now: 'home', think: 'home', ecosystem: 'home', proof: 'home', book: 'home' };
     const ids = Object.keys(map);
     const obs = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
-          if (e.isIntersecting) setActive(map[e.target.id] || 'now');
+          if (e.isIntersecting) setActive(map[e.target.id] || 'home');
         }
       },
       { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
