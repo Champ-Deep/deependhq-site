@@ -33,7 +33,7 @@
 }
 @media (min-width: 1100px) { .dh-rail { display: block; } }
 
-.dh-rail-block { margin-bottom: var(--space-8); }
+.dh-rail-block { margin-bottom: var(--space-6); }
 .dh-rail-k {
   font-family: var(--font-code);
   font-size: var(--text-xs);

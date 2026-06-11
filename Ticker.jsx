@@ -64,25 +64,36 @@ const Ticker = () => {
     { k: 'coffee',      v: '/'.repeat(s.coffee || 0) + ' (' + (s.coffee || 0) + ' cups)', cls: '' },
   ];
 
+  const D = window.DH_DATA;
+  const allRows = [
+    ...rows,
+    { k: 'uptime',   v: `${s.uptime_d}d online`,                              cls: '' },
+    { k: 'day',      v: `${D.brand.today_day} of building in public`,         cls: 'tick-gold' },
+    { k: 'drinking', v: s.drinking,                                           cls: '' },
+    { k: 'pipeline', v: 'vault → claude → ssh → edge · self-publishing',      cls: 'tick-blue' },
+    { k: 'companies',v: '12 in motion',                                       cls: '' },
+  ].filter((r) => r.v);
+
+  const Track = ({ ariaHidden }) => (
+    <span className="dh-marquee-track" aria-hidden={ariaHidden || undefined}>
+      <span className="dh-ticker-prompt">$&nbsp;tail&nbsp;-f&nbsp;/var/log/deep</span>
+      <span className="dh-ticker-sep">·</span>
+      {allRows.map((r, i) => (
+        <span key={i} className="dh-ticker-cell">
+          <span className="dh-ticker-key">{r.k}</span>
+          <span className="dh-ticker-eq">=</span>
+          <span className={`dh-ticker-val ${r.cls}`}>{r.v}</span>
+          <span className="dh-ticker-sep">·</span>
+        </span>
+      ))}
+    </span>
+  );
+
   return (
     <section className="dh-ticker" aria-label="live system status">
-      <div className="dh-ticker-rail">
-        <span className="dh-ticker-prompt">$&nbsp;tail&nbsp;-f&nbsp;/var/log/deep</span>
-        <span className="dh-ticker-sep">·</span>
-        {rows.map((r, i) => (
-          <span key={i} className="dh-ticker-cell">
-            <span className="dh-ticker-key">{r.k}</span>
-            <span className="dh-ticker-eq">=</span>
-            <span className={`dh-ticker-val ${r.cls}`}>{r.v}</span>
-            {i < rows.length - 1 && <span className="dh-ticker-sep">·</span>}
-          </span>
-        ))}
-        <span className="dh-ticker-sep">·</span>
-        <span className="dh-ticker-cell">
-          <span className="dh-ticker-key">uptime</span>
-          <span className="dh-ticker-eq">=</span>
-          <span className="dh-ticker-val">{s.uptime_d}d online</span>
-        </span>
+      <div className="dh-ticker-rail dh-marquee">
+        <Track />
+        <Track ariaHidden={true} />
       </div>
     </section>
   );

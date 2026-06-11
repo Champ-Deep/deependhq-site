@@ -108,10 +108,10 @@ const Footer = () => {
             </div>
             <div className="dh-foot-smcol">
               <span className="dh-foot-sm-h">elsewhere</span>
-              <a href="#">x.com/sreedeep ↗</a>
-              <a href="#">github.com/sreedeep ↗</a>
-              <a href="#">linkedin/in/sreedeep ↗</a>
-              <a href="#">read.cv/deep ↗</a>
+              <a href="https://github.com/Champ-Deep" target="_blank" rel="noreferrer">github.com/Champ-Deep ↗</a>
+              <a href="https://www.linkedin.com/in/sreedeep-surapaneni" target="_blank" rel="noreferrer">linkedin/sreedeep-surapaneni ↗</a>
+              <a href="https://bsky.app/profile/sreedeep-sura.bsky.social" target="_blank" rel="noreferrer">bsky/sreedeep-sura ↗</a>
+              <a href="https://calendly.com/deep-championsmail" target="_blank" rel="noreferrer">calendly/deep ↗</a>
               <a href="#">RSS · /feed.xml</a>
             </div>
             <div className="dh-foot-smcol">
@@ -129,11 +129,11 @@ const Footer = () => {
       <div className="dh-foot-colophon">
         <FooterHeader slug="./colophon" label="06" />
         <p className="dh-foot-colophon-line">
-          Built with <span className="dh-foot-tag">Next.js 15</span>
+          Built with <span className="dh-foot-tag">no-build React</span>
           <span className="dh-foot-plus">+</span>
           <span className="dh-foot-tag">Cloudflare</span>
           <span className="dh-foot-plus">+</span>
-          <span className="dh-foot-tag">EmDash</span>
+          <span className="dh-foot-tag">an AI that ships nightly</span>
           <span className="dh-foot-plus">+</span>
           <span className="dh-foot-tag">Anthropic</span>
           <span className="dh-foot-plus">+</span>

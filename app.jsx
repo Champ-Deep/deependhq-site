@@ -46,6 +46,7 @@ const App = () => {
       <HowIThink />
       <Ecosystem />
       <Proof />
+      <Pipeline />
       <TheStack />
       <Dispatch />
       <SecondCTA onBook={onBook} />

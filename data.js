@@ -1,6 +1,6 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-11T22:02:56.171Z
+// Built 2026-06-11T22:52:55.634Z
 
 window.DH_DATA = {
   "brand": {
@@ -564,10 +564,6 @@ window.DH_DATA = {
     {
       "term": "Ship the loop",
       "def": "Build the system that does the task, not the task itself."
-    },
-    {
-      "term": "The Assassins",
-      "def": "The Lake B2B and Ampliz sales team. One of four sales units."
     },
     {
       "term": "Day N",

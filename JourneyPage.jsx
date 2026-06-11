@@ -48,6 +48,7 @@ const JourneyPage = () => {
   const all = window.DH_DATA.journey;
   const [filter, setFilter] = useStateJ('all');
   const [shown, setShown] = useStateJ(BATCH);
+  const [allArcsOpen, setAllArcsOpen] = useStateJ(false);
   const [progress, setProgress] = useStateJ(0);
   const [hereDay, setHereDay] = useStateJ(all[0]?.day || 0);
   const [activeMonth, setActiveMonth] = useStateJ(jMonthKey(all[0]?.date || '2026-01'));
@@ -57,7 +58,8 @@ const JourneyPage = () => {
   const allArcs = useMemoJ(() => {
     const arcs = [];
     for (const e of all) for (const a of e.arcs) if (!arcs.includes(a)) arcs.push(a);
-    return arcs;
+    const n = (a) => all.filter((e) => e.arcs.includes(a)).length;
+    return arcs.sort((a, b) => n(b) - n(a));
   }, [all]);
 
   const filtered = filter === 'all' ? all : all.filter((e) => e.arcs.includes(filter));
@@ -194,7 +196,7 @@ const JourneyPage = () => {
           <div ref={sentinelRef} className="dh-feed-sentinel" />
           {shown < filtered.length
             ? <div className="dh-feed-more"><span className="dh-gt">&gt;_</span>loading older days…</div>
-            : filtered.length > 0 && <div className="dh-feed-end">&gt;_ day 1 territory. that's the whole story so far.</div>}
+            : filtered.length > 0 && <div className="dh-feed-end">&gt;_ end of the public log. it opens at day {filtered[filtered.length - 1].day}, when this site went live. days 1 to {filtered[filtered.length - 1].day - 1} live in the vault.</div>}
         </div>
 
         <aside className="dh-rail" aria-label="journey context">
@@ -241,11 +243,16 @@ const JourneyPage = () => {
               <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>
                 all arcs <span className="dh-rail-count">{all.length}</span>
               </button>
-              {allArcs.map((a) => (
+              {(allArcsOpen ? allArcs : allArcs.slice(0, 6)).map((a) => (
                 <button key={a} className={filter === a ? 'active' : ''} onClick={() => setFilter(a)}>
                   {a} <span className="dh-rail-count">{all.filter((e) => e.arcs.includes(a)).length}</span>
                 </button>
               ))}
+              {allArcs.length > 6 && (
+                <button onClick={() => setAllArcsOpen(!allArcsOpen)} style={{ opacity: 0.7 }}>
+                  {allArcsOpen ? '− fewer' : `+ ${allArcs.length - 6} more`}
+                </button>
+              )}
             </div>
           </div>
 
