@@ -37,7 +37,7 @@ New styles for /now, /writing, and posts live in `pages.css` (Gotham tokens).
 Scheduled task `deependhq-daily-publish` runs at **01:30 IST daily**. It:
 
 1. Reads the day's daily note (`Calendar/Daily Notes/YYYY/MM/…`) + GitHub commit count.
-2. Claude **authors** a journey entry in Sreedeep's voice (mood, arcs, three lines), applying the public-naming rules below.
+2. Claude **authors** a journey entry in [[Sreedeep Surapaneni]]'s voice (mood, arcs, three lines), applying the public-naming rules below.
 3. Runs `node scripts/ingest-entry.mjs '<json>'` — unshifts the entry, bumps the day counter, refreshes the status strip and "recently shipped", regenerates `data.js`.
 4. On Sundays, optionally authors a weekly narrative into `posts[]`.
 5. Runs `bash scripts/publish.sh` — fresh shallow clone over SSH using the
@@ -77,7 +77,7 @@ Two publish paths (see AUTOPUBLISH-TEMPLATE.md for the full design):
   this clone's `.git`, so stale lockfiles are irrelevant.
 - **Fallback — `scripts/publish-native.sh`**: runs on the Mac via LaunchAgent
   `com.champ.deependhq-publish` (daily 02:15 IST), uses the local `.git` +
-  Sreedeep's personal SSH key, clears stale `index.lock` itself. Installer:
+  [[Sreedeep Surapaneni]]'s personal SSH key, clears stale `index.lock` itself. Installer:
   `bash scripts/install-native-publisher.sh` (run once in Terminal).
 
 Deploy key: `<vault>/Other/.secrets/deploy_key_deependhq-site` (ed25519,

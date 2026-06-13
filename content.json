@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 223,
-    "today_date": "2026-06-11",
+    "today_day": 224,
+    "today_date": "2026-06-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -73,6 +73,19 @@
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-12",
+      "day": 224,
+      "mood": "🏗️",
+      "shipping_now": "completed the q2 kra review wave. five written reviews, six candid-conversation deliverables, one trackable scorecard — the full marketing org on paper, send-ready. when the evidence is this organized, the conversation almost runs itself.",
+      "yesterday_thread": "met a datacenter and fiber operator on a community connectivity play, prepped two more client meetings, and filed a debrief on a telecom group opportunity. also locked the v1 build spec for a retail inventory platform.",
+      "raw_thought": "community internet infrastructure is a moat the saas layer can not replicate. incumbents own the app. nobody owns the pipe. the stickiness is in the connection, not the feature.",
+      "arcs": [
+        "Champions Operations",
+        "TheDeepEndHQ"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-06-11",
       "day": 223,
@@ -398,9 +411,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "03:02 IST",
+    "time_ist": "03:23 IST",
     "weather": "24°C · clear",
-    "last_ship": "autopublish v2 · ssh loop · just now",
+    "last_ship": "KRA review kit complete · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -430,6 +443,10 @@
     ],
     "recently": [
       {
+        "text": "completed the q2 kra review wave. five written reviews, six candid-conversation deliver...",
+        "tag": "shipped d224"
+      },
+      {
         "text": "the first call with the gulf carrier group rewrote the brief. the buyer is IPX and whol...",
         "tag": "shipped d223"
       },
@@ -440,10 +457,6 @@
       {
         "text": "took a one-off enrichment win and turned it into a product. verified contacts for vacat...",
         "tag": "shipped d221"
-      },
-      {
-        "text": "week 24 opened with a first call into one of india's largest conglomerates. their real-...",
-        "tag": "shipped d220"
       }
     ],
     "soon": [
@@ -892,6 +905,89 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-30-the-enterprise-arc",
+      "kind": "weekly",
+      "week": 30,
+      "eyebrow": ">_ week 30 · the enterprise arc",
+      "title": "Two chairman calls, one signed deal, and a marketing org finally on paper.",
+      "deck": "The week went wide before it went deep. Enterprise BD, a data partnership, and the full org’s KRAs put to rest.",
+      "date": "2026-06-13",
+      "day_range": "days 220–225",
+      "read": "6 min read",
+      "arc": "Champions Operations",
+      "arc_color": "gold",
+      "tags": [
+        "operations",
+        "enterprise-bd",
+        "lake-b2b",
+        "longevity",
+        "kra"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Week 30 opened with a chairman-initiated first touch at one of india’s largest conglomerate real-estate arms and closed with the entire marketing floor on paper. In between, a data partnership signed, a new vertical got its PRD, and a gulf carrier group’s call rewrote its own brief by the second hour."
+        },
+        {
+          "type": "h2",
+          "text": "The enterprise pipeline went wide"
+        },
+        {
+          "type": "p",
+          "text": "Monday opened with a chairman-level first call into a major conglomerate’s real-estate division. The ask on paper was NRI sales data and digital infrastructure. The conversation on the call was bigger. Chairman-level engagement usually is. The brief has already expanded twice since the debrief."
+        },
+        {
+          "type": "p",
+          "text": "Thursday, a gulf-based carrier group sat down for what was billed as a data intelligence conversation. By the second hour the buyer had shifted from the brand side to the network side. An IP exchange play. The kind of infrastructure ask that does not come from procurement. The kind that comes from someone who runs the pipe."
+        },
+        {
+          "type": "pull",
+          "text": "The buyer turned out to be the network, not the brand."
+        },
+        {
+          "type": "h2",
+          "text": "A data partnership signed"
+        },
+        {
+          "type": "p",
+          "text": "After a full evaluation cycle, a data evaluation agreement with a major US contact data provider is signed. The lake b2b data layer now has a formal external source with verified coverage. The deal took longer than expected. It held."
+        },
+        {
+          "type": "p",
+          "text": "Alongside that, a vacation rental data vertical got its first PRD. A marketplace founder came in with a specific brief. The platform said yes and built the spec in one session. This is what mature infrastructure looks like from the inside."
+        },
+        {
+          "type": "h2",
+          "text": "The org got its paperwork"
+        },
+        {
+          "type": "p",
+          "text": "Five written KRA reviews. Six candid-conversation deliverables. One unified trackable scorecard. The full marketing organization on paper for the first time, evidence-based, numbers attached. The sessions with the team lead can now run on facts instead of impressions."
+        },
+        {
+          "type": "p",
+          "text": "A CCO candidate interview also ran this week. Outbound email and deliverability specialist, ten-plus years. The evaluation is ongoing."
+        },
+        {
+          "type": "h2",
+          "text": "The longevity cadence is live"
+        },
+        {
+          "type": "p",
+          "text": "Twice-weekly rhythm locked for the longevity project. First session ran this week. The closed beta window is narrow. The next two weeks will make or break the june target."
+        },
+        {
+          "type": "callout",
+          "head": "What is still in flight",
+          "lines": [
+            "Enterprise CXO lunch: anchor invites went personal this week. Responses pending.",
+            "EU-India platform: MoU redlines due. Brussels meeting is confirmed.",
+            "Champ IQ: W24 was the launch-decision window. Scope is still being read."
+          ]
+        }
+      ]
+    },
     {
       "slug": "week-29-the-reach-arc",
       "kind": "weekly",
