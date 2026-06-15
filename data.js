@@ -1,11 +1,11 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-13T20:38:12.758Z
+// Built 2026-06-15T20:35:03.189Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 224,
-    "today_date": "2026-06-12",
+    "today_day": 227,
+    "today_date": "2026-06-15",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -72,6 +72,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-15",
+      "day": 227,
+      "mood": "🛠️",
+      "shipping_now": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator that touches tens of thousands of enterprise accounts. if this lands it is the biggest channel partnership the data side has ever had. one deck, one shot.",
+      "yesterday_thread": "first time all four sales team leads sat in one room. four teams, one agenda, one scoreboard. this should have been a standing format months ago.",
+      "raw_thought": "a hard gate that slips two days is not a gate, it is a wish. either the date on the page means something or stop writing dates.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-06-12",
       "day": 224,
@@ -410,9 +423,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "03:23 IST",
+    "time_ist": "02:05 IST",
     "weather": "24°C · clear",
-    "last_ship": "KRA review kit complete · just now",
+    "last_ship": "integrator pitch guide · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -442,6 +455,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator th...",
+        "tag": "shipped d227"
+      },
+      {
         "text": "completed the q2 kra review wave. five written reviews, six candid-conversation deliver...",
         "tag": "shipped d224"
       },
@@ -452,10 +469,6 @@ window.DH_DATA = {
       {
         "text": "built a full deep-prep dossier for a chairman-initiated first touch with a major gulf c...",
         "tag": "shipped d222"
-      },
-      {
-        "text": "took a one-off enrichment win and turned it into a product. verified contacts for vacat...",
-        "tag": "shipped d221"
       }
     ],
     "soon": [
