@@ -1,11 +1,11 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-15T20:35:03.189Z
+// Built 2026-06-16T20:42:54.161Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 227,
-    "today_date": "2026-06-15",
+    "today_day": 228,
+    "today_date": "2026-06-16",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -72,6 +72,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-16",
+      "day": 228,
+      "mood": "🔐",
+      "shipping_now": "minted per-repo ssh deploy keys for the three repos in this week's product push and moved their deploys off the shared token that expires next week. the kind of plumbing nobody notices until the day it quietly breaks. fixed it before that day.",
+      "yesterday_thread": "locked the week to a single ladder. the data engine ships first, then the outreach layer, then the orchestrator on top. choosing the order is most of the strategy.",
+      "raw_thought": "the publish pipeline died silently for a month once already. the worst failures never announce themselves. they just stop working while you keep believing everything is fine.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-06-15",
       "day": 227,
@@ -423,9 +436,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "02:05 IST",
+    "time_ist": "02:12 IST",
     "weather": "24°C · clear",
-    "last_ship": "integrator pitch guide · just now",
+    "last_ship": "per-repo ssh deploy keys · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -455,6 +468,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "minted per-repo ssh deploy keys for the three repos in this week's product push and mov...",
+        "tag": "shipped d228"
+      },
+      {
         "text": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator th...",
         "tag": "shipped d227"
       },
@@ -465,10 +482,6 @@ window.DH_DATA = {
       {
         "text": "the first call with the gulf carrier group rewrote the brief. the buyer is IPX and whol...",
         "tag": "shipped d223"
-      },
-      {
-        "text": "built a full deep-prep dossier for a chairman-initiated first touch with a major gulf c...",
-        "tag": "shipped d222"
       }
     ],
     "soon": [
