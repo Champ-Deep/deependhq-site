@@ -1,11 +1,11 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-16T20:42:54.161Z
+// Built 2026-06-18T20:13:27.916Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 228,
-    "today_date": "2026-06-16",
+    "today_day": 230,
+    "today_date": "2026-06-18",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -72,6 +72,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-18",
+      "day": 230,
+      "mood": "🚧",
+      "shipping_now": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we built, switchable per job and from the dashboard, every run tagged so the bake-off is measurable instead of a guess. the code is done. five credentials still need to land in the deploy dashboard, and that is the only thing standing between it and live.",
+      "yesterday_thread": "two commitments with hard dates both slipped. a cross-border platform reply with a brussels sit-down behind it, and a curated cxo dinner that can not send invites until its anchors lock. travel is closing on both now.",
+      "raw_thought": "done and live are different words for a reason. the toggle has been code-complete for two days and still is not shipped, because the last mile was never the code. it is the boring operational handoff nobody puts on a calendar.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-06-16",
       "day": 228,
@@ -436,9 +449,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "02:12 IST",
+    "time_ist": "01:43 IST",
     "weather": "24°C · clear",
-    "last_ship": "per-repo ssh deploy keys · just now",
+    "last_ship": "engine a/b toggle · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -468,6 +481,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "the a/b toggle for the prospect-research engine is committed. two web backends, one thi...",
+        "tag": "shipped d230"
+      },
+      {
         "text": "minted per-repo ssh deploy keys for the three repos in this week's product push and mov...",
         "tag": "shipped d228"
       },
@@ -478,10 +495,6 @@ window.DH_DATA = {
       {
         "text": "completed the q2 kra review wave. five written reviews, six candid-conversation deliver...",
         "tag": "shipped d224"
-      },
-      {
-        "text": "the first call with the gulf carrier group rewrote the brief. the buyer is IPX and whol...",
-        "tag": "shipped d223"
       }
     ],
     "soon": [
