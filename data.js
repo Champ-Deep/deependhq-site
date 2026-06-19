@@ -1,11 +1,11 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-18T20:13:27.916Z
+// Built 2026-06-19T20:41:19.281Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 230,
-    "today_date": "2026-06-18",
+    "today_day": 231,
+    "today_date": "2026-06-19",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -72,6 +72,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-19",
+      "day": 231,
+      "mood": "🧾",
+      "shipping_now": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on him. so i did not bring a pitch. i brought the live data on screen, thousands of companies and tens of thousands of verified decision-makers, plus a tight thirteen-slide revenue-engine deck built to show coverage instead of promising it.",
+      "yesterday_thread": "w25 closed today. the spine of the week was three deadlines with a human on the other end of each: a proof call, a cross-border platform reply with travel behind it, and a curated cxo dinner that can not send its invites until the anchors say yes.",
+      "raw_thought": "the last day of a sprint week is where you find out which deadlines were ever real. the ones with a person waiting, a call, a reply, an rsvp, do not move. the internal ones slip quietly and nobody notices but you.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-06-18",
       "day": 230,
@@ -449,9 +462,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:43 IST",
+    "time_ist": "02:11 IST",
     "weather": "24°C · clear",
-    "last_ship": "engine a/b toggle · just now",
+    "last_ship": "receipts over slides · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -481,6 +494,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burn...",
+        "tag": "shipped d231"
+      },
+      {
         "text": "the a/b toggle for the prospect-research engine is committed. two web backends, one thi...",
         "tag": "shipped d230"
       },
@@ -491,10 +508,6 @@ window.DH_DATA = {
       {
         "text": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator th...",
         "tag": "shipped d227"
-      },
-      {
-        "text": "completed the q2 kra review wave. five written reviews, six candid-conversation deliver...",
-        "tag": "shipped d224"
       }
     ],
     "soon": [
