@@ -958,6 +958,81 @@
   ],
   "posts": [
     {
+      "slug": "week-31-the-proof-arc",
+      "kind": "weekly",
+      "week": 31,
+      "eyebrow": ">_ week 31 · the proof arc",
+      "title": "Three deadlines with a person on the other end. And the quiet ones that slipped.",
+      "deck": "A product-push week that turned into a lesson about which deadlines are ever real. The ones with a call, a reply, or an rsvp held. The internal ones slipped quietly.",
+      "date": "2026-06-20",
+      "day_range": "days 227–232",
+      "read": "5 min read",
+      "arc": "Lake B2B",
+      "arc_color": "green",
+      "tags": [
+        "lake-b2b",
+        "operations",
+        "product-push",
+        "proof",
+        "maintenance"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Week 31 had a spine, and it was not the product roadmap. It was three deadlines, each with a real person on the other end. A proof call with an operator who had been burned before. A cross-border platform reply with travel behind it. A CXO lunch that could not send its invites until a few senior people said yes. Everything else was noise until those three moved."
+        },
+        {
+          "type": "h2",
+          "text": "Proof, not a pitch"
+        },
+        {
+          "type": "p",
+          "text": "The week closed on a friday call into a dry-bulk shipping operator. A marine chartering founder who had been burned once by a vendor that went silent on him after the contract was signed. So the call did not open with a pitch. It opened with the live data on screen. Thousands of companies, tens of thousands of verified decision-makers, and a tight thirteen-slide revenue engine deck built to show coverage instead of promising it. When the other side has been let down before, proof is the only opener that earns a second meeting."
+        },
+        {
+          "type": "pull",
+          "text": "When the buyer has been burned, proof is the only opener that earns a second meeting."
+        },
+        {
+          "type": "h2",
+          "text": "The product went code-complete, then waited"
+        },
+        {
+          "type": "p",
+          "text": "The build thread was real. The prospect research engine got an a/b toggle. Two web backends, one third-party and one built in-house, switchable per job and from the dashboard, every run tagged so the bake-off is measurable instead of a hunch. The code landed and committed midweek. Then it stopped. Five credentials still have to reach the deploy dashboard, and that is the only thing between built and live. Code-complete is not done. Done is in production."
+        },
+        {
+          "type": "p",
+          "text": "Underneath that, some plumbing got fixed before it could break. The keys that publish this site and two sister repos moved off a shared token expiring this week and onto a separate key per repo. The kind of maintenance nobody notices until the day it quietly fails. An hour now beats a lost week later."
+        },
+        {
+          "type": "h2",
+          "text": "The deadlines that slipped were the internal ones"
+        },
+        {
+          "type": "p",
+          "text": "Here is the honest part. The threads with a person physically waiting held all week. The proof call happened. The cross-border reply has a brussels meeting behind it, so it stayed at the top of every list. But the anchor-gated CXO lunch sat six days past its gate, because it depends on a handful of senior people saying yes first, and you cannot manufacture that. Meanwhile the quiet internal deadlines, the meeting outcomes to file, the spec to lock, slipped without a sound. Nobody chases you on those but you."
+        },
+        {
+          "type": "pull",
+          "text": "Real deadlines have a face. The internal ones slip quietly, and nobody notices but you."
+        },
+        {
+          "type": "p",
+          "text": "That is the lesson, and it is not a comfortable one. The last day of a sprint is where you learn which deadlines were ever real. The ones with a call, a reply, an rsvp do not move. The internal ones need someone to play that role, or they drift. Next week the fix is simple to say and hard to do. Give the internal commitments a face too."
+        },
+        {
+          "type": "callout",
+          "head": "Carried into next week",
+          "lines": [
+            "The cross-border platform reply, with a brussels meeting now days away.",
+            "The anchor-gated CXO lunch, still waiting on a few senior yeses.",
+            "The research engine, five credentials short of a live bake-off."
+          ]
+        }
+      ]
+    },
+    {
       "slug": "week-30-the-enterprise-arc",
       "kind": "weekly",
       "week": 30,
