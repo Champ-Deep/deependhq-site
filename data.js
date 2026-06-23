@@ -1,6 +1,6 @@
-// data.js — GENERATED FILE. Do not edit by hand.
+// data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-23T22:38:37.743Z
+// Built 2026-06-23T22:42:32.578Z
 
 window.DH_DATA = {
   "brand": {
@@ -507,7 +507,7 @@ window.DH_DATA = {
     "week": 29,
     "title": "Week 29. The week I shipped a rhythm, not a speech.",
     "body": "The week started with me clearing my own desk and ended with me standing in front of every sales team. In between, the job was not to write a better pitch. It was to build a rhythm the floor could run on a Monday without me in the room.",
-    "day_range": "days 212–218",
+    "day_range": "days 212, 218",
     "date": "2026-06-06",
     "read": "8 min read",
     "slug": "week-29-the-reach-arc"
@@ -1023,7 +1023,7 @@ window.DH_DATA = {
       "title": "Three deadlines with a person on the other end. And the quiet ones that slipped.",
       "deck": "A product-push week that turned into a lesson about which deadlines are ever real. The ones with a call, a reply, or an rsvp held. The internal ones slipped quietly.",
       "date": "2026-06-20",
-      "day_range": "days 227–232",
+      "day_range": "days 227, 232",
       "read": "5 min read",
       "arc": "Lake B2B",
       "arc_color": "green",
@@ -1098,7 +1098,7 @@ window.DH_DATA = {
       "title": "Two chairman calls, one signed deal, and a marketing org finally on paper.",
       "deck": "The week went wide before it went deep. Enterprise BD, a data partnership, and the full org’s KRAs put to rest.",
       "date": "2026-06-13",
-      "day_range": "days 220–225",
+      "day_range": "days 220, 225",
       "read": "6 min read",
       "arc": "Champions Operations",
       "arc_color": "gold",
@@ -1181,7 +1181,7 @@ window.DH_DATA = {
       "title": "The week I shipped a rhythm, not a speech.",
       "deck": "Five days of clearing the decks so a Saturday town hall could leave behind a system the floor runs without me.",
       "date": "2026-06-06",
-      "day_range": "days 212–218",
+      "day_range": "days 212, 218",
       "read": "8 min read",
       "arc": "Champions Operations",
       "arc_color": "green",
@@ -1255,7 +1255,7 @@ window.DH_DATA = {
       "title": "Four sales teams, one operating rhythm.",
       "deck": "What happens when you stop managing channels and start running them like products.",
       "date": "2026-05-17",
-      "day_range": "days 191–197",
+      "day_range": "days 191, 197",
       "read": "9 min read",
       "arc": "Champions Operations",
       "arc_color": "blue",
@@ -1332,7 +1332,7 @@ window.DH_DATA = {
       "title": "Data is not a product. Growth is.",
       "deck": "How a category gets created in a single Monday meeting, after six months of saying it wrong.",
       "date": "2026-05-10",
-      "day_range": "days 187–190",
+      "day_range": "days 187, 190",
       "read": "6 min read",
       "arc": "Lake B2B",
       "arc_color": "gold",
@@ -1554,5 +1554,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-06-23T22:38:37.743Z"
+  "built": "2026-06-23T22:42:32.577Z"
 };
