@@ -51,6 +51,7 @@ const App = () => {
       <Dispatch />
       <SecondCTA onBook={onBook} />
       <Footer />
+      {window.CommandPalette && React.createElement(window.CommandPalette)}
       {toast && (
         <div className="dh-toast">
           <span className="dh-toast-gt">&gt;_</span>

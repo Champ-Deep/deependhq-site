@@ -1,6 +1,6 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-23T22:23:25.216Z
+// Built 2026-06-23T22:35:55.056Z
 
 window.DH_DATA = {
   "brand": {
@@ -13,7 +13,13 @@ window.DH_DATA = {
     {
       "name": "Champions Accelerator",
       "desc": "The holding center. 12 ventures, one operating system.",
-      "tag": "Accelerator"
+      "tag": "Accelerator",
+      "products": [
+        "Champ IQ",
+        "ChampGraph",
+        "ChampQuest",
+        "ChampMail"
+      ]
     },
     {
       "name": "Champions Infometrics",
@@ -28,7 +34,13 @@ window.DH_DATA = {
     {
       "name": "Lake B2B",
       "desc": "The B2B growth stack. Data, demand, delivery.",
-      "tag": "Data & Services"
+      "tag": "Data & Services",
+      "products": [
+        "Lake Current",
+        "Lake Stream",
+        "Lake Harvest",
+        "ChampMail"
+      ]
     },
     {
       "name": "SPAN Global Services",
@@ -48,17 +60,31 @@ window.DH_DATA = {
     {
       "name": "Cirralogix",
       "desc": "Cloud infrastructure and DevOps. The pipes under the pipes.",
-      "tag": "Cloud & DevOps"
+      "tag": "Cloud & DevOps",
+      "products": [
+        "Cloud",
+        "DevOps",
+        "Edge"
+      ]
     },
     {
       "name": "Recruit Champ",
       "desc": "AI-powered recruitment. Hire faster, hire smarter.",
-      "tag": "AI & Recruitment"
+      "tag": "AI & Recruitment",
+      "products": [
+        "AI screening",
+        "Sourcing"
+      ]
     },
     {
       "name": "InfraTech",
       "desc": "Proptech. Resorts, experiences, real estate with a pulse.",
-      "tag": "PropTech"
+      "tag": "PropTech",
+      "products": [
+        "Aventura",
+        "Champions Ranch",
+        "Beach Cities"
+      ]
     },
     {
       "name": "Champ.fit",
@@ -1527,5 +1553,6 @@ window.DH_DATA = {
         "tag": "watching"
       }
     ]
-  }
+  },
+  "built": "2026-06-23T22:35:55.054Z"
 };

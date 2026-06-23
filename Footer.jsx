@@ -164,8 +164,8 @@ const Footer = () => {
       {/* Bottom rule */}
       <div className="dh-foot-bottom">
         <span className="dh-mono dh-muted">© 2026 · Gotham Workshop · Champions Group</span>
-        <span className="dh-mono dh-muted">made in Bangalore, between meetings</span>
-        <span className="dh-mono dh-muted">EOF.</span>
+        <span className="dh-mono dh-muted">{D.built ? 'last updated ' + new Date(D.built).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'made in Bangalore, between meetings'}</span>
+        <span className="dh-mono dh-muted dh-foot-kbd">press <kbd>⌘</kbd><kbd>K</kbd></span>
       </div>
 
     </footer>

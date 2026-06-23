@@ -40,6 +40,9 @@ function main() {
     }
   }
 
+  // stamp when this bundle was generated, for the footer "last updated" line
+  data.built = new Date().toISOString();
+
   const banner =
     '// data.js — GENERATED FILE. Do not edit by hand.\n' +
     '// Source of truth is content.json. Regenerate with: node scripts/build-data.mjs\n' +

@@ -197,7 +197,7 @@ const GitHubCal = () => {
 };
 
 /* ---------- Ecosystem: force-graph (draggable), SVG fallback ---------- */
-const ConstellationSVGInner = ({ companies }) => {
+const ConstellationSVGInner = ({ companies, onSelect }) => {
   const [hover, setHover] = useStateC(null);
   const [tip, setTip] = useStateC(null);
   const VW = 800, VH = 460, cx = 400, cy = 230, rx = 320, ry = 168;
@@ -211,7 +211,7 @@ const ConstellationSVGInner = ({ companies }) => {
         {nodes.map((n, i) => (<line key={'e' + i} className="cc-edge" x1={cx} y1={cy} x2={n.x} y2={n.y} style={{ opacity: hover === null ? 0.3 : (hover === i ? 0.85 : 0.08) }} />))}
         <g><circle className="cc-node-hub" cx={cx} cy={cy} r="34" /><text x={cx} y={cy - 2} className="cc-node-lab" style={{ fill: '#E8E4DC', fontSize: 13 }}>deep</text><text x={cx} y={cy + 13} className="cc-node-lab" style={{ fill: '#30E060', fontSize: 13 }}>{'>_'}</text></g>
         {nodes.map((n, i) => (
-          <g key={i} className="cc-node-g cc-float" style={{ '--cc-dur': n.dur, animationDelay: n.delay }} onMouseEnter={(e) => { setHover(i); setTip({ x: e.clientX, y: e.clientY, n }); }} onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, n })}>
+          <g key={i} className="cc-node-g cc-float" style={{ '--cc-dur': n.dur, animationDelay: n.delay, cursor: 'pointer' }} onMouseEnter={(e) => { setHover(i); setTip({ x: e.clientX, y: e.clientY, n }); }} onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, n })} onClick={() => onSelect && onSelect(n)}>
             <circle className="cc-node" cx={n.x} cy={n.y} r={hover === i ? 11 : 7} fill={n.color} style={{ filter: `drop-shadow(0 0 7px ${n.color})` }} />
             <text className="cc-node-lab" x={n.x} y={n.y + 24}>{n.name}</text>
           </g>
@@ -221,9 +221,22 @@ const ConstellationSVGInner = ({ companies }) => {
     </div>
   );
 };
+const CompanyDrill = ({ company, onClose }) => (
+  <div className="cc-drill">
+    <button className="cc-drill-close" onClick={onClose} aria-label="close">✕</button>
+    <div className="cc-drill-tag">{company.tag || 'venture'}</div>
+    <div className="cc-drill-name">{company.name}</div>
+    <p className="cc-drill-desc">{company.desc}</p>
+    {company.products && company.products.length > 0
+      ? <div className="cc-drill-chips"><span className="cc-drill-k">builds</span>{company.products.map((p) => <span key={p} className="cc-drill-chip">{p}</span>)}</div>
+      : <div className="cc-drill-chips"><span className="cc-drill-k">part of</span><span className="cc-drill-chip">the 12-company operating system</span></div>}
+  </div>
+);
 const Constellation = ({ companies }) => {
   const elRef = useRefC(null);
   const [useFG, setUseFG] = useStateC(true);
+  const [selected, setSelected] = useStateC(null);
+  const byName = useMemoC(() => { const m = {}; (companies || []).forEach((c) => { m[c.name] = c; }); return m; }, [companies]);
   useEffectC(() => {
     if (!window.ForceGraph || !elRef.current) { setUseFG(false); return; }
     const el = elRef.current;
@@ -237,9 +250,11 @@ const Constellation = ({ companies }) => {
         .width(el.clientWidth).height(440)
         .nodeRelSize(6)
         .nodeColor((n) => (n.hub ? '#E8E4DC' : n.col))
-        .nodeLabel((n) => (n.hub ? '12 companies, one operating system' : `${n.name} — ${n.desc || ''}`))
+        .nodeLabel((n) => (n.hub ? '12 companies, one operating system' : `${n.name} · ${n.desc || ''}`))
         .linkColor(() => 'rgba(74,123,247,0.28)')
         .linkWidth(1)
+        .onNodeClick((n) => { if (n.hub) { setSelected(null); return; } const co = byName[n.name]; if (co) setSelected(co); })
+        .onBackgroundClick(() => setSelected(null))
         .nodeCanvasObjectMode(() => 'after')
         .nodeCanvasObject((n, ctx, scale) => {
           const label = n.hub ? 'deep >_' : n.name;
@@ -259,9 +274,10 @@ const Constellation = ({ companies }) => {
     <div className="cc-section">
       <div className="cc-sec-head">
         <h2 className="cc-sec-title">The ecosystem</h2>
-        <span className="cc-sec-note">{(companies || []).length} companies, one operating system · <Annotate type="underline" color="#4A7BF7">drag a node</Annotate></span>
+        <span className="cc-sec-note">{(companies || []).length} companies, one operating system · <Annotate type="underline" color="#4A7BF7">click a node</Annotate></span>
       </div>
-      {useFG ? <div ref={elRef} className="cc-forcegraph" /> : <ConstellationSVGInner companies={companies} />}
+      {useFG ? <div ref={elRef} className="cc-forcegraph" /> : <ConstellationSVGInner companies={companies} onSelect={(n) => { const co = byName[n.name]; if (co) setSelected(co); }} />}
+      {selected && <CompanyDrill company={selected} onClose={() => setSelected(null)} />}
     </div>
   );
 };
@@ -395,7 +411,12 @@ const Terminal = () => {
     if (lc === 'ls') return [{ cls: 'out', segs: [seg('status/  the-build/  public-log/  commits/  ecosystem/  repos/  on-my-radar/', 'g')] }];
     if (lc === 'pwd') return [{ cls: 'out', segs: [seg('/home/deep/command-center', null)] }];
     if (lc === 'date') return [{ cls: 'out', segs: [seg(new Date().toString(), null)] }];
-    if (lc === 'theme') return [{ cls: 'out', segs: [seg('dark. always. this site lives at night.', null)] }];
+    if (lc === 'theme' || lc.startsWith('theme ')) {
+      const arg = lc.split(/\s+/)[1];
+      if (!arg) return [{ cls: 'out', segs: [seg('usage: ', null), seg('theme green|blue|gold|cyan|magenta|reset', 'g')] }];
+      const r = window.dhTheme ? window.dhTheme.set(arg) : null;
+      return [{ cls: 'out', segs: r ? [seg(r, 'g')] : [seg('unknown theme. try green, blue, gold, cyan, magenta, reset.', null)] }];
+    }
     if (lc.startsWith('echo ')) return [{ cls: 'out', segs: [seg(cmd.slice(5), null)] }];
     if (lc === 'coffee') { const n = coffee + 1; setCoffee(n); return [{ cls: 'out', segs: [seg('  ( ( (\n   )_)_)\n  |____| ', 'gd'), seg(' cup #' + n + '. the build runs on it.', null)] }]; }
     if (lc === 'matrix') { fireConfetti({ particleCount: 140, spread: 100, colors: ['#30E060', '#E8E4DC'] }); return [{ cls: 'out', segs: [seg('wake up, neo... the vault has you.', 'g')] }]; }

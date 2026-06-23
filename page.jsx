@@ -32,6 +32,7 @@ const PageShell = ({ pageId }) => {
       <Nav active={navActive} />
       {Body}
       <Footer />
+      {window.CommandPalette && React.createElement(window.CommandPalette)}
       {toast && (
         <div className="dh-toast">
           <span className="dh-toast-gt">&gt;_</span>
