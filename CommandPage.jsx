@@ -142,25 +142,56 @@ const Heatmap = ({ journey }) => {
   );
 };
 
-/* ---------- Real GitHub contribution graph (hides itself on failure) ---------- */
+/* ---------- Real GitHub contribution graph (self-fetched, themed) ---------- */
+const ghCellBg = (lv) => (lv ? `rgba(48,224,96,${0.2 + lv * 0.2})` : '#161A22');
 const GitHubCal = () => {
-  const [ok, setOk] = useStateC(true);
+  const [days, setDays] = useStateC(null); // null = loading, [] = failed (hide)
+  const [tip, setTip] = useStateC(null);
   useEffectC(() => {
-    if (!window.GitHubCalendar) { setOk(false); return; }
-    try {
-      const p = window.GitHubCalendar('#cc-ghcal', 'Champ-Deep', { responsive: true, tooltips: true, global_stats: true });
-      if (p && p.catch) p.catch(() => setOk(false));
-    } catch (e) { setOk(false); }
+    let alive = true; const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 7000);
+    fetch('https://github-contributions-api.jogruber.de/v4/Champ-Deep?y=last', { signal: ctrl.signal })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (!alive) return; if (!d || !Array.isArray(d.contributions)) { setDays([]); return; } setDays(d.contributions); })
+      .catch(() => { if (alive) setDays([]); })
+      .finally(() => clearTimeout(t));
+    return () => { alive = false; ctrl.abort(); clearTimeout(t); };
   }, []);
-  if (!ok) return null;
+  if (days === null) return (
+    <div className="cc-section"><div className="cc-sec-head"><h2 className="cc-sec-title">Commits, for real</h2><span className="cc-badge live">github</span><span className="cc-sec-note">loading from github.com/Champ-Deep …</span></div></div>
+  );
+  if (!days.length) return null; // graceful hide on failure
+  const total = days.reduce((a, c) => a + (c.count || 0), 0);
+  const pad = new Date(days[0].date + 'T00:00:00Z').getUTCDay();
+  const cells = [];
+  for (let i = 0; i < pad; i++) cells.push({ blank: true, key: 'p' + i });
+  days.forEach((c) => cells.push(Object.assign({ key: c.date }, c)));
   return (
     <div className="cc-section">
       <div className="cc-sec-head">
         <h2 className="cc-sec-title">Commits, for real</h2>
         <span className="cc-badge live">github</span>
-        <span className="cc-sec-note">live contribution graph · github.com/Champ-Deep</span>
+        <span className="cc-sec-note">{total.toLocaleString()} contributions in the last year · github.com/Champ-Deep</span>
       </div>
-      <div className="cc-ghcal" id="cc-ghcal">Loading the graph…</div>
+      <div className="cc-heat-wrap">
+        <div className="cc-heat" onMouseLeave={() => setTip(null)}>
+          {cells.map((c) => (
+            c.blank
+              ? <span key={c.key} style={{ visibility: 'hidden', width: 13, height: 13 }} />
+              : <span key={c.key} className="cc-heat-cell" style={{ background: ghCellBg(c.level) }} onMouseEnter={(e) => setTip({ x: e.clientX, y: e.clientY, c })} onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, c })} />
+          ))}
+        </div>
+      </div>
+      <div className="cc-heat-legend">
+        <span className="cc-legend-item">less</span>
+        {[0, 1, 2, 3, 4].map((l) => <span key={l} className="cc-legend-sw" style={{ background: ghCellBg(l), border: l ? 'none' : '1px solid var(--color-border)' }} />)}
+        <span className="cc-legend-item">more</span>
+      </div>
+      {tip && (
+        <div className="cc-tip" style={{ left: tip.x, top: tip.y }}>
+          <div className="cc-tip-day">{cFmtDate(tip.c.date)}</div>
+          <div className="cc-tip-text">{tip.c.count} contribution{tip.c.count === 1 ? '' : 's'}</div>
+        </div>
+      )}
     </div>
   );
 };
