@@ -76,15 +76,15 @@
     {
       "date": "2026-06-22",
       "day": 234,
-      "mood": "🎯",
-      "shipping_now": "crunch week opened. the two biggest external commitments of the quarter now land inside 48 hours of each other: a cross-border platform sit-down with travel behind it, and a curated cxo lunch i am hosting that still can not send its invites until the anchors say yes. the whole job this week is not to build, it is to land what is already in motion.",
-      "yesterday_thread": "the weekend ran unattended and still shipped. a campaign batch warmed and built itself for review, and the prep for an independent audit of the longevity build landed. i get to start a crunch week with two things already behind me instead of in front of me.",
-      "raw_thought": "the instinct under pressure is to open the laptop and build something that looks like progress. this week the discipline is the opposite. nothing i can ship in 48 hours beats walking into two rooms that are already booked and being the most prepared person in each one.",
+      "mood": "🛠️",
+      "shipping_now": "locked the architecture for a new resume-intelligence engine today. phase one is semantic search across the full text of a resume, phase two is a knowledge graph riding the same stack as the prospect graph i have been building all quarter. the satisfying part was a small bug fix: years of experience had been stored as a frozen number instead of computed live from a start date, so the value never moved no matter how long the record sat there.",
+      "yesterday_thread": "all of this is happening underneath a crunch week. the two biggest external commitments of the quarter land inside 48 hours of each other now: a cross-border platform sit-down with travel behind it, and a curated cxo lunch i am hosting that still can not send its invites until the anchors say yes.",
+      "raw_thought": "i told myself this was a week to land what is already in motion and not start anything new. then i started something new before dinner. the build reflex is not discipline, it is gravity. the real test of the week is whether i leave the two booked rooms better than i found them, not whether i can resist shipping.",
       "arcs": [
-        "Champions Operations",
-        "Lake B2B"
+        "Cirralogix",
+        "Champions Operations"
       ],
-      "arc_color": "blue"
+      "arc_color": "green"
     },
     {
       "date": "2026-06-19",
@@ -476,9 +476,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "16:21 IST",
+    "time_ist": "16:26 IST",
     "weather": "24°C · clear",
-    "last_ship": "land, do not build · just now",
+    "last_ship": "resume-intelligence architecture · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -508,7 +508,7 @@
     ],
     "recently": [
       {
-        "text": "crunch week opened. the two biggest external commitments of the quarter now land inside...",
+        "text": "locked the architecture for a new resume-intelligence engine today. phase one is semant...",
         "tag": "shipped d234"
       },
       {
@@ -518,10 +518,6 @@
       {
         "text": "the a/b toggle for the prospect-research engine is committed. two web backends, one thi...",
         "tag": "shipped d230"
-      },
-      {
-        "text": "minted per-repo ssh deploy keys for the three repos in this week's product push and mov...",
-        "tag": "shipped d228"
       }
     ],
     "soon": [
