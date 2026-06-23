@@ -305,3 +305,26 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 .cc-shout-dot.tag-watching { background: var(--color-accent-tertiary); }
 @media (max-width: 900px) { .cc-shout { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .cc-shout-bar { animation: none; width: 100%; } }
+
+/* ============================================================
+   LIBRARY FLAIR — slim cursor, typed prompt, force-graph, gh-calendar
+   ============================================================ */
+/* slim blinking cursor (replaces the fat block) */
+.cc-hero-title .cc-cursor {
+  display: inline-block; width: 3px; height: 0.9em; margin-left: 7px;
+  background: var(--color-accent-primary); border-radius: 1px; vertical-align: -0.06em;
+  box-shadow: 0 0 8px var(--color-accent-primary);
+  animation: cc-blink 1.05s step-end infinite;
+}
+/* typed.js hero prompt line */
+.cc-hero-prompt { font-family: var(--font-code); font-size: var(--text-small); color: var(--color-text-primary); margin: 0 0 var(--space-4); min-height: 1.5em; }
+.cc-hero-prompt .cc-gt { color: var(--color-accent-primary); font-weight: 600; margin-right: 6px; }
+.cc-typed { color: var(--color-text-secondary); }
+/* force-graph container */
+.cc-forcegraph { width: 100%; height: 440px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: radial-gradient(720px 320px at 50% 42%, rgba(48,224,96,0.05), transparent 70%), var(--color-bg-elevated); overflow: hidden; }
+.cc-forcegraph canvas { display: block; }
+/* github-calendar dark theme overrides */
+.cc-ghcal { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); color: var(--color-text-secondary); font-family: var(--font-code); font-size: var(--text-small); min-height: 120px; overflow-x: auto; }
+.cc-ghcal a, .cc-ghcal .text-muted, .cc-ghcal .contrib-number, .cc-ghcal strong { color: var(--color-text-primary) !important; }
+.cc-ghcal text, .cc-ghcal .month, .cc-ghcal .wday { fill: var(--color-text-secondary) !important; color: var(--color-text-secondary) !important; }
+.cc-ghcal .contrib-footer { color: var(--color-text-secondary) !important; opacity: 0.8; }
