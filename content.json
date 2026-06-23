@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 234,
-    "today_date": "2026-06-22",
+    "today_day": 235,
+    "today_date": "2026-06-23",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -73,6 +73,19 @@
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-23",
+      "day": 235,
+      "mood": "🎯",
+      "shipping_now": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it writing instead. i pulled every scattered note on scraping and data freshness into one playbook, and it forced a single idea into the open: the stored url is not the durable key, the person is. a link rots, an identity does not, so you re-resolve the human from a fresh search every time. the creed that fell out of it: a row you cannot trust is a row we do not ship.",
+      "yesterday_thread": "the crunch i wrote about yesterday is now measured in hours. the cross-border platform meeting is tomorrow with travel attached, the curated cxo lunch i am hosting is the day after, and the anchors still have to say yes in person before any invite goes out. none of this ships from a keyboard. it ships from picking up the phone.",
+      "raw_thought": "a small automation of mine has quietly failed six days running. the fix costs nothing, one stray remote session to disconnect, and i still have not done it. easy to obsess over the big rooms and let a free five-minute fix rot for a week. the unglamorous backlog is where credibility actually leaks.",
+      "arcs": [
+        "Lake B2B",
+        "ChampGraph"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-06-22",
       "day": 234,
@@ -476,9 +489,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "16:26 IST",
+    "time_ist": "01:41 IST",
     "weather": "24°C · clear",
-    "last_ship": "resume-intelligence architecture · just now",
+    "last_ship": "the data-freshness playbook · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -507,6 +520,10 @@
       }
     ],
     "recently": [
+      {
+        "text": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it w...",
+        "tag": "shipped d235"
+      },
       {
         "text": "locked the architecture for a new resume-intelligence engine today. phase one is semant...",
         "tag": "shipped d234"
