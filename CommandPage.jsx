@@ -89,7 +89,7 @@ const HeroCanvas = () => {
     if (!vanta && !prefersReduced()) { try { cleanup = startMatrixRain(el); } catch (e) {} }
     return () => { if (vanta) { try { vanta.destroy(); } catch (e) {} } if (cleanup) cleanup(); };
   }, []);
-  return <div ref={ref} className="cc-hero-canvas" aria-hidden="true" />;
+  return <div ref={ref} className="cc-backdrop" aria-hidden="true" />;
 };
 
 /* ---------- Contribution heatmap (the public log) ---------- */
@@ -247,24 +247,30 @@ const Constellation = ({ companies }) => {
       g = window.ForceGraph()(el)
         .graphData({ nodes, links })
         .backgroundColor('rgba(0,0,0,0)')
-        .width(el.clientWidth).height(440)
+        .width(el.clientWidth).height(520)
         .nodeRelSize(6)
-        .nodeColor((n) => (n.hub ? '#E8E4DC' : n.col))
+        .nodeVal((n) => (n.hub ? 9 : 3))
         .nodeLabel((n) => (n.hub ? '12 companies, one operating system' : `${n.name} · ${n.desc || ''}`))
-        .linkColor(() => 'rgba(74,123,247,0.28)')
+        .linkColor(() => 'rgba(74,123,247,0.22)')
         .linkWidth(1)
         .onNodeClick((n) => { if (n.hub) { setSelected(null); return; } const co = byName[n.name]; if (co) setSelected(co); })
         .onBackgroundClick(() => setSelected(null))
-        .nodeCanvasObjectMode(() => 'after')
+        .nodeCanvasObjectMode(() => 'replace')
         .nodeCanvasObject((n, ctx, scale) => {
-          const label = n.hub ? 'deep >_' : n.name;
-          const fs = Math.max(3.5, 11 / scale);
+          const r = n.hub ? 10 : 6;
+          ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 2 * Math.PI);
+          ctx.shadowColor = n.hub ? '#30E060' : n.col; ctx.shadowBlur = 12;
+          ctx.fillStyle = n.hub ? '#0D0F14' : n.col; ctx.fill();
+          ctx.shadowBlur = 0;
+          if (n.hub) { ctx.lineWidth = 1.6; ctx.strokeStyle = '#30E060'; ctx.stroke(); }
+          const fs = Math.max(9, 12 / scale);
           ctx.font = `${fs}px 'JetBrains Mono', monospace`;
-          ctx.fillStyle = n.hub ? '#E8E4DC' : '#8A8A8A';
+          ctx.fillStyle = n.hub ? '#E8E4DC' : '#C9C7C0';
           ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-          ctx.fillText(label, n.x, n.y + (n.hub ? 11 : 8));
+          ctx.fillText(n.hub ? 'deep >_' : n.name, n.x, n.y + r + 5);
         })
-        .onEngineStop(() => { try { g.zoomToFit(400, 50); } catch (e) {} });
+        .onEngineStop(() => { try { g.zoomToFit(500, 70); } catch (e) {} });
+      try { g.d3Force('charge').strength(-280); g.d3Force('link').distance(95); g.d3VelocityDecay(0.28); } catch (e) {}
     } catch (e) { setUseFG(false); return; }
     const onResize = () => { try { g.width(el.clientWidth); } catch (e) {} };
     window.addEventListener('resize', onResize);
@@ -274,7 +280,7 @@ const Constellation = ({ companies }) => {
     <div className="cc-section">
       <div className="cc-sec-head">
         <h2 className="cc-sec-title">The ecosystem</h2>
-        <span className="cc-sec-note">{(companies || []).length} companies, one operating system · <Annotate type="underline" color="#4A7BF7">click a node</Annotate></span>
+        <span className="cc-sec-note">{(companies || []).length} companies, one operating system · click a node to drill in</span>
       </div>
       {useFG ? <div ref={elRef} className="cc-forcegraph" /> : <ConstellationSVGInner companies={companies} onSelect={(n) => { const co = byName[n.name]; if (co) setSelected(co); }} />}
       {selected && <CompanyDrill company={selected} onClose={() => setSelected(null)} />}
@@ -479,13 +485,13 @@ const CommandPage = () => {
 
   return (
     <main className="cc-main">
+      <HeroCanvas />
       <section className="cc-hero">
-        <HeroCanvas />
         <div className="cc-hero-inner">
           <span className="cc-eyebrow"><span className="cc-eyebrow-dot" /> command center · bangalore · {clock} · systems nominal</span>
           <h1 className="cc-hero-title">Everything I am building,<br />on one screen.<span className="cc-cursor" aria-hidden="true" /></h1>
           <p className="cc-hero-prompt"><span className="cc-gt">&gt;_</span> <TypedLine /></p>
-          <p className="cc-hero-sub">The operator view of the whole operation. Live status, the build queue, the public log, the ecosystem, and the code. Updated daily by <Annotate type="circle" color="#C9A84C">the machine that runs it</Annotate>.</p>
+          <p className="cc-hero-sub">The operator view of the whole operation. Live status, the build queue, the public log, the ecosystem, and the code. Updated daily by the machine that runs it.</p>
           <div className="cc-vitals">
             <div className="cc-vital"><span className="cc-vital-num green">{brand.today_day || '·'}</span><span className="cc-vital-lab">days in public</span></div>
             <div className="cc-vital"><span className="cc-vital-num">{journey.length}</span><span className="cc-vital-lab">entries logged</span></div>
