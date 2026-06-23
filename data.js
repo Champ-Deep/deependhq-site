@@ -1,6 +1,6 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-23T20:11:38.144Z
+// Built 2026-06-23T21:11:29.129Z
 
 window.DH_DATA = {
   "brand": {
@@ -710,8 +710,15 @@ window.DH_DATA = {
     },
     {
       "title": "ChampMail",
-      "description": "Email outreach automation with human-cadence sending and Stalwart SMTP.",
+      "description": "email outreach automation. human-cadence sending, self-hosted Stalwart SMTP. live and scaling.",
       "url": "https://github.com/Champ-Deep/ChampMail",
+      "category": "tool",
+      "featured": true
+    },
+    {
+      "title": "ChampSet",
+      "description": "describe a b2b dataset in plain english. agents research, verify, dedupe, and export. building now.",
+      "url": "#",
       "category": "tool",
       "featured": true
     },
@@ -836,10 +843,10 @@ window.DH_DATA = {
     },
     {
       "title": "ChamPDF",
-      "description": "PDF tooling for the presales floor.",
+      "description": "pdf extraction and processing for the presales floor. live.",
       "url": "https://github.com/Champ-Deep/ChamPDF",
-      "category": "repo",
-      "featured": false
+      "category": "tool",
+      "featured": true
     },
     {
       "title": "Event Scout",
@@ -1360,5 +1367,54 @@ window.DH_DATA = {
         }
       ]
     }
-  ]
+  ],
+  "build_lanes": {
+    "updated": "2026-06-24",
+    "live": [
+      {
+        "name": "ChampMail",
+        "what": "email outreach automation. human-cadence sending, self-hosted smtp.",
+        "repo": "https://github.com/Champ-Deep/ChampMail"
+      },
+      {
+        "name": "ChamPDF",
+        "what": "pdf extraction and processing for the presales floor.",
+        "repo": "https://github.com/Champ-Deep/ChamPDF"
+      },
+      {
+        "name": "ChampVoice",
+        "what": "voice qualifying agent that screens prospects on a live call.",
+        "repo": null
+      }
+    ],
+    "building": [
+      {
+        "name": "Champ IQ",
+        "what": "the ai sdr orchestration layer. graph-driven prospecting across every channel.",
+        "repo": "https://github.com/Champ-Deep/ChampIQ"
+      },
+      {
+        "name": "ChampSet",
+        "what": "describe a b2b dataset in plain english. agents research, verify, dedupe, export.",
+        "repo": null
+      },
+      {
+        "name": "ChampPulse",
+        "what": "b2b prospect intelligence and buying-intent signals.",
+        "repo": null
+      }
+    ],
+    "next": [
+      {
+        "name": "ChampScan",
+        "what": "web research and enrichment scraper for fresh b2b data.",
+        "repo": null
+      },
+      {
+        "name": "ChampDeck",
+        "what": "ai presentation generator. turns a brief into a deck.",
+        "repo": null
+      }
+    ]
+  }
 };

@@ -16,7 +16,8 @@ const PageShell = ({ pageId }) => {
   }, []);
 
   let Body = null;
-  if (pageId === 'journey')     Body = <JourneyPage />;
+  if (pageId === 'command')      Body = <CommandPage />;
+  else if (pageId === 'journey')     Body = <JourneyPage />;
   else if (pageId === 'toolkit') Body = <ToolkitPage />;
   else if (pageId === 'field-notes') Body = <FieldNotesPage />;
   else if (pageId === 'now')     Body = <NowPage />;

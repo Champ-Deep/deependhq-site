@@ -3,6 +3,7 @@
 
 const Nav = ({ active = 'now' }) => {
   const links = [
+    { id: 'command',    label: 'Command',     href: 'command.html' },
     { id: 'now',        label: 'Now',         href: 'index.html#now' },
     { id: 'journey',    label: 'Journey',     href: 'journey.html' },
     { id: 'field-notes',label: 'Field Notes', href: 'field-notes.html' },
