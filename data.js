@@ -1,6 +1,6 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-23T22:35:55.056Z
+// Built 2026-06-23T22:38:37.743Z
 
 window.DH_DATA = {
   "brand": {
@@ -180,7 +180,7 @@ window.DH_DATA = {
       "date": "2026-06-12",
       "day": 224,
       "mood": "🏗️",
-      "shipping_now": "completed the q2 kra review wave. five written reviews, six candid-conversation deliverables, one trackable scorecard — the full marketing org on paper, send-ready. when the evidence is this organized, the conversation almost runs itself.",
+      "shipping_now": "completed the q2 kra review wave. five written reviews, six candid-conversation deliverables, one trackable scorecard. the full marketing org on paper, send-ready. when the evidence is this organized, the conversation almost runs itself.",
       "yesterday_thread": "met a datacenter and fiber operator on a community connectivity play, prepped two more client meetings, and filed a debrief on a telecom group opportunity. also locked the v1 build spec for a retail inventory platform.",
       "raw_thought": "community internet infrastructure is a moat the saas layer can not replicate. incumbents own the app. nobody owns the pipe. the stickiness is in the connection, not the feature.",
       "arcs": [
@@ -1554,5 +1554,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-06-23T22:35:55.054Z"
+  "built": "2026-06-23T22:38:37.743Z"
 };

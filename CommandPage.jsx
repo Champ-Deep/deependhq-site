@@ -421,7 +421,7 @@ const Terminal = () => {
     if (lc === 'coffee') { const n = coffee + 1; setCoffee(n); return [{ cls: 'out', segs: [seg('  ( ( (\n   )_)_)\n  |____| ', 'gd'), seg(' cup #' + n + '. the build runs on it.', null)] }]; }
     if (lc === 'matrix') { fireConfetti({ particleCount: 140, spread: 100, colors: ['#30E060', '#E8E4DC'] }); return [{ cls: 'out', segs: [seg('wake up, neo... the vault has you.', 'g')] }]; }
     if (lc === 'party' || lc === 'confetti') { fireConfetti({ particleCount: 160, spread: 110 }); return [{ cls: 'out', segs: [seg('🎉 shipped.', 'gd')] }]; }
-    if (lc === 'sudo hire' || lc === 'hire') return [{ cls: 'out', segs: [seg('smart move. ', null), seg('scheduler.zoom.us/sreedeep', 'g'), seg(' — let us build you one.', null)] }];
+    if (lc === 'sudo hire' || lc === 'hire') return [{ cls: 'out', segs: [seg('smart move. ', null), seg('scheduler.zoom.us/sreedeep', 'g'), seg('. let us build you one.', null)] }];
     if (lc.startsWith('sudo')) return [{ cls: 'out', segs: [seg('nice try. you are not root here. but ', null), seg('sudo hire', 'g'), seg(' works.', null)] }];
     if (lc === 'rm -rf /' || lc.startsWith('rm ')) return [{ cls: 'out', segs: [seg('ha. not today.', 'gd')] }];
     return [{ cls: 'out', segs: [seg(`command not found: ${lc}. try `, null), seg('help', 'g'), seg('.', null)] }];
@@ -435,7 +435,7 @@ const Terminal = () => {
         <span className="cc-sec-note">a real shell. type a command, hit enter</span>
       </div>
       <div className="cc-term" onClick={() => inRef.current && inRef.current.focus()}>
-        <div className="cc-term-bar"><span className="cc-term-dot r" /><span className="cc-term-dot y" /><span className="cc-term-dot g" /><span className="cc-term-title">deepkit — shell</span></div>
+        <div className="cc-term-bar"><span className="cc-term-dot r" /><span className="cc-term-dot y" /><span className="cc-term-dot g" /><span className="cc-term-title">deepkit · shell</span></div>
         <div className="cc-term-body" ref={bodyRef}>
           {lines.map((ln, i) => (<div key={i} className={`cc-term-line ${ln.cls}`}>{ln.segs.map((s, k) => <span key={k} className={s.c || ''}>{s.t}</span>)}</div>))}
           <form onSubmit={submit} className="cc-term-input-row">
@@ -487,7 +487,7 @@ const CommandPage = () => {
           <p className="cc-hero-prompt"><span className="cc-gt">&gt;_</span> <TypedLine /></p>
           <p className="cc-hero-sub">The operator view of the whole operation. Live status, the build queue, the public log, the ecosystem, and the code. Updated daily by <Annotate type="circle" color="#C9A84C">the machine that runs it</Annotate>.</p>
           <div className="cc-vitals">
-            <div className="cc-vital"><span className="cc-vital-num green">{brand.today_day || '—'}</span><span className="cc-vital-lab">days in public</span></div>
+            <div className="cc-vital"><span className="cc-vital-num green">{brand.today_day || '·'}</span><span className="cc-vital-lab">days in public</span></div>
             <div className="cc-vital"><span className="cc-vital-num">{journey.length}</span><span className="cc-vital-lab">entries logged</span></div>
             <div className="cc-vital"><span className="cc-vital-num blue">{companies.length || 12}</span><span className="cc-vital-lab">companies</span></div>
             <div className="cc-vital"><span className="cc-vital-num gold">{D.weekly_narratives_count || 0}</span><span className="cc-vital-lab">weeklies shipped</span></div>
