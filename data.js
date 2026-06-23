@@ -1,6 +1,6 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-23T21:11:29.129Z
+// Built 2026-06-23T21:40:52.006Z
 
 window.DH_DATA = {
   "brand": {
@@ -1414,6 +1414,117 @@ window.DH_DATA = {
         "name": "ChampDeck",
         "what": "ai presentation generator. turns a brief into a deck.",
         "repo": null
+      }
+    ]
+  },
+  "shoutouts": {
+    "updated": "2026-06-24",
+    "note": "tools i use, am trying this week, or am watching. dispatched links land in a review queue first.",
+    "items": [
+      {
+        "name": "BCU",
+        "repo": "actuallyepic/background-computer-use",
+        "url": "https://github.com/actuallyepic/background-computer-use",
+        "what": "native macos automation that drives apps without stealing the cursor. runs my overnight sprints.",
+        "tag": "using"
+      },
+      {
+        "name": "Firecrawl",
+        "repo": "firecrawl/firecrawl",
+        "url": "https://github.com/firecrawl/firecrawl",
+        "what": "turns any website into clean, llm-ready markdown. my default web-read.",
+        "tag": "using"
+      },
+      {
+        "name": "React Flow",
+        "repo": "xyflow/xyflow",
+        "url": "https://github.com/xyflow/xyflow",
+        "what": "the node canvas engine behind the champ iq builder ui.",
+        "tag": "using"
+      },
+      {
+        "name": "Supabase",
+        "repo": "supabase/supabase",
+        "url": "https://github.com/supabase/supabase",
+        "what": "postgres, auth, storage, realtime. the backend under most of what i ship.",
+        "tag": "using"
+      },
+      {
+        "name": "Cloudflare Agents",
+        "repo": "cloudflare/agents",
+        "url": "https://github.com/cloudflare/agents",
+        "what": "stateful ai agents on the edge. my exact deploy stack.",
+        "tag": "using"
+      },
+      {
+        "name": "LightRAG",
+        "repo": "HKUDS/LightRAG",
+        "url": "https://github.com/HKUDS/LightRAG",
+        "what": "graph-based rag, the kind of engine that indexes a whole second brain.",
+        "tag": "using"
+      },
+      {
+        "name": "Partytown",
+        "repo": "QwikDev/partytown",
+        "url": "https://github.com/QwikDev/partytown",
+        "what": "offloads third-party scripts to a web worker. testing it on the marketing sites.",
+        "tag": "trying"
+      },
+      {
+        "name": "Graphify",
+        "repo": "safishamsi/graphify",
+        "url": "https://github.com/safishamsi/graphify",
+        "what": "code-to-knowledge-graph engine. on the bench for the rag build.",
+        "tag": "trying"
+      },
+      {
+        "name": "BillionMail",
+        "repo": "Billionmail/BillionMail",
+        "url": "https://github.com/Billionmail/BillionMail",
+        "what": "open-source email + smtp stack. weighing it against my current setup.",
+        "tag": "trying"
+      },
+      {
+        "name": "Crawl4AI",
+        "repo": "unclecode/crawl4ai",
+        "url": "https://github.com/unclecode/crawl4ai",
+        "what": "local-first crawler with llm-ready output. trying it for enrichment.",
+        "tag": "trying"
+      },
+      {
+        "name": "OpenHands",
+        "repo": "All-Hands-AI/OpenHands",
+        "url": "https://github.com/All-Hands-AI/OpenHands",
+        "what": "autonomous dev agent that ships prs straight from an issue.",
+        "tag": "watching"
+      },
+      {
+        "name": "Cline",
+        "repo": "cline/cline",
+        "url": "https://github.com/cline/cline",
+        "what": "autonomous coding agent that lives in the editor.",
+        "tag": "watching"
+      },
+      {
+        "name": "GraphRAG",
+        "repo": "microsoft/graphrag",
+        "url": "https://github.com/microsoft/graphrag",
+        "what": "microsoft’s knowledge-graph rag, a close cousin to champgraph.",
+        "tag": "watching"
+      },
+      {
+        "name": "mem0",
+        "repo": "mem0ai/mem0",
+        "url": "https://github.com/mem0ai/mem0",
+        "what": "a universal memory layer you bolt onto any agent.",
+        "tag": "watching"
+      },
+      {
+        "name": "Jan",
+        "repo": "menloresearch/jan",
+        "url": "https://github.com/menloresearch/jan",
+        "what": "offline-first local model runner. privacy by default.",
+        "tag": "watching"
       }
     ]
   }

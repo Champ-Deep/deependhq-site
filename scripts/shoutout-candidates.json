@@ -1,0 +1,55 @@
+{
+  "updated": "2026-06-23",
+  "note": "Review queue. Promote vetted entries into content.json shoutouts.items by hand.",
+  "candidates": [
+    {
+      "name": "ironclaw",
+      "repo": "nearai/ironclaw",
+      "url": "https://github.com/nearai/ironclaw",
+      "review": "pending",
+      "source": "Atlas/Context Docs/ChampIQ/Ironclaw Installation SOP.md"
+    },
+    {
+      "name": "hermes-agent",
+      "repo": "your-org/hermes-agent",
+      "url": "https://github.com/your-org/hermes-agent",
+      "review": "placeholder",
+      "source": "Atlas/Context Docs/InfraTech/Hermes Agent Deployment.md"
+    },
+    {
+      "name": "browser-harness",
+      "repo": "browser-use/browser-harness",
+      "url": "https://github.com/browser-use/browser-harness",
+      "review": "pending",
+      "source": "Atlas/Context Docs/InfraTech/Hermes Browser Harness.md"
+    },
+    {
+      "name": "anti-detect-browser-tools-tech-comparison",
+      "repo": "pim97/anti-detect-browser-tools-tech-comparison",
+      "url": "https://github.com/pim97/anti-detect-browser-tools-tech-comparison",
+      "review": "flagged-sensitive",
+      "source": "Atlas/Context Docs/Scraping & Live-Data Freshness Playbook.md"
+    },
+    {
+      "name": "tolaria",
+      "repo": "refactoringhq/tolaria",
+      "url": "https://github.com/refactoringhq/tolaria",
+      "review": "pending",
+      "source": "Atlas/Products/ChampCerebro.md"
+    },
+    {
+      "name": "omi",
+      "repo": "BasedHardware/omi",
+      "url": "https://github.com/BasedHardware/omi",
+      "review": "pending",
+      "source": "Atlas/Products/ChampCerebro.md"
+    },
+    {
+      "name": "linkedin_scraper",
+      "repo": "joeyism/linkedin_scraper",
+      "url": "https://github.com/joeyism/linkedin_scraper",
+      "review": "flagged-sensitive",
+      "source": "Atlas/Products/Scraper Comparison - LakeStream vs joeyism vs B2B-Pulse.md"
+    }
+  ]
+}

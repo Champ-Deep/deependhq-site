@@ -358,6 +358,59 @@ const Terminal = () => {
   );
 };
 
+/* ---------- Shoutouts (rotating "on my radar" feed) ---------- */
+const SHOUT_TAG = { using: 'using', trying: 'trying this week', watching: 'watching' };
+const Shoutouts = () => {
+  const D = window.DH_DATA || {};
+  const all = (D.shoutouts && D.shoutouts.items) || [];
+  const note = (D.shoutouts && D.shoutouts.note) || '';
+  const reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [filter, setFilter] = useStateC('all');
+  const [idx, setIdx] = useStateC(0);
+  const [paused, setPaused] = useStateC(false);
+  const list = filter === 'all' ? all : all.filter((s) => s.tag === filter);
+  useEffectC(() => { setIdx(0); }, [filter]);
+  useEffectC(() => {
+    if (reduced || paused || list.length < 2) return;
+    const id = setInterval(() => setIdx((i) => (i + 1) % list.length), 4800);
+    return () => clearInterval(id);
+  }, [paused, list.length, reduced, filter]);
+  if (!list.length) return null;
+  const cur = list[Math.min(idx, list.length - 1)];
+  return (
+    <div className="cc-section">
+      <div className="cc-sec-head">
+        <h2 className="cc-sec-title">On my radar</h2>
+        <span className="cc-badge live">shoutouts</span>
+        <span className="cc-sec-note">{note}</span>
+      </div>
+      <div className="cc-shout" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+        <a className="cc-shout-spot" href={cur.url} target="_blank" rel="noreferrer">
+          {!reduced && <span key={cur.url + idx} className={`cc-shout-bar ${paused ? 'paused' : ''}`} />}
+          <span className={`cc-shout-tag tag-${cur.tag}`}>{SHOUT_TAG[cur.tag] || cur.tag}</span>
+          <span className="cc-shout-name">{cur.name} <span className="cc-shout-arrow">↗</span></span>
+          <span className="cc-shout-repo">{cur.repo}</span>
+          <span className="cc-shout-what">{cur.what}</span>
+        </a>
+        <div className="cc-shout-side">
+          <div className="cc-shout-filters">
+            {['all', 'using', 'trying', 'watching'].map((t) => (
+              <button key={t} className={`cc-shout-fbtn ${filter === t ? 'active' : ''}`} onClick={() => setFilter(t)}>{t}</button>
+            ))}
+          </div>
+          <div className="cc-shout-chips">
+            {list.map((s, i) => (
+              <button key={s.url} className={`cc-shout-chip ${i === idx ? 'active' : ''}`} onClick={() => setIdx(i)}>
+                <span className={`cc-shout-dot tag-${s.tag}`} />{s.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 /* ---------- Build lanes ---------- */
 const Lane = ({ kind, label, items }) => (
   <div className="cc-card">
@@ -448,6 +501,7 @@ const CommandPage = () => {
       <Heatmap journey={journey} />
       <Constellation companies={companies} />
       <LiveRepos />
+      <Shoutouts />
       <Terminal />
 
       {/* CTA */}
