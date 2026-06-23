@@ -1,11 +1,11 @@
 // data.js — GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-20T20:16:58.802Z
+// Built 2026-06-23T10:51:17.582Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 231,
-    "today_date": "2026-06-19",
+    "today_day": 234,
+    "today_date": "2026-06-22",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -72,6 +72,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-22",
+      "day": 234,
+      "mood": "🎯",
+      "shipping_now": "crunch week opened. the two biggest external commitments of the quarter now land inside 48 hours of each other: a cross-border platform sit-down with travel behind it, and a curated cxo lunch i am hosting that still can not send its invites until the anchors say yes. the whole job this week is not to build, it is to land what is already in motion.",
+      "yesterday_thread": "the weekend ran unattended and still shipped. a campaign batch warmed and built itself for review, and the prep for an independent audit of the longevity build landed. i get to start a crunch week with two things already behind me instead of in front of me.",
+      "raw_thought": "the instinct under pressure is to open the laptop and build something that looks like progress. this week the discipline is the opposite. nothing i can ship in 48 hours beats walking into two rooms that are already booked and being the most prepared person in each one.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-06-19",
       "day": 231,
@@ -462,9 +475,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "02:11 IST",
+    "time_ist": "16:21 IST",
     "weather": "24°C · clear",
-    "last_ship": "receipts over slides · just now",
+    "last_ship": "land, do not build · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -494,6 +507,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "crunch week opened. the two biggest external commitments of the quarter now land inside...",
+        "tag": "shipped d234"
+      },
+      {
         "text": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burn...",
         "tag": "shipped d231"
       },
@@ -504,10 +521,6 @@ window.DH_DATA = {
       {
         "text": "minted per-repo ssh deploy keys for the three repos in this week's product push and mov...",
         "tag": "shipped d228"
-      },
-      {
-        "text": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator th...",
-        "tag": "shipped d227"
       }
     ],
     "soon": [
