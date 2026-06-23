@@ -83,7 +83,7 @@ const HeroCanvas = () => {
     const el = ref.current; if (!el) return;
     let vanta = null, cleanup = null;
     if (!prefersReduced() && window.VANTA && window.VANTA.NET && window.THREE) {
-      try { vanta = window.VANTA.NET({ el, THREE: window.THREE, color: 0x30E060, backgroundColor: 0x0d0f14, backgroundAlpha: 0, points: 10, maxDistance: 21, spacing: 17, showDots: true, mouseControls: true, touchControls: true, gyroControls: false }); }
+      try { vanta = window.VANTA.NET({ el, THREE: window.THREE, color: 0x30E060, backgroundColor: 0x0d0f14, backgroundAlpha: 0, points: 12, maxDistance: 22, spacing: 16, showDots: true, mouseControls: false, touchControls: false, gyroControls: false }); }
       catch (e) { vanta = null; }
     }
     if (!vanta && !prefersReduced()) { try { cleanup = startMatrixRain(el); } catch (e) {} }

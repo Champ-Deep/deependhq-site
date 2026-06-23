@@ -352,3 +352,9 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
     rgba(13,15,20,0.45);
 }
 .cc-forcegraph { background: transparent; height: 520px; }
+
+/* matrix backdrop fix: sit above body bg (z-index 0), behind content (z-index 1), no scroll capture (pointer-events:none already set) */
+.cc-backdrop { z-index: 0; }
+.cc-main { position: relative; z-index: 1; }
+.cc-hero { z-index: 1; }
+.cc-section { position: relative; z-index: 1; }
