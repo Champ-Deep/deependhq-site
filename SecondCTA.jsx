@@ -19,7 +19,7 @@ const SecondCTA = ({ onBook }) => {
             <span className="dh-dot-sep">·</span>
             <span>week {n.week} of {D.weekly_narratives_count}</span>
           </div>
-          <a className="dh-link" href="#">Read the narrative →</a>
+          <a className="dh-link" href={n.slug ? ('post.html?slug=' + n.slug) : 'writing.html'}>Read the narrative →</a>
         </article>
         <aside className="dh-pull-cta">
           <h3 className="dh-pull-title">Want 30 minutes?</h3>

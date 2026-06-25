@@ -20,17 +20,20 @@
         "ChampGraph",
         "ChampQuest",
         "ChampMail"
-      ]
+      ],
+      "url": "https://www.championsaccelerator.com"
     },
     {
       "name": "Champions Infometrics",
       "desc": "Data intelligence for decisions that actually matter.",
-      "tag": "Data"
+      "tag": "Data",
+      "url": "https://www.championinfometrics.com"
     },
     {
       "name": "Champions Club",
       "desc": "Where founders meet, learn, and stop building alone.",
-      "tag": "Community"
+      "tag": "Community",
+      "url": "https://www.champions.club"
     },
     {
       "name": "Lake B2B",
@@ -41,22 +44,26 @@
         "Lake Stream",
         "Lake Harvest",
         "ChampMail"
-      ]
+      ],
+      "url": "https://www.lakeb2b.com"
     },
     {
       "name": "SPAN Global Services",
       "desc": "Enterprise data and demand generation at scale.",
-      "tag": "Data & Services"
+      "tag": "Data & Services",
+      "url": "https://www.spanglobalservices.com"
     },
     {
       "name": "Ampliz",
       "desc": "Healthcare data intelligence. Every hospital, every decision-maker.",
-      "tag": "Healthcare Data"
+      "tag": "Healthcare Data",
+      "url": "https://www.ampliz.com"
     },
     {
       "name": "IP Momentum",
       "desc": "Intellectual property services for companies that build things.",
-      "tag": "IP Services"
+      "tag": "IP Services",
+      "url": "https://www.championsgroup.com"
     },
     {
       "name": "Cirralogix",
@@ -66,7 +73,8 @@
         "Cloud",
         "DevOps",
         "Edge"
-      ]
+      ],
+      "url": "https://cirrologix.com"
     },
     {
       "name": "Recruit Champ",
@@ -75,7 +83,8 @@
       "products": [
         "AI screening",
         "Sourcing"
-      ]
+      ],
+      "url": "https://recruitchamp.com"
     },
     {
       "name": "InfraTech",
@@ -85,17 +94,20 @@
         "Aventura",
         "Champions Ranch",
         "Beach Cities"
-      ]
+      ],
+      "url": "https://www.championsgroup.com"
     },
     {
       "name": "Champ.fit",
       "desc": "Fitness platform. Your body, your data, your plan.",
-      "tag": "Health & Wellness"
+      "tag": "Health & Wellness",
+      "url": "https://www.championsgroup.com"
     },
     {
       "name": "Health.fit",
       "desc": "Health tracking and telemedicine for the next billion.",
-      "tag": "Health & Wellness"
+      "tag": "Health & Wellness",
+      "url": "https://www.championsgroup.com"
     }
   ],
   "journey": [
@@ -111,6 +123,19 @@
         "Lake B2B"
       ],
       "arc_color": "blue"
+    },
+    {
+      "date": "2026-06-24",
+      "day": 236,
+      "mood": "🌍",
+      "shipping_now": "the site grew a command center today. a /command page that reads live, a matrix-style hero, the twelve-company map as a constellation, github cards pulling real commits, and a terminal you can actually type into. for two years i described the work in decks. this just shows it, running, and bakes an em-dash guard into the build so the published copy stays clean.",
+      "yesterday_thread": "the rest of the day was rooms, not keyboards. a forty-eight-hour window with a cross-border platform meeting on one end and a curated cxo table on the other. i rolled a scramble of an event into a pro-bono table hosted properly in july, took a wealth-management discovery call in pure listen mode, and framed a data-and-compliance partnership as three tracks, a pilot now, a barter next, a joint book on the horizon.",
+      "raw_thought": "funny that the thing i built to prove i ship is the easiest thing to ship. the page goes live in seconds. the deals that actually move still come down to whether the right person picks up the phone in the next forty-eight hours. show-dont-tell is cheap on a website and expensive everywhere that counts.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
     },
     {
       "date": "2026-06-23",
@@ -497,19 +522,22 @@
       "title": "The AI SDR is not a chatbot.",
       "hook": "Everyone's building AI that talks. We're building AI that sells. There's a difference.",
       "tag": "AI & GTM",
-      "color": "blue"
+      "color": "blue",
+      "href": "writing.html"
     },
     {
       "title": "Why I run 12 companies from one vault.",
       "hook": "One Obsidian graph. 12 companies. Zero context-switching tax. Here is how.",
       "tag": "Operating",
-      "color": "green"
+      "color": "green",
+      "href": "writing.html"
     },
     {
       "title": "Data is not a product. Growth is.",
       "hook": "Lake B2B does not sell data. It sells pipeline. The data is just the engine.",
       "tag": "Positioning",
-      "color": "gold"
+      "color": "gold",
+      "href": "post.html?slug=week-27-data-is-not-a-product"
     }
   ],
   "proof": [
@@ -518,13 +546,13 @@
   ],
   "weekly_narratives_count": 29,
   "latest_narrative": {
-    "week": 29,
-    "title": "Week 29. The week I shipped a rhythm, not a speech.",
-    "body": "The week started with me clearing my own desk and ended with me standing in front of every sales team. In between, the job was not to write a better pitch. It was to build a rhythm the floor could run on a Monday without me in the room.",
-    "day_range": "days 212–218",
-    "date": "2026-06-06",
-    "read": "8 min read",
-    "slug": "week-29-the-reach-arc"
+    "week": 31,
+    "title": "Three deadlines with a person on the other end. And the quiet ones that slipped.",
+    "body": "A product-push week that turned into a lesson about which deadlines are ever real. The ones with a call, a reply, or an rsvp held. The internal ones slipped quietly.",
+    "day_range": "days 227–232",
+    "date": "2026-06-20",
+    "read": "5 min read",
+    "slug": "week-31-the-proof-arc"
   },
   "status": {
     "location": "Bangalore, IN",
@@ -564,16 +592,16 @@
         "tag": "shipped d237"
       },
       {
+        "text": "the site grew a command center today. a /command page that reads live, a matrix-style h...",
+        "tag": "shipped d236"
+      },
+      {
         "text": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it w...",
         "tag": "shipped d235"
       },
       {
         "text": "locked the architecture for a new resume-intelligence engine today. phase one is semant...",
         "tag": "shipped d234"
-      },
-      {
-        "text": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burn...",
-        "tag": "shipped d231"
       }
     ],
     "soon": [

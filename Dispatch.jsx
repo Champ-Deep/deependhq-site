@@ -57,7 +57,7 @@ const Dispatch = () => {
               </li>
             ))}
           </ul>
-          <a className="dh-link dh-dispatch-archive" href="#">Browse the archive →</a>
+          <a className="dh-link dh-dispatch-archive" href="writing.html">Browse the archive →</a>
         </div>
       </div>
     </section>

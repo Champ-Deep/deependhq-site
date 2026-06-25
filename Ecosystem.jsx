@@ -13,7 +13,7 @@ const Ecosystem = () => {
       </div>
       <div className="dh-companies">
         {companies.map((c) => (
-          <a key={c.name} className="dh-company" href="#" onClick={(e) => e.preventDefault()}>
+          <a key={c.name} className="dh-company" href={c.url || '#'} target={c.url ? '_blank' : undefined} rel={c.url ? 'noreferrer' : undefined} onClick={(e) => { if (!c.url) e.preventDefault(); }}>
             <div className="dh-company-head">
               <h3 className="dh-company-name">{c.name}</h3>
               <span className="dh-company-arrow">↗</span>

@@ -4,8 +4,9 @@
 const Nav = ({ active = 'now' }) => {
   const links = [
     { id: 'command',    label: 'Command',     href: 'command.html' },
-    { id: 'now',        label: 'Now',         href: 'index.html#now' },
+    { id: 'now',        label: 'Now',         href: 'now.html' },
     { id: 'journey',    label: 'Journey',     href: 'journey.html' },
+    { id: 'writing',    label: 'Writing',     href: 'writing.html' },
     { id: 'field-notes',label: 'Field Notes', href: 'field-notes.html' },
     { id: 'toolkit',    label: 'Toolkit',     href: 'toolkit.html' },
   ];

@@ -111,15 +111,14 @@ const Footer = () => {
               <a href="https://github.com/Champ-Deep" target="_blank" rel="noreferrer">github.com/Champ-Deep ↗</a>
               <a href="https://www.linkedin.com/in/sreedeep-surapaneni" target="_blank" rel="noreferrer">linkedin/sreedeep-surapaneni ↗</a>
               <a href="https://bsky.app/profile/sreedeep-sura.bsky.social" target="_blank" rel="noreferrer">bsky/sreedeep-sura ↗</a>
-              <a href="https://calendly.com/deep-championsmail" target="_blank" rel="noreferrer">calendly/deep ↗</a>
-              <a href="#">RSS · /feed.xml</a>
+              <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noreferrer">scheduler.zoom.us/sreedeep ↗</a>
             </div>
             <div className="dh-foot-smcol">
               <span className="dh-foot-sm-h">in the ecosystem</span>
-              <a href="#">Lake B2B ↗</a>
-              <a href="#">Champions Accelerator ↗</a>
-              <a href="#">Ampliz ↗</a>
-              <a href="#">+9 more ↗</a>
+              <a href="https://www.lakeb2b.com" target="_blank" rel="noreferrer">Lake B2B ↗</a>
+              <a href="https://www.championsaccelerator.com" target="_blank" rel="noreferrer">Champions Accelerator ↗</a>
+              <a href="https://www.ampliz.com" target="_blank" rel="noreferrer">Ampliz ↗</a>
+              <a href="index.html#ecosystem">+9 more ↗</a>
             </div>
           </div>
         </section>
