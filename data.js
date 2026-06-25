@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-25T21:35:36.730Z
+// Built 2026-06-25T22:12:01.915Z
 
 window.DH_DATA = {
   "brand": {
@@ -62,7 +62,7 @@ window.DH_DATA = {
       "name": "IP Momentum",
       "desc": "Intellectual property services for companies that build things.",
       "tag": "IP Services",
-      "url": "https://www.championsgroup.com"
+      "url": "https://ipmomentum.com"
     },
     {
       "name": "Cirralogix",
@@ -94,19 +94,19 @@ window.DH_DATA = {
         "Champions Ranch",
         "Beach Cities"
       ],
-      "url": "https://www.championsgroup.com"
+      "url": "https://www.championinfratech.com"
     },
     {
       "name": "Champ.fit",
       "desc": "Fitness platform. Your body, your data, your plan.",
       "tag": "Health & Wellness",
-      "url": "https://www.championsgroup.com"
+      "url": "https://champ.fit"
     },
     {
       "name": "Health.fit",
       "desc": "Health tracking and telemedicine for the next billion.",
       "tag": "Health & Wellness",
-      "url": "https://www.championsgroup.com"
+      "url": "https://health.fit"
     }
   ],
   "journey": [
@@ -1595,5 +1595,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-06-25T21:35:36.729Z"
+  "built": "2026-06-25T22:12:01.909Z"
 };
