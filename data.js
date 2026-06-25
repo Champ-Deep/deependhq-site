@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-23T22:58:42.734Z
+// Built 2026-06-25T20:14:30.668Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 235,
-    "today_date": "2026-06-23",
+    "today_day": 237,
+    "today_date": "2026-06-25",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -98,6 +98,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-25",
+      "day": 237,
+      "mood": "🤝",
+      "shipping_now": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted, an operating-partner proposal written, the recap and follow-up already sitting in drafts. one conversation, two real tracks: run as their operating partner on small and mid-cap advisory, and open a curated co-investment lane for family offices. the gate is clean, sign the nda, name the icp, and a 72-hour data sample unlocks.",
+      "yesterday_thread": "the other half of the day was build, not sell. a signal-led linkedin playbook for the sales floor, a v2 spec for an internal people-discovery tool that runs excel-in to enrichment to a synced master database, and a hard turn on the gen-ui experiment from chatbot to a criteria-first workspace. meetings in, documents out, all day.",
+      "raw_thought": "every one of those one-offs argued to become a product before midnight. the playbook for one team is really the playbook for all four. the tracker for one event is really the template for every event. i keep sitting down to write a deliverable and standing up holding a platform. still not sure if that is leverage or just a very productive way to avoid finishing one thing.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-06-23",
       "day": 235,
@@ -514,9 +527,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:41 IST",
+    "time_ist": "01:44 IST",
     "weather": "24°C · clear",
-    "last_ship": "the data-freshness playbook · just now",
+    "last_ship": "same-day deal room from one first meeting · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -546,6 +559,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2...",
+        "tag": "shipped d237"
+      },
+      {
         "text": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it w...",
         "tag": "shipped d235"
       },
@@ -556,10 +573,6 @@ window.DH_DATA = {
       {
         "text": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burn...",
         "tag": "shipped d231"
-      },
-      {
-        "text": "the a/b toggle for the prospect-research engine is committed. two web backends, one thi...",
-        "tag": "shipped d230"
       }
     ],
     "soon": [
@@ -1554,5 +1567,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-06-23T22:58:42.734Z"
+  "built": "2026-06-25T20:14:30.658Z"
 };
