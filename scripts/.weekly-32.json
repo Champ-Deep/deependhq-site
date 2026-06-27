@@ -1,0 +1,28 @@
+{
+  "slug": "week-32-the-build-reflex",
+  "kind": "weekly",
+  "week": 32,
+  "eyebrow": ">_ week 32 · the build-reflex arc",
+  "title": "I sat down to write deliverables. I kept standing up holding platforms.",
+  "deck": "A week I declared for finishing, not starting. Then five one-offs each argued to become a product, two of the quarter's biggest rooms landed two days apart, and the honest question got louder: leverage, or a very productive way to avoid finishing one thing?",
+  "date": "2026-06-27",
+  "day_range": "days 234-239",
+  "read": "5 min read",
+  "arc": "Champions Operations",
+  "arc_color": "green",
+  "tags": ["operations", "product", "build-reflex", "crunch-week", "data"],
+  "body": [
+    {"type":"lede","text":"Week 32 started with a promise I made to myself: land what is already in motion, and start nothing new. By Tuesday dinner I had broken it. By Friday I had broken it four more times. This was the week the build reflex stopped looking like discipline and started looking like gravity."},
+    {"type":"h2","text":"A finish-week I could not finish"},
+    {"type":"p","text":"Monday was meant to be a clearing day. Instead I locked the architecture for a new resume-intelligence engine: semantic search across the full text of a resume first, a knowledge graph riding the same stack as the prospect graph I have built all quarter second. The most satisfying thing I touched all day was a one-line bug fix. Years of experience had been stored as a frozen number instead of computed live from a start date, so the value never moved no matter how long the record sat there. I told myself it was just architecture. Architecture is how every new thing starts."},
+    {"type":"p","text":"Tuesday I pulled every scattered note on scraping and data freshness into one playbook, and writing it forced an idea into the open: the stored URL is not the durable key, the person is. A link rots, an identity does not, so you re-resolve the human from a fresh search every time. The creed that fell out of it: a row you cannot trust is a row we do not ship. Then I admitted, in writing, that a tiny automation of mine had quietly failed six days running, and the fix was one stray session to disconnect. I still had not done it."},
+    {"type":"pull","text":"The unglamorous backlog is where credibility actually leaks."},
+    {"type":"h2","text":"Two rooms, forty-eight hours, one phone"},
+    {"type":"p","text":"Midweek the crunch I had been writing about for days finally arrived. The two biggest external commitments of the quarter landed inside forty-eight hours of each other: a cross-border platform sit-down with travel behind it, and a curated CXO table I am hosting that could not send its invites until a few senior people said yes in person. In between, I built the thing you are reading on. The site grew a command center: a live page, a matrix hero, the twelve-company map drawn as a constellation, cards pulling real commits, a terminal you can type into, and a clean-copy guard baked into the build."},
+    {"type":"p","text":"Here is the joke the week kept telling me. The thing I built to prove I ship was the easiest thing to ship. The page goes live in seconds. The deals that actually move still come down to whether the right person picks up the phone in the next forty-eight hours. Showing instead of telling is cheap on a website and expensive everywhere that counts."},
+    {"type":"h2","text":"Every one-off wanted to be a product by midnight"},
+    {"type":"p","text":"Thursday a noon call with a boutique wealth-management firm turned into a full deal room by 2 AM: a mutual NDA drafted, an operating-partner proposal written, the recap already sitting in drafts, two real tracks open from one conversation. But the other half of that day was build, not sell. A signal-led LinkedIn playbook for the sales floor, a v2 spec for an internal people-discovery tool, and a hard turn on the gen-ui experiment from chatbot to a criteria-first workspace. Friday added one more thesis to the pile: a GTM brief for an investor-matching platform whose entire wedge is the match, not the million-record database."},
+    {"type":"callout","head":"things i started in a week i declared for finishing","lines":["a resume-intelligence engine","a people-discovery tool, v2","a gen-ui workspace pivot","an investor-matching platform","a synthetic-visitor mode for this site"]},
+    {"type":"p","text":"Every one of those one-offs argued to become a product before midnight. The playbook for one team is really the playbook for all four. The tracker for one event is really the template for every event. I keep sitting down to write a deliverable and standing up holding a platform, and I still cannot tell you whether that is leverage or a very productive way to avoid finishing one thing. What I can tell you is the test for next week. Not whether I can resist shipping. Whether I leave the two booked rooms better than I found them."}
+  ]
+}
