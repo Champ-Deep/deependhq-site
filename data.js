@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-27T20:17:27.421Z
+// Built 2026-06-29T20:11:57.497Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 238,
-    "today_date": "2026-06-26",
+    "today_day": 241,
+    "today_date": "2026-06-29",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -110,6 +110,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-29",
+      "day": 241,
+      "mood": "🎯",
+      "shipping_now": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterprise accounts, 1,000+ employees each. Proposal stage locked. Engine not one-off is the frame.",
+      "yesterday_thread": "Weekly pipeline sync with all four sales team leads: 125 active leads, 6 closed, 11 returned. New SF stage hygiene rule in place. Lead assignment now rewards quality and discipline, not raw volume.",
+      "raw_thought": "The enterprise data governance pack we are building for two major procurement reviews immediately becomes the evergreen artifact for every future deal. One honest build, reused forever.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-06-26",
       "day": 238,
@@ -568,9 +581,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:45 IST",
+    "time_ist": "01:41 IST",
     "weather": "24°C · clear",
-    "last_ship": "investor-matching GTM brief · just now",
+    "last_ship": "EMEA enterprise pitch · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -600,20 +613,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps...",
+        "tag": "shipped d241"
+      },
+      {
+        "text": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps...",
+        "tag": "shipped d241"
+      },
+      {
         "text": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the...",
         "tag": "shipped d238"
       },
       {
         "text": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2...",
         "tag": "shipped d237"
-      },
-      {
-        "text": "the site grew a command center today. a /command page that reads live, a matrix-style h...",
-        "tag": "shipped d236"
-      },
-      {
-        "text": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it w...",
-        "tag": "shipped d235"
       }
     ],
     "soon": [
@@ -1685,5 +1698,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-06-27T20:17:27.421Z"
+  "built": "2026-06-29T20:11:57.496Z"
 };
