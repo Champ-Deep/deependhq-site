@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-01T10:18:18.354Z
+// Built 2026-07-01T20:11:22.207Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 242,
-    "today_date": "2026-06-30",
+    "today_day": 243,
+    "today_date": "2026-07-01",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -110,6 +110,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-07-01",
+      "day": 243,
+      "mood": "🎯",
+      "shipping_now": "q3 day one. led a strategic growth discussion with an investment bank on champions group expansion and what the next chapter looks like. ran the q3 marketing kickoff right after. two meetings, two different time horizons.",
+      "yesterday_thread": "longevity rls and payment integration were both hard-committed for today. also a paused supabase project approaching permanent freeze, rescue it or let it go. new quarter, but the decisions were all carry-over.",
+      "raw_thought": "a quarter boundary is a mental construct. the items nine days overdue in q2 are still nine days overdue on july 1. what changes a quarter is the ship rate, not the calendar.",
+      "arcs": [
+        "Champions Operations",
+        "Longevity"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-06-30",
       "day": 242,
@@ -594,9 +607,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "15:48 IST",
+    "time_ist": "01:41 IST",
     "weather": "24°C · clear",
-    "last_ship": "Q2 close · just now",
+    "last_ship": "q2 close · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -626,6 +639,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "q3 day one. led a strategic growth discussion with an investment bank on champions grou...",
+        "tag": "shipped d243"
+      },
+      {
         "text": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and...",
         "tag": "shipped d242"
       },
@@ -636,10 +653,6 @@ window.DH_DATA = {
       {
         "text": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps...",
         "tag": "shipped d241"
-      },
-      {
-        "text": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the...",
-        "tag": "shipped d238"
       }
     ],
     "soon": [
@@ -1711,5 +1724,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-01T10:18:18.353Z"
+  "built": "2026-07-01T20:11:22.207Z"
 };
