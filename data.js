@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-06-29T20:11:57.497Z
+// Built 2026-07-01T10:18:18.354Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 241,
-    "today_date": "2026-06-29",
+    "today_day": 242,
+    "today_date": "2026-06-30",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -110,6 +110,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-06-30",
+      "day": 242,
+      "mood": "🏁",
+      "shipping_now": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise governance pack two accounts had been asking for.",
+      "yesterday_thread": "monday landed an intent-signal pitch with a global cloud observability platform’s EMEA abm team. proposal stage locked. separately, a saas automation startup came in with a two-tier partnership proposal: equity-for-services through the accelerator is on the table.",
+      "raw_thought": "quarter-end surfaces every ‘i’ll deal with it later.’ the governance pack two enterprise accounts needed has sat pending for weeks. sometimes shipping the artifact matters more than scheduling another meeting about it.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-06-29",
       "day": 241,
@@ -581,9 +594,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:41 IST",
+    "time_ist": "15:48 IST",
     "weather": "24°C · clear",
-    "last_ship": "EMEA enterprise pitch · just now",
+    "last_ship": "Q2 close · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -613,6 +626,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and...",
+        "tag": "shipped d242"
+      },
+      {
         "text": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps...",
         "tag": "shipped d241"
       },
@@ -623,10 +640,6 @@ window.DH_DATA = {
       {
         "text": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the...",
         "tag": "shipped d238"
-      },
-      {
-        "text": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2...",
-        "tag": "shipped d237"
       }
     ],
     "soon": [
@@ -1698,5 +1711,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-06-29T20:11:57.496Z"
+  "built": "2026-07-01T10:18:18.353Z"
 };
