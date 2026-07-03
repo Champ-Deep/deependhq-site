@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-01T20:11:22.207Z
+// Built 2026-07-03T20:15:20.318Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 243,
-    "today_date": "2026-07-01",
+    "today_day": 245,
+    "today_date": "2026-07-03",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -110,6 +110,32 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-07-03",
+      "day": 245,
+      "mood": "🇺🇸",
+      "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built in production yesterday; today was pure execution.",
+      "yesterday_thread": "nine video clips, 12 brand templates, 22 personalized captions, a gallery html, and two zip archives. everything was ready. the only job was to get it out.",
+      "raw_thought": "a hard external deadline with a real date on it is the most honest productivity system there is. everything non-essential falls off the list by itself.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-07-02",
+      "day": 244,
+      "mood": "🎬",
+      "shipping_now": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is built. voiceover and assembly are tomorrow.",
+      "yesterday_thread": "two interviews back to back. a fractional ai pm offer extended to a healthcare ai candidate for longevity after a 41-minute call. an IT support hire decision still pending hr filing.",
+      "raw_thought": "the cadence data layer is already sitting in lakestream. once the funding-round template is built, we get a live scoring feed without a new system. the product integration story writes itself.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-07-01",
       "day": 243,
@@ -607,9 +633,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:41 IST",
+    "time_ist": "01:45 IST",
     "weather": "24°C · clear",
-    "last_ship": "q2 close · just now",
+    "last_ship": "july 4th campaign + video · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -639,20 +665,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "july 4th campaign distributed to all 22 reps across four sales teams. independence day...",
+        "tag": "shipped d245"
+      },
+      {
+        "text": "all nine independence day video clips are done. prompt library locked, both cut styles...",
+        "tag": "shipped d244"
+      },
+      {
         "text": "q3 day one. led a strategic growth discussion with an investment bank on champions grou...",
         "tag": "shipped d243"
       },
       {
         "text": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and...",
         "tag": "shipped d242"
-      },
-      {
-        "text": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps...",
-        "tag": "shipped d241"
-      },
-      {
-        "text": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps...",
-        "tag": "shipped d241"
       }
     ],
     "soon": [
@@ -1724,5 +1750,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-01T20:11:22.207Z"
+  "built": "2026-07-03T20:15:20.318Z"
 };
