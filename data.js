@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-03T20:15:20.318Z
+// Built 2026-07-04T20:14:23.594Z
 
 window.DH_DATA = {
   "brand": {
@@ -623,13 +623,13 @@ window.DH_DATA = {
   ],
   "weekly_narratives_count": 30,
   "latest_narrative": {
-    "week": 32,
-    "title": "I sat down to write deliverables. I kept standing up holding platforms.",
-    "body": "A week I declared for finishing, not starting. Then five one-offs each argued to become a product, two of the quarter's biggest rooms landed two days apart, and the honest question got louder: leverage, or a very productive way to avoid finishing one thing?",
-    "day_range": "days 234-239",
-    "date": "2026-06-27",
-    "read": "5 min read",
-    "slug": "week-32-the-build-reflex"
+    "week": 33,
+    "title": "Q2 closed quietly. Then we had three days to ship the campaign.",
+    "body": "A week that opened with an enterprise pitch, turned a quarter over, ran an investment banking conversation at a different altitude than usual, and closed with a three-day video campaign shipping on deadline to twenty-two reps across four teams.",
+    "day_range": "days 241-245",
+    "date": "2026-07-05",
+    "read": "4 min read",
+    "slug": "week-33-the-quarter-turns"
   },
   "status": {
     "location": "Bangalore, IN",
@@ -1134,6 +1134,91 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-33-the-quarter-turns",
+      "kind": "weekly",
+      "week": 33,
+      "eyebrow": ">_ week 33 · the quarter turns",
+      "title": "Q2 closed quietly. Then we had three days to ship the campaign.",
+      "deck": "A week that opened with an enterprise pitch, turned a quarter over, ran an investment banking conversation at a different altitude than usual, and closed with a three-day video campaign shipping on deadline to twenty-two reps across four teams.",
+      "date": "2026-07-05",
+      "day_range": "days 241-245",
+      "read": "4 min read",
+      "arc": "Lake B2B",
+      "arc_color": "green",
+      "tags": [
+        "q3",
+        "lake-b2b",
+        "independence-day",
+        "champions-operations",
+        "campaign"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Week 33 opened with a pitch and closed with a campaign distribution. In between, a quarter ended, a new one started, an investment banking conversation happened at a different altitude than the usual cadence, and a three-day video build shipped on deadline. That is the short version."
+        },
+        {
+          "type": "p",
+          "text": "Monday I pitched intent-signal-driven webinar promotion to the EMEA marketing team at a global DevOps platform. About 150 enterprise accounts, over a thousand employees each. The frame that mattered: engine, not one-off. Proposal stage locked. I have said this framing out loud enough times now that I believe it is genuinely the differentiator, and not just a line."
+        },
+        {
+          "type": "h2",
+          "text": "q2 closed quietly"
+        },
+        {
+          "type": "p",
+          "text": "Tuesday was the last day of the quarter. Authorized a wire, attended two external partnership calls, and started drafting the enterprise governance pack that two accounts had been requesting since mid-quarter. Q2 ended with a to-do list, not a celebration. That is probably the right way to close a working quarter. You clear the desk, you do not admire it."
+        },
+        {
+          "type": "h2",
+          "text": "two time horizons, same afternoon"
+        },
+        {
+          "type": "p",
+          "text": "Wednesday was q3 day one. The afternoon had back-to-back conversations at completely different altitudes: a strategic growth discussion with an investment banking team about what the group's next chapter looks like, then the q3 marketing kickoff right after. Those two conversations do not normally happen in sequence. I did not get decompression between them. That is increasingly what the role looks like, and I am learning to treat the altitude shift as part of the work rather than friction inside it."
+        },
+        {
+          "type": "pull",
+          "text": "one room asks about thesis. the next room asks about next week. you don't always get transition time."
+        },
+        {
+          "type": "h2",
+          "text": "three days, nine clips, twenty-two reps"
+        },
+        {
+          "type": "p",
+          "text": "The independence day campaign had a hard constraint: if the sales floor did not have it by thursday night, reps could not post on the actual holiday. That gave us three and a half days from concept to distribution. Thursday I generated all nine clips, locked the prompt library, and wrapped both cut styles. Friday was voiceover, final assembly, and distribution. Twenty-two reps across four teams had the full package before midnight."
+        },
+        {
+          "type": "callout",
+          "head": "what shipped in 72 hours",
+          "lines": [
+            "nine video clips across five styles",
+            "twenty-two personalized social captions, tiered by icp",
+            "twelve brand image templates across four sales teams",
+            "gallery html and two zip archives",
+            "a locked prompt library that carries forward"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The prompt library is the real output. The clips expire after the holiday. The library compounds into the next campaign that needs this format. That distinction is worth naming, because it changes what you invest in during the build."
+        },
+        {
+          "type": "h2",
+          "text": "what else ran"
+        },
+        {
+          "type": "p",
+          "text": "In the margins: two candidate interviews, a fractional equity offer extended to one of them, a professional-services pricing model built for one of the group's service offerings, an ad budget analysis that flagged one market as a hold until lead-response SLA is fixed, an investor platform data sync that confirmed the schema is ready but the pipeline is not, and a co-marketing pitch source pack. Thursday and friday were full in the way that makes you check the next day's calendar last before bed."
+        },
+        {
+          "type": "p",
+          "text": "The week also surfaced the clearest version of something I have been circling all quarter: a campaign ships when the deadline is real and the scope is fixed. Everything else is negotiable. When both of those are locked, the only variable is execution speed. That is the format q3 is going to run on."
+        }
+      ]
+    },
     {
       "slug": "week-32-the-build-reflex",
       "kind": "weekly",
@@ -1750,5 +1835,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-03T20:15:20.318Z"
+  "built": "2026-07-04T20:14:23.594Z"
 };
