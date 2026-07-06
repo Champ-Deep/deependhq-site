@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-04T20:14:23.594Z
+// Built 2026-07-06T20:10:42.581Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 245,
-    "today_date": "2026-07-03",
+    "today_day": 248,
+    "today_date": "2026-07-06",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -110,6 +110,19 @@ window.DH_DATA = {
     }
   ],
   "journey": [
+    {
+      "date": "2026-07-06",
+      "day": 248,
+      "mood": "🔧",
+      "shipping_now": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync with an inbound webhook + reply auto-triage. the IntegrationEvent table is the dedup anchor, this thing is starting to feel like actual infra.",
+      "yesterday_thread": "chief escalated IT to a leadership function, named me co-lead alongside a data engineer. built the full audit checklist and prepped questions for tomorrow. reframing the boardroom connectivity failure as an infrastructure ownership problem, not a helpdesk ticket.",
+      "raw_thought": "top5 zoom bandwidth for the boardroom first. fix the most visible friction for the most senior people. you do not have to eat the whole IT elephant on day one.",
+      "arcs": [
+        "Five-Level Personalizer",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-07-03",
       "day": 245,
@@ -633,9 +646,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:45 IST",
+    "time_ist": "01:40 IST",
     "weather": "24°C · clear",
-    "last_ship": "july 4th campaign + video · just now",
+    "last_ship": "gmail-outlook-instantly sync · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -665,6 +678,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync...",
+        "tag": "shipped d248"
+      },
+      {
         "text": "july 4th campaign distributed to all 22 reps across four sales teams. independence day...",
         "tag": "shipped d245"
       },
@@ -675,10 +692,6 @@ window.DH_DATA = {
       {
         "text": "q3 day one. led a strategic growth discussion with an investment bank on champions grou...",
         "tag": "shipped d243"
-      },
-      {
-        "text": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and...",
-        "tag": "shipped d242"
       }
     ],
     "soon": [
@@ -1835,5 +1848,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-04T20:14:23.594Z"
+  "built": "2026-07-06T20:10:42.581Z"
 };
