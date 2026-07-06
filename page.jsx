@@ -23,8 +23,10 @@ const PageShell = ({ pageId }) => {
   else if (pageId === 'now')     Body = <NowPage />;
   else if (pageId === 'writing') Body = <WritingPage />;
   else if (pageId === 'post')    Body = <PostPage />;
+  else if (pageId === 'company') Body = <CompanyPage />;
 
   // A single post lives under the Writing section, so highlight Writing for it.
+  // A company page has no dedicated nav item; leave nav unhighlighted.
   const navActive = pageId === 'post' ? 'writing' : pageId;
 
   return (

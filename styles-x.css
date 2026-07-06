@@ -307,15 +307,30 @@
   padding: 2px 6px; border: 1px solid var(--color-border); border-radius: var(--radius-sm);
 }
 
-/* main four-column grid */
+/* main footer grid: four info columns + a full-width ecosystem row */
 .dh-foot-grid {
   max-width: var(--content-max); margin: 0 auto;
   padding: var(--space-12) var(--pad-desktop);
   display: grid; grid-template-columns: 1fr 1fr 1fr 1.2fr; gap: var(--space-8);
   border-bottom: 1px solid var(--color-border);
 }
+.dh-foot-col-eco { grid-column: 1 / -1; }
 @media (max-width: 1100px) { .dh-foot-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px)  { .dh-foot-grid { grid-template-columns: 1fr; } }
+
+/* ecosystem link cloud (all twelve, internal) */
+.dh-foot-eco {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2);
+}
+@media (max-width: 900px) { .dh-foot-eco { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .dh-foot-eco { grid-template-columns: 1fr; } }
+.dh-foot-eco-link {
+  font-family: var(--font-code); font-size: 13px;
+  color: var(--color-text-secondary); text-decoration: none;
+  padding: 6px 10px; border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+  transition: color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.dh-foot-eco-link:hover { color: var(--color-accent-tertiary); border-color: var(--color-border-hover); text-decoration: none; }
 .dh-foot-col { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
 .dh-foot-cap {
   font-family: var(--font-body); font-size: 13px; font-style: italic;

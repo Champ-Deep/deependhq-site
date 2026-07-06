@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-06T20:10:42.581Z
+// Built 2026-07-06T22:53:29.629Z
 
 window.DH_DATA = {
   "brand": {
@@ -20,19 +20,138 @@ window.DH_DATA = {
         "ChampQuest",
         "ChampMail"
       ],
-      "url": "https://www.championsaccelerator.com"
+      "url": "https://www.championsaccelerator.com",
+      "slug": "champions-accelerator",
+      "related_journey": [
+        {
+          "day": 248,
+          "date": "2026-07-06",
+          "shipping_now": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync with an inbound webhook + reply…",
+          "arc_color": "green"
+        },
+        {
+          "day": 245,
+          "date": "2026-07-03",
+          "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built…",
+          "arc_color": "green"
+        },
+        {
+          "day": 244,
+          "date": "2026-07-02",
+          "shipping_now": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is built. voiceover and…",
+          "arc_color": "green"
+        },
+        {
+          "day": 243,
+          "date": "2026-07-01",
+          "shipping_now": "q3 day one. led a strategic growth discussion with an investment bank on champions group expansion and what the next chapter…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 242,
+          "date": "2026-06-30",
+          "shipping_now": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 241,
+          "date": "2026-06-29",
+          "shipping_now": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterprise accounts, 1,000+…",
+          "arc_color": "green"
+        },
+        {
+          "day": 238,
+          "date": "2026-06-26",
+          "shipping_now": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the million-record database. sell it to the…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 237,
+          "date": "2026-06-25",
+          "shipping_now": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted, an…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 236,
+          "date": "2026-06-24",
+          "shipping_now": "the site grew a command center today. a /command page that reads live, a matrix-style hero, the twelve-company map as a…",
+          "arc_color": "green"
+        },
+        {
+          "day": 234,
+          "date": "2026-06-22",
+          "shipping_now": "locked the architecture for a new resume-intelligence engine today. phase one is semantic search across the full text of a…",
+          "arc_color": "green"
+        },
+        {
+          "day": 231,
+          "date": "2026-06-19",
+          "shipping_now": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on…",
+          "arc_color": "green"
+        },
+        {
+          "day": 230,
+          "date": "2026-06-18",
+          "shipping_now": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we built, switchable per…",
+          "arc_color": "green"
+        }
+      ],
+      "related_writing": [
+        {
+          "slug": "week-33-the-quarter-turns",
+          "title": "Q2 closed quietly. Then we had three days to ship the campaign.",
+          "date": "2026-07-05",
+          "read": "4 min read"
+        },
+        {
+          "slug": "week-32-the-build-reflex",
+          "title": "I sat down to write deliverables. I kept standing up holding platforms.",
+          "date": "2026-06-27",
+          "read": "5 min read"
+        },
+        {
+          "slug": "week-31-the-proof-arc",
+          "title": "Three deadlines with a person on the other end. And the quiet ones that slipped.",
+          "date": "2026-06-20",
+          "read": "5 min read"
+        },
+        {
+          "slug": "week-30-the-enterprise-arc",
+          "title": "Two chairman calls, one signed deal, and a marketing org finally on paper.",
+          "date": "2026-06-13",
+          "read": "6 min read"
+        },
+        {
+          "slug": "week-29-the-reach-arc",
+          "title": "The week I shipped a rhythm, not a speech.",
+          "date": "2026-06-06",
+          "read": "8 min read"
+        },
+        {
+          "slug": "week-28-four-sales-teams",
+          "title": "Four sales teams, one operating rhythm.",
+          "date": "2026-05-17",
+          "read": "9 min read"
+        }
+      ]
     },
     {
       "name": "Champions Infometrics",
       "desc": "Data intelligence for decisions that actually matter.",
       "tag": "Data",
-      "url": "https://www.championinfometrics.com"
+      "url": "https://www.championinfometrics.com",
+      "slug": "champions-infometrics",
+      "related_journey": [],
+      "related_writing": []
     },
     {
       "name": "Champions Club",
       "desc": "Where founders meet, learn, and stop building alone.",
       "tag": "Community",
-      "url": "https://www.champions.club"
+      "url": "https://www.champions.club",
+      "slug": "champions-club",
+      "related_journey": [],
+      "related_writing": []
     },
     {
       "name": "Lake B2B",
@@ -44,25 +163,135 @@ window.DH_DATA = {
         "Lake Harvest",
         "ChampMail"
       ],
-      "url": "https://www.lakeb2b.com"
+      "url": "https://www.lakeb2b.com",
+      "slug": "lake-b2b",
+      "related_journey": [
+        {
+          "day": 245,
+          "date": "2026-07-03",
+          "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built…",
+          "arc_color": "green"
+        },
+        {
+          "day": 244,
+          "date": "2026-07-02",
+          "shipping_now": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is built. voiceover and…",
+          "arc_color": "green"
+        },
+        {
+          "day": 242,
+          "date": "2026-06-30",
+          "shipping_now": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 241,
+          "date": "2026-06-29",
+          "shipping_now": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterprise accounts, 1,000+…",
+          "arc_color": "green"
+        },
+        {
+          "day": 237,
+          "date": "2026-06-25",
+          "shipping_now": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted, an…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 235,
+          "date": "2026-06-23",
+          "shipping_now": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it writing instead. i pulled every scattered…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 231,
+          "date": "2026-06-19",
+          "shipping_now": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on…",
+          "arc_color": "green"
+        },
+        {
+          "day": 230,
+          "date": "2026-06-18",
+          "shipping_now": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we built, switchable per…",
+          "arc_color": "green"
+        },
+        {
+          "day": 228,
+          "date": "2026-06-16",
+          "shipping_now": "minted per-repo ssh deploy keys for the three repos in this week's product push and moved their deploys off the shared token that…",
+          "arc_color": "green"
+        },
+        {
+          "day": 227,
+          "date": "2026-06-15",
+          "shipping_now": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator that touches tens of thousands of enterprise…",
+          "arc_color": "green"
+        },
+        {
+          "day": 221,
+          "date": "2026-06-09",
+          "shipping_now": "took a one-off enrichment win and turned it into a product. verified contacts for vacation rental operators, a gap the analytics…",
+          "arc_color": "green"
+        },
+        {
+          "day": 217,
+          "date": "2026-06-05",
+          "shipping_now": "built a full pitch kit for a cold 9pm call with a marketplace founder. one-pager, proposal, prep doc, and a live objection…",
+          "arc_color": "green"
+        }
+      ],
+      "related_writing": [
+        {
+          "slug": "week-33-the-quarter-turns",
+          "title": "Q2 closed quietly. Then we had three days to ship the campaign.",
+          "date": "2026-07-05",
+          "read": "4 min read"
+        },
+        {
+          "slug": "week-31-the-proof-arc",
+          "title": "Three deadlines with a person on the other end. And the quiet ones that slipped.",
+          "date": "2026-06-20",
+          "read": "5 min read"
+        },
+        {
+          "slug": "week-30-the-enterprise-arc",
+          "title": "Two chairman calls, one signed deal, and a marketing org finally on paper.",
+          "date": "2026-06-13",
+          "read": "6 min read"
+        },
+        {
+          "slug": "week-27-data-is-not-a-product",
+          "title": "Data is not a product. Growth is.",
+          "date": "2026-05-10",
+          "read": "6 min read"
+        }
+      ]
     },
     {
       "name": "SPAN Global Services",
       "desc": "Enterprise data and demand generation at scale.",
       "tag": "Data & Services",
-      "url": "https://www.spanglobalservices.com"
+      "url": "https://www.spanglobalservices.com",
+      "slug": "span-global-services",
+      "related_journey": [],
+      "related_writing": []
     },
     {
       "name": "Ampliz",
       "desc": "Healthcare data intelligence. Every hospital, every decision-maker.",
       "tag": "Healthcare Data",
-      "url": "https://www.ampliz.com"
+      "url": "https://www.ampliz.com",
+      "slug": "ampliz",
+      "related_journey": [],
+      "related_writing": []
     },
     {
       "name": "IP Momentum",
       "desc": "Intellectual property services for companies that build things.",
       "tag": "IP Services",
-      "url": "https://ipmomentum.com"
+      "url": "https://ipmomentum.com",
+      "slug": "ip-momentum",
+      "related_journey": [],
+      "related_writing": []
     },
     {
       "name": "Cirralogix",
@@ -73,7 +302,23 @@ window.DH_DATA = {
         "DevOps",
         "Edge"
       ],
-      "url": "https://cirrologix.com"
+      "url": "https://cirrologix.com",
+      "slug": "cirralogix",
+      "related_journey": [
+        {
+          "day": 234,
+          "date": "2026-06-22",
+          "shipping_now": "locked the architecture for a new resume-intelligence engine today. phase one is semantic search across the full text of a…",
+          "arc_color": "green"
+        },
+        {
+          "day": 188,
+          "date": "2026-05-08",
+          "shipping_now": "Cirralogix restructuring complete. The three engineers we wanted to keep, retained. One-year commitments signed.",
+          "arc_color": "gold"
+        }
+      ],
+      "related_writing": []
     },
     {
       "name": "Recruit Champ",
@@ -83,7 +328,10 @@ window.DH_DATA = {
         "AI screening",
         "Sourcing"
       ],
-      "url": "https://recruitchamp.com"
+      "url": "https://recruitchamp.com",
+      "slug": "recruit-champ",
+      "related_journey": [],
+      "related_writing": []
     },
     {
       "name": "InfraTech",
@@ -94,21 +342,80 @@ window.DH_DATA = {
         "Champions Ranch",
         "Beach Cities"
       ],
-      "url": "https://www.championinfratech.com"
+      "url": "https://www.championinfratech.com",
+      "slug": "infratech",
+      "related_journey": [
+        {
+          "day": 184,
+          "date": "2026-05-04",
+          "shipping_now": "Champions Ranch productization v1 done. ICP locked: Tech/SaaS + K-12.",
+          "arc_color": "blue"
+        }
+      ],
+      "related_writing": []
     },
     {
       "name": "Champ.fit",
       "desc": "Fitness platform. Your body, your data, your plan.",
       "tag": "Health & Wellness",
-      "url": "https://champ.fit"
+      "url": "https://champ.fit",
+      "slug": "champ-fit",
+      "related_journey": [],
+      "related_writing": []
     },
     {
       "name": "Health.fit",
       "desc": "Health tracking and telemedicine for the next billion.",
       "tag": "Health & Wellness",
-      "url": "https://health.fit"
+      "url": "https://health.fit",
+      "slug": "health-fit",
+      "related_journey": [],
+      "related_writing": []
     }
   ],
+  "arc_map": {
+    "Champ IQ": "Champions Accelerator",
+    "ChampGraph": "Lake B2B",
+    "Champmail": "Lake B2B",
+    "ChampMail": "Lake B2B",
+    "ChampQuest": "Champions Accelerator",
+    "ChampOps": "Champions Accelerator",
+    "Champions Operations": "Champions Accelerator",
+    "AI SDR": "Champions Accelerator",
+    "Five-Level Personalizer": "Champions Accelerator",
+    "Social Automator": "Lake B2B",
+    "Longevity": "Champions Accelerator",
+    "Lake B2B": "Lake B2B",
+    "Cirralogix": "Cirralogix",
+    "Recruit Champ": "Recruit Champ",
+    "Ampliz": "Ampliz",
+    "SPAN": "SPAN Global Services",
+    "InfraTech": "InfraTech",
+    "TheDeepEndHQ": null,
+    "Content Strategy": null,
+    "SEO Strategy": null,
+    "lake-b2b": "Lake B2B",
+    "champions-operations": "Champions Accelerator",
+    "operations": "Champions Accelerator",
+    "longevity": "Champions Accelerator",
+    "build-reflex": null,
+    "campaign": null,
+    "category": null,
+    "crunch-week": null,
+    "data": null,
+    "enterprise-bd": null,
+    "independence-day": null,
+    "kra": null,
+    "maintenance": null,
+    "positioning": null,
+    "product": null,
+    "product-push": null,
+    "proof": null,
+    "q3": null,
+    "reach": null,
+    "sales": null,
+    "systems": null
+  },
   "journey": [
     {
       "date": "2026-07-06",
@@ -121,7 +428,19 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Five-Level Personalizer",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-07-03",
@@ -134,7 +453,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-07-02",
@@ -147,7 +478,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Longevity"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-07-01",
@@ -160,7 +503,19 @@ window.DH_DATA = {
         "Champions Operations",
         "Longevity"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-30",
@@ -173,7 +528,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Champions Operations"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-29",
@@ -186,7 +553,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-26",
@@ -199,7 +578,19 @@ window.DH_DATA = {
         "Champions Operations",
         "TheDeepEndHQ"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        }
+      ]
     },
     {
       "date": "2026-06-25",
@@ -212,7 +603,19 @@ window.DH_DATA = {
         "Champions Operations",
         "Lake B2B"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-06-24",
@@ -225,7 +628,19 @@ window.DH_DATA = {
         "TheDeepEndHQ",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-23",
@@ -238,7 +653,19 @@ window.DH_DATA = {
         "Lake B2B",
         "ChampGraph"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "ChampGraph",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-06-22",
@@ -251,7 +678,19 @@ window.DH_DATA = {
         "Cirralogix",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Cirralogix",
+          "company_name": "Cirralogix",
+          "slug": "cirralogix"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-19",
@@ -264,7 +703,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-18",
@@ -277,7 +728,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-16",
@@ -290,7 +753,19 @@ window.DH_DATA = {
         "TheDeepEndHQ",
         "Lake B2B"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-06-15",
@@ -303,7 +778,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-12",
@@ -316,7 +803,19 @@ window.DH_DATA = {
         "Champions Operations",
         "TheDeepEndHQ"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        }
+      ]
     },
     {
       "date": "2026-06-11",
@@ -328,7 +827,14 @@ window.DH_DATA = {
       "arcs": [
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-10",
@@ -340,7 +846,14 @@ window.DH_DATA = {
       "arcs": [
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-09",
@@ -352,7 +865,14 @@ window.DH_DATA = {
       "arcs": [
         "Lake B2B"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-06-08",
@@ -365,7 +885,19 @@ window.DH_DATA = {
         "Champ IQ",
         "Champions Operations"
       ],
-      "arc_color": "gold"
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Champ IQ",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-05",
@@ -378,7 +910,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Champions Operations"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-04",
@@ -391,7 +935,19 @@ window.DH_DATA = {
         "Champions Operations",
         "Lake B2B"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-06-03",
@@ -404,7 +960,19 @@ window.DH_DATA = {
         "Champions Operations",
         "ChampQuest"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "ChampQuest",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-02",
@@ -417,7 +985,19 @@ window.DH_DATA = {
         "TheDeepEndHQ",
         "ChampOps"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-06-01",
@@ -430,7 +1010,19 @@ window.DH_DATA = {
         "Longevity",
         "Lake B2B"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-05-28",
@@ -443,7 +1035,19 @@ window.DH_DATA = {
         "Champ IQ",
         "ChampGraph"
       ],
-      "arc_color": "gold"
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Champ IQ",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "ChampGraph",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-05-13",
@@ -455,7 +1059,14 @@ window.DH_DATA = {
       "arcs": [
         "TheDeepEndHQ"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        }
+      ]
     },
     {
       "date": "2026-05-12",
@@ -467,7 +1078,14 @@ window.DH_DATA = {
       "arcs": [
         "Champions Operations"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-05-11",
@@ -479,7 +1097,14 @@ window.DH_DATA = {
       "arcs": [
         "ChampOps"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-05-10",
@@ -492,7 +1117,19 @@ window.DH_DATA = {
         "Lake B2B",
         "Content Strategy"
       ],
-      "arc_color": "gold"
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Content Strategy",
+          "company_name": null,
+          "slug": null
+        }
+      ]
     },
     {
       "date": "2026-05-09",
@@ -504,7 +1141,14 @@ window.DH_DATA = {
       "arcs": [
         "SEO Strategy"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "SEO Strategy",
+          "company_name": null,
+          "slug": null
+        }
+      ]
     },
     {
       "date": "2026-05-08",
@@ -517,7 +1161,19 @@ window.DH_DATA = {
         "Cirralogix",
         "Champions Operations"
       ],
-      "arc_color": "gold"
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Cirralogix",
+          "company_name": "Cirralogix",
+          "slug": "cirralogix"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-05-07",
@@ -530,7 +1186,19 @@ window.DH_DATA = {
         "Champions Operations",
         "Champ IQ"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champ IQ",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-05-06",
@@ -542,7 +1210,14 @@ window.DH_DATA = {
       "arcs": [
         "Champions Operations"
       ],
-      "arc_color": "gold"
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     },
     {
       "date": "2026-05-05",
@@ -555,7 +1230,19 @@ window.DH_DATA = {
         "ChampOps",
         "Social Automator"
       ],
-      "arc_color": "green"
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Social Automator",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
     },
     {
       "date": "2026-05-04",
@@ -568,7 +1255,19 @@ window.DH_DATA = {
         "InfraTech",
         "Champions Operations"
       ],
-      "arc_color": "blue"
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "InfraTech",
+          "company_name": "InfraTech",
+          "slug": "infratech"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
     }
   ],
   "now": {
@@ -1230,6 +1929,18 @@ window.DH_DATA = {
           "type": "p",
           "text": "The week also surfaced the clearest version of something I have been circling all quarter: a campaign ships when the deadline is real and the scope is fixed. Everything else is negotiable. When both of those are locked, the only variable is execution speed. That is the format q3 is going to run on."
         }
+      ],
+      "related_companies": [
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        },
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
       ]
     },
     {
@@ -1307,6 +2018,13 @@ window.DH_DATA = {
           "type": "p",
           "text": "Every one of those one-offs argued to become a product before midnight. The playbook for one team is really the playbook for all four. The tracker for one event is really the template for every event. I keep sitting down to write a deliverable and standing up holding a platform, and I still cannot tell you whether that is leverage or a very productive way to avoid finishing one thing. What I can tell you is the test for next week. Not whether I can resist shipping. Whether I leave the two booked rooms better than I found them."
         }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
       ]
     },
     {
@@ -1381,6 +2099,18 @@ window.DH_DATA = {
             "The anchor-gated CXO lunch, still waiting on a few senior yeses.",
             "The research engine, five credentials short of a live bake-off."
           ]
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        },
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
         }
       ]
     },
@@ -1465,6 +2195,18 @@ window.DH_DATA = {
             "Champ IQ: W24 was the launch-decision window. Scope is still being read."
           ]
         }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        },
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        }
       ]
     },
     {
@@ -1538,6 +2280,13 @@ window.DH_DATA = {
         {
           "type": "p",
           "text": "Saturday I stood in front of every sales team and walked them through one loop and one ritual. The loop is how a rep moves a prospect from cold to committed. The ritual is one focused hour a day where the loop actually runs. A town hall that ends in applause is a failure. A town hall that ends with every team agreeing to run the loop on Monday is the only version that counts. I will know which one I gave by Tuesday."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
         }
       ]
     },
@@ -1616,6 +2365,13 @@ window.DH_DATA = {
           "type": "p",
           "text": "Whether the four Monday meetings stay four Monday meetings. The forcing function for collapse is always the same: a deal that touches two channels and someone has to decide. If the decision rule is in the doc, we keep four. If the decision rule is \"ask me,\" we collapse by week 30."
         }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
       ]
     },
     {
@@ -1684,6 +2440,13 @@ window.DH_DATA = {
         {
           "type": "p",
           "text": "Every surface gets rewritten around \"enabling growth,\" with the stack as the proof underneath. The sales team stops leading with record counts and starts leading with the motion. And the next six months are about making the new sentence so obviously true that nobody asks for the old one."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
         }
       ]
     }
@@ -1848,5 +2611,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-06T20:10:42.581Z"
+  "built": "2026-07-06T22:53:29.628Z"
 };

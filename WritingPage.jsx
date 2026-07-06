@@ -27,17 +27,27 @@ const WritingPage = () => {
       <div className="dh-narrow">
         <div className="dh-writing-list">
           {posts.map((p) => (
-            <a key={p.slug} className="dh-writing-row" href={`post.html?slug=${encodeURIComponent(p.slug)}`}>
-              <div>
-                <span className="dh-writing-kind">{p.kind === 'weekly' ? `weekly · week ${p.week}` : 'essay'}</span>
-                <h2 className="dh-writing-title">{p.title}</h2>
-                <p className="dh-writing-deck">{p.deck}</p>
-              </div>
-              <div className="dh-writing-meta">
-                {fmtPostDate(p.date)}<br />
-                {p.read}
-              </div>
-            </a>
+            <div key={p.slug} className="dh-writing-item">
+              <a className="dh-writing-row" href={`post.html?slug=${encodeURIComponent(p.slug)}`}>
+                <div>
+                  <span className="dh-writing-kind">{p.kind === 'weekly' ? `weekly · week ${p.week}` : 'essay'}</span>
+                  <h2 className="dh-writing-title">{p.title}</h2>
+                  <p className="dh-writing-deck">{p.deck}</p>
+                </div>
+                <div className="dh-writing-meta">
+                  {fmtPostDate(p.date)}<br />
+                  {p.read}
+                </div>
+              </a>
+              {(p.related_companies || []).length > 0 && (
+                <div className="dh-writing-cos">
+                  <span className="dh-writing-cos-k">reads into</span>
+                  {p.related_companies.map((rc) => (
+                    <a key={rc.slug} className="dh-pill dh-pill-gold" href={`company.html?slug=${encodeURIComponent(rc.slug)}`}>{rc.name}</a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
 

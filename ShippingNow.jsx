@@ -22,9 +22,13 @@ const JourneyEntry = ({ entry, dense = false }) => (
         <div className="dh-entry-thought">{entry.raw_thought}</div>
       )}
       <div className="dh-entry-tags">
-        {entry.arcs.map((a) => (
-          <span key={a} className={`dh-pill dh-pill-${entry.arc_color}`}>{a}</span>
-        ))}
+        {entry.arcs.map((a) => {
+          const link = (entry.company_links || []).find((l) => l.arc === a && l.slug);
+          const cls = `dh-pill dh-pill-${entry.arc_color}`;
+          return link
+            ? <a key={a} className={cls} href={`company.html?slug=${encodeURIComponent(link.slug)}`}>{a}</a>
+            : <span key={a} className={cls}>{a}</span>;
+        })}
       </div>
     </div>
     <div className="dh-entry-side">

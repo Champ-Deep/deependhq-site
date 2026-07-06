@@ -312,3 +312,65 @@
 @media (min-width: 768px) {
   .dh-writing-row { padding: var(--space-6); }
 }
+
+/* ---------- company page (company.html) ---------- */
+.dh-co-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-8) 0 var(--space-4);
+  padding: var(--space-4) var(--space-8);
+  background: var(--color-accent-tertiary);
+  color: var(--color-bg);
+  font-family: var(--font-code);
+  font-size: var(--text-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--color-accent-tertiary);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.dh-co-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -8px var(--color-accent-tertiary);
+  text-decoration: none;
+}
+.dh-co-cta-arrow { font-size: 1.05em; }
+
+.dh-co-block { margin-top: var(--space-16); }
+.dh-co-block .bp-h2 { margin-bottom: var(--space-6); }
+
+.dh-co-feed { display: flex; flex-direction: column; gap: var(--space-4); }
+.dh-co-more { display: inline-block; margin-top: var(--space-4); font-family: var(--font-code); font-size: var(--text-small); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-co-cta { transition: none; }
+  .dh-co-cta:hover { transform: none; }
+}
+
+/* ---------- cross-link pills + related blocks ---------- */
+a.dh-pill { text-decoration: none; transition: filter var(--dur) var(--ease-out), transform var(--dur) var(--ease-out); }
+a.dh-pill:hover { text-decoration: none; filter: brightness(1.12); transform: translateY(-1px); }
+
+.dh-writing-item { display: flex; flex-direction: column; }
+.dh-writing-cos {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2);
+  padding: 0 var(--space-4) var(--space-4);
+  margin-top: calc(-1 * var(--space-2));
+}
+.dh-writing-cos-k { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); margin-right: var(--space-1); }
+
+.bp-related {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+.bp-related-k { font-family: var(--font-code); font-size: var(--text-small); color: var(--color-text-secondary); display: inline-flex; gap: var(--space-2); align-items: center; }
+.bp-related-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  a.dh-pill { transition: none; }
+  a.dh-pill:hover { transform: none; }
+}

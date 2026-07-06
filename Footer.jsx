@@ -94,17 +94,17 @@ const Footer = () => {
         {/* /sitemap */}
         <section className="dh-foot-col">
           <FooterHeader slug="./sitemap" label="05" />
-          <p className="dh-foot-cap">The actual links, for completeness.</p>
+          <p className="dh-foot-cap">Everything is reachable from down here.</p>
           <div className="dh-foot-sitemap">
             <div className="dh-foot-smcol">
               <span className="dh-foot-sm-h">site</span>
               <a href="index.html">Home</a>
               <a href="now.html">Now</a>
               <a href="journey.html">Journey</a>
-              <a href="writing.html">Writing</a>
               <a href="field-notes.html">Field notes</a>
+              <a href="writing.html">Writing</a>
               <a href="toolkit.html">Toolkit</a>
-              <a href="#dispatch">The dispatch</a>
+              <a href="command.html">Command</a>
             </div>
             <div className="dh-foot-smcol">
               <span className="dh-foot-sm-h">elsewhere</span>
@@ -113,20 +113,24 @@ const Footer = () => {
               <a href="https://bsky.app/profile/sreedeep-sura.bsky.social" target="_blank" rel="noreferrer">bsky/sreedeep-sura ↗</a>
               <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noreferrer">scheduler.zoom.us/sreedeep ↗</a>
             </div>
-            <div className="dh-foot-smcol">
-              <span className="dh-foot-sm-h">in the ecosystem</span>
-              <a href="https://www.lakeb2b.com" target="_blank" rel="noreferrer">Lake B2B ↗</a>
-              <a href="https://www.championsaccelerator.com" target="_blank" rel="noreferrer">Champions Accelerator ↗</a>
-              <a href="https://www.ampliz.com" target="_blank" rel="noreferrer">Ampliz ↗</a>
-              <a href="index.html#ecosystem">+9 more ↗</a>
-            </div>
+          </div>
+        </section>
+
+        {/* /ecosystem : all twelve, internal company pages */}
+        <section className="dh-foot-col dh-foot-col-eco">
+          <FooterHeader slug="./the-ecosystem" label="06" />
+          <p className="dh-foot-cap">Twelve companies. Each gets a page.</p>
+          <div className="dh-foot-eco">
+            {(D.companies || []).map((c) => (
+              <a key={c.slug} className="dh-foot-eco-link" href={`company.html?slug=${encodeURIComponent(c.slug)}`}>{c.name}</a>
+            ))}
           </div>
         </section>
       </div>
 
       {/* Colophon strip — one-liner of the tech */}
       <div className="dh-foot-colophon">
-        <FooterHeader slug="./colophon" label="06" />
+        <FooterHeader slug="./colophon" label="07" />
         <p className="dh-foot-colophon-line">
           Built with <span className="dh-foot-tag">no-build React</span>
           <span className="dh-foot-plus">+</span>

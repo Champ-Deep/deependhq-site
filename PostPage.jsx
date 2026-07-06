@@ -105,6 +105,17 @@ const PostPage = () => {
           {(post.tags || []).map((t) => <span key={t} className="dh-pill dh-pill-muted">{t}</span>)}
         </div>
 
+        {(post.related_companies || []).length > 0 && (
+          <div className="bp-related">
+            <span className="bp-related-k"><span className="dh-gt">&gt;_</span>reads into</span>
+            <div className="bp-related-pills">
+              {post.related_companies.map((rc) => (
+                <a key={rc.slug} className="dh-pill dh-pill-gold" href={`company.html?slug=${encodeURIComponent(rc.slug)}`}>{rc.name} →</a>
+              ))}
+            </div>
+          </div>
+        )}
+
         {(newer || older) && (
           <nav className="bp-prevnext">
             {newer ? (
