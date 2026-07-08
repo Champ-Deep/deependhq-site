@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-06T22:53:29.629Z
+// Built 2026-07-08T11:39:15.466Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 248,
-    "today_date": "2026-07-06",
+    "today_day": 249,
+    "today_date": "2026-07-07",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 249,
+          "date": "2026-07-07",
+          "shipping_now": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at the HSR office, then…",
+          "arc_color": "blue"
+        },
         {
           "day": 248,
           "date": "2026-07-06",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 231,
           "date": "2026-06-19",
           "shipping_now": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on…",
-          "arc_color": "green"
-        },
-        {
-          "day": 230,
-          "date": "2026-06-18",
-          "shipping_now": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we built, switchable per…",
           "arc_color": "green"
         }
       ],
@@ -167,6 +167,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 249,
+          "date": "2026-07-07",
+          "shipping_now": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at the HSR office, then…",
+          "arc_color": "blue"
+        },
+        {
           "day": 245,
           "date": "2026-07-03",
           "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built…",
@@ -230,12 +236,6 @@ window.DH_DATA = {
           "day": 221,
           "date": "2026-06-09",
           "shipping_now": "took a one-off enrichment win and turned it into a product. verified contacts for vacation rental operators, a gap the analytics…",
-          "arc_color": "green"
-        },
-        {
-          "day": 217,
-          "date": "2026-06-05",
-          "shipping_now": "built a full pitch kit for a cold 9pm call with a marketplace founder. one-pager, proposal, prep doc, and a live objection…",
           "arc_color": "green"
         }
       ],
@@ -417,6 +417,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-07",
+      "day": 249,
+      "mood": "🔥",
+      "shipping_now": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at the HSR office, then a three-hour session to demo Cadence live and lock LiquidityIQ scope with a partner and an investor contact.",
+      "yesterday_thread": "chief's accelerator marketing directive hit P0 two days ago. budget allocations confirmed across teams. needed to draft and send the execution ownership reply before midnight.",
+      "raw_thought": "notes exporter has been down 12 consecutive days. one macOS permission approval away from fixed. the gap between knowing the solution and taking the action is where operational debt compounds quietly.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-06",
       "day": 248,
@@ -1345,9 +1370,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:40 IST",
+    "time_ist": "17:09 IST",
     "weather": "24°C · clear",
-    "last_ship": "gmail-outlook-instantly sync · just now",
+    "last_ship": "Cadence live demo · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1377,6 +1402,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly d...",
+        "tag": "shipped d249"
+      },
+      {
         "text": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync...",
         "tag": "shipped d248"
       },
@@ -1387,10 +1416,6 @@ window.DH_DATA = {
       {
         "text": "all nine independence day video clips are done. prompt library locked, both cut styles...",
         "tag": "shipped d244"
-      },
-      {
-        "text": "q3 day one. led a strategic growth discussion with an investment bank on champions grou...",
-        "tag": "shipped d243"
       }
     ],
     "soon": [
@@ -2611,5 +2636,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-06T22:53:29.628Z"
+  "built": "2026-07-08T11:39:15.466Z"
 };
