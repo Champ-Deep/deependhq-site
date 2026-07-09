@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-08T11:39:15.466Z
+// Built 2026-07-09T20:11:45.773Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 249,
-    "today_date": "2026-07-07",
+    "today_day": 251,
+    "today_date": "2026-07-09",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,18 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 251,
+          "date": "2026-07-09",
+          "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data…",
+          "arc_color": "green"
+        },
+        {
+          "day": 250,
+          "date": "2026-07-08",
+          "shipping_now": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker-class focus,…",
+          "arc_color": "blue"
+        },
         {
           "day": 249,
           "date": "2026-07-07",
@@ -81,18 +93,6 @@ window.DH_DATA = {
           "day": 236,
           "date": "2026-06-24",
           "shipping_now": "the site grew a command center today. a /command page that reads live, a matrix-style hero, the twelve-company map as a…",
-          "arc_color": "green"
-        },
-        {
-          "day": 234,
-          "date": "2026-06-22",
-          "shipping_now": "locked the architecture for a new resume-intelligence engine today. phase one is semantic search across the full text of a…",
-          "arc_color": "green"
-        },
-        {
-          "day": 231,
-          "date": "2026-06-19",
-          "shipping_now": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on…",
           "arc_color": "green"
         }
       ],
@@ -167,6 +167,18 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 251,
+          "date": "2026-07-09",
+          "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data…",
+          "arc_color": "green"
+        },
+        {
+          "day": 250,
+          "date": "2026-07-08",
+          "shipping_now": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker-class focus,…",
+          "arc_color": "blue"
+        },
+        {
           "day": 249,
           "date": "2026-07-07",
           "shipping_now": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at the HSR office, then…",
@@ -224,18 +236,6 @@ window.DH_DATA = {
           "day": 228,
           "date": "2026-06-16",
           "shipping_now": "minted per-repo ssh deploy keys for the three repos in this week's product push and moved their deploys off the shared token that…",
-          "arc_color": "green"
-        },
-        {
-          "day": 227,
-          "date": "2026-06-15",
-          "shipping_now": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator that touches tens of thousands of enterprise…",
-          "arc_color": "green"
-        },
-        {
-          "day": 221,
-          "date": "2026-06-09",
-          "shipping_now": "took a one-off enrichment win and turned it into a product. verified contacts for vacation rental operators, a gap the analytics…",
           "arc_color": "green"
         }
       ],
@@ -417,6 +417,56 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-09",
+      "day": 251,
+      "mood": "🤝",
+      "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data access for SDR services. NDA pathway opened, capability brief to follow. also shipped an Eisenhower quadrant map to Chief per his weekly directive.",
+      "yesterday_thread": "clinical session with a longevity advisor locked the South Asian biological age direction. insight: every Western longevity platform trains on Caucasian-dominant baselines. that gap is our clinical moat.",
+      "raw_thought": "barter works cleanest when both sides sell exactly what the other needs. no cash changes hands and both get direct upside. this model should be on every BD call.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "day": 250,
+      "mood": "🌊",
+      "shipping_now": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker-class focus, outreach week starting jul 14. built the linkedin agency onboarding pack in parallel. the week had a shape.",
+      "yesterday_thread": "leaders meeting ran close to 3 hours. marketing restructure, sales ops, team boundaries all on the table. the corporate marketing weekly that followed was almost redundant.",
+      "raw_thought": "when three back-to-back meetings land on a P0 day, the P0 just becomes tomorrow. the fix is not better time-blocking. it is fewer people with calendar access.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-07",
       "day": 249,
@@ -1370,9 +1420,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "17:09 IST",
+    "time_ist": "01:41 IST",
     "weather": "24°C · clear",
-    "last_ship": "Cadence live demo · just now",
+    "last_ship": "Element barter proposal · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1402,20 +1452,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entir...",
+        "tag": "shipped d251"
+      },
+      {
+        "text": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client:...",
+        "tag": "shipped d250"
+      },
+      {
         "text": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly d...",
         "tag": "shipped d249"
       },
       {
         "text": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync...",
         "tag": "shipped d248"
-      },
-      {
-        "text": "july 4th campaign distributed to all 22 reps across four sales teams. independence day...",
-        "tag": "shipped d245"
-      },
-      {
-        "text": "all nine independence day video clips are done. prompt library locked, both cut styles...",
-        "tag": "shipped d244"
       }
     ],
     "soon": [
@@ -2636,5 +2686,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-08T11:39:15.466Z"
+  "built": "2026-07-09T20:11:45.773Z"
 };
