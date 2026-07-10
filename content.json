@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 251,
-    "today_date": "2026-07-09",
+    "today_day": 252,
+    "today_date": "2026-07-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-10",
+      "day": 252,
+      "mood": "🔥",
+      "shipping_now": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ database scoped for lead gen with a city-first proving market. same day ran a discovery call with a polish water-tech firm and locked thursday as the follow-up gate.",
+      "yesterday_thread": "new scraping intern onboarded on cadence tonight. 500k company intel pipeline. india public companies first, job signals plus news layer for m&a and leadership changes. monday 4pm check-in.",
+      "raw_thought": "the geo pitch landed clean today. eu company, india market entry. we came in as intelligence infrastructure not just seo. that framing might be the wedge we keep reusing.",
+      "arcs": [
+        "Cadence",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-07-09",
       "day": 251,
@@ -731,7 +744,7 @@
     "location": "Bangalore, IN",
     "time_ist": "01:41 IST",
     "weather": "24°C · clear",
-    "last_ship": "Element barter proposal · just now",
+    "last_ship": "HNI deal confirmed · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -761,6 +774,10 @@
     ],
     "recently": [
       {
+        "text": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retaine...",
+        "tag": "shipped d252"
+      },
+      {
         "text": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entir...",
         "tag": "shipped d251"
       },
@@ -771,10 +788,6 @@
       {
         "text": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly d...",
         "tag": "shipped d249"
-      },
-      {
-        "text": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync...",
-        "tag": "shipped d248"
       }
     ],
     "soon": [

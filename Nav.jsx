@@ -42,11 +42,8 @@ const Nav = ({ active = 'now' }) => {
         ))}
       </div>
       <div className="dh-nav-actions">
-        <a href="#book" className="dh-btn dh-btn-primary dh-btn-sm"
-           onClick={(e) => {
-             e.preventDefault();
-             window.open('https://scheduler.zoom.us/sreedeep', '_blank');
-           }}>
+        <a href="/cta?from=nav" target="_blank" rel="noopener"
+           className="dh-btn dh-btn-primary dh-btn-sm">
           Book a call
         </a>
         <button className="dh-nav-burger" aria-label="menu" onClick={() => setOpen(!open)}>

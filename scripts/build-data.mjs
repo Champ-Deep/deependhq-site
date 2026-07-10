@@ -156,6 +156,65 @@ function main() {
   const js = `${banner}window.DH_DATA = ${JSON.stringify(data, null, 2)};\n`;
   writeFileSync(OUT, js, 'utf8');
 
+  // ---------------------------------------------------------------------------
+  // FEED + SITEMAP
+  // Generated alongside data.js so every publish keeps them fresh. feed.xml was
+  // previously an empty stub on the live site; this makes it real RSS 2.0.
+  // ---------------------------------------------------------------------------
+  const SITE = 'https://deependhq.com';
+  const esc = (s) => String(s || '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+  const rfc822 = (d) => {
+    const dt = new Date(`${d}T09:00:00+05:30`);
+    return isNaN(dt) ? new Date().toUTCString() : dt.toUTCString();
+  };
+
+  const feedPosts = posts
+    .slice()
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
+    .slice(0, 30);
+  const items = feedPosts.map((p) => [
+    '    <item>',
+    `      <title>${esc(p.title)}</title>`,
+    `      <link>${SITE}/post?slug=${esc(p.slug)}</link>`,
+    `      <guid isPermaLink="true">${SITE}/post?slug=${esc(p.slug)}</guid>`,
+    `      <pubDate>${rfc822(p.date)}</pubDate>`,
+    `      <description>${esc(p.summary || p.excerpt || p.subtitle || p.title)}</description>`,
+    '    </item>',
+  ].join('\n')).join('\n');
+  const rss = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<rss version="2.0">',
+    '  <channel>',
+    '    <title>deep &gt;_ · building in public</title>',
+    `    <link>${SITE}</link>`,
+    '    <description>Essays and weekly narratives from the operator of 12 companies. Past the hype cycle, into the infrastructure.</description>',
+    '    <language>en</language>',
+    `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
+    items,
+    '  </channel>',
+    '</rss>',
+    '',
+  ].join('\n');
+  writeFileSync(join(root, 'feed.xml'), rss, 'utf8');
+
+  const staticPages = ['', 'command', 'now', 'journey', 'writing', 'field-notes', 'toolkit'];
+  const urls = [
+    ...staticPages.map((p) => `${SITE}/${p}`),
+    ...companies.map((c) => `${SITE}/company?slug=${c.slug}`),
+    ...posts.map((p) => `${SITE}/post?slug=${p.slug}`),
+  ];
+  const sitemap = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...urls.map((u) => `  <url><loc>${esc(u)}</loc></url>`),
+    '</urlset>',
+    '',
+  ].join('\n');
+  writeFileSync(join(root, 'sitemap.xml'), sitemap, 'utf8');
+  console.log(`feed.xml: ${feedPosts.length} items · sitemap.xml: ${urls.length} urls`);
+
   const days = data?.brand?.today_day ?? '?';
   const postCount = Array.isArray(data?.posts) ? data.posts.length : 0;
   const entryCount = Array.isArray(data?.journey) ? data.journey.length : 0;

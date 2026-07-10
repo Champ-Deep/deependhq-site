@@ -41,6 +41,7 @@ const Ticker = () => {
           weather:       d.weather       ?? prev.weather,
           vault_commits: d.commits_today ?? prev.vault_commits,
           listening:     d.now_playing   ?? prev.listening,
+          on_repeat:     d.on_repeat     ?? prev.on_repeat,
           reading:       d.reading       ?? prev.reading,
           last_ship:     d.last_ship     ?? prev.last_ship,
           uptime_d:      d.uptime_days   ?? prev.uptime_d,
@@ -60,6 +61,7 @@ const Ticker = () => {
     { k: 'last_ship',   v: s.last_ship,                      cls: 'tick-green' },
     { k: 'commits',     v: `${s.vault_commits} today`,       cls: '' },
     { k: 'now_playing', v: s.listening,                      cls: 'tick-blue' },
+    { k: 'on_repeat',   v: s.on_repeat,                      cls: 'tick-mag' },
     { k: 'reading',     v: s.reading,                        cls: 'tick-gold' },
     { k: 'coffee',      v: '/'.repeat(s.coffee || 0) + ' (' + (s.coffee || 0) + ' cups)', cls: '' },
   ];

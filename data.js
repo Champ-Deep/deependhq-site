@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-09T20:11:45.773Z
+// Built 2026-07-10T20:11:26.226Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 251,
-    "today_date": "2026-07-09",
+    "today_day": 252,
+    "today_date": "2026-07-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -167,6 +167,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 252,
+          "date": "2026-07-10",
+          "shipping_now": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ database scoped for…",
+          "arc_color": "green"
+        },
+        {
           "day": 251,
           "date": "2026-07-09",
           "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data…",
@@ -230,12 +236,6 @@ window.DH_DATA = {
           "day": 230,
           "date": "2026-06-18",
           "shipping_now": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we built, switchable per…",
-          "arc_color": "green"
-        },
-        {
-          "day": 228,
-          "date": "2026-06-16",
-          "shipping_now": "minted per-repo ssh deploy keys for the three repos in this week's product push and moved their deploys off the shared token that…",
           "arc_color": "green"
         }
       ],
@@ -417,6 +417,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-10",
+      "day": 252,
+      "mood": "🔥",
+      "shipping_now": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ database scoped for lead gen with a city-first proving market. same day ran a discovery call with a polish water-tech firm and locked thursday as the follow-up gate.",
+      "yesterday_thread": "new scraping intern onboarded on cadence tonight. 500k company intel pipeline. india public companies first, job signals plus news layer for m&a and leadership changes. monday 4pm check-in.",
+      "raw_thought": "the geo pitch landed clean today. eu company, india market entry. we came in as intelligence infrastructure not just seo. that framing might be the wedge we keep reusing.",
+      "arcs": [
+        "Cadence",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Cadence",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-09",
       "day": 251,
@@ -1422,7 +1447,7 @@ window.DH_DATA = {
     "location": "Bangalore, IN",
     "time_ist": "01:41 IST",
     "weather": "24°C · clear",
-    "last_ship": "Element barter proposal · just now",
+    "last_ship": "HNI deal confirmed · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1452,6 +1477,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retaine...",
+        "tag": "shipped d252"
+      },
+      {
         "text": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entir...",
         "tag": "shipped d251"
       },
@@ -1462,10 +1491,6 @@ window.DH_DATA = {
       {
         "text": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly d...",
         "tag": "shipped d249"
-      },
-      {
-        "text": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync...",
-        "tag": "shipped d248"
       }
     ],
     "soon": [
@@ -2686,5 +2711,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-09T20:11:45.773Z"
+  "built": "2026-07-10T20:11:26.225Z"
 };

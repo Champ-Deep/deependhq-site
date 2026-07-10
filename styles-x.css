@@ -66,6 +66,7 @@
 .dh-ticker-val.tick-green { color: var(--color-accent-primary); }
 .dh-ticker-val.tick-blue  { color: var(--color-accent-secondary); }
 .dh-ticker-val.tick-gold  { color: var(--color-accent-tertiary); }
+.dh-ticker-val.tick-mag   { color: #e754c4; }
 .dh-ticker-val.pulse::before {
   content: ''; display: inline-block; width: 6px; height: 6px;
   border-radius: 100px; background: currentColor;
