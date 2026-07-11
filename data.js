@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-10T20:11:26.226Z
+// Built 2026-07-11T20:12:35.322Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 252,
-    "today_date": "2026-07-10",
+    "today_day": 253,
+    "today_date": "2026-07-11",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 253,
+          "date": "2026-07-11",
+          "shipping_now": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K records in scope, 17L…",
+          "arc_color": "blue"
+        },
         {
           "day": 251,
           "date": "2026-07-09",
@@ -88,15 +94,15 @@ window.DH_DATA = {
           "date": "2026-06-25",
           "shipping_now": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted, an…",
           "arc_color": "blue"
-        },
-        {
-          "day": 236,
-          "date": "2026-06-24",
-          "shipping_now": "the site grew a command center today. a /command page that reads live, a matrix-style hero, the twelve-company map as a…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-34-the-side-door",
+          "title": "Every deal this week came in through a side door.",
+          "date": "2026-07-11",
+          "read": "4 min"
+        },
         {
           "slug": "week-33-the-quarter-turns",
           "title": "Q2 closed quietly. Then we had three days to ship the campaign.",
@@ -241,6 +247,12 @@ window.DH_DATA = {
       ],
       "related_writing": [
         {
+          "slug": "week-34-the-side-door",
+          "title": "Every deal this week came in through a side door.",
+          "date": "2026-07-11",
+          "read": "4 min"
+        },
+        {
           "slug": "week-33-the-quarter-turns",
           "title": "Q2 closed quietly. Then we had three days to ship the campaign.",
           "date": "2026-07-05",
@@ -306,6 +318,12 @@ window.DH_DATA = {
       "slug": "cirralogix",
       "related_journey": [
         {
+          "day": 253,
+          "date": "2026-07-11",
+          "shipping_now": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K records in scope, 17L…",
+          "arc_color": "blue"
+        },
+        {
           "day": 234,
           "date": "2026-06-22",
           "shipping_now": "locked the architecture for a new resume-intelligence engine today. phase one is semantic search across the full text of a…",
@@ -318,7 +336,14 @@ window.DH_DATA = {
           "arc_color": "gold"
         }
       ],
-      "related_writing": []
+      "related_writing": [
+        {
+          "slug": "week-34-the-side-door",
+          "title": "Every deal this week came in through a side door.",
+          "date": "2026-07-11",
+          "read": "4 min"
+        }
+      ]
     },
     {
       "name": "Recruit Champ",
@@ -417,6 +442,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-11",
+      "day": 253,
+      "mood": "🤔",
+      "shipping_now": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K records in scope, 17L on the table from one bidder. one firm held their team over the weekend waiting on my go/no-go.",
+      "yesterday_thread": "the migration complexity came out in the technical review: exclusion objects, legacy date field workarounds, attachment volumes. not a quick copy-paste job.",
+      "raw_thought": "when a vendor holds a team over a weekend for your decision, that is either confidence or desperation. figuring out which one matters before saying yes.",
+      "arcs": [
+        "Cirralogix",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Cirralogix",
+          "company_name": "Cirralogix",
+          "slug": "cirralogix"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-10",
       "day": 252,
@@ -1435,19 +1485,19 @@ window.DH_DATA = {
   ],
   "weekly_narratives_count": 30,
   "latest_narrative": {
-    "week": 33,
-    "title": "Q2 closed quietly. Then we had three days to ship the campaign.",
-    "body": "A week that opened with an enterprise pitch, turned a quarter over, ran an investment banking conversation at a different altitude than usual, and closed with a three-day video campaign shipping on deadline to twenty-two reps across four teams.",
-    "day_range": "days 241-245",
-    "date": "2026-07-05",
-    "read": "4 min read",
-    "slug": "week-33-the-quarter-turns"
+    "week": 34,
+    "title": "Every deal this week came in through a side door.",
+    "body": "Maritime shipping intel. Barter with a Middle East HR firm. Revenue-share with a crypto exchange. And a Salesforce migration vendor holding their team on a Saturday. W28 was the week where nothing came from where I expected.",
+    "day_range": "Jul 6 - Jul 11",
+    "date": "2026-07-11",
+    "read": "4 min",
+    "slug": "week-34-the-side-door"
   },
   "status": {
     "location": "Bangalore, IN",
     "time_ist": "01:41 IST",
     "weather": "24°C · clear",
-    "last_ship": "HNI deal confirmed · just now",
+    "last_ship": "salesforce migration evaluation · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1477,6 +1527,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3....",
+        "tag": "shipped d253"
+      },
+      {
         "text": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retaine...",
         "tag": "shipped d252"
       },
@@ -1487,10 +1541,6 @@ window.DH_DATA = {
       {
         "text": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client:...",
         "tag": "shipped d250"
-      },
-      {
-        "text": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly d...",
-        "tag": "shipped d249"
       }
     ],
     "soon": [
@@ -1946,6 +1996,104 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-34-the-side-door",
+      "kind": "weekly",
+      "week": 34,
+      "eyebrow": ">_ week 34 - the side door arc",
+      "title": "Every deal this week came in through a side door.",
+      "deck": "Maritime shipping intel. Barter with a Middle East HR firm. Revenue-share with a crypto exchange. And a Salesforce migration vendor holding their team on a Saturday. W28 was the week where nothing came from where I expected.",
+      "date": "2026-07-11",
+      "day_range": "Jul 6 - Jul 11",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "green",
+      "tags": [
+        "Lake B2B",
+        "Cadence",
+        "Cirralogix",
+        "Champions Operations"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "The week started with oauth wiring and ended with a vendor holding their team on a Saturday for my go/no-go call. Between those two points, every new deal came from a direction I was not looking."
+        },
+        {
+          "type": "h2",
+          "text": "building while the meetings ran"
+        },
+        {
+          "type": "p",
+          "text": "Monday was product work. Wired gmail and outlook oauth into the email personalizer. Added Instantly two-way sync with an inbound webhook and reply auto-triage. The dedup table is holding. It is starting to feel like infrastructure."
+        },
+        {
+          "type": "p",
+          "text": "Tuesday ran back-to-back from 4 PM to 10 PM IST. IT audit deep-dive, weekly data sync at the office, then a three-hour Cadence demo with a partner and an investor contact. First time the platform ran live in front of people with capital. That is a different kind of test than internal demos."
+        },
+        {
+          "type": "p",
+          "text": "Wednesday was a heavy meetings day. A new shipping-sector client locked a maritime data strategy: 6 segments, tanker-class focus, outreach starting Jul 14. Nobody was building a maritime pipeline. It came from one intro and the data was already in the lake."
+        },
+        {
+          "type": "h2",
+          "text": "the deal structures that surprised me"
+        },
+        {
+          "type": "p",
+          "text": "Thursday I proposed a three-tier barter deal to a Middle East HR outsourcing firm. Their buyer list is our exact ICP. Data access for SDR services. No cash moving either direction. Both sides get direct upside. The NDA pathway is open. If this closes it is the cleanest deal structure we have ever run."
+        },
+        {
+          "type": "pull",
+          "text": "barter works cleanest when both sides sell exactly what the other needs. no cash, no retainer, no chasing invoices. just two ledgers that balance."
+        },
+        {
+          "type": "p",
+          "text": "Friday a revenue-share partnership confirmed with a crypto exchange. Zero-retainer structure, 750M+ database scoped, city-first proving market to start. Same day ran a discovery call with a Polish water-tech firm and locked Thursday as the follow-up gate. A new scraping intern started on the Cadence intelligence pipeline: 500K companies, job signals and news layer for M&A and leadership change detection."
+        },
+        {
+          "type": "h2",
+          "text": "the decision on the table"
+        },
+        {
+          "type": "p",
+          "text": "Saturday two Salesforce migration vendors had independently reviewed Cirralogix's org. 3.48M tasks, 549K records in scope. One vendor quoted 17L and held their team over the weekend waiting for my go/no-go. The other ran a parallel technical requirements session to scope exclusions and attachment volumes. The migration is not optional. The decision is due Monday."
+        },
+        {
+          "type": "p",
+          "text": "When a vendor holds a team on a Saturday for your answer, that is either confidence in the relationship or urgency about their own calendar. Both are information. I am still figuring out which one this is."
+        },
+        {
+          "type": "h2",
+          "text": "the pattern underneath the week"
+        },
+        {
+          "type": "p",
+          "text": "Maritime. Barter. Crypto. EU geo-intel pitch. None of these were in the pipeline at Monday's standup. All of them moved forward because the data was credible and the framing was tight. We came in as intelligence infrastructure, not just lead gen. That framing is landing in sectors we did not plan for."
+        },
+        {
+          "type": "p",
+          "text": "That is the actual signal from this week. Not the deal count. Not the sectors. The framing is working somewhere we did not aim it. That is worth staying with next week."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        },
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        },
+        {
+          "name": "Cirralogix",
+          "slug": "cirralogix",
+          "tag": "Cloud & DevOps"
+        }
+      ]
+    },
     {
       "slug": "week-33-the-quarter-turns",
       "kind": "weekly",
@@ -2711,5 +2859,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-10T20:11:26.225Z"
+  "built": "2026-07-11T20:12:35.321Z"
 };
