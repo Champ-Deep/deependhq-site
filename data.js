@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-11T20:12:35.322Z
+// Built 2026-07-12T20:12:00.874Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 253,
-    "today_date": "2026-07-11",
+    "today_day": 254,
+    "today_date": "2026-07-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 254,
+          "date": "2026-07-12",
+          "shipping_now": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milestone review, but the density said something…",
+          "arc_color": "blue"
+        },
         {
           "day": 253,
           "date": "2026-07-11",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 238,
           "date": "2026-06-26",
           "shipping_now": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the million-record database. sell it to the…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 237,
-          "date": "2026-06-25",
-          "shipping_now": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted, an…",
           "arc_color": "blue"
         }
       ],
@@ -442,6 +442,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-12",
+      "day": 254,
+      "mood": "🧬",
+      "shipping_now": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milestone review, but the density said something real got worked through. then chief sent a formal alliance proposal to MIT Agelabs for APAC longevity operations, with me in the to line.",
+      "yesterday_thread": "the salesforce migration decision is still open for cirralogix. one vendor held their team over the weekend on standby. that kind of pressure is intentional.",
+      "raw_thought": "when chief emails MIT on a sunday, the product has moved past the are-we-serious-about-this phase.",
+      "arcs": [
+        "Longevity",
+        "Champions Accelerator"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Accelerator",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-11",
       "day": 253,
@@ -1495,9 +1520,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:41 IST",
+    "time_ist": "01:42 IST",
     "weather": "24°C · clear",
-    "last_ship": "salesforce migration evaluation · just now",
+    "last_ship": "longevity milestone sync + MIT alliance signal · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1527,6 +1552,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milesto...",
+        "tag": "shipped d254"
+      },
+      {
         "text": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3....",
         "tag": "shipped d253"
       },
@@ -1537,10 +1566,6 @@ window.DH_DATA = {
       {
         "text": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entir...",
         "tag": "shipped d251"
-      },
-      {
-        "text": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client:...",
-        "tag": "shipped d250"
       }
     ],
     "soon": [
@@ -2859,5 +2884,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-11T20:12:35.321Z"
+  "built": "2026-07-12T20:12:00.874Z"
 };
