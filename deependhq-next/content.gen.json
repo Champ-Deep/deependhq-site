@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 255,
-    "today_date": "2026-07-13",
+    "today_day": 254,
+    "today_date": "2026-07-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,19 +154,6 @@
     "systems": null
   },
   "journey": [
-    {
-      "date": "2026-07-13",
-      "day": 255,
-      "mood": "🌗",
-      "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another sits on 50 million indian health records. both map onto what we are building at lake and longevity. b2b marketing services at $150K to $200K on the table, plus a possible advisory seat.",
-      "yesterday_thread": "the hotel gms call failed before it started. the counterpart waited 14 minutes and left. network beat us. this is the second time a high-value external has dropped this way. need a hot-join protocol before the next one.",
-      "raw_thought": "CLF leads hit better when each batch rides a live why-now signal, not just a vertical filter. maritime, hr outsourcing, healthcare. each segment anchored to a real partnership trigger.",
-      "arcs": [
-        "Lake B2B",
-        "Longevity"
-      ],
-      "arc_color": "blue"
-    },
     {
       "date": "2026-07-12",
       "day": 254,
@@ -781,9 +768,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:46 IST",
+    "time_ist": "01:42 IST",
     "weather": "24°C · clear",
-    "last_ship": "eragon co-sell path opened · just now",
+    "last_ship": "longevity milestone sync + MIT alliance signal · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -813,10 +800,6 @@
     ],
     "recently": [
       {
-        "text": "a call with a vc portfolio director opened two unexpected doors. one portfolio company...",
-        "tag": "shipped d255"
-      },
-      {
         "text": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milesto...",
         "tag": "shipped d254"
       },
@@ -827,6 +810,10 @@
       {
         "text": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retaine...",
         "tag": "shipped d252"
+      },
+      {
+        "text": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entir...",
+        "tag": "shipped d251"
       }
     ],
     "soon": [

@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-12T20:12:00.874Z
+// Built 2026-07-13T20:16:01.713Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 254,
-    "today_date": "2026-07-12",
+    "today_day": 255,
+    "today_date": "2026-07-13",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 255,
+          "date": "2026-07-13",
+          "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another…",
+          "arc_color": "blue"
+        },
         {
           "day": 254,
           "date": "2026-07-12",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-06-29",
           "shipping_now": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterprise accounts, 1,000+…",
           "arc_color": "green"
-        },
-        {
-          "day": 238,
-          "date": "2026-06-26",
-          "shipping_now": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the million-record database. sell it to the…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -173,6 +173,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 255,
+          "date": "2026-07-13",
+          "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another…",
+          "arc_color": "blue"
+        },
+        {
           "day": 252,
           "date": "2026-07-10",
           "shipping_now": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ database scoped for…",
@@ -236,12 +242,6 @@ window.DH_DATA = {
           "day": 231,
           "date": "2026-06-19",
           "shipping_now": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on…",
-          "arc_color": "green"
-        },
-        {
-          "day": 230,
-          "date": "2026-06-18",
-          "shipping_now": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we built, switchable per…",
           "arc_color": "green"
         }
       ],
@@ -442,6 +442,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-13",
+      "day": 255,
+      "mood": "🌗",
+      "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another sits on 50 million indian health records. both map onto what we are building at lake and longevity. b2b marketing services at $150K to $200K on the table, plus a possible advisory seat.",
+      "yesterday_thread": "the hotel gms call failed before it started. the counterpart waited 14 minutes and left. network beat us. this is the second time a high-value external has dropped this way. need a hot-join protocol before the next one.",
+      "raw_thought": "CLF leads hit better when each batch rides a live why-now signal, not just a vertical filter. maritime, hr outsourcing, healthcare. each segment anchored to a real partnership trigger.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-12",
       "day": 254,
@@ -1520,9 +1545,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:42 IST",
+    "time_ist": "01:46 IST",
     "weather": "24°C · clear",
-    "last_ship": "longevity milestone sync + MIT alliance signal · just now",
+    "last_ship": "eragon co-sell path opened · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1552,6 +1577,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "a call with a vc portfolio director opened two unexpected doors. one portfolio company...",
+        "tag": "shipped d255"
+      },
+      {
         "text": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milesto...",
         "tag": "shipped d254"
       },
@@ -1562,10 +1591,6 @@ window.DH_DATA = {
       {
         "text": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retaine...",
         "tag": "shipped d252"
-      },
-      {
-        "text": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entir...",
-        "tag": "shipped d251"
       }
     ],
     "soon": [
@@ -2884,5 +2909,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-12T20:12:00.874Z"
+  "built": "2026-07-13T20:16:01.713Z"
 };

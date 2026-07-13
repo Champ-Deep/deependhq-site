@@ -1,0 +1,360 @@
+/* ============================================================
+   command.css — The Command Center (public)
+   The operator's dashboard view of deependhq.com.
+   Borrows the vitals aesthetic of the old internal command-center,
+   reframed as a public showcase. Dark only. Light text explicit.
+   No em-dashes anywhere.
+   ============================================================ */
+
+.cc-main {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: calc(var(--space-16) + 56px) var(--pad-desktop) var(--space-24);
+  color: var(--color-text-primary);
+}
+
+/* ---------- Section scaffolding ---------- */
+.cc-section { margin: var(--space-24) 0 0; }
+.cc-section:first-of-type { margin-top: 0; }
+.cc-sec-head {
+  display: flex; align-items: baseline; gap: var(--space-3);
+  flex-wrap: wrap; margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+.cc-sec-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--text-h2); color: var(--color-text-primary);
+  margin: 0; letter-spacing: -0.02em;
+}
+.cc-sec-note { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+.cc-badge {
+  font-family: var(--font-code); font-size: 0.66rem; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 2px 8px; border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-hover); color: var(--color-text-secondary);
+}
+.cc-badge.live { color: var(--color-accent-primary); border-color: var(--color-accent-primary); }
+.cc-badge.live::before {
+  content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-accent-primary); margin-right: 6px; vertical-align: middle;
+  box-shadow: 0 0 8px var(--color-accent-primary); animation: cc-pulse 2s ease-in-out infinite;
+}
+@keyframes cc-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ============================================================
+   HERO + generative canvas backdrop (the wow moment)
+   ============================================================ */
+.cc-hero {
+  position: relative; overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(1100px 380px at 18% -10%, var(--color-accent-primary-10), transparent 60%),
+    radial-gradient(900px 360px at 100% 0%, var(--color-accent-secondary-10), transparent 55%),
+    var(--color-bg-elevated);
+  padding: var(--space-12) var(--space-8);
+  min-height: 320px;
+}
+.cc-hero-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0.35; pointer-events: none; z-index: 0;
+}
+.cc-hero-inner { position: relative; z-index: 1; }
+.cc-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-code); font-size: var(--text-xs);
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-text-secondary);
+}
+.cc-eyebrow-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-primary);
+  box-shadow: 0 0 10px var(--color-accent-primary); animation: cc-pulse 2s ease-in-out infinite;
+}
+.cc-hero-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -0.03em;
+  color: var(--color-text-primary); margin: var(--space-4) 0 var(--space-3); text-wrap: balance;
+}
+.cc-hero-title .cc-cursor { color: var(--color-accent-primary); animation: cc-blink 1.05s step-end infinite; }
+@keyframes cc-blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+.cc-hero-sub { color: var(--color-text-secondary); max-width: 60ch; font-size: var(--text-body-large); margin: 0 0 var(--space-6); }
+
+/* vitals tiles */
+.cc-vitals { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.cc-vital {
+  background: rgba(13,15,20,0.55); border: 1px solid var(--color-border);
+  border-radius: var(--radius); padding: var(--space-4);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.cc-vital-num {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.9rem;
+  color: var(--color-text-primary); line-height: 1;
+}
+.cc-vital-num.green { color: var(--color-accent-primary); }
+.cc-vital-num.blue { color: var(--color-accent-secondary); }
+.cc-vital-num.gold { color: var(--color-accent-tertiary); }
+.cc-vital-lab { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   STATUS BOARD + BUILD LANES (cards)
+   ============================================================ */
+.cc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+.cc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+
+.cc-card {
+  background: var(--color-bg-elevated); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-6);
+}
+.cc-card-k {
+  font-family: var(--font-code); font-size: var(--text-xs); text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--color-text-secondary); margin: 0 0 var(--space-4);
+  display: flex; align-items: center; gap: 8px;
+}
+.cc-feed-row { padding: var(--space-3) 0; border-top: 1px dashed var(--color-border); }
+.cc-feed-row:first-of-type { border-top: 0; }
+.cc-feed-tag {
+  font-family: var(--font-code); font-size: 0.66rem; color: var(--color-accent-primary);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.cc-feed-text { color: var(--color-text-primary); font-size: var(--text-small); margin: 4px 0 0; }
+
+/* build lanes */
+.cc-lane-head { display: flex; align-items: center; gap: 8px; margin-bottom: var(--space-3); }
+.cc-lane-dot { width: 9px; height: 9px; border-radius: 50%; }
+.cc-lane-dot.live { background: var(--color-accent-primary); box-shadow: 0 0 8px var(--color-accent-primary); }
+.cc-lane-dot.building { background: var(--color-accent-secondary); box-shadow: 0 0 8px var(--color-accent-secondary); }
+.cc-lane-dot.next { background: var(--color-accent-tertiary); box-shadow: 0 0 8px var(--color-accent-tertiary); }
+.cc-lane-title { font-family: var(--font-code); font-size: var(--text-small); color: var(--color-text-primary); text-transform: uppercase; letter-spacing: 0.06em; }
+.cc-lane-count { margin-left: auto; font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+.cc-prod {
+  border-top: 1px solid var(--color-border); padding: var(--space-3) 0;
+  display: block; color: inherit;
+}
+.cc-prod:hover { text-decoration: none; }
+.cc-prod-name { font-family: var(--font-body); font-weight: 600; color: var(--color-text-primary); display: flex; align-items: center; gap: 8px; }
+.cc-prod-name .cc-arrow { color: var(--color-text-secondary); font-size: var(--text-xs); transition: transform var(--dur) var(--ease-out); }
+a.cc-prod:hover .cc-prod-name { color: var(--color-accent-primary); }
+a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
+.cc-prod-what { color: var(--color-text-secondary); font-size: var(--text-small); margin: 3px 0 0; }
+.cc-prod-repo { font-family: var(--font-code); font-size: 0.66rem; color: var(--color-text-secondary); }
+
+/* ============================================================
+   CONTRIBUTION HEATMAP (timeline)
+   ============================================================ */
+.cc-heat-wrap { overflow-x: auto; padding-bottom: var(--space-2); }
+.cc-heat {
+  display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 1fr);
+  gap: 3px; min-width: max-content;
+}
+.cc-heat-cell {
+  width: 13px; height: 13px; border-radius: 3px;
+  background: #161A22; border: 1px solid rgba(255,255,255,0.03);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.cc-heat-cell.lv-green { background: var(--color-accent-primary); box-shadow: 0 0 6px rgba(48,224,96,0.35); }
+.cc-heat-cell.lv-blue { background: var(--color-accent-secondary); box-shadow: 0 0 6px rgba(74,123,247,0.3); }
+.cc-heat-cell.lv-gold { background: var(--color-accent-tertiary); box-shadow: 0 0 6px rgba(201,168,76,0.3); }
+.cc-heat-cell:hover { transform: scale(1.45); cursor: pointer; outline: 1px solid var(--color-text-primary); }
+.cc-heat-legend { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-4); flex-wrap: wrap; }
+.cc-legend-item { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+.cc-legend-sw { width: 11px; height: 11px; border-radius: 3px; }
+.cc-legend-sw.green { background: var(--color-accent-primary); }
+.cc-legend-sw.blue { background: var(--color-accent-secondary); }
+.cc-legend-sw.gold { background: var(--color-accent-tertiary); }
+.cc-legend-sw.empty { background: #161A22; border: 1px solid var(--color-border); }
+
+.cc-tip {
+  position: fixed; z-index: 50; pointer-events: none;
+  background: var(--color-bg); border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius); padding: 8px 10px; max-width: 280px;
+  box-shadow: var(--shadow-lg); transform: translate(-50%, -115%);
+}
+.cc-tip-day { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-accent-primary); }
+.cc-tip-text { color: var(--color-text-primary); font-size: var(--text-small); margin: 3px 0 0; line-height: 1.4; }
+
+/* ============================================================
+   ECOSYSTEM CONSTELLATION
+   ============================================================ */
+.cc-constellation { position: relative; width: 100%; height: 460px; }
+.cc-constellation svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.cc-edge { stroke: var(--color-border-hover); stroke-width: 1; opacity: 0.35; }
+.cc-node-g { cursor: pointer; }
+.cc-node { transition: r var(--dur) var(--ease-out); }
+.cc-node-hub { fill: var(--color-bg); stroke: var(--color-accent-primary); stroke-width: 1.5; }
+.cc-node-lab { font-family: var(--font-code); font-size: 10px; fill: var(--color-text-secondary); text-anchor: middle; pointer-events: none; transition: fill var(--dur) var(--ease-out); }
+.cc-node-g:hover .cc-node-lab { fill: var(--color-text-primary); }
+.cc-float { animation: cc-float var(--cc-dur, 7s) ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes cc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.cc-constell-tip {
+  position: absolute; z-index: 5; pointer-events: none; max-width: 240px;
+  background: var(--color-bg); border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius); padding: 8px 10px; box-shadow: var(--shadow-lg);
+}
+.cc-constell-tip .n { font-family: var(--font-body); font-weight: 600; color: var(--color-text-primary); font-size: var(--text-small); }
+.cc-constell-tip .d { color: var(--color-text-secondary); font-size: var(--text-xs); margin-top: 2px; }
+
+/* ============================================================
+   LIVE REPO CARDS
+   ============================================================ */
+.cc-repos { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.cc-repo {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--color-bg-elevated); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+  transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+.cc-repo:hover { border-color: var(--color-accent-primary); transform: translateY(-2px); text-decoration: none; }
+.cc-repo-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.cc-repo-name { font-family: var(--font-code); font-weight: 600; color: var(--color-text-primary); font-size: var(--text-small); }
+.cc-repo:hover .cc-repo-name { color: var(--color-accent-primary); }
+.cc-repo-desc { color: var(--color-text-secondary); font-size: var(--text-small); line-height: 1.45; flex: 1; }
+.cc-repo-meta { display: flex; align-items: center; gap: var(--space-4); font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+.cc-lang-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; background: var(--color-text-secondary); }
+.cc-repo-skel { height: 116px; border-radius: var(--radius-lg); background: linear-gradient(100deg, var(--color-bg-elevated) 30%, var(--color-bg-hover) 50%, var(--color-bg-elevated) 70%); background-size: 200% 100%; animation: cc-shimmer 1.3s linear infinite; border: 1px solid var(--color-border); }
+@keyframes cc-shimmer { to { background-position: -200% 0; } }
+
+/* ============================================================
+   INTERACTIVE TERMINAL
+   ============================================================ */
+.cc-term {
+  background: #0A0C10; border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);
+}
+.cc-term-bar { display: flex; align-items: center; gap: 7px; padding: 10px var(--space-4); border-bottom: 1px solid var(--color-border); background: var(--color-bg-elevated); }
+.cc-term-dot { width: 11px; height: 11px; border-radius: 50%; }
+.cc-term-dot.r { background: #E04848; } .cc-term-dot.y { background: #C9A84C; } .cc-term-dot.g { background: #30E060; }
+.cc-term-title { margin-left: 6px; font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+.cc-term-body { padding: var(--space-4); font-family: var(--font-code); font-size: var(--text-terminal); line-height: 1.7; min-height: 230px; max-height: 360px; overflow-y: auto; color: var(--color-text-primary); }
+.cc-term-line { white-space: pre-wrap; word-break: break-word; }
+.cc-term-line .p { color: var(--color-accent-primary); }
+.cc-term-line.out { color: var(--color-text-secondary); }
+.cc-term-line.out b { color: var(--color-text-primary); font-weight: 600; }
+.cc-term-line.out .g { color: var(--color-accent-primary); }
+.cc-term-line.out .bl { color: var(--color-accent-secondary); }
+.cc-term-line.out .gd { color: var(--color-accent-tertiary); }
+.cc-term-input-row { display: flex; align-items: center; gap: 8px; }
+.cc-term-input-row .p { color: var(--color-accent-primary); }
+.cc-term-input {
+  flex: 1; background: transparent; border: 0; outline: 0;
+  font-family: var(--font-code); font-size: var(--text-terminal); color: var(--color-text-primary); caret-color: var(--color-accent-primary);
+}
+.cc-term-hint { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); margin-top: var(--space-2); }
+.cc-term-hint b { color: var(--color-text-primary); }
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cc-cta { text-align: center; padding: var(--space-12) var(--space-6); margin-top: var(--space-24);
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+  background: radial-gradient(700px 240px at 50% 0%, var(--color-accent-primary-10), transparent 60%), var(--color-bg-elevated); }
+.cc-cta h2 { font-family: var(--font-display); font-size: var(--text-h2); color: var(--color-text-primary); margin: 0 0 var(--space-3); }
+.cc-cta p { color: var(--color-text-secondary); margin: 0 auto var(--space-6); max-width: 48ch; }
+.cc-cta-row { display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .cc-main { padding-left: var(--pad-tablet); padding-right: var(--pad-tablet); }
+  .cc-grid-2, .cc-grid-3, .cc-repos { grid-template-columns: 1fr; }
+  .cc-vitals { grid-template-columns: repeat(2, 1fr); }
+  .cc-constellation { height: 380px; }
+}
+@media (max-width: 520px) {
+  .cc-main { padding-left: var(--pad-mobile); padding-right: var(--pad-mobile); }
+  .cc-vitals { grid-template-columns: repeat(2, 1fr); }
+  .cc-hero { padding: var(--space-8) var(--space-4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-float, .cc-eyebrow-dot, .cc-badge.live::before, .cc-hero-title .cc-cursor { animation: none; }
+}
+
+/* ============================================================
+   SHOUTOUTS — rotating "on my radar" feed
+   ============================================================ */
+.cc-shout { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-6); }
+.cc-shout-spot {
+  position: relative; display: flex; flex-direction: column; gap: 4px; overflow: hidden;
+  background: radial-gradient(620px 200px at 0% 0%, var(--color-accent-primary-10), transparent 60%), var(--color-bg-elevated);
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-8); min-height: 210px;
+}
+.cc-shout-spot:hover { border-color: var(--color-border-hover); text-decoration: none; }
+.cc-shout-bar { position: absolute; top: 0; left: 0; height: 3px; width: 0; background: var(--color-accent-primary); box-shadow: 0 0 8px var(--color-accent-primary); animation: cc-shout-fill 4.8s linear forwards; }
+.cc-shout-bar.paused { animation-play-state: paused; }
+@keyframes cc-shout-fill { from { width: 0; } to { width: 100%; } }
+.cc-shout-tag { align-self: flex-start; font-family: var(--font-code); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: var(--radius-pill); border: 1px solid; }
+.cc-shout-tag.tag-using { color: var(--color-accent-primary); border-color: var(--color-accent-primary); background: var(--color-accent-primary-10); }
+.cc-shout-tag.tag-trying { color: var(--color-accent-secondary); border-color: var(--color-accent-secondary); background: var(--color-accent-secondary-10); }
+.cc-shout-tag.tag-watching { color: var(--color-accent-tertiary); border-color: var(--color-accent-tertiary); background: var(--color-accent-tertiary-10); }
+.cc-shout-name { font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; color: var(--color-text-primary); margin-top: 10px; }
+.cc-shout-arrow { font-size: 1rem; color: var(--color-text-secondary); }
+.cc-shout-spot:hover .cc-shout-name { color: var(--color-accent-primary); }
+.cc-shout-repo { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+.cc-shout-what { color: var(--color-text-secondary); font-size: var(--text-small); margin-top: 6px; line-height: 1.5; }
+.cc-shout-side { display: flex; flex-direction: column; gap: var(--space-3); }
+.cc-shout-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.cc-shout-fbtn { font-family: var(--font-code); font-size: var(--text-xs); padding: 5px 11px; border-radius: var(--radius-pill); border: 1px solid var(--color-border); background: transparent; color: var(--color-text-secondary); cursor: pointer; transition: all var(--dur) var(--ease-out); }
+.cc-shout-fbtn.active, .cc-shout-fbtn:hover { color: var(--color-text-primary); border-color: var(--color-border-hover); background: var(--color-bg-hover); }
+.cc-shout-chips { display: flex; flex-wrap: wrap; gap: 7px; align-content: flex-start; }
+.cc-shout-chip { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-code); font-size: var(--text-xs); padding: 6px 10px; border-radius: var(--radius-pill); border: 1px solid var(--color-border); background: transparent; color: var(--color-text-secondary); cursor: pointer; transition: all var(--dur) var(--ease-out); }
+.cc-shout-chip:hover { border-color: var(--color-border-hover); color: var(--color-text-primary); }
+.cc-shout-chip.active { color: var(--color-text-primary); border-color: var(--color-accent-primary); background: var(--color-accent-primary-10); }
+.cc-shout-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.cc-shout-dot.tag-using { background: var(--color-accent-primary); }
+.cc-shout-dot.tag-trying { background: var(--color-accent-secondary); }
+.cc-shout-dot.tag-watching { background: var(--color-accent-tertiary); }
+@media (max-width: 900px) { .cc-shout { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .cc-shout-bar { animation: none; width: 100%; } }
+
+/* ============================================================
+   LIBRARY FLAIR — slim cursor, typed prompt, force-graph, gh-calendar
+   ============================================================ */
+/* slim blinking cursor (replaces the fat block) */
+.cc-hero-title .cc-cursor {
+  display: inline-block; width: 3px; height: 0.9em; margin-left: 7px;
+  background: var(--color-accent-primary); border-radius: 1px; vertical-align: -0.06em;
+  box-shadow: 0 0 8px var(--color-accent-primary);
+  animation: cc-blink 1.05s step-end infinite;
+}
+/* typed.js hero prompt line */
+.cc-hero-prompt { font-family: var(--font-code); font-size: var(--text-small); color: var(--color-text-primary); margin: 0 0 var(--space-4); min-height: 1.5em; }
+.cc-hero-prompt .cc-gt { color: var(--color-accent-primary); font-weight: 600; margin-right: 6px; }
+.cc-typed { color: var(--color-text-secondary); }
+/* force-graph container */
+.cc-forcegraph { width: 100%; height: 440px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: radial-gradient(720px 320px at 50% 42%, rgba(48,224,96,0.05), transparent 70%), var(--color-bg-elevated); overflow: hidden; }
+.cc-forcegraph canvas { display: block; }
+/* github-calendar dark theme overrides */
+.cc-ghcal { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); color: var(--color-text-secondary); font-family: var(--font-code); font-size: var(--text-small); min-height: 120px; overflow-x: auto; }
+.cc-ghcal a, .cc-ghcal .text-muted, .cc-ghcal .contrib-number, .cc-ghcal strong { color: var(--color-text-primary) !important; }
+.cc-ghcal text, .cc-ghcal .month, .cc-ghcal .wday { fill: var(--color-text-secondary) !important; color: var(--color-text-secondary) !important; }
+.cc-ghcal .contrib-footer { color: var(--color-text-secondary) !important; opacity: 0.8; }
+
+/* ---------- Ecosystem drill-down panel ---------- */
+.cc-drill { margin-top: var(--space-4); background: var(--color-bg-elevated); border: 1px solid var(--color-border-hover); border-radius: var(--radius-lg); padding: var(--space-6); position: relative; }
+.cc-drill-close { position: absolute; top: 12px; right: 14px; background: transparent; border: 0; color: var(--color-text-secondary); font-family: var(--font-code); cursor: pointer; font-size: 1.1rem; line-height: 1; }
+.cc-drill-close:hover { color: var(--color-text-primary); }
+.cc-drill-tag { font-family: var(--font-code); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-secondary); }
+.cc-drill-name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-h3); color: var(--color-text-primary); margin: 4px 0 6px; }
+.cc-drill-desc { color: var(--color-text-secondary); font-size: var(--text-small); margin: 0 0 var(--space-3); max-width: 60ch; }
+.cc-drill-k { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-right: var(--space-2); }
+.cc-drill-chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.cc-drill-chip { font-family: var(--font-code); font-size: var(--text-xs); padding: 5px 10px; border-radius: var(--radius-pill); border: 1px solid var(--color-border); color: var(--color-text-primary); background: var(--color-accent-primary-10); }
+
+/* ============================================================
+   FULL-PAGE network backdrop (was trapped inside the hero card)
+   ============================================================ */
+.cc-backdrop { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.6; }
+/* hero + ecosystem go translucent so the living network shows through them */
+.cc-hero {
+  background:
+    radial-gradient(1100px 380px at 18% -10%, var(--color-accent-primary-10), transparent 60%),
+    radial-gradient(900px 360px at 100% 0%, var(--color-accent-secondary-10), transparent 55%),
+    rgba(13,15,20,0.45);
+}
+.cc-forcegraph { background: transparent; height: 520px; }
+
+/* matrix backdrop fix: sit above body bg (z-index 0), behind content (z-index 1), no scroll capture (pointer-events:none already set) */
+.cc-backdrop { z-index: 0; }
+.cc-main { position: relative; z-index: 1; }
+.cc-hero { z-index: 1; }
+.cc-section { position: relative; z-index: 1; }

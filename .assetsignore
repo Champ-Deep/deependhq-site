@@ -5,3 +5,6 @@
 wrangler.toml
 wrangler.jsonc
 *.md
+
+# Next.js app source (deployed via Vercel, not as Worker assets)
+deependhq-next/

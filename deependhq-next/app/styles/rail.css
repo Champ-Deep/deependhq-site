@@ -1,0 +1,225 @@
+/* ============================================================
+   rail.css — content-aware layout system.
+   Turns dead margin space into an active context rail:
+   sticky sidebar, scroll progress, scrollspy nav, legends, stats.
+   Loaded by journey, field-notes, toolkit, and now pages.
+   ============================================================ */
+
+/* mobile-only helpers: visible by default, hidden once the rail appears */
+.dh-rail-mobile-only { display: flex; }
+@media (min-width: 1100px) { .dh-rail-mobile-only { display: none !important; } }
+
+/* ---------- the two-column shell ---------- */
+.dh-rail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-12);
+  align-items: start;
+}
+@media (min-width: 1100px) {
+  .dh-rail-layout { grid-template-columns: minmax(0, 1fr) 264px; }
+}
+
+.dh-rail {
+  display: none;
+  position: sticky;
+  top: 84px;
+  align-self: start;
+  max-height: calc(100vh - 104px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--color-border);
+}
+@media (min-width: 1100px) { .dh-rail { display: block; } }
+
+.dh-rail-block { margin-bottom: var(--space-6); }
+.dh-rail-k {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-3);
+}
+
+/* ---------- scroll progress (vertical, lives in the rail) ---------- */
+.dh-rail-progress { display: flex; align-items: center; gap: 10px; }
+.dh-rail-progress-track {
+  flex: 1; height: 4px; border-radius: 4px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+.dh-rail-progress-fill {
+  height: 100%;
+  background: var(--color-accent-primary);
+  box-shadow: 0 0 8px var(--color-accent-primary);
+  transition: width 80ms linear;
+}
+.dh-rail-progress-pct {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  min-width: 34px; text-align: right;
+}
+/* "you are here" readout under the bar */
+.dh-rail-here {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  color: var(--color-text-primary);
+  margin-top: var(--space-2);
+}
+.dh-rail-here .dh-gt { color: var(--color-accent-primary); margin-right: 4px; }
+
+/* ---------- scrollspy nav (TOC / month map) ---------- */
+.dh-rail-nav { list-style: none; margin: 0; padding: 0; }
+.dh-rail-nav li { margin: 0; }
+.dh-rail-nav a, .dh-rail-nav button {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0; background: transparent; cursor: pointer; text-align: left;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  font-family: var(--font-code);
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.dh-rail-nav a:hover, .dh-rail-nav button:hover { color: var(--color-text-primary); text-decoration: none; }
+.dh-rail-nav .active {
+  color: var(--color-accent-primary);
+  border-left-color: var(--color-accent-primary);
+}
+.dh-rail-nav .dh-rail-count {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+/* ---------- arc legend with live mix bar ---------- */
+.dh-rail-legend { list-style: none; margin: 0; padding: 0; }
+.dh-rail-legend li {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-code); font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  padding: 3px 0;
+}
+.dh-rail-swatch { width: 9px; height: 9px; border-radius: 3px; flex-shrink: 0; }
+.dh-rail-swatch-green { background: var(--color-accent-primary); }
+.dh-rail-swatch-blue  { background: var(--color-accent-secondary); }
+.dh-rail-swatch-gold  { background: var(--color-accent-tertiary); }
+.dh-rail-swatch-muted { background: var(--color-border-hover); }
+
+.dh-rail-mix {
+  display: flex; height: 6px; border-radius: 4px; overflow: hidden;
+  margin: var(--space-3) 0 var(--space-2);
+  background: var(--color-border);
+}
+.dh-rail-mix span { height: 100%; }
+.dh-rail-mix .mix-green { background: var(--color-accent-primary); }
+.dh-rail-mix .mix-blue  { background: var(--color-accent-secondary); }
+.dh-rail-mix .mix-gold  { background: var(--color-accent-tertiary); }
+
+/* ---------- rail stats ---------- */
+.dh-rail-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.dh-rail-stat { display: flex; flex-direction: column; gap: 2px; }
+.dh-rail-stat-num {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.3rem; line-height: 1; color: var(--color-text-primary);
+}
+.dh-rail-stat-lab { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+
+/* ---------- rail filter pills (stacked) ---------- */
+.dh-rail-filters { display: flex; flex-direction: column; gap: 2px; }
+
+/* ============================================================
+   Journey feed v2 — expansive entries, month groups, infinite scroll
+   ============================================================ */
+.dh-feed-v2 { display: flex; flex-direction: column; gap: var(--space-6); }
+
+.dh-month-head {
+  display: flex; align-items: center; gap: var(--space-4);
+  margin: var(--space-8) 0 var(--space-2);
+  scroll-margin-top: 84px;
+}
+.dh-month-head:first-child { margin-top: 0; }
+.dh-month-name {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--text-h3); color: var(--color-text-primary);
+  margin: 0; white-space: nowrap;
+}
+.dh-month-rule { flex: 1; height: 1px; background: var(--color-border); }
+.dh-month-count { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); white-space: nowrap; }
+
+/* entry v2 */
+.dh-entry-v2 {
+  position: relative;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-left-width: 3px;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--space-6) var(--space-8);
+  transition: border-color var(--dur) var(--ease-out);
+}
+.dh-entry-v2:hover { border-color: var(--color-border-hover); }
+.dh-entry-v2.arc-green { border-left-color: var(--color-accent-primary); }
+.dh-entry-v2.arc-blue  { border-left-color: var(--color-accent-secondary); }
+.dh-entry-v2.arc-gold  { border-left-color: var(--color-accent-tertiary); }
+
+.dh-entry-v2-head {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.dh-entry-v2-mood { font-size: 1.15rem; line-height: 1; }
+.dh-entry-v2-date { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
+.dh-entry-v2-head .dh-entry-v2-tags { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+
+.dh-entry-v2-ship {
+  font-size: var(--text-body-large);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4);
+  max-width: none;
+}
+.dh-entry-v2-ship .dh-gt { color: var(--color-accent-primary); margin-right: 8px; font-family: var(--font-code); }
+
+.dh-entry-v2-row {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-3) 0 0;
+  border-top: 1px dashed var(--color-border);
+}
+.dh-entry-v2-label {
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  padding-top: 3px;
+}
+.dh-entry-v2-text { margin: 0; font-size: var(--text-body); line-height: 1.65; color: var(--color-text-primary); max-width: none; }
+.dh-entry-v2-text.thread { color: var(--color-text-secondary); font-style: italic; }
+
+@media (max-width: 600px) {
+  .dh-entry-v2 { padding: var(--space-4) var(--space-4); }
+  .dh-entry-v2-row { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* infinite scroll sentinel + loader */
+.dh-feed-sentinel { height: 1px; }
+.dh-feed-more {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-code); font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  padding: var(--space-8) 0;
+}
+.dh-feed-more .dh-gt { color: var(--color-accent-primary); }
+.dh-feed-end {
+  text-align: center;
+  font-family: var(--font-code); font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  padding: var(--space-8) 0 var(--space-4);
+}
