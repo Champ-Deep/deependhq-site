@@ -1,0 +1,403 @@
+/* ============================================================
+   refine6.css : v2 refinement pass. Loaded LAST in globals.css,
+   so every rule here wins the cascade over pages5/pages6.
+   Covers: compact visual company cards, interactive constellation
+   nodes, upgraded latest-essay tile, shipped-and-live strip under
+   the macbook stage, plus global rhythm, nav, footer, and hero
+   glass refinements. Tokens only. Motion gated behind
+   prefers-reduced-motion: no-preference; base state is the end
+   state everywhere.
+   ============================================================ */
+
+/* ---------- global rhythm: kill the dead whitespace ---------- */
+.dh5-section { padding-block: clamp(40px, 6vh, 72px); }
+
+/* ---------- nav polish ---------------------------------------- */
+.dh-nav { padding: 12px 28px; gap: var(--s6); }
+.dh-nav .dh-logo { margin-left: 4px; }
+.dh-nav-links a:hover, .dh-nav-link:hover { text-decoration: none; }
+.dh-nav-actions { margin-right: 4px; }
+
+/* ---------- footer mailto row + copy button ------------------- */
+.dh-foot-mailto {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.dh6-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 3px var(--s2);
+  cursor: pointer;
+  transition: border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
+}
+.dh6-copy:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.dh6-copy[data-copied="true"] {
+  border-color: var(--build);
+  color: var(--build);
+}
+
+/* ---------- hero tiles: let the background breathe ------------ */
+.dh5-hero .dh-tile { background: color-mix(in oklab, var(--card) 62%, transparent); }
+
+/* ============================================================
+   1. companies grid : compact visual cards, equal heights
+   ============================================================ */
+.dh6r-co-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--bento-gap);
+}
+@media (max-width: 1100px) { .dh6r-co-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .dh6r-co-grid { grid-template-columns: 1fr; } }
+
+.dh6r-co-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  min-width: 0;
+  background: color-mix(in oklab, var(--card) 76%, transparent);
+  border: 1px solid var(--glass-line, var(--line));
+  border-radius: var(--r-md);
+  padding: var(--s4);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out);
+}
+.dh6r-co-card:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+}
+.dh6r-co-card[data-win="true"] { border-color: var(--win-dim); }
+
+.dh6r-co-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s2);
+  min-width: 0;
+}
+.dh6r-co-name {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 700;
+  letter-spacing: var(--track-display);
+  color: var(--text);
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dh6r-co-tag {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 2px var(--s2);
+  text-transform: uppercase;
+  letter-spacing: var(--track-caps);
+  white-space: nowrap;
+}
+
+.dh6r-co-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+}
+.dh6r-pill {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text);
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
+  border-radius: var(--r-pill);
+  padding: 1px var(--s2);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dh6r-co-foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  min-width: 0;
+}
+
+/* activity meter: up to 8 tiny bars, filled = recent log entries */
+.dh6r-meter {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 10px;
+}
+.dh6r-meter i {
+  width: 5px;
+  height: 100%;
+  border-radius: 1px;
+  background: color-mix(in oklab, var(--line) 70%, transparent);
+}
+.dh6r-meter i.dh6r-meter-on { background: var(--build); }
+
+/* one-line meta: last ship, or the desc when the log has nothing */
+.dh6r-co-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* ============================================================
+   2. constellation : clickable nodes with hover labels
+   ============================================================ */
+.dh6r-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.72;
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    background var(--dur-2) var(--ease-out),
+    opacity var(--dur-2) var(--ease-out);
+}
+.dh6r-node[data-active="true"] {
+  background: var(--build-wash, var(--card));
+  border-color: var(--build-dim, var(--line));
+  color: var(--text);
+  opacity: 1;
+}
+.dh6r-node:hover,
+.dh6r-node:focus-visible {
+  border-color: var(--accent);
+  color: var(--text);
+  opacity: 1;
+  z-index: 2;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dh6r-node:hover,
+  .dh6r-node:focus-visible { transform: scale(1.18); }
+}
+
+/* full company name, revealed near the node on hover and focus */
+.dh6r-node-label {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text);
+  background: color-mix(in oklab, var(--card) 94%, transparent);
+  border: 1px solid var(--line-2, var(--line));
+  border-radius: var(--r-sm);
+  padding: 2px var(--s2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.dh6r-node:hover .dh6r-node-label,
+.dh6r-node:focus-visible .dh6r-node-label { opacity: 1; }
+
+/* hint line under the constellation */
+.dh6r-viz-hint {
+  display: block;
+  margin-top: var(--s1);
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+.dh6r-viz-hint::before {
+  content: '>_';
+  color: var(--accent);
+  margin-right: var(--s2);
+  font-family: var(--font-mono);
+}
+
+/* ============================================================
+   3. latest essay tile : earn the size
+   ============================================================ */
+.dh6r-essay-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h3, var(--text-lg));
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: var(--track-display);
+  color: var(--text);
+  margin: 0;
+}
+.dh6r-essay-dek {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+.dh6r-essay-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+.dh6r-essay-meta span + span::before {
+  content: '·';
+  margin-right: var(--s2);
+  color: var(--muted);
+}
+.dh6r-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line-2, var(--line));
+  border-radius: var(--r-md);
+  padding: var(--s1) var(--s3);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
+}
+.dh6r-btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* decorative terminal rule fills any vertical slack, no more text */
+.dh6r-essay-tile::after {
+  content: '>_';
+  display: block;
+  margin-top: auto;
+  padding-top: var(--s3);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   4. shipped and live strip under the macbook stage
+   ============================================================ */
+.dh6r-ship-strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  width: 100%;
+  margin-top: var(--s6);
+}
+.dh6r-ship-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: var(--track-caps);
+}
+.dh6r-ship-head::before {
+  content: '>_';
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.dh6r-ship-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s3);
+}
+@media (max-width: 1100px) { .dh6r-ship-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .dh6r-ship-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .dh6r-ship-grid { grid-template-columns: 1fr; } }
+
+.dh6r-ship-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  min-width: 0;
+  background: color-mix(in oklab, var(--card) 76%, transparent);
+  border: 1px solid var(--glass-line, var(--line));
+  border-radius: var(--r-md);
+  padding: var(--s3) var(--s4);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+a.dh6r-ship-tile:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+}
+.dh6r-ship-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-width: 0;
+}
+.dh6r-ship-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--build);
+  box-shadow: 0 0 6px var(--build);
+}
+.dh6r-ship-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.dh6r-ship-note {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* build-stamp 1783984030 : forces the watcher to reread after a partial-write compile */

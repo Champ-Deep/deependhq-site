@@ -71,7 +71,7 @@ const istClock = () => {
 
 // ---------- left rail ----------
 
-export function RailLeft({ day, waypoints }: { day: number; waypoints: Waypoint[] }) {
+export function RailLeft({ day, ships, waypoints }: { day: number; ships: number; waypoints: Waypoint[] }) {
   const ids = useMemo(() => waypoints.map((wp) => wp.id), [waypoints]);
   const active = useScrollSpy(ids);
   const [clock, setClock] = useState("");
@@ -87,10 +87,16 @@ export function RailLeft({ day, waypoints }: { day: number; waypoints: Waypoint[
   };
 
   return (
-    <aside className="dh6-rail" aria-label="page waypoints">
-      <div className="dh6-rail-day">
-        <span className="dh6-rail-day-num">{day}</span>
-        <span className="dh6-rail-day-lab">days public</span>
+    <aside className="dh5-rail dh6-rail" aria-label="page waypoints">
+      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        <div className="dh5-rail-num">
+          <b>{day}</b>
+          <span>days building in public</span>
+        </div>
+        <div className="dh5-rail-num">
+          <b>{ships}</b>
+          <span>ships this month</span>
+        </div>
       </div>
       <nav className="dh6-waypoints">
         {waypoints.map((wp) => (
@@ -125,10 +131,14 @@ export function RailRight({
   status,
   lexicon,
   commits,
+  companiesCount,
+  essays,
 }: {
   status: RailStatus;
   lexicon: { term: string; def: string }[];
   commits: number[];
+  companiesCount: number;
+  essays: number;
 }) {
   const progress = useScrollProgress();
 
@@ -148,7 +158,17 @@ export function RailRight({
   const ticks = [0.25, 0.5, 0.75];
 
   return (
-    <aside className="dh6-rail dh6-railright" aria-hidden="true">
+    <aside className="dh5-rail dh5-rail-right dh6-rail dh6-railright" aria-hidden="true">
+      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        <div className="dh5-rail-num">
+          <b>{companiesCount}</b>
+          <span>companies in motion</span>
+        </div>
+        <div className="dh5-rail-num">
+          <b>{essays}</b>
+          <span>essays published</span>
+        </div>
+      </div>
       <div className="dh6-wire">
         {ticks.map((t) => (
           <span

@@ -25,10 +25,24 @@ export function CommandPalette({ day = "" }: { day?: number | string }) {
   const inRef = useRef<HTMLInputElement>(null);
 
   // Theme accent persistence, exposed for the terminal `theme` command.
+  // Also applies the persisted round 6 palette (operator/ember/dopamine).
   useEffect(() => {
     window.dhTheme = { set: dhThemeSet, apply: dhThemeApply };
     window.dhTheme.apply();
+    const pal = localStorage.getItem("dh-r6-palette");
+    if (pal) document.documentElement.setAttribute("data-r6-palette", pal);
   }, []);
+
+  const setPalette = (p: string): string => {
+    if (p === "operator") {
+      document.documentElement.removeAttribute("data-r6-palette");
+      localStorage.removeItem("dh-r6-palette");
+    } else {
+      document.documentElement.setAttribute("data-r6-palette", p);
+      localStorage.setItem("dh-r6-palette", p);
+    }
+    return "palette: " + p;
+  };
 
   const items = useMemo<PaletteItem[]>(
     () => [
@@ -50,6 +64,9 @@ export function CommandPalette({ day = "" }: { day?: number | string }) {
       { grp: "fun", label: "theme cyan", hint: "cold", run: () => dhThemeSet("cyan") },
       { grp: "fun", label: "theme magenta", hint: "loud", run: () => dhThemeSet("magenta") },
       { grp: "fun", label: "theme reset", hint: "back to green", run: () => dhThemeSet("reset") },
+      { grp: "fun", label: "palette operator", hint: "gotham green", run: () => setPalette("operator") },
+      { grp: "fun", label: "palette ember", hint: "green plus orange", run: () => setPalette("ember") },
+      { grp: "fun", label: "palette dopamine", hint: "electric blue on black", run: () => setPalette("dopamine") },
     ],
     [day, router]
   );

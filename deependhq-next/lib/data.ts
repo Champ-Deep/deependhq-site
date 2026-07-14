@@ -157,10 +157,24 @@ function build(): DHData {
     slugByName.set(c.name, c.slug);
   }
 
+  // Product-name resolution: an arc like "ChampMail" or "Lake Stream" maps to
+  // the company whose products list carries it. This is what keeps every
+  // company's page and card alive even when arc_map has no explicit entry.
+  const productByName = new Map<string, string>();
+  for (const c of companies) {
+    const prods = Array.isArray(c.products) ? c.products : [];
+    for (const p of prods) {
+      const key = p.toLowerCase();
+      if (!productByName.has(key)) productByName.set(key, c.name);
+    }
+  }
+
   const resolveArc = (label: string | null | undefined): string | null => {
     if (label == null) return null;
     if (Object.prototype.hasOwnProperty.call(arcMap, label)) return arcMap[label];
     if (byName.has(label)) return label;
+    const viaProduct = productByName.get(label.toLowerCase());
+    if (viaProduct) return viaProduct;
     return null;
   };
 

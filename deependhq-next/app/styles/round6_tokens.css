@@ -1,0 +1,61 @@
+/* ============================================================
+   colors_and_type6.css : Round 6 additive token layer.
+   Load AFTER ../round5/colors_and_type.css. Adds: palette
+   variants (Tweaks-switchable), glass tokens, second neon.
+   Components still consume only tokens.
+   ============================================================ */
+
+:root {
+  /* second neon: paired accent for the dopamine language.
+     operator default = gold (existing win hue). */
+  --neon-2:       var(--win);
+  --neon-2-hover: var(--win-hover);
+  --neon-2-dim:   var(--win-dim);
+  --neon-2-wash:  var(--win-wash);
+
+  /* frosted touch */
+  --glass-bg:    color-mix(in oklab, var(--card) 62%, transparent);
+  --glass-bg-2:  color-mix(in oklab, var(--surface) 70%, transparent);
+  --glass-line:  rgba(255, 255, 255, 0.09);
+  --glass-line-2: rgba(255, 255, 255, 0.16);
+  --glass-blur:  12px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- palette: ember. green stays lead, orange joins --- */
+html[data-r6-palette="ember"] {
+  --neon-2:       var(--_ember-b);
+  --neon-2-hover: color-mix(in oklab, var(--_ember-b) 82%, white);
+  --neon-2-dim:   color-mix(in oklab, var(--_ember-b) 45%, var(--card));
+  --neon-2-wash:  color-mix(in oklab, var(--_ember-b) 12%, transparent);
+}
+
+/* ---------- palette: dopamine. electric blue lead, blazing
+   orange second, deeper true-black surfaces ------------------- */
+html[data-r6-palette="dopamine"] {
+  --bg:      #050609;
+  --surface: #0A0D13;
+  --card:    #10141F;
+  --card-2:  #161B2A;
+  --line:    #252B3B;
+  --line-2:  #364059;
+
+  --_electric: #4A9EFF;
+  --_blaze:    #FF6B2E;
+
+  --accent:       var(--_electric);
+  --accent-hover: color-mix(in oklab, var(--_electric) 82%, white);
+  --accent-wash:  color-mix(in oklab, var(--_electric) 12%, transparent);
+  --accent-glow:  0 0 24px color-mix(in oklab, var(--_electric) 22%, transparent);
+
+  --build: var(--_electric);
+  --build-hover: color-mix(in oklab, var(--_electric) 82%, white);
+  --build-dim:   color-mix(in oklab, var(--_electric) 45%, var(--card));
+  --build-wash:  color-mix(in oklab, var(--_electric) 12%, transparent);
+  --build-glow:  0 0 24px color-mix(in oklab, var(--_electric) 20%, transparent);
+
+  --neon-2:       var(--_blaze);
+  --neon-2-hover: color-mix(in oklab, var(--_blaze) 82%, white);
+  --neon-2-dim:   color-mix(in oklab, var(--_blaze) 45%, var(--card));
+  --neon-2-wash:  color-mix(in oklab, var(--_blaze) 12%, transparent);
+}

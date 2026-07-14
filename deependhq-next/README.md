@@ -1,10 +1,10 @@
 # deependhq-next
 
-deependhq.com rebuilt on Next.js 16 (App Router) + React 19 + TypeScript strict + Tailwind v4. Gotham Workshop identity, evolved: whole-screen network-globe canvas fed by what is actually being built, side rails that live while you scroll, kinetic headline, frosted nav, signals bento, and the full command center.
+deependhq.com v2 on Next.js 16 (App Router) + React 19 + TypeScript strict + Tailwind v4, running the Gotham Workshop round 6 v4 design system: v5 token layer (body is mono by design), Bayer-dither background, whole-screen spatial layer (icosahedron core inside a labeled network shell fed by what is actually being built), kinetic Inter-variable headline, magnetic CTAs, split-flap bio, scroll-opened MacBook framing a live /command, guest terminal in the hero bento, signals bento, frosted glass everywhere, and enhanced rails (proof numbers, waypoints, progress wire, live widgets, commit sparkline). Palettes: operator (default), ember, dopamine via the cmd-k palette. Legacy inner pages and the command center ride along untouched. Round 6 source of record: `Gotham Workshop Design System/round6/` (README there has the owner flags).
 
 ## Test locally (one click)
 
-Double-click `run-local.command` in this folder. First run installs dependencies, then the site opens at http://localhost:3000.
+Double-click `run-local.command` in this folder. First run installs dependencies, then the site opens at http://localhost:4321 (port 4321, since 3000 belongs to Open WebUI on this Mac).
 
 Or by hand:
 

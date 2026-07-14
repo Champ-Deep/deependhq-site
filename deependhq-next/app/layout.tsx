@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Nav } from "@/components/client/Nav";
 import { Footer } from "@/components/Footer";
 import { CommandPalette } from "@/components/client/CommandPalette";
+import { Background } from "@/components/client/r6/Background";
 import { DH } from "@/lib/data";
 import "./globals.css";
 
@@ -39,8 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <div className="dh-app">
+          {/* Site-wide dither texture: every page shares the round 6 canvas. */}
+          <Background />
           <Nav />
-          <main>{children}</main>
+          {/* The home page brings its own <main className="dh5-main">; inner
+              pages render inside this wrapper. Avoids nested main elements. */}
+          <div className="dh-content">{children}</div>
           <Footer />
           <CommandPalette day={DH.brand.today_day} />
         </div>

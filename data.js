@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-13T20:16:01.713Z
+// Built 2026-07-14T22:34:27.488Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 255,
-    "today_date": "2026-07-13",
+    "today_day": 256,
+    "today_date": "2026-07-14",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 256,
+          "date": "2026-07-14",
+          "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200…",
+          "arc_color": "gold"
+        },
         {
           "day": 255,
           "date": "2026-07-13",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-06-30",
           "shipping_now": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise…",
           "arc_color": "blue"
-        },
-        {
-          "day": 241,
-          "date": "2026-06-29",
-          "shipping_now": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterprise accounts, 1,000+…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -173,6 +173,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 256,
+          "date": "2026-07-14",
+          "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200…",
+          "arc_color": "gold"
+        },
+        {
           "day": 255,
           "date": "2026-07-13",
           "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another…",
@@ -237,12 +243,6 @@ window.DH_DATA = {
           "date": "2026-06-23",
           "shipping_now": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it writing instead. i pulled every scattered…",
           "arc_color": "blue"
-        },
-        {
-          "day": 231,
-          "date": "2026-06-19",
-          "shipping_now": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -442,6 +442,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-14",
+      "day": 256,
+      "mood": "💡",
+      "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200 locations at $85-100K each. Dubai Metro signed, Sydney live, looking for a financing and demand-gen partner for UK, EU, AU rollout. separately, opened a banking relationship with two angles: HNI/NRI outreach for the data business and CRE project financing. five meetings total, both follow-ups drafted and queued.",
+      "yesterday_thread": "the club team closed $36K from a single lost-lead nurture sequence. one email, dormant lead, $36K. needs to become a system across every cohort, not stay a one-off.",
+      "raw_thought": "the hotel shop thing was not on any agenda. came up third in the conversation, after the official talking points. the best opportunities lately all live in the third topic.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-13",
       "day": 255,
@@ -1545,9 +1570,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:46 IST",
+    "time_ist": "04:04 IST",
     "weather": "24°C · clear",
-    "last_ship": "eragon co-sell path opened · just now",
+    "last_ship": "Hotel GMs + Federal Bank threads opened · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1577,6 +1602,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staf...",
+        "tag": "shipped d256"
+      },
+      {
         "text": "a call with a vc portfolio director opened two unexpected doors. one portfolio company...",
         "tag": "shipped d255"
       },
@@ -1587,10 +1616,6 @@ window.DH_DATA = {
       {
         "text": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3....",
         "tag": "shipped d253"
-      },
-      {
-        "text": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retaine...",
-        "tag": "shipped d252"
       }
     ],
     "soon": [
@@ -2909,5 +2934,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-13T20:16:01.713Z"
+  "built": "2026-07-14T22:34:27.488Z"
 };

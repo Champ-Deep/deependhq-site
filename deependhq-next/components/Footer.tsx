@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { DH } from "@/lib/data";
+import { CopyEmail } from "@/components/client/CopyEmail";
 
 const FooterHeader = ({ slug, label }: { slug: string; label?: string }) => (
   <div className="dh-fh-head">
@@ -34,11 +35,13 @@ export function Footer() {
           <br />
           <span className="dh-foot-lede-emph">All three get the same email address.</span>
         </h2>
-        <a className="dh-foot-mailto" href="mailto:deep@championsmail.com">
-          <span className="dh-gt">&gt;_</span>
-          <span className="dh-foot-mail">deep@championsmail.com</span>
-          <span className="dh-foot-mail-copy">copy ⌘</span>
-        </a>
+        <span className="dh6-copyrow">
+          <a className="dh-foot-mailto" href="mailto:deep@championsmail.com">
+            <span className="dh-gt">&gt;_</span>
+            <span className="dh-foot-mail">deep@championsmail.com</span>
+          </a>
+          <CopyEmail email="deep@championsmail.com" />
+        </span>
       </div>
 
       <div className="dh-foot-grid">

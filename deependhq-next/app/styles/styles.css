@@ -2,7 +2,7 @@
    ui_kits/website — Gotham Workshop styles
    ============================================================ */
 
-@import url('../../colors_and_type.css');
+/* tokens load first via globals.css; legacy relative import removed for the bundler */
 
 html, body, #root { background: var(--color-bg); margin: 0; padding: 0; min-height: 100vh; }
 body { color: var(--color-text-primary); font-family: var(--font-body); }

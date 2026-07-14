@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const LINKS = [
+  { id: "home", label: "Home", href: "/" },
   { id: "command", label: "Command", href: "/command" },
   { id: "now", label: "Now", href: "/now" },
   { id: "journey", label: "Journey", href: "/journey" },
@@ -24,7 +25,7 @@ export function Nav() {
       ? "home"
       : pathname.startsWith("/writing")
         ? "writing"
-        : LINKS.find((l) => pathname.startsWith(l.href))?.id ?? "";
+        : LINKS.find((l) => l.href !== "/" && pathname.startsWith(l.href))?.id ?? "";
 
   return (
     <nav className="dh-nav">

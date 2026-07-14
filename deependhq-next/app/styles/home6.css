@@ -1,133 +1,97 @@
-/* home6.css : the v4-direction home surface. New layer, additive only.
-   Namespaces: dh6- (shell, rails, background), dh-bento / dh-tile (signals),
-   dh6-teaser (command laptop). Legacy dh-* classes untouched. */
+/* home6.css : app-local additive layer on top of pages5/pages6.
+   Owns ONLY: the enhanced rails (waypoints, progress wire, live widgets,
+   sparkline) and the full-screen spatial hero canvas. Everything else
+   (shell, bento, tiles, glass) belongs to pages5.css / pages6.css. */
 
-/* ---------- full-screen background canvas ---------- */
-.dh6-bg {
+/* ---------- full-screen spatial layer (ico + label network) --- */
+.r6-spatial {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-}
-.dh-app { position: relative; z-index: 1; }
-html, body { background: var(--color-bg); }
-
-/* Home page lets the canvas breathe: hero + shell are transparent. */
-.dh6-shell { background: transparent; }
-
-/* ---------- three-column shell with rails ---------- */
-.dh6-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 1480px;
-  margin: 0 auto;
-}
-.dh6-rail { display: none; }
-
-@media (min-width: 1200px) {
-  .dh6-shell {
-    grid-template-columns: 210px minmax(0, 1fr) 210px;
-    gap: 40px;
-    padding: 0 28px;
-  }
-  .dh6-rail {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    padding: 110px 0 56px;
-    font-family: var(--font-code);
-    font-size: var(--text-xs);
-    color: var(--color-text-secondary);
-    user-select: none;
-  }
+  will-change: opacity, filter;
 }
 
-/* left rail: day counter, waypoints, clock. Spread across the full height. */
-.dh6-rail-day {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+/* ---------- enhanced rails: layered onto .dh5-rail ------------ */
+/* dh5-rail gives grid placement + hide under 1180px; dh6 spreads it
+   across the viewport and adds the live layer. Loads after pages5,
+   so these win. */
+.dh6-rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 104px 0 48px;
+  gap: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--muted);
+  user-select: none;
 }
-.dh6-rail-day-num {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: var(--color-text-primary);
-  line-height: 1;
+.dh6-rail .dh5-rail-num { text-align: center; align-items: center; }
+.dh6-rail.dh5-rail-right .dh5-rail-num { text-align: center; align-items: center; }
+/* rails never bleed into (or under) the main column */
+.dh6-rail { z-index: 2; max-width: var(--rail-w, 210px); overflow: visible; }
+.dh6-rail .dh5-rail-num { position: relative; z-index: 1; }
+
+/* footer copy row */
+.dh6-copyrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
-.dh6-rail-day-lab { letter-spacing: 0.08em; }
 
 .dh6-waypoints {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 24px;
   align-items: flex-start;
 }
 .dh6-waypoint {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--color-text-secondary);
+  color: var(--muted);
   text-decoration: none;
-  transition: color var(--dur) var(--ease-out);
+  transition: color var(--dur-2, 200ms) ease;
 }
-.dh6-waypoint:hover { color: var(--color-text-primary); text-decoration: none; }
+.dh6-waypoint:hover { color: var(--text); text-decoration: none; }
 .dh6-waypoint-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  border: 1px solid var(--color-border-hover);
+  border: 1px solid var(--line-2);
   background: transparent;
-  transition: all var(--dur) var(--ease-out);
+  transition: all var(--dur-2, 200ms) ease;
   flex: none;
 }
-.dh6-waypoint.active { color: var(--color-accent-primary); }
+.dh6-waypoint.active { color: var(--accent); }
 .dh6-waypoint.active .dh6-waypoint-dot {
-  background: var(--color-accent-primary);
-  border-color: var(--color-accent-primary);
-  box-shadow: 0 0 10px var(--color-accent-primary-20);
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-wash);
 }
 .dh6-waypoint-label { letter-spacing: 0.05em; }
 
-.dh6-rail-clock {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.dh6-rail-clock-time { color: var(--color-text-primary); font-size: var(--text-small); }
-
-/* right rail: traveling glyph on a progress line + rotating micro widgets */
-.dh6-railright {
-  position: relative;
-}
+.dh6-railright { position: relative; }
 .dh6-wire {
   position: absolute;
-  top: 110px;
-  bottom: 56px;
+  top: 250px; /* starts below the proof numbers so the glyph never runs over them */
+  bottom: 48px;
   left: 50%;
   width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--color-border) 12%,
-    var(--color-border) 88%,
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, var(--line) 12%, var(--line) 88%, transparent);
 }
 .dh6-wire-glyph {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--color-accent-primary);
-  background: var(--color-bg);
+  color: var(--accent);
+  background: var(--bg);
   padding: 6px 2px;
   font-weight: 600;
-  text-shadow: 0 0 12px var(--color-accent-primary-20);
   transition: top 120ms linear;
 }
 .dh6-wire-tick {
@@ -137,164 +101,33 @@ html, body { background: var(--color-bg); }
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--color-border-hover);
+  background: var(--line-2);
 }
-.dh6-wire-tick.passed { background: var(--color-accent-primary); }
+.dh6-wire-tick.passed { background: var(--accent); }
 
 .dh6-widget {
   position: relative;
   z-index: 1;
-  background: color-mix(in srgb, var(--color-bg-elevated) 78%, transparent);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-line);
+  border-radius: var(--r-md, 8px);
   padding: 12px;
-  width: 170px;
+  width: 100%;
+  max-width: var(--rail-w, 170px);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  animation: dh6-widget-in 320ms var(--ease-out);
 }
-@keyframes dh6-widget-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .dh6-widget { animation: dh6-widget-in 320ms ease-out; }
+  @keyframes dh6-widget-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
 }
-.dh6-widget-key {
-  color: var(--color-accent-secondary);
-  letter-spacing: 0.08em;
-}
-.dh6-widget-val { color: var(--color-text-primary); line-height: 1.45; }
-.dh6-widget-sub { color: var(--color-text-secondary); }
+.dh6-widget-key { color: var(--think); letter-spacing: 0.08em; }
+.dh6-widget-val { color: var(--text); line-height: 1.45; }
+.dh6-widget-sub { color: var(--muted); }
 .dh6-spark { width: 100%; height: 34px; }
-
-/* ---------- hero additions ---------- */
-.dh6-hero-id {
-  font-family: var(--font-code);
-  font-size: var(--text-xs);
-  color: var(--color-text-secondary);
-  letter-spacing: 0.06em;
-  margin-top: 10px;
-}
-.dh6-term-tile {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 22px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--color-bg-elevated) 65%, transparent);
-  backdrop-filter: blur(10px);
-  padding: 10px 14px;
-  font-family: var(--font-code);
-  font-size: var(--text-terminal);
-  color: var(--color-text-secondary);
-}
-.dh6-term-tile a { color: var(--color-accent-primary); }
-.dh6-term-tile-key { color: var(--color-accent-tertiary); letter-spacing: 0.06em; }
-
-/* ---------- signals bento ---------- */
-.dh-bento {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 16px;
-}
-.dh-tile {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--color-bg-elevated) 82%, transparent);
-  backdrop-filter: blur(12px);
-  padding: 18px;
-  min-width: 0;
-  overflow: hidden;
-}
-.dh-tile-key {
-  display: block;
-  font-family: var(--font-code);
-  font-size: var(--text-xs);
-  color: var(--color-text-secondary);
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
-}
-.dh-tile.b5 { grid-column: span 12; }
-.dh-tile.b7 { grid-column: span 12; }
-@media (min-width: 900px) {
-  .dh-tile.b7 { grid-column: span 7; }
-  .dh-tile.b5 { grid-column: span 5; }
-}
-
-/* ---------- command teaser (laptop scroll) ---------- */
-.dh6-teaser { padding: var(--space-24) 0; }
-.dh6-teaser-frame {
-  position: relative;
-  border: 1px solid var(--color-border-hover);
-  border-radius: 14px;
-  background: #0A0C10;
-  box-shadow: var(--shadow-lg), var(--shadow-glow-green);
-  overflow: hidden;
-  transform-origin: center top;
-  will-change: transform;
-  transition: transform 80ms linear;
-}
-.dh6-teaser-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-bg-elevated);
-  font-family: var(--font-code);
-  font-size: var(--text-xs);
-  color: var(--color-text-secondary);
-}
-.dh6-teaser-dot { width: 10px; height: 10px; border-radius: 50%; }
-.dh6-teaser-dot.r { background: #FF5F57; }
-.dh6-teaser-dot.a { background: #FEBC2E; }
-.dh6-teaser-dot.g { background: #28C840; }
-.dh6-teaser-screen {
-  position: relative;
-  height: 460px;
-  overflow: hidden;
-}
-.dh6-teaser-screen iframe {
-  width: 166.6%;
-  height: 166.6%;
-  transform: scale(0.6);
-  transform-origin: top left;
-  border: 0;
-  pointer-events: none;
-}
-.dh6-teaser-veil {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 26px;
-  background: linear-gradient(to bottom, transparent 55%, rgba(10, 12, 16, 0.92));
-}
-
-/* ---------- next step banner ---------- */
-.dh6-nextstep {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin: var(--space-16) 0 var(--space-24);
-  padding: 22px 26px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--color-accent-primary-10) 60%, transparent);
-  text-decoration: none;
-}
-.dh6-nextstep:hover { text-decoration: none; border-color: var(--color-accent-primary); }
-.dh6-nextstep-label {
-  font-family: var(--font-code);
-  color: var(--color-accent-primary);
-  font-size: var(--text-small);
-}
-.dh6-nextstep-arrow { color: var(--color-accent-primary); font-size: 1.2rem; }
-
-@media (prefers-reduced-motion: reduce) {
-  .dh6-widget { animation: none; }
-  .dh6-teaser-frame { transition: none; }
-}

@@ -1,0 +1,312 @@
+/* ============================================================
+   pages5.css. Round 5: Operator Editorial.
+   Append to pages.css. Tokens only (colors_and_type.css v5).
+   Covers: bento grid, hero bento, guest terminal, proof rails,
+   ticker v2 marquee, last-five strip, ways in, proof, viz,
+   breadcrumb, next-step. Reduced motion path on everything.
+   ============================================================ */
+
+/* ---------- Page shell with gutters for the rails ---------- */
+.dh5-shell {
+  max-width: calc(var(--content-max) + 2 * (var(--rail-w) + var(--s8)));
+  margin: 0 auto;
+  padding: 0 var(--s5);
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, var(--content-max)) var(--rail-w);
+  gap: var(--s8);
+  justify-content: center;
+}
+.dh5-main { grid-column: 2; min-width: 0; }
+
+/* ---------- Bento. The universal card formation ------------- */
+.dh-bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--bento-gap);
+}
+.b3 { grid-column: span 3; } .b4 { grid-column: span 4; }
+.b5 { grid-column: span 5; } .b7 { grid-column: span 7; }
+.b8 { grid-column: span 8; } .b12 { grid-column: span 12; }
+
+.dh-tile {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--s5);
+  min-width: 0;
+  display: flex; flex-direction: column; gap: var(--s3);
+  transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out);
+}
+.dh-tile:hover { border-color: var(--line-2); }
+.dh-tile-key { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--muted); display: flex; align-items: center; gap: var(--s2); }
+.dh-tile-key::before { content: '>_'; color: var(--accent); font-weight: 600; letter-spacing: 0; text-transform: none; }
+
+/* win tiles: gold border glow, no gradients shouting */
+.dh-tile[data-win="true"] { border-color: var(--win-dim); box-shadow: var(--win-glow); }
+/* quiet companies: honest dim */
+.dh-tile[data-quiet="true"] { opacity: 0.62; }
+.dh-tile[data-quiet="true"]:hover { opacity: 1; }
+
+/* ---------- Hero bento (exactly four tiles) ------------------ */
+.dh5-hero { padding: var(--s12) 0 var(--s8); }
+.dh5-hero-statement { grid-row: span 2; justify-content: center; gap: var(--s5); background: transparent; border: 0; padding: var(--s3) var(--s2); }
+.dh5-hero-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 800;
+  letter-spacing: var(--track-display);
+  line-height: 1.05;
+  color: var(--text);
+  margin: 0;
+}
+.dh5-hero-fact { font-size: var(--text-lg); color: var(--text); max-width: 44ch; margin: 0; }
+.dh5-hero-id { font-size: var(--text-sm); color: var(--muted); }
+.dh5-hero-id b { color: var(--text); font-weight: 400; }
+
+/* boot sequence + chromatic entry. base state IS the end state;
+   motion only when allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  .dh5-boot-anim .dh5-hero-h1 { animation: dh5-chroma var(--dur-4) var(--ease-out) both; }
+  .dh5-boot-anim .dh5-hero-fact, .dh5-boot-anim .dh5-hero-id { animation: dh5-rise var(--dur-3) var(--ease-out) both; animation-delay: 500ms; }
+  @keyframes dh5-chroma {
+    0% { opacity: 0; text-shadow: -6px 0 var(--think), 6px 0 var(--danger); transform: translateY(6px); }
+    60% { opacity: 1; text-shadow: -2px 0 var(--think), 2px 0 var(--danger); }
+    100% { opacity: 1; text-shadow: none; transform: none; }
+  }
+  @keyframes dh5-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+.dh5-bootline { font-size: var(--text-xs); color: var(--muted); min-height: 1.2em; }
+
+/* day counter as HUD readout, restrained */
+.dh5-day {
+  display: inline-flex; align-items: baseline; gap: var(--s2);
+  border: 1px solid var(--line); border-radius: var(--r-pill);
+  padding: var(--s1) var(--s3); width: fit-content;
+  font-size: var(--text-xs); color: var(--muted);
+}
+.dh5-day b { color: var(--accent); font-size: var(--text-sm); font-weight: 600; }
+
+/* CTA doctrine */
+.dh5-cta-row { display: flex; align-items: center; gap: var(--s5); flex-wrap: wrap; }
+.dh5-cta {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  background: var(--accent); color: #0D0F14;
+  font-family: var(--font-mono); font-size: var(--text-md); font-weight: 600;
+  padding: var(--s3) var(--s6); border-radius: var(--r-md); border: 0;
+  cursor: pointer; text-decoration: none;
+  transition: background var(--dur-1) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+.dh5-cta:hover { background: var(--accent-hover); box-shadow: var(--accent-glow); color: #0D0F14; text-decoration: none; }
+.dh5-cta-alt { font-size: var(--text-sm); color: var(--muted); }
+.dh5-cta-alt a { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.dh5-cta-alt a:hover { color: var(--accent); }
+
+/* shipping-today tile */
+.dh5-ship-line { font-size: var(--text-md); color: var(--text); line-height: 1.55; margin: 0; }
+.dh5-ship-meta { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); font-size: var(--text-xs); color: var(--muted); }
+.dh5-ship-meta .val { color: var(--text); }
+.dh5-ship-thread { font-size: var(--text-sm); color: var(--muted); border-top: 1px solid var(--line); padding-top: var(--s3); margin: 0; }
+.dh5-mood { font-style: normal; }
+
+/* latest essay tile */
+.dh5-essay-title { font-family: var(--font-display); font-size: var(--text-h3); font-weight: 700; letter-spacing: var(--track-display); margin: 0; }
+.dh5-essay-dek { font-size: var(--text-sm); color: var(--muted); margin: 0; }
+
+/* ---------- Guest terminal ----------------------------------- */
+.dh5-term {
+  background: color-mix(in oklab, var(--build) 4%, var(--bg));
+  border: 1px solid var(--build-dim);
+  box-shadow: var(--build-glow);
+  font-family: var(--font-mono);
+  padding: 0;
+  overflow: hidden;
+}
+.dh5-term-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--s2) var(--s4);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--text-xs); color: var(--muted);
+  letter-spacing: var(--track-caps); text-transform: uppercase;
+}
+.dh5-term-body { padding: var(--s3) var(--s4); height: 240px; overflow-y: auto; font-size: var(--text-sm); line-height: 1.7; }
+.dh5-term-body .t-out { color: var(--text); white-space: pre-wrap; margin: 0; }
+.dh5-term-body .t-dim { color: var(--muted); }
+.dh5-term-body .t-acc { color: var(--accent); }
+.dh5-term-body .t-win { color: var(--win); }
+.dh5-term-body .t-hum { color: var(--human); }
+.dh5-term-body .t-err { color: var(--danger); }
+.dh5-term-in {
+  display: flex; align-items: center; gap: var(--s2);
+  padding: var(--s3) var(--s4);
+  border-top: 1px solid var(--line);
+}
+.dh5-term-prompt { color: var(--accent); font-size: var(--text-sm); white-space: nowrap; }
+.dh5-term-input {
+  flex: 1; background: transparent; border: 0; outline: none;
+  color: var(--text); font-family: var(--font-mono); font-size: var(--text-sm);
+  caret-color: var(--accent); min-width: 0;
+}
+.dh5-term-hint { padding: 0 var(--s4) var(--s3); font-size: var(--text-xs); color: var(--muted); }
+.dh5-term-hint kbd { border: 1px solid var(--line); border-radius: var(--r-sm); padding: 0 4px; font-size: inherit; }
+/* no-JS fallback card is server markup; React removes it on mount */
+.dh5-term-static { display: flex; flex-direction: column; gap: var(--s3); padding: var(--s5); }
+
+/* ---------- Proof rails (active whitespace) ------------------ */
+.dh5-rail {
+  position: sticky; top: 96px;
+  align-self: start;
+  display: flex; flex-direction: column; gap: var(--s8);
+  padding-top: var(--s12);
+  z-index: var(--z-rail);
+}
+.dh5-rail-num { display: flex; flex-direction: column; gap: 2px; }
+.dh5-rail-num b { font-family: var(--font-display); font-size: 1.75rem; font-weight: 800; letter-spacing: var(--track-display); color: var(--text); line-height: 1; }
+.dh5-rail-num span { font-size: var(--text-xs); color: var(--muted); line-height: 1.4; }
+.dh5-rail-right { text-align: right; align-items: flex-end; }
+
+/* on-repeat chip: magenta, small, bottom of right rail only */
+.dh5-onrepeat {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  border: 1px solid var(--human-dim); border-radius: var(--r-pill);
+  padding: var(--s1) var(--s3);
+  font-size: var(--text-xs); color: var(--human);
+  max-width: 100%;
+}
+.dh5-onrepeat .tr { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dh5-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 10px; flex: none; }
+.dh5-eq i { width: 2px; background: var(--human); height: 40%; }
+@media (prefers-reduced-motion: no-preference) {
+  .dh5-eq i { animation: dh5-eq 900ms ease-in-out infinite alternate; }
+  .dh5-eq i:nth-child(2) { animation-delay: 150ms; }
+  .dh5-eq i:nth-child(3) { animation-delay: 300ms; }
+  @keyframes dh5-eq { from { height: 30%; } to { height: 100%; } }
+}
+
+/* mobile stat strip replaces rails under --rail-break */
+.dh5-statstrip {
+  display: none;
+  gap: var(--s5); align-items: center; flex-wrap: wrap;
+  padding: var(--s2) var(--s5);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  font-size: var(--text-xs); color: var(--muted);
+}
+.dh5-statstrip b { color: var(--text); font-weight: 600; margin-right: 4px; }
+
+@media (max-width: 1180px) {
+  .dh5-shell { display: block; padding: 0 var(--s5); max-width: var(--content-max); }
+  .dh5-rail { display: none; }
+  .dh5-statstrip { display: flex; }
+}
+
+/* ---------- Ticker v2: tail -f marquee ------------------------ */
+.dh5-ticker {
+  display: block;
+  border-block: 1px solid var(--line);
+  background: var(--surface);
+  overflow: hidden;
+  text-decoration: none;
+}
+.dh5-ticker:hover { text-decoration: none; }
+.dh5-ticker-track {
+  display: flex; width: max-content; align-items: center;
+  gap: var(--s6); padding: var(--s2) 0;
+  font-family: var(--font-mono); font-size: var(--text-sm);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dh5-ticker-track { animation: dh5-marquee 48s linear infinite; }
+  .dh5-ticker:hover .dh5-ticker-track,
+  .dh5-ticker:focus-visible .dh5-ticker-track { animation-play-state: paused; }
+  @keyframes dh5-marquee { to { transform: translateX(-50%); } }
+}
+.dh5-tick-cell { display: inline-flex; align-items: center; gap: var(--s1); white-space: nowrap; color: var(--muted); }
+.dh5-tick-cell .k { color: var(--muted); }
+.dh5-tick-cell .v { color: var(--text); }
+.dh5-tick-cell .v.acc-build { color: var(--build); }
+.dh5-tick-cell .v.acc-think { color: var(--think); }
+.dh5-tick-cell .v.acc-win { color: var(--win); }
+.dh5-tick-cell .v.acc-human { color: var(--human); }
+.dh5-tick-prompt { color: var(--accent); white-space: nowrap; padding-left: var(--s5); }
+
+/* ---------- Last five days strip ------------------------------ */
+.dh5-lastfive { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--bento-gap); }
+.dh5-day-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: var(--s3) var(--s4);
+  display: flex; flex-direction: column; gap: var(--s1);
+  font-size: var(--text-sm); color: var(--text);
+  text-decoration: none;
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+.dh5-day-card:hover { border-color: var(--line-2); text-decoration: none; color: var(--text); }
+.dh5-day-card .d { font-size: var(--text-xs); color: var(--muted); display: flex; justify-content: space-between; }
+.dh5-day-card .s { line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dh5-day-card[data-color="green"] .d b { color: var(--build); }
+.dh5-day-card[data-color="blue"]  .d b { color: var(--think); }
+.dh5-day-card[data-color="gold"]  .d b { color: var(--win); }
+.dh5-day-card[data-color="gold"] { border-color: var(--win-dim); }
+@media (max-width: 900px) { .dh5-lastfive { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- Sections, breadcrumb, next step ------------------- */
+.dh5-section { padding: var(--s16) 0 0; }
+.dh5-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); margin-bottom: var(--s6); flex-wrap: wrap; }
+.dh5-crumb { font-size: var(--text-sm); color: var(--muted); margin: var(--s1) 0 var(--s6); }
+.dh5-crumb b { color: var(--accent); font-weight: 400; }
+.dh5-next {
+  margin: var(--s16) 0 var(--s12);
+  border-top: 1px solid var(--line);
+  padding-top: var(--s6);
+  font-size: var(--text-md);
+}
+
+/* ---------- Company cards ------------------------------------- */
+.dh5-co-name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); letter-spacing: var(--track-display); margin: 0; }
+.dh5-co-ship { font-size: var(--text-sm); color: var(--text); margin: 0; }
+.dh5-co-meta { font-size: var(--text-xs); color: var(--muted); margin-top: auto; }
+
+/* ---------- Viz shared: caption, empty, error ------------------ */
+.dh5-viz-caption { font-size: var(--text-xs); color: var(--muted); margin-top: var(--s2); }
+.dh5-viz-empty { border: 1px dashed var(--line); border-radius: var(--r-md); padding: var(--s6); font-size: var(--text-sm); color: var(--muted); text-align: center; }
+
+/* heatmap */
+.dh5-heat { display: grid; grid-template-columns: repeat(auto-fill, 14px); grid-auto-rows: 14px; gap: 3px; }
+.dh5-heat a { border-radius: 3px; background: var(--card-2); display: block; }
+.dh5-heat a[data-level="1"] { background: var(--build-dim); }
+.dh5-heat a[data-level="2"] { background: var(--build); }
+.dh5-heat a[data-level="3"] { background: var(--build-hover); }
+.dh5-heat a:hover { outline: 1px solid var(--text); }
+
+/* repo cards */
+.dh5-repo-lang { display: inline-flex; align-items: center; gap: var(--s1); font-size: var(--text-xs); color: var(--muted); }
+.dh5-repo-lang::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--think); }
+
+/* shoutouts rotator */
+.dh5-shout { position: relative; min-height: 120px; }
+.dh5-shout-nav { display: flex; gap: var(--s2); }
+.dh5-shout-nav button {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-sm);
+  color: var(--text); font-family: var(--font-mono); cursor: pointer;
+  width: 28px; height: 28px;
+}
+.dh5-shout-nav button:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- Ways in / newsletter ------------------------------- */
+.dh5-ways .dh-tile p { font-size: var(--text-sm); color: var(--muted); margin: 0; flex: 1; }
+.dh5-news-form { display: flex; gap: var(--s2); max-width: 420px; }
+.dh5-news-form input[type="email"] {
+  flex: 1; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md);
+  color: var(--text); font-family: var(--font-mono); font-size: var(--text-sm);
+  padding: var(--s2) var(--s3); min-width: 0;
+}
+.dh5-news-form input:focus { border-color: var(--accent); outline: none; }
+.dh5-news-msg { font-size: var(--text-sm); margin-top: var(--s2); }
+.dh5-news-msg[data-state="success"] { color: var(--build); }
+.dh5-news-msg[data-state="error"] { color: var(--danger); }
+
+/* ---------- Bento collapse ------------------------------------- */
+@media (max-width: 900px) {
+  .dh-bento { grid-template-columns: 1fr; }
+  .b3, .b4, .b5, .b7, .b8, .b12 { grid-column: 1 / -1; }
+  .dh5-hero-statement { grid-row: auto; }
+  .dh5-term-body { height: 200px; }
+}
