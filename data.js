@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-14T22:34:27.488Z
+// Built 2026-07-15T22:48:20.865Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 256,
-    "today_date": "2026-07-14",
+    "today_day": 257,
+    "today_date": "2026-07-15",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -173,6 +173,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 257,
+          "date": "2026-07-15",
+          "shipping_now": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company, API-first, $15M ARR. signed up for their…",
+          "arc_color": "green"
+        },
+        {
           "day": 256,
           "date": "2026-07-14",
           "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200…",
@@ -236,12 +242,6 @@ window.DH_DATA = {
           "day": 237,
           "date": "2026-06-25",
           "shipping_now": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted, an…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 235,
-          "date": "2026-06-23",
-          "shipping_now": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it writing instead. i pulled every scattered…",
           "arc_color": "blue"
         }
       ],
@@ -442,6 +442,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-15",
+      "day": 257,
+      "mood": "🔍",
+      "shipping_now": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company, API-first, $15M ARR. signed up for their starter package tonight. if the API checks out, it becomes the backbone for Champmail.",
+      "yesterday_thread": "two more discovery calls in the stack: a Dubai construction company and a healthcare app studio, both moving toward NDAs. the Leaders meeting happened but the AI summary stayed locked.",
+      "raw_thought": "three calls in three hours and the most useful one was not on the original calendar.",
+      "arcs": [
+        "Champmail",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champmail",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-14",
       "day": 256,
@@ -1570,9 +1595,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "04:04 IST",
+    "time_ist": "04:18 IST",
     "weather": "24°C · clear",
-    "last_ship": "Hotel GMs + Federal Bank threads opened · just now",
+    "last_ship": "infra vendor onboarded · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1602,6 +1627,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company,...",
+        "tag": "shipped d257"
+      },
+      {
         "text": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staf...",
         "tag": "shipped d256"
       },
@@ -1612,10 +1641,6 @@ window.DH_DATA = {
       {
         "text": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milesto...",
         "tag": "shipped d254"
-      },
-      {
-        "text": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3....",
-        "tag": "shipped d253"
       }
     ],
     "soon": [
@@ -2934,5 +2959,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-14T22:34:27.488Z"
+  "built": "2026-07-15T22:48:20.864Z"
 };
