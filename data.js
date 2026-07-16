@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-15T22:48:20.865Z
+// Built 2026-07-16T20:18:42.988Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 257,
-    "today_date": "2026-07-15",
+    "today_day": 258,
+    "today_date": "2026-07-16",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 258,
+          "date": "2026-07-16",
+          "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new…",
+          "arc_color": "green"
+        },
         {
           "day": 256,
           "date": "2026-07-14",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 243,
           "date": "2026-07-01",
           "shipping_now": "q3 day one. led a strategic growth discussion with an investment bank on champions group expansion and what the next chapter…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 242,
-          "date": "2026-06-30",
-          "shipping_now": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise…",
           "arc_color": "blue"
         }
       ],
@@ -173,6 +173,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 258,
+          "date": "2026-07-16",
+          "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new…",
+          "arc_color": "green"
+        },
+        {
           "day": 257,
           "date": "2026-07-15",
           "shipping_now": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company, API-first, $15M ARR. signed up for their…",
@@ -237,12 +243,6 @@ window.DH_DATA = {
           "date": "2026-06-29",
           "shipping_now": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterprise accounts, 1,000+…",
           "arc_color": "green"
-        },
-        {
-          "day": 237,
-          "date": "2026-06-25",
-          "shipping_now": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted, an…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -442,6 +442,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-16",
+      "day": 258,
+      "mood": "💡",
+      "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new verticals on the spot and committed to a capability deck plus lead tracker by tomorrow. built a 7-file VPN offload architecture in one async sprint on the side, no meetings needed.",
+      "yesterday_thread": "a wellness vendor intro opened a co-marketing angle: champions group data to help them identify APAC project clients. low cost, high alignment. separately filed an AI SDR architecture doc mapping champmail and champ IQ onto the new email infrastructure stack.",
+      "raw_thought": "19 leads in 2 weeks from an outsourced team is exactly what the new-channels directive was betting on. the model already works. the question now is how fast to scale before the moment passes.",
+      "arcs": [
+        "Lake B2B",
+        "Champ IQ"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champ IQ",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-15",
       "day": 257,
@@ -1595,9 +1620,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "04:18 IST",
+    "time_ist": "01:48 IST",
     "weather": "24°C · clear",
-    "last_ship": "infra vendor onboarded · just now",
+    "last_ship": "GTM cadence locked, VPN architecture filed · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1627,6 +1652,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small externa...",
+        "tag": "shipped d258"
+      },
+      {
         "text": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company,...",
         "tag": "shipped d257"
       },
@@ -1637,10 +1666,6 @@ window.DH_DATA = {
       {
         "text": "a call with a vc portfolio director opened two unexpected doors. one portfolio company...",
         "tag": "shipped d255"
-      },
-      {
-        "text": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milesto...",
-        "tag": "shipped d254"
       }
     ],
     "soon": [
@@ -2959,5 +2984,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-15T22:48:20.864Z"
+  "built": "2026-07-16T20:18:42.988Z"
 };
