@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-16T20:18:42.988Z
+// Built 2026-07-17T21:10:54.120Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 258,
-    "today_date": "2026-07-16",
+    "today_day": 259,
+    "today_date": "2026-07-17",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 259,
+          "date": "2026-07-17",
+          "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on…",
+          "arc_color": "green"
+        },
         {
           "day": 258,
           "date": "2026-07-16",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-02",
           "shipping_now": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is built. voiceover and…",
           "arc_color": "green"
-        },
-        {
-          "day": 243,
-          "date": "2026-07-01",
-          "shipping_now": "q3 day one. led a strategic growth discussion with an investment bank on champions group expansion and what the next chapter…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -173,6 +173,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 259,
+          "date": "2026-07-17",
+          "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on…",
+          "arc_color": "green"
+        },
+        {
           "day": 258,
           "date": "2026-07-16",
           "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new…",
@@ -237,12 +243,6 @@ window.DH_DATA = {
           "date": "2026-06-30",
           "shipping_now": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise…",
           "arc_color": "blue"
-        },
-        {
-          "day": 241,
-          "date": "2026-06-29",
-          "shipping_now": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterprise accounts, 1,000+…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -442,6 +442,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-17",
+      "day": 259,
+      "mood": "🧭",
+      "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on the homepage. one focused session reversed years of accumulated feature complexity.",
+      "yesterday_thread": "earlier: live icp intake session with a crypto investment platform. three customer segments landed with actual numbers attached. revenue share model on the table, weekly check-ins agreed, weekend sprint queued.",
+      "raw_thought": "decided to personally run the sales training cadence for the next two months. when you shift a team kpi from meetings booked to revenue, showing up every week is faster than any playbook.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-16",
       "day": 258,
@@ -1620,9 +1645,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:48 IST",
+    "time_ist": "02:40 IST",
     "weather": "24°C · clear",
-    "last_ship": "GTM cadence locked, VPN architecture filed · just now",
+    "last_ship": "lakeb2b nav audit · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1652,6 +1677,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 ite...",
+        "tag": "shipped d259"
+      },
+      {
         "text": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small externa...",
         "tag": "shipped d258"
       },
@@ -1662,10 +1691,6 @@ window.DH_DATA = {
       {
         "text": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staf...",
         "tag": "shipped d256"
-      },
-      {
-        "text": "a call with a vc portfolio director opened two unexpected doors. one portfolio company...",
-        "tag": "shipped d255"
       }
     ],
     "soon": [
@@ -2984,5 +3009,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-16T20:18:42.988Z"
+  "built": "2026-07-17T21:10:54.120Z"
 };
