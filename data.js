@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-17T21:10:54.120Z
+// Built 2026-07-18T20:15:57.682Z
 
 window.DH_DATA = {
   "brand": {
@@ -97,6 +97,12 @@ window.DH_DATA = {
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-35-three-calls-one-friday",
+          "title": "Three calls. Three decisions. One Friday evening.",
+          "date": "2026-07-18",
+          "read": "5 min"
+        },
         {
           "slug": "week-34-the-side-door",
           "title": "Every deal this week came in through a side door.",
@@ -246,6 +252,12 @@ window.DH_DATA = {
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-35-three-calls-one-friday",
+          "title": "Three calls. Three decisions. One Friday evening.",
+          "date": "2026-07-18",
+          "read": "5 min"
+        },
         {
           "slug": "week-34-the-side-door",
           "title": "Every deal this week came in through a side door.",
@@ -1635,13 +1647,13 @@ window.DH_DATA = {
   ],
   "weekly_narratives_count": 30,
   "latest_narrative": {
-    "week": 34,
-    "title": "Every deal this week came in through a side door.",
-    "body": "Maritime shipping intel. Barter with a Middle East HR firm. Revenue-share with a crypto exchange. And a Salesforce migration vendor holding their team on a Saturday. W28 was the week where nothing came from where I expected.",
-    "day_range": "Jul 6 - Jul 11",
-    "date": "2026-07-11",
-    "read": "4 min",
-    "slug": "week-34-the-side-door"
+    "week": 35,
+    "title": "Three calls. Three decisions. One Friday evening.",
+    "body": "The week opened with a network failure and a VC conversation that rewrote the shortlist. By Wednesday, Champmail had its infrastructure backbone. Friday evening ran three back-to-back calls that each closed something: a partnership got revenue numbers, a team got a new KPI, and a website got years of accumulated complexity called out in thirty-three minutes.",
+    "day_range": "Jul 13 - Jul 18",
+    "date": "2026-07-18",
+    "read": "5 min",
+    "slug": "week-35-three-calls-one-friday"
   },
   "status": {
     "location": "Bangalore, IN",
@@ -2146,6 +2158,99 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-35-three-calls-one-friday",
+      "kind": "weekly",
+      "week": 35,
+      "eyebrow": ">_ week 35 - the momentum arc",
+      "title": "Three calls. Three decisions. One Friday evening.",
+      "deck": "The week opened with a network failure and a VC conversation that rewrote the shortlist. By Wednesday, Champmail had its infrastructure backbone. Friday evening ran three back-to-back calls that each closed something: a partnership got revenue numbers, a team got a new KPI, and a website got years of accumulated complexity called out in thirty-three minutes.",
+      "date": "2026-07-18",
+      "day_range": "Jul 13 - Jul 18",
+      "read": "5 min",
+      "arc": "Champions Operations",
+      "arc_color": "gold",
+      "tags": [
+        "Lake B2B",
+        "Champ IQ",
+        "Champmail",
+        "Champions Operations"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Monday opened with a network failure that killed a partnership call before it started. The next call that afternoon was a VC portfolio director who was not on the roadmap, and he ended up opening two health-tech pipeline threads before the hour was done. That was the shape of the week. Things that should have worked did not. Things that were not expected did."
+        },
+        {
+          "type": "h2",
+          "text": "the vc conversation that rewrote the shortlist"
+        },
+        {
+          "type": "p",
+          "text": "The call that did work on Monday: a half-hour with a portfolio director at an early-stage fund. His portfolio includes a remote patient monitoring startup and a health records company with 50 million records and hyper-local India coverage. B2B data services valued at $150-200K over a year or two. Advisory arrangement on Champions health tech deals explored. None of this was in the pipeline at 10 AM. By 4 PM it was in the vault."
+        },
+        {
+          "type": "h2",
+          "text": "the email infrastructure question answered"
+        },
+        {
+          "type": "p",
+          "text": "Wednesday ran a full-group Leaders Meeting. Same afternoon, three discovery calls back to back. The one that mattered: an email infrastructure company, API-first, $15M ARR. The open question on Champmail has been infrastructure: who handles the plumbing at scale, and at what cost. Signed up for the starter package that night. If the API holds this becomes the backbone. That question had been open for months. It closed on Wednesday evening."
+        },
+        {
+          "type": "h2",
+          "text": "19 leads and four new verticals"
+        },
+        {
+          "type": "p",
+          "text": "Thursday's GTM check-in produced a real number: 19 leads in two weeks from a small external engagement running parallel to the main teams. Expanded scope to four new verticals on the spot and committed to a capability deck by Friday night. That number did not come from a bigger budget or a new channel. It came from a tighter brief and a cleaner ICP. Which is the whole thesis, showing up as a datapoint."
+        },
+        {
+          "type": "h2",
+          "text": "friday evening: three calls, three things closed"
+        },
+        {
+          "type": "p",
+          "text": "A crypto exchange partnership that had been in good-conversation territory got structured on Friday: three ICP segments nailed down, revenue share agreed in principle (15-20% year one, 10-12% in perpetuity), weekly check-ins confirmed. A partnership is not real until it has numbers and a cadence. Now it has both."
+        },
+        {
+          "type": "pull",
+          "text": "a deal moves when the numbers are on the table. before that it is just mutual interest."
+        },
+        {
+          "type": "p",
+          "text": "Same evening: formally shifted the lead gen team's KPI from calendar bookings to revenue. Zero calendar-fill pressure for the next two months. Five to ten quality prospects per week. I will personally run weekly SDR training syncs through the end of September. The goal is not activity metrics. It is a team that can generate, qualify, and advance a deal to a financial conversation without me in the room. That takes until September to build right."
+        },
+        {
+          "type": "p",
+          "text": "Closed with the Lake B2B website audit. Thirty-three minutes. Three calls: cut the navigation to four items, go API-first on the product architecture, test an ask-AI button on the homepage. One session cleared years of accumulated complexity that had been deferred through every previous review. Sometimes the work is just getting in the room and making the call instead of scheduling another one."
+        },
+        {
+          "type": "h2",
+          "text": "the pattern underneath"
+        },
+        {
+          "type": "p",
+          "text": "Monday's failed call would have been the story if nothing else happened. It was not the story. The week filled in around it and past it. By Friday night the desk was cleaner than it started, which is the actual metric I use to read a week."
+        },
+        {
+          "type": "p",
+          "text": "Week 36 has a Monday call with a European water-tech firm, the Lenovo enrichment sprint continuing, and the email infra API to verify. The questions are filed."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        },
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        }
+      ]
+    },
     {
       "slug": "week-34-the-side-door",
       "kind": "weekly",
@@ -3009,5 +3114,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-17T21:10:54.120Z"
+  "built": "2026-07-18T20:15:57.681Z"
 };
