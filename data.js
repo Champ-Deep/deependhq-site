@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-18T20:15:57.682Z
+// Built 2026-07-19T20:12:44.681Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 259,
-    "today_date": "2026-07-17",
+    "today_day": 261,
+    "today_date": "2026-07-19",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 261,
+          "date": "2026-07-19",
+          "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4…",
+          "arc_color": "blue"
+        },
         {
           "day": 259,
           "date": "2026-07-17",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 245,
           "date": "2026-07-03",
           "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built…",
-          "arc_color": "green"
-        },
-        {
-          "day": 244,
-          "date": "2026-07-02",
-          "shipping_now": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is built. voiceover and…",
           "arc_color": "green"
         }
       ],
@@ -179,6 +179,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 261,
+          "date": "2026-07-19",
+          "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4…",
+          "arc_color": "blue"
+        },
+        {
           "day": 259,
           "date": "2026-07-17",
           "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on…",
@@ -243,12 +249,6 @@ window.DH_DATA = {
           "date": "2026-07-02",
           "shipping_now": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is built. voiceover and…",
           "arc_color": "green"
-        },
-        {
-          "day": 242,
-          "date": "2026-06-30",
-          "shipping_now": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -454,6 +454,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-19",
+      "day": 261,
+      "mood": "🔧",
+      "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4 days. the backend for champmail deliverability now has a dedicated build track.",
+      "yesterday_thread": "late-night design alignment for a bangalore delivery app: standee layout with raised qr code, ai illustration brief for 14 app states, full app store screenshot spec. play store launch unblocked on design.",
+      "raw_thought": "sunday sprint. two things moved that don't usually move on weekends: a vendor collaboration started and a design brief got locked. that is the real value of a sprint block.",
+      "arcs": [
+        "Champmail",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champmail",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-17",
       "day": 259,
@@ -1657,9 +1682,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "02:40 IST",
+    "time_ist": "01:42 IST",
     "weather": "24°C · clear",
-    "last_ship": "lakeb2b nav audit · just now",
+    "last_ship": "inboxkit dev channel opened · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1689,6 +1714,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "email infrastructure vendor opened a shared dev channel for the champmail integration....",
+        "tag": "shipped d261"
+      },
+      {
         "text": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 ite...",
         "tag": "shipped d259"
       },
@@ -1699,10 +1728,6 @@ window.DH_DATA = {
       {
         "text": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company,...",
         "tag": "shipped d257"
-      },
-      {
-        "text": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staf...",
-        "tag": "shipped d256"
       }
     ],
     "soon": [
@@ -3114,5 +3139,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-18T20:15:57.681Z"
+  "built": "2026-07-19T20:12:44.681Z"
 };
