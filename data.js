@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-19T20:12:44.681Z
+// Built 2026-07-20T20:10:53.022Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 261,
-    "today_date": "2026-07-19",
+    "today_day": 262,
+    "today_date": "2026-07-20",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 262,
+          "date": "2026-07-20",
+          "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing…",
+          "arc_color": "blue"
+        },
         {
           "day": 261,
           "date": "2026-07-19",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 248,
           "date": "2026-07-06",
           "shipping_now": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync with an inbound webhook + reply…",
-          "arc_color": "green"
-        },
-        {
-          "day": 245,
-          "date": "2026-07-03",
-          "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built…",
           "arc_color": "green"
         }
       ],
@@ -179,6 +179,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 262,
+          "date": "2026-07-20",
+          "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing…",
+          "arc_color": "blue"
+        },
+        {
           "day": 261,
           "date": "2026-07-19",
           "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4…",
@@ -242,12 +248,6 @@ window.DH_DATA = {
           "day": 245,
           "date": "2026-07-03",
           "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built…",
-          "arc_color": "green"
-        },
-        {
-          "day": 244,
-          "date": "2026-07-02",
-          "shipping_now": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is built. voiceover and…",
           "arc_color": "green"
         }
       ],
@@ -454,6 +454,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-20",
+      "day": 262,
+      "mood": "🔍",
+      "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing structures mapped: phased ramp, cost-plus, tiered volume, and a two-way exchange angle that hasnt been raised yet. the prep is done; the call lands tuesday.",
+      "yesterday_thread": "a crypto platforms vp of marketing sent the icp document today. six segments, top tier is hni retail investors, senior professionals, not founders. every campaign batch sent so far was targeting the wrong person. expensive correction, but it arrived before the next batch went out.",
+      "raw_thought": "the team leaders call had 34 people in it, including five external guests i havent placed yet. no meeting summary accessible via api. if any of those are new bd threads, they go cold inside the week without a note filed. that is the gap.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-19",
       "day": 261,
@@ -1682,9 +1707,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:42 IST",
+    "time_ist": "01:40 IST",
     "weather": "24°C · clear",
-    "last_ship": "inboxkit dev channel opened · just now",
+    "last_ship": "call prep · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1714,6 +1739,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "built a full client profile and commercial call prep note from scratch for tomorrows da...",
+        "tag": "shipped d262"
+      },
+      {
         "text": "email infrastructure vendor opened a shared dev channel for the champmail integration....",
         "tag": "shipped d261"
       },
@@ -1724,10 +1753,6 @@ window.DH_DATA = {
       {
         "text": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small externa...",
         "tag": "shipped d258"
-      },
-      {
-        "text": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company,...",
-        "tag": "shipped d257"
       }
     ],
     "soon": [
@@ -3139,5 +3164,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-19T20:12:44.681Z"
+  "built": "2026-07-20T20:10:53.022Z"
 };

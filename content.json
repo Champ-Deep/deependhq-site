@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 261,
-    "today_date": "2026-07-19",
+    "today_day": 262,
+    "today_date": "2026-07-20",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-20",
+      "day": 262,
+      "mood": "🔍",
+      "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing structures mapped: phased ramp, cost-plus, tiered volume, and a two-way exchange angle that hasnt been raised yet. the prep is done; the call lands tuesday.",
+      "yesterday_thread": "a crypto platforms vp of marketing sent the icp document today. six segments, top tier is hni retail investors — senior professionals, not founders. every campaign batch sent so far was targeting the wrong person. expensive correction, but it arrived before the next batch went out.",
+      "raw_thought": "the team leaders call had 34 people in it, including five external guests i havent placed yet. no meeting summary accessible via api. if any of those are new bd threads, they go cold inside the week without a note filed. that is the gap.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-07-19",
       "day": 261,
@@ -846,9 +859,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:42 IST",
+    "time_ist": "01:40 IST",
     "weather": "24°C · clear",
-    "last_ship": "inboxkit dev channel opened · just now",
+    "last_ship": "call prep · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -878,6 +891,10 @@
     ],
     "recently": [
       {
+        "text": "built a full client profile and commercial call prep note from scratch for tomorrows da...",
+        "tag": "shipped d262"
+      },
+      {
         "text": "email infrastructure vendor opened a shared dev channel for the champmail integration....",
         "tag": "shipped d261"
       },
@@ -888,10 +905,6 @@
       {
         "text": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small externa...",
         "tag": "shipped d258"
-      },
-      {
-        "text": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company,...",
-        "tag": "shipped d257"
       }
     ],
     "soon": [
