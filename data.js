@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-20T20:10:53.022Z
+// Built 2026-07-22T19:21:42.254Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 262,
-    "today_date": "2026-07-20",
+    "today_day": 264,
+    "today_date": "2026-07-22",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,18 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 264,
+          "date": "2026-07-22",
+          "shipping_now": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off the creative…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 263,
+          "date": "2026-07-21",
+          "shipping_now": "first direct call with a US oncology AI company. digital twin, epic/cerner integration, johns hopkins MOU in progress, 12 revenue…",
+          "arc_color": "blue"
+        },
         {
           "day": 262,
           "date": "2026-07-20",
@@ -82,18 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-08",
           "shipping_now": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker-class focus,…",
           "arc_color": "blue"
-        },
-        {
-          "day": 249,
-          "date": "2026-07-07",
-          "shipping_now": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at the HSR office, then…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 248,
-          "date": "2026-07-06",
-          "shipping_now": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync with an inbound webhook + reply…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -179,6 +179,18 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 264,
+          "date": "2026-07-22",
+          "shipping_now": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off the creative…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 263,
+          "date": "2026-07-21",
+          "shipping_now": "first direct call with a US oncology AI company. digital twin, epic/cerner integration, johns hopkins MOU in progress, 12 revenue…",
+          "arc_color": "blue"
+        },
+        {
           "day": 262,
           "date": "2026-07-20",
           "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing…",
@@ -237,18 +249,6 @@ window.DH_DATA = {
           "date": "2026-07-08",
           "shipping_now": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker-class focus,…",
           "arc_color": "blue"
-        },
-        {
-          "day": 249,
-          "date": "2026-07-07",
-          "shipping_now": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at the HSR office, then…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 245,
-          "date": "2026-07-03",
-          "shipping_now": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembled. both were built…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -454,6 +454,56 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-22",
+      "day": 264,
+      "mood": "🪑",
+      "shipping_now": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off the creative sample pack, one bundle per service line. then a 3.5-hour leaders meeting filled the evening.",
+      "yesterday_thread": "healthlink compliance review: US data broker registration is the key blocker for the security questionnaire. CIPL docs need to clear before submission.",
+      "raw_thought": "a day that looks like meetings from the outside but was actually decisions. some of those stick, some do not. you find out later.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-21",
+      "day": 263,
+      "mood": "🤝",
+      "shipping_now": "first direct call with a US oncology AI company. digital twin, epic/cerner integration, johns hopkins MOU in progress, 12 revenue streams. two angles on the table: data partnership for patient/physician acquisition and a direct investment look. both sides called it genuinely interesting.",
+      "yesterday_thread": "go-based HTTP scraper is replacing playwright for the lenovo intent enrichment pipeline. playwright was stripping tracking headers. LLM layer on top (gemini 2.5 flash) confirmed viable at around $5-8 per 100 companies. two parallel 100-company test batches locked in.",
+      "raw_thought": "the best deals often come through a third door you did not expect. this one came through a crypto exchange intro.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-20",
       "day": 262,
@@ -1707,9 +1757,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:40 IST",
+    "time_ist": "00:51 IST",
     "weather": "24°C · clear",
-    "last_ship": "call prep · just now",
+    "last_ship": "website nav + sample pack · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1739,20 +1789,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketin...",
+        "tag": "shipped d264"
+      },
+      {
+        "text": "first direct call with a US oncology AI company. digital twin, epic/cerner integration,...",
+        "tag": "shipped d263"
+      },
+      {
         "text": "built a full client profile and commercial call prep note from scratch for tomorrows da...",
         "tag": "shipped d262"
       },
       {
         "text": "email infrastructure vendor opened a shared dev channel for the champmail integration....",
         "tag": "shipped d261"
-      },
-      {
-        "text": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 ite...",
-        "tag": "shipped d259"
-      },
-      {
-        "text": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small externa...",
-        "tag": "shipped d258"
       }
     ],
     "soon": [
@@ -3164,5 +3214,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-20T20:10:53.022Z"
+  "built": "2026-07-22T19:21:42.254Z"
 };
