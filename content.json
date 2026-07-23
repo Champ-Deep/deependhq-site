@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 264,
-    "today_date": "2026-07-22",
+    "today_day": 265,
+    "today_date": "2026-07-23",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-23",
+      "day": 265,
+      "mood": "💪",
+      "shipping_now": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, so any cors regex with \\. in it silently breaks. switched everything to [.] notation and it cleared. health check is green, cert through october. three major outputs today.",
+      "yesterday_thread": "commercial terms locked with a crypto exchange partner. 15% rev share on their transaction fees, 90-day mql pilot, 150-200 leads. also finalized a shipping group engagement, sop and mou both out the door with the right entity signed in. deal doc from the crypto call goes first thing tomorrow.",
+      "raw_thought": "three outputs in a day feels good until you realize the one thing promised live on a call is the one thing that did not ship before midnight.",
+      "arcs": [
+        "ChampBeam",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-07-22",
       "day": 264,
@@ -885,9 +898,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "00:51 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "website nav + sample pack · just now",
+    "last_ship": "ChampBeam on Deepify · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -917,6 +930,10 @@
     ],
     "recently": [
       {
+        "text": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes bac...",
+        "tag": "shipped d265"
+      },
+      {
         "text": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketin...",
         "tag": "shipped d264"
       },
@@ -927,10 +944,6 @@
       {
         "text": "built a full client profile and commercial call prep note from scratch for tomorrows da...",
         "tag": "shipped d262"
-      },
-      {
-        "text": "email infrastructure vendor opened a shared dev channel for the champmail integration....",
-        "tag": "shipped d261"
       }
     ],
     "soon": [

@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-22T19:21:42.254Z
+// Built 2026-07-23T19:38:26.739Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 264,
-    "today_date": "2026-07-22",
+    "today_day": 265,
+    "today_date": "2026-07-23",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -179,6 +179,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 265,
+          "date": "2026-07-23",
+          "shipping_now": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, so any cors regex…",
+          "arc_color": "green"
+        },
+        {
           "day": 264,
           "date": "2026-07-22",
           "shipping_now": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off the creative…",
@@ -243,12 +249,6 @@ window.DH_DATA = {
           "date": "2026-07-09",
           "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data…",
           "arc_color": "green"
-        },
-        {
-          "day": 250,
-          "date": "2026-07-08",
-          "shipping_now": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker-class focus,…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -454,6 +454,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-23",
+      "day": 265,
+      "mood": "💪",
+      "shipping_now": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, so any cors regex with \\. in it silently breaks. switched everything to [.] notation and it cleared. health check is green, cert through october. three major outputs today.",
+      "yesterday_thread": "commercial terms locked with a crypto exchange partner. 15% rev share on their transaction fees, 90-day mql pilot, 150-200 leads. also finalized a shipping group engagement, sop and mou both out the door with the right entity signed in. deal doc from the crypto call goes first thing tomorrow.",
+      "raw_thought": "three outputs in a day feels good until you realize the one thing promised live on a call is the one thing that did not ship before midnight.",
+      "arcs": [
+        "ChampBeam",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampBeam",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-22",
       "day": 264,
@@ -1757,9 +1782,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "00:51 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "website nav + sample pack · just now",
+    "last_ship": "ChampBeam on Deepify · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1789,6 +1814,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes bac...",
+        "tag": "shipped d265"
+      },
+      {
         "text": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketin...",
         "tag": "shipped d264"
       },
@@ -1799,10 +1828,6 @@ window.DH_DATA = {
       {
         "text": "built a full client profile and commercial call prep note from scratch for tomorrows da...",
         "tag": "shipped d262"
-      },
-      {
-        "text": "email infrastructure vendor opened a shared dev channel for the champmail integration....",
-        "tag": "shipped d261"
       }
     ],
     "soon": [
@@ -3214,5 +3239,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-22T19:21:42.254Z"
+  "built": "2026-07-23T19:38:26.738Z"
 };
