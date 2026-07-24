@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 265,
-    "today_date": "2026-07-23",
+    "today_day": 266,
+    "today_date": "2026-07-24",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-24",
+      "day": 266,
+      "mood": "🧩",
+      "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday call. Five hours of back-to-back meetings, then sat down to make sure nothing slipped through.",
+      "yesterday_thread": "Two SEO vendor bets placed in back-to-back 20-minute calls. One gets a 2-week programmatic pilot on a fresh microsite. The other goes into the eval queue for existing properties.",
+      "raw_thought": "Chrome went offline. Zero social adds today. The calendar pipeline streak breaks the moment the extension drops. One dependency = one point of failure.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-07-23",
       "day": 265,
@@ -898,9 +911,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:09 IST",
     "weather": "24°C · clear",
-    "last_ship": "ChampBeam on Deepify · just now",
+    "last_ship": "Weekly follow-up scoreboard · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -930,6 +943,10 @@
     ],
     "recently": [
       {
+        "text": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a cl...",
+        "tag": "shipped d266"
+      },
+      {
         "text": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes bac...",
         "tag": "shipped d265"
       },
@@ -940,10 +957,6 @@
       {
         "text": "first direct call with a US oncology AI company. digital twin, epic/cerner integration,...",
         "tag": "shipped d263"
-      },
-      {
-        "text": "built a full client profile and commercial call prep note from scratch for tomorrows da...",
-        "tag": "shipped d262"
       }
     ],
     "soon": [

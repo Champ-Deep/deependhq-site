@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-23T19:38:26.739Z
+// Built 2026-07-24T19:39:27.567Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 265,
-    "today_date": "2026-07-23",
+    "today_day": 266,
+    "today_date": "2026-07-24",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 266,
+          "date": "2026-07-24",
+          "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday…",
+          "arc_color": "blue"
+        },
         {
           "day": 264,
           "date": "2026-07-22",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-09",
           "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data…",
           "arc_color": "green"
-        },
-        {
-          "day": 250,
-          "date": "2026-07-08",
-          "shipping_now": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker-class focus,…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -179,6 +179,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 266,
+          "date": "2026-07-24",
+          "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday…",
+          "arc_color": "blue"
+        },
+        {
           "day": 265,
           "date": "2026-07-23",
           "shipping_now": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, so any cors regex…",
@@ -242,12 +248,6 @@ window.DH_DATA = {
           "day": 252,
           "date": "2026-07-10",
           "shipping_now": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ database scoped for…",
-          "arc_color": "green"
-        },
-        {
-          "day": 251,
-          "date": "2026-07-09",
-          "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data…",
           "arc_color": "green"
         }
       ],
@@ -454,6 +454,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-24",
+      "day": 266,
+      "mood": "🧩",
+      "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday call. Five hours of back-to-back meetings, then sat down to make sure nothing slipped through.",
+      "yesterday_thread": "Two SEO vendor bets placed in back-to-back 20-minute calls. One gets a 2-week programmatic pilot on a fresh microsite. The other goes into the eval queue for existing properties.",
+      "raw_thought": "Chrome went offline. Zero social adds today. The calendar pipeline streak breaks the moment the extension drops. One dependency = one point of failure.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-23",
       "day": 265,
@@ -1782,9 +1807,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:09 IST",
     "weather": "24°C · clear",
-    "last_ship": "ChampBeam on Deepify · just now",
+    "last_ship": "Weekly follow-up scoreboard · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1814,6 +1839,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a cl...",
+        "tag": "shipped d266"
+      },
+      {
         "text": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes bac...",
         "tag": "shipped d265"
       },
@@ -1824,10 +1853,6 @@ window.DH_DATA = {
       {
         "text": "first direct call with a US oncology AI company. digital twin, epic/cerner integration,...",
         "tag": "shipped d263"
-      },
-      {
-        "text": "built a full client profile and commercial call prep note from scratch for tomorrows da...",
-        "tag": "shipped d262"
       }
     ],
     "soon": [
@@ -3239,5 +3264,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-23T19:38:26.738Z"
+  "built": "2026-07-24T19:39:27.566Z"
 };
