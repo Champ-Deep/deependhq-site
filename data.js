@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-24T19:39:27.567Z
+// Built 2026-07-25T19:45:07.812Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 266,
-    "today_date": "2026-07-24",
+    "today_day": 267,
+    "today_date": "2026-07-25",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 267,
+          "date": "2026-07-25",
+          "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts…",
+          "arc_color": "blue"
+        },
         {
           "day": 266,
           "date": "2026-07-24",
@@ -88,15 +94,15 @@ window.DH_DATA = {
           "date": "2026-07-11",
           "shipping_now": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K records in scope, 17L…",
           "arc_color": "blue"
-        },
-        {
-          "day": 251,
-          "date": "2026-07-09",
-          "shipping_now": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP. data…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-36-the-doctor-said-yes",
+          "title": "The doctor said yes. The hospital said committee.",
+          "date": "2026-07-25",
+          "read": "6 min"
+        },
         {
           "slug": "week-35-three-calls-one-friday",
           "title": "Three calls. Three decisions. One Friday evening.",
@@ -179,6 +185,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 267,
+          "date": "2026-07-25",
+          "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts…",
+          "arc_color": "blue"
+        },
+        {
           "day": 266,
           "date": "2026-07-24",
           "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday…",
@@ -243,15 +255,15 @@ window.DH_DATA = {
           "date": "2026-07-13",
           "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another…",
           "arc_color": "blue"
-        },
-        {
-          "day": 252,
-          "date": "2026-07-10",
-          "shipping_now": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ database scoped for…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-36-the-doctor-said-yes",
+          "title": "The doctor said yes. The hospital said committee.",
+          "date": "2026-07-25",
+          "read": "6 min"
+        },
         {
           "slug": "week-35-three-calls-one-friday",
           "title": "Three calls. Three decisions. One Friday evening.",
@@ -454,6 +466,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-25",
+      "day": 267,
+      "mood": "🏥",
+      "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts now. equity held pending full prospectus. physician-direct outreach identified as the wedge, data confirms it is the right motion.",
+      "yesterday_thread": "weekly scoreboard filed: six external meetings, three fully covered, nine follow-ups still open. a saturday call prep brief written and ready.",
+      "raw_thought": "every doctor they approached said yes. hospitals said committee. sell to the physician and let the physician carry you into the building. that is not a sales line. that is a data distribution problem. and we have the data.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-24",
       "day": 266,
@@ -1807,9 +1844,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:09 IST",
+    "time_ist": "01:14 IST",
     "weather": "24°C · clear",
-    "last_ship": "Weekly follow-up scoreboard · just now",
+    "last_ship": "bucket 3 strategy session · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1839,6 +1876,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise:...",
+        "tag": "shipped d267"
+      },
+      {
         "text": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a cl...",
         "tag": "shipped d266"
       },
@@ -1849,10 +1890,6 @@ window.DH_DATA = {
       {
         "text": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketin...",
         "tag": "shipped d264"
-      },
-      {
-        "text": "first direct call with a US oncology AI company. digital twin, epic/cerner integration,...",
-        "tag": "shipped d263"
       }
     ],
     "soon": [
@@ -3102,6 +3139,123 @@ window.DH_DATA = {
           "tag": "Data & Services"
         }
       ]
+    },
+    {
+      "slug": "week-36-the-doctor-said-yes",
+      "kind": "weekly",
+      "week": 36,
+      "eyebrow": ">_ week 36 · the distribution arc",
+      "title": "The doctor said yes. The hospital said committee.",
+      "deck": "A week that closed commercial terms on two partnerships, shipped a live deploy with an env-var lesson buried inside it, and ended on a Saturday call that produced the clearest distribution insight of the year.",
+      "date": "2026-07-25",
+      "day_range": "days 262-267",
+      "read": "6 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "Lake B2B",
+        "Champions Operations",
+        "ChampBeam",
+        "health-tech"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Monday opened with a correction. A crypto exchange partner sent over their ICP document and the top segment did not match any of the outreach batches already sent. Senior professionals, not founders. Every campaign batch had been targeting the wrong person. Expensive to learn at the middle of a week. Better than learning after the next batch went out."
+        },
+        {
+          "type": "p",
+          "text": "The week moved fast from there. Tuesday brought a first direct call with a US company building AI for oncology. Wednesday restructured the Lake B2B website architecture. Thursday shipped a live product. Friday filed the weekly scoreboard. Saturday held a strategy session that rewrote the posture on the biggest deal of the month."
+        },
+        {
+          "type": "h2",
+          "text": "the icp correction that arrived before the next batch ran"
+        },
+        {
+          "type": "p",
+          "text": "The crypto exchange partnership has been one of the cleaner deals of the summer: revenue share agreed, 90-day MQL pilot confirmed, 150-200 leads scoped. Monday the partner sent the ICP document and the top tier read differently than expected. Six segments. Top tier: HNI retail investors, senior professionals with investment portfolios. Not the founders and operators the early outreach batches had assumed. The ICP document arrived before the next batch went out. That timing matters more than the mistake."
+        },
+        {
+          "type": "h2",
+          "text": "first call with a health-tech company"
+        },
+        {
+          "type": "p",
+          "text": "Tuesday was a first direct call with a US company building AI infrastructure for oncology. Twelve revenue streams. Epic and Cerner integration. A major hospital system MOU in progress. Two angles on the table: data partnership for physician and patient acquisition, and a direct look at the raise they are running. Both sides called it genuinely interesting. The deal came through an intro from the crypto exchange channel, which made for an unusual afternoon: two deals, two very different sectors, same source."
+        },
+        {
+          "type": "pull",
+          "text": "the best deals often come through the third door you were not watching."
+        },
+        {
+          "type": "h2",
+          "text": "the lake b2b website gets two tracks"
+        },
+        {
+          "type": "p",
+          "text": "Wednesday: aligned on splitting the Lake B2B website into two navigation tracks. Data Services and Marketing Solutions. The architecture has been one thing trying to do two jobs. Two tracks means each buyer finds their path without cross-contamination from the other. Kicked off the creative sample pack simultaneously. One bundle per service line. Then a three-and-a-half-hour leaders meeting filled the rest of the evening. Some of those decisions stick. Some do not. You find out later."
+        },
+        {
+          "type": "h2",
+          "text": "champbeam ships. one env-var bug buried inside."
+        },
+        {
+          "type": "p",
+          "text": "Thursday: ChampBeam went live on Deepify. The deploy surfaced an interesting one: Coolify re-escapes backslashes in environment variables. Any CORS regex with a literal dot escaped as . was silently breaking. Switched to bracket notation for the dot and it cleared. Health check green, SSL cert through October. That kind of bug only appears in production. You do not find it in staging because staging does not re-escape. The lesson is filed."
+        },
+        {
+          "type": "p",
+          "text": "Same day: commercial terms finalized with the crypto exchange partner. 15% revenue share on transaction fees, 90-day MQL pilot, 150-200 leads. Also closed the commercial document on a maritime shipping group engagement. SOP and MOU both out the door to the right legal entity. Two deal docs in one Thursday. The one thing that did not ship before midnight was a follow-up promised live on a call. That gap was visible the moment it happened."
+        },
+        {
+          "type": "h2",
+          "text": "six meetings, nine follow-ups, two seo bets"
+        },
+        {
+          "type": "p",
+          "text": "Friday: weekly scoreboard filed. Six external meetings across the week. Three fully documented. Nine follow-up threads still open. Two SEO vendor bets placed in back-to-back 20-minute calls: one gets a two-week programmatic pilot on a fresh microsite, the other goes into the evaluation queue for existing properties. Chrome went offline and the social triage extension dropped. Zero calendar adds. One dependency equals one point of failure. That note is filed too."
+        },
+        {
+          "type": "h2",
+          "text": "saturday. bucket 3. physician-direct."
+        },
+        {
+          "type": "p",
+          "text": "The week closed on Saturday with a live strategy call on the health-tech deal. Three buckets had been framed in advance. The question was which to take in the room and which to leave open. Took bucket 3: marketing and fundraise support starting now. Equity track held open, gated on the full prospectus arriving. Marketing scope prices on its own merits. Investment does not move until diligence."
+        },
+        {
+          "type": "pull",
+          "text": "every doctor they had spoken to said yes. hospitals said committee. stop selling to the building."
+        },
+        {
+          "type": "p",
+          "text": "The sharpest insight on the call was not about the deal. It was about the distribution motion. Every physician they approached converted. Every hospital said the decision required a committee. The implication: sell to the physician and let the physician carry the referral into the institution. That is not a softer approach. It is a faster one. It is also a data and targeting problem, which made it a natural fit for what we can actually do. Physician-direct outreach with NPI-verified contacts is a campaign, not a concept."
+        },
+        {
+          "type": "h2",
+          "text": "the pattern underneath"
+        },
+        {
+          "type": "p",
+          "text": "Week 36 ran seven days. Most weeks do not. The Saturday call was the best hour of the week and it was also the one that required the most discipline to handle correctly: right bucket, right gate, right framing. The weeks that close well are not the ones where everything works. They are the ones where the right thing gets said at the right moment on a call that could have gone several directions."
+        },
+        {
+          "type": "p",
+          "text": "Week 37 opens with the oncology partnership follow-up pending, the crypto exchange pilot launching, the Lake B2B website rebuild underway, and the ZebPay follow-up email overdue by two days at close of Saturday. The list is honest."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        },
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        }
+      ]
     }
   ],
   "build_lanes": {
@@ -3264,5 +3418,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-24T19:39:27.566Z"
+  "built": "2026-07-25T19:45:07.812Z"
 };
