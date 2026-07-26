@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-25T19:45:07.812Z
+// Built 2026-07-26T19:46:01.319Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 267,
-    "today_date": "2026-07-25",
+    "today_day": 268,
+    "today_date": "2026-07-26",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 268,
+          "date": "2026-07-26",
+          "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard…",
+          "arc_color": "green"
+        },
         {
           "day": 267,
           "date": "2026-07-25",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 254,
           "date": "2026-07-12",
           "shipping_now": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milestone review, but the density said something…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 253,
-          "date": "2026-07-11",
-          "shipping_now": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K records in scope, 17L…",
           "arc_color": "blue"
         }
       ],
@@ -185,6 +185,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 268,
+          "date": "2026-07-26",
+          "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard…",
+          "arc_color": "green"
+        },
+        {
           "day": 267,
           "date": "2026-07-25",
           "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts…",
@@ -249,12 +255,6 @@ window.DH_DATA = {
           "date": "2026-07-14",
           "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200…",
           "arc_color": "gold"
-        },
-        {
-          "day": 255,
-          "date": "2026-07-13",
-          "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -466,6 +466,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-26",
+      "day": 268,
+      "mood": "🗂️",
+      "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard deadlines, wrote the W31 game plan. three non-negotiables named. the week has a spine before it starts.",
+      "yesterday_thread": "saturday was a live strategy call that turned into a full partnership discussion: physician outreach, fundraise support, equity evaluation. the physician-direct wedge confirmed by the data we already had.",
+      "raw_thought": "sundays look like nothing from the outside. no merges, no launches, no meetings added. but filing a deal and naming three non-negotiable outcomes before the week starts is its own kind of shipping. a week without a spine bends.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-25",
       "day": 267,
@@ -1832,21 +1857,21 @@ window.DH_DATA = {
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 30,
+  "weekly_narratives_count": 31,
   "latest_narrative": {
-    "week": 35,
-    "title": "Three calls. Three decisions. One Friday evening.",
-    "body": "The week opened with a network failure and a VC conversation that rewrote the shortlist. By Wednesday, Champmail had its infrastructure backbone. Friday evening ran three back-to-back calls that each closed something: a partnership got revenue numbers, a team got a new KPI, and a website got years of accumulated complexity called out in thirty-three minutes.",
-    "day_range": "Jul 13 - Jul 18",
-    "date": "2026-07-18",
-    "read": "5 min",
-    "slug": "week-35-three-calls-one-friday"
+    "week": 36,
+    "title": "Five commitments. Three non-negotiables. One week.",
+    "body": "The week opened with a scoreboard showing nine unresolved follow-ups from the week before. The gap between 'met with' and 'filed the outcome' has been the recurring tax on every good week. This one came close to letting it win again.\n\nBy Saturday, a referral call had become a full strategic partnership session. A health-tech company with twenty million in motion, physician-direct as the confirmed distribution wedge, and five commitments made live on the call: NDA by Monday, investment yes/no by Friday. The physician-direct thesis held up against real data. Every doctor approached said yes. Every hospital said committee.\n\nSunday was filing day. All five commitments clocked with hard deadlines. The W31 game plan written with three non-negotiables: named owners, named days, no drift. A fintech growth partnership that promised deliverables on Thursday hit a four-day dispatch block. The pipeline exists. The connector goes quiet in non-interactive sessions. Monday has to fix this before Tuesday's send deadline.\n\nChampMail's handoff brief is ready. The Wednesday briefing is the last unlock in the prerequisite chain. Two of three done. One meeting away.\n\nThe week held more in the system at the end than when it started. Not because more got shipped. Because more got named. A week without a spine bends.",
+    "day_range": "Jul 20 - Jul 26",
+    "date": "2026-07-26",
+    "read": "3 min",
+    "slug": "week-36-named-not-drifting"
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:14 IST",
+    "time_ist": "01:15 IST",
     "weather": "24°C · clear",
-    "last_ship": "bucket 3 strategy session · just now",
+    "last_ship": "W31 game plan locked · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1876,6 +1901,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "sunday filing day: processed the full strategic brief from saturday's health-tech call,...",
+        "tag": "shipped d268"
+      },
+      {
         "text": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise:...",
         "tag": "shipped d267"
       },
@@ -1886,10 +1915,6 @@ window.DH_DATA = {
       {
         "text": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes bac...",
         "tag": "shipped d265"
-      },
-      {
-        "text": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketin...",
-        "tag": "shipped d264"
       }
     ],
     "soon": [
@@ -3418,5 +3443,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-25T19:45:07.812Z"
+  "built": "2026-07-26T19:46:01.319Z"
 };
