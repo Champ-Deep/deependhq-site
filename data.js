@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-26T19:46:01.319Z
+// Built 2026-07-29T16:54:14.042Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 268,
-    "today_date": "2026-07-26",
+    "today_day": 270,
+    "today_date": "2026-07-28",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,18 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 270,
+          "date": "2026-07-28",
+          "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two…",
+          "arc_color": "gold"
+        },
+        {
+          "day": 269,
+          "date": "2026-07-27",
+          "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a…",
+          "arc_color": "blue"
+        },
         {
           "day": 268,
           "date": "2026-07-26",
@@ -82,18 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-14",
           "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200…",
           "arc_color": "gold"
-        },
-        {
-          "day": 255,
-          "date": "2026-07-13",
-          "shipping_now": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient monitoring. another…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 254,
-          "date": "2026-07-12",
-          "shipping_now": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milestone review, but the density said something…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -185,6 +185,18 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 270,
+          "date": "2026-07-28",
+          "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two…",
+          "arc_color": "gold"
+        },
+        {
+          "day": 269,
+          "date": "2026-07-27",
+          "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a…",
+          "arc_color": "blue"
+        },
+        {
           "day": 268,
           "date": "2026-07-26",
           "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard…",
@@ -243,18 +255,6 @@ window.DH_DATA = {
           "date": "2026-07-16",
           "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new…",
           "arc_color": "green"
-        },
-        {
-          "day": 257,
-          "date": "2026-07-15",
-          "shipping_now": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company, API-first, $15M ARR. signed up for their…",
-          "arc_color": "green"
-        },
-        {
-          "day": 256,
-          "date": "2026-07-14",
-          "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -466,6 +466,56 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-28",
+      "day": 270,
+      "mood": "🏆",
+      "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two weeks.",
+      "yesterday_thread": "EU-India MOU finalization call happened. Written amendments committed right after. A European partner, a Bangalore deal, and 10 days to close the next round of terms.",
+      "raw_thought": "Ten meetings in one day is a lot. Most of them moved something. The ones that did not are the ones that sting at 2 AM.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-27",
+      "day": 269,
+      "mood": "🏗️",
+      "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a Singapore-based investment prospect. Both cleared by midnight. Leaders Meeting set the week tone.",
+      "yesterday_thread": "Social extension recovered after a 2-day block on Sunday. Calendar pipeline back at zero but the system is healthy.",
+      "raw_thought": "Three non-negotiables on paper at the start of the week. The real question is always whether the week closes them or just relabels them.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-07-26",
       "day": 268,
@@ -1869,9 +1919,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:15 IST",
+    "time_ist": "22:24 IST",
     "weather": "24°C · clear",
-    "last_ship": "W31 game plan locked · just now",
+    "last_ship": "Founders 2.0 Singapore bronze closed · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1901,20 +1951,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker...",
+        "tag": "shipped d270"
+      },
+      {
+        "text": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity r...",
+        "tag": "shipped d269"
+      },
+      {
         "text": "sunday filing day: processed the full strategic brief from saturday's health-tech call,...",
         "tag": "shipped d268"
       },
       {
         "text": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise:...",
         "tag": "shipped d267"
-      },
-      {
-        "text": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a cl...",
-        "tag": "shipped d266"
-      },
-      {
-        "text": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes bac...",
-        "tag": "shipped d265"
       }
     ],
     "soon": [
@@ -3443,5 +3493,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-26T19:46:01.319Z"
+  "built": "2026-07-29T16:54:14.041Z"
 };
