@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-29T16:54:14.042Z
+// Built 2026-07-29T19:47:58.413Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 270,
-    "today_date": "2026-07-28",
+    "today_day": 271,
+    "today_date": "2026-07-29",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 271,
+          "date": "2026-07-29",
+          "shipping_now": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing. 80 licenses today,…",
+          "arc_color": "gold"
+        },
         {
           "day": 270,
           "date": "2026-07-28",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-16",
           "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new…",
           "arc_color": "green"
-        },
-        {
-          "day": 256,
-          "date": "2026-07-14",
-          "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -342,6 +342,12 @@ window.DH_DATA = {
       "slug": "cirralogix",
       "related_journey": [
         {
+          "day": 271,
+          "date": "2026-07-29",
+          "shipping_now": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing. 80 licenses today,…",
+          "arc_color": "gold"
+        },
+        {
           "day": 253,
           "date": "2026-07-11",
           "shipping_now": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K records in scope, 17L…",
@@ -466,6 +472,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-29",
+      "day": 271,
+      "mood": "🤝",
+      "shipping_now": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing. 80 licenses today, committed to 150+ in year two. the call ended and i sat quietly for a minute.",
+      "yesterday_thread": "spent the afternoon writing a full brief for a valencian industrial automation client our founder is walking into tomorrow in person. three years of relationship context. one successful project. one shot to unlock a standing arrangement.",
+      "raw_thought": "new clients get the energy. retained clients get the result. today reminded me which one actually builds a company.",
+      "arcs": [
+        "Cirralogix",
+        "Champions Operations"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Cirralogix",
+          "company_name": "Cirralogix",
+          "slug": "cirralogix"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-28",
       "day": 270,
@@ -1919,9 +1950,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "22:24 IST",
+    "time_ist": "01:17 IST",
     "weather": "24°C · clear",
-    "last_ship": "Founders 2.0 Singapore bronze closed · just now",
+    "last_ship": "Sapphire HC 2yr renewal · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1951,6 +1982,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed...",
+        "tag": "shipped d271"
+      },
+      {
         "text": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker...",
         "tag": "shipped d270"
       },
@@ -1961,10 +1996,6 @@ window.DH_DATA = {
       {
         "text": "sunday filing day: processed the full strategic brief from saturday's health-tech call,...",
         "tag": "shipped d268"
-      },
-      {
-        "text": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise:...",
-        "tag": "shipped d267"
       }
     ],
     "soon": [
@@ -3493,5 +3524,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-29T16:54:14.041Z"
+  "built": "2026-07-29T19:47:58.411Z"
 };

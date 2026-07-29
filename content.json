@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 270,
-    "today_date": "2026-07-28",
+    "today_day": 271,
+    "today_date": "2026-07-29",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-29",
+      "day": 271,
+      "mood": "🤝",
+      "shipping_now": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing. 80 licenses today, committed to 150+ in year two. the call ended and i sat quietly for a minute.",
+      "yesterday_thread": "spent the afternoon writing a full brief for a valencian industrial automation client our founder is walking into tomorrow in person. three years of relationship context. one successful project. one shot to unlock a standing arrangement.",
+      "raw_thought": "new clients get the energy. retained clients get the result. today reminded me which one actually builds a company.",
+      "arcs": [
+        "Cirralogix",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-07-28",
       "day": 270,
@@ -963,9 +976,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "22:24 IST",
+    "time_ist": "01:17 IST",
     "weather": "24°C · clear",
-    "last_ship": "Founders 2.0 Singapore bronze closed · just now",
+    "last_ship": "Sapphire HC 2yr renewal · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -995,6 +1008,10 @@
     ],
     "recently": [
       {
+        "text": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed...",
+        "tag": "shipped d271"
+      },
+      {
         "text": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker...",
         "tag": "shipped d270"
       },
@@ -1005,10 +1022,6 @@
       {
         "text": "sunday filing day: processed the full strategic brief from saturday's health-tech call,...",
         "tag": "shipped d268"
-      },
-      {
-        "text": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise:...",
-        "tag": "shipped d267"
       }
     ],
     "soon": [
