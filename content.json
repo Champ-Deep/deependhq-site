@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 271,
-    "today_date": "2026-07-29",
+    "today_day": 272,
+    "today_date": "2026-07-30",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-30",
+      "day": 272,
+      "mood": "🏗️",
+      "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled from the parent group during establishment. first product: a company file with firmographics, technographics, and intent signals. MVP before december. biggest strategic call of the year.",
+      "yesterday_thread": "vendor docs day. telemarketing scripts, ICP conflicts, a billing address chase. the unglamorous connective tissue of a real sales motion.",
+      "raw_thought": "same day: a 15-year home care org with zero outbound, a tire manufacturer account with a call i have no outcome for, and a platform rewrite i have been circling for two years. three completely different problem types. that is the job.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-07-29",
       "day": 271,
@@ -976,9 +989,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:17 IST",
+    "time_ist": "01:09 IST",
     "weather": "24°C · clear",
-    "last_ship": "Sapphire HC 2yr renewal · just now",
+    "last_ship": "Lake B2B pivot · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1008,6 +1021,10 @@
     ],
     "recently": [
       {
+        "text": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+....",
+        "tag": "shipped d272"
+      },
+      {
         "text": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed...",
         "tag": "shipped d271"
       },
@@ -1018,10 +1035,6 @@
       {
         "text": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity r...",
         "tag": "shipped d269"
-      },
-      {
-        "text": "sunday filing day: processed the full strategic brief from saturday's health-tech call,...",
-        "tag": "shipped d268"
       }
     ],
     "soon": [

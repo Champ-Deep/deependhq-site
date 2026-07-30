@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-29T19:47:58.413Z
+// Built 2026-07-30T19:39:02.264Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 271,
-    "today_date": "2026-07-29",
+    "today_day": 272,
+    "today_date": "2026-07-30",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 272,
+          "date": "2026-07-30",
+          "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled…",
+          "arc_color": "blue"
+        },
         {
           "day": 271,
           "date": "2026-07-29",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 259,
           "date": "2026-07-17",
           "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on…",
-          "arc_color": "green"
-        },
-        {
-          "day": 258,
-          "date": "2026-07-16",
-          "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new…",
           "arc_color": "green"
         }
       ],
@@ -185,6 +185,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 272,
+          "date": "2026-07-30",
+          "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled…",
+          "arc_color": "blue"
+        },
+        {
           "day": 270,
           "date": "2026-07-28",
           "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two…",
@@ -248,12 +254,6 @@ window.DH_DATA = {
           "day": 259,
           "date": "2026-07-17",
           "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on…",
-          "arc_color": "green"
-        },
-        {
-          "day": 258,
-          "date": "2026-07-16",
-          "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new…",
           "arc_color": "green"
         }
       ],
@@ -472,6 +472,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-30",
+      "day": 272,
+      "mood": "🏗️",
+      "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled from the parent group during establishment. first product: a company file with firmographics, technographics, and intent signals. MVP before december. biggest strategic call of the year.",
+      "yesterday_thread": "vendor docs day. telemarketing scripts, ICP conflicts, a billing address chase. the unglamorous connective tissue of a real sales motion.",
+      "raw_thought": "same day: a 15-year home care org with zero outbound, a tire manufacturer account with a call i have no outcome for, and a platform rewrite i have been circling for two years. three completely different problem types. that is the job.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-29",
       "day": 271,
@@ -1950,9 +1975,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:17 IST",
+    "time_ist": "01:09 IST",
     "weather": "24°C · clear",
-    "last_ship": "Sapphire HC 2yr renewal · just now",
+    "last_ship": "Lake B2B pivot · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1982,6 +2007,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+....",
+        "tag": "shipped d272"
+      },
+      {
         "text": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed...",
         "tag": "shipped d271"
       },
@@ -1992,10 +2021,6 @@ window.DH_DATA = {
       {
         "text": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity r...",
         "tag": "shipped d269"
-      },
-      {
-        "text": "sunday filing day: processed the full strategic brief from saturday's health-tech call,...",
-        "tag": "shipped d268"
       }
     ],
     "soon": [
@@ -3524,5 +3549,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-29T19:47:58.411Z"
+  "built": "2026-07-30T19:39:02.263Z"
 };
