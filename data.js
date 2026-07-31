@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-30T19:39:02.264Z
+// Built 2026-07-31T19:37:51.910Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 272,
-    "today_date": "2026-07-30",
+    "today_day": 273,
+    "today_date": "2026-07-31",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 273,
+          "date": "2026-07-31",
+          "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is…",
+          "arc_color": "green"
+        },
         {
           "day": 272,
           "date": "2026-07-30",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-19",
           "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4…",
           "arc_color": "blue"
-        },
-        {
-          "day": 259,
-          "date": "2026-07-17",
-          "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -185,6 +185,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 273,
+          "date": "2026-07-31",
+          "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is…",
+          "arc_color": "green"
+        },
+        {
           "day": 272,
           "date": "2026-07-30",
           "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled…",
@@ -249,12 +255,6 @@ window.DH_DATA = {
           "date": "2026-07-19",
           "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4…",
           "arc_color": "blue"
-        },
-        {
-          "day": 259,
-          "date": "2026-07-17",
-          "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -472,6 +472,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-31",
+      "day": 273,
+      "mood": "🏗️",
+      "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is already at 3.3 sites/sec after parallelization + SSL fix. proxy mesh and vision-model CAPTCHA are next. separately: a longevity founder walked in with 135 domain portfolio, 180 acres of wellness real estate, and Snackery in 4000+ stores. filed the prospect note and blocked on their contact details.",
+      "yesterday_thread": "wrote the full telemarketing script for the vendor outreach layer. Q1 opener softened to intent signal. Q3 consolidated to a single qualifier. DevOps and data platforms scrubbed from the ICP. trial goes to dormant accounts first.",
+      "raw_thought": "the last day of july and i still have four unresolved fires going into august. the scraping call was clean. the longevity call was energizing. the gratuity email is the one thing i should have moved on a week ago.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-30",
       "day": 272,
@@ -1975,9 +2000,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:09 IST",
+    "time_ist": "01:07 IST",
     "weather": "24°C · clear",
-    "last_ship": "Lake B2B pivot · just now",
+    "last_ship": "scraping architecture v2 · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2007,6 +2032,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerp...",
+        "tag": "shipped d273"
+      },
+      {
         "text": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+....",
         "tag": "shipped d272"
       },
@@ -2017,10 +2046,6 @@ window.DH_DATA = {
       {
         "text": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker...",
         "tag": "shipped d270"
-      },
-      {
-        "text": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity r...",
-        "tag": "shipped d269"
       }
     ],
     "soon": [
@@ -3549,5 +3574,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-30T19:39:02.263Z"
+  "built": "2026-07-31T19:37:51.910Z"
 };

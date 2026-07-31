@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 272,
-    "today_date": "2026-07-30",
+    "today_day": 273,
+    "today_date": "2026-07-31",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-07-31",
+      "day": 273,
+      "mood": "🏗️",
+      "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is already at 3.3 sites/sec after parallelization + SSL fix. proxy mesh and vision-model CAPTCHA are next. separately: a longevity founder walked in with 135 domain portfolio, 180 acres of wellness real estate, and Snackery in 4000+ stores. filed the prospect note and blocked on their contact details.",
+      "yesterday_thread": "wrote the full telemarketing script for the vendor outreach layer. Q1 opener softened to intent signal. Q3 consolidated to a single qualifier. DevOps and data platforms scrubbed from the ICP. trial goes to dormant accounts first.",
+      "raw_thought": "the last day of july and i still have four unresolved fires going into august. the scraping call was clean. the longevity call was energizing. the gratuity email is the one thing i should have moved on a week ago.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-07-30",
       "day": 272,
@@ -989,9 +1002,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:09 IST",
+    "time_ist": "01:07 IST",
     "weather": "24°C · clear",
-    "last_ship": "Lake B2B pivot · just now",
+    "last_ship": "scraping architecture v2 · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1021,6 +1034,10 @@
     ],
     "recently": [
       {
+        "text": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerp...",
+        "tag": "shipped d273"
+      },
+      {
         "text": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+....",
         "tag": "shipped d272"
       },
@@ -1031,10 +1048,6 @@
       {
         "text": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker...",
         "tag": "shipped d270"
-      },
-      {
-        "text": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity r...",
-        "tag": "shipped d269"
       }
     ],
     "soon": [
