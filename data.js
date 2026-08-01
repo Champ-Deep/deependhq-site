@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-07-31T19:37:51.910Z
+// Built 2026-08-01T19:40:00.883Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 273,
-    "today_date": "2026-07-31",
+    "today_day": 274,
+    "today_date": "2026-08-01",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 274,
+          "date": "2026-08-01",
+          "shipping_now": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11 items surfaced from the notes and email…",
+          "arc_color": "blue"
+        },
         {
           "day": 273,
           "date": "2026-07-31",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 262,
           "date": "2026-07-20",
           "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 261,
-          "date": "2026-07-19",
-          "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4…",
           "arc_color": "blue"
         }
       ],
@@ -472,6 +472,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-01",
+      "day": 274,
+      "mood": "🛠️",
+      "shipping_now": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11 items surfaced from the notes and email backlog. meeting preps queued for two monday calls. four data/ai leaders joined the network. the inbox dispatch pipeline is 9 days blocked on an auth issue, that one stares back at me every morning.",
+      "yesterday_thread": "the longevity founder from friday still sits in drafts, five workstreams ready, no contact details yet. that one moves monday.",
+      "raw_thought": "the champions ranch go/no-go deadline was today. it passed like the last 49 days. still no decision.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-07-31",
       "day": 273,
@@ -2000,9 +2025,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:07 IST",
+    "time_ist": "01:10 IST",
     "weather": "24°C · clear",
-    "last_ship": "scraping architecture v2 · just now",
+    "last_ship": "CC rebuilt to 701 tasks · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2032,6 +2057,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11...",
+        "tag": "shipped d274"
+      },
+      {
         "text": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerp...",
         "tag": "shipped d273"
       },
@@ -2042,10 +2071,6 @@ window.DH_DATA = {
       {
         "text": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed...",
         "tag": "shipped d271"
-      },
-      {
-        "text": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker...",
-        "tag": "shipped d270"
       }
     ],
     "soon": [
@@ -3574,5 +3599,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-07-31T19:37:51.910Z"
+  "built": "2026-08-01T19:40:00.883Z"
 };
