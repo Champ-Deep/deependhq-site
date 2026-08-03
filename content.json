@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 275,
-    "today_date": "2026-08-02",
+    "today_day": 276,
+    "today_date": "2026-08-03",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-03",
+      "day": 276,
+      "mood": "🔧",
+      "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel pilot before saral cutover. payroll locked to the first of each month. $47k estimated infrastructure cost. 16 action items in one call. the fragmented manual stack finally has a migration path.",
+      "yesterday_thread": "",
+      "raw_thought": "the eu-india call expired before it started. again. the mou is six days overdue. at some point the bottleneck is just not opening outlook.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-08-02",
       "day": 275,
@@ -1028,9 +1041,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "17:37 IST",
+    "time_ist": "01:48 IST",
     "weather": "24°C · clear",
-    "last_ship": "W32 Weekly Brief · just now",
+    "last_ship": "HR/Payroll portal decision · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1060,6 +1073,10 @@
     ],
     "recently": [
       {
+        "text": "hosted the champions group hr + payroll portal planning session tonight. erp next chose...",
+        "tag": "shipped d276"
+      },
+      {
         "text": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own mond...",
         "tag": "shipped d275"
       },
@@ -1070,10 +1087,6 @@
       {
         "text": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerp...",
         "tag": "shipped d273"
-      },
-      {
-        "text": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+....",
-        "tag": "shipped d272"
       }
     ],
     "soon": [

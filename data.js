@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-03T12:07:46.915Z
+// Built 2026-08-03T20:18:14.761Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 275,
-    "today_date": "2026-08-02",
+    "today_day": 276,
+    "today_date": "2026-08-03",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 276,
+          "date": "2026-08-03",
+          "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel…",
+          "arc_color": "blue"
+        },
         {
           "day": 275,
           "date": "2026-08-02",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 264,
           "date": "2026-07-22",
           "shipping_now": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off the creative…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 263,
-          "date": "2026-07-21",
-          "shipping_now": "first direct call with a US oncology AI company. digital twin, epic/cerner integration, johns hopkins MOU in progress, 12 revenue…",
           "arc_color": "blue"
         }
       ],
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 276,
+          "date": "2026-08-03",
+          "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel…",
+          "arc_color": "blue"
+        },
+        {
           "day": 273,
           "date": "2026-07-31",
           "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is…",
@@ -254,12 +260,6 @@ window.DH_DATA = {
           "day": 262,
           "date": "2026-07-20",
           "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 261,
-          "date": "2026-07-19",
-          "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4…",
           "arc_color": "blue"
         }
       ],
@@ -484,6 +484,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-03",
+      "day": 276,
+      "mood": "🔧",
+      "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel pilot before saral cutover. payroll locked to the first of each month. $47k estimated infrastructure cost. 16 action items in one call. the fragmented manual stack finally has a migration path.",
+      "yesterday_thread": "",
+      "raw_thought": "the eu-india call expired before it started. again. the mou is six days overdue. at some point the bottleneck is just not opening outlook.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-08-02",
       "day": 275,
@@ -2062,9 +2087,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "17:37 IST",
+    "time_ist": "01:48 IST",
     "weather": "24°C · clear",
-    "last_ship": "W32 Weekly Brief · just now",
+    "last_ship": "HR/Payroll portal decision · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2094,6 +2119,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "hosted the champions group hr + payroll portal planning session tonight. erp next chose...",
+        "tag": "shipped d276"
+      },
+      {
         "text": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own mond...",
         "tag": "shipped d275"
       },
@@ -2104,10 +2133,6 @@ window.DH_DATA = {
       {
         "text": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerp...",
         "tag": "shipped d273"
-      },
-      {
-        "text": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+....",
-        "tag": "shipped d272"
       }
     ],
     "soon": [
@@ -3713,5 +3738,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-03T12:07:46.915Z"
+  "built": "2026-08-03T20:18:14.761Z"
 };
