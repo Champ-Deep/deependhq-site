@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 274,
-    "today_date": "2026-08-01",
+    "today_day": 275,
+    "today_date": "2026-08-02",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-02",
+      "day": 275,
+      "mood": "📋",
+      "shipping_now": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own monday morning. two sunday calls held, the longevity build sync and the spv coalition weekly. both in the vault, substance pending.",
+      "yesterday_thread": "eleven items surfaced from the notes and email backlog on saturday. command center is current. monday preps queued for two back-to-back calls.",
+      "raw_thought": "a week plan that takes all sunday to write is either very important or a sign the week it describes is overloaded. probably both.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-08-01",
       "day": 274,
@@ -1005,19 +1018,19 @@
   ],
   "weekly_narratives_count": 31,
   "latest_narrative": {
-    "week": 36,
-    "title": "Five commitments. Three non-negotiables. One week.",
-    "body": "The week opened with a scoreboard showing nine unresolved follow-ups from the week before. The gap between 'met with' and 'filed the outcome' has been the recurring tax on every good week. This one came close to letting it win again.\n\nBy Saturday, a referral call had become a full strategic partnership session. A health-tech company with twenty million in motion, physician-direct as the confirmed distribution wedge, and five commitments made live on the call: NDA by Monday, investment yes/no by Friday. The physician-direct thesis held up against real data. Every doctor approached said yes. Every hospital said committee.\n\nSunday was filing day. All five commitments clocked with hard deadlines. The W31 game plan written with three non-negotiables: named owners, named days, no drift. A fintech growth partnership that promised deliverables on Thursday hit a four-day dispatch block. The pipeline exists. The connector goes quiet in non-interactive sessions. Monday has to fix this before Tuesday's send deadline.\n\nChampMail's handoff brief is ready. The Wednesday briefing is the last unlock in the prerequisite chain. Two of three done. One meeting away.\n\nThe week held more in the system at the end than when it started. Not because more got shipped. Because more got named. A week without a spine bends.",
-    "day_range": "Jul 20 - Jul 26",
-    "date": "2026-07-26",
-    "read": "3 min",
-    "slug": "week-36-named-not-drifting"
+    "week": 37,
+    "title": "The calendar was full. The outbox was empty.",
+    "body": "Four important meetings. Zero emails sent from the commitments those meetings created. That is the honest summary of week 37. The week opened with a data strategy call that changed direction on the core product. A team that had been selling commodity contact lists is moving to bespoke, premium, custom-scoped data builds. The decision had been building for months but it landed formally on Tuesday: new pricing model, new ICP, new sales motion. That is not a tweak. That is a category reframe, and it will touch every pipeline and every pitch deck downstream. Wednesday delivered a renewal I did not expect to go sideways but did. A seven-year account, one of the stickiest in the portfolio, came back to negotiate. Two-year extension. Split pricing. Quarterly billing. Held the structure. They agreed on the call. The revised proposal goes out before month end. Eighty seats now, likely a hundred and fifty in year two. The AI sales platform came up as a future conversation worth having. Filed that.",
+    "day_range": "Jul 27 - Aug 1",
+    "date": "2026-08-02",
+    "read": "4 min",
+    "slug": "week-37-the-calendar-was-full"
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:10 IST",
+    "time_ist": "17:37 IST",
     "weather": "24°C · clear",
-    "last_ship": "CC rebuilt to 701 tasks · just now",
+    "last_ship": "W32 Weekly Brief · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1047,6 +1060,10 @@
     ],
     "recently": [
       {
+        "text": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own mond...",
+        "tag": "shipped d275"
+      },
+      {
         "text": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11...",
         "tag": "shipped d274"
       },
@@ -1057,10 +1074,6 @@
       {
         "text": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+....",
         "tag": "shipped d272"
-      },
-      {
-        "text": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed...",
-        "tag": "shipped d271"
       }
     ],
     "soon": [
@@ -1516,6 +1529,71 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-37-the-calendar-was-full",
+      "kind": "weekly",
+      "week": 37,
+      "eyebrow": ">_ week 37 - the dispatch arc",
+      "title": "The calendar was full. The outbox was empty.",
+      "deck": "The week ran four major calls, confirmed a data strategy pivot, and renewed a seven-year account. The MOU sat unsent. The fintech deliverables sat unbuilt. The engineer briefing did not happen. W32 starts with that accounting.",
+      "date": "2026-08-02",
+      "day_range": "Jul 27 - Aug 1",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "Lake B2B",
+        "Longevity",
+        "Champ IQ",
+        "Champions Operations"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Four important meetings. Zero emails sent from the commitments those meetings created. That is the honest summary of week 37."
+        },
+        {
+          "type": "p",
+          "text": "The week opened with a data strategy call that changed direction on the core product. A team that had been selling commodity contact lists is moving to bespoke, premium, custom-scoped data builds. The decision had been building for months but it landed formally on Tuesday: new pricing model, new ICP, new sales motion. That is not a tweak. That is a category reframe, and it will touch every pipeline and every pitch deck downstream."
+        },
+        {
+          "type": "p",
+          "text": "Wednesday delivered a renewal I did not expect to go sideways but did. A seven-year account, one of the stickiest in the portfolio, came back to negotiate. Two-year extension. Split pricing. Quarterly billing. Held the structure. They agreed on the call. The revised proposal goes out before month end. Eighty seats now, likely a hundred and fifty in year two. The AI sales platform came up as a future conversation worth having. Filed that."
+        },
+        {
+          "type": "p",
+          "text": "Thursday was architecture. Three hours to figure out what not to build in the scraping layer. OCR is off the table: the cost-per-record math breaks at production volumes. The session did not produce a system. It produced a shorter list of bad ideas. Sometimes that is the work."
+        },
+        {
+          "type": "p",
+          "text": "Friday ran a partnership conversation that touched five workstreams: a Bangalore office, a longevity summit, a device marketplace, a food brand, and a research institute connection. Good conversation. Incomplete close. The contact details were supposed to be exchanged after the call. They were not. The follow-up email is written and sitting, waiting for an address."
+        },
+        {
+          "type": "h2",
+          "text": "What did not happen."
+        },
+        {
+          "type": "p",
+          "text": "The MOU I committed to send on Wednesday is still in drafts. It is complete. It needs one recipient address. Five days passed and I did not find it."
+        },
+        {
+          "type": "p",
+          "text": "The three documents I promised a fintech partner ten days ago are still unbuilt. They have the addresses. They are waiting. The longer this sits the worse it looks."
+        },
+        {
+          "type": "p",
+          "text": "The briefing I owe the lead engineer on the AI sales platform did not happen. The handoff spec is complete. The ChampMail build is live. The walk-through is the last unlock in the chain and it keeps getting pushed to next week."
+        },
+        {
+          "type": "pull",
+          "text": "The calendar was full. The outbox was empty. W32 starts with that accounting and no tolerance for the same outcome."
+        },
+        {
+          "type": "p",
+          "text": "Sunday closed with the W32 brief locked. Theme: execute the backlog, no more carry-forward. Three items own Monday morning. The MOU. The fintech docs. A labour compliance issue with a hard deadline that already passed. No more drift."
+        }
+      ]
+    },
     {
       "slug": "week-35-three-calls-one-friday",
       "kind": "weekly",
