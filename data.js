@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-05T19:43:27.370Z
+// Built 2026-08-06T19:38:17.999Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 278,
-    "today_date": "2026-08-05",
+    "today_day": 279,
+    "today_date": "2026-08-06",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 279,
+          "date": "2026-08-06",
+          "shipping_now": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer. they want to see…",
+          "arc_color": "green"
+        },
         {
           "day": 278,
           "date": "2026-08-05",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-26",
           "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard…",
           "arc_color": "green"
-        },
-        {
-          "day": 267,
-          "date": "2026-07-25",
-          "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 279,
+          "date": "2026-08-06",
+          "shipping_now": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer. they want to see…",
+          "arc_color": "green"
+        },
+        {
           "day": 278,
           "date": "2026-08-05",
           "shipping_now": "a new relationship walked in from the india wealth and fund management space. they brought a GIFT City fund structuring ask. we…",
@@ -255,12 +261,6 @@ window.DH_DATA = {
           "date": "2026-07-23",
           "shipping_now": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, so any cors regex…",
           "arc_color": "green"
-        },
-        {
-          "day": 264,
-          "date": "2026-07-22",
-          "shipping_now": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off the creative…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -484,6 +484,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-06",
+      "day": 279,
+      "mood": "🎯",
+      "shipping_now": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer. they want to see sample work first - right call. also scoped lake b2b as a real-time llm data feed: chatgpt runs on pre-2023 training data, our job postings refresh every 8 hours. that gap is the entire pitch to any ai company building a business-intelligence layer.",
+      "yesterday_thread": "channel optimization team named and structured for the email infrastructure overhaul. 1,600 mailboxes migrated in 30 days. +100 leads per month vs january. the rename from delivery team to channel team was deliberate - the real gap is strategy and training, not deliverability.",
+      "raw_thought": "spent the evening building tomorrow's deck for a proposal meeting. four notes, a runbook, talking points, slide-by-slide script. that is what prepared actually looks like, and it is the only thing that makes the meeting not a coin flip.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-05",
       "day": 278,
@@ -2137,9 +2162,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:13 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "new BD relationship + SPAN SEO restructure · just now",
+    "last_ship": "Westenor pitch + LakeB2B LLM feed concept · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2169,6 +2194,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content stra...",
+        "tag": "shipped d279"
+      },
+      {
         "text": "a new relationship walked in from the india wealth and fund management space. they brou...",
         "tag": "shipped d278"
       },
@@ -2179,10 +2208,6 @@ window.DH_DATA = {
       {
         "text": "hosted the champions group hr + payroll portal planning session tonight. erp next chose...",
         "tag": "shipped d276"
-      },
-      {
-        "text": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own mond...",
-        "tag": "shipped d275"
       }
     ],
     "soon": [
@@ -3788,5 +3813,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-05T19:43:27.370Z"
+  "built": "2026-08-06T19:38:17.999Z"
 };
