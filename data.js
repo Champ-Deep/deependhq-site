@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-06T19:38:17.999Z
+// Built 2026-08-07T19:39:35.807Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 279,
-    "today_date": "2026-08-06",
+    "today_day": 280,
+    "today_date": "2026-08-07",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 280,
+          "date": "2026-08-07",
+          "shipping_now": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 250-person…",
+          "arc_color": "green"
+        },
         {
           "day": 279,
           "date": "2026-08-06",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-27",
           "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a…",
           "arc_color": "blue"
-        },
-        {
-          "day": 268,
-          "date": "2026-07-26",
-          "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 280,
+          "date": "2026-08-07",
+          "shipping_now": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 250-person…",
+          "arc_color": "green"
+        },
+        {
           "day": 279,
           "date": "2026-08-06",
           "shipping_now": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer. they want to see…",
@@ -255,12 +261,6 @@ window.DH_DATA = {
           "date": "2026-07-24",
           "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday…",
           "arc_color": "blue"
-        },
-        {
-          "day": 265,
-          "date": "2026-07-23",
-          "shipping_now": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, so any cors regex…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -484,6 +484,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-07",
+      "day": 280,
+      "mood": "⚡",
+      "shipping_now": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 250-person digitalization department, closed-company data policy. they need an external data partner. champions presented the database. agreed on a revenue-share lead gen model in principle. nda and capabilities brief are p0s for tomorrow.",
+      "yesterday_thread": "three new client files in one evening. a wellness gym founder who wants a kitchen built in 45 days and a hyrox race partner. an immersive production studio that locked a verbal referral partnership. a lead quality standoff with a vendor that ended with quality-over-volume confirmed in writing.",
+      "raw_thought": "added 19 tasks today. closed zero. the pipeline is widening faster than the funnel is clearing. that is not a complaint.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-08-06",
       "day": 279,
@@ -2162,9 +2187,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:09 IST",
     "weather": "24°C · clear",
-    "last_ship": "Westenor pitch + LakeB2B LLM feed concept · just now",
+    "last_ship": "3 new client files, 4 drafts · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2194,6 +2219,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 ac...",
+        "tag": "shipped d280"
+      },
+      {
         "text": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content stra...",
         "tag": "shipped d279"
       },
@@ -2204,10 +2233,6 @@ window.DH_DATA = {
       {
         "text": "full backend audit of the marketing platform. nine services running on the cloud infra,...",
         "tag": "shipped d277"
-      },
-      {
-        "text": "hosted the champions group hr + payroll portal planning session tonight. erp next chose...",
-        "tag": "shipped d276"
       }
     ],
     "soon": [
@@ -3813,5 +3838,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-06T19:38:17.999Z"
+  "built": "2026-08-07T19:39:35.807Z"
 };
