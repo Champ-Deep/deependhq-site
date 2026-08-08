@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-07T19:39:35.807Z
+// Built 2026-08-08T19:40:12.399Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 280,
-    "today_date": "2026-08-07",
+    "today_day": 281,
+    "today_date": "2026-08-08",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 281,
+          "date": "2026-08-08",
+          "shipping_now": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes, flagged two…",
+          "arc_color": "blue"
+        },
         {
           "day": 280,
           "date": "2026-08-07",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-28",
           "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two…",
           "arc_color": "gold"
-        },
-        {
-          "day": 269,
-          "date": "2026-07-27",
-          "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 281,
+          "date": "2026-08-08",
+          "shipping_now": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes, flagged two…",
+          "arc_color": "blue"
+        },
+        {
           "day": 280,
           "date": "2026-08-07",
           "shipping_now": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 250-person…",
@@ -255,15 +261,15 @@ window.DH_DATA = {
           "date": "2026-07-25",
           "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts…",
           "arc_color": "blue"
-        },
-        {
-          "day": 266,
-          "date": "2026-07-24",
-          "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-38-the-signals-were-everywhere",
+          "title": "The signals were everywhere. The outbox was not.",
+          "date": "2026-08-09",
+          "read": "4 min"
+        },
         {
           "slug": "week-37-the-calendar-was-full",
           "title": "The calendar was full. The outbox was empty.",
@@ -484,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-08",
+      "day": 281,
+      "mood": "⚡",
+      "shipping_now": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes, flagged two missed wishes, logged the gap. zoom connectors went dark at 4pm IST, self-healed by 11pm. meanwhile a product demo came through the scheduler unsolicited: a senior executive at a major global tech company booked a lakeb2b walkthrough for tuesday night.",
+      "yesterday_thread": "seven singapore outreach threads are out. no replies yet. waiting is part of the game.",
+      "raw_thought": "four p0s have been on the list for over a week. they do not disappear because it was a saturday.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-07",
       "day": 280,
@@ -2177,19 +2208,19 @@ window.DH_DATA = {
   ],
   "weekly_narratives_count": 31,
   "latest_narrative": {
-    "week": 37,
-    "title": "The calendar was full. The outbox was empty.",
-    "body": "Four important meetings. Zero emails sent from the commitments those meetings created. That is the honest summary of week 37. The week opened with a data strategy call that changed direction on the core product. A team that had been selling commodity contact lists is moving to bespoke, premium, custom-scoped data builds. The decision had been building for months but it landed formally on Tuesday: new pricing model, new ICP, new sales motion. That is not a tweak. That is a category reframe, and it will touch every pipeline and every pitch deck downstream. Wednesday delivered a renewal I did not expect to go sideways but did. A seven-year account, one of the stickiest in the portfolio, came back to negotiate. Two-year extension. Split pricing. Quarterly billing. Held the structure. They agreed on the call. The revised proposal goes out before month end. Eighty seats now, likely a hundred and fifty in year two. The AI sales platform came up as a future conversation worth having. Filed that.",
-    "day_range": "Jul 27 - Aug 1",
-    "date": "2026-08-02",
+    "week": 38,
+    "title": "The signals were everywhere. The outbox was not.",
+    "body": "week 38 started with payroll architecture and ended with a saturday demo booking from a global tech company. in between: a nuclear infrastructure firm, a wealth management contact, and a luxury travel brand. four verticals in five days.",
+    "day_range": "Aug 3 - Aug 9",
+    "date": "2026-08-09",
     "read": "4 min",
-    "slug": "week-37-the-calendar-was-full"
+    "slug": "week-38-the-signals-were-everywhere"
   },
   "status": {
     "location": "Bangalore, IN",
     "time_ist": "01:09 IST",
     "weather": "24°C · clear",
-    "last_ship": "3 new client files, 4 drafts · just now",
+    "last_ship": "amazon demo booked (Tue Aug 11) · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2219,6 +2250,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "saturday. automated systems ran the day -- social triage caught a linkedin session drop...",
+        "tag": "shipped d281"
+      },
+      {
         "text": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 ac...",
         "tag": "shipped d280"
       },
@@ -2229,10 +2264,6 @@ window.DH_DATA = {
       {
         "text": "a new relationship walked in from the india wealth and fund management space. they brou...",
         "tag": "shipped d278"
-      },
-      {
-        "text": "full backend audit of the marketing platform. nine services running on the cloud infra,...",
-        "tag": "shipped d277"
       }
     ],
     "soon": [
@@ -2688,6 +2719,77 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-38-the-signals-were-everywhere",
+      "kind": "weekly",
+      "week": 38,
+      "eyebrow": ">_ week 38 - the enterprise signals arc",
+      "title": "The signals were everywhere. The outbox was not.",
+      "deck": "W38 brought nuclear infrastructure, wealth management, luxury travel, and a self-booked demo from big tech. The pipeline filled. The follow-through did not.",
+      "date": "2026-08-09",
+      "day_range": "Aug 3 - Aug 9",
+      "read": "4 min",
+      "arc": "Lake B2B",
+      "arc_color": "gold",
+      "tags": [
+        "lakeb2b",
+        "pipeline",
+        "enterprise"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 38 started with payroll architecture and ended with a saturday demo booking from a global tech company. in between: a nuclear infrastructure firm, a wealth management contact, and a luxury travel brand. four verticals in five days. the pipeline did not wait for permission."
+        },
+        {
+          "type": "p",
+          "text": "monday was infrastructure day. the champions group hr and payroll portal is moving into design phase. three hours mapping the erp adjacencies. the point is not just to build a portal -- it is to wire it into the operational layer that every company in the group already runs. a payroll system that cannot talk to the finance stack is a fancy spreadsheet. that framing landed. scope grew, which is usually a good sign."
+        },
+        {
+          "type": "p",
+          "text": "tuesday was the marketing platform audit. nine cloud services, none talking cleanly to each other. the session surfaced what i had suspected: the reporting layer is generating vanity metrics, not conversion metrics. a team can look productive for months on dashboards that do not reflect revenue motion. seven fixes flagged. three are structural. the rest are configuration. the structural ones will take a sprint each."
+        },
+        {
+          "type": "h2",
+          "text": "the enterprise signals"
+        },
+        {
+          "type": "p",
+          "text": "wednesday brought in a new relationship from india's wealth and fund management space. the initial call confirmed budget exists, timeline is unclear, proof required before scope. that is the normal pattern. what was not normal: they came through a warm intro from someone i had not spoken to in two years. that channel is working. i need to be more deliberate about it."
+        },
+        {
+          "type": "p",
+          "text": "thursday was the pitch that required the most preparation. a legacy luxury travel brand with a consultant layer between us and the decision-makers. six reels, a content brief, a proposal that had to make the case without leading with price. the consultant team filters on quality first. that is a better filter to get through because quality is easier to prove than price is to negotiate."
+        },
+        {
+          "type": "p",
+          "text": "friday was the most interesting conversation of the week. government-adjacent enterprise, nuclear infrastructure, european entity with india operations. the kind of meeting where you do not pitch -- you listen, then confirm you understand the problem. we committed to sending a capabilities brief and an nda same day. the nda is waiting on a sign-off. the brief went out. these deals move on trust and paperwork, in that order."
+        },
+        {
+          "type": "h2",
+          "text": "the system that ran saturday"
+        },
+        {
+          "type": "p",
+          "text": "saturday i did not take a single call. the automated triage ran: social engagement, zoom follow-up sweep, email ingestion. a senior executive at a major global tech company had already booked a lakeb2b product walkthrough for tuesday -- no outreach from our side. that is the right kind of notification to wake up to. seven singapore outreach threads from the tech week campaign are live. no replies yet. the week produced pipeline. the p0 list stayed long."
+        },
+        {
+          "type": "pull",
+          "text": "the signals were there. the week 38 failure was not in the conversations. it was in the commitments that left those conversations and did not land as documents. the outbox is the bottleneck, not the pipeline."
+        },
+        {
+          "type": "p",
+          "text": "week 39 opens with two deadlines already late: a mou that is ten days overdue, and a go/no-go on a major property decision stale for over fifty days. both have drafts. neither has been sent. the pattern is clear. next week tests whether we can close the loop, not just open it."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        }
+      ]
+    },
     {
       "slug": "week-37-the-calendar-was-full",
       "kind": "weekly",
@@ -3838,5 +3940,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-07T19:39:35.807Z"
+  "built": "2026-08-08T19:40:12.399Z"
 };

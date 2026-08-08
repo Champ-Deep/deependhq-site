@@ -5,7 +5,14 @@
     <link>https://deependhq.com</link>
     <description>Essays and weekly narratives from the operator of 12 companies. Past the hype cycle, into the infrastructure.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 07 Aug 2026 19:39:35 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2026 19:40:12 GMT</lastBuildDate>
+    <item>
+      <title>The signals were everywhere. The outbox was not.</title>
+      <link>https://deependhq.com/post?slug=week-38-the-signals-were-everywhere</link>
+      <guid isPermaLink="true">https://deependhq.com/post?slug=week-38-the-signals-were-everywhere</guid>
+      <pubDate>Sun, 09 Aug 2026 03:30:00 GMT</pubDate>
+      <description>The signals were everywhere. The outbox was not.</description>
+    </item>
     <item>
       <title>The calendar was full. The outbox was empty.</title>
       <link>https://deependhq.com/post?slug=week-37-the-calendar-was-full</link>
