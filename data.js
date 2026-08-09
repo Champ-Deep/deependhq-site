@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-08T19:40:12.399Z
+// Built 2026-08-09T19:38:07.222Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 281,
-    "today_date": "2026-08-08",
+    "today_day": 282,
+    "today_date": "2026-08-09",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 282,
+          "date": "2026-08-09",
+          "shipping_now": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then the recurring three-party spv call at night…",
+          "arc_color": "blue"
+        },
         {
           "day": 281,
           "date": "2026-08-08",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 271,
           "date": "2026-07-29",
           "shipping_now": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing. 80 licenses today,…",
-          "arc_color": "gold"
-        },
-        {
-          "day": 270,
-          "date": "2026-07-28",
-          "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two…",
           "arc_color": "gold"
         }
       ],
@@ -490,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-09",
+      "day": 282,
+      "mood": "🌙",
+      "shipping_now": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then the recurring three-party spv call at night with the infrastructure and energy partners, chief on the line. w33 weekly brief locked before either call. the week 38 narrative is live on the site.",
+      "yesterday_thread": "the w38 pattern held: pipeline filled, outbox lagged. the charles michel mou has been written for nine days. the ranch go/no-go is 51 days stale. both have drafts. neither has moved. w39 opens with that as the only real test.",
+      "raw_thought": "systems ran the day. linkedin session expired so social triage went blind on the second consecutive weekend. the fix is 30 seconds in a browser. the gap between knowing that and doing it is the whole problem in miniature.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-08",
       "day": 281,
@@ -2218,9 +2243,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:09 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "amazon demo booked (Tue Aug 11) · just now",
+    "last_ship": "W38 weekly narrative · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2250,6 +2275,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then th...",
+        "tag": "shipped d282"
+      },
+      {
         "text": "saturday. automated systems ran the day -- social triage caught a linkedin session drop...",
         "tag": "shipped d281"
       },
@@ -2260,10 +2289,6 @@ window.DH_DATA = {
       {
         "text": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content stra...",
         "tag": "shipped d279"
-      },
-      {
-        "text": "a new relationship walked in from the india wealth and fund management space. they brou...",
-        "tag": "shipped d278"
       }
     ],
     "soon": [
@@ -3940,5 +3965,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-08T19:40:12.399Z"
+  "built": "2026-08-09T19:38:07.222Z"
 };
