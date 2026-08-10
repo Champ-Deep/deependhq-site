@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-09T19:38:07.222Z
+// Built 2026-08-10T19:40:24.118Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 282,
-    "today_date": "2026-08-09",
+    "today_day": 283,
+    "today_date": "2026-08-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 283,
+          "date": "2026-08-10",
+          "shipping_now": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance increments split from cost-of-living raises,…",
+          "arc_color": "green"
+        },
         {
           "day": 282,
           "date": "2026-08-09",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-30",
           "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled…",
           "arc_color": "blue"
-        },
-        {
-          "day": 271,
-          "date": "2026-07-29",
-          "shipping_now": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing. 80 licenses today,…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -490,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-10",
+      "day": 283,
+      "mood": "⚡",
+      "shipping_now": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance increments split from cost-of-living raises, senior increments now tied to a junior hire within 3 months. canvas versioning design confirmed for the ai workspace platform. a new api security intern, offered and accepted, 60 days. seven meeting preps filed for tomorrow before closing.",
+      "yesterday_thread": "war room deck for the monday leaders meeting. near-verbatim talking points per slide. case study gap audit launched live. three of my own leads handed off to the floor tonight.",
+      "raw_thought": "the channel partner call happened. outcome still not filed. this is week six of the same gap. the problem is not the call. the problem is that i do not file it after. need to break the pattern, not just note it.",
+      "arcs": [
+        "Champions Operations",
+        "Champ IQ"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champ IQ",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-09",
       "day": 282,
@@ -2243,9 +2268,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:10 IST",
     "weather": "24°C · clear",
-    "last_ship": "W38 weekly narrative · just now",
+    "last_ship": "appraisal policy + 5 meeting captures · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2275,6 +2300,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance inc...",
+        "tag": "shipped d283"
+      },
+      {
         "text": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then th...",
         "tag": "shipped d282"
       },
@@ -2285,10 +2314,6 @@ window.DH_DATA = {
       {
         "text": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 ac...",
         "tag": "shipped d280"
-      },
-      {
-        "text": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content stra...",
-        "tag": "shipped d279"
       }
     ],
     "soon": [
@@ -3965,5 +3990,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-09T19:38:07.222Z"
+  "built": "2026-08-10T19:40:24.118Z"
 };
