@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-10T19:40:24.118Z
+// Built 2026-08-11T19:38:43.062Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 283,
-    "today_date": "2026-08-10",
+    "today_day": 284,
+    "today_date": "2026-08-11",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 284,
+          "date": "2026-08-11",
+          "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel,…",
+          "arc_color": "green"
+        },
         {
           "day": 283,
           "date": "2026-08-10",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-07-31",
           "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is…",
           "arc_color": "green"
-        },
-        {
-          "day": 272,
-          "date": "2026-07-30",
-          "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 284,
+          "date": "2026-08-11",
+          "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel,…",
+          "arc_color": "green"
+        },
+        {
           "day": 281,
           "date": "2026-08-08",
           "shipping_now": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes, flagged two…",
@@ -255,12 +261,6 @@ window.DH_DATA = {
           "date": "2026-07-26",
           "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard…",
           "arc_color": "green"
-        },
-        {
-          "day": 267,
-          "date": "2026-07-25",
-          "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -490,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-11",
+      "day": 284,
+      "mood": "🎯",
+      "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel, infrastructure funding on the table, a QuickSight trial offer. follow-up draft ready. NDA and IT intro call are next. this one has real distribution legs.",
+      "yesterday_thread": "longevity tech stack locked. mongodb confirmed, biomarkers scoped down to 30-40, women's health as the primary differentiator. device test plan set. the product is getting sharper.",
+      "raw_thought": "10+ new tasks from one day of meetings. the backlog grows faster than it drains. at some point the filing system becomes the bottleneck, not the work.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-10",
       "day": 283,
@@ -2268,9 +2293,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:10 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "appraisal policy + 5 meeting captures · just now",
+    "last_ship": "Amazon AWS demo · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2300,6 +2325,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead...",
+        "tag": "shipped d284"
+      },
+      {
         "text": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance inc...",
         "tag": "shipped d283"
       },
@@ -2310,10 +2339,6 @@ window.DH_DATA = {
       {
         "text": "saturday. automated systems ran the day -- social triage caught a linkedin session drop...",
         "tag": "shipped d281"
-      },
-      {
-        "text": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 ac...",
-        "tag": "shipped d280"
       }
     ],
     "soon": [
@@ -3990,5 +4015,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-10T19:40:24.118Z"
+  "built": "2026-08-11T19:38:43.062Z"
 };

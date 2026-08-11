@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 283,
-    "today_date": "2026-08-10",
+    "today_day": 284,
+    "today_date": "2026-08-11",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-11",
+      "day": 284,
+      "mood": "🎯",
+      "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel, infrastructure funding on the table, a QuickSight trial offer. follow-up draft ready. NDA and IT intro call are next. this one has real distribution legs.",
+      "yesterday_thread": "longevity tech stack locked. mongodb confirmed, biomarkers scoped down to 30-40, women's health as the primary differentiator. device test plan set. the product is getting sharper.",
+      "raw_thought": "10+ new tasks from one day of meetings. the backlog grows faster than it drains. at some point the filing system becomes the bottleneck, not the work.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-08-10",
       "day": 283,
@@ -1132,9 +1145,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:10 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "appraisal policy + 5 meeting captures · just now",
+    "last_ship": "Amazon AWS demo · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1164,6 +1177,10 @@
     ],
     "recently": [
       {
+        "text": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead...",
+        "tag": "shipped d284"
+      },
+      {
         "text": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance inc...",
         "tag": "shipped d283"
       },
@@ -1174,10 +1191,6 @@
       {
         "text": "saturday. automated systems ran the day -- social triage caught a linkedin session drop...",
         "tag": "shipped d281"
-      },
-      {
-        "text": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 ac...",
-        "tag": "shipped d280"
       }
     ],
     "soon": [
