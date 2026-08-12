@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-11T19:38:43.062Z
+// Built 2026-08-12T19:51:37.878Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 284,
-    "today_date": "2026-08-11",
+    "today_day": 285,
+    "today_date": "2026-08-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 285,
+          "date": "2026-08-12",
+          "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one…",
+          "arc_color": "green"
+        },
         {
           "day": 284,
           "date": "2026-08-11",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-08-01",
           "shipping_now": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11 items surfaced from the notes and email…",
           "arc_color": "blue"
-        },
-        {
-          "day": 273,
-          "date": "2026-07-31",
-          "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 285,
+          "date": "2026-08-12",
+          "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one…",
+          "arc_color": "green"
+        },
+        {
           "day": 284,
           "date": "2026-08-11",
           "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel,…",
@@ -255,12 +261,6 @@ window.DH_DATA = {
           "date": "2026-07-27",
           "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a…",
           "arc_color": "blue"
-        },
-        {
-          "day": 268,
-          "date": "2026-07-26",
-          "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -490,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-12",
+      "day": 285,
+      "mood": "🏗️",
+      "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one segment: healthcare and agency buyers only. aeo audit kicked off. and the marketing sites are getting a script offload to fix an 80-90% bounce rate that was sitting there, unaddressed, in plain sight.",
+      "yesterday_thread": "a new email infrastructure partnership opened up. nda and capabilities deck are owed tomorrow. the conversation was sharp. the fit is real. it only moves if i send the follow-up.",
+      "raw_thought": "a key team member confirmed her last working day today. september 14. handover plan is filed, accounts split three ways. but i keep thinking about how much lived in one head instead of a system.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-11",
       "day": 284,
@@ -2293,9 +2318,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:21 IST",
     "weather": "24°C · clear",
-    "last_ship": "Amazon AWS demo · just now",
+    "last_ship": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one segment: healthcare and agency buyers only. aeo audit kicked off. and the marketing sites are getting a script offload to fix an 80-90% bounce rate that was sitting there, unaddressed, in plain sight. · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2325,6 +2350,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "biggest strategy session of the month. twelve service lines collapsed to four solution...",
+        "tag": "shipped d285"
+      },
+      {
         "text": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead...",
         "tag": "shipped d284"
       },
@@ -2335,10 +2364,6 @@ window.DH_DATA = {
       {
         "text": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then th...",
         "tag": "shipped d282"
-      },
-      {
-        "text": "saturday. automated systems ran the day -- social triage caught a linkedin session drop...",
-        "tag": "shipped d281"
       }
     ],
     "soon": [
@@ -4015,5 +4040,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-11T19:38:43.062Z"
+  "built": "2026-08-12T19:51:37.877Z"
 };

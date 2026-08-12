@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 284,
-    "today_date": "2026-08-11",
+    "today_day": 285,
+    "today_date": "2026-08-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-12",
+      "day": 285,
+      "mood": "🏗️",
+      "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one segment: healthcare and agency buyers only. aeo audit kicked off. and the marketing sites are getting a script offload to fix an 80-90% bounce rate that was sitting there, unaddressed, in plain sight.",
+      "yesterday_thread": "a new email infrastructure partnership opened up. nda and capabilities deck are owed tomorrow. the conversation was sharp. the fit is real. it only moves if i send the follow-up.",
+      "raw_thought": "a key team member confirmed her last working day today. september 14. handover plan is filed, accounts split three ways. but i keep thinking about how much lived in one head instead of a system.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-08-11",
       "day": 284,
@@ -1145,9 +1158,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:21 IST",
     "weather": "24°C · clear",
-    "last_ship": "Amazon AWS demo · just now",
+    "last_ship": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one segment: healthcare and agency buyers only. aeo audit kicked off. and the marketing sites are getting a script offload to fix an 80-90% bounce rate that was sitting there, unaddressed, in plain sight. · just now",
     "vault_commits": 18,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1177,6 +1190,10 @@
     ],
     "recently": [
       {
+        "text": "biggest strategy session of the month. twelve service lines collapsed to four solution...",
+        "tag": "shipped d285"
+      },
+      {
         "text": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead...",
         "tag": "shipped d284"
       },
@@ -1187,10 +1204,6 @@
       {
         "text": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then th...",
         "tag": "shipped d282"
-      },
-      {
-        "text": "saturday. automated systems ran the day -- social triage caught a linkedin session drop...",
-        "tag": "shipped d281"
       }
     ],
     "soon": [
