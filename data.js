@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-12T19:51:37.878Z
+// Built 2026-08-13T19:41:25.292Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 285,
-    "today_date": "2026-08-12",
+    "today_day": 286,
+    "today_date": "2026-08-13",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -490,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-13",
+      "day": 286,
+      "mood": "🏗️",
+      "shipping_now": "scaffolded a full lead generation operating system from scratch. eight stages. nine industry ICPs. campaign folders. scoring config. the repeatable chassis for all outbound is now real, not theoretical.",
+      "yesterday_thread": "three external meetings in four hours. a real estate group building two hotels and a crystal lagoon wanted to talk longevity centres. a 230-member investor network explored a bangalore chapter. an education programme committed ten students through the accelerator. none of this was on the plan at the start of the week.",
+      "raw_thought": "the days where the infrastructure work and the unexpected relationship work happen on the same day are the ones that actually move things. you can plan the scaffold. you cannot plan who walks in.",
+      "arcs": [
+        "Lead Gen OS",
+        "Partnerships"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lead Gen OS",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Partnerships",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-08-12",
       "day": 285,
@@ -2318,10 +2343,10 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:21 IST",
+    "time_ist": "01:11 IST",
     "weather": "24°C · clear",
-    "last_ship": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one segment: healthcare and agency buyers only. aeo audit kicked off. and the marketing sites are getting a script offload to fix an 80-90% bounce rate that was sitting there, unaddressed, in plain sight. · just now",
-    "vault_commits": 18,
+    "last_ship": "Lead Gen OS scaffold · just now",
+    "vault_commits": 4,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
     "drinking": "Bangalore peaberry · pour-over · cup 3",
@@ -2350,6 +2375,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "scaffolded a full lead generation operating system from scratch. eight stages. nine ind...",
+        "tag": "shipped d286"
+      },
+      {
         "text": "biggest strategy session of the month. twelve service lines collapsed to four solution...",
         "tag": "shipped d285"
       },
@@ -2360,10 +2389,6 @@ window.DH_DATA = {
       {
         "text": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance inc...",
         "tag": "shipped d283"
-      },
-      {
-        "text": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then th...",
-        "tag": "shipped d282"
       }
     ],
     "soon": [
@@ -4040,5 +4065,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-12T19:51:37.877Z"
+  "built": "2026-08-13T19:41:25.292Z"
 };
