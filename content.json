@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 286,
-    "today_date": "2026-08-13",
+    "today_day": 287,
+    "today_date": "2026-08-14",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-14",
+      "day": 287,
+      "mood": "🎯",
+      "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget allocated. four new tools demoed. decisions made, not just discussed.",
+      "yesterday_thread": "dev sync covered three products in one hour. lms live with gamification and xp. longevity prototype deployed with blood report pipeline. hr portal moving to clerk auth. apple developer enrollment approved.",
+      "raw_thought": "ten kits have been ready to send for two straight weeks. the work is not the bottleneck. the outbox is.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-08-13",
       "day": 286,
@@ -1171,9 +1184,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:11 IST",
+    "time_ist": "01:28 IST",
     "weather": "24°C · clear",
-    "last_ship": "Lead Gen OS scaffold · just now",
+    "last_ship": "SEO audit + policy lock · just now",
     "vault_commits": 4,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1203,6 +1216,10 @@
     ],
     "recently": [
       {
+        "text": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centrali...",
+        "tag": "shipped d287"
+      },
+      {
         "text": "scaffolded a full lead generation operating system from scratch. eight stages. nine ind...",
         "tag": "shipped d286"
       },
@@ -1213,10 +1230,6 @@
       {
         "text": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead...",
         "tag": "shipped d284"
-      },
-      {
-        "text": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance inc...",
-        "tag": "shipped d283"
       }
     ],
     "soon": [

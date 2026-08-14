@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-13T19:41:25.292Z
+// Built 2026-08-14T19:58:34.403Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 286,
-    "today_date": "2026-08-13",
+    "today_day": 287,
+    "today_date": "2026-08-14",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 287,
+          "date": "2026-08-14",
+          "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget…",
+          "arc_color": "green"
+        },
         {
           "day": 285,
           "date": "2026-08-12",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 275,
           "date": "2026-08-02",
           "shipping_now": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own monday morning. two sunday calls held, the…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 274,
-          "date": "2026-08-01",
-          "shipping_now": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11 items surfaced from the notes and email…",
           "arc_color": "blue"
         }
       ],
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 287,
+          "date": "2026-08-14",
+          "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget…",
+          "arc_color": "green"
+        },
+        {
           "day": 285,
           "date": "2026-08-12",
           "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one…",
@@ -255,12 +261,6 @@ window.DH_DATA = {
           "date": "2026-07-28",
           "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two…",
           "arc_color": "gold"
-        },
-        {
-          "day": 269,
-          "date": "2026-07-27",
-          "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -490,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-08-14",
+      "day": 287,
+      "mood": "🎯",
+      "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget allocated. four new tools demoed. decisions made, not just discussed.",
+      "yesterday_thread": "dev sync covered three products in one hour. lms live with gamification and xp. longevity prototype deployed with blood report pipeline. hr portal moving to clerk auth. apple developer enrollment approved.",
+      "raw_thought": "ten kits have been ready to send for two straight weeks. the work is not the bottleneck. the outbox is.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-13",
       "day": 286,
@@ -2343,9 +2368,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:11 IST",
+    "time_ist": "01:28 IST",
     "weather": "24°C · clear",
-    "last_ship": "Lead Gen OS scaffold · just now",
+    "last_ship": "SEO audit + policy lock · just now",
     "vault_commits": 4,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2375,6 +2400,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centrali...",
+        "tag": "shipped d287"
+      },
+      {
         "text": "scaffolded a full lead generation operating system from scratch. eight stages. nine ind...",
         "tag": "shipped d286"
       },
@@ -2385,10 +2414,6 @@ window.DH_DATA = {
       {
         "text": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead...",
         "tag": "shipped d284"
-      },
-      {
-        "text": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance inc...",
-        "tag": "shipped d283"
       }
     ],
     "soon": [
@@ -4065,5 +4090,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-13T19:41:25.292Z"
+  "built": "2026-08-14T19:58:34.403Z"
 };
