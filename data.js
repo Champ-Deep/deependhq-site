@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-08-14T19:58:34.403Z
+// Built 2026-09-07T19:40:08.311Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 287,
-    "today_date": "2026-08-14",
+    "today_day": 311,
+    "today_date": "2026-09-07",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 311,
+          "date": "2026-09-07",
+          "shipping_now": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom backlog from the…",
+          "arc_color": "green"
+        },
         {
           "day": 287,
           "date": "2026-08-14",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 276,
           "date": "2026-08-03",
           "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 275,
-          "date": "2026-08-02",
-          "shipping_now": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own monday morning. two sunday calls held, the…",
           "arc_color": "blue"
         }
       ],
@@ -490,6 +490,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-07",
+      "day": 311,
+      "mood": "🔧",
+      "shipping_now": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom backlog from the past 3.5 weeks. A lot of missed signal back in the system.",
+      "yesterday_thread": "",
+      "raw_thought": "816 open tasks, 100 in Do First. The backlog is not the problem. Silent pipeline failures are. You cannot manage what you cannot see.",
+      "arcs": [
+        "ChampReply",
+        "ChampOps"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampReply",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-08-14",
       "day": 287,
@@ -2368,9 +2393,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:28 IST",
+    "time_ist": "01:10 IST",
     "weather": "24°C · clear",
-    "last_ship": "SEO audit + policy lock · just now",
+    "last_ship": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom backlog from the past 3.5 weeks. A lot of missed signal back in the system. · just now",
     "vault_commits": 4,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2400,6 +2425,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cle...",
+        "tag": "shipped d311"
+      },
+      {
         "text": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centrali...",
         "tag": "shipped d287"
       },
@@ -2410,10 +2439,6 @@ window.DH_DATA = {
       {
         "text": "biggest strategy session of the month. twelve service lines collapsed to four solution...",
         "tag": "shipped d285"
-      },
-      {
-        "text": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead...",
-        "tag": "shipped d284"
       }
     ],
     "soon": [
@@ -4090,5 +4115,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-08-14T19:58:34.403Z"
+  "built": "2026-09-07T19:40:08.311Z"
 };
