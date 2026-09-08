@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-07T19:40:08.311Z
+// Built 2026-09-08T19:42:16.740Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 311,
-    "today_date": "2026-09-07",
+    "today_day": 312,
+    "today_date": "2026-09-08",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 312,
+          "date": "2026-09-08",
+          "shipping_now": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and documented two intern…",
+          "arc_color": "green"
+        },
+        {
           "day": 287,
           "date": "2026-08-14",
           "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget…",
@@ -255,12 +261,6 @@ window.DH_DATA = {
           "date": "2026-07-30",
           "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled…",
           "arc_color": "blue"
-        },
-        {
-          "day": 270,
-          "date": "2026-07-28",
-          "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -419,6 +419,12 @@ window.DH_DATA = {
       "slug": "infratech",
       "related_journey": [
         {
+          "day": 312,
+          "date": "2026-09-08",
+          "shipping_now": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and documented two intern…",
+          "arc_color": "green"
+        },
+        {
           "day": 184,
           "date": "2026-05-04",
           "shipping_now": "Champions Ranch productization v1 done. ICP locked: Tech/SaaS + K-12.",
@@ -490,6 +496,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-08",
+      "day": 312,
+      "mood": "🌱",
+      "shipping_now": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and documented two intern ramp plans. Net: backlog grew by 8 tasks, none closed. The kind of day where the work is real but the board looks worse.",
+      "yesterday_thread": "Social pipeline confirmations for two new calls this week. Calendar moving.",
+      "raw_thought": "A first appointment broke today because of a process gap, not a performance gap. The lead showed up, asked for joining details, and got silence because the invite handoff system did not exist. That is a structural problem, not a vendor problem. The fix is not to push harder; it is to build the handoff so it cannot break. Separately, an investor conversation opened a thread I did not expect. Someone who moves money through policy networks, not through brochures. The Ranch pitch landed on the hospitality angle. That is a different class of capital than what we have been chasing, and it deserves its own node in the system.",
+      "arcs": [
+        "InfraTech",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "InfraTech",
+          "company_name": "InfraTech",
+          "slug": "infratech"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-09-07",
       "day": 311,
@@ -2393,10 +2424,10 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:10 IST",
+    "time_ist": "01:12 IST",
     "weather": "24°C · clear",
-    "last_ship": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom backlog from the past 3.5 weeks. A lot of missed signal back in the system. · just now",
-    "vault_commits": 4,
+    "last_ship": "Virtusa campaign report (3 formats) · just now",
+    "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
     "drinking": "Bangalore peaberry · pour-over · cup 3",
@@ -2425,6 +2456,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Opened a credible infra investor thread on the Ranch project, shipped a full client cam...",
+        "tag": "shipped d312"
+      },
+      {
         "text": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cle...",
         "tag": "shipped d311"
       },
@@ -2435,10 +2470,6 @@ window.DH_DATA = {
       {
         "text": "scaffolded a full lead generation operating system from scratch. eight stages. nine ind...",
         "tag": "shipped d286"
-      },
-      {
-        "text": "biggest strategy session of the month. twelve service lines collapsed to four solution...",
-        "tag": "shipped d285"
       }
     ],
     "soon": [
@@ -4115,5 +4146,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-07T19:40:08.311Z"
+  "built": "2026-09-08T19:42:16.740Z"
 };
