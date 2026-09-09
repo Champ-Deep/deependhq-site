@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-08T19:42:16.740Z
+// Built 2026-09-09T19:40:46.500Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 312,
-    "today_date": "2026-09-08",
+    "today_day": 313,
+    "today_date": "2026-09-09",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -496,6 +496,37 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-09",
+      "day": 313,
+      "mood": "🔄",
+      "shipping_now": "restructured the vault from a monolith into a five-layer context architecture. each layer loads only what the task needs. same knowledge, a third of the noise.",
+      "yesterday_thread": "the automation audit last week surfaced a full blackout period. the gap was in detection, not execution. today the fix got its infrastructure upgrade.",
+      "raw_thought": "called it a knowledge graph for two years. it was a pile. today it got a map, named zones, and contracts for what belongs where. felt more like editing than building. good sign.",
+      "arcs": [
+        "vault infra",
+        "client ops",
+        "b2b pipeline"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "vault infra",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "client ops",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "b2b pipeline",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-09-08",
       "day": 312,
@@ -2424,9 +2455,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:12 IST",
+    "time_ist": "01:10 IST",
     "weather": "24°C · clear",
-    "last_ship": "Virtusa campaign report (3 formats) · just now",
+    "last_ship": "ICM five-layer vault architecture, CLAUDE.md v2 · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2456,6 +2487,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "restructured the vault from a monolith into a five-layer context architecture. each lay...",
+        "tag": "shipped d313"
+      },
+      {
         "text": "Opened a credible infra investor thread on the Ranch project, shipped a full client cam...",
         "tag": "shipped d312"
       },
@@ -2466,10 +2501,6 @@ window.DH_DATA = {
       {
         "text": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centrali...",
         "tag": "shipped d287"
-      },
-      {
-        "text": "scaffolded a full lead generation operating system from scratch. eight stages. nine ind...",
-        "tag": "shipped d286"
       }
     ],
     "soon": [
@@ -4146,5 +4177,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-08T19:42:16.740Z"
+  "built": "2026-09-09T19:40:46.500Z"
 };
