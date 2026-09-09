@@ -1,0 +1,41 @@
+# deependhq.com
+# Owned by this repo. Cloudflare managed robots.txt is intentionally OFF.
+# Enforcement of AI crawler blocking lives in Cloudflare AI Crawl Control,
+# not in this file. This file states intent only.
+
+User-agent: *
+Allow: /
+
+# Assistants and agents that answer questions about this site are welcome.
+User-agent: Widgo
+Allow: /
+
+User-agent: WidgoBot
+Allow: /
+
+# Bulk AI training crawlers are not.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+Sitemap: https://deependhq.com/sitemap.xml

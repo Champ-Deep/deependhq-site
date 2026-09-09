@@ -1,6 +1,6 @@
 # deependhq.com
 
-[[The [[Sreedeep Surapaneni|Deep]] End]]. Personal site for [[Sreedeep Surapaneni]].
+[[The Deep End]]. Personal site for [[Sreedeep Surapaneni]].
 
 Built from the Gotham Workshop design system. A no-build static site: four
 HTML pages that render React components in the browser via Babel standalone.
