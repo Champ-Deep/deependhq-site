@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-09T19:40:46.500Z
+// Built 2026-09-10T10:51:49.667Z
 
 window.DH_DATA = {
   "brand": {
@@ -30,6 +30,60 @@ window.DH_DATA = {
           "arc_color": "green"
         },
         {
+          "day": 306,
+          "date": "2026-09-02",
+          "shipping_now": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 608 errors to 0.…",
+          "arc_color": "green"
+        },
+        {
+          "day": 305,
+          "date": "2026-09-01",
+          "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface.…",
+          "arc_color": "green"
+        },
+        {
+          "day": 301,
+          "date": "2026-08-28",
+          "shipping_now": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and lists every note…",
+          "arc_color": "green"
+        },
+        {
+          "day": 299,
+          "date": "2026-08-26",
+          "shipping_now": "thin day on record. an inbound discovery call for one of the data brands, booked by the prospect. a partnership call pairing the…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 298,
+          "date": "2026-08-25",
+          "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for…",
+          "arc_color": "green"
+        },
+        {
+          "day": 297,
+          "date": "2026-08-24",
+          "shipping_now": "wrote the first kra for the longevity development lead. six-month period from sep 1, ten-point scale, first review dec 1. ramp…",
+          "arc_color": "green"
+        },
+        {
+          "day": 292,
+          "date": "2026-08-19",
+          "shipping_now": "audited the team vault agent against live cloudflare docs and rewrote its scope. deny-by-default filter, 4 MB file cap. 882 MiB…",
+          "arc_color": "green"
+        },
+        {
+          "day": 291,
+          "date": "2026-08-18",
+          "shipping_now": "day one for a new front-end intern, owning one thing: the social bot. it has sat at 60 to 70 percent since march. her month is…",
+          "arc_color": "green"
+        },
+        {
+          "day": 290,
+          "date": "2026-08-17",
+          "shipping_now": "locked a second design language for internal pages. pixel arcade: dark canvas, 12x12 pixel sprites drawn in code, every item…",
+          "arc_color": "green"
+        },
+        {
           "day": 287,
           "date": "2026-08-14",
           "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget…",
@@ -40,60 +94,6 @@ window.DH_DATA = {
           "date": "2026-08-12",
           "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one…",
           "arc_color": "green"
-        },
-        {
-          "day": 284,
-          "date": "2026-08-11",
-          "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel,…",
-          "arc_color": "green"
-        },
-        {
-          "day": 283,
-          "date": "2026-08-10",
-          "shipping_now": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance increments split from cost-of-living raises,…",
-          "arc_color": "green"
-        },
-        {
-          "day": 282,
-          "date": "2026-08-09",
-          "shipping_now": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then the recurring three-party spv call at night…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 281,
-          "date": "2026-08-08",
-          "shipping_now": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes, flagged two…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 280,
-          "date": "2026-08-07",
-          "shipping_now": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 250-person…",
-          "arc_color": "green"
-        },
-        {
-          "day": 279,
-          "date": "2026-08-06",
-          "shipping_now": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer. they want to see…",
-          "arc_color": "green"
-        },
-        {
-          "day": 278,
-          "date": "2026-08-05",
-          "shipping_now": "a new relationship walked in from the india wealth and fund management space. they brought a GIFT City fund structuring ask. we…",
-          "arc_color": "gold"
-        },
-        {
-          "day": 277,
-          "date": "2026-08-04",
-          "shipping_now": "full backend audit of the marketing platform. nine services running on the cloud infra, and i verified each one live. champdf has…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 276,
-          "date": "2026-08-03",
-          "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -197,70 +197,70 @@ window.DH_DATA = {
           "arc_color": "green"
         },
         {
-          "day": 287,
-          "date": "2026-08-14",
-          "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget…",
-          "arc_color": "green"
-        },
-        {
-          "day": 285,
-          "date": "2026-08-12",
-          "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one…",
-          "arc_color": "green"
-        },
-        {
-          "day": 284,
-          "date": "2026-08-11",
-          "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel,…",
-          "arc_color": "green"
-        },
-        {
-          "day": 281,
-          "date": "2026-08-08",
-          "shipping_now": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes, flagged two…",
+          "day": 308,
+          "date": "2026-09-04",
+          "shipping_now": "day three. nine of nine tracker rows blank, still 0 of 30 sqls. the client update was written as a holding line, not fake…",
           "arc_color": "blue"
         },
         {
-          "day": 280,
-          "date": "2026-08-07",
-          "shipping_now": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 250-person…",
-          "arc_color": "green"
-        },
-        {
-          "day": 279,
-          "date": "2026-08-06",
-          "shipping_now": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer. they want to see…",
-          "arc_color": "green"
-        },
-        {
-          "day": 278,
-          "date": "2026-08-05",
-          "shipping_now": "a new relationship walked in from the india wealth and fund management space. they brought a GIFT City fund structuring ask. we…",
-          "arc_color": "gold"
-        },
-        {
-          "day": 277,
-          "date": "2026-08-04",
-          "shipping_now": "full backend audit of the marketing platform. nine services running on the cloud infra, and i verified each one live. champdf has…",
+          "day": 307,
+          "date": "2026-09-03",
+          "shipping_now": "day two of the apac daily loop. the automation ran on time, compiled the tracker, and found it empty. two days, zero rows, 0 of…",
           "arc_color": "blue"
         },
         {
-          "day": 276,
-          "date": "2026-08-03",
-          "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 273,
-          "date": "2026-07-31",
-          "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is…",
+          "day": 306,
+          "date": "2026-09-02",
+          "shipping_now": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 608 errors to 0.…",
           "arc_color": "green"
         },
         {
-          "day": 272,
-          "date": "2026-07-30",
-          "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled…",
+          "day": 305,
+          "date": "2026-09-01",
+          "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface.…",
+          "arc_color": "green"
+        },
+        {
+          "day": 304,
+          "date": "2026-08-31",
+          "shipping_now": "turned an eleven-day-old voice note into a full saas lead-gen playbook. two products: competitor lookalike mapping and competitor…",
+          "arc_color": "green"
+        },
+        {
+          "day": 301,
+          "date": "2026-08-28",
+          "shipping_now": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and lists every note…",
+          "arc_color": "green"
+        },
+        {
+          "day": 300,
+          "date": "2026-08-27",
+          "shipping_now": "a data-partnership call with one of the big identity-resolution platforms. seven people across both sides. plus a genetic testing…",
           "arc_color": "blue"
+        },
+        {
+          "day": 298,
+          "date": "2026-08-25",
+          "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for…",
+          "arc_color": "green"
+        },
+        {
+          "day": 294,
+          "date": "2026-08-21",
+          "shipping_now": "settled the database number: 800m+ contacts, 80m+ companies. four other figures were in circulation. 440m in a meeting prep, 550m…",
+          "arc_color": "green"
+        },
+        {
+          "day": 293,
+          "date": "2026-08-20",
+          "shipping_now": "planned the handover of seven apac lead-gen accounts, one of them onboarded today. one owner per account, facing both the client…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 291,
+          "date": "2026-08-18",
+          "shipping_now": "day one for a new front-end intern, owning one thing: the social bot. it has sat at 60 to 70 percent since march. her month is…",
+          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -425,6 +425,18 @@ window.DH_DATA = {
           "arc_color": "green"
         },
         {
+          "day": 307,
+          "date": "2026-09-03",
+          "shipping_now": "day two of the apac daily loop. the automation ran on time, compiled the tracker, and found it empty. two days, zero rows, 0 of…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 297,
+          "date": "2026-08-24",
+          "shipping_now": "wrote the first kra for the longevity development lead. six-month period from sep 1, ten-point scale, first review dec 1. ramp…",
+          "arc_color": "green"
+        },
+        {
           "day": 184,
           "date": "2026-05-04",
           "shipping_now": "Champions Ranch productization v1 done. ICP locked: Tech/SaaS + K-12.",
@@ -574,6 +586,363 @@ window.DH_DATA = {
           "arc": "ChampOps",
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "day": 308,
+      "mood": "🧯",
+      "shipping_now": "day three. nine of nine tracker rows blank, still 0 of 30 sqls. the client update was written as a holding line, not fake numbers: verified figures monday, plus a revised week-by-week path to 30.",
+      "yesterday_thread": "a gtm strategy session lasted 88 seconds. bad audio, rescheduled to tuesday. shortest meeting of the quarter and the only one with a clean outcome.",
+      "raw_thought": "found out later the tracker was never shared with the vendor. three days of escalation emails over rows nobody could open. check the plumbing before you blame the people.",
+      "arcs": [
+        "Lake B2B"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "day": 307,
+      "mood": "📭",
+      "shipping_now": "day two of the apac daily loop. the automation ran on time, compiled the tracker, and found it empty. two days, zero rows, 0 of 30 sqls. escalation and client update both written. neither could send: the mail connector is read-only.",
+      "yesterday_thread": "the mumbai real estate summit with the lagoon panel was on the calendar today. nothing from it reached the vault.",
+      "raw_thought": "the report said 'no data' instead of inventing numbers. that is the design working. a report that makes something up to look busy is worse than one that admits nothing happened.",
+      "arcs": [
+        "Lake B2B",
+        "InfraTech"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "InfraTech",
+          "company_name": "InfraTech",
+          "slug": "infratech"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-02",
+      "day": 306,
+      "mood": "📦",
+      "shipping_now": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 608 errors to 0. blind routing test: 60 of 60 picked the right skill first time.",
+      "yesterday_thread": "first weekly review as primary contact on the apac campaign. left with a daily loop: vendor fills a sheet by 16:30, automation compiles, i send. draft mode until five clean days. also two month-one plans for new interns.",
+      "raw_thought": "the old shared drive could create files but never replace them. every update became a duplicate, so every skill had three versions and nobody knew which was live. git fixes it by being boring.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-01",
+      "day": 305,
+      "mood": "📋",
+      "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface. also wired the team knowledge drive into the nightly recap, 12 client files seeded on day one.",
+      "yesterday_thread": "took over as primary contact on the biggest apac campaign. 30 sqls across singapore, malaysia and indonesia by month end.",
+      "raw_thought": "a handover that lives in one person's head leaves with them. a board everyone can tick outlives the notice period.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-31",
+      "day": 304,
+      "mood": "🎯",
+      "shipping_now": "turned an eleven-day-old voice note into a full saas lead-gen playbook. two products: competitor lookalike mapping and competitor user-list mapping. win condition: 15 qualified conversations and 5 paid pilots by sep 30.",
+      "yesterday_thread": "last day of the apac ownership window. primary contact on the largest campaign moves to me tomorrow.",
+      "raw_thought": "rounds one and two never mention database size. nobody buys 'we have data.' they buy 'here are your competitor's unhappy customers.' the list is the product. the problem is the pitch.",
+      "arcs": [
+        "Lake B2B",
+        "Lead Gen OS"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Lead Gen OS",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
+    {
+      "date": "2026-08-28",
+      "day": 301,
+      "mood": "📏",
+      "shipping_now": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and lists every note that breaks the rules in a conformance report. it never edits a file.",
+      "yesterday_thread": "chief hosted a partnership call with a marketing services channel partner. two on the line.",
+      "raw_thought": "a linter that blocks gets switched off. a report that names the offenders gets read. rules enforced by visibility, not by gates.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-27",
+      "day": 300,
+      "mood": "🤝",
+      "shipping_now": "a data-partnership call with one of the big identity-resolution platforms. seven people across both sides. plus a genetic testing lab pitching into the longevity stack. two conversations, no paper yet.",
+      "yesterday_thread": "a real estate developer call on the partnerships calendar. third sector in two days.",
+      "raw_thought": "partnership calls feel like progress because the room is full. the real test is whether either side owes the other anything the next morning. this week, mostly not written down.",
+      "arcs": [
+        "Lake B2B",
+        "Partnerships"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Partnerships",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
+    {
+      "date": "2026-08-26",
+      "day": 299,
+      "mood": "🌫️",
+      "shipping_now": "thin day on record. an inbound discovery call for one of the data brands, booked by the prospect. a partnership call pairing the longevity product with a dermatology clinic chain. zero artifacts filed.",
+      "yesterday_thread": "",
+      "raw_thought": "nothing shipped that left a file. the calls happened, the notes did not. a day with no artifact is not a day off, but it is a day you cannot prove.",
+      "arcs": [
+        "Longevity",
+        "Partnerships"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Partnerships",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "day": 298,
+      "mood": "🔐",
+      "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for review. nothing syncs until the list is clean.",
+      "yesterday_thread": "built an exit-gate checklist for an account handover review. rule at the top: no answer, nobody leaves the room. every account gets one name, in writing, before the call ends.",
+      "raw_thought": "one of the six live keys was sitting in the cloud agent's own setup runbook. the scanner caught the tool built to prevent this exact leak. build the check before you trust the system.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-24",
+      "day": 297,
+      "mood": "📐",
+      "shipping_now": "wrote the first kra for the longevity development lead. six-month period from sep 1, ten-point scale, first review dec 1. ramp starts today, so the bar exists before the work does.",
+      "yesterday_thread": "worked the story for a mumbai real estate summit panel: de-risking india's newest asset class, lagoon-led communities. seven minutes, a live quiz that gates the deep content, one founder slide.",
+      "raw_thought": "a kra written after the job starts is a performance review in disguise. write it on day one of the ramp and nobody gets surprised in december.",
+      "arcs": [
+        "Longevity",
+        "InfraTech"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "InfraTech",
+          "company_name": "InfraTech",
+          "slug": "infratech"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "day": 294,
+      "mood": "🔢",
+      "shipping_now": "settled the database number: 800m+ contacts, 80m+ companies. four other figures were in circulation. 440m in a meeting prep, 550m in its open questions, 750m and 36m across five slides of a live deck.",
+      "yesterday_thread": "a nine-person certification partnership call on the desk the same day. the wrong number was in its prep doc.",
+      "raw_thought": "procurement teams check one claim after the meeting. if that one is off by half, every other slide goes under audit. one number, everywhere, or none.",
+      "arcs": [
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "day": 293,
+      "mood": "🧭",
+      "shipping_now": "planned the handover of seven apac lead-gen accounts, one of them onboarded today. one owner per account, facing both the client and the vendor. every client gets a second brain in eight stages, foundation to learnings.",
+      "yesterday_thread": "greenlit six research-content use cases for aeo. original, citation-verified research that ai agents cite, so they introduce the brand to their humans. research and writing stay separate layers.",
+      "raw_thought": "automation gets graduated, not granted. vendor mail drafts for approval for a month, then routine categories send on their own. disputes, pauses, pricing and bad news never do.",
+      "arcs": [
+        "Lake B2B",
+        "Content Strategy"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Content Strategy",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "day": 292,
+      "mood": "✂️",
+      "shipping_now": "audited the team vault agent against live cloudflare docs and rewrote its scope. deny-by-default filter, 4 MB file cap. 882 MiB of atlas becomes 114 MiB that actually uploads. runbook down to nine steps with a mandatory scope review.",
+      "yesterday_thread": "one lake b2b discovery call on the calendar. the summary exists in zoom and never made it into the vault.",
+      "raw_thought": "86 percent of what the old script uploaded was client pdfs the index could not even read. more data was making the agent slower, pricier and no smarter.",
+      "arcs": [
+        "ChampOps"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "day": 291,
+      "mood": "🌱",
+      "shipping_now": "day one for a new front-end intern, owning one thing: the social bot. it has sat at 60 to 70 percent since march. her month is output quality, the human review queue, and a written definition of good enough to publish.",
+      "yesterday_thread": "the partnerships desk ran a 13-person collaboration call with a preventive health company.",
+      "raw_thought": "the bot was never short on backend. it was short on taste and on a screen where a human says yes or no. hire for the actual blocker, not the loudest one.",
+      "arcs": [
+        "Social Automator",
+        "Champions Accelerator"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Social Automator",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Accelerator",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "day": 290,
+      "mood": "👾",
+      "shipping_now": "locked a second design language for internal pages. pixel arcade: dark canvas, 12x12 pixel sprites drawn in code, every item tagged with chips. first reference build is a new intern's 24-day task dashboard and day-zero run sheet.",
+      "yesterday_thread": "the weekly sales update lost its narrative headline. now it is seven salesforce metrics, one row per team, filled from saved reports. plus a live seo and ai-visibility pull across three brands, every week.",
+      "raw_thought": "a one-off diagnostic fired today to chase a few silent push failures. it ran once, reported fine, and the blackout it was sent to catch lasted three more weeks. a check that can only say yes is not a check.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
         }
       ]
     },
@@ -4177,5 +4546,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-09T19:40:46.500Z"
+  "built": "2026-09-10T10:51:49.667Z"
 };
