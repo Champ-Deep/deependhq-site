@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-10T10:51:49.667Z
+// Built 2026-09-10T19:38:53.809Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 313,
-    "today_date": "2026-09-09",
+    "today_day": 314,
+    "today_date": "2026-09-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 314,
+          "date": "2026-09-10",
+          "shipping_now": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data…",
+          "arc_color": "gold"
+        },
         {
           "day": 311,
           "date": "2026-09-07",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 287,
           "date": "2026-08-14",
           "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget…",
-          "arc_color": "green"
-        },
-        {
-          "day": 285,
-          "date": "2026-08-12",
-          "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one…",
           "arc_color": "green"
         }
       ],
@@ -191,6 +191,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 314,
+          "date": "2026-09-10",
+          "shipping_now": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data…",
+          "arc_color": "gold"
+        },
+        {
           "day": 312,
           "date": "2026-09-08",
           "shipping_now": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and documented two intern…",
@@ -255,12 +261,6 @@ window.DH_DATA = {
           "date": "2026-08-20",
           "shipping_now": "planned the handover of seven apac lead-gen accounts, one of them onboarded today. one owner per account, facing both the client…",
           "arc_color": "blue"
-        },
-        {
-          "day": 291,
-          "date": "2026-08-18",
-          "shipping_now": "day one for a new front-end intern, owning one thing: the social bot. it has sat at 60 to 70 percent since march. her month is…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -508,6 +508,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-10",
+      "day": 314,
+      "mood": "📈",
+      "shipping_now": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data source. Walked into the weekly review call able to argue depth instead of apologizing for it.",
+      "yesterday_thread": "Another campaign is still stuck on the exact file it needed yesterday. And a teammate wraps up tomorrow, so tonight was also about getting a dozen open questions answered before that context walks out the door.",
+      "raw_thought": "Three different vendor-run accounts, same read tonight: we are the bottleneck, not them. Uncomfortable to write down. Still better than blaming the vendor for it.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-09-09",
       "day": 313,
@@ -2824,9 +2849,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:10 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "ICM five-layer vault architecture, CLAUDE.md v2 · just now",
+    "last_ship": "Enterprise contact base grew 23x overnight · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2856,6 +2881,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000...",
+        "tag": "shipped d314"
+      },
+      {
         "text": "restructured the vault from a monolith into a five-layer context architecture. each lay...",
         "tag": "shipped d313"
       },
@@ -2866,10 +2895,6 @@ window.DH_DATA = {
       {
         "text": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cle...",
         "tag": "shipped d311"
-      },
-      {
-        "text": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centrali...",
-        "tag": "shipped d287"
       }
     ],
     "soon": [
@@ -4546,5 +4571,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-10T10:51:49.667Z"
+  "built": "2026-09-10T19:38:53.809Z"
 };
