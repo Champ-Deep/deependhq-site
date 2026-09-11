@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-10T19:38:53.809Z
+// Built 2026-09-11T19:38:09.280Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 314,
-    "today_date": "2026-09-10",
+    "today_day": 315,
+    "today_date": "2026-09-11",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -508,6 +508,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-11",
+      "day": 315,
+      "mood": "🛠️",
+      "shipping_now": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo. 118 backend tests green, a real Playwright run against the live API passing 2 for 2. A vendor books, ops approves, a prospect confirms, the client sees the reminder land. First time this build has run end to end instead of in pieces.",
+      "yesterday_thread": "Also closed out a vendor review call that had been stuck for weeks: three accounts, four hard decisions, all resolved in one sitting instead of dragging into next week.",
+      "raw_thought": "Shipped a real product today and did not check a single box on the task list. The work that matters does not always look like the work that gets tracked.",
+      "arcs": [
+        "Champ Suite",
+        "Vendor Ops"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champ Suite",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Vendor Ops",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-09-10",
       "day": 314,
@@ -2851,7 +2876,7 @@ window.DH_DATA = {
     "location": "Bangalore, IN",
     "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "Enterprise contact base grew 23x overnight · just now",
+    "last_ship": "ChampLantern v0 · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2881,6 +2906,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to fron...",
+        "tag": "shipped d315"
+      },
+      {
         "text": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000...",
         "tag": "shipped d314"
       },
@@ -2891,10 +2920,6 @@ window.DH_DATA = {
       {
         "text": "Opened a credible infra investor thread on the Ranch project, shipped a full client cam...",
         "tag": "shipped d312"
-      },
-      {
-        "text": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cle...",
-        "tag": "shipped d311"
       }
     ],
     "soon": [
@@ -4571,5 +4596,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-10T19:38:53.809Z"
+  "built": "2026-09-11T19:38:09.280Z"
 };
