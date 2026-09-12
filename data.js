@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-11T19:38:09.280Z
+// Built 2026-09-12T19:39:48.516Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 315,
-    "today_date": "2026-09-11",
+    "today_day": 316,
+    "today_date": "2026-09-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -98,6 +98,12 @@ window.DH_DATA = {
       ],
       "related_writing": [
         {
+          "slug": "week-43-five-systems-five-days",
+          "title": "Five systems, five days, none of them talked to each other.",
+          "date": "2026-09-12",
+          "read": "4 min"
+        },
+        {
           "slug": "week-37-the-calendar-was-full",
           "title": "The calendar was full. The outbox was empty.",
           "date": "2026-08-02",
@@ -174,7 +180,14 @@ window.DH_DATA = {
       "tag": "Community",
       "url": "https://www.champions.club",
       "slug": "champions-club",
-      "related_journey": [],
+      "related_journey": [
+        {
+          "day": 316,
+          "date": "2026-09-12",
+          "shipping_now": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spelling for source or…",
+          "arc_color": "green"
+        }
+      ],
       "related_writing": []
     },
     {
@@ -508,6 +521,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-12",
+      "day": 316,
+      "mood": "🧪",
+      "shipping_now": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spelling for source or medium. 12 tests green before it ever touches the real app.",
+      "yesterday_thread": "Also spent the day pulling apart what members hate about club and community apps. 24 Reddit threads and reviews across six competitors, turned into 10 ranked failure modes, each with a pass or fail test. That is the QA bar for the club app now.",
+      "raw_thought": "Fourth week straight the same missing email permission is the only thing between five finished client emails and hitting send. Not a hard problem. Just nobody has fixed it yet.",
+      "arcs": [
+        "ChampUTM",
+        "Champions Club"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampUTM",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Club",
+          "company_name": "Champions Club",
+          "slug": "champions-club"
+        }
+      ]
+    },
     {
       "date": "2026-09-11",
       "day": 315,
@@ -2864,19 +2902,19 @@ window.DH_DATA = {
   ],
   "weekly_narratives_count": 31,
   "latest_narrative": {
-    "week": 38,
-    "title": "The signals were everywhere. The outbox was not.",
-    "body": "week 38 started with payroll architecture and ended with a saturday demo booking from a global tech company. in between: a nuclear infrastructure firm, a wealth management contact, and a luxury travel brand. four verticals in five days.",
-    "day_range": "Aug 3 - Aug 9",
-    "date": "2026-08-09",
+    "week": 43,
+    "title": "Five systems, five days, none of them talked to each other.",
+    "body": "week 43 did not have one big story. it had six small ones, each proven on its own before it touched anything real. an email assistant, an infrastructure pitch, a vault rebuild, a data account that tripled, a booking product shipped end to end, and a link tagger. different domains, same discipline: build it standalone, test it, then wire it in.",
+    "day_range": "Sep 7 - 12",
+    "date": "2026-09-12",
     "read": "4 min",
-    "slug": "week-38-the-signals-were-everywhere"
+    "slug": "week-43-five-systems-five-days"
   },
   "status": {
     "location": "Bangalore, IN",
     "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "ChampLantern v0 · just now",
+    "last_ship": "UTM tool reference build, 12 tests green · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2906,6 +2944,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Built the reference version of the new UTM tool today. Paste any link, get it back tagg...",
+        "tag": "shipped d316"
+      },
+      {
         "text": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to fron...",
         "tag": "shipped d315"
       },
@@ -2916,10 +2958,6 @@ window.DH_DATA = {
       {
         "text": "restructured the vault from a monolith into a five-layer context architecture. each lay...",
         "tag": "shipped d313"
-      },
-      {
-        "text": "Opened a credible infra investor thread on the Ranch project, shipped a full client cam...",
-        "tag": "shipped d312"
       }
     ],
     "soon": [
@@ -3375,6 +3413,77 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-43-five-systems-five-days",
+      "kind": "weekly",
+      "week": 43,
+      "eyebrow": ">_ week 43 - the systems arc",
+      "title": "Five systems, five days, none of them talked to each other.",
+      "deck": "An email assistant, an infra investor thread, a vault rebuilt from scratch, a data account that tripled overnight, an appointment tool shipped end to end, and a UTM builder to close it out. The common thread was proving each one small before wiring it in.",
+      "date": "2026-09-12",
+      "day_range": "Sep 7 - 12",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "green",
+      "tags": [
+        "builds",
+        "ops",
+        "testing"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 43 did not have one big story. it had six small ones, each proven on its own before it touched anything real. an email assistant, an infrastructure pitch, a vault rebuild, a data account that tripled, a booking product shipped end to end, and a link tagger. different domains, same discipline: build it standalone, test it, then wire it in."
+        },
+        {
+          "type": "p",
+          "text": "monday was ChampReply v1: an email reply assistant with its own knowledge base, built and verified. same day, a 75-message backlog got cleared, the kind of task that never makes a roadmap but eats a whole afternoon if left alone."
+        },
+        {
+          "type": "p",
+          "text": "tuesday opened a credible infrastructure investor thread on the Ranch project and shipped a full client campaign report on the same day. two very different audiences, one on-brand voice for each."
+        },
+        {
+          "type": "pull",
+          "text": "called it a knowledge graph for two years. it was a pile. this week it got a map, named zones, and contracts for what belongs where."
+        },
+        {
+          "type": "p",
+          "text": "wednesday was the vault. restructured from a monolith into a five-layer context architecture, so every task loads only the layer it needs instead of the whole thing. same knowledge, a third of the noise. it felt more like editing than building, which is usually the sign a structure was overdue."
+        },
+        {
+          "type": "p",
+          "text": "thursday, one enterprise data account went from roughly 400 usable contacts to over 9,000 overnight after a new data source got plugged in. walked into that week’s review able to argue depth instead of apologizing for the lack of it."
+        },
+        {
+          "type": "p",
+          "text": "friday shipped ChampLantern v0, an internal appointment-booking product, backend to frontend, on a seeded demo. 118 backend tests green, a real end-to-end run against the live API passing 2 for 2. a vendor books, ops approves, a prospect confirms, the client sees the reminder land. first time that build ran start to finish instead of in pieces. no box on the task list got checked for it. the work that matters does not always look like the work that gets tracked."
+        },
+        {
+          "type": "callout",
+          "head": "saturday, closing the week quiet",
+          "lines": [
+            "built the reference version of a new UTM tool: paste any link, get it back tagged, no invented spelling for source or medium. 12 tests green before it goes near the real app.",
+            "in parallel, pulled apart what members hate about club and community apps: 24 Reddit threads and reviews across six competitors, turned into 10 ranked failure modes with a pass or fail test for each. that is the new QA bar for our own club app."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "the thing that did not move all week: the same missing email permission that has now blocked outbound sends for a fourth straight run. not a hard problem. just nobody has fixed it yet. five finished client emails are sitting there, written, correct, and stuck behind one checkbox in an admin console."
+        },
+        {
+          "type": "p",
+          "text": "six systems, six domains, one habit repeated: prove it standalone, test it, then let it touch anything real. the one thing still not proven is getting an email out the door without a human at a keyboard."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
+      ]
+    },
     {
       "slug": "week-38-the-signals-were-everywhere",
       "kind": "weekly",
@@ -4596,5 +4705,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-11T19:38:09.280Z"
+  "built": "2026-09-12T19:39:48.516Z"
 };
