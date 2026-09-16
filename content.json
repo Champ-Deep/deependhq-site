@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 319,
-    "today_date": "2026-09-15",
+    "today_day": 320,
+    "today_date": "2026-09-16",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-16",
+      "day": 320,
+      "mood": "🔓",
+      "shipping_now": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendors, signed off a new partner to start onboarding tonight, and unblocked three campaigns that were all waiting on the same call.",
+      "yesterday_thread": "Also drafted the one proposal a client is waiting on before she will book her next call, and closed a pilot funded by a barter instead of cash: a compliance and branding exchange for a lookalike audience test.",
+      "raw_thought": "Twelve client emails have been ready to send for a week, blocked by one missing permission toggle, not a decision, not a rewrite. Meanwhile the task list added 47 lines today and closed zero. Busy and moving are not the same thing.",
+      "arcs": [
+        "Lake B2B",
+        "Vendor Ops"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-09-15",
       "day": 319,
@@ -1481,9 +1494,9 @@
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "17:29 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "Lake Sonar onboarding, five-tool stack locked · just now",
+    "last_ship": "Vendor restart, 3 campaigns unblocked · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1513,6 +1526,10 @@
     ],
     "recently": [
       {
+        "text": "Restarted a delivery-partner account that had been stuck for days. Split the client dat...",
+        "tag": "shipped d320"
+      },
+      {
         "text": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Pyt...",
         "tag": "shipped d319"
       },
@@ -1523,10 +1540,6 @@
       {
         "text": "Built the reference version of the new UTM tool today. Paste any link, get it back tagg...",
         "tag": "shipped d316"
-      },
-      {
-        "text": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to fron...",
-        "tag": "shipped d315"
       }
     ],
     "soon": [

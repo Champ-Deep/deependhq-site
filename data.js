@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-16T11:59:29.069Z
+// Built 2026-09-16T19:38:59.335Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 319,
-    "today_date": "2026-09-15",
+    "today_day": 320,
+    "today_date": "2026-09-16",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -204,6 +204,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 320,
+          "date": "2026-09-16",
+          "shipping_now": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendors, signed off a…",
+          "arc_color": "green"
+        },
+        {
           "day": 318,
           "date": "2026-09-14",
           "shipping_now": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into…",
@@ -267,12 +273,6 @@ window.DH_DATA = {
           "day": 298,
           "date": "2026-08-25",
           "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for…",
-          "arc_color": "green"
-        },
-        {
-          "day": 294,
-          "date": "2026-08-21",
-          "shipping_now": "settled the database number: 800m+ contacts, 80m+ companies. four other figures were in circulation. 440m in a meeting prep, 550m…",
           "arc_color": "green"
         }
       ],
@@ -521,6 +521,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-16",
+      "day": 320,
+      "mood": "🔓",
+      "shipping_now": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendors, signed off a new partner to start onboarding tonight, and unblocked three campaigns that were all waiting on the same call.",
+      "yesterday_thread": "Also drafted the one proposal a client is waiting on before she will book her next call, and closed a pilot funded by a barter instead of cash: a compliance and branding exchange for a lookalike audience test.",
+      "raw_thought": "Twelve client emails have been ready to send for a week, blocked by one missing permission toggle, not a decision, not a rewrite. Meanwhile the task list added 47 lines today and closed zero. Busy and moving are not the same thing.",
+      "arcs": [
+        "Lake B2B",
+        "Vendor Ops"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Vendor Ops",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-09-15",
       "day": 319,
@@ -2962,9 +2987,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "17:29 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "Lake Sonar onboarding, five-tool stack locked · just now",
+    "last_ship": "Vendor restart, 3 campaigns unblocked · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2994,6 +3019,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Restarted a delivery-partner account that had been stuck for days. Split the client dat...",
+        "tag": "shipped d320"
+      },
+      {
         "text": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Pyt...",
         "tag": "shipped d319"
       },
@@ -3004,10 +3033,6 @@ window.DH_DATA = {
       {
         "text": "Built the reference version of the new UTM tool today. Paste any link, get it back tagg...",
         "tag": "shipped d316"
-      },
-      {
-        "text": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to fron...",
-        "tag": "shipped d315"
       }
     ],
     "soon": [
@@ -4755,5 +4780,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-16T11:59:29.069Z"
+  "built": "2026-09-16T19:38:59.335Z"
 };
