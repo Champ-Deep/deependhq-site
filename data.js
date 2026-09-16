@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-12T19:39:48.516Z
+// Built 2026-09-16T11:59:29.069Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 316,
-    "today_date": "2026-09-12",
+    "today_day": 319,
+    "today_date": "2026-09-15",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 319,
+          "date": "2026-09-15",
+          "shipping_now": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over TypeScript, weekly 15…",
+          "arc_color": "green"
+        },
         {
           "day": 314,
           "date": "2026-09-10",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 290,
           "date": "2026-08-17",
           "shipping_now": "locked a second design language for internal pages. pixel arcade: dark canvas, 12x12 pixel sprites drawn in code, every item…",
-          "arc_color": "green"
-        },
-        {
-          "day": 287,
-          "date": "2026-08-14",
-          "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget…",
           "arc_color": "green"
         }
       ],
@@ -204,6 +204,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 318,
+          "date": "2026-09-14",
+          "shipping_now": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into…",
+          "arc_color": "blue"
+        },
+        {
           "day": 314,
           "date": "2026-09-10",
           "shipping_now": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data…",
@@ -268,12 +274,6 @@ window.DH_DATA = {
           "date": "2026-08-21",
           "shipping_now": "settled the database number: 800m+ contacts, 80m+ companies. four other figures were in circulation. 440m in a meeting prep, 550m…",
           "arc_color": "green"
-        },
-        {
-          "day": 293,
-          "date": "2026-08-20",
-          "shipping_now": "planned the handover of seven apac lead-gen accounts, one of them onboarded today. one owner per account, facing both the client…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -521,6 +521,56 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-15",
+      "day": 319,
+      "mood": "🌗",
+      "shipping_now": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over TypeScript, weekly 15 to 20 minute check-ins, deliverable based. The month-one target is concrete, a queryable chatbot trained on our own schema, with a senior teammate assigned as buddy.",
+      "yesterday_thread": "Also reshuffled paid versus organic ad ownership across two of our data brands, shipped three of four promised intern onboarding plans, and moved a scraping deploy onto a three-tier proxy fallback so it stops falling over.",
+      "raw_thought": "Set myself three guarantees for today. Landed one clean, left two sitting open: a hire I still owe a verdict, a written handoff I still owe a teammate. Easier to promise three things at 3pm than to close three by 2am.",
+      "arcs": [
+        "Lake Sonar",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake Sonar",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "day": 318,
+      "mood": "🧭",
+      "shipping_now": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into two buckets, campaigns or enrichment, on a 12-step architecture, backed by a real per-rep budget to close on 100 targeted accounts.",
+      "yesterday_thread": "Also split backend and frontend scope for Event Scout with the team, one engineer took block-scraping and the admin backend, another took the dashboard redesign and Play Store prep. Separate thread: pulled apart a Social Bot monolith because the queue stopped loading and campaigns were not reaching the server.",
+      "raw_thought": "Two outcome recaps from todays calls are still unfiled two days later. A strategy reset is the easy part. Writing down what actually got decided on every call is the part that keeps slipping.",
+      "arcs": [
+        "Lake B2B",
+        "Event Scout"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Event Scout",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-09-12",
       "day": 316,
@@ -2912,9 +2962,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "17:29 IST",
     "weather": "24°C · clear",
-    "last_ship": "UTM tool reference build, 12 tests green · just now",
+    "last_ship": "Lake Sonar onboarding, five-tool stack locked · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -2944,20 +2994,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Pyt...",
+        "tag": "shipped d319"
+      },
+      {
+        "text": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B...",
+        "tag": "shipped d318"
+      },
+      {
         "text": "Built the reference version of the new UTM tool today. Paste any link, get it back tagg...",
         "tag": "shipped d316"
       },
       {
         "text": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to fron...",
         "tag": "shipped d315"
-      },
-      {
-        "text": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000...",
-        "tag": "shipped d314"
-      },
-      {
-        "text": "restructured the vault from a monolith into a five-layer context architecture. each lay...",
-        "tag": "shipped d313"
       }
     ],
     "soon": [
@@ -4705,5 +4755,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-12T19:39:48.516Z"
+  "built": "2026-09-16T11:59:29.069Z"
 };
