@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-16T19:38:59.335Z
+// Built 2026-09-17T19:42:29.388Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 320,
-    "today_date": "2026-09-16",
+    "today_day": 321,
+    "today_date": "2026-09-17",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 321,
+          "date": "2026-09-17",
+          "shipping_now": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new…",
+          "arc_color": "gold"
+        },
         {
           "day": 319,
           "date": "2026-09-15",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 291,
           "date": "2026-08-18",
           "shipping_now": "day one for a new front-end intern, owning one thing: the social bot. it has sat at 60 to 70 percent since march. her month is…",
-          "arc_color": "green"
-        },
-        {
-          "day": 290,
-          "date": "2026-08-17",
-          "shipping_now": "locked a second design language for internal pages. pixel arcade: dark canvas, 12x12 pixel sprites drawn in code, every item…",
           "arc_color": "green"
         }
       ],
@@ -204,6 +204,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 321,
+          "date": "2026-09-17",
+          "shipping_now": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new…",
+          "arc_color": "gold"
+        },
+        {
           "day": 320,
           "date": "2026-09-16",
           "shipping_now": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendors, signed off a…",
@@ -268,12 +274,6 @@ window.DH_DATA = {
           "date": "2026-08-27",
           "shipping_now": "a data-partnership call with one of the big identity-resolution platforms. seven people across both sides. plus a genetic testing…",
           "arc_color": "blue"
-        },
-        {
-          "day": 298,
-          "date": "2026-08-25",
-          "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -521,6 +521,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-17",
+      "day": 321,
+      "mood": "🎯",
+      "shipping_now": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new partnership conversation the same day too, voice tech meets data, five concrete next steps out of one call.",
+      "yesterday_thread": "A major account escalated on slow delivery tonight. Wrote the full recap and looped leadership in before the night was out instead of letting it sit.",
+      "raw_thought": "Task list added twenty-four lines today and closed four. The gap between what gets promised on a call and what gets filed after it keeps growing, not shrinking.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-09-16",
       "day": 320,
@@ -2987,9 +3012,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:12 IST",
     "weather": "24°C · clear",
-    "last_ship": "Vendor restart, 3 campaigns unblocked · just now",
+    "last_ship": "booked call after 10-day outreach · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -3019,6 +3044,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the be...",
+        "tag": "shipped d321"
+      },
+      {
         "text": "Restarted a delivery-partner account that had been stuck for days. Split the client dat...",
         "tag": "shipped d320"
       },
@@ -3029,10 +3058,6 @@ window.DH_DATA = {
       {
         "text": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B...",
         "tag": "shipped d318"
-      },
-      {
-        "text": "Built the reference version of the new UTM tool today. Paste any link, get it back tagg...",
-        "tag": "shipped d316"
       }
     ],
     "soon": [
@@ -4780,5 +4805,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-16T19:38:59.335Z"
+  "built": "2026-09-17T19:42:29.388Z"
 };
