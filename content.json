@@ -5,8 +5,8 @@
     "day_one": "2025-11-01"
   },
   "brand": {
-    "today_day": 322,
-    "today_date": "2026-09-18",
+    "today_day": 323,
+    "today_date": "2026-09-19",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -154,6 +154,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-19",
+      "day": 323,
+      "mood": "😤",
+      "shipping_now": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that a deliverable we paid for, a panel slot, sat unclaimed for eleven days and the agenda published without us. New standing rule out of it: any paid sponsorship deliverable gets an owner and a deadline the week we pay, not a thread mention.",
+      "yesterday_thread": "Also closed the loop on a recurring internal meeting that kept losing its AI summary to a permissions bug, three occurrences running. Finally filed the actual fix instead of logging the same complaint a fourth time.",
+      "raw_thought": "The sponsorship thing stings. We paid for a stage, sat on the topic for over a week, and someone else filled the agenda without us. Cheap lesson, could have been an expensive one.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-09-18",
       "day": 322,
@@ -1508,21 +1521,21 @@
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 31,
+  "weekly_narratives_count": 32,
   "latest_narrative": {
-    "week": 43,
-    "title": "Five systems, five days, none of them talked to each other.",
-    "body": "week 43 did not have one big story. it had six small ones, each proven on its own before it touched anything real. an email assistant, an infrastructure pitch, a vault rebuild, a data account that tripled, a booking product shipped end to end, and a link tagger. different domains, same discipline: build it standalone, test it, then wire it in.",
-    "day_range": "Sep 7 - 12",
-    "date": "2026-09-12",
+    "week": 44,
+    "title": "Got disciplined about everything this week except the thing we paid cash for.",
+    "body": "A strategy reset that kills generic pitching, a new hire's tooling locked in a day, a stalled delivery partner restarted, a ten day cold thread that finally booked a call, a full growth audit for a real prospect. Then a paid conference slot sat unclaimed for eleven days and the agenda went out without us.",
+    "day_range": "Sep 14 - 19",
+    "date": "2026-09-19",
     "read": "4 min",
-    "slug": "week-43-five-systems-five-days"
+    "slug": "week-44-the-discipline-arc"
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:07 IST",
+    "time_ist": "01:06 IST",
     "weather": "24°C · clear",
-    "last_ship": "client-audit-and-visuals-shipped · just now",
+    "last_ship": "summit day, one real fix · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -1552,6 +1565,10 @@
     ],
     "recently": [
       {
+        "text": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored....",
+        "tag": "shipped d323"
+      },
+      {
         "text": "Built a full digital audit and all twelve growth visuals for a real-estate developer pr...",
         "tag": "shipped d322"
       },
@@ -1562,10 +1579,6 @@
       {
         "text": "Restarted a delivery-partner account that had been stuck for days. Split the client dat...",
         "tag": "shipped d320"
-      },
-      {
-        "text": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Pyt...",
-        "tag": "shipped d319"
       }
     ],
     "soon": [
@@ -2021,6 +2034,67 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-44-the-discipline-arc",
+      "kind": "weekly",
+      "week": 44,
+      "eyebrow": ">_ week 44 - the discipline arc",
+      "title": "Got disciplined about everything this week except the thing we paid cash for.",
+      "deck": "A strategy reset that kills generic pitching, a new hire's tooling locked in a day, a stalled delivery partner restarted, a ten day cold thread that finally booked a call, a full growth audit for a real prospect. Then a paid conference slot sat unclaimed for eleven days and the agenda went out without us.",
+      "date": "2026-09-19",
+      "day_range": "Sep 14 - 19",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "green",
+      "tags": [
+        "ops",
+        "sales",
+        "lessons"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 44 was five days of getting disciplined on purpose and one day of getting disciplined by accident. the first five felt like progress. the sixth felt like a bill coming due for a process we never wrote down."
+        },
+        {
+          "type": "p",
+          "text": "monday was a strategy reset with Chief in the room. the decision: stop pitching generic B2B data. every deal now splits into two buckets before anyone writes an email, and the pitch follows the bucket instead of a template. small rule, but it changes what the first message says."
+        },
+        {
+          "type": "p",
+          "text": "tuesday locked working style and tooling for a new hire on Lake Sonar in one sitting. five tools total, Python and FastAPI over TypeScript, a weekly 15 to 20 minute sync instead of a standing meeting nobody reads the notes from. deciding this on day one beats redeciding it in month three."
+        },
+        {
+          "type": "p",
+          "text": "wednesday restarted a delivery partner account that had been stuck for days. split the client database across two vendors and signed off new partner terms so it does not stall the same way twice."
+        },
+        {
+          "type": "pull",
+          "text": "a paid deliverable is still a deliverable. a thread mention is not an owner. a week where we remembered that for hiring and vendors and forgot it for cash out the door is a week with a hole in it."
+        },
+        {
+          "type": "p",
+          "text": "thursday a ten day old outreach thread finally converted into a booked call, the best pipeline move in weeks. same day, a new partnership conversation opened on the data and channel side."
+        },
+        {
+          "type": "p",
+          "text": "friday was a full digital audit plus twelve growth visuals for a real estate developer prospect with real budget behind it: organic traffic down over half in two years, their own flagship launch page outranked by a copycat with zero authority. built in their brand colors, sitting ready, one signature away from going out."
+        },
+        {
+          "type": "callout",
+          "head": "saturday, the one that stings",
+          "lines": [
+            "spent 8:30am to 8:30pm on site at a biosciences summit we sponsored.",
+            "found out mid-day that a panel slot we paid for sat unclaimed for eleven days. the agenda published without our topic in it.",
+            "new standing rule: any paid sponsorship deliverable gets an owner and a deadline the week we pay, not a thread mention that ages out."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "five days of building the discipline in on purpose, one day of paying for the discipline we skipped. that is the whole week in one line."
+        }
+      ]
+    },
     {
       "slug": "week-43-five-systems-five-days",
       "kind": "weekly",
