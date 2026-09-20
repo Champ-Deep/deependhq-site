@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-19T19:37:04.750Z
+// Built 2026-09-20T19:37:11.911Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 323,
-    "today_date": "2026-09-19",
+    "today_day": 324,
+    "today_date": "2026-09-20",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 324,
+          "date": "2026-09-20",
+          "shipping_now": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when…",
+          "arc_color": "green"
+        },
         {
           "day": 323,
           "date": "2026-09-19",
@@ -87,12 +93,6 @@ window.DH_DATA = {
           "day": 298,
           "date": "2026-08-25",
           "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for…",
-          "arc_color": "green"
-        },
-        {
-          "day": 297,
-          "date": "2026-08-24",
-          "shipping_now": "wrote the first kra for the longevity development lead. six-month period from sep 1, ten-point scale, first review dec 1. ramp…",
           "arc_color": "green"
         }
       ],
@@ -527,6 +527,25 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-20",
+      "day": 324,
+      "mood": "🔧",
+      "shipping_now": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when a different endpoint on the same meeting hands back the full transcript anyway. Would have caught several recent client calls we thought were just lost. Patched the retry order tonight.",
+      "yesterday_thread": "Still working the fallout from Saturdays sponsorship mess. Turned it into three dated tasks instead of a grudge: chase what we are actually owed, and put a real date on the makeup conversation.",
+      "raw_thought": "Twelve tasks filed today, zero closed. Some Sundays are just intake.",
+      "arcs": [
+        "ChampOps"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-09-19",
       "day": 323,
@@ -3068,9 +3087,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:06 IST",
+    "time_ist": "01:07 IST",
     "weather": "24°C · clear",
-    "last_ship": "summit day, one real fix · just now",
+    "last_ship": "Zoom Triage retry-order fix · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -3100,6 +3119,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that...",
+        "tag": "shipped d324"
+      },
+      {
         "text": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored....",
         "tag": "shipped d323"
       },
@@ -3110,10 +3133,6 @@ window.DH_DATA = {
       {
         "text": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the be...",
         "tag": "shipped d321"
-      },
-      {
-        "text": "Restarted a delivery-partner account that had been stuck for days. Split the client dat...",
-        "tag": "shipped d320"
       }
     ],
     "soon": [
@@ -4929,5 +4948,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-19T19:37:04.750Z"
+  "built": "2026-09-20T19:37:11.911Z"
 };
