@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-20T19:37:11.911Z
+// Built 2026-09-21T19:38:31.430Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 324,
-    "today_date": "2026-09-20",
+    "today_day": 325,
+    "today_date": "2026-09-21",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 325,
+          "date": "2026-09-21",
+          "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold…",
+          "arc_color": "gold"
+        },
         {
           "day": 324,
           "date": "2026-09-20",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-08-26",
           "shipping_now": "thin day on record. an inbound discovery call for one of the data brands, booked by the prospect. a partnership call pairing the…",
           "arc_color": "blue"
-        },
-        {
-          "day": 298,
-          "date": "2026-08-25",
-          "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -210,6 +210,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 325,
+          "date": "2026-09-21",
+          "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold…",
+          "arc_color": "gold"
+        },
+        {
           "day": 322,
           "date": "2026-09-18",
           "shipping_now": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic…",
@@ -273,12 +279,6 @@ window.DH_DATA = {
           "day": 304,
           "date": "2026-08-31",
           "shipping_now": "turned an eleven-day-old voice note into a full saas lead-gen playbook. two products: competitor lookalike mapping and competitor…",
-          "arc_color": "green"
-        },
-        {
-          "day": 301,
-          "date": "2026-08-28",
-          "shipping_now": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and lists every note…",
           "arc_color": "green"
         }
       ],
@@ -527,6 +527,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-21",
+      "day": 325,
+      "mood": "🤝",
+      "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold vendor pitch and moved on. then at 10pm he called back and we spent 22 minutes shaping a real deal: his agency takes on our microsite refresh and lead-gen overflow work, we take a cut. not signed yet, but its the first real partner conversation to come out of a dead-looking booking in a while.",
+      "yesterday_thread": "also locked the build plan for the ai sdr project today. eight work packages, about four dev days, and one hard rule for the build: do not touch the old backend until the new one can rebuild itself without taking the server down, which its done twice already.",
+      "raw_thought": "the thing that actually bugs me tonight isnt any of the above. a full week of drafted outreach emails still hasnt sent because a permissions setting has been broken for two weeks and nobody has fixed it. built the work, cant ship the send. thats on me to close tomorrow.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-09-20",
       "day": 324,
@@ -3087,9 +3112,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:07 IST",
+    "time_ist": "01:08 IST",
     "weather": "24°C · clear",
-    "last_ship": "Zoom Triage retry-order fix · just now",
+    "last_ship": "cold no-show becomes a partnership pitch · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -3119,6 +3144,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "a discovery call that looked dead came back to life tonight. the prospect no-showed the...",
+        "tag": "shipped d325"
+      },
+      {
         "text": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that...",
         "tag": "shipped d324"
       },
@@ -3129,10 +3158,6 @@ window.DH_DATA = {
       {
         "text": "Built a full digital audit and all twelve growth visuals for a real-estate developer pr...",
         "tag": "shipped d322"
-      },
-      {
-        "text": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the be...",
-        "tag": "shipped d321"
       }
     ],
     "soon": [
@@ -4948,5 +4973,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-20T19:37:11.911Z"
+  "built": "2026-09-21T19:38:31.430Z"
 };
