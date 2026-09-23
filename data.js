@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-21T19:38:31.430Z
+// Built 2026-09-23T19:55:32.673Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 325,
-    "today_date": "2026-09-21",
+    "today_day": 327,
+    "today_date": "2026-09-23",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -23,6 +23,12 @@ window.DH_DATA = {
       "url": "https://www.championsaccelerator.com",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 327,
+          "date": "2026-09-23",
+          "shipping_now": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it needed, just an…",
+          "arc_color": "blue"
+        },
         {
           "day": 325,
           "date": "2026-09-21",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "date": "2026-08-28",
           "shipping_now": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and lists every note…",
           "arc_color": "green"
-        },
-        {
-          "day": 299,
-          "date": "2026-08-26",
-          "shipping_now": "thin day on record. an inbound discovery call for one of the data brands, booked by the prospect. a partnership call pairing the…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -527,6 +527,56 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-23",
+      "day": 327,
+      "mood": "😬",
+      "shipping_now": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it needed, just an identity check before the room closed. still figuring out if the real conversation happened somewhere else or just didnt happen.",
+      "yesterday_thread": "",
+      "raw_thought": "a scheduling system caught a double-booking before it hit and a venture brief got four real decisions queued for chief. neither of those matter if the one lead that cost real money doesnt get followed up properly.",
+      "arcs": [
+        "pipeline",
+        "longevity"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "pipeline",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "day": 326,
+      "mood": "📞",
+      "shipping_now": "the birthday voice agent actually called chief. missed the first try, connected on retry at midnight, and he liked it enough to ask for more: anniversaries, linkedin signals, milestone follow-ups.",
+      "yesterday_thread": "",
+      "raw_thought": "an automated call to my own father almost didnt happen on the first attempt. reminder that automation just means you get more tries than a human would, not that it works the first time.",
+      "arcs": [
+        "voice-agent",
+        "chief"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "voice-agent",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "chief",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-09-21",
       "day": 325,
@@ -3112,9 +3162,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:08 IST",
+    "time_ist": "01:25 IST",
     "weather": "24°C · clear",
-    "last_ship": "cold no-show becomes a partnership pitch · just now",
+    "last_ship": "world longevity council brief, filed · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -3144,20 +3194,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "the one lead a summit sponsorship actually produced got a 71-second call today. not the...",
+        "tag": "shipped d327"
+      },
+      {
+        "text": "the birthday voice agent actually called chief. missed the first try, connected on retr...",
+        "tag": "shipped d326"
+      },
+      {
         "text": "a discovery call that looked dead came back to life tonight. the prospect no-showed the...",
         "tag": "shipped d325"
       },
       {
         "text": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that...",
         "tag": "shipped d324"
-      },
-      {
-        "text": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored....",
-        "tag": "shipped d323"
-      },
-      {
-        "text": "Built a full digital audit and all twelve growth visuals for a real-estate developer pr...",
-        "tag": "shipped d322"
       }
     ],
     "soon": [
@@ -4973,5 +5023,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-21T19:38:31.430Z"
+  "built": "2026-09-23T19:55:32.673Z"
 };
