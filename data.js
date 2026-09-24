@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-23T19:55:32.673Z
+// Built 2026-09-24T19:48:47.627Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 327,
-    "today_date": "2026-09-23",
+    "today_day": 328,
+    "today_date": "2026-09-24",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -210,6 +210,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 328,
+          "date": "2026-09-24",
+          "shipping_now": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes,…",
+          "arc_color": "green"
+        },
+        {
           "day": 325,
           "date": "2026-09-21",
           "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold…",
@@ -273,12 +279,6 @@ window.DH_DATA = {
           "day": 305,
           "date": "2026-09-01",
           "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface.…",
-          "arc_color": "green"
-        },
-        {
-          "day": 304,
-          "date": "2026-08-31",
-          "shipping_now": "turned an eleven-day-old voice note into a full saas lead-gen playbook. two products: competitor lookalike mapping and competitor…",
           "arc_color": "green"
         }
       ],
@@ -527,6 +527,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-24",
+      "day": 328,
+      "mood": "🔧",
+      "shipping_now": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes, 67k wikilinks, 635 ambiguous mentions judged in under two minutes for under two cents. 45 clean merges, zero errors. not touching anything live until i trust a full review pass.",
+      "yesterday_thread": "an enterprise IT services client told the team flat out: zero qualified leads in two months, no visibility into who is actually dialing. not a fun call. but a client saying it out loud beats one that goes quiet. leadership call is booked, recap and a real strategy doc go out before it.",
+      "raw_thought": "two people wrote in today with real grievances, one about a severance dispute, one pushing back on a performance plan. the automation did the right thing and refused to draft either reply on its own. some things still need an actual human, not a bot with good manners.",
+      "arcs": [
+        "Celsus OS",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Celsus OS",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ]
+    },
     {
       "date": "2026-09-23",
       "day": 327,
@@ -3162,9 +3187,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:25 IST",
+    "time_ist": "01:18 IST",
     "weather": "24°C · clear",
-    "last_ship": "world longevity council brief, filed · just now",
+    "last_ship": "entity-resolution shadow run · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -3194,6 +3219,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "ran the entity-resolution model against my whole second brain today as a shadow test, n...",
+        "tag": "shipped d328"
+      },
+      {
         "text": "the one lead a summit sponsorship actually produced got a 71-second call today. not the...",
         "tag": "shipped d327"
       },
@@ -3204,10 +3233,6 @@ window.DH_DATA = {
       {
         "text": "a discovery call that looked dead came back to life tonight. the prospect no-showed the...",
         "tag": "shipped d325"
-      },
-      {
-        "text": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that...",
-        "tag": "shipped d324"
       }
     ],
     "soon": [
@@ -5023,5 +5048,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-23T19:55:32.673Z"
+  "built": "2026-09-24T19:48:47.627Z"
 };
