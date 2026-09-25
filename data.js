@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-25T17:46:36.436Z
+// Built 2026-09-25T19:42:30.773Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 328,
-    "today_date": "2026-09-24",
+    "today_day": 329,
+    "today_date": "2026-09-25",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -210,6 +210,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 329,
+          "date": "2026-09-25",
+          "shipping_now": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post. explains…",
+          "arc_color": "green"
+        },
+        {
           "day": 328,
           "date": "2026-09-24",
           "shipping_now": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes,…",
@@ -273,12 +279,6 @@ window.DH_DATA = {
           "day": 306,
           "date": "2026-09-02",
           "shipping_now": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 608 errors to 0.…",
-          "arc_color": "green"
-        },
-        {
-          "day": 305,
-          "date": "2026-09-01",
-          "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface.…",
           "arc_color": "green"
         }
       ],
@@ -527,6 +527,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-25",
+      "day": 329,
+      "mood": "📦",
+      "shipping_now": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post. explains the buying-signal data play in slides instead of a deck nobody opens.",
+      "yesterday_thread": "the enterprise it services client escalation from yesterday has a shape now. leadership call locked for next tuesday, and the recap plus a real hybrid strategy doc go out before that call, not after.",
+      "raw_thought": "the social triage automation hit a permission wall today, fifth day running. not a code bug, a platform level denial on the exact calls it needs to run unattended. built for it, cant fix it myself.",
+      "arcs": [
+        "Lake B2B",
+        "Celsus OS"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Celsus OS",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-09-24",
       "day": 328,
@@ -3187,9 +3212,9 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:18 IST",
+    "time_ist": "01:12 IST",
     "weather": "24°C · clear",
-    "last_ship": "entity-resolution shadow run · just now",
+    "last_ship": "LakeB2B intent-signal carousel · just now",
     "vault_commits": 0,
     "listening": "Bonobo · Migration",
     "reading": "The Power Broker · Caro",
@@ -3219,6 +3244,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through...",
+        "tag": "shipped d329"
+      },
+      {
         "text": "ran the entity-resolution model against my whole second brain today as a shadow test, n...",
         "tag": "shipped d328"
       },
@@ -3229,10 +3258,6 @@ window.DH_DATA = {
       {
         "text": "the birthday voice agent actually called chief. missed the first try, connected on retr...",
         "tag": "shipped d326"
-      },
-      {
-        "text": "a discovery call that looked dead came back to life tonight. the prospect no-showed the...",
-        "tag": "shipped d325"
       }
     ],
     "soon": [
@@ -5055,5 +5080,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-25T17:46:36.436Z"
+  "built": "2026-09-25T19:42:30.773Z"
 };
