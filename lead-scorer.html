@@ -13,177 +13,237 @@
 :root{
   --bg:#0D0F14;--surface:#12151D;--card:#181C26;--card-2:#1E2330;--line:#2A2E3A;--line-2:#3A3F50;
   --text:#E8E4DC;--muted:#A8A8A2;--dim:#8A8A92;
-  --build:#30E060;--think:#4A7BF7;--win:#C9A84C;--human:#E052C0;--danger:#E05030;
-  --think-text:#6D95FF;--danger-text:#EC6A4A;
+  --build:#30E060;--think:#4A7BF7;--win:#C9A84C;--danger:#E05030;--think-text:#6D95FF;--danger-text:#EC6A4A;
   --accent:var(--build);
   --accent-hover:color-mix(in oklab,var(--accent) 85%,white);
   --accent-wash:color-mix(in oklab,var(--accent) 12%,transparent);
   --win-wash:color-mix(in oklab,var(--win) 12%,transparent);
   --think-wash:color-mix(in oklab,var(--think) 12%,transparent);
-  --danger-wash:color-mix(in oklab,var(--danger) 12%,transparent);
   --font-ui:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;
-  --pad:20px;--r-sm:4px;--r-md:6px;--r-lg:10px;--r-pill:100px;
-  --shadow-2:0 4px 12px rgba(0,0,0,.4);--dur-2:200ms;--ease-out:cubic-bezier(.16,1,.3,1);
+  --pad:16px;--r-sm:4px;--r-md:6px;--r-lg:10px;--r-pill:100px;
+  --dur-1:120ms;--dur-2:200ms;--ease-out:cubic-bezier(.16,1,.3,1);
 }
-@media(min-width:40rem){:root{--pad:32px}}
-@media(min-width:64rem){:root{--pad:48px}}
+@media(min-width:40rem){:root{--pad:24px}}
+@media(min-width:64rem){:root{--pad:32px}}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text)}
-body{font:400 15px/1.65 var(--font-mono);-webkit-font-smoothing:antialiased}
+body{font:400 14px/1.55 var(--font-mono);-webkit-font-smoothing:antialiased}
 .skip{position:absolute;left:-999px;top:8px;background:var(--card);color:var(--text);padding:8px 12px;border-radius:var(--r-sm)}
 .skip:focus-visible{left:8px;outline:2px solid var(--accent);outline-offset:2px}
-main{max-width:1400px;margin:0 auto;padding:20px var(--pad) 24px;min-height:100dvh;display:flex;flex-direction:column;gap:14px}
-.top{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;align-items:stretch}
-.top .card{display:flex;flex-direction:column;justify-content:space-between;gap:12px}
-.work{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px;flex:1}
-@media(min-width:64rem){.top{grid-template-columns:1.2fr 1fr}.work{grid-template-columns:5fr 7fr;min-height:calc(100dvh - 210px)}}
-.otto{display:flex;flex-direction:column}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
-.chips button{min-height:36px;padding:6px 12px;border-radius:var(--r-pill);border:1px solid var(--line-2);background:var(--bg);color:var(--muted);font:400 .75rem var(--font-mono);cursor:pointer}
-.chips button:hover{color:var(--text);border-color:var(--build)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
-.step{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:10px;font-size:.75rem;color:var(--muted);line-height:1.45}
-.step b{display:block;color:var(--build);font:600 .6875rem var(--font-mono);letter-spacing:.06em;margin-bottom:4px}
-@media(max-width:30rem){.steps{grid-template-columns:1fr}}
-.eyebrow{font:600 .6875rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--build)}
-.eyebrow::before{content:"\25CF  "}
-h1{font:800 clamp(1.5rem,2.6vw,2.25rem)/1.1 var(--font-ui);letter-spacing:-.03em;margin:6px 0 6px}
-h2{font:700 1.125rem/1.3 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px}
-.sub{color:var(--muted);font-family:var(--font-ui);font-size:.9375rem;max-width:60ch;margin:0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px}
-.card.otto{background:var(--surface)}
-label{display:block;font-size:.8125rem;color:var(--muted);margin:14px 0 6px}
-label:first-child{margin-top:0}
+main{max-width:1440px;margin:0 auto;padding:16px var(--pad) 24px;min-height:100dvh;display:flex;flex-direction:column;gap:12px}
+
+/* ----- top bar ----- */
+.bar{display:grid;grid-template-columns:1fr;gap:12px;align-items:center;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg)}
+@media(min-width:64rem){.bar{grid-template-columns:1fr auto}.auth{flex-wrap:nowrap}.auth>div{flex:none;width:200px}}
+.eyebrow{font:600 .6875rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--build);display:flex;align-items:center;gap:8px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--build);display:inline-block}
+.running .dot{animation:breathe 1.6s ease-in-out infinite}
+h1{font:800 clamp(1.25rem,1.9vw,1.625rem)/1.15 var(--font-ui);letter-spacing:-.03em;margin:4px 0 0;text-wrap:balance}
+.sub{color:var(--muted);font-family:var(--font-ui);font-size:.875rem;margin:2px 0 0}
+.auth{display:flex;gap:8px;align-items:end;flex-wrap:wrap}
+.auth>div{flex:1;min-width:140px}
+label{display:block;font-size:.75rem;color:var(--muted);margin:0 0 4px}
 input,textarea,select,button{font:inherit}
-input,textarea,select{width:100%;min-height:44px;background:var(--bg);border:1px solid var(--line-2);color:var(--text);border-radius:var(--r-md);padding:10px 12px}
-textarea{min-height:88px;resize:vertical}
-input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.btn{min-height:44px;padding:10px 18px;border-radius:var(--r-md);border:1px solid transparent;background:var(--build);color:#0D0F14;font:700 .9375rem var(--font-ui);cursor:pointer;transition:background var(--dur-2) var(--ease-out)}
+input,textarea,select{width:100%;min-height:40px;background:var(--bg);border:1px solid var(--line-2);color:var(--text);border-radius:var(--r-md);padding:8px 10px}
+textarea{resize:none}
+input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible,.drop:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn{min-height:40px;padding:8px 16px;border-radius:var(--r-md);border:1px solid transparent;background:var(--build);color:#0D0F14;font:700 .875rem var(--font-ui);cursor:pointer;white-space:nowrap;transition:background var(--dur-2) var(--ease-out)}
 .btn:hover{background:var(--accent-hover)}
 .btn.sec{background:var(--card-2);color:var(--text);border-color:var(--line-2)}
 .btn.sec:hover{background:var(--line)}
 .btn.win{background:var(--win);color:#0D0F14}
+.btn.big{min-height:44px;padding:10px 22px;font-size:.9375rem}
 .btn:disabled{cursor:default;background:var(--line);color:var(--dim)}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.toggle{display:flex;gap:10px;align-items:center;min-height:44px;color:var(--text);font-size:.875rem}
-.toggle input{width:20px;height:20px;min-height:0;margin:0;accent-color:var(--build)}
-.meter{height:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);overflow:hidden;margin:8px 0}
+.who{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.who select{min-width:150px;width:auto;flex:1}
+.spend{display:flex;flex-direction:column;gap:4px;min-width:200px;flex:1.2}
+.spend .stat{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+.spend b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+.meter{height:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);overflow:hidden}
 .meter i{display:block;height:100%;width:0;background:var(--build);transition:width var(--dur-2) var(--ease-out)}
 .meter.warn i{background:var(--win)}.meter.hot i{background:var(--danger)}
-.stat{display:flex;justify-content:space-between;gap:12px;font-size:.8125rem;color:var(--muted)}
-.stat b{color:var(--text);font-weight:600}
-.pill{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);padding:4px 12px;font-size:.75rem;color:var(--muted)}
-.pill b{color:var(--text);font-weight:600}
-.chip{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font:600 .6875rem/1.8 var(--font-mono);letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
-.t1{background:var(--accent-wash);color:var(--build);border-color:var(--build)}
-.t2{background:var(--win-wash);color:var(--win);border-color:var(--win)}
-.t3{background:var(--think-wash);color:var(--think-text);border-color:var(--think)}
-.t4{background:transparent;color:var(--dim);border-color:var(--line-2)}
-.tbl{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:var(--r-md)}
+.running .meter.live i{animation:breathe 1.6s ease-in-out infinite}
+.link{color:var(--think-text);font-size:.75rem;white-space:nowrap}
+.err{color:var(--danger-text);font-size:.8125rem}
+.ok{color:var(--build)}
+
+/* ----- deck ----- */
+.deck{display:grid;grid-template-columns:1fr;gap:12px;flex:1;min-height:0}
+@media(min-width:64rem){.deck{grid-template-columns:5fr 7fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;min-height:0}
+h2{font:700 1rem/1.3 var(--font-ui);letter-spacing:-.02em;margin:0}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+.head .d{font-size:.75rem;color:var(--dim)}
+
+/* Otto */
+.otto{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+canvas{image-rendering:pixelated;width:64px;height:64px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);flex:none}
+.otto .say{flex:1;display:flex;gap:8px}
+.petstate{color:var(--dim);font-size:.75rem;margin:0 0 8px 76px;min-height:1.2em}
+.log{display:flex;flex-direction:column;gap:6px;max-height:112px;overflow:auto;margin:0 0 10px}
+.msg{padding:8px 10px;border-radius:var(--r-md);font-size:.8125rem;line-height:1.45;max-width:96%}
+.msg.me{align-self:flex-end;background:var(--card-2);border:1px solid var(--line-2)}
+.msg.otto{align-self:flex-start;background:var(--accent-wash);border:1px solid color-mix(in oklab,var(--build) 40%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px 76px}
+.chips button{min-height:32px;padding:4px 10px;border-radius:var(--r-pill);border:1px solid var(--line-2);background:var(--bg);color:var(--muted);font:400 .6875rem var(--font-mono);cursor:pointer}
+.chips button:hover{color:var(--text);border-color:var(--build)}
+.fields{display:grid;gap:10px;grid-template-rows:auto auto 1fr;flex:1;min-height:0}
+.fields textarea#sell{height:64px}.fields textarea#want{height:100%;min-height:84px}
+.fields>div:last-child{display:flex;flex-direction:column;min-height:0}
+.fields>div:last-child textarea{flex:1}
+
+/* Drop zone and list */
+.drop{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px dashed var(--line-2);border-radius:var(--r-lg);background:var(--surface);padding:24px;text-align:center;cursor:pointer;min-height:220px;transition:border-color var(--dur-2) var(--ease-out),background var(--dur-2) var(--ease-out)}
+.drop:hover,.drop.over{border-color:var(--build);background:var(--accent-wash)}
+.drop svg{width:40px;height:40px;stroke:var(--build);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.drop b{font:700 1rem var(--font-ui);color:var(--text)}
+.drop span{color:var(--muted);font-size:.8125rem;max-width:36ch}
+.drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.mapping{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;margin-top:10px}
+.mapping select{min-height:36px;padding:4px 8px;font-size:.8125rem}
+.runrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.toggle{display:flex;gap:8px;align-items:center;min-height:40px;font-size:.8125rem;color:var(--text)}
+.toggle input{width:18px;height:18px;min-height:0;margin:0;accent-color:var(--build)}
+.filemeta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.8125rem;color:var(--muted)}
+.filemeta b{color:var(--text)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);padding:3px 10px;font-size:.6875rem;color:var(--muted)}
+.pill b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* Console */
+.console{flex:1;display:flex;flex-direction:column;min-height:0;gap:10px}
+.tally{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.t{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:8px 10px}
+.t b{display:block;font:700 1.25rem/1 var(--font-ui);font-variant-numeric:tabular-nums}
+.t span{font-size:.625rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.t.c1 b{color:var(--build)}.t.c2 b{color:var(--win)}.t.c3 b{color:var(--think-text)}.t.c4 b{color:var(--dim)}
+.prog{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+.prog b{color:var(--text);font-variant-numeric:tabular-nums}
+.wire{flex:1;min-height:160px;overflow:auto;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg);padding:6px}
+.w{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:6px 8px;border-radius:var(--r-sm);font-size:.75rem;animation:arrive var(--dur-2) var(--ease-out)}
+.w+.w{border-top:1px solid var(--line)}
+.w .n{color:var(--text);font-weight:600;font-family:var(--font-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w .s{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w .sc{font:700 .875rem var(--font-ui);font-variant-numeric:tabular-nums;text-align:right;color:var(--dim)}
+.w.c1 .sc{color:var(--build)}.w.c2 .sc{color:var(--win)}.w.c3 .sc{color:var(--think-text)}
+.w .chip{justify-self:end}
+.chip{display:inline-block;padding:1px 8px;border-radius:var(--r-pill);font:600 .625rem/1.7 var(--font-mono);letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;white-space:nowrap}
+.c1 .chip,.chip.c1{background:var(--accent-wash);color:var(--build);border-color:var(--build)}
+.c2 .chip,.chip.c2{background:var(--win-wash);color:var(--win);border-color:var(--win)}
+.c3 .chip,.chip.c3{background:var(--think-wash);color:var(--think-text);border-color:var(--think)}
+.c4 .chip,.chip.c4{color:var(--dim);border-color:var(--line-2)}
+.chip.wait{color:var(--dim);border-color:var(--line)}
+.decide{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--win);border-radius:var(--r-md);background:var(--win-wash);font-size:.8125rem}
+.decide b{font-variant-numeric:tabular-nums}
+
+/* Results */
+.tbl{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:var(--r-md)}
 table{width:100%;border-collapse:collapse;font-size:.8125rem}
 th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{position:sticky;top:0;background:var(--card-2);color:var(--muted);font-weight:600;font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase}
-td.score{font-weight:600;font-size:1rem;color:var(--text)}
-td .m{color:var(--muted);font-size:.75rem}
-td .d{color:var(--dim);font-size:.75rem}
+td.score{font:700 1rem var(--font-ui);font-variant-numeric:tabular-nums}
+td .m{color:var(--muted);font-size:.75rem}td .d{color:var(--dim);font-size:.75rem}
+tr.new{animation:arrive var(--dur-2) var(--ease-out)}
 a{color:var(--think-text)}
-.chat{display:flex;flex-direction:column;gap:10px;flex:1;min-height:120px;max-height:40vh;overflow:auto;padding:4px 0;margin:12px 0}
-.msg{max-width:92%;padding:10px 12px;border-radius:var(--r-lg);font-size:.875rem;line-height:1.5}
-.msg.me{align-self:flex-end;background:var(--card-2);border:1px solid var(--line-2)}
-.msg.otto{align-self:flex-start;background:var(--accent-wash);border:1px solid color-mix(in oklab,var(--build) 40%,transparent)}
-.pet{display:flex;gap:14px;align-items:center}
-canvas{image-rendering:pixelated;width:96px;height:96px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md)}
-.petname{font:700 1rem var(--font-ui)}
-.petstate{color:var(--dim);font-size:.75rem}
-.err{color:var(--danger-text);font-size:.8125rem}
-.ok{color:var(--build);font-size:.8125rem}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .hide{display:none !important}
-.foot{color:var(--dim);font-size:.75rem;margin:0}
-@media(prefers-reduced-motion:reduce){.meter i,.btn{transition:none}}
+.foot{color:var(--dim);font-size:.6875rem;margin:8px 0 0}
+@keyframes arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.55}}
+@media(prefers-reduced-motion:reduce){.w,tr.new{animation:none}.running .dot,.running .meter.live i{animation:none}.btn,.drop,.meter i{transition:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <main id="main">
-  <div class="top">
-    <section class="card" aria-labelledby="page-h">
-      <div>
-      <div class="eyebrow">Lead Scorer</div>
-      <h1 id="page-h">Upload a list. Get the order to call it in.</h1>
-      <p class="sub">Every lead is checked for live signals, Jev ranks who to contact first, and the ones worth it get a first line. Otto fills the brief from one sentence.</p>
+  <header class="bar" id="bar">
+    <div>
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Lead Scorer</div>
+      <h1>Upload a list. Get the order to call it in.</h1>
+      <p class="sub">Live signals on every lead, Jev ranks them, the ones worth it get a first line.</p>
+    </div>
+    <div id="auth">
+      <div id="auth-new" class="auth">
+        <div><label for="pass">Team passcode</label><input id="pass" type="password" autocomplete="off" placeholder="from Champ"></div>
+        <div><label for="name">Your name</label><input id="name" autocomplete="name" placeholder="so your runs are yours"></div>
+        <button class="btn" id="login">Sign in</button>
+        <span id="auth-msg" class="err" style="flex-basis:100%"></span>
       </div>
-      <div class="steps" aria-label="How a run works">
-        <div class="step"><b>01 BRIEF</b>Otto or you fill what we sell and who we want.</div>
-        <div class="step"><b>02 UPLOAD</b>CSV or XLSX. A LinkedIn column makes signals strong.</div>
-        <div class="step"><b>03 FIRST 100</b>See the ranking and cost, then decide on the rest.</div>
-      </div>
-    </section>
-    <section class="card" id="auth" aria-labelledby="auth-h">
-      <h2 id="auth-h">Who is running this?</h2>
-      <div id="auth-new">
-        <div class="grid" style="gap:10px">
-          <div><label for="pass">Team passcode</label><input id="pass" type="password" autocomplete="off" placeholder="from Champ"></div>
-          <div><label for="name">Your name</label><input id="name" autocomplete="name" placeholder="so your runs are yours"></div>
+      <div id="auth-ret" class="who hide">
+        <div><label for="who">Signed in as</label><select id="who" aria-label="Signed in as"></select></div>
+        <div class="spend">
+          <div class="stat"><span>Team spend today <b id="spent">$0.00</b> of <b id="budget">$0</b></span><span>Your rows <b id="myrows">0</b> of <b id="mycap">0</b></span></div>
+          <div class="meter" id="meter"><i></i></div>
+          <div class="stat"><span id="models" class="d" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span><a href="#" id="signout" class="link">Not you?</a></div>
         </div>
-        <div class="row" style="margin-top:12px"><button class="btn" id="login">Sign in</button><span id="auth-msg" class="err"></span></div>
       </div>
-      <div id="auth-ret" class="hide">
-        <div class="grid" style="gap:10px">
-          <div><label for="who">Signed in as</label><select id="who"></select></div>
-          <div><label for="newname">Someone new?</label><div class="row" style="flex-wrap:nowrap"><input id="newname" placeholder="type a name" style="flex:1"><button class="btn sec" id="addname">Add</button></div></div>
-        </div>
-        <div class="stat" style="margin-top:12px"><span>Team spend today <b id="spent">$0.00</b> of <b id="budget">$0</b></span><span>Your rows today <b id="myrows">0</b> of <b id="mycap">0</b></span></div>
-        <div class="meter" id="meter"><i></i></div>
-        <div class="stat"><span id="models" class="d"></span><a href="#" id="signout" style="font-size:.8125rem">Not you? Use the passcode again</a></div>
-      </div>
-    </section>
-  </div>
+    </div>
+  </header>
 
-  <div class="work">
-    <section class="card otto" aria-labelledby="otto-h">
-      <div class="pet">
+  <section class="deck">
+    <div class="card" aria-labelledby="brief-h">
+      <div class="head"><h2 id="brief-h">The brief</h2><span class="d">Tell Otto, or type it in</span></div>
+      <div class="otto">
         <canvas id="pet" width="24" height="24" aria-label="Otto, a pixel otter" role="img"></canvas>
-        <div><div class="petname" id="otto-h">Otto</div><div class="petstate" id="petstate">Tell me what you sell and who you want. I will fill the brief.</div></div>
+        <div class="say"><input id="say" placeholder="What are you selling, and to whom?" disabled><button class="btn sec" id="send" disabled>Ask</button></div>
       </div>
+      <p class="petstate" id="petstate">Sign in, then tell me what you sell and who you want.</p>
       <div class="chips" aria-label="Quick starts">
         <button type="button" data-q="APAC bank CIOs for LakeB2B outbound. Look for core banking modernization and CIOs who joined in the last 120 days.">APAC bank CIOs</button>
         <button type="button" data-q="Hospital IT and revenue cycle leaders in the US for Ampliz healthcare data. Signals: EHR migration, new CIO, hiring data engineers.">US hospital IT</button>
-        <button type="button" data-q="Score on the uploaded columns only, no LinkedIn lookups, for a quick pass.">Quick pass, no lookups</button>
+        <button type="button" data-q="Score on the uploaded columns only, no LinkedIn lookups, for a quick pass.">Quick pass</button>
       </div>
-      <div class="chat" id="chat" aria-live="polite"></div>
-      <div class="row" style="flex-wrap:nowrap"><input id="say" placeholder="What are you selling, and to whom?" style="flex:1" disabled><button class="btn sec" id="send" disabled>Ask</button></div>
-      <p class="foot" style="margin-top:10px">Signals: public LinkedIn data, misses are free. Scoring: Jev, a decisions model. Openers: a free model, only for leads at 55 and above. Spend is capped per person and per day.</p>
-    </section>
-
-    <section class="card" aria-labelledby="brief-h">
-      <h2 id="brief-h">The brief</h2>
-      <label for="listname">List name</label><input id="listname" placeholder="e.g. APAC ERP CIOs, Sep 26">
-      <label for="sell">What we sell</label><textarea id="sell">LakeB2B: verified B2B data, appointment setting and managed outbound, plus SEO, creative and demand gen. One partner, data to deal.</textarea>
-      <label for="want">Who we want</label><textarea id="want">IT, digital, data or transformation leaders, Director and above, at mid to large enterprises in APAC, ANZ, MEA and CEE. Best signals: a live modernization, ERP, cloud or data project, or a leader who joined in the last 120 days.</textarea>
-      <label for="file">Upload CSV or XLSX</label><input id="file" type="file" accept=".csv,.xlsx,.xls">
-      <div id="map" class="hide"><label>Column mapping (auto detected, fix if wrong)</label><div class="grid" id="mapgrid" style="gap:10px"></div></div>
-      <div class="row" style="margin-top:14px">
-        <label class="toggle" style="margin:0"><input id="enrich" type="checkbox" checked> Look up LinkedIn profile and recent posts</label>
-        <button class="btn" id="run" disabled>Score the first 100</button>
+      <div class="log" id="chat" aria-live="polite"></div>
+      <div class="fields">
+        <div><label for="listname">List name</label><input id="listname" placeholder="e.g. APAC ERP CIOs, Sep 26"></div>
+        <div><label for="sell">What we sell</label><textarea id="sell">LakeB2B: verified B2B data, appointment setting and managed outbound, plus SEO, creative and demand gen. One partner, data to deal.</textarea></div>
+        <div><label for="want">Who we want</label><textarea id="want">IT, digital, data or transformation leaders, Director and above, at mid to large enterprises in APAC, ANZ, MEA and CEE. Best signals: a live modernization, ERP, cloud or data project, or a leader who joined in the last 120 days.</textarea></div>
       </div>
-      <div class="meter" style="margin-top:12px"><i id="prog"></i></div>
-      <div id="status" class="stat"><span></span></div>
-    </section>
-  </div>
+    </div>
 
-  <section class="card hide" id="cont" style="border-color:var(--win)" aria-live="polite">
-    <h2>First batch done. Keep going?</h2>
-    <div class="stat"><span><b id="c-left">0</b> rows left</span><span>Observed <b id="c-rate">$0.000</b> per row</span><span>Estimate <b id="c-est">$0.00</b>, about <b id="c-min">0</b> min</span></div>
-    <div class="row" style="margin-top:12px"><button class="btn win" id="c-go">Score the rest</button><button class="btn sec" id="c-stop">Stop here</button><span id="c-msg" class="d"></span></div>
+    <div class="card" aria-labelledby="list-h">
+      <div class="head"><h2 id="list-h">The list</h2><span class="d" id="list-d">CSV or XLSX. A LinkedIn column makes signals strong.</span></div>
+
+      <div id="stage-drop" class="drop" tabindex="0" role="button" aria-label="Upload a CSV or XLSX list">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"/><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+        <b>Drop your list here</b>
+        <span>or click to choose. Nothing is bought yet; the first 100 rows run, then you decide on the rest.</span>
+        <input id="file" type="file" accept=".csv,.xlsx,.xls">
+      </div>
+
+      <div id="stage-map" class="hide">
+        <div class="filemeta"><b id="fname"></b><span class="pill"><b id="frows">0</b> rows</span><span id="fhint"></span><span style="flex:1"></span><a href="#" id="refile" class="link">Change file</a></div>
+        <div class="mapping" id="mapgrid"></div>
+        <div class="runrow">
+          <label class="toggle"><input id="enrich" type="checkbox" checked> Look up LinkedIn profile and recent posts</label>
+          <span style="flex:1"></span>
+          <button class="btn big" id="run">Score the first 100</button>
+        </div>
+        <div id="status" class="err" style="margin-top:8px"></div>
+      </div>
+
+      <div id="stage-run" class="console hide" aria-live="polite">
+        <div class="tally">
+          <div class="t c1"><b id="n1">0</b><span>Contact now</span></div>
+          <div class="t c2"><b id="n2">0</b><span>This week</span></div>
+          <div class="t c3"><b id="n3">0</b><span>Nurture</span></div>
+          <div class="t c4"><b id="n4">0</b><span>Skip</span></div>
+        </div>
+        <div class="prog"><span id="p-left">Scoring <b id="p-done">0</b> of <b id="p-total">0</b></span><span><b id="p-time">0:00</b> elapsed, spend <b id="p-cost">$0.000</b></span></div>
+        <div class="meter live"><i id="prog"></i></div>
+        <div class="wire" id="wire"></div>
+        <div class="decide hide" id="decide">
+          <span><b id="c-left">0</b> rows left. Observed <b id="c-rate">$0.000</b> a row, about <b id="c-est">$0.00</b> and <b id="c-min">0</b> min more.</span>
+          <span style="flex:1"></span>
+          <button class="btn win" id="c-go">Score the rest</button><button class="btn sec" id="c-stop">Stop here</button>
+        </div>
+        <div class="row" id="run-actions"><span id="run-msg" class="d" style="flex:1;font-size:.75rem;color:var(--dim)"></span><button class="btn sec" id="again">New list</button></div>
+      </div>
+      <p class="foot">Signals: public LinkedIn data, misses are free. Scoring: Jev, a decisions model. Openers: a free model, only for leads at 55 and above. Spend is capped per person and per day.</p>
+    </div>
   </section>
 
-  <section class="card hide" id="out" aria-labelledby="out-h">
-    <div class="row" style="margin-bottom:12px">
-      <h2 id="out-h" style="margin:0">Ranked</h2><span style="flex:1"></span>
-      <span class="pill" id="p-count"></span><span class="pill" id="p-tiers"></span><span class="pill" id="p-cost"></span><span class="pill" id="p-model"></span>
-    </div>
-    <div class="row" style="margin-bottom:12px"><button class="btn sec" id="dl">Download CSV</button><button class="btn sec" id="share">Save and get a share link</button><span id="sharelink" class="d"></span></div>
+  <section class="card hide" id="out" aria-labelledby="out-h" style="flex:none">
+    <div class="head"><h2 id="out-h">Call sheet</h2><div class="row"><span class="pill" id="p-count"></span><span class="pill" id="p-model"></span><button class="btn sec" id="dl">Download CSV</button><button class="btn sec" id="share">Save and share</button><span id="sharelink" class="d" style="font-size:.75rem"></span></div></div>
     <div class="tbl"><table id="tbl"><thead><tr><th>#</th><th>Score</th><th>Tier</th><th>Lead</th><th>Top signal</th><th>Why</th><th>Opener</th><th>Links</th></tr></thead><tbody></tbody></table></div>
   </section>
 </main>
@@ -191,61 +251,81 @@ canvas{image-rendering:pixelated;width:96px;height:96px;background:var(--bg);bor
 const API='https://kdxmzaliwestummrnygd.supabase.co/functions/v1/lead-scorer';
 const $=id=>document.getElementById(id);
 const FIELDS={name:['full name','name','contact','contact name','person'],first:['first name','first','firstname','given name'],last:['last name','last','lastname','surname','family name'],title:['title','job title','designation','position','role'],company:['company','company name','account','organization','organisation','employer'],domain:['domain','website','company url','company website','url','web'],email:['email','business email','work email','email address','e-mail'],linkedin:['linkedin','linkedin url','profile url','prospect url','linkedin profile','li url']};
-let token='',me='',rows=[],headers=[],results=[],list=[],done=0,firstBatch=100,lastMeta={},costRun=0,jevRun=0,model='',stopped=false;
+let token='',me='',rows=[],headers=[],results=[],list=[],done=0,firstBatch=100,costRun=0,jevRun=0,model='',stopped=false,running=false,t0=0,timer=null;
 const store={get:k=>{try{return localStorage.getItem(k)||''}catch(e){return ''}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
 // ---------- Otto, an original pixel otter ----------
-const P={'.':null,'b':'#8B5A2B','B':'#5C3A1A','c':'#D9B382','e':'#0D0F14','n':'#1E2330','g':'#30E060','w':'#E8E4DC'};
+const P={'.':null,'b':'#8B5A2B','B':'#5C3A1A','c':'#D9B382','e':'#0D0F14','n':'#1E2330'};
 const F1=['........................','........................','.......bbbbbbbbbb.......','......bbbbbbbbbbbb......','.....bbBbbbbbbbBbb......','.....bbbbbbbbbbbbbb.....','.....bbbeebbbbeebbb.....','.....bbbeebbbbeebbb.....','.....bbbbbbccbbbbbb.....','......bbbbcnncbbbb......','......bbbbcccc bbb......','.......bbbbbbbbbb.......','......bbbbbbbbbbbb......','.....bbbbccccccbbbb.....','.....bbbcccccccc bbb....','.....bbbcccccccc bbb....','.....bbbbccccccbbbb.....','......bbbbbbbbbbbb......','.......bbbbbbbbbb.......','......bbb......bbb......','.....bbbb......bbbb.....','........................','........................','........................'];
 const F2=F1.map((r,i)=>i===6||i===7?r.replace(/e/g,'b'):r);
 const F3=F1.map((r,i)=>i>=2&&i<21?F1[i-1]:r);
-function drawPet(frame){const c=$('pet').getContext('2d');c.clearRect(0,0,24,24);frame.forEach((r,y)=>{[...r].forEach((ch,x)=>{const col=P[ch];if(col){c.fillStyle=col;c.fillRect(x,y,1,1)}})})}
+function drawPet(f){const c=$('pet').getContext('2d');c.clearRect(0,0,24,24);f.forEach((r,y)=>{[...r].forEach((ch,x)=>{const col=P[ch];if(col){c.fillStyle=col;c.fillRect(x,y,1,1)}})})}
 let petMode='idle',tick=0;
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function petLoop(){tick++;if(reduce){drawPet(F1)}else if(petMode==='think'){drawPet(tick%8<4?F2:F3)}else{drawPet(tick%40===0?F2:(tick%4<2?F1:F3))}setTimeout(petLoop,reduce?100000:250)}
-function setPet(m,txt){petMode=m;if(txt)$('petstate').textContent=txt}
+function setPet(m,txt){petMode=m;if(txt!==undefined)$('petstate').textContent=txt}
 drawPet(F1);petLoop();
 
 // ---------- API ----------
 async function api(action,body){const r=await fetch(API+'?action='+action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,...body})});const d=await r.json();if(!r.ok||d.error)throw Object.assign(new Error(d.error||('HTTP '+r.status)),{data:d});return d}
 
 // ---------- Auth and rolodex ----------
-function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-async function afterLogin(){$('auth-new').classList.add('hide');$('auth-ret').classList.remove('hide');$('say').disabled=false;$('send').disabled=false;await refreshUsage();await loadRolodex();if(rows.length)$('run').disabled=false}
-async function refreshUsage(){try{const u=await api('usage',{});firstBatch=u.first_batch||100;$('spent').textContent='$'+u.spent_usd.toFixed(2);$('budget').textContent='$'+u.budget_usd;$('myrows').textContent=u.user_rows_today;$('mycap').textContent=u.user_rows_cap;const pct=Math.min(100,100*u.spent_usd/Math.max(.01,u.budget_usd));const m=$('meter');m.className='meter'+(pct>90?' hot':pct>60?' warn':'');m.firstElementChild.style.width=pct+'%';$('models').textContent='Jev '+u.models.jev+' | openers '+u.models.opener+' | Otto '+u.models.chat;$('run').textContent='Score the first '+firstBatch;return u}catch(e){$('auth-msg').textContent=e.message;throw e}}
-async function loadRolodex(){const d=await api('rolodex',{});const sel=$('who');sel.innerHTML=d.people.map(p=>'<option '+(p.name===me?'selected':'')+'>'+esc(p.name)+'</option>').join('');if(!d.people.some(p=>p.name===me))sel.insertAdjacentHTML('afterbegin','<option selected>'+esc(me)+'</option>')}
+async function afterLogin(){$('auth-new').classList.add('hide');$('auth-ret').classList.remove('hide');$('say').disabled=false;$('send').disabled=false;setPet('idle','Tell me what you sell and who you want. I will fill the brief.');await refreshUsage();await loadRolodex()}
+async function refreshUsage(){const u=await api('usage',{});firstBatch=u.first_batch||100;$('spent').textContent='$'+u.spent_usd.toFixed(2);$('budget').textContent='$'+u.budget_usd;$('myrows').textContent=u.user_rows_today;$('mycap').textContent=u.user_rows_cap;const pct=Math.min(100,100*u.spent_usd/Math.max(.01,u.budget_usd));const m=$('meter');m.className='meter'+(pct>90?' hot':pct>60?' warn':'');m.firstElementChild.style.width=pct+'%';$('models').textContent='Jev '+u.models.jev.split('/').pop()+', openers '+u.models.opener.split('/').pop()+', Otto '+u.models.chat.split('/').pop();$('run').textContent='Score the first '+firstBatch;return u}
+async function loadRolodex(){const d=await api('rolodex',{});const sel=$('who');sel.innerHTML=d.people.map(p=>'<option '+(p.name===me?'selected':'')+'>'+esc(p.name)+'</option>').join('')+'<option value="__new">Someone new...</option>';if(!d.people.some(p=>p.name===me))sel.insertAdjacentHTML('afterbegin','<option selected>'+esc(me)+'</option>')}
 $('login').addEventListener('click',async()=>{$('auth-msg').textContent='';try{const d=await api('login',{passcode:$('pass').value.trim(),name:$('name').value.trim()});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);$('pass').value='';await afterLogin()}catch(e){$('auth-msg').textContent=e.message}});
-$('who').addEventListener('change',async()=>{try{const d=await api('login',{name:$('who').value});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);await refreshUsage()}catch(e){$('auth-msg').textContent=e.message}});
-$('addname').addEventListener('click',async()=>{const n=$('newname').value.trim();if(!n)return;try{const d=await api('login',{name:n});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);$('newname').value='';await refreshUsage();await loadRolodex()}catch(e){$('auth-msg').textContent=e.message}});
-$('signout').addEventListener('click',e=>{e.preventDefault();token='';me='';store.set('ls_token','');$('auth-ret').classList.add('hide');$('auth-new').classList.remove('hide');$('say').disabled=true;$('send').disabled=true;$('run').disabled=true});
+$('pass').addEventListener('keydown',e=>{if(e.key==='Enter')$('login').click()});$('name').addEventListener('keydown',e=>{if(e.key==='Enter')$('login').click()});
+$('who').addEventListener('change',async()=>{let n=$('who').value;if(n==='__new'){n=prompt('Name of the new person');if(!n){await loadRolodex();return}}try{const d=await api('login',{name:n});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);await refreshUsage();await loadRolodex()}catch(e){$('auth-msg').textContent=e.message}});
+$('signout').addEventListener('click',e=>{e.preventDefault();token='';me='';store.set('ls_token','');$('auth-ret').classList.add('hide');$('auth-new').classList.remove('hide');$('say').disabled=true;$('send').disabled=true});
 (async()=>{token=store.get('ls_token');me=store.get('ls_name');if(token){try{await afterLogin()}catch(e){token='';$('auth-msg').textContent='Session expired, use the passcode again.'}}else if(me){$('name').value=me}})();
 
 // ---------- Otto chat ----------
 function say(who,text){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;$('chat').appendChild(d);$('chat').scrollTop=1e6}
 function fields(){return{list_name:$('listname').value,what_we_sell:$('sell').value,who_we_want:$('want').value,enrich:$('enrich').checked}}
-async function ask(){const t=$('say').value.trim();if(!t||!token)return;$('say').value='';say('me',t);setPet('think','Thinking...');try{const d=await api('chat',{message:t,fields:fields()});const f=d.fill||{};const alias={who_we_sell:'who_we_want',who:'who_we_want',sell:'what_we_sell',want:'who_we_want',list:'list_name'};for(const k in alias)if(f[k]!==undefined&&f[alias[k]]===undefined)f[alias[k]]=f[k];if(f.list_name)$('listname').value=f.list_name;if(f.what_we_sell)$('sell').value=f.what_we_sell;if(f.who_we_want)$('want').value=f.who_we_want;if(typeof f.enrich==='boolean')$('enrich').checked=f.enrich;say('otto',d.reply||'Done.');setPet('idle',Object.keys(f).length?'Brief updated. Upload the list when ready.':'Anything else?')}catch(e){say('otto','I could not do that: '+e.message);setPet('idle','Try again in a moment.')}}
-$('send').addEventListener('click',ask);document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{$('say').value=b.dataset.q;$('say').focus()}));$('say').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+async function ask(){const t=$('say').value.trim();if(!t||!token)return;$('say').value='';say('me',t);setPet('think','Thinking...');try{const d=await api('chat',{message:t,fields:fields()});const f=d.fill||{};const alias={who_we_sell:'who_we_want',who:'who_we_want',sell:'what_we_sell',want:'who_we_want',list:'list_name'};for(const k in alias)if(f[k]!==undefined&&f[alias[k]]===undefined)f[alias[k]]=f[k];if(f.list_name)$('listname').value=f.list_name;if(f.what_we_sell)$('sell').value=f.what_we_sell;if(f.who_we_want)$('want').value=f.who_we_want;if(typeof f.enrich==='boolean')$('enrich').checked=f.enrich;say('otto',d.reply||'Done.');setPet('idle',Object.keys(f).length?'Brief updated. Drop the list when ready.':'Anything else?')}catch(e){say('otto','I could not do that: '+e.message);setPet('idle','Try again in a moment.')}}
+$('send').addEventListener('click',ask);$('say').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{$('say').value=b.dataset.q;$('say').focus()}));
 
-// ---------- File and mapping ----------
+// ---------- File: drop zone and mapping ----------
 function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
 function guess(){const m={};for(const f in FIELDS){m[f]='';for(const h of headers){const n=norm(h);if(FIELDS[f].some(a=>n===a)){m[f]=h;break}}if(!m[f])for(const h of headers){const n=norm(h);if(FIELDS[f].some(a=>n.includes(a))){m[f]=h;break}}}return m}
-$('file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const wb=XLSX.read(ev.target.result,{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];rows=XLSX.utils.sheet_to_json(ws,{defval:''});headers=Object.keys(rows[0]||{});const m=guess();$('mapgrid').innerHTML=Object.keys(FIELDS).map(k=>'<div><label for="m-'+k+'">'+k+'</label><select id="m-'+k+'" data-f="'+k+'"><option value="">(none)</option>'+headers.map(h=>'<option '+(m[k]===h?'selected':'')+'>'+esc(h)+'</option>').join('')+'</select></div>').join('');$('map').classList.remove('hide');$('run').disabled=!token;setStatus(rows.length+' rows loaded. '+(m.linkedin?'LinkedIn column found, signals will be strong.':'No LinkedIn column: signals come from name and domain and are weaker.'));if(!$('listname').value)$('listname').value=f.name.replace(/\.[^.]+$/,'');setPet('idle',rows.length+' rows. Say the word.')};r.readAsArrayBuffer(f)});
+function stage(name){['stage-drop','stage-map','stage-run'].forEach(s=>$(s).classList.toggle('hide',s!==name))}
+function loadFile(f){if(!f)return;const r=new FileReader();r.onload=ev=>{const wb=XLSX.read(ev.target.result,{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];rows=XLSX.utils.sheet_to_json(ws,{defval:''});headers=Object.keys(rows[0]||{});const m=guess();$('mapgrid').innerHTML=Object.keys(FIELDS).map(k=>'<div><label for="m-'+k+'">'+k+'</label><select id="m-'+k+'" data-f="'+k+'"><option value="">(none)</option>'+headers.map(h=>'<option '+(m[k]===h?'selected':'')+'>'+esc(h)+'</option>').join('')+'</select></div>').join('');$('fname').textContent=f.name;$('frows').textContent=rows.length;$('fhint').textContent=m.linkedin?'LinkedIn column found, strong signals.':'No LinkedIn column: name and domain lookups, weaker signals.';$('fhint').className=m.linkedin?'ok':'';$('run').textContent='Score the first '+Math.min(firstBatch,rows.length);if(!$('listname').value)$('listname').value=f.name.replace(/\.[^.]+$/,'');stage('stage-map');setPet('idle',rows.length+' rows loaded. Say the word.')};r.readAsArrayBuffer(f)}
+const dz=$('stage-drop');
+dz.addEventListener('click',()=>$('file').click());dz.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('file').click()}});
+['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('over')}));
+['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('over')}));
+dz.addEventListener('drop',e=>{const f=e.dataTransfer.files&&e.dataTransfer.files[0];loadFile(f)});
+$('file').addEventListener('change',e=>loadFile(e.target.files[0]));
+$('refile').addEventListener('click',e=>{e.preventDefault();$('file').value='';stage('stage-drop')});
+$('again').addEventListener('click',()=>{if(running)return;$('file').value='';stage('stage-drop');document.body.classList.remove('running')});
 function mapped(){const m={};document.querySelectorAll('#mapgrid select').forEach(s=>m[s.dataset.f]=s.value);return rows.map((r,i)=>{const o={_i:i+1};for(const f in m){if(m[f])o[f]=String(r[m[f]]||'').trim()}if(!o.name&&(o.first||o.last))o.name=((o.first||'')+' '+(o.last||'')).trim();if(o.domain)o.domain=o.domain.replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0];if(!o.domain&&o.email&&o.email.includes('@'))o.domain=o.email.split('@')[1];return o})}
-function setStatus(t,cls){const s=$('status').firstElementChild;s.textContent=t;s.className=cls||''}
 function icp(){return 'What we sell: '+$('sell').value.trim()+'\nWho we want: '+$('want').value.trim()}
 
-// ---------- Scoring in batches ----------
-async function scoreRange(from,to){const B=16;let t0=Date.now();for(let i=from;i<to&&!stopped;i+=B){const slice=list.slice(i,Math.min(i+B,to));setStatus('Scoring '+Math.min(i+B,to)+' of '+list.length+'...');$('prog').style.width=Math.round(100*i/list.length)+'%';try{const d=await api('score',{icp:icp(),enrich:$('enrich').checked,rows:slice});results.push(...d.results);costRun+=d.cost||0;jevRun+=d.jev_cost||0;model=d.model;done=Math.min(i+B,to);if(d.llm_error)lastMeta.llm_error=d.llm_error;render()}catch(e){setStatus('Stopped: '+e.message,'err');stopped=true;break}}return(Date.now()-t0)/1000}
-$('run').addEventListener('click',async()=>{if(!token){setStatus('Sign in first','err');return}list=mapped();results=[];done=0;costRun=0;jevRun=0;stopped=false;lastMeta={};$('out').classList.add('hide');$('cont').classList.add('hide');$('run').disabled=true;setPet('think','Scoring...');const n=Math.min(firstBatch,list.length);const secs=await scoreRange(0,n);$('run').disabled=false;await refreshUsage();if(stopped)return;if(list.length>n){const left=list.length-n;const rate=(costRun+jevRun)/Math.max(1,done);$('c-left').textContent=left;$('c-rate').textContent='$'+rate.toFixed(4);$('c-est').textContent='$'+(rate*left).toFixed(2);$('c-min').textContent=Math.max(1,Math.round(secs/Math.max(1,done)*left/60));$('cont').classList.remove('hide');$('cont').scrollIntoView({behavior:reduce?'auto':'smooth'});setStatus('First '+done+' done. Decide on the rest above.');setPet('idle',left+' rows left. Your call.')}else{$('prog').style.width='100%';setStatus('Done. '+results.length+' leads ranked.'+(lastMeta.llm_error?' Note: '+lastMeta.llm_error:''),'ok');setPet('idle','Done. Top of the table is your call list.')}});
-$('c-go').addEventListener('click',async()=>{$('cont').classList.add('hide');$('run').disabled=true;setPet('think','Scoring the rest...');await scoreRange(done,list.length);$('run').disabled=false;await refreshUsage();if(!stopped){$('prog').style.width='100%';setStatus('Done. '+results.length+' leads ranked.','ok');setPet('idle','All done.')}});
-$('c-stop').addEventListener('click',()=>{$('cont').classList.add('hide');setStatus('Stopped after '+done+' rows. The ranked table below is complete for those.');setPet('idle','Stopped. Table below is final.')});
+// ---------- Streaming run ----------
+const tally={ 'Contact now':0,'This week':0,'Nurture':0,'Skip':0 };
+function tierCls(t){return t==='Contact now'?'c1':t==='This week'?'c2':t==='Nurture'?'c3':'c4'}
+function wireRow(i,name){let el=document.getElementById('w'+i);if(!el){el=document.createElement('div');el.id='w'+i;el.className='w';el.innerHTML='<span class="sc">..</span><span><span class="n"></span><span class="s"></span></span><span class="chip wait">queued</span>';el.querySelector('.n').textContent=name||('Row '+i);$('wire').appendChild(el);$('wire').scrollTop=1e6}return el}
+function wireSet(i,state,cls,score,tier){const el=document.getElementById('w'+i);if(!el)return;el.querySelector('.s').textContent=state?' · '+state:'';if(cls){el.className='w '+cls}if(score!==undefined){el.querySelector('.sc').textContent=score}const chip=el.querySelector('.chip');if(tier){chip.textContent=tier;chip.className='chip'}}
+function fmtT(s){s=Math.round(s);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+function tickClock(){$('p-time').textContent=fmtT((Date.now()-t0)/1000)}
+function bumpTally(t){tally[t]=(tally[t]||0)+1;$('n1').textContent=tally['Contact now'];$('n2').textContent=tally['This week'];$('n3').textContent=tally['Nurture'];$('n4').textContent=tally['Skip']}
+async function streamBatch(slice){const r=await fetch(API+'?action=score_stream',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,icp:icp(),enrich:$('enrich').checked,rows:slice})});if(!r.ok||!r.body){const d=await r.json().catch(()=>({}));throw new Error(d.error||('HTTP '+r.status))}const rd=r.body.getReader();const dec=new TextDecoder();let buf='';let out=null;while(true){const{value,done:fin}=await rd.read();if(fin)break;buf+=dec.decode(value,{stream:true});let nl;while((nl=buf.indexOf('\n'))>=0){const line=buf.slice(0,nl).trim();buf=buf.slice(nl+1);if(!line)continue;let ev;try{ev=JSON.parse(line)}catch(e){continue}handle(ev);if(ev.type==='done')out=ev;if(ev.type==='error')throw new Error(ev.error||'stream error')}}if(!out)throw new Error('The run ended early. Try again.');return out}
+function handle(ev){switch(ev.type){case 'start':wireRow(ev.i,ev.name);wireSet(ev.i,$('enrich').checked?'looking up profile':'reading row');setPet('think','Reading profiles...');break;case 'signals':wireSet(ev.i,ev.enriched?(ev.posts?ev.posts+' recent posts, asking Jev':'profile found, asking Jev'):((ev.note||'no profile')+', asking Jev'));setPet('think','Asking Jev...');break;case 'lead':{const r=ev.result;const cls=tierCls(r.tier);wireSet(r._i,r.top_signal||'',cls,r.score,r.tier);bumpTally(r.tier);results.push(r);done++;$('p-done').textContent=done;$('prog').style.width=Math.round(100*done/list.length)+'%';renderRow(r);break}case 'openers_start':setPet('think','Writing first lines for '+ev.count+' leads...');$('run-msg').textContent='Writing first lines for '+ev.count+' leads';break;case 'opener':{const r=results.find(x=>x._i===ev.i);if(r){r.opener=ev.opener;const td=document.getElementById('op'+ev.i);if(td)td.textContent=ev.opener}break}case 'done':costRun+=ev.cost||0;jevRun+=ev.jev_cost||0;model=ev.model||model;$('p-cost').textContent='$'+(costRun+jevRun).toFixed(3);$('run-msg').textContent=ev.llm_error?'Note: '+ev.llm_error:'';break}}
+async function scoreRange(from,to){const B=16;for(let i=from;i<to&&!stopped;i+=B){const slice=list.slice(i,Math.min(i+B,to));try{await streamBatch(slice)}catch(e){$('run-msg').textContent='Stopped: '+e.message;stopped=true;break}}}
+async function startRun(){if(!token){$('status').textContent='Sign in first (top right).';return}if(running)return;list=mapped();results=[];done=0;costRun=0;jevRun=0;stopped=false;running=true;Object.keys(tally).forEach(k=>tally[k]=0);['n1','n2','n3','n4'].forEach(id=>$(id).textContent='0');$('wire').innerHTML='';$('tbl').querySelector('tbody').innerHTML='';$('out').classList.add('hide');$('decide').classList.add('hide');$('p-total').textContent=list.length;$('p-done').textContent='0';$('prog').style.width='0%';$('run-msg').textContent='';document.body.classList.add('running');stage('stage-run');t0=Date.now();timer=setInterval(tickClock,1000);const n=Math.min(firstBatch,list.length);const s0=Date.now();await scoreRange(0,n);const secs=(Date.now()-s0)/1000;running=false;clearInterval(timer);tickClock();document.body.classList.remove('running');refreshUsage().catch(()=>{});$('p-count').innerHTML='<b>'+results.length+'</b> ranked';$('p-model').textContent=model;$('out').classList.remove('hide');if(stopped)return;if(list.length>n){const left=list.length-n;const rate=(costRun+jevRun)/Math.max(1,done);$('c-left').textContent=left;$('c-rate').textContent='$'+rate.toFixed(4);$('c-est').textContent='$'+(rate*left).toFixed(2);$('c-min').textContent=Math.max(1,Math.round(secs/Math.max(1,done)*left/60));$('decide').classList.remove('hide');$('p-left').innerHTML='First <b>'+done+'</b> of <b>'+list.length+'</b> done';setPet('idle',left+' rows left. Your call.')}else{$('p-left').innerHTML='Done, <b>'+done+'</b> ranked';setPet('idle','Done. Top of the call sheet is your list.')}}
+$('run').addEventListener('click',startRun);
+$('c-go').addEventListener('click',async()=>{$('decide').classList.add('hide');running=true;document.body.classList.add('running');t0=Date.now()-(Date.now()-t0);timer=setInterval(tickClock,1000);setPet('think','Scoring the rest...');await scoreRange(done,list.length);running=false;clearInterval(timer);document.body.classList.remove('running');refreshUsage().catch(()=>{});$('p-count').innerHTML='<b>'+results.length+'</b> ranked';$('p-model').textContent=model;if(!stopped){$('p-left').innerHTML='Done, <b>'+done+'</b> ranked';setPet('idle','All done.')}});
+$('c-stop').addEventListener('click',()=>{$('decide').classList.add('hide');$('p-left').innerHTML='Stopped after <b>'+done+'</b> rows';setPet('idle','Stopped. The call sheet below is final for those rows.')});
 
-// ---------- Render ----------
-function tcls(t){return t==='Contact now'?'t1':t==='This week'?'t2':t==='Nurture'?'t3':'t4'}
-function render(){results.sort((a,b)=>b.score-a.score);$('tbl').querySelector('tbody').innerHTML=results.map((r,i)=>'<tr><td class="d">'+(i+1)+'</td><td class="score">'+r.score+'</td><td><span class="chip '+tcls(r.tier)+'">'+esc(r.tier)+'</span></td><td><b>'+esc(r.name)+'</b><br><span class="m">'+esc(r.enriched_title||r.title)+(r.enriched_company||r.company?' at '+esc(r.enriched_company||r.company):'')+'</span></td><td>'+esc(r.top_signal)+'</td><td>'+esc(r.reason)+(r.notes?'<br><span class="d">'+esc(r.notes)+'</span>':'')+'</td><td>'+esc(r.opener)+'</td><td>'+(r.linkedin?'<a href="'+esc(r.linkedin)+'" target="_blank" rel="noopener">LinkedIn</a>':'')+(r.email?'<br><span class="d">'+esc(r.email)+'</span>':'')+'</td></tr>').join('');const t={};results.forEach(r=>t[r.tier]=(t[r.tier]||0)+1);$('p-count').innerHTML='<b>'+results.length+'</b> leads';$('p-tiers').textContent=['Contact now','This week','Nurture','Skip'].filter(k=>t[k]).map(k=>k+' '+t[k]).join(' | ');$('p-cost').innerHTML='spend <b>$'+(costRun+jevRun).toFixed(3)+'</b>';$('p-model').textContent=model;$('out').classList.remove('hide')}
-$('dl').addEventListener('click',()=>{const cols=['score','tier','name','title','enriched_title','company','enriched_company','domain','email','linkedin','top_signal','reason','opener','role_start','recent_posts','notes'];const csv=[cols.join(',')].concat(results.map(r=>cols.map(c=>'"'+String(r[c]??'').replace(/"/g,'""')+'"').join(','))).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=($('listname').value||'scored')+'-scored.csv';a.click()});
+// ---------- Call sheet ----------
+function rowHtml(r,i){return '<td class="d">'+i+'</td><td class="score">'+r.score+'</td><td><span class="chip '+tierCls(r.tier)+'">'+esc(r.tier)+'</span></td><td><b>'+esc(r.name)+'</b><br><span class="m">'+esc(r.enriched_title||r.title)+(r.enriched_company||r.company?' at '+esc(r.enriched_company||r.company):'')+'</span></td><td>'+esc(r.top_signal)+'</td><td>'+esc(r.reason)+(r.notes?'<br><span class="d">'+esc(r.notes)+'</span>':'')+'</td><td id="op'+r._i+'">'+esc(r.opener)+'</td><td>'+(r.linkedin?'<a href="'+esc(r.linkedin)+'" target="_blank" rel="noopener">LinkedIn</a>':'')+(r.email?'<br><span class="d">'+esc(r.email)+'</span>':'')+'</td>'}
+function renderRow(r){const tb=$('tbl').querySelector('tbody');const tr=document.createElement('tr');tr.className='new';tr.dataset.score=r.score;tr.innerHTML=rowHtml(r,0);const kids=[...tb.children];const before=kids.find(k=>Number(k.dataset.score)<r.score);tb.insertBefore(tr,before||null);[...tb.children].forEach((k,i)=>k.firstElementChild.textContent=i+1);if($('out').classList.contains('hide')&&results.length===1){$('out').classList.remove('hide')}}
+function renderAll(){results.sort((a,b)=>b.score-a.score);$('tbl').querySelector('tbody').innerHTML=results.map((r,i)=>'<tr data-score="'+r.score+'">'+rowHtml(r,i+1)+'</tr>').join('');$('out').classList.remove('hide')}
+$('dl').addEventListener('click',()=>{const rs=[...results].sort((a,b)=>b.score-a.score);const cols=['score','tier','name','title','enriched_title','company','enriched_company','domain','email','linkedin','top_signal','reason','opener','role_start','recent_posts','notes'];const csv=[cols.join(',')].concat(rs.map(r=>cols.map(c=>'"'+String(r[c]??'').replace(/"/g,'""')+'"').join(','))).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=($('listname').value||'scored')+'-scored.csv';a.click()});
 $('share').addEventListener('click',async()=>{try{const d=await api('save',{list_name:$('listname').value,icp:icp(),results,cost:costRun,jev_cost:jevRun});const u=location.origin+location.pathname+'?run='+d.id;$('sharelink').innerHTML='Saved: <a href="'+u+'">'+u+'</a>'}catch(e){$('sharelink').textContent='Save failed: '+e.message}});
-(async()=>{const id=new URLSearchParams(location.search).get('run');if(!id)return;const r=await fetch(API+'?run='+id);const d=await r.json();if(d.results){results=d.results;costRun=Number(d.treg_cost_usd||0);jevRun=Number(d.jev_cost_usd||0);model='saved run by '+(d.owner||'unknown');$('listname').value=d.list_name||'';render();setStatus('Viewing a saved run from '+new Date(d.created_at).toLocaleString())}})();
+(async()=>{const id=new URLSearchParams(location.search).get('run');if(!id)return;const r=await fetch(API+'?run='+id);const d=await r.json();if(d.results){results=d.results;costRun=Number(d.treg_cost_usd||0);jevRun=Number(d.jev_cost_usd||0);model='saved run by '+(d.owner||'unknown');$('listname').value=d.list_name||'';$('p-count').innerHTML='<b>'+results.length+'</b> ranked';$('p-model').textContent=model+', '+new Date(d.created_at).toLocaleDateString();renderAll();$('out').scrollIntoView()}})();
 </script>
 </body>
 </html>
