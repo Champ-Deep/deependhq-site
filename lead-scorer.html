@@ -1,84 +1,224 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lead Scorer</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<meta name="description" content="Upload a lead list, get it ranked by live signals, with an opener per lead.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 <style>
-:root{--bg:#0f1420;--card:#171d2b;--ink:#e8ecf4;--mut:#9aa4b8;--acc:#ff7a1a;--ok:#3ccf8e;--warn:#ffc857;--bad:#ff5c5c;--line:#26304a}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Inter,Segoe UI,sans-serif}
-.wrap{max-width:1180px;margin:0 auto;padding:24px 16px}
-h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
-label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
-input,textarea,select{width:100%;background:#0c111b;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:10px;font:inherit}
-textarea{min-height:84px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:700px){.row{grid-template-columns:1fr}}
-button{background:var(--acc);color:#111;border:0;border-radius:8px;padding:11px 18px;font:600 15px inherit;cursor:pointer}
-button.sec{background:#222b3f;color:var(--ink)}button:disabled{opacity:.5;cursor:default}
-.bar{height:8px;background:#0c111b;border-radius:6px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .3s}
-table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{color:var(--mut);font-weight:600;position:sticky;top:0;background:var(--card)}
-.tier{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
-.t1{background:#1f4d3a;color:var(--ok)}.t2{background:#4a3a14;color:var(--warn)}.t3{background:#2b3350;color:#aab6ff}.t4{background:#4a1f1f;color:var(--bad)}
-.score{font-weight:700;font-size:16px}.mut{color:var(--mut)}.small{font-size:12px}
-.pill{display:inline-block;background:#0c111b;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;margin-right:6px}
-.tblwrap{max-height:70vh;overflow:auto}
-</style></head><body><div class="wrap">
-<h1>Lead Scorer</h1>
-<p class="sub">Upload a list. We enrich each lead with public signals, then Jev ranks who to contact first and drafts the opener. Nothing is bought beyond the signal lookup.</p>
+:root{
+  --bg:#0D0F14;--surface:#12151D;--card:#181C26;--card-2:#1E2330;--line:#2A2E3A;--line-2:#3A3F50;
+  --text:#E8E4DC;--muted:#A8A8A2;--dim:#8A8A92;
+  --build:#30E060;--think:#4A7BF7;--win:#C9A84C;--human:#E052C0;--danger:#E05030;
+  --think-text:#6D95FF;--danger-text:#EC6A4A;
+  --accent:var(--build);
+  --accent-hover:color-mix(in oklab,var(--accent) 85%,white);
+  --accent-wash:color-mix(in oklab,var(--accent) 12%,transparent);
+  --win-wash:color-mix(in oklab,var(--win) 12%,transparent);
+  --think-wash:color-mix(in oklab,var(--think) 12%,transparent);
+  --danger-wash:color-mix(in oklab,var(--danger) 12%,transparent);
+  --font-ui:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --pad:20px;--r-sm:4px;--r-md:6px;--r-lg:10px;--r-pill:100px;
+  --shadow-2:0 4px 12px rgba(0,0,0,.4);--dur-2:200ms;--ease-out:cubic-bezier(.16,1,.3,1);
+}
+@media(min-width:40rem){:root{--pad:32px}}
+@media(min-width:64rem){:root{--pad:48px}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text)}
+body{font:400 15px/1.65 var(--font-mono);-webkit-font-smoothing:antialiased}
+.skip{position:absolute;left:-999px;top:8px;background:var(--card);color:var(--text);padding:8px 12px;border-radius:var(--r-sm)}
+.skip:focus-visible{left:8px;outline:2px solid var(--accent);outline-offset:2px}
+main{max-width:1200px;margin:0 auto;padding:40px var(--pad) 64px}
+.eyebrow{font:600 .6875rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--build)}
+.eyebrow::before{content:"\25CF  "}
+h1{font:800 clamp(1.875rem,3.2vw,2.75rem)/1.1 var(--font-ui);letter-spacing:-.03em;margin:8px 0 6px}
+h2{font:700 1.125rem/1.3 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px}
+.sub{color:var(--muted);font-family:var(--font-ui);font-size:1.0625rem;max-width:65ch;margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px}
+.card.otto{background:var(--surface)}
+label{display:block;font-size:.8125rem;color:var(--muted);margin:14px 0 6px}
+label:first-child{margin-top:0}
+input,textarea,select,button{font:inherit}
+input,textarea,select{width:100%;min-height:44px;background:var(--bg);border:1px solid var(--line-2);color:var(--text);border-radius:var(--r-md);padding:10px 12px}
+textarea{min-height:88px;resize:vertical}
+input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn{min-height:44px;padding:10px 18px;border-radius:var(--r-md);border:1px solid transparent;background:var(--build);color:#0D0F14;font:700 .9375rem var(--font-ui);cursor:pointer;transition:background var(--dur-2) var(--ease-out)}
+.btn:hover{background:var(--accent-hover)}
+.btn.sec{background:var(--card-2);color:var(--text);border-color:var(--line-2)}
+.btn.sec:hover{background:var(--line)}
+.btn.win{background:var(--win);color:#0D0F14}
+.btn:disabled{cursor:default;background:var(--line);color:var(--dim)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.toggle{display:flex;gap:10px;align-items:center;min-height:44px;color:var(--text);font-size:.875rem}
+.toggle input{width:20px;height:20px;min-height:0;margin:0;accent-color:var(--build)}
+.meter{height:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;width:0;background:var(--build);transition:width var(--dur-2) var(--ease-out)}
+.meter.warn i{background:var(--win)}.meter.hot i{background:var(--danger)}
+.stat{display:flex;justify-content:space-between;gap:12px;font-size:.8125rem;color:var(--muted)}
+.stat b{color:var(--text);font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);padding:4px 12px;font-size:.75rem;color:var(--muted)}
+.pill b{color:var(--text);font-weight:600}
+.chip{display:inline-block;padding:2px 10px;border-radius:var(--r-pill);font:600 .6875rem/1.8 var(--font-mono);letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent}
+.t1{background:var(--accent-wash);color:var(--build);border-color:var(--build)}
+.t2{background:var(--win-wash);color:var(--win);border-color:var(--win)}
+.t3{background:var(--think-wash);color:var(--think-text);border-color:var(--think)}
+.t4{background:transparent;color:var(--dim);border-color:var(--line-2)}
+.tbl{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:var(--r-md)}
+table{width:100%;border-collapse:collapse;font-size:.8125rem}
+th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:var(--card-2);color:var(--muted);font-weight:600;font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase}
+td.score{font-weight:600;font-size:1rem;color:var(--text)}
+td .m{color:var(--muted);font-size:.75rem}
+td .d{color:var(--dim);font-size:.75rem}
+a{color:var(--think-text)}
+.chat{display:flex;flex-direction:column;gap:10px;max-height:320px;overflow:auto;padding:4px 0;margin:12px 0}
+.msg{max-width:92%;padding:10px 12px;border-radius:var(--r-lg);font-size:.875rem;line-height:1.5}
+.msg.me{align-self:flex-end;background:var(--card-2);border:1px solid var(--line-2)}
+.msg.otto{align-self:flex-start;background:var(--accent-wash);border:1px solid color-mix(in oklab,var(--build) 40%,transparent)}
+.pet{display:flex;gap:14px;align-items:center}
+canvas{image-rendering:pixelated;width:96px;height:96px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md)}
+.petname{font:700 1rem var(--font-ui)}
+.petstate{color:var(--dim);font-size:.75rem}
+.err{color:var(--danger-text);font-size:.8125rem}
+.ok{color:var(--build);font-size:.8125rem}
+.hide{display:none !important}
+.foot{margin-top:24px;color:var(--dim);font-size:.75rem}
+@media(prefers-reduced-motion:reduce){.meter i,.btn{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
+  <div class="eyebrow">Lead Scorer</div>
+  <h1>Upload a list. Get the order to call it in.</h1>
+  <p class="sub">Every lead is checked for live signals, then Jev ranks who to contact first and writes the first line for the ones worth it. Otto fills the brief if you tell him what you are selling and to whom.</p>
 
-<div class="card">
-<div class="row">
-<div><label>Team passcode</label><input id="pass" type="password" placeholder="ask Champ"></div>
-<div><label>Your name</label><input id="owner" placeholder="so the run is yours"></div>
-</div>
-<label>List name</label><input id="listname" placeholder="e.g. APAC ERP CIOs Sep 26">
-<label>What we sell and who we want (Jev reads this)</label>
-<textarea id="icp">LakeB2B is the growth stack: verified B2B data, appointment setting and managed outbound, plus SEO, creative and demand gen. Ideal lead: IT, digital, data or transformation leaders (Director and above) at mid to large enterprises in APAC, ANZ, MEA and CEE, especially where a modernization, ERP, cloud or data project is live or a new leader has just joined.</textarea>
-<div class="row">
-<div><label>Upload CSV or XLSX</label><input id="file" type="file" accept=".csv,.xlsx,.xls"></div>
-<div><label>Max rows this run</label><input id="max" type="number" value="150" min="1" max="1000"></div>
-</div>
-<div id="map" style="display:none">
-<label>Column mapping (auto-detected, fix if wrong)</label>
-<div class="row" id="mapgrid"></div>
-</div>
-<div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-<label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--ink)"><input id="enrich" type="checkbox" checked style="width:auto"> Enrich with signals (LinkedIn profile and recent posts)</label>
-<button id="run" disabled>Score this list</button>
-<span id="status" class="mut small"></span>
-</div>
-<div class="bar"><i id="prog"></i></div>
-</div>
+  <section class="card" id="auth" aria-labelledby="auth-h">
+    <h2 id="auth-h">Who is running this?</h2>
+    <div id="auth-new">
+      <div class="grid">
+        <div><label for="pass">Team passcode</label><input id="pass" type="password" autocomplete="off" placeholder="from Champ"></div>
+        <div><label for="name">Your name</label><input id="name" autocomplete="name" placeholder="so your runs are yours"></div>
+      </div>
+      <div class="row" style="margin-top:14px"><button class="btn" id="login">Sign in</button><span id="auth-msg" class="err"></span></div>
+    </div>
+    <div id="auth-ret" class="hide">
+      <div class="grid">
+        <div><label for="who">Signed in as</label><select id="who"></select></div>
+        <div><label for="newname">Someone new?</label><div class="row"><input id="newname" placeholder="type a name" style="flex:1"><button class="btn sec" id="addname">Add</button></div></div>
+      </div>
+      <div class="stat" style="margin-top:12px"><span>Team spend today <b id="spent">$0.00</b> of <b id="budget">$0</b></span><span>Your rows today <b id="myrows">0</b> of <b id="mycap">0</b></span></div>
+      <div class="meter" id="meter"><i></i></div>
+      <div class="stat"><span id="models" class="d"></span><a href="#" id="signout" style="font-size:.8125rem">Not you? Use the passcode again</a></div>
+    </div>
+  </section>
 
-<div class="card" id="out" style="display:none">
-<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
-<span class="pill" id="p-count"></span><span class="pill" id="p-tiers"></span><span class="pill" id="p-cost"></span><span class="pill" id="p-model"></span>
-<span style="flex:1"></span>
-<button class="sec" id="dl">Download CSV</button><button class="sec" id="share">Save and get share link</button>
-</div>
-<div id="sharelink" class="small mut"></div>
-<div class="tblwrap"><table id="tbl"><thead><tr><th>#</th><th>Score</th><th>Tier</th><th>Lead</th><th>Top signal</th><th>Why</th><th>Opener</th><th>Links</th></tr></thead><tbody></tbody></table></div>
-</div>
-</div>
+  <div class="grid" style="margin-top:14px">
+    <section class="card otto" aria-labelledby="otto-h">
+      <div class="pet">
+        <canvas id="pet" width="24" height="24" aria-label="Otto, a pixel otter" role="img"></canvas>
+        <div><div class="petname" id="otto-h">Otto</div><div class="petstate" id="petstate">Tell me what you sell and who you want. I will fill the brief.</div></div>
+      </div>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <div class="row"><input id="say" placeholder="e.g. APAC bank CIOs for LakeB2B outbound, look for core banking modernization" style="flex:1" disabled><button class="btn sec" id="send" disabled>Ask</button></div>
+    </section>
+
+    <section class="card" aria-labelledby="brief-h">
+      <h2 id="brief-h">The brief</h2>
+      <label for="listname">List name</label><input id="listname" placeholder="e.g. APAC ERP CIOs, Sep 26">
+      <label for="sell">What we sell</label><textarea id="sell">LakeB2B: verified B2B data, appointment setting and managed outbound, plus SEO, creative and demand gen. One partner, data to deal.</textarea>
+      <label for="want">Who we want</label><textarea id="want">IT, digital, data or transformation leaders, Director and above, at mid to large enterprises in APAC, ANZ, MEA and CEE. Best signals: a live modernization, ERP, cloud or data project, or a leader who joined in the last 120 days.</textarea>
+      <label for="file">Upload CSV or XLSX</label><input id="file" type="file" accept=".csv,.xlsx,.xls">
+      <div id="map" class="hide"><label>Column mapping (auto detected, fix if wrong)</label><div class="grid" id="mapgrid" style="gap:10px"></div></div>
+      <div class="row" style="margin-top:14px">
+        <label class="toggle" style="margin:0"><input id="enrich" type="checkbox" checked> Look up LinkedIn profile and recent posts</label>
+        <button class="btn" id="run" disabled>Score the first 100</button>
+      </div>
+      <div class="meter" style="margin-top:12px"><i id="prog"></i></div>
+      <div id="status" class="stat"><span></span></div>
+    </section>
+  </div>
+
+  <section class="card hide" id="cont" style="margin-top:14px;border-color:var(--win)" aria-live="polite">
+    <h2>First batch done. Keep going?</h2>
+    <div class="stat"><span><b id="c-left">0</b> rows left</span><span>Observed <b id="c-rate">$0.000</b> per row</span><span>Estimate <b id="c-est">$0.00</b>, about <b id="c-min">0</b> min</span></div>
+    <div class="row" style="margin-top:12px"><button class="btn win" id="c-go">Score the rest</button><button class="btn sec" id="c-stop">Stop here</button><span id="c-msg" class="d"></span></div>
+  </section>
+
+  <section class="card hide" id="out" style="margin-top:14px" aria-labelledby="out-h">
+    <div class="row" style="margin-bottom:12px">
+      <h2 id="out-h" style="margin:0">Ranked</h2><span style="flex:1"></span>
+      <span class="pill" id="p-count"></span><span class="pill" id="p-tiers"></span><span class="pill" id="p-cost"></span><span class="pill" id="p-model"></span>
+    </div>
+    <div class="row" style="margin-bottom:12px"><button class="btn sec" id="dl">Download CSV</button><button class="btn sec" id="share">Save and get a share link</button><span id="sharelink" class="d"></span></div>
+    <div class="tbl"><table id="tbl"><thead><tr><th>#</th><th>Score</th><th>Tier</th><th>Lead</th><th>Top signal</th><th>Why</th><th>Opener</th><th>Links</th></tr></thead><tbody></tbody></table></div>
+  </section>
+  <p class="foot">Signals: public LinkedIn data via a gateway, misses are free. Scoring: Jev, a decisions model. Openers: a free model, only for leads at 55 and above. Spend is capped per person and per day.</p>
+</main>
 <script>
-const API='https://kdxmzaliwestummrnygd.supabase.co/functions/v1/lead-scorer';const $=id=>document.getElementById(id);
+const API='https://kdxmzaliwestummrnygd.supabase.co/functions/v1/lead-scorer';
+const $=id=>document.getElementById(id);
 const FIELDS={name:['full name','name','contact','contact name','person'],first:['first name','first','firstname','given name'],last:['last name','last','lastname','surname','family name'],title:['title','job title','designation','position','role'],company:['company','company name','account','organization','organisation','employer'],domain:['domain','website','company url','company website','url','web'],email:['email','business email','work email','email address','e-mail'],linkedin:['linkedin','linkedin url','profile url','prospect url','linkedin profile','li url']};
-let rows=[],headers=[],results=[],lastMeta={};
-try{$('pass').value=localStorage.getItem('ls_pass')||'';$('owner').value=localStorage.getItem('ls_owner')||'';}catch(e){}
+let token='',me='',rows=[],headers=[],results=[],list=[],done=0,firstBatch=100,lastMeta={},costRun=0,jevRun=0,model='',stopped=false;
+const store={get:k=>{try{return localStorage.getItem(k)||''}catch(e){return ''}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+
+// ---------- Otto, an original pixel otter ----------
+const P={'.':null,'b':'#8B5A2B','B':'#5C3A1A','c':'#D9B382','e':'#0D0F14','n':'#1E2330','g':'#30E060','w':'#E8E4DC'};
+const F1=['........................','........................','.......bbbbbbbbbb.......','......bbbbbbbbbbbb......','.....bbBbbbbbbbBbb......','.....bbbbbbbbbbbbbb.....','.....bbbeebbbbeebbb.....','.....bbbeebbbbeebbb.....','.....bbbbbbccbbbbbb.....','......bbbbcnncbbbb......','......bbbbcccc bbb......','.......bbbbbbbbbb.......','......bbbbbbbbbbbb......','.....bbbbccccccbbbb.....','.....bbbcccccccc bbb....','.....bbbcccccccc bbb....','.....bbbbccccccbbbb.....','......bbbbbbbbbbbb......','.......bbbbbbbbbb.......','......bbb......bbb......','.....bbbb......bbbb.....','........................','........................','........................'];
+const F2=F1.map((r,i)=>i===6||i===7?r.replace(/e/g,'b'):r);
+const F3=F1.map((r,i)=>i>=2&&i<21?F1[i-1]:r);
+function drawPet(frame){const c=$('pet').getContext('2d');c.clearRect(0,0,24,24);frame.forEach((r,y)=>{[...r].forEach((ch,x)=>{const col=P[ch];if(col){c.fillStyle=col;c.fillRect(x,y,1,1)}})})}
+let petMode='idle',tick=0;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function petLoop(){tick++;if(reduce){drawPet(F1)}else if(petMode==='think'){drawPet(tick%8<4?F2:F3)}else{drawPet(tick%40===0?F2:(tick%4<2?F1:F3))}setTimeout(petLoop,reduce?100000:250)}
+function setPet(m,txt){petMode=m;if(txt)$('petstate').textContent=txt}
+drawPet(F1);petLoop();
+
+// ---------- API ----------
+async function api(action,body){const r=await fetch(API+'?action='+action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,...body})});const d=await r.json();if(!r.ok||d.error)throw Object.assign(new Error(d.error||('HTTP '+r.status)),{data:d});return d}
+
+// ---------- Auth and rolodex ----------
+function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+async function afterLogin(){$('auth-new').classList.add('hide');$('auth-ret').classList.remove('hide');$('say').disabled=false;$('send').disabled=false;await refreshUsage();await loadRolodex();if(rows.length)$('run').disabled=false}
+async function refreshUsage(){try{const u=await api('usage',{});firstBatch=u.first_batch||100;$('spent').textContent='$'+u.spent_usd.toFixed(2);$('budget').textContent='$'+u.budget_usd;$('myrows').textContent=u.user_rows_today;$('mycap').textContent=u.user_rows_cap;const pct=Math.min(100,100*u.spent_usd/Math.max(.01,u.budget_usd));const m=$('meter');m.className='meter'+(pct>90?' hot':pct>60?' warn':'');m.firstElementChild.style.width=pct+'%';$('models').textContent='Jev '+u.models.jev+' | openers '+u.models.opener+' | Otto '+u.models.chat;$('run').textContent='Score the first '+firstBatch;return u}catch(e){$('auth-msg').textContent=e.message;throw e}}
+async function loadRolodex(){const d=await api('rolodex',{});const sel=$('who');sel.innerHTML=d.people.map(p=>'<option '+(p.name===me?'selected':'')+'>'+esc(p.name)+'</option>').join('');if(!d.people.some(p=>p.name===me))sel.insertAdjacentHTML('afterbegin','<option selected>'+esc(me)+'</option>')}
+$('login').addEventListener('click',async()=>{$('auth-msg').textContent='';try{const d=await api('login',{passcode:$('pass').value.trim(),name:$('name').value.trim()});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);$('pass').value='';await afterLogin()}catch(e){$('auth-msg').textContent=e.message}});
+$('who').addEventListener('change',async()=>{try{const d=await api('login',{name:$('who').value});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);await refreshUsage()}catch(e){$('auth-msg').textContent=e.message}});
+$('addname').addEventListener('click',async()=>{const n=$('newname').value.trim();if(!n)return;try{const d=await api('login',{name:n});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);$('newname').value='';await refreshUsage();await loadRolodex()}catch(e){$('auth-msg').textContent=e.message}});
+$('signout').addEventListener('click',e=>{e.preventDefault();token='';me='';store.set('ls_token','');$('auth-ret').classList.add('hide');$('auth-new').classList.remove('hide');$('say').disabled=true;$('send').disabled=true;$('run').disabled=true});
+(async()=>{token=store.get('ls_token');me=store.get('ls_name');if(token){try{await afterLogin()}catch(e){token='';$('auth-msg').textContent='Session expired, use the passcode again.'}}else if(me){$('name').value=me}})();
+
+// ---------- Otto chat ----------
+function say(who,text){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;$('chat').appendChild(d);$('chat').scrollTop=1e6}
+function fields(){return{list_name:$('listname').value,what_we_sell:$('sell').value,who_we_want:$('want').value,enrich:$('enrich').checked}}
+async function ask(){const t=$('say').value.trim();if(!t||!token)return;$('say').value='';say('me',t);setPet('think','Thinking...');try{const d=await api('chat',{message:t,fields:fields()});const f=d.fill||{};const alias={who_we_sell:'who_we_want',who:'who_we_want',sell:'what_we_sell',want:'who_we_want',list:'list_name'};for(const k in alias)if(f[k]!==undefined&&f[alias[k]]===undefined)f[alias[k]]=f[k];if(f.list_name)$('listname').value=f.list_name;if(f.what_we_sell)$('sell').value=f.what_we_sell;if(f.who_we_want)$('want').value=f.who_we_want;if(typeof f.enrich==='boolean')$('enrich').checked=f.enrich;say('otto',d.reply||'Done.');setPet('idle',Object.keys(f).length?'Brief updated. Upload the list when ready.':'Anything else?')}catch(e){say('otto','I could not do that: '+e.message);setPet('idle','Try again in a moment.')}}
+$('send').addEventListener('click',ask);$('say').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+
+// ---------- File and mapping ----------
 function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
 function guess(){const m={};for(const f in FIELDS){m[f]='';for(const h of headers){const n=norm(h);if(FIELDS[f].some(a=>n===a)){m[f]=h;break}}if(!m[f])for(const h of headers){const n=norm(h);if(FIELDS[f].some(a=>n.includes(a))){m[f]=h;break}}}return m}
-$('file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const wb=XLSX.read(ev.target.result,{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];const data=XLSX.utils.sheet_to_json(ws,{defval:''});rows=data;headers=Object.keys(data[0]||{});const m=guess();$('mapgrid').innerHTML=Object.keys(FIELDS).map(f=>'<div><label>'+f+'</label><select data-f="'+f+'"><option value="">(none)</option>'+headers.map(h=>'<option '+(m[f]===h?'selected':'')+'>'+h.replace(/</g,'&lt;')+'</option>').join('')+'</select></div>').join('');$('map').style.display='block';$('run').disabled=false;$('status').textContent=rows.length+' rows loaded';if(!$('listname').value)$('listname').value=f.name.replace(/\.[^.]+$/,'')};r.readAsArrayBuffer(f)});
-function mapped(){const m={};document.querySelectorAll('#mapgrid select').forEach(s=>m[s.dataset.f]=s.value);const max=Math.min(rows.length,parseInt($('max').value)||150);return rows.slice(0,max).map((r,i)=>{const o={_i:i+1};for(const f in m){if(m[f])o[f]=String(r[m[f]]||'').trim()}if(!o.name&&(o.first||o.last))o.name=((o.first||'')+' '+(o.last||'')).trim();if(o.domain)o.domain=o.domain.replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0];if(!o.domain&&o.email&&o.email.includes('@'))o.domain=o.email.split('@')[1];return o})}
-$('run').addEventListener('click',async()=>{const pass=$('pass').value.trim();if(!pass){alert('Passcode needed');return}try{localStorage.setItem('ls_pass',pass);localStorage.setItem('ls_owner',$('owner').value)}catch(e){}
-const list=mapped();const B=16;results=[];let cost=0,model='';$('run').disabled=true;$('out').style.display='none';$('tbl').querySelector('tbody').innerHTML='';
-for(let i=0;i<list.length;i+=B){$('status').textContent='Scoring '+Math.min(i+B,list.length)+' of '+list.length+'...';$('prog').style.width=Math.round(100*i/list.length)+'%';
-try{const r=await fetch(API+'?action=score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({passcode:pass,icp:$('icp').value,enrich:$('enrich').checked,rows:list.slice(i,i+B)})});const d=await r.json();if(d.error){$('status').textContent='Error: '+d.error;$('run').disabled=false;return}results.push(...d.results);cost+=d.cost||0;model=d.model;if(d.llm_error)lastMeta.llm_error=d.llm_error;render(cost,model)}catch(e){$('status').textContent='Batch failed, continuing: '+e;}}
-$('prog').style.width='100%';$('status').textContent='Done. '+results.length+' leads scored.'+(lastMeta.llm_error?' Jev fallback note: '+lastMeta.llm_error:'');$('run').disabled=false});
+$('file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const wb=XLSX.read(ev.target.result,{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];rows=XLSX.utils.sheet_to_json(ws,{defval:''});headers=Object.keys(rows[0]||{});const m=guess();$('mapgrid').innerHTML=Object.keys(FIELDS).map(k=>'<div><label for="m-'+k+'">'+k+'</label><select id="m-'+k+'" data-f="'+k+'"><option value="">(none)</option>'+headers.map(h=>'<option '+(m[k]===h?'selected':'')+'>'+esc(h)+'</option>').join('')+'</select></div>').join('');$('map').classList.remove('hide');$('run').disabled=!token;setStatus(rows.length+' rows loaded. '+(m.linkedin?'LinkedIn column found, signals will be strong.':'No LinkedIn column: signals come from name and domain and are weaker.'));if(!$('listname').value)$('listname').value=f.name.replace(/\.[^.]+$/,'');setPet('idle',rows.length+' rows. Say the word.')};r.readAsArrayBuffer(f)});
+function mapped(){const m={};document.querySelectorAll('#mapgrid select').forEach(s=>m[s.dataset.f]=s.value);return rows.map((r,i)=>{const o={_i:i+1};for(const f in m){if(m[f])o[f]=String(r[m[f]]||'').trim()}if(!o.name&&(o.first||o.last))o.name=((o.first||'')+' '+(o.last||'')).trim();if(o.domain)o.domain=o.domain.replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0];if(!o.domain&&o.email&&o.email.includes('@'))o.domain=o.email.split('@')[1];return o})}
+function setStatus(t,cls){const s=$('status').firstElementChild;s.textContent=t;s.className=cls||''}
+function icp(){return 'What we sell: '+$('sell').value.trim()+'\nWho we want: '+$('want').value.trim()}
+
+// ---------- Scoring in batches ----------
+async function scoreRange(from,to){const B=16;let t0=Date.now();for(let i=from;i<to&&!stopped;i+=B){const slice=list.slice(i,Math.min(i+B,to));setStatus('Scoring '+Math.min(i+B,to)+' of '+list.length+'...');$('prog').style.width=Math.round(100*i/list.length)+'%';try{const d=await api('score',{icp:icp(),enrich:$('enrich').checked,rows:slice});results.push(...d.results);costRun+=d.cost||0;jevRun+=d.jev_cost||0;model=d.model;done=Math.min(i+B,to);if(d.llm_error)lastMeta.llm_error=d.llm_error;render()}catch(e){setStatus('Stopped: '+e.message,'err');stopped=true;break}}return(Date.now()-t0)/1000}
+$('run').addEventListener('click',async()=>{if(!token){setStatus('Sign in first','err');return}list=mapped();results=[];done=0;costRun=0;jevRun=0;stopped=false;lastMeta={};$('out').classList.add('hide');$('cont').classList.add('hide');$('run').disabled=true;setPet('think','Scoring...');const n=Math.min(firstBatch,list.length);const secs=await scoreRange(0,n);$('run').disabled=false;await refreshUsage();if(stopped)return;if(list.length>n){const left=list.length-n;const rate=(costRun+jevRun)/Math.max(1,done);$('c-left').textContent=left;$('c-rate').textContent='$'+rate.toFixed(4);$('c-est').textContent='$'+(rate*left).toFixed(2);$('c-min').textContent=Math.max(1,Math.round(secs/Math.max(1,done)*left/60));$('cont').classList.remove('hide');$('cont').scrollIntoView({behavior:reduce?'auto':'smooth'});setStatus('First '+done+' done. Decide on the rest above.');setPet('idle',left+' rows left. Your call.')}else{$('prog').style.width='100%';setStatus('Done. '+results.length+' leads ranked.'+(lastMeta.llm_error?' Note: '+lastMeta.llm_error:''),'ok');setPet('idle','Done. Top of the table is your call list.')}});
+$('c-go').addEventListener('click',async()=>{$('cont').classList.add('hide');$('run').disabled=true;setPet('think','Scoring the rest...');await scoreRange(done,list.length);$('run').disabled=false;await refreshUsage();if(!stopped){$('prog').style.width='100%';setStatus('Done. '+results.length+' leads ranked.','ok');setPet('idle','All done.')}});
+$('c-stop').addEventListener('click',()=>{$('cont').classList.add('hide');setStatus('Stopped after '+done+' rows. The ranked table below is complete for those.');setPet('idle','Stopped. Table below is final.')});
+
+// ---------- Render ----------
 function tcls(t){return t==='Contact now'?'t1':t==='This week'?'t2':t==='Nurture'?'t3':'t4'}
-function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function render(cost,model){results.sort((a,b)=>b.score-a.score);const tb=$('tbl').querySelector('tbody');tb.innerHTML=results.map((r,i)=>'<tr><td class="mut">'+(i+1)+'</td><td class="score">'+r.score+'</td><td><span class="tier '+tcls(r.tier)+'">'+r.tier+'</span></td><td><b>'+esc(r.name)+'</b><br><span class="mut small">'+esc(r.enriched_title||r.title)+(r.enriched_company||r.company?' at '+esc(r.enriched_company||r.company):'')+'</span></td><td>'+esc(r.top_signal)+'</td><td class="small">'+esc(r.reason)+(r.notes?'<br><span class="mut">'+esc(r.notes)+'</span>':'')+'</td><td class="small">'+esc(r.opener)+'</td><td class="small">'+(r.linkedin?'<a href="'+esc(r.linkedin)+'" target="_blank" style="color:#aab6ff">LinkedIn</a>':'')+(r.email?'<br><span class="mut">'+esc(r.email)+'</span>':'')+'</td></tr>').join('');
-const t={};results.forEach(r=>t[r.tier]=(t[r.tier]||0)+1);$('p-count').textContent=results.length+' leads';$('p-tiers').textContent=Object.entries(t).map(([k,v])=>k+': '+v).join(' | ');$('p-cost').textContent='Signal cost $'+cost.toFixed(3);$('p-model').textContent='Model: '+model;$('out').style.display='block'}
+function render(){results.sort((a,b)=>b.score-a.score);$('tbl').querySelector('tbody').innerHTML=results.map((r,i)=>'<tr><td class="d">'+(i+1)+'</td><td class="score">'+r.score+'</td><td><span class="chip '+tcls(r.tier)+'">'+esc(r.tier)+'</span></td><td><b>'+esc(r.name)+'</b><br><span class="m">'+esc(r.enriched_title||r.title)+(r.enriched_company||r.company?' at '+esc(r.enriched_company||r.company):'')+'</span></td><td>'+esc(r.top_signal)+'</td><td>'+esc(r.reason)+(r.notes?'<br><span class="d">'+esc(r.notes)+'</span>':'')+'</td><td>'+esc(r.opener)+'</td><td>'+(r.linkedin?'<a href="'+esc(r.linkedin)+'" target="_blank" rel="noopener">LinkedIn</a>':'')+(r.email?'<br><span class="d">'+esc(r.email)+'</span>':'')+'</td></tr>').join('');const t={};results.forEach(r=>t[r.tier]=(t[r.tier]||0)+1);$('p-count').innerHTML='<b>'+results.length+'</b> leads';$('p-tiers').textContent=['Contact now','This week','Nurture','Skip'].filter(k=>t[k]).map(k=>k+' '+t[k]).join(' | ');$('p-cost').innerHTML='spend <b>$'+(costRun+jevRun).toFixed(3)+'</b>';$('p-model').textContent=model;$('out').classList.remove('hide')}
 $('dl').addEventListener('click',()=>{const cols=['score','tier','name','title','enriched_title','company','enriched_company','domain','email','linkedin','top_signal','reason','opener','role_start','recent_posts','notes'];const csv=[cols.join(',')].concat(results.map(r=>cols.map(c=>'"'+String(r[c]??'').replace(/"/g,'""')+'"').join(','))).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=($('listname').value||'scored')+'-scored.csv';a.click()});
-$('share').addEventListener('click',async()=>{const r=await fetch(API+'?action=save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({passcode:$('pass').value.trim(),owner:$('owner').value,list_name:$('listname').value,icp:$('icp').value,results,cost:parseFloat(($('p-cost').textContent.match(/[\d.]+/)||['0'])[0])})});const d=await r.json();if(d.id){const u=location.origin+location.pathname+'?run='+d.id;$('sharelink').innerHTML='Saved. Share link: <a style="color:#aab6ff" href="'+u+'">'+u+'</a>'}else $('sharelink').textContent='Save failed: '+(d.error||'')});
-(async()=>{const id=new URLSearchParams(location.search).get('run');if(!id)return;const r=await fetch(API+'?run='+id);const d=await r.json();if(d.results){results=d.results;$('listname').value=d.list_name||'';$('icp').value=d.icp||$('icp').value;render(Number(d.treg_cost_usd||0),'saved run by '+(d.owner||'unknown'));$('status').textContent='Viewing saved run from '+new Date(d.created_at).toLocaleString()}})();
-</script></body></html>
+$('share').addEventListener('click',async()=>{try{const d=await api('save',{list_name:$('listname').value,icp:icp(),results,cost:costRun,jev_cost:jevRun});const u=location.origin+location.pathname+'?run='+d.id;$('sharelink').innerHTML='Saved: <a href="'+u+'">'+u+'</a>'}catch(e){$('sharelink').textContent='Save failed: '+e.message}});
+(async()=>{const id=new URLSearchParams(location.search).get('run');if(!id)return;const r=await fetch(API+'?run='+id);const d=await r.json();if(d.results){results=d.results;costRun=Number(d.treg_cost_usd||0);jevRun=Number(d.jev_cost_usd||0);model='saved run by '+(d.owner||'unknown');$('listname').value=d.list_name||'';render();setStatus('Viewing a saved run from '+new Date(d.created_at).toLocaleString())}})();
+</script>
+</body>
+</html>
