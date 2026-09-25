@@ -34,14 +34,14 @@ body{font:400 15px/1.65 var(--font-mono);-webkit-font-smoothing:antialiased}
 .skip:focus-visible{left:8px;outline:2px solid var(--accent);outline-offset:2px}
 main{max-width:1400px;margin:0 auto;padding:20px var(--pad) 24px;min-height:100dvh;display:flex;flex-direction:column;gap:14px}
 .top{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;align-items:stretch}
-.top .card{display:flex;flex-direction:column;justify-content:center}
+.top .card{display:flex;flex-direction:column;justify-content:flex-end}
 .work{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px;flex:1}
 @media(min-width:64rem){.top{grid-template-columns:1.2fr 1fr}.work{grid-template-columns:5fr 7fr;min-height:calc(100dvh - 210px)}}
 .otto{display:flex;flex-direction:column}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
 .chips button{min-height:36px;padding:6px 12px;border-radius:var(--r-pill);border:1px solid var(--line-2);background:var(--bg);color:var(--muted);font:400 .75rem var(--font-mono);cursor:pointer}
 .chips button:hover{color:var(--text);border-color:var(--build)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
 .step{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:10px;font-size:.75rem;color:var(--muted);line-height:1.45}
 .step b{display:block;color:var(--build);font:600 .6875rem var(--font-mono);letter-spacing:.06em;margin-bottom:4px}
 @media(max-width:30rem){.steps{grid-template-columns:1fr}}
@@ -111,6 +111,10 @@ canvas{image-rendering:pixelated;width:96px;height:96px;background:var(--bg);bor
       <div class="eyebrow">Lead Scorer</div>
       <h1 id="page-h">Upload a list. Get the order to call it in.</h1>
       <p class="sub">Every lead is checked for live signals, Jev ranks who to contact first, and the ones worth it get a first line. Otto fills the brief from one sentence.</p>
+      <div class="steps" aria-label="How a run works">
+        <div class="step"><b>01 BRIEF</b>Otto or you fill what we sell and who we want.</div>
+        <div class="step"><b>02 UPLOAD</b>CSV or XLSX. A LinkedIn column makes signals strong.</div>
+        <div class="step"><b>03 FIRST 100</b>See the ranking and cost, then decide on the rest.</div>
     </section>
     <section class="card" id="auth" aria-labelledby="auth-h">
       <h2 id="auth-h">Who is running this?</h2>
@@ -146,10 +150,6 @@ canvas{image-rendering:pixelated;width:96px;height:96px;background:var(--bg);bor
       </div>
       <div class="chat" id="chat" aria-live="polite"></div>
       <div class="row" style="flex-wrap:nowrap"><input id="say" placeholder="What are you selling, and to whom?" style="flex:1" disabled><button class="btn sec" id="send" disabled>Ask</button></div>
-      <div class="steps" aria-label="How a run works">
-        <div class="step"><b>01 BRIEF</b>Otto or you fill what we sell and who we want.</div>
-        <div class="step"><b>02 UPLOAD</b>CSV or XLSX. A LinkedIn column makes signals strong.</div>
-        <div class="step"><b>03 FIRST 100</b>See the ranking and cost, then decide on the rest.</div>
       </div>
       <p class="foot" style="margin-top:10px">Signals: public LinkedIn data, misses are free. Scoring: Jev, a decisions model. Openers: a free model, only for leads at 55 and above. Spend is capped per person and per day.</p>
     </section>
