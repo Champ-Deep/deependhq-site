@@ -1811,6 +1811,13 @@
   ],
   "toolkit": [
     {
+      "title": "Lead Scorer",
+      "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+      "url": "/lead-scorer",
+      "category": "tool",
+      "featured": true
+    },
+    {
       "title": "ChampUTM",
       "description": "UTM link builder and tracker. React/Vite. Open source.",
       "url": "https://github.com/Champ-Deep/ChampUTM",

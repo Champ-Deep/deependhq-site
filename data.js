@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-24T19:48:47.627Z
+// Built 2026-09-25T17:46:36.436Z
 
 window.DH_DATA = {
   "brand": {
@@ -3401,6 +3401,13 @@ window.DH_DATA = {
   ],
   "toolkit": [
     {
+      "title": "Lead Scorer",
+      "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+      "url": "/lead-scorer",
+      "category": "tool",
+      "featured": true
+    },
+    {
       "title": "ChampUTM",
       "description": "UTM link builder and tracker. React/Vite. Open source.",
       "url": "https://github.com/Champ-Deep/ChampUTM",
@@ -5048,5 +5055,5 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-24T19:48:47.627Z"
+  "built": "2026-09-25T17:46:36.436Z"
 };
