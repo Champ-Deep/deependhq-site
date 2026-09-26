@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-26T10:41:25.592Z
+// Built 2026-09-26T19:48:27.103Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 329,
-    "today_date": "2026-09-25",
+    "today_day": 330,
+    "today_date": "2026-09-26",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 330,
+          "date": "2026-09-26",
+          "shipping_now": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, agent owns it end to…",
+          "arc_color": "blue"
+        },
         {
           "day": 327,
           "date": "2026-09-23",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "day": 305,
           "date": "2026-09-01",
           "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface.…",
-          "arc_color": "green"
-        },
-        {
-          "day": 301,
-          "date": "2026-08-28",
-          "shipping_now": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and lists every note…",
           "arc_color": "green"
         }
       ],
@@ -542,7 +542,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 14,
+      "days_since": 15,
       "entries_30d": 3,
       "recent": [
         {
@@ -611,7 +611,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 14,
+      "days_since": 15,
       "entries_30d": 3,
       "recent": [
         {
@@ -685,8 +685,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-25",
       "last_ship_day": 329,
-      "days_since": 1,
-      "entries_30d": 17,
+      "days_since": 2,
+      "entries_30d": 16,
       "recent": [
         {
           "day": 329,
@@ -755,7 +755,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 3,
+      "days_since": 4,
       "entries_30d": 3,
       "recent": [
         {
@@ -831,6 +831,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-26",
+      "day": 330,
+      "mood": "🧭",
+      "shipping_now": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, agent owns it end to end, agent preps it and i tap approve, or its mine alone, plus a daily approval queue. the real finding, my bottleneck was never drafting, it was permission walls and the same task getting filed five times over.",
+      "yesterday_thread": "also wrote the deependhq build plan itself. four sprints, ship the redesign first, fix a dead cta button and a ticker that was lying about my status before touching anything new.",
+      "raw_thought": "caught two live api keys sitting in plaintext in apple notes today. same mistake as august. i keep building triage systems and keep leaving the back door open myself.",
+      "arcs": [
+        "Champions Operations",
+        "TheDeepEndHQ"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-09-25",
       "day": 329,
@@ -3801,7 +3826,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 329 · Sep 25",
+    "last_ship": "day 330 · Sep 26",
     "state": "shipping"
   },
   "status_board": {
@@ -3825,20 +3850,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
+        "tag": "shipped d330"
+      },
+      {
+        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
+        "tag": "shipped d330"
+      },
+      {
         "text": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through...",
         "tag": "shipped d329"
       },
       {
         "text": "ran the entity-resolution model against my whole second brain today as a shadow test, n...",
         "tag": "shipped d328"
-      },
-      {
-        "text": "the one lead a summit sponsorship actually produced got a 71-second call today. not the...",
-        "tag": "shipped d327"
-      },
-      {
-        "text": "the birthday voice agent actually called chief. missed the first try, connected on retr...",
-        "tag": "shipped d326"
       }
     ],
     "soon": [
@@ -5662,33 +5687,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-09-26T10:41:25.577Z",
-    "built_date": "2026-09-26",
+    "built": "2026-09-26T19:48:27.085Z",
+    "built_date": "2026-09-27",
     "newest_entry": {
-      "date": "2026-09-25",
-      "day": 329
+      "date": "2026-09-26",
+      "day": 330
     },
     "weekdays_stale": 0,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 106,
+        "days_old": 107,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 94,
+        "days_old": 95,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 94,
+        "days_old": 95,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 330,
+      "date": "2026-09-26",
+      "mood": "🧭",
+      "arc_color": "blue",
+      "arcs": [
+        "Champions Operations",
+        "TheDeepEndHQ"
+      ],
+      "ship": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, agent owns it end to end, agent preps it and i tap approve, or its mine alone, plus a daily approval queue. the real finding, my bottleneck was never drafting, it was permission walls and the same task getting filed five times over."
+    },
     {
       "day": 329,
       "date": "2026-09-25",
@@ -5830,17 +5866,6 @@ window.DH_DATA = {
         "Champions Club"
       ],
       "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spelling for source or medium. 12 tests green before it ever touches the real app."
-    },
-    {
-      "day": 315,
-      "date": "2026-09-11",
-      "mood": "🛠️",
-      "arc_color": "green",
-      "arcs": [
-        "Champ Suite",
-        "Vendor Ops"
-      ],
-      "ship": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo. 118 backend tests green, a real Playwright run against the live API passing 2 for 2. A vendor books, ops approves, a prospect confirms, the client sees the reminder land. First time this build has run end to end instead of in pieces."
     }
   ],
   "heatmap": {
@@ -6732,13 +6757,13 @@ window.DH_DATA = {
         "date": "2026-09-26",
         "future": false,
         "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 330,
+        "arc_color": "blue",
+        "ship": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, age"
       },
       {
         "date": "2026-09-27",
-        "future": true,
+        "future": false,
         "weekend": true,
         "day": null,
         "arc_color": null,
@@ -6747,10 +6772,10 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 329,
-    "entries": 107,
+    "days_public": 330,
+    "entries": 108,
     "entries_30d": 25,
-    "entries_this_month": 22,
+    "entries_this_month": 23,
     "streak_weekdays": 72,
     "essays": 14,
     "companies": 12,
@@ -6760,15 +6785,15 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Lake B2B",
-        "n": 16
+        "n": 15
+      },
+      {
+        "arc": "Champions Operations",
+        "n": 6
       },
       {
         "arc": "ChampOps",
         "n": 6
-      },
-      {
-        "arc": "Champions Operations",
-        "n": 5
       },
       {
         "arc": "Celsus OS",
@@ -6783,11 +6808,11 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "pipeline",
+        "arc": "TheDeepEndHQ",
         "n": 1
       },
       {
-        "arc": "longevity",
+        "arc": "pipeline",
         "n": 1
       }
     ],
@@ -6831,7 +6856,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-09-25",
         "mentions_90d": 2,
-        "days_since": 1
+        "days_since": 2
       },
       {
         "name": "ChampOps",
@@ -6842,7 +6867,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-21",
         "mentions_90d": 10,
-        "days_since": 5
+        "days_since": 6
       },
       {
         "name": "Event Scout",
@@ -6853,7 +6878,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 12
+        "days_since": 13
       },
       {
         "name": "ChampUTM",
@@ -6864,7 +6889,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 14
+        "days_since": 15
       },
       {
         "name": "Cloudflare",
@@ -6874,7 +6899,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 38
+        "days_since": 39
       },
       {
         "name": "LakeStream",
@@ -6885,7 +6910,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 2,
-        "days_since": 53
+        "days_since": 54
       },
       {
         "name": "ChamPDF",
@@ -6896,7 +6921,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 53
+        "days_since": 54
       },
       {
         "name": "ChampMail",
@@ -6907,7 +6932,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 55
+        "days_since": 56
       },
       {
         "name": "Supabase",
@@ -6918,7 +6943,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 1,
-        "days_since": 87
+        "days_since": 88
       },
       {
         "name": "ChampGraph",
@@ -6929,7 +6954,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 95
+        "days_since": 96
       },
       {
         "name": "ChampQuest",
@@ -6940,7 +6965,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 115
+        "days_since": 116
       },
       {
         "name": "B2B Pulse",
@@ -7366,9 +7391,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 107,
+      "entries": 108,
       "essays": 14
     }
   },
-  "built": "2026-09-26T10:41:25.592Z"
+  "built": "2026-09-26T19:48:27.103Z"
 };

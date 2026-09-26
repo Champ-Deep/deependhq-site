@@ -1,23 +1,63 @@
 # Deepend HQ: Deploy Runbook
 
-The site is the Gotham Workshop kit. It is a no-build static site: four HTML
-pages that render React components in the browser. There is nothing to compile
-and nothing to install. Deploying it is just uploading a folder.
+> **UPDATED 2026-09-26.** The short version below used to be right and is now
+> wrong in two places that will break your build. Read this first.
 
-## Step 1: Clean the folder
+## What changed
 
-The earlier Next.js and Astro build is still sitting in this folder. The build
-environment could not delete it, but your Mac can. From Terminal:
+The site is no longer "no build, nothing to install". It is still served as
+static files with React in the browser, but there are now three things that
+must happen before a push:
+
+1. `scripts/build-data.mjs` regenerates `data.js` from `content.json` and
+   derives every number on the site.
+2. `scripts/guard.mjs` fails the build if a real name or a sensitive
+   disclosure would go public.
+3. `scripts/prerender.mjs` renders every page to static HTML inside `#root`, so
+   crawlers and visitors with JavaScript off see the text. It needs esbuild.
+4. `scripts/link-check.mjs` fails the build if any link points at a page that
+   does not exist.
+
+The deploy is a Cloudflare **Worker** with static assets, not a Pages upload.
+`worker/index.js` holds the redirects and the security headers.
+
+## Two traps that cost real time on 2026-09-26
+
+**Do not delete `package.json`.** It used to be gitignored and DEPLOY.md step 1
+told you to remove it. It is now tracked and load-bearing. esbuild is a
+**runtime** dependency, not a dev one, because Cloudflare builds may install
+with `NODE_ENV=production`, which skips devDependencies and would leave
+prerender with no bundler, publishing pages with an empty `#root`.
+
+**`node_modules` must stay in `.assetsignore`.** Cloudflare builds runs
+`npm install` in the checkout. Without that ignore line, `node_modules/workerd`
+(135MB) is uploaded as a Worker asset and trips the 25MB per-asset limit, so
+the build fails and **nothing deploys while the publish still reports success**.
+If a push says PUBLISHED and the live site is unchanged, check this first.
+
+## Verify a deploy actually landed
+
+A successful `publish.sh` only means the push happened. Check the live site:
+
+```
+curl -s https://deependhq.com/data.js | sed -n '3p'   # Built <timestamp>
+curl -sI https://deependhq.com/ | grep -i content-security-policy
+```
+
+The second command returning nothing means the Worker did not deploy. The
+first timestamp older than your local `data.js` means the same.
+
+## Step 1: Clean the folder (obsolete Next.js/Astro leftovers only)
+
+The earlier Next.js and Astro build is still sitting in this folder. From
+Terminal, remove the leftovers. **Note what is no longer in this list:**
+`package.json` and `package-lock.json` are now tracked and required.
 
 ```
 cd "/Users/deep/Celsus/Efforts/Active/TheDeepEndHQ/deependhq-site"
-rm -rf .git thedeependhq deependhq-content deploy node_modules \
-       build.sh package.json package-lock.json .nvmrc \
-       design-canvas.jsx Deliverables.html
+rm -rf thedeependhq deependhq-content deploy \
+       build.sh .nvmrc design-canvas.jsx Deliverables.html
 ```
-
-After this the folder holds only the site: four HTML pages, the .jsx
-components, styles.css, styles-x.css, data.js, README.md, DEPLOY.md.
 
 ## Step 2: Deploy to Cloudflare Pages
 
