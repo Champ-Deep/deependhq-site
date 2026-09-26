@@ -1,103 +1,80 @@
-// NowPage.jsx — /now. A snapshot of what has Sreedeep's attention right now.
-// Data-driven from DH_DATA.now (focus), DH_DATA.status (the basics), and
-// DH_DATA.off_hours. The daily pipeline refreshes status; now.focus is curated.
+// NowPage.jsx : /now. Sep 2026 system.
+// Two layers, clearly labelled. The derived layer (this week from the log,
+// what is on the desk) is always current. The curated layer (focus notes,
+// build lanes) shows its own age and turns red when it is past 21 days.
 
 const NowPage = () => {
+  const { Age, Chip, fmtDate, arcTone, ageOf } = window.Sys;
   const D = window.DH_DATA;
-  const now = D.now || { focus: [], note: '' };
-  const s = D.status || {};
-
-  const basics = [
-    ['Location', s.location],
-    ['Local time', s.time_ist],
-    ['Reading', s.reading],
-    ['Listening', s.listening],
-    ['Drinking', s.drinking],
-    ['Last ship', s.last_ship],
-  ].filter((row) => row[1]);
-
-  const prettyUpdated = (() => {
-    if (!now.updated) return null;
-    const [y, m, d] = now.updated.split('-');
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    return `${months[parseInt(m,10)-1]} ${parseInt(d,10)}, ${y}`;
-  })();
+  const st = D.stats || {};
+  const week = (D.journey || []).slice(0, 5);
+  const now = D.now || { focus: [] };
+  const lanes = D.build_lanes || {};
+  const nowAge = ageOf(now.updated, 21);
+  const laneAge = ageOf(lanes.updated, 21);
 
   return (
-    <main className="dh-page">
-      <header className="dh-page-head">
-        <div className="dh-eyebrow"><span className="dh-eyebrow-dot dh-eyebrow-dot-green" /> Now</div>
-        <h1 className="dh-page-title">What I'm doing now.</h1>
-        <p className="dh-page-sub">A snapshot, not a feed. The honest answer to "what are you working on?"</p>
-      </header>
+    <main className="dh-page sys mode-operator" id="main">
+      <div className="wrap">
+        <header className="page-head">
+          <span className="eyebrow">now</span>
+          <h1>What has my attention this week.</h1>
+          <p className="lead">the top half is derived from the log on every build and cannot go stale without the whole site going stale. the bottom half is written by hand and says how old it is.</p>
+          <div className="meta">
+            <span>log: day {st.days_public}</span>
+            <span>{st.entries_30d} entries, last 30 days</span>
+            <span>streak {st.streak_weekdays} weekdays</span>
+          </div>
+        </header>
 
-      <div className="dh-rail-layout">
-      <div>
-        {now.note && <p className="dh-now-note">{now.note}</p>}
-
-        <div className="dh-now-grid" id="focus">
-          {now.focus.map((f, i) => (
-            <article key={i} className={`dh-now-card dh-now-${f.color || 'muted'}`}>
-              <p className="dh-now-k">{f.k}</p>
-              <p className="dh-now-text">{f.text}</p>
-            </article>
-          ))}
-        </div>
-
-        {Array.isArray(D.off_hours) && D.off_hours.length > 0 && (
-          <section id="offclock">
-            <p className="dh-now-subhead">Off the clock</p>
-            <div className="dh-now-grid">
-              {D.off_hours.map((o, i) => (
-                <article key={i} className="dh-now-card dh-now-muted">
-                  <p className="dh-now-k">{o.what}</p>
-                  <p className="dh-now-text">{o.detail}</p>
-                </article>
+        <section aria-labelledby="wk-h" style={{ marginBottom: 'var(--s10)' }}>
+          <div className="section-head" style={{ marginBottom: 'var(--s4)' }}>
+            <div><span className="eyebrow">from the log</span><h2 id="wk-h">The last five entries.</h2></div>
+            <a className="section-link" href="journey.html">the whole log →</a>
+          </div>
+          <div className="now-grid">
+            {week.map((e) => (
+              <a key={e.day} className={`card link day-card ${e.arc_color}`} href={`journey.html#day-${e.day}`} style={{ display: 'grid' }}>
+                <span className="k"><b>day {e.day}</b><span>{fmtDate(e.date)} · <Age date={e.date} mode={7} /></span></span>
+                <span className="t" style={{ WebkitLineClamp: 5 }}>{e.shipping_now}</span>
+                <span className="chips">{(e.arcs || []).slice(0, 3).map((a) => <Chip key={a} tone={arcTone(e.arc_color)}>{a}</Chip>)}<span className="chip">{e.mood}</span></span>
+              </a>
+            ))}
+            <div className="card lane">
+              <h3><span>on my desk, 30 days</span><b>{st.entries_30d} entries</b></h3>
+              {(st.arcs_30d || []).map((a) => (
+                <div className="it" key={a.arc}><b>{a.arc}</b><span>{a.n} {a.n === 1 ? 'entry' : 'entries'} in the last 30 days</span></div>
               ))}
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
-        <dl className="dh-now-basics" id="basics">
-          {basics.map(([label, value]) => (
-            <div key={label} className="dh-now-basic">
-              <dt>{label}</dt>
-              <dd>{value}</dd>
+        <section aria-labelledby="hand-h">
+          <div className="section-head" style={{ marginBottom: 'var(--s4)' }}>
+            <div><span className="eyebrow">by hand <Age date={now.updated} mode={21} prefix="written" /></span><h2 id="hand-h">Focus notes and build lanes.</h2></div>
+          </div>
+          {(nowAge.state === 'stale' || laneAge.state === 'stale') && (
+            <div className="empty" style={{ marginBottom: 'var(--bento-gap)', borderColor: 'var(--danger)', color: 'var(--text)' }}>
+              &gt;_ <b style={{ color: 'var(--danger-text)' }}>this half is old.</b> focus notes were written {fmtDate(now.updated, true)}, build lanes {fmtDate(lanes.updated, true)}. the log above is current; treat this as the last time I sat down to write it out, not as today.
             </div>
-          ))}
-        </dl>
-
-        {prettyUpdated && (
-          <p className="dh-now-updated"><span className="dh-gt">&gt;_</span>last updated {prettyUpdated} · this page is inspired by the /now movement</p>
-        )}
-      </div>
-
-      <aside className="dh-rail" aria-label="now context">
-        <window.RailProgress />
-        <window.RailToc
-          items={[
-            { id: 'focus', label: 'In focus', count: now.focus.length },
-            { id: 'offclock', label: 'Off the clock', count: (D.off_hours || []).length },
-            { id: 'basics', label: 'The basics' },
-          ]}
-          active={window.useScrollSpy(['focus', 'offclock', 'basics'])}
-        />
-        <div className="dh-rail-block">
-          <p className="dh-rail-k">Live strip</p>
-          <ul className="dh-rail-legend">
-            <li><span className="dh-rail-swatch dh-rail-swatch-green" />{s.state || 'shipping'}</li>
-            {s.last_ship && <li><span className="dh-rail-swatch dh-rail-swatch-gold" />{s.last_ship}</li>}
-            {s.location && <li><span className="dh-rail-swatch dh-rail-swatch-blue" />{s.location}</li>}
-          </ul>
-        </div>
-        <div className="dh-rail-block">
-          <p className="dh-rail-k">Go deeper</p>
-          <ul className="dh-rail-nav">
-            <li><a href="journey.html">today's entry →</a></li>
-            <li><a href="writing.html">weekly narratives →</a></li>
-          </ul>
-        </div>
-      </aside>
+          )}
+          <div className="now-grid">
+            {(now.focus || []).map((f, i) => (
+              <div key={i} className={`card day-card ${f.color || ''}`} style={{ display: 'grid' }}>
+                <span className="k"><b>{f.k}</b></span>
+                <span className="t" style={{ WebkitLineClamp: 6 }}>{f.text}</span>
+              </div>
+            ))}
+            {['live', 'building', 'next'].map((k) => (
+              <div key={k} className="card lane">
+                <h3><span>{k}</span><b>{(lanes[k] || []).length}</b></h3>
+                {(lanes[k] || []).map((it) => (
+                  <div className="it" key={it.name}><b>{it.name}</b><span>{it.what}</span>{it.repo && <a href={it.repo} target="_blank" rel="noreferrer">{it.repo.replace(/^https?:\/\/(www\.)?/, '')} ↗</a>}</div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </main>
   );

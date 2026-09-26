@@ -1,4 +1,4 @@
-// JourneyPage.jsx — /journey feed v2.
+// JourneyPage.jsx : /journey feed v2.
 // Content-aware layout: sticky context rail (scroll progress, arc legend with
 // live mix, stacked filters, month map, stats) + expansive entries grouped by
 // month + batched infinite scroll. No more mood-ring icon strip.
@@ -19,11 +19,11 @@ const jMonthLabel = (key) => {
 const BATCH = 8;
 
 const EntryV2 = ({ entry }) => (
-  <article className={`dh-entry-v2 arc-${entry.arc_color}`} data-day={entry.day}>
+  <article className={`dh-entry-v2 arc-${entry.arc_color}`} data-day={entry.day} id={`day-${entry.day}`}>
     <div className="dh-entry-v2-head">
       <span className="dh-entry-v2-mood">{entry.mood}</span>
       <span className={`dh-day dh-day-${entry.arc_color}`}>DAY {entry.day}</span>
-      <span className="dh-entry-v2-date">{jFmtDate(entry.date)}</span>
+      <span className="dh-entry-v2-date">{jFmtDate(entry.date)} · <window.Sys.Age date={entry.date} mode={7} /></span>
       <span className="dh-entry-v2-tags">
         {entry.arcs.map((a) => {
           const link = (entry.company_links || []).find((l) => l.arc === a && l.slug);
@@ -104,6 +104,21 @@ const JourneyPage = () => {
   // reset paging when filter changes
   useEffectJ(() => { setShown(BATCH); }, [filter]);
 
+  // deep links: journey.html#day-N must work even when N is far down the feed
+  useEffectJ(() => {
+    const m = /^#day-(\d+)$/.exec(location.hash || '');
+    if (!m) return;
+    const idx = all.findIndex((e) => String(e.day) === m[1]);
+    if (idx < 0) return;
+    setFilter('all');
+    setShown(Math.max(BATCH, idx + 1 + 2));
+    const t = setTimeout(() => {
+      const el = document.getElementById(`day-${m[1]}`);
+      if (el) { el.scrollIntoView({ block: 'start' }); el.classList.add('is-target'); }
+    }, 150);
+    return () => clearTimeout(t);
+  }, [all]);
+
   // infinite scroll: grow the window when the sentinel enters the viewport
   useEffectJ(() => {
     const node = sentinelRef.current;
@@ -156,7 +171,7 @@ const JourneyPage = () => {
   }, [all]);
 
   return (
-    <main className="dh-page">
+    <main className="dh-page" id="main">
       <header className="dh-page-head">
         <div className="dh-eyebrow"><span className="dh-eyebrow-dot dh-eyebrow-dot-green" /> The journey</div>
         <h1 className="dh-page-title">The Journey.</h1>
@@ -182,6 +197,12 @@ const JourneyPage = () => {
 
       <div className="dh-rail-layout">
         <div ref={feedRef}>
+          {window.HomeSections && window.HomeSections.Heatmap && (
+            <div className="card sys mode-operator" style={{ marginBottom: 'var(--s6)' }}>
+              <span className="eyebrow">last {window.DH_DATA.heatmap.weeks} weeks</span>
+              <window.HomeSections.Heatmap />
+            </div>
+          )}
           <div className="dh-feed-v2">
             {groups.map((g) => (
               <React.Fragment key={g.key}>

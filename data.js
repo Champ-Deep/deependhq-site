@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-25T19:42:30.773Z
+// Built 2026-09-26T08:43:30.081Z
 
 window.DH_DATA = {
   "brand": {
@@ -3212,16 +3212,8 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "time_ist": "01:12 IST",
-    "weather": "24°C · clear",
-    "last_ship": "LakeB2B intent-signal carousel · just now",
-    "vault_commits": 0,
-    "listening": "Bonobo · Migration",
-    "reading": "The Power Broker · Caro",
-    "drinking": "Bangalore peaberry · pour-over · cup 3",
-    "state": "shipping",
-    "uptime_d": 47,
-    "coffee": 3
+    "last_ship": "day 329 · Sep 25",
+    "state": "shipping"
   },
   "status_board": {
     "now": [
@@ -5080,5 +5072,1685 @@ window.DH_DATA = {
       }
     ]
   },
-  "built": "2026-09-25T19:42:30.773Z"
+  "health": {
+    "built": "2026-09-26T08:43:29.948Z",
+    "built_date": "2026-09-26",
+    "newest_entry": {
+      "date": "2026-09-25",
+      "day": 329
+    },
+    "weekdays_stale": 0,
+    "stale": false,
+    "sections": {
+      "now": {
+        "date": "2026-06-12",
+        "days_old": 106,
+        "stale": true
+      },
+      "build_lanes": {
+        "date": "2026-06-24",
+        "days_old": 94,
+        "stale": true
+      },
+      "shoutouts": {
+        "date": "2026-06-24",
+        "days_old": 94,
+        "stale": true
+      }
+    }
+  },
+  "recent": [
+    {
+      "day": 329,
+      "date": "2026-09-25",
+      "mood": "📦",
+      "arc_color": "green",
+      "arcs": [
+        "Lake B2B",
+        "Celsus OS"
+      ],
+      "ship": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post. explains the buying-signal data play in slides instead of a deck nobody opens."
+    },
+    {
+      "day": 328,
+      "date": "2026-09-24",
+      "mood": "🔧",
+      "arc_color": "green",
+      "arcs": [
+        "Celsus OS",
+        "Lake B2B"
+      ],
+      "ship": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes, 67k wikilinks, 635 ambiguous mentions judged in under two minutes for under two cents. 45 clean merges, zero errors. not touching anything live until i trust a full review pass."
+    },
+    {
+      "day": 327,
+      "date": "2026-09-23",
+      "mood": "😬",
+      "arc_color": "blue",
+      "arcs": [
+        "pipeline",
+        "longevity"
+      ],
+      "ship": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it needed, just an identity check before the room closed. still figuring out if the real conversation happened somewhere else or just didnt happen."
+    },
+    {
+      "day": 326,
+      "date": "2026-09-22",
+      "mood": "📞",
+      "arc_color": "gold",
+      "arcs": [
+        "voice-agent",
+        "chief"
+      ],
+      "ship": "the birthday voice agent actually called chief. missed the first try, connected on retry at midnight, and he liked it enough to ask for more: anniversaries, linkedin signals, milestone follow-ups."
+    },
+    {
+      "day": 325,
+      "date": "2026-09-21",
+      "mood": "🤝",
+      "arc_color": "gold",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "ship": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold vendor pitch and moved on. then at 10pm he called back and we spent 22 minutes shaping a real deal: his agency takes on our microsite refresh and lead-gen overflow work, we take a cut. not signed yet, but its the first real partner conversation to come out of a dead-looking booking in a while."
+    },
+    {
+      "day": 324,
+      "date": "2026-09-20",
+      "mood": "🔧",
+      "arc_color": "green",
+      "arcs": [
+        "ChampOps"
+      ],
+      "ship": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when a different endpoint on the same meeting hands back the full transcript anyway. Would have caught several recent client calls we thought were just lost. Patched the retry order tonight."
+    },
+    {
+      "day": 323,
+      "date": "2026-09-19",
+      "mood": "😤",
+      "arc_color": "blue",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that a deliverable we paid for, a panel slot, sat unclaimed for eleven days and the agenda published without us. New standing rule out of it: any paid sponsorship deliverable gets an owner and a deadline the week we pay, not a thread mention."
+    },
+    {
+      "day": 322,
+      "date": "2026-09-18",
+      "mood": "🔍",
+      "arc_color": "green",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "ship": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic down 52 percent in two years, their flagship launch page outranked in search by a copycat domain with zero authority. Everything is rendered in the client's own brand colors and sitting ready, one signature away from going out."
+    },
+    {
+      "day": 321,
+      "date": "2026-09-17",
+      "mood": "🎯",
+      "arc_color": "gold",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "ship": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new partnership conversation the same day too, voice tech meets data, five concrete next steps out of one call."
+    },
+    {
+      "day": 320,
+      "date": "2026-09-16",
+      "mood": "🔓",
+      "arc_color": "green",
+      "arcs": [
+        "Lake B2B",
+        "Vendor Ops"
+      ],
+      "ship": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendors, signed off a new partner to start onboarding tonight, and unblocked three campaigns that were all waiting on the same call."
+    },
+    {
+      "day": 319,
+      "date": "2026-09-15",
+      "mood": "🌗",
+      "arc_color": "green",
+      "arcs": [
+        "Lake Sonar",
+        "Champions Operations"
+      ],
+      "ship": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over TypeScript, weekly 15 to 20 minute check-ins, deliverable based. The month-one target is concrete, a queryable chatbot trained on our own schema, with a senior teammate assigned as buddy."
+    },
+    {
+      "day": 318,
+      "date": "2026-09-14",
+      "mood": "🧭",
+      "arc_color": "blue",
+      "arcs": [
+        "Lake B2B",
+        "Event Scout"
+      ],
+      "ship": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into two buckets, campaigns or enrichment, on a 12-step architecture, backed by a real per-rep budget to close on 100 targeted accounts."
+    },
+    {
+      "day": 316,
+      "date": "2026-09-12",
+      "mood": "🧪",
+      "arc_color": "green",
+      "arcs": [
+        "ChampUTM",
+        "Champions Club"
+      ],
+      "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spelling for source or medium. 12 tests green before it ever touches the real app."
+    },
+    {
+      "day": 315,
+      "date": "2026-09-11",
+      "mood": "🛠️",
+      "arc_color": "green",
+      "arcs": [
+        "Champ Suite",
+        "Vendor Ops"
+      ],
+      "ship": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo. 118 backend tests green, a real Playwright run against the live API passing 2 for 2. A vendor books, ops approves, a prospect confirms, the client sees the reminder land. First time this build has run end to end instead of in pieces."
+    }
+  ],
+  "heatmap": {
+    "start": "2026-06-08",
+    "end": "2026-09-27",
+    "weeks": 16,
+    "cells": [
+      {
+        "date": "2026-06-08",
+        "future": false,
+        "weekend": false,
+        "day": 220,
+        "arc_color": "gold",
+        "ship": "week 24 opened with a first call into one of india's largest conglomerates. their real-estate arm, the md and "
+      },
+      {
+        "date": "2026-06-09",
+        "future": false,
+        "weekend": false,
+        "day": 221,
+        "arc_color": "green",
+        "ship": "took a one-off enrichment win and turned it into a product. verified contacts for vacation rental operators, a"
+      },
+      {
+        "date": "2026-06-10",
+        "future": false,
+        "weekend": false,
+        "day": 222,
+        "arc_color": "green",
+        "ship": "built a full deep-prep dossier for a chairman-initiated first touch with a major gulf carrier group. five docs"
+      },
+      {
+        "date": "2026-06-11",
+        "future": false,
+        "weekend": false,
+        "day": 223,
+        "arc_color": "green",
+        "ship": "the first call with the gulf carrier group rewrote the brief. the buyer is IPX and wholesale, not enterprise I"
+      },
+      {
+        "date": "2026-06-12",
+        "future": false,
+        "weekend": false,
+        "day": 224,
+        "arc_color": "green",
+        "ship": "completed the q2 kra review wave. five written reviews, six candid-conversation deliverables, one trackable sc"
+      },
+      {
+        "date": "2026-06-13",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-06-14",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-06-15",
+        "future": false,
+        "weekend": false,
+        "day": 227,
+        "arc_color": "green",
+        "ship": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator that touches tens of thou"
+      },
+      {
+        "date": "2026-06-16",
+        "future": false,
+        "weekend": false,
+        "day": 228,
+        "arc_color": "green",
+        "ship": "minted per-repo ssh deploy keys for the three repos in this week's product push and moved their deploys off th"
+      },
+      {
+        "date": "2026-06-17",
+        "future": false,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-06-18",
+        "future": false,
+        "weekend": false,
+        "day": 230,
+        "arc_color": "green",
+        "ship": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we bui"
+      },
+      {
+        "date": "2026-06-19",
+        "future": false,
+        "weekend": false,
+        "day": 231,
+        "arc_color": "green",
+        "ship": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor tha"
+      },
+      {
+        "date": "2026-06-20",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-06-21",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-06-22",
+        "future": false,
+        "weekend": false,
+        "day": 234,
+        "arc_color": "green",
+        "ship": "locked the architecture for a new resume-intelligence engine today. phase one is semantic search across the fu"
+      },
+      {
+        "date": "2026-06-23",
+        "future": false,
+        "weekend": false,
+        "day": 235,
+        "arc_color": "blue",
+        "ship": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it writing instead. i pulle"
+      },
+      {
+        "date": "2026-06-24",
+        "future": false,
+        "weekend": false,
+        "day": 236,
+        "arc_color": "green",
+        "ship": "the site grew a command center today. a /command page that reads live, a matrix-style hero, the twelve-company"
+      },
+      {
+        "date": "2026-06-25",
+        "future": false,
+        "weekend": false,
+        "day": 237,
+        "arc_color": "blue",
+        "ship": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted,"
+      },
+      {
+        "date": "2026-06-26",
+        "future": false,
+        "weekend": false,
+        "day": 238,
+        "arc_color": "blue",
+        "ship": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the million-record database"
+      },
+      {
+        "date": "2026-06-27",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-06-28",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-06-29",
+        "future": false,
+        "weekend": false,
+        "day": 241,
+        "arc_color": "green",
+        "ship": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterpri"
+      },
+      {
+        "date": "2026-06-30",
+        "future": false,
+        "weekend": false,
+        "day": 242,
+        "arc_color": "blue",
+        "ship": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the la"
+      },
+      {
+        "date": "2026-07-01",
+        "future": false,
+        "weekend": false,
+        "day": 243,
+        "arc_color": "blue",
+        "ship": "q3 day one. led a strategic growth discussion with an investment bank on champions group expansion and what th"
+      },
+      {
+        "date": "2026-07-02",
+        "future": false,
+        "weekend": false,
+        "day": 244,
+        "arc_color": "green",
+        "ship": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is b"
+      },
+      {
+        "date": "2026-07-03",
+        "future": false,
+        "weekend": false,
+        "day": 245,
+        "arc_color": "green",
+        "ship": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembl"
+      },
+      {
+        "date": "2026-07-04",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-07-05",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-07-06",
+        "future": false,
+        "weekend": false,
+        "day": 248,
+        "arc_color": "green",
+        "ship": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync with an inbound webhoo"
+      },
+      {
+        "date": "2026-07-07",
+        "future": false,
+        "weekend": false,
+        "day": 249,
+        "arc_color": "blue",
+        "ship": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at t"
+      },
+      {
+        "date": "2026-07-08",
+        "future": false,
+        "weekend": false,
+        "day": 250,
+        "arc_color": "blue",
+        "ship": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker"
+      },
+      {
+        "date": "2026-07-09",
+        "future": false,
+        "weekend": false,
+        "day": 251,
+        "arc_color": "green",
+        "ship": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to ou"
+      },
+      {
+        "date": "2026-07-10",
+        "future": false,
+        "weekend": false,
+        "day": 252,
+        "arc_color": "green",
+        "ship": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ data"
+      },
+      {
+        "date": "2026-07-11",
+        "future": false,
+        "weekend": true,
+        "day": 253,
+        "arc_color": "blue",
+        "ship": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K reco"
+      },
+      {
+        "date": "2026-07-12",
+        "future": false,
+        "weekend": true,
+        "day": 254,
+        "arc_color": "blue",
+        "ship": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milestone review, but the dens"
+      },
+      {
+        "date": "2026-07-13",
+        "future": false,
+        "weekend": false,
+        "day": 255,
+        "arc_color": "blue",
+        "ship": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient mon"
+      },
+      {
+        "date": "2026-07-14",
+        "future": false,
+        "weekend": false,
+        "day": 256,
+        "arc_color": "gold",
+        "ship": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop sys"
+      },
+      {
+        "date": "2026-07-15",
+        "future": false,
+        "weekend": false,
+        "day": 257,
+        "arc_color": "green",
+        "ship": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company, API-first, $15M ARR. s"
+      },
+      {
+        "date": "2026-07-16",
+        "future": false,
+        "weekend": false,
+        "day": 258,
+        "arc_color": "green",
+        "ship": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope "
+      },
+      {
+        "date": "2026-07-17",
+        "future": false,
+        "weekend": false,
+        "day": 259,
+        "arc_color": "green",
+        "ship": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test "
+      },
+      {
+        "date": "2026-07-18",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-07-19",
+        "future": false,
+        "weekend": true,
+        "day": 261,
+        "arc_color": "blue",
+        "ship": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live col"
+      },
+      {
+        "date": "2026-07-20",
+        "future": false,
+        "weekend": false,
+        "day": 262,
+        "arc_color": "blue",
+        "ship": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. fo"
+      },
+      {
+        "date": "2026-07-21",
+        "future": false,
+        "weekend": false,
+        "day": 263,
+        "arc_color": "blue",
+        "ship": "first direct call with a US oncology AI company. digital twin, epic/cerner integration, johns hopkins MOU in p"
+      },
+      {
+        "date": "2026-07-22",
+        "future": false,
+        "weekend": false,
+        "day": 264,
+        "arc_color": "blue",
+        "ship": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off"
+      },
+      {
+        "date": "2026-07-23",
+        "future": false,
+        "weekend": false,
+        "day": 265,
+        "arc_color": "green",
+        "ship": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, s"
+      },
+      {
+        "date": "2026-07-24",
+        "future": false,
+        "weekend": false,
+        "day": 266,
+        "arc_color": "blue",
+        "ship": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-s"
+      },
+      {
+        "date": "2026-07-25",
+        "future": false,
+        "weekend": true,
+        "day": 267,
+        "arc_color": "blue",
+        "ship": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundrais"
+      },
+      {
+        "date": "2026-07-26",
+        "future": false,
+        "weekend": true,
+        "day": 268,
+        "arc_color": "green",
+        "ship": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitmen"
+      },
+      {
+        "date": "2026-07-27",
+        "future": false,
+        "weekend": false,
+        "day": 269,
+        "arc_color": "blue",
+        "ship": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a commi"
+      },
+      {
+        "date": "2026-07-28",
+        "future": false,
+        "weekend": false,
+        "day": 270,
+        "arc_color": "gold",
+        "ship": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal ma"
+      },
+      {
+        "date": "2026-07-29",
+        "future": false,
+        "weekend": false,
+        "day": 271,
+        "arc_color": "gold",
+        "ship": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing."
+      },
+      {
+        "date": "2026-07-30",
+        "future": false,
+        "weekend": false,
+        "day": 272,
+        "arc_color": "blue",
+        "ship": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. ne"
+      },
+      {
+        "date": "2026-07-31",
+        "future": false,
+        "weekend": false,
+        "day": 273,
+        "arc_color": "green",
+        "ship": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before "
+      },
+      {
+        "date": "2026-08-01",
+        "future": false,
+        "weekend": true,
+        "day": 274,
+        "arc_color": "blue",
+        "ship": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11 items surfaced from th"
+      },
+      {
+        "date": "2026-08-02",
+        "future": false,
+        "weekend": true,
+        "day": 275,
+        "arc_color": "blue",
+        "ship": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own monday morning. two sunday "
+      },
+      {
+        "date": "2026-08-03",
+        "future": false,
+        "weekend": false,
+        "day": 276,
+        "arc_color": "blue",
+        "ship": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-"
+      },
+      {
+        "date": "2026-08-04",
+        "future": false,
+        "weekend": false,
+        "day": 277,
+        "arc_color": "blue",
+        "ship": "full backend audit of the marketing platform. nine services running on the cloud infra, and i verified each on"
+      },
+      {
+        "date": "2026-08-05",
+        "future": false,
+        "weekend": false,
+        "day": 278,
+        "arc_color": "gold",
+        "ship": "a new relationship walked in from the india wealth and fund management space. they brought a GIFT City fund st"
+      },
+      {
+        "date": "2026-08-06",
+        "future": false,
+        "weekend": false,
+        "day": 279,
+        "arc_color": "green",
+        "ship": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer"
+      },
+      {
+        "date": "2026-08-07",
+        "future": false,
+        "weekend": false,
+        "day": 280,
+        "arc_color": "green",
+        "ship": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 2"
+      },
+      {
+        "date": "2026-08-08",
+        "future": false,
+        "weekend": true,
+        "day": 281,
+        "arc_color": "blue",
+        "ship": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes"
+      },
+      {
+        "date": "2026-08-09",
+        "future": false,
+        "weekend": true,
+        "day": 282,
+        "arc_color": "blue",
+        "ship": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then the recurring three-party"
+      },
+      {
+        "date": "2026-08-10",
+        "future": false,
+        "weekend": false,
+        "day": 283,
+        "arc_color": "green",
+        "ship": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance increments split from cost"
+      },
+      {
+        "date": "2026-08-11",
+        "future": false,
+        "weekend": false,
+        "day": 284,
+        "arc_color": "green",
+        "ship": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K"
+      },
+      {
+        "date": "2026-08-12",
+        "future": false,
+        "weekend": false,
+        "day": 285,
+        "arc_color": "green",
+        "ship": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads l"
+      },
+      {
+        "date": "2026-08-13",
+        "future": false,
+        "weekend": false,
+        "day": 286,
+        "arc_color": "green",
+        "ship": "scaffolded a full lead generation operating system from scratch. eight stages. nine industry ICPs. campaign fo"
+      },
+      {
+        "date": "2026-08-14",
+        "future": false,
+        "weekend": false,
+        "day": 287,
+        "arc_color": "green",
+        "ship": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked"
+      },
+      {
+        "date": "2026-08-15",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-08-16",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-08-17",
+        "future": false,
+        "weekend": false,
+        "day": 290,
+        "arc_color": "green",
+        "ship": "locked a second design language for internal pages. pixel arcade: dark canvas, 12x12 pixel sprites drawn in co"
+      },
+      {
+        "date": "2026-08-18",
+        "future": false,
+        "weekend": false,
+        "day": 291,
+        "arc_color": "green",
+        "ship": "day one for a new front-end intern, owning one thing: the social bot. it has sat at 60 to 70 percent since mar"
+      },
+      {
+        "date": "2026-08-19",
+        "future": false,
+        "weekend": false,
+        "day": 292,
+        "arc_color": "green",
+        "ship": "audited the team vault agent against live cloudflare docs and rewrote its scope. deny-by-default filter, 4 MB "
+      },
+      {
+        "date": "2026-08-20",
+        "future": false,
+        "weekend": false,
+        "day": 293,
+        "arc_color": "blue",
+        "ship": "planned the handover of seven apac lead-gen accounts, one of them onboarded today. one owner per account, faci"
+      },
+      {
+        "date": "2026-08-21",
+        "future": false,
+        "weekend": false,
+        "day": 294,
+        "arc_color": "green",
+        "ship": "settled the database number: 800m+ contacts, 80m+ companies. four other figures were in circulation. 440m in a"
+      },
+      {
+        "date": "2026-08-22",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-08-23",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-08-24",
+        "future": false,
+        "weekend": false,
+        "day": 297,
+        "arc_color": "green",
+        "ship": "wrote the first kra for the longevity development lead. six-month period from sep 1, ten-point scale, first re"
+      },
+      {
+        "date": "2026-08-25",
+        "future": false,
+        "weekend": false,
+        "day": 298,
+        "arc_color": "green",
+        "ship": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 3"
+      },
+      {
+        "date": "2026-08-26",
+        "future": false,
+        "weekend": false,
+        "day": 299,
+        "arc_color": "blue",
+        "ship": "thin day on record. an inbound discovery call for one of the data brands, booked by the prospect. a partnershi"
+      },
+      {
+        "date": "2026-08-27",
+        "future": false,
+        "weekend": false,
+        "day": 300,
+        "arc_color": "blue",
+        "ship": "a data-partnership call with one of the big identity-resolution platforms. seven people across both sides. plu"
+      },
+      {
+        "date": "2026-08-28",
+        "future": false,
+        "weekend": false,
+        "day": 301,
+        "arc_color": "green",
+        "ship": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and"
+      },
+      {
+        "date": "2026-08-29",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-08-30",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-08-31",
+        "future": false,
+        "weekend": false,
+        "day": 304,
+        "arc_color": "green",
+        "ship": "turned an eleven-day-old voice note into a full saas lead-gen playbook. two products: competitor lookalike map"
+      },
+      {
+        "date": "2026-09-01",
+        "future": false,
+        "weekend": false,
+        "day": 305,
+        "arc_color": "green",
+        "ship": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people"
+      },
+      {
+        "date": "2026-09-02",
+        "future": false,
+        "weekend": false,
+        "day": 306,
+        "arc_color": "green",
+        "ship": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 60"
+      },
+      {
+        "date": "2026-09-03",
+        "future": false,
+        "weekend": false,
+        "day": 307,
+        "arc_color": "blue",
+        "ship": "day two of the apac daily loop. the automation ran on time, compiled the tracker, and found it empty. two days"
+      },
+      {
+        "date": "2026-09-04",
+        "future": false,
+        "weekend": false,
+        "day": 308,
+        "arc_color": "blue",
+        "ship": "day three. nine of nine tracker rows blank, still 0 of 30 sqls. the client update was written as a holding lin"
+      },
+      {
+        "date": "2026-09-05",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-09-06",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-09-07",
+        "future": false,
+        "weekend": false,
+        "day": 311,
+        "arc_color": "green",
+        "ship": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom "
+      },
+      {
+        "date": "2026-09-08",
+        "future": false,
+        "weekend": false,
+        "day": 312,
+        "arc_color": "green",
+        "ship": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and docum"
+      },
+      {
+        "date": "2026-09-09",
+        "future": false,
+        "weekend": false,
+        "day": 313,
+        "arc_color": "gold",
+        "ship": "restructured the vault from a monolith into a five-layer context architecture. each layer loads only what the "
+      },
+      {
+        "date": "2026-09-10",
+        "future": false,
+        "weekend": false,
+        "day": 314,
+        "arc_color": "gold",
+        "ship": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plu"
+      },
+      {
+        "date": "2026-09-11",
+        "future": false,
+        "weekend": false,
+        "day": 315,
+        "arc_color": "green",
+        "ship": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo."
+      },
+      {
+        "date": "2026-09-12",
+        "future": false,
+        "weekend": true,
+        "day": 316,
+        "arc_color": "green",
+        "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spellin"
+      },
+      {
+        "date": "2026-09-13",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-09-14",
+        "future": false,
+        "weekend": false,
+        "day": 318,
+        "arc_color": "blue",
+        "ship": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: eve"
+      },
+      {
+        "date": "2026-09-15",
+        "future": false,
+        "weekend": false,
+        "day": 319,
+        "arc_color": "green",
+        "ship": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over Ty"
+      },
+      {
+        "date": "2026-09-16",
+        "future": false,
+        "weekend": false,
+        "day": 320,
+        "arc_color": "green",
+        "ship": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendo"
+      },
+      {
+        "date": "2026-09-17",
+        "future": false,
+        "weekend": false,
+        "day": 321,
+        "arc_color": "gold",
+        "ship": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in wee"
+      },
+      {
+        "date": "2026-09-18",
+        "future": false,
+        "weekend": false,
+        "day": 322,
+        "arc_color": "green",
+        "ship": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget"
+      },
+      {
+        "date": "2026-09-19",
+        "future": false,
+        "weekend": true,
+        "day": 323,
+        "arc_color": "blue",
+        "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that "
+      },
+      {
+        "date": "2026-09-20",
+        "future": false,
+        "weekend": true,
+        "day": 324,
+        "arc_color": "green",
+        "ship": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it acces"
+      },
+      {
+        "date": "2026-09-21",
+        "future": false,
+        "weekend": false,
+        "day": 325,
+        "arc_color": "gold",
+        "ship": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured "
+      },
+      {
+        "date": "2026-09-22",
+        "future": false,
+        "weekend": false,
+        "day": 326,
+        "arc_color": "gold",
+        "ship": "the birthday voice agent actually called chief. missed the first try, connected on retry at midnight, and he l"
+      },
+      {
+        "date": "2026-09-23",
+        "future": false,
+        "weekend": false,
+        "day": 327,
+        "arc_color": "blue",
+        "ship": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it "
+      },
+      {
+        "date": "2026-09-24",
+        "future": false,
+        "weekend": false,
+        "day": 328,
+        "arc_color": "green",
+        "ship": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real gr"
+      },
+      {
+        "date": "2026-09-25",
+        "future": false,
+        "weekend": false,
+        "day": 329,
+        "arc_color": "green",
+        "ship": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedi"
+      },
+      {
+        "date": "2026-09-26",
+        "future": false,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-09-27",
+        "future": true,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      }
+    ]
+  },
+  "stats": {
+    "days_public": 329,
+    "entries": 107,
+    "entries_30d": 25,
+    "entries_this_month": 22,
+    "streak_weekdays": 72,
+    "essays": 14,
+    "companies": 12,
+    "companies_active_90d": 5,
+    "first_entry": "2026-05-04",
+    "day_one": null,
+    "arcs_30d": [
+      {
+        "arc": "Lake B2B",
+        "n": 16
+      },
+      {
+        "arc": "ChampOps",
+        "n": 6
+      },
+      {
+        "arc": "Champions Operations",
+        "n": 5
+      },
+      {
+        "arc": "Celsus OS",
+        "n": 2
+      },
+      {
+        "arc": "Vendor Ops",
+        "n": 2
+      },
+      {
+        "arc": "InfraTech",
+        "n": 2
+      },
+      {
+        "arc": "pipeline",
+        "n": 1
+      },
+      {
+        "arc": "longevity",
+        "n": 1
+      }
+    ]
+  },
+  "stack_now": {
+    "items": [
+      {
+        "name": "Obsidian + Celsus",
+        "what": "One graph, 12 companies. The single source of truth everything else reads from.",
+        "url": null,
+        "kind": "using",
+        "category": "system",
+        "last_seen": "2026-09-25",
+        "mentions_90d": 2,
+        "days_since": 1
+      },
+      {
+        "name": "ChampOps",
+        "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
+        "url": null,
+        "kind": "using",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-09-21",
+        "mentions_90d": 10,
+        "days_since": 5
+      },
+      {
+        "name": "Event Scout",
+        "what": "Mobile PWA for event contact capture. Business card scanner plus AI chat.",
+        "url": "https://github.com/Champ-Deep/event-scout",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": "2026-09-14",
+        "mentions_90d": 1,
+        "days_since": 12
+      },
+      {
+        "name": "ChampUTM",
+        "what": "UTM link builder and tracker. React/Vite. Open source.",
+        "url": "https://github.com/Champ-Deep/ChampUTM",
+        "kind": "built",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-09-12",
+        "mentions_90d": 1,
+        "days_since": 14
+      },
+      {
+        "name": "Cloudflare",
+        "what": "Pages, Workers, D1, R2, KV. The edge this whole site runs on.",
+        "url": null,
+        "kind": "using",
+        "category": "infra",
+        "last_seen": "2026-08-19",
+        "mentions_90d": 1,
+        "days_since": 38
+      },
+      {
+        "name": "LakeStream",
+        "what": "Template-based web scraper for B2B data enrichment. YouTube transcripts included.",
+        "url": "https://github.com/Champ-Deep/LakeStream",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": "2026-08-04",
+        "mentions_90d": 2,
+        "days_since": 53
+      },
+      {
+        "name": "ChamPDF",
+        "what": "pdf extraction and processing for the presales floor. live.",
+        "url": "https://github.com/Champ-Deep/ChamPDF",
+        "kind": "built",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-08-04",
+        "mentions_90d": 1,
+        "days_since": 53
+      },
+      {
+        "name": "ChampMail",
+        "what": "email outreach automation. human-cadence sending, self-hosted Stalwart SMTP. live and scaling.",
+        "url": "https://github.com/Champ-Deep/ChampMail",
+        "kind": "built",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-08-02",
+        "mentions_90d": 5,
+        "days_since": 55
+      },
+      {
+        "name": "Supabase",
+        "what": "postgres, auth, storage, realtime. the backend under most of what i ship.",
+        "url": "https://github.com/supabase/supabase",
+        "kind": "using",
+        "category": "external",
+        "repo": "supabase/supabase",
+        "last_seen": "2026-07-01",
+        "mentions_90d": 1,
+        "days_since": 87
+      },
+      {
+        "name": "ChampGraph",
+        "what": "Knowledge graph per prospect. Neo4j/FalkorDB. The brain behind the AI SDR.",
+        "url": "https://github.com/Champ-Deep/Graphiti-knowledge-graph",
+        "kind": "built",
+        "category": "tool",
+        "featured": false,
+        "last_seen": "2026-06-23",
+        "mentions_90d": 0,
+        "days_since": 95
+      },
+      {
+        "name": "ChampQuest",
+        "what": "Rewarding task tracking for teams. Now being reborn as a ranch scavenger JRPG.",
+        "url": "https://github.com/Champ-Deep/ChampQuest",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": "2026-06-03",
+        "mentions_90d": 0,
+        "days_since": 115
+      },
+      {
+        "name": "B2B Pulse",
+        "what": "LinkedIn and Meta engagement automator. Powers the 5 PM IST daily social triage.",
+        "url": "https://github.com/Champ-Deep/B2B-Pulse",
+        "kind": "built",
+        "category": "tool",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "deependhq-site",
+        "what": "This site. No-build React on Cloudflare Pages. Auto-updates daily from the vault.",
+        "url": "https://github.com/Champ-Deep/deependhq-site",
+        "kind": "built",
+        "category": "repo",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "ChampCMS",
+        "what": "Full-stack Astro CMS on Cloudflare. D1, R2, passkeys, TipTap, plugin isolates.",
+        "url": "https://github.com/Champ-Deep/ChampCMS",
+        "kind": "built",
+        "category": "repo",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "ChampLens",
+        "what": "QR-to-video AR business card platform. Scan a card, meet a person.",
+        "url": "https://github.com/Champ-Deep/ChampLens",
+        "kind": "built",
+        "category": "repo",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "ChampIQ",
+        "what": "The AI SDR orchestration layer. Graph-driven prospecting across every channel.",
+        "url": "https://github.com/Champ-Deep/ChampIQ",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "5-Level Email Personalizer",
+        "what": "White-labeled personalization engine. Multi-model variations with an eval harness.",
+        "url": "https://github.com/Champ-Deep/five-level-email-personalizer",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Champ Obscura",
+        "what": "Headless browser for AI agents and web scraping.",
+        "url": "https://github.com/Champ-Deep/Champ-obscura",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "LakeCurrent",
+        "what": "A search API alternative from Lake B2B.",
+        "url": "https://github.com/Champ-Deep/LakeCurrent",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "SlideSmith",
+        "what": "A craftsman of slides. Like a blacksmith, but for presentations.",
+        "url": "https://github.com/Champ-Deep/LakeB2B-SlideSmith",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "ChampVideo",
+        "what": "Automated avatar video studio for the group brands.",
+        "url": "https://github.com/Champ-Deep/champvideo",
+        "kind": "built",
+        "category": "repo",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Lead Scorer",
+        "what": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+        "url": "/lead-scorer",
+        "kind": "using",
+        "category": "tool",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "ChampSet",
+        "what": "describe a b2b dataset in plain english. agents research, verify, dedupe, and export. building now.",
+        "url": null,
+        "kind": "using",
+        "category": "tool",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "BCU",
+        "what": "native macos automation that drives apps without stealing the cursor. runs my overnight sprints.",
+        "url": "https://github.com/actuallyepic/background-computer-use",
+        "kind": "using",
+        "category": "external",
+        "repo": "actuallyepic/background-computer-use",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Firecrawl",
+        "what": "turns any website into clean, llm-ready markdown. my default web-read.",
+        "url": "https://github.com/firecrawl/firecrawl",
+        "kind": "using",
+        "category": "external",
+        "repo": "firecrawl/firecrawl",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "React Flow",
+        "what": "the node canvas engine behind the champ iq builder ui.",
+        "url": "https://github.com/xyflow/xyflow",
+        "kind": "using",
+        "category": "external",
+        "repo": "xyflow/xyflow",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Cloudflare Agents",
+        "what": "stateful ai agents on the edge. my exact deploy stack.",
+        "url": "https://github.com/cloudflare/agents",
+        "kind": "using",
+        "category": "external",
+        "repo": "cloudflare/agents",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "LightRAG",
+        "what": "graph-based rag, the kind of engine that indexes a whole second brain.",
+        "url": "https://github.com/HKUDS/LightRAG",
+        "kind": "using",
+        "category": "external",
+        "repo": "HKUDS/LightRAG",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Claude + Cowork",
+        "what": "The strategy and writing partner that also drives the vault, the browser, and this site's build.",
+        "url": null,
+        "kind": "using",
+        "category": "ai",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "ChampOps loop",
+        "what": "Feedback widget to triage to autonomous fix to deploy. Zero-human maintenance.",
+        "url": null,
+        "kind": "using",
+        "category": "system",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Jules",
+        "what": "Autonomous coding agent. Picks up issues and ships PRs overnight.",
+        "url": null,
+        "kind": "using",
+        "category": "ai",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "The Champ Suite",
+        "what": "ChampMail, ChampGraph, ChampVoice. The home-built engines behind the AI SDR.",
+        "url": null,
+        "kind": "using",
+        "category": "ai",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Partytown",
+        "what": "offloads third-party scripts to a web worker. testing it on the marketing sites.",
+        "url": "https://github.com/QwikDev/partytown",
+        "kind": "trying",
+        "category": "external",
+        "repo": "QwikDev/partytown",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Graphify",
+        "what": "code-to-knowledge-graph engine. on the bench for the rag build.",
+        "url": "https://github.com/safishamsi/graphify",
+        "kind": "trying",
+        "category": "external",
+        "repo": "safishamsi/graphify",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "BillionMail",
+        "what": "open-source email + smtp stack. weighing it against my current setup.",
+        "url": "https://github.com/Billionmail/BillionMail",
+        "kind": "trying",
+        "category": "external",
+        "repo": "Billionmail/BillionMail",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Crawl4AI",
+        "what": "local-first crawler with llm-ready output. trying it for enrichment.",
+        "url": "https://github.com/unclecode/crawl4ai",
+        "kind": "trying",
+        "category": "external",
+        "repo": "unclecode/crawl4ai",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "OpenHands",
+        "what": "autonomous dev agent that ships prs straight from an issue.",
+        "url": "https://github.com/All-Hands-AI/OpenHands",
+        "kind": "watching",
+        "category": "external",
+        "repo": "All-Hands-AI/OpenHands",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Cline",
+        "what": "autonomous coding agent that lives in the editor.",
+        "url": "https://github.com/cline/cline",
+        "kind": "watching",
+        "category": "external",
+        "repo": "cline/cline",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "GraphRAG",
+        "what": "microsoft’s knowledge-graph rag, a close cousin to champgraph.",
+        "url": "https://github.com/microsoft/graphrag",
+        "kind": "watching",
+        "category": "external",
+        "repo": "microsoft/graphrag",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "mem0",
+        "what": "a universal memory layer you bolt onto any agent.",
+        "url": "https://github.com/mem0ai/mem0",
+        "kind": "watching",
+        "category": "external",
+        "repo": "mem0ai/mem0",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Jan",
+        "what": "offline-first local model runner. privacy by default.",
+        "url": "https://github.com/menloresearch/jan",
+        "kind": "watching",
+        "category": "external",
+        "repo": "menloresearch/jan",
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Morning Routine Orchestrator",
+        "what": "Multi-skill AI chain: vault hygiene, email triage, energy quiz, day planner.",
+        "url": null,
+        "kind": "skill",
+        "category": "skill",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "CLF Meeting Prep",
+        "what": "Champions Leadership Framework. SPIN-driven pitch prep across all 4 brands.",
+        "url": null,
+        "kind": "skill",
+        "category": "skill",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "B2B Blog Writer",
+        "what": "Full-pipeline skill: trending topic to authoritative thought-leadership post.",
+        "url": null,
+        "kind": "skill",
+        "category": "skill",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Sprint Mode",
+        "what": "Autonomous time-boxed task execution. Give it hours, get back results.",
+        "url": null,
+        "kind": "skill",
+        "category": "skill",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Vault Keeper",
+        "what": "Unified Obsidian vault maintenance. Wikilinks, orphan elimination, MOC updates.",
+        "url": null,
+        "kind": "skill",
+        "category": "skill",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "The Champion's Promise",
+        "what": "Core operating philosophy. \"Time is the only currency that can't be refilled.\"",
+        "url": null,
+        "kind": "skill",
+        "category": "resource",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "CHAMP Brainstorming Framework",
+        "what": "Customer, Hypothesis, Approach, Market, Pivot. Structured ideation for any concept.",
+        "url": null,
+        "kind": "skill",
+        "category": "resource",
+        "featured": false,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "Celsus (Second Brain)",
+        "what": "Obsidian vault as knowledge graph. 12 companies, one vault, zero context-switching.",
+        "url": null,
+        "kind": "skill",
+        "category": "resource",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      }
+    ],
+    "counts": {
+      "using": 15,
+      "built": 17,
+      "trying": 4,
+      "watching": 5,
+      "skill": 8
+    },
+    "active_30d": 4,
+    "mined_from": {
+      "entries": 107,
+      "essays": 14
+    }
+  },
+  "built": "2026-09-26T08:43:30.081Z"
 };

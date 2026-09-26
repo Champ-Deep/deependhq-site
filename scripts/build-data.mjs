@@ -10,6 +10,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { derive } from './derive.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
@@ -145,6 +146,10 @@ function main() {
   const linkedPosts = posts.filter((p) => (p.related_companies || []).length > 0).length;
   console.log(`cross-links: ${withJourney}/${companies.length} companies have journey, ${linkedPosts} posts linked`);
 
+  // Derived, never stored: health, recent, heatmap, stats, stack_now. See derive.mjs.
+  derive(data, new Date());
+  console.log(`derived: stale=${data.health.stale} (${data.health.weekdays_stale} weekdays), stack ${data.stack_now.items.length} items, ${data.stack_now.active_30d} active in 30d, streak ${data.stats.streak_weekdays}`);
+
   // stamp when this bundle was generated, for the footer "last updated" line
   data.built = new Date().toISOString();
 
@@ -218,7 +223,7 @@ function main() {
   const days = data?.brand?.today_day ?? '?';
   const postCount = Array.isArray(data?.posts) ? data.posts.length : 0;
   const entryCount = Array.isArray(data?.journey) ? data.journey.length : 0;
-  console.log(`built data.js — day ${days}, ${entryCount} journey entries, ${postCount} posts`);
+  console.log(`built data.js: day ${days}, ${entryCount} journey entries, ${postCount} posts`);
 }
 
 main();

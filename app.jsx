@@ -1,63 +1,23 @@
-// app.jsx — the homepage entry.
-
-const { useState, useEffect } = React;
+// app.jsx : the homepage entry. Sep 2026 system.
+// Reading order: identity + today, the log, the stack, the twelve, writing, ways in.
 
 const App = () => {
-  const [active, setActive] = useState('home');
-  const [toast, setToast] = useState(null);
-
-  useEffect(() => {
-    const onBook = () => {
-      setToast({ msg: `opening ${window.DH_DATA.brand.booking_url} …` });
-      setTimeout(() => setToast(null), 2600);
-    };
-    window.addEventListener('dh:book', onBook);
-    return () => window.removeEventListener('dh:book', onBook);
-  }, []);
-
-  // Track which section is in view for nav highlight
-  useEffect(() => {
-    const map = { hero: 'home', now: 'home', think: 'home', ecosystem: 'home', proof: 'home', book: 'home' };
-    const ids = Object.keys(map);
-    const obs = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) setActive(map[e.target.id] || 'home');
-        }
-      },
-      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, []);
-
-  const onBook = () => window.dispatchEvent(new CustomEvent('dh:book'));
-
+  const H = window.HomeSections;
   return (
     <div className="dh-app">
-      <Nav active={active} />
-      <Hero onBook={onBook} />
-      <Ticker />
-      <ShippingNow />
-      <StatusBoard />
-      <HowIThink />
-      <Ecosystem />
-      <Proof />
-      <Pipeline />
-      <TheStack />
-      <Dispatch />
-      <SecondCTA onBook={onBook} />
+      <Nav active="home" />
+      <main id="main">
+        <H.HeroBento />
+        <div className="wrap"><div className="gutter" /></div>
+        <H.LogStrip />
+        <H.StackNow />
+        <H.Companies />
+        <div className="wrap"><div className="gutter" /></div>
+        <H.Writing />
+        <H.WaysIn />
+      </main>
       <Footer />
       {window.CommandPalette && React.createElement(window.CommandPalette)}
-      {toast && (
-        <div className="dh-toast">
-          <span className="dh-toast-gt">&gt;_</span>
-          <span>{toast.msg}</span>
-        </div>
-      )}
     </div>
   );
 };
