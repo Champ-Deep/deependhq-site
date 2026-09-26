@@ -3,7 +3,7 @@
 //
 //   GET  /cta                 302 to the scheduler (the June audit asked for this
 //                             URL and the /cta route never existed)
-//   GET  /field-notes          301 to /mission-log
+//   GET  /field-notes          301 to /journey (the Mission Log)
 //   GET  /companies            301 to /pillars
 //   GET  /api/decide           POST only, see below
 //   GET  /*  (HTML)            HTMLRewriter stamps data-tz, data-country, data-ref
@@ -30,7 +30,12 @@ const MAX_INPUT = 400;
 
 const REDIRECTS = {
   '/cta': { to: SCHEDULER, code: 302 },
-  '/field-notes': { to: '/mission-log', code: 301 },
+  // Field Notes was the old name for the log. The audit killed the name and
+  // kept /journey as the Mission Log route: nav, footer and the prerendered page
+  // all point at journey.html. Redirecting to the prettier /mission-log spelling
+  // would land on a 404 until that page is built, and a redirect into a 404 is
+  // worse than an ugly URL. Flip this when mission-log.html ships.
+  '/field-notes': { to: '/journey', code: 301 },
   '/companies': { to: '/pillars', code: 301 },
 };
 

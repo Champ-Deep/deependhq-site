@@ -105,6 +105,11 @@ if [ "${PUBLISH_SKIP_GATES:-0}" != "1" ]; then
     echo "  Fix: cd $SRC_DIR && npm install   (or: PUBLISH_SKIP_GATES=1 to override)" >&2
     exit 6
   fi
+
+  # Runs on the PRERENDERED html, which is what a visitor receives. A link to a
+  # page that does not exist is a 404 in production, and on 2026-09-26 two
+  # publishes shipped one before anything noticed. This is the last gate.
+  node scripts/link-check.mjs || { echo "PUBLISH-FAILED: a link points at a page that does not exist." >&2; exit 7; }
   git add -A
   if git diff --cached --quiet; then
     echo "NOTHING-TO-PUBLISH: gates ran clean and the remote already matches."
