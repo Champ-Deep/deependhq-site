@@ -89,10 +89,21 @@ if [ "${PUBLISH_SKIP_GATES:-0}" != "1" ]; then
   echo "gates: guard + build + prerender ..."
   node scripts/guard.mjs || { echo "PUBLISH-FAILED: the naming or disclosure guard refused." >&2; exit 5; }
   node scripts/build-data.mjs || { echo "PUBLISH-FAILED: build-data refused." >&2; exit 5; }
-  if [ -x node_modules/.bin/esbuild ] || command -v esbuild >/dev/null 2>&1; then
+  # esbuild is a devDependency, and node_modules is excluded from the mirror on
+  # purpose. So the gate looks for it in the SOURCE tree, not the clone, and
+  # passes ESBUILD_BIN so prerender.mjs uses that binary instead of resolving
+  # ./node_modules. On a machine with no npm install at all the gate says so out
+  # loud rather than silently shipping pages with an empty #root.
+  SRC_ESBUILD="$SRC_DIR/node_modules/.bin/esbuild"
+  if [ -x "$SRC_ESBUILD" ]; then
+    ESBUILD_BIN="$SRC_ESBUILD" node scripts/prerender.mjs || { echo "PUBLISH-FAILED: prerender refused." >&2; exit 5; }
+  elif command -v esbuild >/dev/null 2>&1; then
     node scripts/prerender.mjs || { echo "PUBLISH-FAILED: prerender refused." >&2; exit 5; }
   else
-    echo "  (esbuild not installed, prerender skipped. run: npm install)"
+    echo "PUBLISH-FAILED: esbuild is not installed, so prerender cannot run." >&2
+    echo "  The pages would publish with an empty #root and no text for a crawler." >&2
+    echo "  Fix: cd $SRC_DIR && npm install   (or: PUBLISH_SKIP_GATES=1 to override)" >&2
+    exit 6
   fi
   git add -A
   if git diff --cached --quiet; then
