@@ -1,0 +1,7 @@
+{
+  "_note": "Naming denylist for scripts/guard.mjs. Read by the build, never published to the site. Whole-word, case-insensitive matches; terms of 3 characters or fewer match case exactly. Add a first name when it is a real person who must not appear on a public surface. Add a client pattern when the company name itself is the disclosure, not the person. The patriarch is 'Chief' on any public surface and does not belong in this list.",
+
+  "names": [],
+
+  "clients": []
+}

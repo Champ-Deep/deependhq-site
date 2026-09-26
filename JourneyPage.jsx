@@ -18,37 +18,149 @@ const jMonthLabel = (key) => {
 
 const BATCH = 8;
 
-const EntryV2 = ({ entry }) => (
-  <article className={`dh-entry-v2 arc-${entry.arc_color}`} data-day={entry.day} id={`day-${entry.day}`}>
-    <div className="dh-entry-v2-head">
-      <span className="dh-entry-v2-mood">{entry.mood}</span>
-      <span className={`dh-day dh-day-${entry.arc_color}`}>DAY {entry.day}</span>
-      <span className="dh-entry-v2-date">{jFmtDate(entry.date)} · <window.Sys.Age date={entry.date} mode={7} /></span>
-      <span className="dh-entry-v2-tags">
-        {entry.arcs.map((a) => {
-          const link = (entry.company_links || []).find((l) => l.arc === a && l.slug);
-          const cls = `dh-pill dh-pill-${entry.arc_color}`;
-          return link
-            ? <a key={a} className={cls} href={`company.html?slug=${encodeURIComponent(link.slug)}`}>{a}</a>
-            : <span key={a} className={cls}>{a}</span>;
-        })}
-      </span>
-    </div>
-    <p className="dh-entry-v2-ship"><span className="dh-gt">&gt;_</span>{entry.shipping_now}</p>
-    {entry.yesterday_thread && (
-      <div className="dh-entry-v2-row">
-        <span className="dh-entry-v2-label">thread</span>
-        <p className="dh-entry-v2-text thread">{entry.yesterday_thread}</p>
-      </div>
-    )}
-    {entry.raw_thought && (
-      <div className="dh-entry-v2-row">
-        <span className="dh-entry-v2-label">raw thought</span>
-        <p className="dh-entry-v2-text">{entry.raw_thought}</p>
-      </div>
-    )}
-  </article>
+// The day card, seven rows, each conditional on the field existing. An entry
+// with only the v1 fields renders exactly what it rendered before: header,
+// headline, thread, raw thought. Nothing is padded in to fill a row.
+const ARTIFACT_ICON = { doc: 'doc', repo: 'repo', deck: 'deck', site: 'site', deal: 'deal', hire: 'hire' };
+const SIGNAL_TONE = {
+  shipped: 'build', launch: 'build', hosted: 'build', deal: 'win', 'budget-unlocked': 'win',
+  hire: 'human', 'external-meeting': 'think', blocked: 'danger', unblocked: 'build',
+};
+
+const MetricChips = ({ metrics }) => (
+  <div className="dh-entry-v2-row">
+    <span className="dh-entry-v2-label">metrics</span>
+    <span className="dh-metrics">
+      {metrics.map((m, i) => (
+        <span key={m.k + i} className="dh-metric">
+          {m.unit === 'USD' && m.v < 1 ? <b>${m.v.toFixed(2)}</b> : <b>{(typeof m.v === 'number' && m.v % 1 !== 0 ? m.v.toLocaleString('en-US', { maximumFractionDigits: 2 }) : m.v.toLocaleString('en-US'))}</b>}
+          <span>{m.unit && m.unit !== 'USD' ? ` ${m.unit}` : ''}</span>
+          <i>{m.k}</i>
+        </span>
+      ))}
+    </span>
+  </div>
 );
+
+const EnergyDots = ({ n }) => (
+  <span className="dh-energy" aria-label={`energy ${n} of 5`} title={`energy ${n} of 5`}>
+    {[1, 2, 3, 4, 5].map((i) => <i key={i} className={i <= n ? 'on' : ''} />)}
+  </span>
+);
+
+// The replay chip only appears when a .cast actually exists. The player itself
+// is not here: it is a separate lazily-loaded script so the page adds zero
+// libraries until a visitor taps a chip.
+const ReplayChip = ({ replay }) => {
+  const [failed, setFailed] = useStateJ(false);
+  const play = () => {
+    // The player is a separate script that only exists if something loaded it.
+    // No chip in the 107 existing entries has a replay, so this is the path a
+    // future entry takes, not one the current site exercises.
+    if (typeof window.DH_Replay === 'function') { window.DH_Replay(replay); return; }
+    setFailed(true);
+  };
+  return (
+    <button type="button" className={`dh-replay${failed ? ' failed' : ''}`} onClick={play}>
+      <span aria-hidden="true">▶</span> replay{replay.duration_s ? ` · ${replay.duration_s}s` : ''}
+      {replay.label ? <span className="lbl">{replay.label}</span> : null}
+      {failed && <span className="lbl err">the player did not load</span>}
+    </button>
+  );
+};
+
+const EntryV2 = ({ entry }) => {
+  const hasV2 = entry.metrics || entry.artifacts || entry.signals || entry.energy !== undefined
+    || entry.meetings || entry.media || entry.replay || entry.github_commits !== undefined;
+  return (
+    <article className={`dh-entry-v2 arc-${entry.arc_color}`} data-day={entry.day} id={`day-${entry.day}`}>
+      <div className="dh-entry-v2-head">
+        <span className="dh-entry-v2-mood">{entry.mood}</span>
+        <span className={`dh-day dh-day-${entry.arc_color}`}>DAY {entry.day}</span>
+        <span className="dh-entry-v2-date">{jFmtDate(entry.date)} · <window.Sys.Age date={entry.date} mode={7} /></span>
+        <span className="dh-entry-v2-tags">
+          {entry.arcs.map((a) => {
+            const link = (entry.company_links || []).find((l) => l.arc === a && l.slug);
+            const cls = `dh-pill dh-pill-${entry.arc_color}`;
+            return link
+              ? <a key={a} className={cls} href={`company.html?slug=${encodeURIComponent(link.slug)}`}>{a}</a>
+              : <span key={a} className={cls}>{a}</span>;
+          })}
+        </span>
+      </div>
+
+      {entry.signals && entry.signals.length > 0 && (
+        <div className="dh-entry-v2-row">
+          <span className="dh-entry-v2-label">signals</span>
+          <span className="dh-signals">
+            {entry.signals.map((s) => (
+              <span key={s} className={`dh-signal dh-signal-${SIGNAL_TONE[s] || 'think'}`}>{s}</span>
+            ))}
+          </span>
+        </div>
+      )}
+
+      <p className="dh-entry-v2-ship"><span className="dh-gt">&gt;_</span> {entry.shipping_now}</p>
+
+      {entry.metrics && entry.metrics.length > 0 && <MetricChips metrics={entry.metrics} />}
+
+      {entry.media && entry.media.length > 0 && (
+        <div className="dh-entry-v2-row">
+          <span className="dh-entry-v2-label">media</span>
+          <span className="dh-media">
+            {entry.media.map((m) => (
+              <figure key={m.src} className="dh-shot">
+                <img src={m.src} alt={m.alt} loading="lazy" decoding="async" width="1600" height="900" />
+                {m.captured && <figcaption>captured {jFmtDate(m.captured)} · <window.Sys.Age date={m.captured} mode={90} /></figcaption>}
+                {entry.replay && <ReplayChip replay={entry.replay} />}
+              </figure>
+            ))}
+            {entry.replay && !(entry.media && entry.media.length) && <ReplayChip replay={entry.replay} />}
+          </span>
+        </div>
+      )}
+
+      {entry.artifacts && entry.artifacts.length > 0 && (
+        <div className="dh-entry-v2-row">
+          <span className="dh-entry-v2-label">artifacts</span>
+          <span className="dh-artifacts">
+            {entry.artifacts.map((a, i) => (
+              a.href
+                ? <a key={a.label + i} className={`dh-art dh-art-${ARTIFACT_ICON[a.kind] || 'doc'}`} href={a.href} target="_blank" rel="noreferrer">{a.label} ↗</a>
+                : <span key={a.label + i} className={`dh-art dh-art-${ARTIFACT_ICON[a.kind] || 'doc'}`}>{a.label}</span>
+            ))}
+          </span>
+        </div>
+      )}
+
+      {entry.yesterday_thread && (
+        <div className="dh-entry-v2-row">
+          <span className="dh-entry-v2-label">thread</span>
+          <p className="dh-entry-v2-text thread">{entry.yesterday_thread}</p>
+        </div>
+      )}
+      {entry.raw_thought && (
+        <div className="dh-entry-v2-row">
+          <span className="dh-entry-v2-label">raw thought</span>
+          <p className="dh-entry-v2-text">{entry.raw_thought}</p>
+        </div>
+      )}
+
+      {hasV2 && (
+        <div className="dh-entry-v2-foot">
+          {entry.github_commits !== undefined && <span><b>{entry.github_commits}</b> commits</span>}
+          {entry.meetings && (
+            <span>
+              <b>{entry.meetings.count}</b> meetings
+              {entry.meetings.external !== undefined && <> (<b>{entry.meetings.external}</b> external)</>}
+            </span>
+          )}
+          {entry.energy !== undefined && <span className="e">energy <EnergyDots n={entry.energy} /></span>}
+        </div>
+      )}
+    </article>
+  );
+};
 
 const JourneyPage = () => {
   const all = window.DH_DATA.journey;

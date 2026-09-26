@@ -185,16 +185,17 @@ const Companies = () => {
             <h2 id="co-h">Twelve companies. One operating system.</h2>
             <p className="lead">what each one does, what it ships, and the last day it made the public log.</p>
           </div>
-          <a className="section-link" href="command.html">the command view →</a>
+          <a className="section-link" href="pillars.html">all four doors →</a>
         </div>
         <div className="co-grid">
           {cos.map((c) => {
+            const pl = (DH.pillars || []).find((x) => x.slug === c.pillar);
             const last = (c.related_journey || [])[0];
             return (
-              <a key={c.slug} className="card link co-card" href={`company.html?slug=${encodeURIComponent(c.slug)}`}>
+              <a key={c.slug} className={`card link co-card accent-${(pl && pl.accent) || ''}`} href={`company.html?slug=${encodeURIComponent(c.slug)}`}>
                 <span className="h"><b>{c.name}</b><span>{c.tag}</span></span>
                 <span className="d">{c.desc}</span>
-                <span className="chips">{((c.products || []).length ? c.products.slice(0, 3) : [c.tag]).map((p) => <Chip key={p}>{p}</Chip>)}</span>
+                <span className="chips">{((c.products || []).length ? c.products.slice(0, 2) : [c.tag]).map((p) => <Chip key={p}>{p}</Chip>)}</span>
                 <span className="last">{last
                   ? <React.Fragment><i className={`dot ${last.arc_color}`} /><b>day {last.day}</b> · {fmtDate(last.date)} · <Age date={last.date} mode={30} /></React.Fragment>
                   : <React.Fragment><i className="dot" /><b>{(c.url || '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '') || c.tag}</b> · company page →</React.Fragment>}</span>
@@ -202,6 +203,21 @@ const Companies = () => {
             );
           })}
         </div>
+        {(() => {
+          const ps = (DH.pillars || []).map((p) => {
+            const last = (p.recent || [])[0];
+            return (
+              <a key={p.slug} className={`card link pillar-mini accent-${p.accent}`} href={`pillars.html#${p.slug}`}>
+                <span className="h"><b>{p.name}</b><span>{p.counts.companies} cos · {p.counts.products} prod</span></span>
+                <span className="last">{p.last_ship
+                  ? <React.Fragment><i className="dot" /><b>day {p.last_ship_day}</b> · {fmtDate(p.last_ship)} · <Age date={p.last_ship} mode={45} /></React.Fragment>
+                  : <span className="dim">quiet in the log</span>}</span>
+                {last && <span className="t">{last.ship}</span>}
+              </a>
+            );
+          });
+          return <div className="pillar-row">{ps}</div>;
+        })()}
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ const Footer = () => {
             <a href="index.html">Home</a>
             <a href="journey.html">Mission Log</a>
             <a href="writing.html">Writing</a>
-            <a href="index.html#ecosystem">Pillars</a>
+            <a href="pillars.html">Pillars</a>
             <a href="toolkit.html">Stack</a>
             <a href="command.html">Command</a>
             <a href="now.html">Now</a>

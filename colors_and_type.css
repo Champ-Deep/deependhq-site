@@ -1,10 +1,9 @@
+@import url('fonts.css');
 /* ============================================================
    Gotham Workshop — Design Tokens
    Brand: TheDeepEndHQ
    Mode: Dark only. No light mode. This site lives at night.
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
   /* ---------- Color: Base surfaces ---------- */

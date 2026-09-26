@@ -15,8 +15,19 @@ deploy/
 out/
 dist/
 build.sh
-package.json
 package-lock.json
 .nvmrc
 design-canvas.jsx
 Deliverables.html
+
+# package.json is TRACKED on purpose as of 2026-09-26. It was gitignored before,
+# which meant scripts/prerender.mjs depended on esbuild being installed by hand
+# and a fresh clone could not build at all. The devDependencies are the build
+# tools (esbuild for prerender, playwright-core for the screenshot gate,
+# wrangler for local Worker testing). node_modules stays ignored, and the
+# .assetsignore keeps all of it out of the deployed Worker.
+
+# Build and verification scratch
+scripts/.prerender-cache/
+scripts/.shots/
+.wrangler/

@@ -2,7 +2,8 @@
   "_meta": {
     "note": "SOURCE OF TRUTH for deependhq.com. Edit this file (or let the daily pipeline edit it), then run `node scripts/build-data.mjs` to regenerate data.js. The HTML pages load data.js, never this file.",
     "public_naming_rule": "NEVER name real team members on this public surface. Anonymize to roles ('a sales lead', 'the SEO team'). Refer to the founder's father as 'Chief' only. See feedback memory deependhq-public-naming.",
-    "day_one": "2025-11-01"
+    "day_one": "2025-11-01",
+    "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
     "today_day": 329,
@@ -21,19 +22,22 @@
         "ChampQuest",
         "ChampMail"
       ],
-      "url": "https://www.championsaccelerator.com"
+      "url": "https://www.championsaccelerator.com",
+      "pillar": "accelerator"
     },
     {
       "name": "Champions Infometrics",
       "desc": "Data intelligence for decisions that actually matter.",
       "tag": "Data",
-      "url": "https://www.championinfometrics.com"
+      "url": "https://www.championinfometrics.com",
+      "pillar": "champ"
     },
     {
       "name": "Champions Club",
       "desc": "Where founders meet, learn, and stop building alone.",
       "tag": "Community",
-      "url": "https://www.champions.club"
+      "url": "https://www.champions.club",
+      "pillar": "infratech-lagoons"
     },
     {
       "name": "Lake B2B",
@@ -45,25 +49,29 @@
         "Lake Harvest",
         "ChampMail"
       ],
-      "url": "https://www.lakeb2b.com"
+      "url": "https://www.lakeb2b.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "SPAN Global Services",
       "desc": "Enterprise data and demand generation at scale.",
       "tag": "Data & Services",
-      "url": "https://www.spanglobalservices.com"
+      "url": "https://www.spanglobalservices.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "Ampliz",
       "desc": "Healthcare data intelligence. Every hospital, every decision-maker.",
       "tag": "Healthcare Data",
-      "url": "https://www.ampliz.com"
+      "url": "https://www.ampliz.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "IP Momentum",
       "desc": "Intellectual property services for companies that build things.",
       "tag": "IP Services",
-      "url": "https://ipmomentum.com"
+      "url": "https://ipmomentum.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "Cirralogix",
@@ -74,7 +82,8 @@
         "DevOps",
         "Edge"
       ],
-      "url": "https://cirrologix.com"
+      "url": "https://cirrologix.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "Recruit Champ",
@@ -84,7 +93,8 @@
         "AI screening",
         "Sourcing"
       ],
-      "url": "https://recruitchamp.com"
+      "url": "https://recruitchamp.com",
+      "pillar": "accelerator"
     },
     {
       "name": "InfraTech",
@@ -95,19 +105,185 @@
         "Champions Ranch",
         "Beach Cities"
       ],
-      "url": "https://www.championinfratech.com"
+      "url": "https://www.championinfratech.com",
+      "pillar": "infratech-lagoons"
     },
     {
       "name": "Champ.fit",
       "desc": "Fitness platform. Your body, your data, your plan.",
       "tag": "Health & Wellness",
-      "url": "https://champ.fit"
+      "url": "https://champ.fit",
+      "pillar": "accelerator"
     },
     {
       "name": "Health.fit",
       "desc": "Health tracking and telemedicine for the next billion.",
       "tag": "Health & Wellness",
-      "url": "https://health.fit"
+      "url": "https://health.fit",
+      "pillar": "accelerator"
+    }
+  ],
+  "pillars": [
+    {
+      "slug": "champ",
+      "name": "Champ",
+      "accent": "build",
+      "blurb": "the product suite. signal in, work out, documents that hold up.",
+      "entity": "Champions Infometrics",
+      "companies": [
+        "Champions Infometrics"
+      ],
+      "products": [
+        {
+          "name": "ChampBeam",
+          "url": "https://champbeam.com"
+        },
+        {
+          "name": "ChampSets",
+          "url": "https://champsets.com"
+        },
+        {
+          "name": "Champ Harbinger"
+        },
+        {
+          "name": "Champ IQ"
+        },
+        {
+          "name": "Champmail"
+        },
+        {
+          "name": "ChamPDF"
+        }
+      ],
+      "arcs": [
+        "Champ Suite",
+        "Champ IQ",
+        "Champmail",
+        "ChampGraph",
+        "ChampBeam",
+        "ChampReply",
+        "ChampQuest",
+        "ChampUTM",
+        "ChampHarbinger",
+        "ChamPDF",
+        "ChampSets"
+      ]
+    },
+    {
+      "slug": "infratech-lagoons",
+      "name": "InfraTech and Lagoons",
+      "accent": "win",
+      "blurb": "property, hospitality, and the membership surface where the owners actually gather.",
+      "companies": [
+        "InfraTech",
+        "Champions Club"
+      ],
+      "products": [
+        {
+          "name": "Champion Lagoons"
+        },
+        {
+          "name": "Aventura"
+        },
+        {
+          "name": "Champions Ranch"
+        },
+        {
+          "name": "Beach Cities"
+        },
+        {
+          "name": "Royal Champion Yachts"
+        },
+        {
+          "name": "Champions Club"
+        }
+      ],
+      "arcs": [
+        "InfraTech",
+        "Champions Club",
+        "Champion Lagoons",
+        "Lagoons",
+        "Aventura",
+        "Champions Ranch",
+        "Beach Cities",
+        "Yachts"
+      ]
+    },
+    {
+      "slug": "lakeb2b",
+      "name": "LakeB2B",
+      "accent": "think",
+      "blurb": "b2b data services. the list is wrong, that is the whole problem.",
+      "companies": [
+        "Lake B2B",
+        "SPAN Global Services",
+        "Ampliz",
+        "Cirralogix",
+        "IP Momentum"
+      ],
+      "products": [
+        {
+          "name": "MetricFox"
+        },
+        {
+          "name": "Lake Current"
+        },
+        {
+          "name": "Lake Stream"
+        },
+        {
+          "name": "Lake Harvest"
+        },
+        {
+          "name": "Lake Sonar"
+        }
+      ],
+      "arcs": [
+        "Lake B2B",
+        "Cirralogix",
+        "MetricFox",
+        "Lake Sonar",
+        "Lake Current",
+        "Lake Stream",
+        "Lake Harvest",
+        "Ampliz",
+        "IP Momentum",
+        "SPAN Global Services",
+        "Five-Level Personalizer",
+        "Cadence"
+      ]
+    },
+    {
+      "slug": "accelerator",
+      "name": "Accelerator",
+      "accent": "human",
+      "blurb": "cohorts, hiring, and the longevity programmes. people, not products.",
+      "companies": [
+        "Champions Accelerator",
+        "Recruit Champ",
+        "Champ.fit",
+        "Health.fit"
+      ],
+      "products": [
+        {
+          "name": "100X Longevity"
+        },
+        {
+          "name": "World Longevity Council"
+        }
+      ],
+      "arcs": [
+        "Champions Accelerator",
+        "Recruit Champ",
+        "Champ.fit",
+        "Health.fit",
+        "Longevity",
+        "longetivity",
+        "100X Longevity",
+        "World Longevity Council",
+        "Event Scout",
+        "Social Automator"
+      ]
     }
   ],
   "arc_map": {
@@ -173,7 +349,7 @@
       "mood": "🔧",
       "shipping_now": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes, 67k wikilinks, 635 ambiguous mentions judged in under two minutes for under two cents. 45 clean merges, zero errors. not touching anything live until i trust a full review pass.",
       "yesterday_thread": "an enterprise IT services client told the team flat out: zero qualified leads in two months, no visibility into who is actually dialing. not a fun call. but a client saying it out loud beats one that goes quiet. leadership call is booked, recap and a real strategy doc go out before it.",
-      "raw_thought": "two people wrote in today with real grievances, one about a severance dispute, one pushing back on a performance plan. the automation did the right thing and refused to draft either reply on its own. some things still need an actual human, not a bot with good manners.",
+      "raw_thought": "two people wrote in today with real grievances, one of them a live HR matter that would have been easy to answer badly. the automation did the right thing and refused to draft either reply on its own. some things still need an actual human, not a bot with good manners.",
       "arcs": [
         "Celsus OS",
         "Lake B2B"

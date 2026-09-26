@@ -64,14 +64,43 @@ if ! git clone --quiet --depth 1 --branch "$BRANCH" \
 fi
 
 # Mirror the worktree onto the clone. .gitignore in the repo keeps scratch out.
+# The worktree now contains node_modules (esbuild, playwright-core, wrangler) and
+# build scratch. rsync --delete mirrors it, so without these excludes the repo
+# gains hundreds of MB of dependencies every night and the deploy slows to a
+# crawl. Verified 2026-09-26: the excludes below are load-bearing.
 rsync -a --delete \
   --exclude '.git' \
   --exclude '.DS_Store' \
+  --exclude 'node_modules' \
+  --exclude 'deependhq-next/node_modules' \
+  --exclude '**/.next' \
   --exclude 'scripts/.entry-*' \
   --exclude 'scripts/pending-entry.json' \
+  --exclude 'scripts/.prerender-cache' \
+  --exclude 'scripts/.shots' \
+  --exclude '.wrangler' \
   "$SRC_DIR"/ "$TMP/repo"/
 
 cd "$TMP/repo"
+
+# The gates run against the MIRRORED tree, not the worktree, so what is checked
+# is exactly what is about to be pushed. A failure here stops the publish.
+if [ "${PUBLISH_SKIP_GATES:-0}" != "1" ]; then
+  echo "gates: guard + build + prerender ..."
+  node scripts/guard.mjs || { echo "PUBLISH-FAILED: the naming or disclosure guard refused." >&2; exit 5; }
+  node scripts/build-data.mjs || { echo "PUBLISH-FAILED: build-data refused." >&2; exit 5; }
+  if [ -x node_modules/.bin/esbuild ] || command -v esbuild >/dev/null 2>&1; then
+    node scripts/prerender.mjs || { echo "PUBLISH-FAILED: prerender refused." >&2; exit 5; }
+  else
+    echo "  (esbuild not installed, prerender skipped. run: npm install)"
+  fi
+  git add -A
+  if git diff --cached --quiet; then
+    echo "NOTHING-TO-PUBLISH: gates ran clean and the remote already matches."
+    exit 0
+  fi
+fi
+
 git add -A
 if git diff --cached --quiet; then
   echo "NOTHING-TO-PUBLISH: remote already matches the worktree."

@@ -312,3 +312,103 @@ a.chip:hover { text-decoration: none; border-color: var(--line-2); }
 .dh-lex-row { max-width: 100%; min-width: 0; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); }
 @media (max-width: 40rem) { .dh-lex-row { grid-template-columns: minmax(0, 1fr); } }
 .dh-lex-def { min-width: 0; overflow-wrap: anywhere; }
+
+/* ---------------------------------------------------------------------------
+   Entry schema v2 rows. Every one of these is conditional on the field being
+   present, so the 107 existing entries render exactly as they did before and a
+   new entry can carry as much or as little as the night produced.
+--------------------------------------------------------------------------- */
+.dh-metrics { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); }
+.dh-metric { display: inline-flex; align-items: baseline; gap: 4px; font: 500 var(--text-sm) var(--font-mono); }
+.dh-metric b { color: var(--build); font-variant-numeric: tabular-nums; font-weight: 700; }
+.dh-metric span { color: var(--dim); font-size: var(--text-xs); }
+.dh-metric i { color: var(--dim); font-style: normal; font-size: var(--text-xs); }
+
+.dh-signals { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); }
+.dh-signal { font: 600 var(--text-xs) var(--font-mono); letter-spacing: .04em; padding: 2px var(--s2); border-radius: var(--r-sm); border: 1px solid var(--line); color: var(--muted); background: var(--card-2); }
+.dh-signal::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; background: currentColor; }
+.dh-signal-build { color: var(--build); background: var(--build-wash); border-color: var(--build-dim); }
+.dh-signal-win { color: var(--win); background: var(--win-wash); border-color: var(--win-dim); }
+.dh-signal-think { color: var(--think-text); background: var(--think-wash); border-color: var(--think-dim); }
+.dh-signal-human { color: var(--human-text); background: var(--human-wash); }
+.dh-signal-danger { color: var(--danger-text); background: var(--danger-wash); }
+
+.dh-media { display: flex; flex-wrap: wrap; gap: var(--s3); }
+.dh-shot { margin: 0; display: grid; gap: var(--s1); max-width: min(100%, 420px); }
+.dh-shot img { width: 100%; height: auto; border-radius: var(--r-md); border: 1px solid var(--line); display: block; }
+.dh-shot figcaption { font: 500 var(--text-xs) var(--font-mono); color: var(--dim); }
+
+.dh-replay { justify-self: start; display: inline-flex; align-items: center; gap: var(--s1); font: 600 var(--text-xs) var(--font-mono); color: var(--build); background: var(--build-wash); border: 1px solid var(--build-dim); border-radius: 999px; padding: 0 var(--s3); min-height: 32px; cursor: pointer; }
+.dh-replay:hover { background: color-mix(in oklab, var(--build) 22%, transparent); }
+.dh-replay .lbl { color: var(--muted); font-weight: 500; }
+.dh-replay .lbl.err { color: var(--danger-text); }
+.dh-replay.failed { color: var(--danger-text); background: var(--danger-wash); border-color: color-mix(in oklab, var(--danger) 40%, var(--line)); }
+
+.dh-artifacts { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); }
+.dh-art { font: 500 var(--text-sm) var(--font-mono); color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+.dh-art::before { content: ''; width: 10px; height: 10px; flex: none; border: 1px solid currentColor; border-radius: 2px; opacity: .8; }
+.dh-art-repo::before { border-radius: 0; transform: rotate(45deg); }
+.dh-art-deck::before { border-radius: 0; border-width: 0 0 2px 2px; }
+.dh-art-deal::before { border-radius: 50%; }
+.dh-art-hire::before { border-radius: 50% 50% 0 50%; }
+.dh-art-site::before { border-radius: 1px; border-style: dashed; }
+a.dh-art:hover { color: var(--build); }
+
+.dh-entry-v2-foot { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); align-items: center; font: 500 var(--text-xs) var(--font-mono); color: var(--dim); border-top: 1px solid var(--line); margin-top: var(--s3); padding-top: var(--s3); }
+.dh-entry-v2-foot b { color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums; }
+.dh-energy { display: inline-flex; gap: 3px; vertical-align: middle; }
+.dh-energy i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--line-2); display: block; }
+.dh-energy i.on { background: var(--build); border-color: var(--build); }
+
+/* ---------------------------------------------------------------------------
+   Pillars: four doors. The four accents appear together on exactly one page,
+   which is what makes the set read as a system instead of a second brand.
+   Only the left rail and the count take the colour; the body stays neutral so
+   the page does not turn into a colour chart.
+--------------------------------------------------------------------------- */
+.accent-build  { --door: var(--build);  --door-wash: var(--build-wash);  --door-text: var(--build); }
+.accent-think  { --door: var(--think);  --door-wash: var(--think-wash);  --door-text: var(--think-text); }
+.accent-win    { --door: var(--win);    --door-wash: var(--win-wash);    --door-text: var(--win); }
+.accent-human  { --door: var(--human);  --door-wash: var(--human-wash);  --door-text: var(--human-text); }
+
+.pillar-grid { display: grid; gap: var(--bento-gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+
+.pillar-card { display: grid; gap: var(--s3); align-content: start; padding: var(--s5); position: relative; }
+.pillar-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--door, var(--build)); border-radius: var(--r-lg) 0 0 var(--r-lg); }
+.pillar-card .h { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; }
+.pillar-card .h h2 { font: 700 var(--text-lg) var(--font-ui); letter-spacing: -.015em; color: var(--text); }
+.pillar-card .h .counts { font: 500 var(--text-xs) var(--font-mono); color: var(--door-text, var(--dim)); white-space: nowrap; }
+.pillar-card .blurb { color: var(--muted); font: 400 var(--text-sm) var(--font-ui); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pillar-card .last { display: flex; align-items: center; gap: var(--s1); flex-wrap: wrap; font: 500 var(--text-xs) var(--font-mono); color: var(--muted); }
+.pillar-card .last b { color: var(--text); }
+.pillar-card .note { font: 400 var(--text-xs) var(--font-mono); color: var(--danger-text); }
+.pillar-card .dot.on { background: var(--door, var(--build)); }
+
+.pillar-card .members { display: grid; gap: var(--s1); }
+.pillar-card .member { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s2); text-decoration: none; color: inherit; padding: var(--s1) 0; border-bottom: 1px dashed var(--line); min-height: 32px; }
+.pillar-card .member b { font: 600 var(--text-sm) var(--font-ui); color: var(--text); }
+.pillar-card .member span { font: 500 var(--text-xs) var(--font-mono); color: var(--dim); }
+.pillar-card .member:hover b { color: var(--door-text, var(--build)); }
+.pillar-card .chips a { text-decoration: none; }
+
+.pillar-card .recent { display: grid; gap: var(--s1); padding-top: var(--s2); border-top: 1px solid var(--line); }
+.pillar-card .recent .k { font: 600 var(--text-xs) var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+.pillar-card .recent .r { font: 400 var(--text-xs) var(--font-mono); color: var(--muted); text-decoration: none; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pillar-card .recent .r b { color: var(--door-text, var(--build)); }
+.pillar-card .recent .r:hover { color: var(--text); }
+
+/* the four mini doors under the homepage twelve */
+.pillar-row { display: grid; gap: var(--bento-gap); grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); margin-top: var(--bento-gap); }
+.pillar-mini { display: grid; gap: var(--s2); padding: var(--s4); text-decoration: none; color: inherit; align-content: start; border-left: 3px solid var(--door, var(--build)); }
+.pillar-mini .h { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s2); }
+.pillar-mini .h b { font: 700 var(--text-md) var(--font-ui); color: var(--text); }
+.pillar-mini .h span { font: 500 var(--text-xs) var(--font-mono); color: var(--door-text, var(--dim)); white-space: nowrap; }
+.pillar-mini .last { display: flex; align-items: center; gap: var(--s1); flex-wrap: wrap; font: 500 var(--text-xs) var(--font-mono); color: var(--muted); }
+.pillar-mini .t { font: 400 var(--text-xs) var(--font-mono); color: var(--dim); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pillar-mini:hover { border-color: var(--door, var(--build)); }
+
+/* who-you-are filter pills. 44px targets, one line, no colour-only state. */
+.filter-pills { display: flex; flex-wrap: wrap; gap: var(--s2); margin-bottom: var(--bento-gap); }
+.pill { font: 500 var(--text-xs) var(--font-mono); color: var(--muted); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 0 var(--s4); min-height: 44px; cursor: pointer; }
+.pill:hover { color: var(--text); border-color: var(--line-2); }
+.pill.on { color: var(--build); background: var(--build-wash); border-color: color-mix(in oklab, var(--build) 40%, var(--line)); }

@@ -4,7 +4,14 @@
 .wrangler/**
 wrangler.toml
 wrangler.jsonc
+worker/**
 *.md
 
 # Next.js app source (deployed via Vercel, not as Worker assets)
 deependhq-next/
+
+# Never ship the source of the redesign staging area or scratch dirs
+redesign-*/
+.next/
+out/
+dist/

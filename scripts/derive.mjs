@@ -123,6 +123,85 @@ export function derive(data, now = new Date()) {
     })(),
   };
 
+  // ---- pillars ------------------------------------------------------------
+  // Four doors instead of a wall of twelve cards. `last_ship` is derived from
+  // the log, never stored: the newest journey entry whose arcs name a company
+  // or a product in that pillar. A pillar with no recent log activity says so
+  // rather than borrowing a date from somewhere else.
+  const pillars = Array.isArray(data.pillars) ? data.pillars : [];
+  if (pillars.length) {
+    // Arc labels are free text in the log, not a controlled vocabulary, so a
+    // pillar declares which labels count as its activity in content.json
+    // (pillars[].arcs) rather than relying on an exact match against names.
+    // An entry can land in two pillars when it names two.
+    const labelsFor = (pl) => {
+      const set = new Set(
+        [...(pl.arcs || []),
+         ...(pl.companies || []),
+         ...(pl.products || []).map((p) => (typeof p === 'string' ? p : p.name)),
+         pl.name]
+          .filter(Boolean)
+          .map((s) => String(s).toLowerCase())
+      );
+      return set;
+    };
+    const companyByName = new Map(companies.map((c) => [String(c.name).toLowerCase(), c]));
+    const entryPillars = new Map(); // date -> [pillar slug]
+    for (const pl of pillars) {
+      const labels = labelsFor(pl);
+      let last = null; let day = null; let n30 = 0; const recent = [];
+      for (const e of journey) {
+        const hit = (e.arcs || []).some((a) => labels.has(String(a).toLowerCase()));
+        if (!hit) continue;
+        if (!entryPillars.has(e.date)) entryPillars.set(e.date, []);
+        entryPillars.get(e.date).push(pl.slug);
+        if (!last || e.date > last) { last = e.date; day = e.day; }
+        if (e.date >= since30) { n30++; if (recent.length < 4) recent.push({ day: e.day, date: e.date, ship: String(e.shipping_now || '').replace(/\s+/g, ' ').trim().slice(0, 110) }); }
+      }
+      pl.last_ship = last;
+      pl.last_ship_day = day;
+      pl.days_since = last ? daysBetween(last, today) : null;
+      pl.entries_30d = n30;
+      pl.recent = recent;
+      // Companies in this pillar that exist in companies[], so a card can link
+      // straight to the company page instead of a dead anchor.
+      pl.company_slugs = (pl.companies || [])
+        .map((n) => companyByName.get(String(n).toLowerCase()))
+        .filter(Boolean)
+        .map((c) => c.slug);
+      pl.counts = {
+        companies: (pl.companies || []).length,
+        products: (pl.products || []).length,
+        labels: labelsFor(pl).size,
+      };
+    }
+    // Every entry carries the pillars it touched, so a day card and the heatmap
+    // can colour by pillar without a second pass over the content.
+    for (const e of journey) {
+      const slugs = entryPillars.get(e.date);
+      if (slugs && slugs.length) e.pillars = slugs;
+    }
+    // The segment router maps people to doors, not to companies.
+    const SEGMENT_DOORS = {
+      founder: ['accelerator', 'champ'],
+      operator: ['lakeb2b', 'champ'],
+      hni: ['infratech-lagoons'],
+      recruiter: ['accelerator'],
+      engineer: ['champ', 'lakeb2b'],
+    };
+    const bySlug = new Map(pillars.map((pl) => [pl.slug, pl]));
+    data.doors = {
+      order: ['champ', 'infratech-lagoons', 'lakeb2b', 'accelerator'],
+      segments: Object.fromEntries(
+        Object.entries(SEGMENT_DOORS).map(([seg, slugs]) => [
+          seg,
+          slugs.map((s) => (bySlug.has(s) ? s : null)).filter(Boolean),
+        ])
+      ),
+    };
+    data.stats.pillars = pillars.length;
+  }
+
   // ---- stack_now ------------------------------------------------------------
   // One list. Each item: name, what, url, kind, category, last_seen, mentions_90d.
   //   kind: built    a thing Deep made (toolkit tool/repo with a repo URL)

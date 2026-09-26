@@ -5,8 +5,34 @@
   "observability": {
     "enabled": true
   },
+  "//main": "Adds worker/index.js to what was a static assets-only deployment. Assets still serve every file; the Worker adds /cta, the /field-notes and /companies redirects, POST /api/decide, GET /showcase, and the HTMLRewriter pass.",
+  "main": "worker/index.js",
   "assets": {
-    "directory": "."
+    "//binding": "MUST be declared. Local wrangler does not auto-inject the ASSETS binding, so env.ASSETS was undefined and every page 500'd. Declaring it explicitly is correct on deployed Workers too.",
+    "directory": ".",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "//run_worker_first": "Wrangler serves an exactly matching asset before the Worker runs. Without this list /field-notes answered 200 with field-notes.html and never reached the redirect, and the HTMLRewriter plus the security headers never ran on a normal page load. Every HTML route is listed so it hits the Worker first. Static assets (css, js, data.js, fonts, xml, images) keep the cheaper direct asset path.",
+    "run_worker_first": [
+      "/",
+      "/cta",
+      "/command",
+      "/companies",
+      "/company",
+      "/field-notes",
+      "/journey",
+      "/lead-scorer",
+      "/mission-log",
+      "/now",
+      "/og",
+      "/pillars",
+      "/post",
+      "/toolkit",
+      "/writing",
+      "/404",
+      "/api/*",
+      "/showcase*"
+    ]
   },
   "compatibility_flags": [
     "nodejs_compat"

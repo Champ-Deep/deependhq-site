@@ -8,6 +8,7 @@
 // No dependencies. Node 18+.
 
 import { readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { derive } from './derive.mjs';
@@ -39,6 +40,19 @@ function main() {
     : (typeof o === 'string' ? deDash(o) : o);
   const cleaned = scrub(data);
   Object.assign(data, cleaned);
+
+  // Mechanical gates run BEFORE anything is written. A naming hit or a
+  // sensitive disclosure refuses the build rather than shipping and warning
+  // afterwards. see scripts/guard.mjs and scripts/guard-selftest.mjs.
+  {
+    const allow = process.argv.includes('--allow-sensitive');
+    try {
+      execFileSync(process.execPath, [join(here, 'guard.mjs'), ...(allow ? ['--allow-sensitive'] : [])], { stdio: 'inherit' });
+    } catch {
+      console.error('build-data: the guard refused the build. data.js was not written.');
+      process.exit(1);
+    }
+  }
 
   // Journey is always newest-first. Sort defensively so a manual edit to
   // content.json (pasting an entry in the wrong spot) never mis-orders the feed.

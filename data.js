@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-26T08:43:30.081Z
+// Built 2026-09-26T10:30:36.278Z
 
 window.DH_DATA = {
   "brand": {
@@ -21,6 +21,7 @@ window.DH_DATA = {
         "ChampMail"
       ],
       "url": "https://www.championsaccelerator.com",
+      "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
         {
@@ -176,6 +177,7 @@ window.DH_DATA = {
       "desc": "Data intelligence for decisions that actually matter.",
       "tag": "Data",
       "url": "https://www.championinfometrics.com",
+      "pillar": "champ",
       "slug": "champions-infometrics",
       "related_journey": [],
       "related_writing": []
@@ -185,6 +187,7 @@ window.DH_DATA = {
       "desc": "Where founders meet, learn, and stop building alone.",
       "tag": "Community",
       "url": "https://www.champions.club",
+      "pillar": "infratech-lagoons",
       "slug": "champions-club",
       "related_journey": [
         {
@@ -207,6 +210,7 @@ window.DH_DATA = {
         "ChampMail"
       ],
       "url": "https://www.lakeb2b.com",
+      "pillar": "lakeb2b",
       "slug": "lake-b2b",
       "related_journey": [
         {
@@ -344,6 +348,7 @@ window.DH_DATA = {
       "desc": "Enterprise data and demand generation at scale.",
       "tag": "Data & Services",
       "url": "https://www.spanglobalservices.com",
+      "pillar": "lakeb2b",
       "slug": "span-global-services",
       "related_journey": [],
       "related_writing": []
@@ -353,6 +358,7 @@ window.DH_DATA = {
       "desc": "Healthcare data intelligence. Every hospital, every decision-maker.",
       "tag": "Healthcare Data",
       "url": "https://www.ampliz.com",
+      "pillar": "lakeb2b",
       "slug": "ampliz",
       "related_journey": [],
       "related_writing": []
@@ -362,6 +368,7 @@ window.DH_DATA = {
       "desc": "Intellectual property services for companies that build things.",
       "tag": "IP Services",
       "url": "https://ipmomentum.com",
+      "pillar": "lakeb2b",
       "slug": "ip-momentum",
       "related_journey": [],
       "related_writing": []
@@ -376,6 +383,7 @@ window.DH_DATA = {
         "Edge"
       ],
       "url": "https://cirrologix.com",
+      "pillar": "lakeb2b",
       "slug": "cirralogix",
       "related_journey": [
         {
@@ -421,6 +429,7 @@ window.DH_DATA = {
         "Sourcing"
       ],
       "url": "https://recruitchamp.com",
+      "pillar": "accelerator",
       "slug": "recruit-champ",
       "related_journey": [],
       "related_writing": []
@@ -435,6 +444,7 @@ window.DH_DATA = {
         "Beach Cities"
       ],
       "url": "https://www.championinfratech.com",
+      "pillar": "infratech-lagoons",
       "slug": "infratech",
       "related_journey": [
         {
@@ -469,6 +479,7 @@ window.DH_DATA = {
       "desc": "Fitness platform. Your body, your data, your plan.",
       "tag": "Health & Wellness",
       "url": "https://champ.fit",
+      "pillar": "accelerator",
       "slug": "champ-fit",
       "related_journey": [],
       "related_writing": []
@@ -478,9 +489,302 @@ window.DH_DATA = {
       "desc": "Health tracking and telemedicine for the next billion.",
       "tag": "Health & Wellness",
       "url": "https://health.fit",
+      "pillar": "accelerator",
       "slug": "health-fit",
       "related_journey": [],
       "related_writing": []
+    }
+  ],
+  "pillars": [
+    {
+      "slug": "champ",
+      "name": "Champ",
+      "accent": "build",
+      "blurb": "the product suite. signal in, work out, documents that hold up.",
+      "entity": "Champions Infometrics",
+      "companies": [
+        "Champions Infometrics"
+      ],
+      "products": [
+        {
+          "name": "ChampBeam",
+          "url": "https://champbeam.com"
+        },
+        {
+          "name": "ChampSets",
+          "url": "https://champsets.com"
+        },
+        {
+          "name": "Champ Harbinger"
+        },
+        {
+          "name": "Champ IQ"
+        },
+        {
+          "name": "Champmail"
+        },
+        {
+          "name": "ChamPDF"
+        }
+      ],
+      "arcs": [
+        "Champ Suite",
+        "Champ IQ",
+        "Champmail",
+        "ChampGraph",
+        "ChampBeam",
+        "ChampReply",
+        "ChampQuest",
+        "ChampUTM",
+        "ChampHarbinger",
+        "ChamPDF",
+        "ChampSets"
+      ],
+      "last_ship": "2026-09-12",
+      "last_ship_day": 316,
+      "days_since": 14,
+      "entries_30d": 3,
+      "recent": [
+        {
+          "day": 316,
+          "date": "2026-09-12",
+          "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spellin"
+        },
+        {
+          "day": 315,
+          "date": "2026-09-11",
+          "ship": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo."
+        },
+        {
+          "day": 311,
+          "date": "2026-09-07",
+          "ship": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom "
+        }
+      ],
+      "company_slugs": [
+        "champions-infometrics"
+      ],
+      "counts": {
+        "companies": 1,
+        "products": 6,
+        "labels": 14
+      }
+    },
+    {
+      "slug": "infratech-lagoons",
+      "name": "InfraTech and Lagoons",
+      "accent": "win",
+      "blurb": "property, hospitality, and the membership surface where the owners actually gather.",
+      "companies": [
+        "InfraTech",
+        "Champions Club"
+      ],
+      "products": [
+        {
+          "name": "Champion Lagoons"
+        },
+        {
+          "name": "Aventura"
+        },
+        {
+          "name": "Champions Ranch"
+        },
+        {
+          "name": "Beach Cities"
+        },
+        {
+          "name": "Royal Champion Yachts"
+        },
+        {
+          "name": "Champions Club"
+        }
+      ],
+      "arcs": [
+        "InfraTech",
+        "Champions Club",
+        "Champion Lagoons",
+        "Lagoons",
+        "Aventura",
+        "Champions Ranch",
+        "Beach Cities",
+        "Yachts"
+      ],
+      "last_ship": "2026-09-12",
+      "last_ship_day": 316,
+      "days_since": 14,
+      "entries_30d": 3,
+      "recent": [
+        {
+          "day": 316,
+          "date": "2026-09-12",
+          "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spellin"
+        },
+        {
+          "day": 312,
+          "date": "2026-09-08",
+          "ship": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and docum"
+        },
+        {
+          "day": 307,
+          "date": "2026-09-03",
+          "ship": "day two of the apac daily loop. the automation ran on time, compiled the tracker, and found it empty. two days"
+        }
+      ],
+      "company_slugs": [
+        "infratech",
+        "champions-club"
+      ],
+      "counts": {
+        "companies": 2,
+        "products": 6,
+        "labels": 10
+      }
+    },
+    {
+      "slug": "lakeb2b",
+      "name": "LakeB2B",
+      "accent": "think",
+      "blurb": "b2b data services. the list is wrong, that is the whole problem.",
+      "companies": [
+        "Lake B2B",
+        "SPAN Global Services",
+        "Ampliz",
+        "Cirralogix",
+        "IP Momentum"
+      ],
+      "products": [
+        {
+          "name": "MetricFox"
+        },
+        {
+          "name": "Lake Current"
+        },
+        {
+          "name": "Lake Stream"
+        },
+        {
+          "name": "Lake Harvest"
+        },
+        {
+          "name": "Lake Sonar"
+        }
+      ],
+      "arcs": [
+        "Lake B2B",
+        "Cirralogix",
+        "MetricFox",
+        "Lake Sonar",
+        "Lake Current",
+        "Lake Stream",
+        "Lake Harvest",
+        "Ampliz",
+        "IP Momentum",
+        "SPAN Global Services",
+        "Five-Level Personalizer",
+        "Cadence"
+      ],
+      "last_ship": "2026-09-25",
+      "last_ship_day": 329,
+      "days_since": 1,
+      "entries_30d": 17,
+      "recent": [
+        {
+          "day": 329,
+          "date": "2026-09-25",
+          "ship": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedi"
+        },
+        {
+          "day": 328,
+          "date": "2026-09-24",
+          "ship": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real gr"
+        },
+        {
+          "day": 325,
+          "date": "2026-09-21",
+          "ship": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured "
+        },
+        {
+          "day": 322,
+          "date": "2026-09-18",
+          "ship": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget"
+        }
+      ],
+      "company_slugs": [
+        "lake-b2b",
+        "span-global-services",
+        "ampliz",
+        "cirralogix",
+        "ip-momentum"
+      ],
+      "counts": {
+        "companies": 5,
+        "products": 5,
+        "labels": 13
+      }
+    },
+    {
+      "slug": "accelerator",
+      "name": "Accelerator",
+      "accent": "human",
+      "blurb": "cohorts, hiring, and the longevity programmes. people, not products.",
+      "companies": [
+        "Champions Accelerator",
+        "Recruit Champ",
+        "Champ.fit",
+        "Health.fit"
+      ],
+      "products": [
+        {
+          "name": "100X Longevity"
+        },
+        {
+          "name": "World Longevity Council"
+        }
+      ],
+      "arcs": [
+        "Champions Accelerator",
+        "Recruit Champ",
+        "Champ.fit",
+        "Health.fit",
+        "Longevity",
+        "longetivity",
+        "100X Longevity",
+        "World Longevity Council",
+        "Event Scout",
+        "Social Automator"
+      ],
+      "last_ship": "2026-09-23",
+      "last_ship_day": 327,
+      "days_since": 3,
+      "entries_30d": 3,
+      "recent": [
+        {
+          "day": 327,
+          "date": "2026-09-23",
+          "ship": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it "
+        },
+        {
+          "day": 323,
+          "date": "2026-09-19",
+          "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that "
+        },
+        {
+          "day": 318,
+          "date": "2026-09-14",
+          "ship": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: eve"
+        }
+      ],
+      "company_slugs": [
+        "champions-accelerator",
+        "recruit-champ",
+        "champ-fit",
+        "health-fit"
+      ],
+      "counts": {
+        "companies": 4,
+        "products": 2,
+        "labels": 11
+      }
     }
   ],
   "arc_map": {
@@ -550,6 +854,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -558,7 +865,7 @@ window.DH_DATA = {
       "mood": "🔧",
       "shipping_now": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes, 67k wikilinks, 635 ambiguous mentions judged in under two minutes for under two cents. 45 clean merges, zero errors. not touching anything live until i trust a full review pass.",
       "yesterday_thread": "an enterprise IT services client told the team flat out: zero qualified leads in two months, no visibility into who is actually dialing. not a fun call. but a client saying it out loud beats one that goes quiet. leadership call is booked, recap and a real strategy doc go out before it.",
-      "raw_thought": "two people wrote in today with real grievances, one about a severance dispute, one pushing back on a performance plan. the automation did the right thing and refused to draft either reply on its own. some things still need an actual human, not a bot with good manners.",
+      "raw_thought": "two people wrote in today with real grievances, one of them a live HR matter that would have been easy to answer badly. the automation did the right thing and refused to draft either reply on its own. some things still need an actual human, not a bot with good manners.",
       "arcs": [
         "Celsus OS",
         "Lake B2B"
@@ -575,6 +882,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -600,6 +910,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -650,6 +963,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -694,6 +1010,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -719,6 +1038,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -744,6 +1066,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -769,6 +1094,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -794,6 +1122,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -819,6 +1150,10 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "lakeb2b",
+        "accelerator"
       ]
     },
     {
@@ -844,6 +1179,10 @@ window.DH_DATA = {
           "company_name": "Champions Club",
           "slug": "champions-club"
         }
+      ],
+      "pillars": [
+        "champ",
+        "infratech-lagoons"
       ]
     },
     {
@@ -869,6 +1208,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -894,6 +1236,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -950,6 +1295,10 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "infratech-lagoons",
+        "lakeb2b"
       ]
     },
     {
@@ -975,6 +1324,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -994,6 +1346,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1019,6 +1374,10 @@ window.DH_DATA = {
           "company_name": "InfraTech",
           "slug": "infratech"
         }
+      ],
+      "pillars": [
+        "infratech-lagoons",
+        "lakeb2b"
       ]
     },
     {
@@ -1044,6 +1403,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1069,6 +1431,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1094,6 +1459,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1119,6 +1487,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1144,6 +1515,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1169,6 +1543,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -1194,6 +1571,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1219,6 +1599,10 @@ window.DH_DATA = {
           "company_name": "InfraTech",
           "slug": "infratech"
         }
+      ],
+      "pillars": [
+        "infratech-lagoons",
+        "accelerator"
       ]
     },
     {
@@ -1238,6 +1622,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1263,6 +1650,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1307,6 +1697,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -1332,6 +1725,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1357,6 +1753,10 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b",
+        "accelerator"
       ]
     },
     {
@@ -1407,6 +1807,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1432,6 +1835,10 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b",
+        "accelerator"
       ]
     },
     {
@@ -1457,6 +1864,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -1482,6 +1892,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -1507,6 +1920,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1532,6 +1948,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1557,6 +1976,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1582,6 +2004,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1607,6 +2032,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1632,6 +2060,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1657,6 +2088,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -1707,6 +2141,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1732,6 +2169,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1757,6 +2197,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1782,6 +2225,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1807,6 +2253,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1832,6 +2281,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1857,6 +2309,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1882,6 +2337,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1907,6 +2365,10 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "champ",
+        "lakeb2b"
       ]
     },
     {
@@ -1932,6 +2394,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1957,6 +2422,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -1982,6 +2450,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2007,6 +2478,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -2032,6 +2506,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2057,6 +2534,10 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "champ",
+        "lakeb2b"
       ]
     },
     {
@@ -2082,6 +2563,10 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "champ",
+        "lakeb2b"
       ]
     },
     {
@@ -2107,6 +2592,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2132,6 +2620,10 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b",
+        "accelerator"
       ]
     },
     {
@@ -2157,6 +2649,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -2182,6 +2677,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2207,6 +2705,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2232,6 +2733,10 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b",
+        "accelerator"
       ]
     },
     {
@@ -2257,6 +2762,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2282,6 +2790,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2307,6 +2818,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2332,6 +2846,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2357,6 +2874,10 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b",
+        "accelerator"
       ]
     },
     {
@@ -2382,6 +2903,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -2407,6 +2931,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2432,6 +2959,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2482,6 +3012,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2532,6 +3065,10 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "champ",
+        "lakeb2b"
       ]
     },
     {
@@ -2557,6 +3094,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2582,6 +3122,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2607,6 +3150,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2632,6 +3178,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2657,6 +3206,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2739,6 +3291,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2764,6 +3319,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -2789,6 +3347,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2814,6 +3375,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -2839,6 +3403,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -2889,6 +3456,10 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "lakeb2b",
+        "accelerator"
       ]
     },
     {
@@ -2914,6 +3485,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -2996,6 +3570,9 @@ window.DH_DATA = {
           "company_name": null,
           "slug": null
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -3040,6 +3617,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "lakeb2b"
       ]
     },
     {
@@ -3065,6 +3645,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "champ"
       ]
     },
     {
@@ -3109,6 +3692,9 @@ window.DH_DATA = {
           "company_name": "Lake B2B",
           "slug": "lake-b2b"
         }
+      ],
+      "pillars": [
+        "accelerator"
       ]
     },
     {
@@ -3134,6 +3720,9 @@ window.DH_DATA = {
           "company_name": "Champions Accelerator",
           "slug": "champions-accelerator"
         }
+      ],
+      "pillars": [
+        "infratech-lagoons"
       ]
     }
   ],
@@ -5073,7 +5662,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-09-26T08:43:29.948Z",
+    "built": "2026-09-26T10:30:36.263Z",
     "built_date": "2026-09-26",
     "newest_entry": {
       "date": "2026-09-25",
@@ -6201,7 +6790,36 @@ window.DH_DATA = {
         "arc": "longevity",
         "n": 1
       }
-    ]
+    ],
+    "pillars": 4
+  },
+  "doors": {
+    "order": [
+      "champ",
+      "infratech-lagoons",
+      "lakeb2b",
+      "accelerator"
+    ],
+    "segments": {
+      "founder": [
+        "accelerator",
+        "champ"
+      ],
+      "operator": [
+        "lakeb2b",
+        "champ"
+      ],
+      "hni": [
+        "infratech-lagoons"
+      ],
+      "recruiter": [
+        "accelerator"
+      ],
+      "engineer": [
+        "champ",
+        "lakeb2b"
+      ]
+    }
   },
   "stack_now": {
     "items": [
@@ -6752,5 +7370,5 @@ window.DH_DATA = {
       "essays": 14
     }
   },
-  "built": "2026-09-26T08:43:30.081Z"
+  "built": "2026-09-26T10:30:36.278Z"
 };

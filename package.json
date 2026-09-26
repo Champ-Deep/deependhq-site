@@ -1,0 +1,22 @@
+{
+  "name": "deependhq-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "deependhq.com. Static assets plus a Cloudflare Worker. Published by scripts/publish.sh.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-data.mjs && node scripts/prerender.mjs",
+    "build:data": "node scripts/build-data.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "check": "node scripts/build-data.mjs",
+    "gaps": "node scripts/check-gaps.mjs",
+    "publish": "bash scripts/publish.sh",
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "shot": "node scripts/shot.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.0",
+    "playwright-core": "1.49.1",
+    "wrangler": "4.125.0"
+  }
+}
