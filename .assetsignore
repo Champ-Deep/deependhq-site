@@ -7,6 +7,14 @@ wrangler.jsonc
 worker/**
 *.md
 
+# Dependencies are NEVER assets. Cloudflare builds runs npm install in the
+# checkout, and node_modules/workerd alone is 135MB against a 25MB per-asset
+# limit. Without these the build dies at the asset-count step and NOTHING
+# deploys. Verified 2026-09-26: this pair is the whole reason two publishes
+# looked successful and never reached the live site.
+node_modules/
+package-lock.json
+
 # Next.js app source (deployed via Vercel, not as Worker assets)
 deependhq-next/
 

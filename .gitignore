@@ -15,7 +15,6 @@ deploy/
 out/
 dist/
 build.sh
-package-lock.json
 .nvmrc
 design-canvas.jsx
 Deliverables.html

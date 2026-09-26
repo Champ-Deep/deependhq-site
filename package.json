@@ -8,14 +8,18 @@
     "build": "node scripts/build-data.mjs && node scripts/prerender.mjs",
     "build:data": "node scripts/build-data.mjs",
     "prerender": "node scripts/prerender.mjs",
-    "check": "node scripts/build-data.mjs",
+    "check": "node scripts/guard.mjs && node scripts/build-data.mjs",
+    "test": "node scripts/guard-selftest.mjs && node scripts/ingest-selftest.mjs",
     "gaps": "node scripts/check-gaps.mjs",
     "publish": "bash scripts/publish.sh",
     "fonts": "node scripts/fetch-fonts.mjs",
     "shot": "node scripts/shot.mjs"
   },
+  "//dependencies": "esbuild is a BUILD dependency, not a dev one. Cloudflare builds can install with NODE_ENV=production, which skips devDependencies and leaves prerender with no bundler, so the pages would publish with an empty #root. playwright-core and wrangler stay dev: they are only used by hand.",
+  "dependencies": {
+    "esbuild": "0.24.0"
+  },
   "devDependencies": {
-    "esbuild": "0.24.0",
     "playwright-core": "1.49.1",
     "wrangler": "4.125.0"
   }
