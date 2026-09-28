@@ -2,11 +2,12 @@
   "_meta": {
     "note": "SOURCE OF TRUTH for deependhq.com. Edit this file (or let the daily pipeline edit it), then run `node scripts/build-data.mjs` to regenerate data.js. The HTML pages load data.js, never this file.",
     "public_naming_rule": "NEVER name real team members on this public surface. Anonymize to roles ('a sales lead', 'the SEO team'). Refer to the founder's father as 'Chief' only. See feedback memory deependhq-public-naming.",
-    "day_one": "2025-11-01"
+    "day_one": "2025-11-01",
+    "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 255,
-    "today_date": "2026-07-13",
+    "today_day": 330,
+    "today_date": "2026-09-26",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -21,19 +22,22 @@
         "ChampQuest",
         "ChampMail"
       ],
-      "url": "https://www.championsaccelerator.com"
+      "url": "https://www.championsaccelerator.com",
+      "pillar": "accelerator"
     },
     {
       "name": "Champions Infometrics",
       "desc": "Data intelligence for decisions that actually matter.",
       "tag": "Data",
-      "url": "https://www.championinfometrics.com"
+      "url": "https://www.championinfometrics.com",
+      "pillar": "champ"
     },
     {
       "name": "Champions Club",
       "desc": "Where founders meet, learn, and stop building alone.",
       "tag": "Community",
-      "url": "https://www.champions.club"
+      "url": "https://www.champions.club",
+      "pillar": "infratech-lagoons"
     },
     {
       "name": "Lake B2B",
@@ -45,25 +49,29 @@
         "Lake Harvest",
         "ChampMail"
       ],
-      "url": "https://www.lakeb2b.com"
+      "url": "https://www.lakeb2b.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "SPAN Global Services",
       "desc": "Enterprise data and demand generation at scale.",
       "tag": "Data & Services",
-      "url": "https://www.spanglobalservices.com"
+      "url": "https://www.spanglobalservices.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "Ampliz",
       "desc": "Healthcare data intelligence. Every hospital, every decision-maker.",
       "tag": "Healthcare Data",
-      "url": "https://www.ampliz.com"
+      "url": "https://www.ampliz.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "IP Momentum",
       "desc": "Intellectual property services for companies that build things.",
       "tag": "IP Services",
-      "url": "https://ipmomentum.com"
+      "url": "https://ipmomentum.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "Cirralogix",
@@ -74,7 +82,8 @@
         "DevOps",
         "Edge"
       ],
-      "url": "https://cirrologix.com"
+      "url": "https://cirrologix.com",
+      "pillar": "lakeb2b"
     },
     {
       "name": "Recruit Champ",
@@ -84,7 +93,8 @@
         "AI screening",
         "Sourcing"
       ],
-      "url": "https://recruitchamp.com"
+      "url": "https://recruitchamp.com",
+      "pillar": "accelerator"
     },
     {
       "name": "InfraTech",
@@ -95,19 +105,185 @@
         "Champions Ranch",
         "Beach Cities"
       ],
-      "url": "https://www.championinfratech.com"
+      "url": "https://www.championinfratech.com",
+      "pillar": "infratech-lagoons"
     },
     {
       "name": "Champ.fit",
       "desc": "Fitness platform. Your body, your data, your plan.",
       "tag": "Health & Wellness",
-      "url": "https://champ.fit"
+      "url": "https://champ.fit",
+      "pillar": "accelerator"
     },
     {
       "name": "Health.fit",
       "desc": "Health tracking and telemedicine for the next billion.",
       "tag": "Health & Wellness",
-      "url": "https://health.fit"
+      "url": "https://health.fit",
+      "pillar": "accelerator"
+    }
+  ],
+  "pillars": [
+    {
+      "slug": "champ",
+      "name": "Champ",
+      "accent": "build",
+      "blurb": "the product suite. signal in, work out, documents that hold up.",
+      "entity": "Champions Infometrics",
+      "companies": [
+        "Champions Infometrics"
+      ],
+      "products": [
+        {
+          "name": "ChampBeam",
+          "url": "https://champbeam.com"
+        },
+        {
+          "name": "ChampSets",
+          "url": "https://champsets.com"
+        },
+        {
+          "name": "Champ Harbinger"
+        },
+        {
+          "name": "Champ IQ"
+        },
+        {
+          "name": "Champmail"
+        },
+        {
+          "name": "ChamPDF"
+        }
+      ],
+      "arcs": [
+        "Champ Suite",
+        "Champ IQ",
+        "Champmail",
+        "ChampGraph",
+        "ChampBeam",
+        "ChampReply",
+        "ChampQuest",
+        "ChampUTM",
+        "ChampHarbinger",
+        "ChamPDF",
+        "ChampSets"
+      ]
+    },
+    {
+      "slug": "infratech-lagoons",
+      "name": "InfraTech and Lagoons",
+      "accent": "win",
+      "blurb": "property, hospitality, and the membership surface where the owners actually gather.",
+      "companies": [
+        "InfraTech",
+        "Champions Club"
+      ],
+      "products": [
+        {
+          "name": "Champion Lagoons"
+        },
+        {
+          "name": "Aventura"
+        },
+        {
+          "name": "Champions Ranch"
+        },
+        {
+          "name": "Beach Cities"
+        },
+        {
+          "name": "Royal Champion Yachts"
+        },
+        {
+          "name": "Champions Club"
+        }
+      ],
+      "arcs": [
+        "InfraTech",
+        "Champions Club",
+        "Champion Lagoons",
+        "Lagoons",
+        "Aventura",
+        "Champions Ranch",
+        "Beach Cities",
+        "Yachts"
+      ]
+    },
+    {
+      "slug": "lakeb2b",
+      "name": "LakeB2B",
+      "accent": "think",
+      "blurb": "b2b data services. the list is wrong, that is the whole problem.",
+      "companies": [
+        "Lake B2B",
+        "SPAN Global Services",
+        "Ampliz",
+        "Cirralogix",
+        "IP Momentum"
+      ],
+      "products": [
+        {
+          "name": "MetricFox"
+        },
+        {
+          "name": "Lake Current"
+        },
+        {
+          "name": "Lake Stream"
+        },
+        {
+          "name": "Lake Harvest"
+        },
+        {
+          "name": "Lake Sonar"
+        }
+      ],
+      "arcs": [
+        "Lake B2B",
+        "Cirralogix",
+        "MetricFox",
+        "Lake Sonar",
+        "Lake Current",
+        "Lake Stream",
+        "Lake Harvest",
+        "Ampliz",
+        "IP Momentum",
+        "SPAN Global Services",
+        "Five-Level Personalizer",
+        "Cadence"
+      ]
+    },
+    {
+      "slug": "accelerator",
+      "name": "Accelerator",
+      "accent": "human",
+      "blurb": "cohorts, hiring, and the longevity programmes. people, not products.",
+      "companies": [
+        "Champions Accelerator",
+        "Recruit Champ",
+        "Champ.fit",
+        "Health.fit"
+      ],
+      "products": [
+        {
+          "name": "100X Longevity"
+        },
+        {
+          "name": "World Longevity Council"
+        }
+      ],
+      "arcs": [
+        "Champions Accelerator",
+        "Recruit Champ",
+        "Champ.fit",
+        "Health.fit",
+        "Longevity",
+        "longetivity",
+        "100X Longevity",
+        "World Longevity Council",
+        "Event Scout",
+        "Social Automator"
+      ]
     }
   ],
   "arc_map": {
@@ -154,6 +330,848 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-26",
+      "day": 330,
+      "mood": "🧭",
+      "shipping_now": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, agent owns it end to end, agent preps it and i tap approve, or its mine alone, plus a daily approval queue. the real finding, my bottleneck was never drafting, it was permission walls and the same task getting filed five times over.",
+      "yesterday_thread": "also wrote the deependhq build plan itself. four sprints, ship the redesign first, fix a dead cta button and a ticker that was lying about my status before touching anything new.",
+      "raw_thought": "caught two live api keys sitting in plaintext in apple notes today. same mistake as august. i keep building triage systems and keep leaving the back door open myself.",
+      "arcs": [
+        "Champions Operations",
+        "TheDeepEndHQ"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-09-25",
+      "day": 329,
+      "mood": "📦",
+      "shipping_now": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post. explains the buying-signal data play in slides instead of a deck nobody opens.",
+      "yesterday_thread": "the enterprise it services client escalation from yesterday has a shape now. leadership call locked for next tuesday, and the recap plus a real hybrid strategy doc go out before that call, not after.",
+      "raw_thought": "the social triage automation hit a permission wall today, fifth day running. not a code bug, a platform level denial on the exact calls it needs to run unattended. built for it, cant fix it myself.",
+      "arcs": [
+        "Lake B2B",
+        "Celsus OS"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-24",
+      "day": 328,
+      "mood": "🔧",
+      "shipping_now": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes, 67k wikilinks, 635 ambiguous mentions judged in under two minutes for under two cents. 45 clean merges, zero errors. not touching anything live until i trust a full review pass.",
+      "yesterday_thread": "an enterprise IT services client told the team flat out: zero qualified leads in two months, no visibility into who is actually dialing. not a fun call. but a client saying it out loud beats one that goes quiet. leadership call is booked, recap and a real strategy doc go out before it.",
+      "raw_thought": "two people wrote in today with real grievances, one of them a live HR matter that would have been easy to answer badly. the automation did the right thing and refused to draft either reply on its own. some things still need an actual human, not a bot with good manners.",
+      "arcs": [
+        "Celsus OS",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-23",
+      "day": 327,
+      "mood": "😬",
+      "shipping_now": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it needed, just an identity check before the room closed. still figuring out if the real conversation happened somewhere else or just didnt happen.",
+      "yesterday_thread": "",
+      "raw_thought": "a scheduling system caught a double-booking before it hit and a venture brief got four real decisions queued for chief. neither of those matter if the one lead that cost real money doesnt get followed up properly.",
+      "arcs": [
+        "pipeline",
+        "longevity"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-09-22",
+      "day": 326,
+      "mood": "📞",
+      "shipping_now": "the birthday voice agent actually called chief. missed the first try, connected on retry at midnight, and he liked it enough to ask for more: anniversaries, linkedin signals, milestone follow-ups.",
+      "yesterday_thread": "",
+      "raw_thought": "an automated call to my own father almost didnt happen on the first attempt. reminder that automation just means you get more tries than a human would, not that it works the first time.",
+      "arcs": [
+        "voice-agent",
+        "chief"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-09-21",
+      "day": 325,
+      "mood": "🤝",
+      "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold vendor pitch and moved on. then at 10pm he called back and we spent 22 minutes shaping a real deal: his agency takes on our microsite refresh and lead-gen overflow work, we take a cut. not signed yet, but its the first real partner conversation to come out of a dead-looking booking in a while.",
+      "yesterday_thread": "also locked the build plan for the ai sdr project today. eight work packages, about four dev days, and one hard rule for the build: do not touch the old backend until the new one can rebuild itself without taking the server down, which its done twice already.",
+      "raw_thought": "the thing that actually bugs me tonight isnt any of the above. a full week of drafted outreach emails still hasnt sent because a permissions setting has been broken for two weeks and nobody has fixed it. built the work, cant ship the send. thats on me to close tomorrow.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-09-20",
+      "day": 324,
+      "mood": "🔧",
+      "shipping_now": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when a different endpoint on the same meeting hands back the full transcript anyway. Would have caught several recent client calls we thought were just lost. Patched the retry order tonight.",
+      "yesterday_thread": "Still working the fallout from Saturdays sponsorship mess. Turned it into three dated tasks instead of a grudge: chase what we are actually owed, and put a real date on the makeup conversation.",
+      "raw_thought": "Twelve tasks filed today, zero closed. Some Sundays are just intake.",
+      "arcs": [
+        "ChampOps"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-19",
+      "day": 323,
+      "mood": "😤",
+      "shipping_now": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that a deliverable we paid for, a panel slot, sat unclaimed for eleven days and the agenda published without us. New standing rule out of it: any paid sponsorship deliverable gets an owner and a deadline the week we pay, not a thread mention.",
+      "yesterday_thread": "Also closed the loop on a recurring internal meeting that kept losing its AI summary to a permissions bug, three occurrences running. Finally filed the actual fix instead of logging the same complaint a fourth time.",
+      "raw_thought": "The sponsorship thing stings. We paid for a stage, sat on the topic for over a week, and someone else filled the agenda without us. Cheap lesson, could have been an expensive one.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-09-18",
+      "day": 322,
+      "mood": "🔍",
+      "shipping_now": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic down 52 percent in two years, their flagship launch page outranked in search by a copycat domain with zero authority. Everything is rendered in the client's own brand colors and sitting ready, one signature away from going out.",
+      "yesterday_thread": "Also formalized who owns what on the paid ads side after a rough campaign review. One person now owns it end to end instead of two people stepping on each other.",
+      "raw_thought": "A confirmed booking from yesterday, the best pipeline move in weeks, is nowhere on the calendar tonight. Checked twice. It just is not there. Shipped a lot today and still ended the night chasing a phantom meeting.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-17",
+      "day": 321,
+      "mood": "🎯",
+      "shipping_now": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new partnership conversation the same day too, voice tech meets data, five concrete next steps out of one call.",
+      "yesterday_thread": "A major account escalated on slow delivery tonight. Wrote the full recap and looped leadership in before the night was out instead of letting it sit.",
+      "raw_thought": "Task list added twenty-four lines today and closed four. The gap between what gets promised on a call and what gets filed after it keeps growing, not shrinking.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-09-16",
+      "day": 320,
+      "mood": "🔓",
+      "shipping_now": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendors, signed off a new partner to start onboarding tonight, and unblocked three campaigns that were all waiting on the same call.",
+      "yesterday_thread": "Also drafted the one proposal a client is waiting on before she will book her next call, and closed a pilot funded by a barter instead of cash: a compliance and branding exchange for a lookalike audience test.",
+      "raw_thought": "Twelve client emails have been ready to send for a week, blocked by one missing permission toggle, not a decision, not a rewrite. Meanwhile the task list added 47 lines today and closed zero. Busy and moving are not the same thing.",
+      "arcs": [
+        "Lake B2B",
+        "Vendor Ops"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-15",
+      "day": 319,
+      "mood": "🌗",
+      "shipping_now": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over TypeScript, weekly 15 to 20 minute check-ins, deliverable based. The month-one target is concrete, a queryable chatbot trained on our own schema, with a senior teammate assigned as buddy.",
+      "yesterday_thread": "Also reshuffled paid versus organic ad ownership across two of our data brands, shipped three of four promised intern onboarding plans, and moved a scraping deploy onto a three-tier proxy fallback so it stops falling over.",
+      "raw_thought": "Set myself three guarantees for today. Landed one clean, left two sitting open: a hire I still owe a verdict, a written handoff I still owe a teammate. Easier to promise three things at 3pm than to close three by 2am.",
+      "arcs": [
+        "Lake Sonar",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-14",
+      "day": 318,
+      "mood": "🧭",
+      "shipping_now": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into two buckets, campaigns or enrichment, on a 12-step architecture, backed by a real per-rep budget to close on 100 targeted accounts.",
+      "yesterday_thread": "Also split backend and frontend scope for Event Scout with the team, one engineer took block-scraping and the admin backend, another took the dashboard redesign and Play Store prep. Separate thread: pulled apart a Social Bot monolith because the queue stopped loading and campaigns were not reaching the server.",
+      "raw_thought": "Two outcome recaps from todays calls are still unfiled two days later. A strategy reset is the easy part. Writing down what actually got decided on every call is the part that keeps slipping.",
+      "arcs": [
+        "Lake B2B",
+        "Event Scout"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-09-12",
+      "day": 316,
+      "mood": "🧪",
+      "shipping_now": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spelling for source or medium. 12 tests green before it ever touches the real app.",
+      "yesterday_thread": "Also spent the day pulling apart what members hate about club and community apps. 24 Reddit threads and reviews across six competitors, turned into 10 ranked failure modes, each with a pass or fail test. That is the QA bar for the club app now.",
+      "raw_thought": "Fourth week straight the same missing email permission is the only thing between five finished client emails and hitting send. Not a hard problem. Just nobody has fixed it yet.",
+      "arcs": [
+        "ChampUTM",
+        "Champions Club"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-11",
+      "day": 315,
+      "mood": "🛠️",
+      "shipping_now": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo. 118 backend tests green, a real Playwright run against the live API passing 2 for 2. A vendor books, ops approves, a prospect confirms, the client sees the reminder land. First time this build has run end to end instead of in pieces.",
+      "yesterday_thread": "Also closed out a vendor review call that had been stuck for weeks: three accounts, four hard decisions, all resolved in one sitting instead of dragging into next week.",
+      "raw_thought": "Shipped a real product today and did not check a single box on the task list. The work that matters does not always look like the work that gets tracked.",
+      "arcs": [
+        "Champ Suite",
+        "Vendor Ops"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-10",
+      "day": 314,
+      "mood": "📈",
+      "shipping_now": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data source. Walked into the weekly review call able to argue depth instead of apologizing for it.",
+      "yesterday_thread": "Another campaign is still stuck on the exact file it needed yesterday. And a teammate wraps up tomorrow, so tonight was also about getting a dozen open questions answered before that context walks out the door.",
+      "raw_thought": "Three different vendor-run accounts, same read tonight: we are the bottleneck, not them. Uncomfortable to write down. Still better than blaming the vendor for it.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-09-09",
+      "day": 313,
+      "mood": "🔄",
+      "shipping_now": "restructured the vault from a monolith into a five-layer context architecture. each layer loads only what the task needs. same knowledge, a third of the noise.",
+      "yesterday_thread": "the automation audit last week surfaced a full blackout period. the gap was in detection, not execution. today the fix got its infrastructure upgrade.",
+      "raw_thought": "called it a knowledge graph for two years. it was a pile. today it got a map, named zones, and contracts for what belongs where. felt more like editing than building. good sign.",
+      "arcs": [
+        "vault infra",
+        "client ops",
+        "b2b pipeline"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-09-08",
+      "day": 312,
+      "mood": "🌱",
+      "shipping_now": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and documented two intern ramp plans. Net: backlog grew by 8 tasks, none closed. The kind of day where the work is real but the board looks worse.",
+      "yesterday_thread": "Social pipeline confirmations for two new calls this week. Calendar moving.",
+      "raw_thought": "A first appointment broke today because of a process gap, not a performance gap. The lead showed up, asked for joining details, and got silence because the invite handoff system did not exist. That is a structural problem, not a vendor problem. The fix is not to push harder; it is to build the handoff so it cannot break. Separately, an investor conversation opened a thread I did not expect. Someone who moves money through policy networks, not through brochures. The Ranch pitch landed on the hospitality angle. That is a different class of capital than what we have been chasing, and it deserves its own node in the system.",
+      "arcs": [
+        "InfraTech",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-07",
+      "day": 311,
+      "mood": "🔧",
+      "shipping_now": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom backlog from the past 3.5 weeks. A lot of missed signal back in the system.",
+      "yesterday_thread": "",
+      "raw_thought": "816 open tasks, 100 in Do First. The backlog is not the problem. Silent pipeline failures are. You cannot manage what you cannot see.",
+      "arcs": [
+        "ChampReply",
+        "ChampOps"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-04",
+      "day": 308,
+      "mood": "🧯",
+      "shipping_now": "day three. nine of nine tracker rows blank, still 0 of 30 sqls. the client update was written as a holding line, not fake numbers: verified figures monday, plus a revised week-by-week path to 30.",
+      "yesterday_thread": "a gtm strategy session lasted 88 seconds. bad audio, rescheduled to tuesday. shortest meeting of the quarter and the only one with a clean outcome.",
+      "raw_thought": "found out later the tracker was never shared with the vendor. three days of escalation emails over rows nobody could open. check the plumbing before you blame the people.",
+      "arcs": [
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-09-03",
+      "day": 307,
+      "mood": "📭",
+      "shipping_now": "day two of the apac daily loop. the automation ran on time, compiled the tracker, and found it empty. two days, zero rows, 0 of 30 sqls. escalation and client update both written. neither could send: the mail connector is read-only.",
+      "yesterday_thread": "the mumbai real estate summit with the lagoon panel was on the calendar today. nothing from it reached the vault.",
+      "raw_thought": "the report said 'no data' instead of inventing numbers. that is the design working. a report that makes something up to look busy is worse than one that admits nothing happened.",
+      "arcs": [
+        "Lake B2B",
+        "InfraTech"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-09-02",
+      "day": 306,
+      "mood": "📦",
+      "shipping_now": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 608 errors to 0. blind routing test: 60 of 60 picked the right skill first time.",
+      "yesterday_thread": "first weekly review as primary contact on the apac campaign. left with a daily loop: vendor fills a sheet by 16:30, automation compiles, i send. draft mode until five clean days. also two month-one plans for new interns.",
+      "raw_thought": "the old shared drive could create files but never replace them. every update became a duplicate, so every skill had three versions and nobody knew which was live. git fixes it by being boring.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-01",
+      "day": 305,
+      "mood": "📋",
+      "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface. also wired the team knowledge drive into the nightly recap, 12 client files seeded on day one.",
+      "yesterday_thread": "took over as primary contact on the biggest apac campaign. 30 sqls across singapore, malaysia and indonesia by month end.",
+      "raw_thought": "a handover that lives in one person's head leaves with them. a board everyone can tick outlives the notice period.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-31",
+      "day": 304,
+      "mood": "🎯",
+      "shipping_now": "turned an eleven-day-old voice note into a full saas lead-gen playbook. two products: competitor lookalike mapping and competitor user-list mapping. win condition: 15 qualified conversations and 5 paid pilots by sep 30.",
+      "yesterday_thread": "last day of the apac ownership window. primary contact on the largest campaign moves to me tomorrow.",
+      "raw_thought": "rounds one and two never mention database size. nobody buys 'we have data.' they buy 'here are your competitor's unhappy customers.' the list is the product. the problem is the pitch.",
+      "arcs": [
+        "Lake B2B",
+        "Lead Gen OS"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-28",
+      "day": 301,
+      "mood": "📏",
+      "shipping_now": "wrote the one page every new vault note follows. a 07:30 build reads the vault, publishes the team drives, and lists every note that breaks the rules in a conformance report. it never edits a file.",
+      "yesterday_thread": "chief hosted a partnership call with a marketing services channel partner. two on the line.",
+      "raw_thought": "a linter that blocks gets switched off. a report that names the offenders gets read. rules enforced by visibility, not by gates.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-27",
+      "day": 300,
+      "mood": "🤝",
+      "shipping_now": "a data-partnership call with one of the big identity-resolution platforms. seven people across both sides. plus a genetic testing lab pitching into the longevity stack. two conversations, no paper yet.",
+      "yesterday_thread": "a real estate developer call on the partnerships calendar. third sector in two days.",
+      "raw_thought": "partnership calls feel like progress because the room is full. the real test is whether either side owes the other anything the next morning. this week, mostly not written down.",
+      "arcs": [
+        "Lake B2B",
+        "Partnerships"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-26",
+      "day": 299,
+      "mood": "🌫️",
+      "shipping_now": "thin day on record. an inbound discovery call for one of the data brands, booked by the prospect. a partnership call pairing the longevity product with a dermatology clinic chain. zero artifacts filed.",
+      "yesterday_thread": "",
+      "raw_thought": "nothing shipped that left a file. the calls happened, the notes did not. a day with no artifact is not a day off, but it is a day you cannot prove.",
+      "arcs": [
+        "Longevity",
+        "Partnerships"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-25",
+      "day": 298,
+      "mood": "🔐",
+      "shipping_now": "ran a sensitivity scan before any vault file touches the cloud. 8,357 files. 6 quarantined for live secrets. 392 flagged for review. nothing syncs until the list is clean.",
+      "yesterday_thread": "built an exit-gate checklist for an account handover review. rule at the top: no answer, nobody leaves the room. every account gets one name, in writing, before the call ends.",
+      "raw_thought": "one of the six live keys was sitting in the cloud agent's own setup runbook. the scanner caught the tool built to prevent this exact leak. build the check before you trust the system.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-24",
+      "day": 297,
+      "mood": "📐",
+      "shipping_now": "wrote the first kra for the longevity development lead. six-month period from sep 1, ten-point scale, first review dec 1. ramp starts today, so the bar exists before the work does.",
+      "yesterday_thread": "worked the story for a mumbai real estate summit panel: de-risking india's newest asset class, lagoon-led communities. seven minutes, a live quiz that gates the deep content, one founder slide.",
+      "raw_thought": "a kra written after the job starts is a performance review in disguise. write it on day one of the ramp and nobody gets surprised in december.",
+      "arcs": [
+        "Longevity",
+        "InfraTech"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-21",
+      "day": 294,
+      "mood": "🔢",
+      "shipping_now": "settled the database number: 800m+ contacts, 80m+ companies. four other figures were in circulation. 440m in a meeting prep, 550m in its open questions, 750m and 36m across five slides of a live deck.",
+      "yesterday_thread": "a nine-person certification partnership call on the desk the same day. the wrong number was in its prep doc.",
+      "raw_thought": "procurement teams check one claim after the meeting. if that one is off by half, every other slide goes under audit. one number, everywhere, or none.",
+      "arcs": [
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-20",
+      "day": 293,
+      "mood": "🧭",
+      "shipping_now": "planned the handover of seven apac lead-gen accounts, one of them onboarded today. one owner per account, facing both the client and the vendor. every client gets a second brain in eight stages, foundation to learnings.",
+      "yesterday_thread": "greenlit six research-content use cases for aeo. original, citation-verified research that ai agents cite, so they introduce the brand to their humans. research and writing stay separate layers.",
+      "raw_thought": "automation gets graduated, not granted. vendor mail drafts for approval for a month, then routine categories send on their own. disputes, pauses, pricing and bad news never do.",
+      "arcs": [
+        "Lake B2B",
+        "Content Strategy"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-19",
+      "day": 292,
+      "mood": "✂️",
+      "shipping_now": "audited the team vault agent against live cloudflare docs and rewrote its scope. deny-by-default filter, 4 MB file cap. 882 MiB of atlas becomes 114 MiB that actually uploads. runbook down to nine steps with a mandatory scope review.",
+      "yesterday_thread": "one lake b2b discovery call on the calendar. the summary exists in zoom and never made it into the vault.",
+      "raw_thought": "86 percent of what the old script uploaded was client pdfs the index could not even read. more data was making the agent slower, pricier and no smarter.",
+      "arcs": [
+        "ChampOps"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-18",
+      "day": 291,
+      "mood": "🌱",
+      "shipping_now": "day one for a new front-end intern, owning one thing: the social bot. it has sat at 60 to 70 percent since march. her month is output quality, the human review queue, and a written definition of good enough to publish.",
+      "yesterday_thread": "the partnerships desk ran a 13-person collaboration call with a preventive health company.",
+      "raw_thought": "the bot was never short on backend. it was short on taste and on a screen where a human says yes or no. hire for the actual blocker, not the loudest one.",
+      "arcs": [
+        "Social Automator",
+        "Champions Accelerator"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-17",
+      "day": 290,
+      "mood": "👾",
+      "shipping_now": "locked a second design language for internal pages. pixel arcade: dark canvas, 12x12 pixel sprites drawn in code, every item tagged with chips. first reference build is a new intern's 24-day task dashboard and day-zero run sheet.",
+      "yesterday_thread": "the weekly sales update lost its narrative headline. now it is seven salesforce metrics, one row per team, filled from saved reports. plus a live seo and ai-visibility pull across three brands, every week.",
+      "raw_thought": "a one-off diagnostic fired today to chase a few silent push failures. it ran once, reported fine, and the blackout it was sent to catch lasted three more weeks. a check that can only say yes is not a check.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-14",
+      "day": 287,
+      "mood": "🎯",
+      "shipping_now": "ran a 2.5-hour seo and backlink strategy session as host. 68 packages audited. centralized email policy locked. $1k budget allocated. four new tools demoed. decisions made, not just discussed.",
+      "yesterday_thread": "dev sync covered three products in one hour. lms live with gamification and xp. longevity prototype deployed with blood report pipeline. hr portal moving to clerk auth. apple developer enrollment approved.",
+      "raw_thought": "ten kits have been ready to send for two straight weeks. the work is not the bottleneck. the outbox is.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-13",
+      "day": 286,
+      "mood": "🏗️",
+      "shipping_now": "scaffolded a full lead generation operating system from scratch. eight stages. nine industry ICPs. campaign folders. scoring config. the repeatable chassis for all outbound is now real, not theoretical.",
+      "yesterday_thread": "three external meetings in four hours. a real estate group building two hotels and a crystal lagoon wanted to talk longevity centres. a 230-member investor network explored a bangalore chapter. an education programme committed ten students through the accelerator. none of this was on the plan at the start of the week.",
+      "raw_thought": "the days where the infrastructure work and the unexpected relationship work happen on the same day are the ones that actually move things. you can plan the scaffold. you cannot plan who walks in.",
+      "arcs": [
+        "Lead Gen OS",
+        "Partnerships"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-12",
+      "day": 285,
+      "mood": "🏗️",
+      "shipping_now": "biggest strategy session of the month. twelve service lines collapsed to four solution bundles. linkedin ads locked to one segment: healthcare and agency buyers only. aeo audit kicked off. and the marketing sites are getting a script offload to fix an 80-90% bounce rate that was sitting there, unaddressed, in plain sight.",
+      "yesterday_thread": "a new email infrastructure partnership opened up. nda and capabilities deck are owed tomorrow. the conversation was sharp. the fit is real. it only moves if i send the follow-up.",
+      "raw_thought": "a key team member confirmed her last working day today. september 14. handover plan is filed, accounts split three ways. but i keep thinking about how much lived in one head instead of a system.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-11",
+      "day": 284,
+      "mood": "🎯",
+      "shipping_now": "biggest demo of the week is done. pitched AWS Marketplace to a cloud partnerships lead at Amazon tonight: 300K+ customer channel, infrastructure funding on the table, a QuickSight trial offer. follow-up draft ready. NDA and IT intro call are next. this one has real distribution legs.",
+      "yesterday_thread": "longevity tech stack locked. mongodb confirmed, biomarkers scoped down to 30-40, women's health as the primary differentiator. device test plan set. the product is getting sharper.",
+      "raw_thought": "10+ new tasks from one day of meetings. the backlog grows faster than it drains. at some point the filing system becomes the bottleneck, not the work.",
+      "arcs": [
+        "Lake B2B",
+        "Longevity"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-10",
+      "day": 283,
+      "mood": "⚡",
+      "shipping_now": "five back-to-back sessions from 8:40 to 10 pm. appraisal policy locked: performance increments split from cost-of-living raises, senior increments now tied to a junior hire within 3 months. canvas versioning design confirmed for the ai workspace platform. a new api security intern, offered and accepted, 60 days. seven meeting preps filed for tomorrow before closing.",
+      "yesterday_thread": "war room deck for the monday leaders meeting. near-verbatim talking points per slide. case study gap audit launched live. three of my own leads handed off to the floor tonight.",
+      "raw_thought": "the channel partner call happened. outcome still not filed. this is week six of the same gap. the problem is not the call. the problem is that i do not file it after. need to break the pattern, not just note it.",
+      "arcs": [
+        "Champions Operations",
+        "Champ IQ"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-09",
+      "day": 282,
+      "mood": "🌙",
+      "shipping_now": "sunday closed with two strategy calls back to back. longevity dev sync at 2 pm, then the recurring three-party spv call at night with the infrastructure and energy partners, chief on the line. w33 weekly brief locked before either call. the week 38 narrative is live on the site.",
+      "yesterday_thread": "the w38 pattern held: pipeline filled, outbox lagged. the charles michel mou has been written for nine days. the ranch go/no-go is 51 days stale. both have drafts. neither has moved. w39 opens with that as the only real test.",
+      "raw_thought": "systems ran the day. linkedin session expired so social triage went blind on the second consecutive weekend. the fix is 30 seconds in a browser. the gap between knowing that and doing it is the whole problem in miniature.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-08",
+      "day": 281,
+      "mood": "⚡",
+      "shipping_now": "saturday. automated systems ran the day -- social triage caught a linkedin session dropout mid-birthday-wishes, flagged two missed wishes, logged the gap. zoom connectors went dark at 4pm IST, self-healed by 11pm. meanwhile a product demo came through the scheduler unsolicited: a senior executive at a major global tech company booked a lakeb2b walkthrough for tuesday night.",
+      "yesterday_thread": "seven singapore outreach threads are out. no replies yet. waiting is part of the game.",
+      "raw_thought": "four p0s have been on the list for over a week. they do not disappear because it was a saturday.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-07",
+      "day": 280,
+      "mood": "⚡",
+      "shipping_now": "sat across a nuclear infrastructure firm tonight. government-adjacent enterprise, 12 active global projects, 250-person digitalization department, closed-company data policy. they need an external data partner. champions presented the database. agreed on a revenue-share lead gen model in principle. nda and capabilities brief are p0s for tomorrow.",
+      "yesterday_thread": "three new client files in one evening. a wellness gym founder who wants a kitchen built in 45 days and a hyrox race partner. an immersive production studio that locked a verbal referral partnership. a lead quality standoff with a vendor that ended with quality-over-volume confirmed in writing.",
+      "raw_thought": "added 19 tasks today. closed zero. the pipeline is widening faster than the funnel is clearing. that is not a complaint.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-06",
+      "day": 279,
+      "mood": "🎯",
+      "shipping_now": "pitched a legacy luxury travel brand's consultant team tonight. six reels, content strategy, scalable ad layer. they want to see sample work first - right call. also scoped lake b2b as a real-time llm data feed: chatgpt runs on pre-2023 training data, our job postings refresh every 8 hours. that gap is the entire pitch to any ai company building a business-intelligence layer.",
+      "yesterday_thread": "channel optimization team named and structured for the email infrastructure overhaul. 1,600 mailboxes migrated in 30 days. +100 leads per month vs january. the rename from delivery team to channel team was deliberate - the real gap is strategy and training, not deliverability.",
+      "raw_thought": "spent the evening building tomorrow's deck for a proposal meeting. four notes, a runbook, talking points, slide-by-slide script. that is what prepared actually looks like, and it is the only thing that makes the meeting not a coin flip.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-08-05",
+      "day": 278,
+      "mood": "🔥",
+      "shipping_now": "a new relationship walked in from the india wealth and fund management space. they brought a GIFT City fund structuring ask. we pitched the infratech SPV pipeline, data infrastructure from CI, and a prospect engagement layer via lake b2b. two P0 follow-ups generated before the call ended. follow-up draft is sitting ready to send.",
+      "yesterday_thread": "the SPAN SEO team is now a direct report. committed to building them an agent-driven SEO workspace in 1.5 weeks. that clock is running.",
+      "raw_thought": "seven months of sample evaluation with a major US data enrichment company became a 30-minute call about commercial direction tonight. no price quoted. just direction. that is the right call.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-08-04",
+      "day": 277,
+      "mood": "🔬",
+      "shipping_now": "full backend audit of the marketing platform. nine services running on the cloud infra, and i verified each one live. champdf has a full API with key management. champbeam already has 90 routes including utm, analytics, content rooms, and QR. the only real gap: machines cannot authenticate because the human browser login does not exist for agents. small, well-defined, fixable.",
+      "yesterday_thread": "bright data session confirmed the architecture. discovery to collection to ingestion to analytics. that is exactly the four stages already baked into lakestream v2. the integration is mostly a config change, not a code change.",
+      "raw_thought": "linkedin has been dark for three days. running BD without it is clarifying. you find out fast what the rest of the engine actually does on its own.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-03",
+      "day": 276,
+      "mood": "🔧",
+      "shipping_now": "hosted the champions group hr + payroll portal planning session tonight. erp next chosen as the platform. one-month parallel pilot before saral cutover. payroll locked to the first of each month. $47k estimated infrastructure cost. 16 action items in one call. the fragmented manual stack finally has a migration path.",
+      "yesterday_thread": "",
+      "raw_thought": "the eu-india call expired before it started. again. the mou is six days overdue. at some point the bottleneck is just not opening outlook.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-02",
+      "day": 275,
+      "mood": "📋",
+      "shipping_now": "w32 brief locked. theme: execute the backlog, no more carry-forward. three p0s own monday morning. two sunday calls held, the longevity build sync and the spv coalition weekly. both in the vault, substance pending.",
+      "yesterday_thread": "eleven items surfaced from the notes and email backlog on saturday. command center is current. monday preps queued for two back-to-back calls.",
+      "raw_thought": "a week plan that takes all sunday to write is either very important or a sign the week it describes is overloaded. probably both.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-08-01",
+      "day": 274,
+      "mood": "🛠️",
+      "shipping_now": "saturday. the systems ran so i did not have to. command center rebuilt to 701 tasks. 11 items surfaced from the notes and email backlog. meeting preps queued for two monday calls. four data/ai leaders joined the network. the inbox dispatch pipeline is 9 days blocked on an auth issue — that one stares back at me every morning.",
+      "yesterday_thread": "the longevity founder from friday still sits in drafts — five workstreams ready, no contact details yet. that one moves monday.",
+      "raw_thought": "the champions ranch go/no-go deadline was today. it passed like the last 49 days. still no decision.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-31",
+      "day": 273,
+      "mood": "🏗️",
+      "shipping_now": "three hours of architecture calls. ruled out OCR for the scraping layer because fingerprinting happens before render. speed is already at 3.3 sites/sec after parallelization + SSL fix. proxy mesh and vision-model CAPTCHA are next. separately: a longevity founder walked in with 135 domain portfolio, 180 acres of wellness real estate, and Snackery in 4000+ stores. filed the prospect note and blocked on their contact details.",
+      "yesterday_thread": "wrote the full telemarketing script for the vendor outreach layer. Q1 opener softened to intent signal. Q3 consolidated to a single qualifier. DevOps and data platforms scrubbed from the ICP. trial goes to dormant accounts first.",
+      "raw_thought": "the last day of july and i still have four unresolved fires going into august. the scraping call was clean. the longevity call was energizing. the gratuity email is the one thing i should have moved on a week ago.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-07-30",
+      "day": 272,
+      "mood": "🏗️",
+      "shipping_now": "lake b2b category pivot confirmed. moving away from commodity data to bespoke at $85K+. api-first platform. new brand, decoupled from the parent group during establishment. first product: a company file with firmographics, technographics, and intent signals. MVP before december. biggest strategic call of the year.",
+      "yesterday_thread": "vendor docs day. telemarketing scripts, ICP conflicts, a billing address chase. the unglamorous connective tissue of a real sales motion.",
+      "raw_thought": "same day: a 15-year home care org with zero outbound, a tire manufacturer account with a call i have no outcome for, and a platform rewrite i have been circling for two years. three completely different problem types. that is the job.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-29",
+      "day": 271,
+      "mood": "🤝",
+      "shipping_now": "a 7-year cirralogix client just renewed their salesforce contract. 2-year split. fixed AMC. quarterly billing. 80 licenses today, committed to 150+ in year two. the call ended and i sat quietly for a minute.",
+      "yesterday_thread": "spent the afternoon writing a full brief for a valencian industrial automation client our founder is walking into tomorrow in person. three years of relationship context. one successful project. one shot to unlock a standing arrangement.",
+      "raw_thought": "new clients get the energy. retained clients get the result. today reminded me which one actually builds a company.",
+      "arcs": [
+        "Cirralogix",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-07-28",
+      "day": 270,
+      "mood": "🏆",
+      "shipping_now": "Founders 2.0 Singapore bronze sponsorship closed. $9K committed live on a call. Speaker slot locked, portal materials due in two weeks.",
+      "yesterday_thread": "EU-India MOU finalization call happened. Written amendments committed right after. A European partner, a Bangalore deal, and 10 days to close the next round of terms.",
+      "raw_thought": "Ten meetings in one day is a lot. Most of them moved something. The ones that did not are the ones that sting at 2 AM.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-07-27",
+      "day": 269,
+      "mood": "🏗️",
+      "shipping_now": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a Singapore-based investment prospect. Both cleared by midnight. Leaders Meeting set the week tone.",
+      "yesterday_thread": "Social extension recovered after a 2-day block on Sunday. Calendar pipeline back at zero but the system is healthy.",
+      "raw_thought": "Three non-negotiables on paper at the start of the week. The real question is always whether the week closes them or just relabels them.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-26",
+      "day": 268,
+      "mood": "🗂️",
+      "shipping_now": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitments with hard deadlines, wrote the W31 game plan. three non-negotiables named. the week has a spine before it starts.",
+      "yesterday_thread": "saturday was a live strategy call that turned into a full partnership discussion: physician outreach, fundraise support, equity evaluation. the physician-direct wedge confirmed by the data we already had.",
+      "raw_thought": "sundays look like nothing from the outside. no merges, no launches, no meetings added. but filing a deal and naming three non-negotiable outcomes before the week starts is its own kind of shipping. a week without a spine bends.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-07-25",
+      "day": 267,
+      "mood": "🏥",
+      "shipping_now": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts now. equity held pending full prospectus. physician-direct outreach identified as the wedge — data confirms it is the right motion.",
+      "yesterday_thread": "weekly scoreboard filed: six external meetings, three fully covered, nine follow-ups still open. a saturday call prep brief written and ready.",
+      "raw_thought": "every doctor they approached said yes. hospitals said committee. sell to the physician and let the physician carry you into the building. that is not a sales line. that is a data distribution problem. and we have the data.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-24",
+      "day": 266,
+      "mood": "🧩",
+      "shipping_now": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-stakes Saturday call. Five hours of back-to-back meetings, then sat down to make sure nothing slipped through.",
+      "yesterday_thread": "Two SEO vendor bets placed in back-to-back 20-minute calls. One gets a 2-week programmatic pilot on a fresh microsite. The other goes into the eval queue for existing properties.",
+      "raw_thought": "Chrome went offline. Zero social adds today. The calendar pipeline streak breaks the moment the extension drops. One dependency = one point of failure.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-23",
+      "day": 265,
+      "mood": "💪",
+      "shipping_now": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, so any cors regex with \\. in it silently breaks. switched everything to [.] notation and it cleared. health check is green, cert through october. three major outputs today.",
+      "yesterday_thread": "commercial terms locked with a crypto exchange partner. 15% rev share on their transaction fees, 90-day mql pilot, 150-200 leads. also finalized a shipping group engagement, sop and mou both out the door with the right entity signed in. deal doc from the crypto call goes first thing tomorrow.",
+      "raw_thought": "three outputs in a day feels good until you realize the one thing promised live on a call is the one thing that did not ship before midnight.",
+      "arcs": [
+        "ChampBeam",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-07-22",
+      "day": 264,
+      "mood": "🪑",
+      "shipping_now": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off the creative sample pack, one bundle per service line. then a 3.5-hour leaders meeting filled the evening.",
+      "yesterday_thread": "healthlink compliance review: US data broker registration is the key blocker for the security questionnaire. CIPL docs need to clear before submission.",
+      "raw_thought": "a day that looks like meetings from the outside but was actually decisions. some of those stick, some do not. you find out later.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-21",
+      "day": 263,
+      "mood": "🤝",
+      "shipping_now": "first direct call with a US oncology AI company. digital twin, epic/cerner integration, johns hopkins MOU in progress, 12 revenue streams. two angles on the table: data partnership for patient/physician acquisition and a direct investment look. both sides called it genuinely interesting.",
+      "yesterday_thread": "go-based HTTP scraper is replacing playwright for the lenovo intent enrichment pipeline. playwright was stripping tracking headers. LLM layer on top (gemini 2.5 flash) confirmed viable at around $5-8 per 100 companies. two parallel 100-company test batches locked in.",
+      "raw_thought": "the best deals often come through a third door you did not expect. this one came through a crypto exchange intro.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-20",
+      "day": 262,
+      "mood": "🔍",
+      "shipping_now": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. four pricing structures mapped: phased ramp, cost-plus, tiered volume, and a two-way exchange angle that hasnt been raised yet. the prep is done; the call lands tuesday.",
+      "yesterday_thread": "a crypto platforms vp of marketing sent the icp document today. six segments, top tier is hni retail investors — senior professionals, not founders. every campaign batch sent so far was targeting the wrong person. expensive correction, but it arrived before the next batch went out.",
+      "raw_thought": "the team leaders call had 34 people in it, including five external guests i havent placed yet. no meeting summary accessible via api. if any of those are new bd threads, they go cold inside the week without a note filed. that is the gap.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-19",
+      "day": 261,
+      "mood": "🔧",
+      "shipping_now": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live collaboration in 4 days. the backend for champmail deliverability now has a dedicated build track.",
+      "yesterday_thread": "late-night design alignment for a bangalore delivery app: standee layout with raised qr code, ai illustration brief for 14 app states, full app store screenshot spec. play store launch unblocked on design.",
+      "raw_thought": "sunday sprint. two things moved that don't usually move on weekends: a vendor collaboration started and a design brief got locked. that is the real value of a sprint block.",
+      "arcs": [
+        "Champmail",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-07-17",
+      "day": 259,
+      "mood": "🧭",
+      "shipping_now": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on the homepage. one focused session reversed years of accumulated feature complexity.",
+      "yesterday_thread": "earlier: live icp intake session with a crypto investment platform. three customer segments landed with actual numbers attached. revenue share model on the table, weekly check-ins agreed, weekend sprint queued.",
+      "raw_thought": "decided to personally run the sales training cadence for the next two months. when you shift a team kpi from meetings booked to revenue, showing up every week is faster than any playbook.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-07-16",
+      "day": 258,
+      "mood": "💡",
+      "shipping_now": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope to four new verticals on the spot and committed to a capability deck plus lead tracker by tomorrow. built a 7-file VPN offload architecture in one async sprint on the side, no meetings needed.",
+      "yesterday_thread": "a wellness vendor intro opened a co-marketing angle: champions group data to help them identify APAC project clients. low cost, high alignment. separately filed an AI SDR architecture doc mapping champmail and champ IQ onto the new email infrastructure stack.",
+      "raw_thought": "19 leads in 2 weeks from an outsourced team is exactly what the new-channels directive was betting on. the model already works. the question now is how fast to scale before the moment passes.",
+      "arcs": [
+        "Lake B2B",
+        "Champ IQ"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-07-15",
+      "day": 257,
+      "mood": "🔍",
+      "shipping_now": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company, API-first, $15M ARR. signed up for their starter package tonight. if the API checks out, it becomes the backbone for Champmail.",
+      "yesterday_thread": "two more discovery calls in the stack: a Dubai construction company and a healthcare app studio, both moving toward NDAs. the Leaders meeting happened but the AI summary stayed locked.",
+      "raw_thought": "three calls in three hours and the most useful one was not on the original calendar.",
+      "arcs": [
+        "Champmail",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-07-14",
+      "day": 256,
+      "mood": "💡",
+      "shipping_now": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop system to 200 locations at $85-100K each. Dubai Metro signed, Sydney live, looking for a financing and demand-gen partner for UK, EU, AU rollout. separately, opened a banking relationship with two angles: HNI/NRI outreach for the data business and CRE project financing. five meetings total, both follow-ups drafted and queued.",
+      "yesterday_thread": "the club team closed $36K from a single lost-lead nurture sequence. one email, dormant lead, $36K. needs to become a system across every cohort, not stay a one-off.",
+      "raw_thought": "the hotel shop thing was not on any agenda. came up third in the conversation, after the official talking points. the best opportunities lately all live in the third topic.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-07-13",
       "day": 255,
@@ -769,28 +1787,18 @@
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 30,
+  "weekly_narratives_count": 32,
   "latest_narrative": {
-    "week": 34,
-    "title": "Every deal this week came in through a side door.",
-    "body": "Maritime shipping intel. Barter with a Middle East HR firm. Revenue-share with a crypto exchange. And a Salesforce migration vendor holding their team on a Saturday. W28 was the week where nothing came from where I expected.",
-    "day_range": "Jul 6 - Jul 11",
-    "date": "2026-07-11",
+    "week": 44,
+    "title": "Got disciplined about everything this week except the thing we paid cash for.",
+    "body": "A strategy reset that kills generic pitching, a new hire's tooling locked in a day, a stalled delivery partner restarted, a ten day cold thread that finally booked a call, a full growth audit for a real prospect. Then a paid conference slot sat unclaimed for eleven days and the agenda went out without us.",
+    "day_range": "Sep 14 - 19",
+    "date": "2026-09-19",
     "read": "4 min",
-    "slug": "week-34-the-side-door"
+    "slug": "week-44-the-discipline-arc"
   },
   "status": {
-    "location": "Bangalore, IN",
-    "time_ist": "01:46 IST",
-    "weather": "24°C · clear",
-    "last_ship": "eragon co-sell path opened · just now",
-    "vault_commits": 18,
-    "listening": "Bonobo · Migration",
-    "reading": "The Power Broker · Caro",
-    "drinking": "Bangalore peaberry · pour-over · cup 3",
-    "state": "shipping",
-    "uptime_d": 47,
-    "coffee": 3
+    "location": "Bangalore, IN"
   },
   "status_board": {
     "now": [
@@ -813,20 +1821,20 @@
     ],
     "recently": [
       {
-        "text": "a call with a vc portfolio director opened two unexpected doors. one portfolio company...",
-        "tag": "shipped d255"
+        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
+        "tag": "shipped d330"
       },
       {
-        "text": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milesto...",
-        "tag": "shipped d254"
+        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
+        "tag": "shipped d330"
       },
       {
-        "text": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3....",
-        "tag": "shipped d253"
+        "text": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through...",
+        "tag": "shipped d329"
       },
       {
-        "text": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retaine...",
-        "tag": "shipped d252"
+        "text": "ran the entity-resolution model against my whole second brain today as a shadow test, n...",
+        "tag": "shipped d328"
       }
     ],
     "soon": [
@@ -994,6 +2002,13 @@
     }
   ],
   "toolkit": [
+    {
+      "title": "Lead Scorer",
+      "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+      "url": "/lead-scorer",
+      "category": "tool",
+      "featured": true
+    },
     {
       "title": "ChampUTM",
       "description": "UTM link builder and tracker. React/Vite. Open source.",
@@ -1282,6 +2297,341 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-44-the-discipline-arc",
+      "kind": "weekly",
+      "week": 44,
+      "eyebrow": ">_ week 44 - the discipline arc",
+      "title": "Got disciplined about everything this week except the thing we paid cash for.",
+      "deck": "A strategy reset that kills generic pitching, a new hire's tooling locked in a day, a stalled delivery partner restarted, a ten day cold thread that finally booked a call, a full growth audit for a real prospect. Then a paid conference slot sat unclaimed for eleven days and the agenda went out without us.",
+      "date": "2026-09-19",
+      "day_range": "Sep 14 - 19",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "green",
+      "tags": [
+        "ops",
+        "sales",
+        "lessons"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 44 was five days of getting disciplined on purpose and one day of getting disciplined by accident. the first five felt like progress. the sixth felt like a bill coming due for a process we never wrote down."
+        },
+        {
+          "type": "p",
+          "text": "monday was a strategy reset with Chief in the room. the decision: stop pitching generic B2B data. every deal now splits into two buckets before anyone writes an email, and the pitch follows the bucket instead of a template. small rule, but it changes what the first message says."
+        },
+        {
+          "type": "p",
+          "text": "tuesday locked working style and tooling for a new hire on Lake Sonar in one sitting. five tools total, Python and FastAPI over TypeScript, a weekly 15 to 20 minute sync instead of a standing meeting nobody reads the notes from. deciding this on day one beats redeciding it in month three."
+        },
+        {
+          "type": "p",
+          "text": "wednesday restarted a delivery partner account that had been stuck for days. split the client database across two vendors and signed off new partner terms so it does not stall the same way twice."
+        },
+        {
+          "type": "pull",
+          "text": "a paid deliverable is still a deliverable. a thread mention is not an owner. a week where we remembered that for hiring and vendors and forgot it for cash out the door is a week with a hole in it."
+        },
+        {
+          "type": "p",
+          "text": "thursday a ten day old outreach thread finally converted into a booked call, the best pipeline move in weeks. same day, a new partnership conversation opened on the data and channel side."
+        },
+        {
+          "type": "p",
+          "text": "friday was a full digital audit plus twelve growth visuals for a real estate developer prospect with real budget behind it: organic traffic down over half in two years, their own flagship launch page outranked by a copycat with zero authority. built in their brand colors, sitting ready, one signature away from going out."
+        },
+        {
+          "type": "callout",
+          "head": "saturday, the one that stings",
+          "lines": [
+            "spent 8:30am to 8:30pm on site at a biosciences summit we sponsored.",
+            "found out mid-day that a panel slot we paid for sat unclaimed for eleven days. the agenda published without our topic in it.",
+            "new standing rule: any paid sponsorship deliverable gets an owner and a deadline the week we pay, not a thread mention that ages out."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "five days of building the discipline in on purpose, one day of paying for the discipline we skipped. that is the whole week in one line."
+        }
+      ]
+    },
+    {
+      "slug": "week-43-five-systems-five-days",
+      "kind": "weekly",
+      "week": 43,
+      "eyebrow": ">_ week 43 - the systems arc",
+      "title": "Five systems, five days, none of them talked to each other.",
+      "deck": "An email assistant, an infra investor thread, a vault rebuilt from scratch, a data account that tripled overnight, an appointment tool shipped end to end, and a UTM builder to close it out. The common thread was proving each one small before wiring it in.",
+      "date": "2026-09-12",
+      "day_range": "Sep 7 - 12",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "green",
+      "tags": [
+        "builds",
+        "ops",
+        "testing"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 43 did not have one big story. it had six small ones, each proven on its own before it touched anything real. an email assistant, an infrastructure pitch, a vault rebuild, a data account that tripled, a booking product shipped end to end, and a link tagger. different domains, same discipline: build it standalone, test it, then wire it in."
+        },
+        {
+          "type": "p",
+          "text": "monday was ChampReply v1: an email reply assistant with its own knowledge base, built and verified. same day, a 75-message backlog got cleared, the kind of task that never makes a roadmap but eats a whole afternoon if left alone."
+        },
+        {
+          "type": "p",
+          "text": "tuesday opened a credible infrastructure investor thread on the Ranch project and shipped a full client campaign report on the same day. two very different audiences, one on-brand voice for each."
+        },
+        {
+          "type": "pull",
+          "text": "called it a knowledge graph for two years. it was a pile. this week it got a map, named zones, and contracts for what belongs where."
+        },
+        {
+          "type": "p",
+          "text": "wednesday was the vault. restructured from a monolith into a five-layer context architecture, so every task loads only the layer it needs instead of the whole thing. same knowledge, a third of the noise. it felt more like editing than building, which is usually the sign a structure was overdue."
+        },
+        {
+          "type": "p",
+          "text": "thursday, one enterprise data account went from roughly 400 usable contacts to over 9,000 overnight after a new data source got plugged in. walked into that week’s review able to argue depth instead of apologizing for the lack of it."
+        },
+        {
+          "type": "p",
+          "text": "friday shipped ChampLantern v0, an internal appointment-booking product, backend to frontend, on a seeded demo. 118 backend tests green, a real end-to-end run against the live API passing 2 for 2. a vendor books, ops approves, a prospect confirms, the client sees the reminder land. first time that build ran start to finish instead of in pieces. no box on the task list got checked for it. the work that matters does not always look like the work that gets tracked."
+        },
+        {
+          "type": "callout",
+          "head": "saturday, closing the week quiet",
+          "lines": [
+            "built the reference version of a new UTM tool: paste any link, get it back tagged, no invented spelling for source or medium. 12 tests green before it goes near the real app.",
+            "in parallel, pulled apart what members hate about club and community apps: 24 Reddit threads and reviews across six competitors, turned into 10 ranked failure modes with a pass or fail test for each. that is the new QA bar for our own club app."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "the thing that did not move all week: the same missing email permission that has now blocked outbound sends for a fourth straight run. not a hard problem. just nobody has fixed it yet. five finished client emails are sitting there, written, correct, and stuck behind one checkbox in an admin console."
+        },
+        {
+          "type": "p",
+          "text": "six systems, six domains, one habit repeated: prove it standalone, test it, then let it touch anything real. the one thing still not proven is getting an email out the door without a human at a keyboard."
+        }
+      ]
+    },
+    {
+      "slug": "week-38-the-signals-were-everywhere",
+      "kind": "weekly",
+      "week": 38,
+      "eyebrow": ">_ week 38 - the enterprise signals arc",
+      "title": "The signals were everywhere. The outbox was not.",
+      "deck": "W38 brought nuclear infrastructure, wealth management, luxury travel, and a self-booked demo from big tech. The pipeline filled. The follow-through did not.",
+      "date": "2026-08-09",
+      "day_range": "Aug 3 - Aug 9",
+      "read": "4 min",
+      "arc": "Lake B2B",
+      "arc_color": "gold",
+      "tags": [
+        "lakeb2b",
+        "pipeline",
+        "enterprise"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 38 started with payroll architecture and ended with a saturday demo booking from a global tech company. in between: a nuclear infrastructure firm, a wealth management contact, and a luxury travel brand. four verticals in five days. the pipeline did not wait for permission."
+        },
+        {
+          "type": "p",
+          "text": "monday was infrastructure day. the champions group hr and payroll portal is moving into design phase. three hours mapping the erp adjacencies. the point is not just to build a portal -- it is to wire it into the operational layer that every company in the group already runs. a payroll system that cannot talk to the finance stack is a fancy spreadsheet. that framing landed. scope grew, which is usually a good sign."
+        },
+        {
+          "type": "p",
+          "text": "tuesday was the marketing platform audit. nine cloud services, none talking cleanly to each other. the session surfaced what i had suspected: the reporting layer is generating vanity metrics, not conversion metrics. a team can look productive for months on dashboards that do not reflect revenue motion. seven fixes flagged. three are structural. the rest are configuration. the structural ones will take a sprint each."
+        },
+        {
+          "type": "h2",
+          "text": "the enterprise signals"
+        },
+        {
+          "type": "p",
+          "text": "wednesday brought in a new relationship from india's wealth and fund management space. the initial call confirmed budget exists, timeline is unclear, proof required before scope. that is the normal pattern. what was not normal: they came through a warm intro from someone i had not spoken to in two years. that channel is working. i need to be more deliberate about it."
+        },
+        {
+          "type": "p",
+          "text": "thursday was the pitch that required the most preparation. a legacy luxury travel brand with a consultant layer between us and the decision-makers. six reels, a content brief, a proposal that had to make the case without leading with price. the consultant team filters on quality first. that is a better filter to get through because quality is easier to prove than price is to negotiate."
+        },
+        {
+          "type": "p",
+          "text": "friday was the most interesting conversation of the week. government-adjacent enterprise, nuclear infrastructure, european entity with india operations. the kind of meeting where you do not pitch -- you listen, then confirm you understand the problem. we committed to sending a capabilities brief and an nda same day. the nda is waiting on a sign-off. the brief went out. these deals move on trust and paperwork, in that order."
+        },
+        {
+          "type": "h2",
+          "text": "the system that ran saturday"
+        },
+        {
+          "type": "p",
+          "text": "saturday i did not take a single call. the automated triage ran: social engagement, zoom follow-up sweep, email ingestion. a senior executive at a major global tech company had already booked a lakeb2b product walkthrough for tuesday -- no outreach from our side. that is the right kind of notification to wake up to. seven singapore outreach threads from the tech week campaign are live. no replies yet. the week produced pipeline. the p0 list stayed long."
+        },
+        {
+          "type": "pull",
+          "text": "the signals were there. the week 38 failure was not in the conversations. it was in the commitments that left those conversations and did not land as documents. the outbox is the bottleneck, not the pipeline."
+        },
+        {
+          "type": "p",
+          "text": "week 39 opens with two deadlines already late: a mou that is ten days overdue, and a go/no-go on a major property decision stale for over fifty days. both have drafts. neither has been sent. the pattern is clear. next week tests whether we can close the loop, not just open it."
+        }
+      ]
+    },
+    {
+      "slug": "week-37-the-calendar-was-full",
+      "kind": "weekly",
+      "week": 37,
+      "eyebrow": ">_ week 37 - the dispatch arc",
+      "title": "The calendar was full. The outbox was empty.",
+      "deck": "The week ran four major calls, confirmed a data strategy pivot, and renewed a seven-year account. The MOU sat unsent. The fintech deliverables sat unbuilt. The engineer briefing did not happen. W32 starts with that accounting.",
+      "date": "2026-08-02",
+      "day_range": "Jul 27 - Aug 1",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "Lake B2B",
+        "Longevity",
+        "Champ IQ",
+        "Champions Operations"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Four important meetings. Zero emails sent from the commitments those meetings created. That is the honest summary of week 37."
+        },
+        {
+          "type": "p",
+          "text": "The week opened with a data strategy call that changed direction on the core product. A team that had been selling commodity contact lists is moving to bespoke, premium, custom-scoped data builds. The decision had been building for months but it landed formally on Tuesday: new pricing model, new ICP, new sales motion. That is not a tweak. That is a category reframe, and it will touch every pipeline and every pitch deck downstream."
+        },
+        {
+          "type": "p",
+          "text": "Wednesday delivered a renewal I did not expect to go sideways but did. A seven-year account, one of the stickiest in the portfolio, came back to negotiate. Two-year extension. Split pricing. Quarterly billing. Held the structure. They agreed on the call. The revised proposal goes out before month end. Eighty seats now, likely a hundred and fifty in year two. The AI sales platform came up as a future conversation worth having. Filed that."
+        },
+        {
+          "type": "p",
+          "text": "Thursday was architecture. Three hours to figure out what not to build in the scraping layer. OCR is off the table: the cost-per-record math breaks at production volumes. The session did not produce a system. It produced a shorter list of bad ideas. Sometimes that is the work."
+        },
+        {
+          "type": "p",
+          "text": "Friday ran a partnership conversation that touched five workstreams: a Bangalore office, a longevity summit, a device marketplace, a food brand, and a research institute connection. Good conversation. Incomplete close. The contact details were supposed to be exchanged after the call. They were not. The follow-up email is written and sitting, waiting for an address."
+        },
+        {
+          "type": "h2",
+          "text": "What did not happen."
+        },
+        {
+          "type": "p",
+          "text": "The MOU I committed to send on Wednesday is still in drafts. It is complete. It needs one recipient address. Five days passed and I did not find it."
+        },
+        {
+          "type": "p",
+          "text": "The three documents I promised a fintech partner ten days ago are still unbuilt. They have the addresses. They are waiting. The longer this sits the worse it looks."
+        },
+        {
+          "type": "p",
+          "text": "The briefing I owe the lead engineer on the AI sales platform did not happen. The handoff spec is complete. The ChampMail build is live. The walk-through is the last unlock in the chain and it keeps getting pushed to next week."
+        },
+        {
+          "type": "pull",
+          "text": "The calendar was full. The outbox was empty. W32 starts with that accounting and no tolerance for the same outcome."
+        },
+        {
+          "type": "p",
+          "text": "Sunday closed with the W32 brief locked. Theme: execute the backlog, no more carry-forward. Three items own Monday morning. The MOU. The fintech docs. A labour compliance issue with a hard deadline that already passed. No more drift."
+        }
+      ]
+    },
+    {
+      "slug": "week-35-three-calls-one-friday",
+      "kind": "weekly",
+      "week": 35,
+      "eyebrow": ">_ week 35 - the momentum arc",
+      "title": "Three calls. Three decisions. One Friday evening.",
+      "deck": "The week opened with a network failure and a VC conversation that rewrote the shortlist. By Wednesday, Champmail had its infrastructure backbone. Friday evening ran three back-to-back calls that each closed something: a partnership got revenue numbers, a team got a new KPI, and a website got years of accumulated complexity called out in thirty-three minutes.",
+      "date": "2026-07-18",
+      "day_range": "Jul 13 - Jul 18",
+      "read": "5 min",
+      "arc": "Champions Operations",
+      "arc_color": "gold",
+      "tags": [
+        "Lake B2B",
+        "Champ IQ",
+        "Champmail",
+        "Champions Operations"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Monday opened with a network failure that killed a partnership call before it started. The next call that afternoon was a VC portfolio director who was not on the roadmap, and he ended up opening two health-tech pipeline threads before the hour was done. That was the shape of the week. Things that should have worked did not. Things that were not expected did."
+        },
+        {
+          "type": "h2",
+          "text": "the vc conversation that rewrote the shortlist"
+        },
+        {
+          "type": "p",
+          "text": "The call that did work on Monday: a half-hour with a portfolio director at an early-stage fund. His portfolio includes a remote patient monitoring startup and a health records company with 50 million records and hyper-local India coverage. B2B data services valued at $150-200K over a year or two. Advisory arrangement on Champions health tech deals explored. None of this was in the pipeline at 10 AM. By 4 PM it was in the vault."
+        },
+        {
+          "type": "h2",
+          "text": "the email infrastructure question answered"
+        },
+        {
+          "type": "p",
+          "text": "Wednesday ran a full-group Leaders Meeting. Same afternoon, three discovery calls back to back. The one that mattered: an email infrastructure company, API-first, $15M ARR. The open question on Champmail has been infrastructure: who handles the plumbing at scale, and at what cost. Signed up for the starter package that night. If the API holds this becomes the backbone. That question had been open for months. It closed on Wednesday evening."
+        },
+        {
+          "type": "h2",
+          "text": "19 leads and four new verticals"
+        },
+        {
+          "type": "p",
+          "text": "Thursday's GTM check-in produced a real number: 19 leads in two weeks from a small external engagement running parallel to the main teams. Expanded scope to four new verticals on the spot and committed to a capability deck by Friday night. That number did not come from a bigger budget or a new channel. It came from a tighter brief and a cleaner ICP. Which is the whole thesis, showing up as a datapoint."
+        },
+        {
+          "type": "h2",
+          "text": "friday evening: three calls, three things closed"
+        },
+        {
+          "type": "p",
+          "text": "A crypto exchange partnership that had been in good-conversation territory got structured on Friday: three ICP segments nailed down, revenue share agreed in principle (15-20% year one, 10-12% in perpetuity), weekly check-ins confirmed. A partnership is not real until it has numbers and a cadence. Now it has both."
+        },
+        {
+          "type": "pull",
+          "text": "a deal moves when the numbers are on the table. before that it is just mutual interest."
+        },
+        {
+          "type": "p",
+          "text": "Same evening: formally shifted the lead gen team's KPI from calendar bookings to revenue. Zero calendar-fill pressure for the next two months. Five to ten quality prospects per week. I will personally run weekly SDR training syncs through the end of September. The goal is not activity metrics. It is a team that can generate, qualify, and advance a deal to a financial conversation without me in the room. That takes until September to build right."
+        },
+        {
+          "type": "p",
+          "text": "Closed with the Lake B2B website audit. Thirty-three minutes. Three calls: cut the navigation to four items, go API-first on the product architecture, test an ask-AI button on the homepage. One session cleared years of accumulated complexity that had been deferred through every previous review. Sometimes the work is just getting in the room and making the call instead of scheduling another one."
+        },
+        {
+          "type": "h2",
+          "text": "the pattern underneath"
+        },
+        {
+          "type": "p",
+          "text": "Monday's failed call would have been the story if nothing else happened. It was not the story. The week filled in around it and past it. By Friday night the desk was cleaner than it started, which is the actual metric I use to read a week."
+        },
+        {
+          "type": "p",
+          "text": "Week 36 has a Monday call with a European water-tech firm, the Lenovo enrichment sprint continuing, and the email infra API to verify. The questions are filed."
+        }
+      ]
+    },
     {
       "slug": "week-34-the-side-door",
       "kind": "weekly",
@@ -1900,6 +3250,111 @@
         {
           "type": "p",
           "text": "Every surface gets rewritten around \"enabling growth,\" with the stack as the proof underneath. The sales team stops leading with record counts and starts leading with the motion. And the next six months are about making the new sentence so obviously true that nobody asks for the old one."
+        }
+      ]
+    },
+    {
+      "slug": "week-36-the-doctor-said-yes",
+      "kind": "weekly",
+      "week": 36,
+      "eyebrow": ">_ week 36 · the distribution arc",
+      "title": "The doctor said yes. The hospital said committee.",
+      "deck": "A week that closed commercial terms on two partnerships, shipped a live deploy with an env-var lesson buried inside it, and ended on a Saturday call that produced the clearest distribution insight of the year.",
+      "date": "2026-07-25",
+      "day_range": "days 262-267",
+      "read": "6 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "Lake B2B",
+        "Champions Operations",
+        "ChampBeam",
+        "health-tech"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Monday opened with a correction. A crypto exchange partner sent over their ICP document and the top segment did not match any of the outreach batches already sent. Senior professionals, not founders. Every campaign batch had been targeting the wrong person. Expensive to learn at the middle of a week. Better than learning after the next batch went out."
+        },
+        {
+          "type": "p",
+          "text": "The week moved fast from there. Tuesday brought a first direct call with a US company building AI for oncology. Wednesday restructured the Lake B2B website architecture. Thursday shipped a live product. Friday filed the weekly scoreboard. Saturday held a strategy session that rewrote the posture on the biggest deal of the month."
+        },
+        {
+          "type": "h2",
+          "text": "the icp correction that arrived before the next batch ran"
+        },
+        {
+          "type": "p",
+          "text": "The crypto exchange partnership has been one of the cleaner deals of the summer: revenue share agreed, 90-day MQL pilot confirmed, 150-200 leads scoped. Monday the partner sent the ICP document and the top tier read differently than expected. Six segments. Top tier: HNI retail investors, senior professionals with investment portfolios. Not the founders and operators the early outreach batches had assumed. The ICP document arrived before the next batch went out. That timing matters more than the mistake."
+        },
+        {
+          "type": "h2",
+          "text": "first call with a health-tech company"
+        },
+        {
+          "type": "p",
+          "text": "Tuesday was a first direct call with a US company building AI infrastructure for oncology. Twelve revenue streams. Epic and Cerner integration. A major hospital system MOU in progress. Two angles on the table: data partnership for physician and patient acquisition, and a direct look at the raise they are running. Both sides called it genuinely interesting. The deal came through an intro from the crypto exchange channel, which made for an unusual afternoon: two deals, two very different sectors, same source."
+        },
+        {
+          "type": "pull",
+          "text": "the best deals often come through the third door you were not watching."
+        },
+        {
+          "type": "h2",
+          "text": "the lake b2b website gets two tracks"
+        },
+        {
+          "type": "p",
+          "text": "Wednesday: aligned on splitting the Lake B2B website into two navigation tracks. Data Services and Marketing Solutions. The architecture has been one thing trying to do two jobs. Two tracks means each buyer finds their path without cross-contamination from the other. Kicked off the creative sample pack simultaneously. One bundle per service line. Then a three-and-a-half-hour leaders meeting filled the rest of the evening. Some of those decisions stick. Some do not. You find out later."
+        },
+        {
+          "type": "h2",
+          "text": "champbeam ships. one env-var bug buried inside."
+        },
+        {
+          "type": "p",
+          "text": "Thursday: ChampBeam went live on Deepify. The deploy surfaced an interesting one: Coolify re-escapes backslashes in environment variables. Any CORS regex with a literal dot escaped as . was silently breaking. Switched to bracket notation for the dot and it cleared. Health check green, SSL cert through October. That kind of bug only appears in production. You do not find it in staging because staging does not re-escape. The lesson is filed."
+        },
+        {
+          "type": "p",
+          "text": "Same day: commercial terms finalized with the crypto exchange partner. 15% revenue share on transaction fees, 90-day MQL pilot, 150-200 leads. Also closed the commercial document on a maritime shipping group engagement. SOP and MOU both out the door to the right legal entity. Two deal docs in one Thursday. The one thing that did not ship before midnight was a follow-up promised live on a call. That gap was visible the moment it happened."
+        },
+        {
+          "type": "h2",
+          "text": "six meetings, nine follow-ups, two seo bets"
+        },
+        {
+          "type": "p",
+          "text": "Friday: weekly scoreboard filed. Six external meetings across the week. Three fully documented. Nine follow-up threads still open. Two SEO vendor bets placed in back-to-back 20-minute calls: one gets a two-week programmatic pilot on a fresh microsite, the other goes into the evaluation queue for existing properties. Chrome went offline and the social triage extension dropped. Zero calendar adds. One dependency equals one point of failure. That note is filed too."
+        },
+        {
+          "type": "h2",
+          "text": "saturday. bucket 3. physician-direct."
+        },
+        {
+          "type": "p",
+          "text": "The week closed on Saturday with a live strategy call on the health-tech deal. Three buckets had been framed in advance. The question was which to take in the room and which to leave open. Took bucket 3: marketing and fundraise support starting now. Equity track held open, gated on the full prospectus arriving. Marketing scope prices on its own merits. Investment does not move until diligence."
+        },
+        {
+          "type": "pull",
+          "text": "every doctor they had spoken to said yes. hospitals said committee. stop selling to the building."
+        },
+        {
+          "type": "p",
+          "text": "The sharpest insight on the call was not about the deal. It was about the distribution motion. Every physician they approached converted. Every hospital said the decision required a committee. The implication: sell to the physician and let the physician carry the referral into the institution. That is not a softer approach. It is a faster one. It is also a data and targeting problem, which made it a natural fit for what we can actually do. Physician-direct outreach with NPI-verified contacts is a campaign, not a concept."
+        },
+        {
+          "type": "h2",
+          "text": "the pattern underneath"
+        },
+        {
+          "type": "p",
+          "text": "Week 36 ran seven days. Most weeks do not. The Saturday call was the best hour of the week and it was also the one that required the most discipline to handle correctly: right bucket, right gate, right framing. The weeks that close well are not the ones where everything works. They are the ones where the right thing gets said at the right moment on a call that could have gone several directions."
+        },
+        {
+          "type": "p",
+          "text": "Week 37 opens with the oncology partnership follow-up pending, the crypto exchange pilot launching, the Lake B2B website rebuild underway, and the ZebPay follow-up email overdue by two days at close of Saturday. The list is honest."
         }
       ]
     }

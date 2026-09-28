@@ -8,7 +8,7 @@ import { HeroSpatial } from "@/components/client/r6/HeroSpatial";
 import { RevealsManager, About6 } from "@/components/client/r6/Effects";
 import { Hero6 } from "@/components/client/r6/Hero6";
 import { Ticker5 } from "@/components/client/r6/Ticker5";
-import { Macbook6 } from "@/components/client/r6/Macbook6";
+import { Macbook6, type Macbook6Ship } from "@/components/client/r6/Macbook6";
 import { StatStrip } from "@/components/client/r6/StatStrip";
 import { Heatmap5, Constellation5, RepoCards5, Shoutouts5 } from "@/components/client/r6/Viz5";
 import { LastFive, Companies5, Proof5, WaysIn, Newsletter5, NextStep } from "@/components/home/Sections5";
@@ -45,7 +45,11 @@ function spatialLabels(): string[] {
 }
 
 type Repo5 = ComponentProps<typeof RepoCards5>["repos"][number];
-type Shipped = NonNullable<ComponentProps<typeof Macbook6>["shipped"]>[number];
+// The component's props carry a default value (`= {}`), so ComponentProps<typeof
+// Macbook6> resolves to `Macbook6Props | undefined` and cannot be indexed. The
+// interface it exports is the type we actually want, and it is the same one the
+// component destructures.
+type Shipped = Macbook6Ship;
 
 // "Shipped and live" strip under the featured build: the live lane first,
 // then anything in building, generic key extraction so lane shape drift

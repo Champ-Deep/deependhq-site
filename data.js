@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-26T19:48:27.103Z
+// Built 2026-09-28T12:02:49.535Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 330,
-    "today_date": "2026-09-26",
+    "today_day": 331,
+    "today_date": "2026-09-27",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 331,
+          "date": "2026-09-27",
+          "shipping_now": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter…",
+          "arc_color": "blue"
+        },
         {
           "day": 330,
           "date": "2026-09-26",
@@ -89,15 +95,15 @@ window.DH_DATA = {
           "date": "2026-09-02",
           "shipping_now": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 608 errors to 0.…",
           "arc_color": "green"
-        },
-        {
-          "day": 305,
-          "date": "2026-09-01",
-          "shipping_now": "built a live handover board for nine apac client accounts. shared insights, checkable open items, three people on one surface.…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-45-the-wall-we-named",
+          "title": "Spent the week diagnosing why things dont ship. Sunday proved the diagnosis right.",
+          "date": "2026-09-27",
+          "read": "4 min"
+        },
         {
           "slug": "week-44-the-discipline-arc",
           "title": "Got disciplined about everything this week except the thing we paid cash for.",
@@ -542,7 +548,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 15,
+      "days_since": 16,
       "entries_30d": 3,
       "recent": [
         {
@@ -611,7 +617,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 15,
+      "days_since": 16,
       "entries_30d": 3,
       "recent": [
         {
@@ -685,8 +691,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-25",
       "last_ship_day": 329,
-      "days_since": 2,
-      "entries_30d": 16,
+      "days_since": 3,
+      "entries_30d": 15,
       "recent": [
         {
           "day": 329,
@@ -755,7 +761,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 4,
+      "days_since": 5,
       "entries_30d": 3,
       "recent": [
         {
@@ -831,6 +837,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-27",
+      "day": 331,
+      "mood": "🌑",
+      "shipping_now": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter deadline for a partnership decision thats been circling since july. thirteen dark sessions in a row and the go or no go date just came and went with nobody writing down what got decided. thats not a data problem anymore, its an avoidance problem.",
+      "yesterday_thread": "also had a chairman level exec sit in on a cold inbound call from a tiny startup and nobody can tell me why. sometimes the most interesting fact of the day is the one nobody explains.",
+      "raw_thought": "the automation thats supposed to catch every meeting has a blind spot, it only watches one call platform, and every call today ran on the other one. built a triage system and then routed three straight meetings around it without noticing.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-09-26",
       "day": 330,
@@ -3826,7 +3857,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 330 · Sep 26",
+    "last_ship": "day 331 · Sep 27",
     "state": "shipping"
   },
   "status_board": {
@@ -3850,6 +3881,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "sunday had three external calls and I came out of it with nothing on record for any of...",
+        "tag": "shipped d331"
+      },
+      {
         "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
         "tag": "shipped d330"
       },
@@ -3860,10 +3895,6 @@ window.DH_DATA = {
       {
         "text": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through...",
         "tag": "shipped d329"
-      },
-      {
-        "text": "ran the entity-resolution model against my whole second brain today as a shadow test, n...",
-        "tag": "shipped d328"
       }
     ],
     "soon": [
@@ -4326,6 +4357,70 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-45-the-wall-we-named",
+      "kind": "weekly",
+      "week": 45,
+      "eyebrow": ">_ week 45 - the wall we named",
+      "title": "Spent the week diagnosing why things dont ship. Sunday proved the diagnosis right.",
+      "deck": "A dead discovery call came back to life, a voice agent finally reached Chief, and a shadow test judged 2861 notes for under two cents. Then a partnership deadline that had been circling since July arrived on a Sunday and passed with nobody writing down what happened, because the same wall that had been blocking outreach all week was blocking meeting capture too.",
+      "date": "2026-09-27",
+      "day_range": "Sep 21 - 27",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "ops",
+        "automation",
+        "lessons"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 45 started with a wall and ended with the same wall, further along the pipe. monday it was a week of drafted outreach emails sitting unsent because a permission setting had been broken for two weeks. sunday it was three external meetings that vanished with nothing written down, for the same underlying reason: a system built to catch things automatically ran into a permission it did not have, and nobody was watching closely enough to notice in time."
+        },
+        {
+          "type": "p",
+          "text": "the week had real wins in between. a discovery call that looked dead came back to life on a sunday night callback and turned into a real partnership conversation: an agency takes on overflow microsite and lead-gen work, we take a cut. a build plan for the AI SDR project got locked, eight work packages, about four dev days, one hard rule attached to it: do not touch the old backend until the new one can rebuild itself without taking the server down, which it has done twice already."
+        },
+        {
+          "type": "p",
+          "text": "tuesday a voice agent placed an automated birthday call to Chief. missed the first attempt, connected on retry at midnight, and he liked it enough to ask for more: anniversaries, milestone follow-ups, the whole calendar. small thing, but it is the first automation this month that made someone smile instead of just closing a ticket."
+        },
+        {
+          "type": "pull",
+          "text": "built a triage system to catch everything, then routed three straight meetings around it in a single day without anyone noticing until the next morning."
+        },
+        {
+          "type": "p",
+          "text": "wednesday ran an entity-resolution model against the whole second brain as a shadow test, no writes to anything live: 2861 notes, 67 thousand links, 635 ambiguous mentions judged in under two minutes for under two cents, 45 clean merges, zero errors. the kind of result that makes you want to flip it on immediately and the exact moment to slow down instead. thursday shipped a 10-slide intent-signal carousel straight through to a published post, and the same day a recurring automation hit a permission wall for the fifth day running. not a bug. a platform-level denial on the exact call it needs to run unattended."
+        },
+        {
+          "type": "p",
+          "text": "saturday was the diagnosis. filed a full restructure of how the fleet hands off work: three lanes, the agent owns it end to end, the agent preps it and I tap approve, or it is mine alone. the real finding, after a week of evidence including over 1,500 open items in the task list and the same number filed five separate times: the bottleneck was never drafting capacity. it was permission walls and duplicate filing. named it in writing, on a saturday, feeling like real progress."
+        },
+        {
+          "type": "callout",
+          "head": "sunday, the proof",
+          "lines": [
+            "three external calls held, zero captured: a recurring product sync, a chairman-level cold inbound call with no explanation on file, and a partnership recap that has been counting down to a quarter deadline since july.",
+            "that deadline arrived on schedule and passed with no signed agreement, no explicit downgrade, nothing written down on either side. thirteen dark sessions in a row on that one thread alone.",
+            "the automation watching for missed meetings only watches one call platform. every one of sunday's three calls ran on the other one, and no sweep even attempted to catch them."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "wrote the diagnosis on saturday and watched it cost a real deadline on sunday, less than 24 hours later. that is not a coincidence, it is the same gap showing up twice in one week: once as unsent email, once as an unrecorded decision. the fix is now a filed task instead of a feeling, which is the only real difference between this week and the ones before it."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
+      ]
+    },
     {
       "slug": "week-44-the-discipline-arc",
       "kind": "weekly",
@@ -5687,33 +5782,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-09-26T19:48:27.085Z",
-    "built_date": "2026-09-27",
+    "built": "2026-09-28T12:02:49.519Z",
+    "built_date": "2026-09-28",
     "newest_entry": {
-      "date": "2026-09-26",
-      "day": 330
+      "date": "2026-09-27",
+      "day": 331
     },
-    "weekdays_stale": 0,
+    "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 107,
+        "days_old": 108,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 95,
+        "days_old": 96,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 95,
+        "days_old": 96,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 331,
+      "date": "2026-09-27",
+      "mood": "🌑",
+      "arc_color": "blue",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "ship": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter deadline for a partnership decision thats been circling since july. thirteen dark sessions in a row and the go or no go date just came and went with nobody writing down what got decided. thats not a data problem anymore, its an avoidance problem."
+    },
     {
       "day": 330,
       "date": "2026-09-26",
@@ -5855,80 +5961,13 @@ window.DH_DATA = {
         "Event Scout"
       ],
       "ship": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into two buckets, campaigns or enrichment, on a 12-step architecture, backed by a real per-rep budget to close on 100 targeted accounts."
-    },
-    {
-      "day": 316,
-      "date": "2026-09-12",
-      "mood": "🧪",
-      "arc_color": "green",
-      "arcs": [
-        "ChampUTM",
-        "Champions Club"
-      ],
-      "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spelling for source or medium. 12 tests green before it ever touches the real app."
     }
   ],
   "heatmap": {
-    "start": "2026-06-08",
-    "end": "2026-09-27",
+    "start": "2026-06-15",
+    "end": "2026-10-04",
     "weeks": 16,
     "cells": [
-      {
-        "date": "2026-06-08",
-        "future": false,
-        "weekend": false,
-        "day": 220,
-        "arc_color": "gold",
-        "ship": "week 24 opened with a first call into one of india's largest conglomerates. their real-estate arm, the md and "
-      },
-      {
-        "date": "2026-06-09",
-        "future": false,
-        "weekend": false,
-        "day": 221,
-        "arc_color": "green",
-        "ship": "took a one-off enrichment win and turned it into a product. verified contacts for vacation rental operators, a"
-      },
-      {
-        "date": "2026-06-10",
-        "future": false,
-        "weekend": false,
-        "day": 222,
-        "arc_color": "green",
-        "ship": "built a full deep-prep dossier for a chairman-initiated first touch with a major gulf carrier group. five docs"
-      },
-      {
-        "date": "2026-06-11",
-        "future": false,
-        "weekend": false,
-        "day": 223,
-        "arc_color": "green",
-        "ship": "the first call with the gulf carrier group rewrote the brief. the buyer is IPX and wholesale, not enterprise I"
-      },
-      {
-        "date": "2026-06-12",
-        "future": false,
-        "weekend": false,
-        "day": 224,
-        "arc_color": "green",
-        "ship": "completed the q2 kra review wave. five written reviews, six candid-conversation deliverables, one trackable sc"
-      },
-      {
-        "date": "2026-06-13",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
-      {
-        "date": "2026-06-14",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
       {
         "date": "2026-06-15",
         "future": false,
@@ -6765,6 +6804,62 @@ window.DH_DATA = {
         "date": "2026-09-27",
         "future": false,
         "weekend": true,
+        "day": 331,
+        "arc_color": "blue",
+        "ship": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that matt"
+      },
+      {
+        "date": "2026-09-28",
+        "future": false,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-09-29",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-09-30",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-01",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-02",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-03",
+        "future": true,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-04",
+        "future": true,
+        "weekend": true,
         "day": null,
         "arc_color": null,
         "ship": null
@@ -6772,12 +6867,12 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 330,
-    "entries": 108,
+    "days_public": 331,
+    "entries": 109,
     "entries_30d": 25,
-    "entries_this_month": 23,
+    "entries_this_month": 24,
     "streak_weekdays": 72,
-    "essays": 14,
+    "essays": 15,
     "companies": 12,
     "companies_active_90d": 5,
     "first_entry": "2026-05-04",
@@ -6785,11 +6880,11 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Lake B2B",
-        "n": 15
+        "n": 14
       },
       {
         "arc": "Champions Operations",
-        "n": 6
+        "n": 7
       },
       {
         "arc": "ChampOps",
@@ -6849,6 +6944,17 @@ window.DH_DATA = {
   "stack_now": {
     "items": [
       {
+        "name": "ChampOps",
+        "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
+        "url": null,
+        "kind": "using",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-09-27",
+        "mentions_90d": 11,
+        "days_since": 1
+      },
+      {
         "name": "Obsidian + Celsus",
         "what": "One graph, 12 companies. The single source of truth everything else reads from.",
         "url": null,
@@ -6856,18 +6962,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-09-25",
         "mentions_90d": 2,
-        "days_since": 2
-      },
-      {
-        "name": "ChampOps",
-        "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
-        "url": null,
-        "kind": "using",
-        "category": "tool",
-        "featured": true,
-        "last_seen": "2026-09-21",
-        "mentions_90d": 10,
-        "days_since": 6
+        "days_since": 3
       },
       {
         "name": "Event Scout",
@@ -6878,7 +6973,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 13
+        "days_since": 14
       },
       {
         "name": "ChampUTM",
@@ -6889,7 +6984,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 15
+        "days_since": 16
       },
       {
         "name": "Cloudflare",
@@ -6899,7 +6994,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 39
+        "days_since": 40
       },
       {
         "name": "LakeStream",
@@ -6910,7 +7005,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 2,
-        "days_since": 54
+        "days_since": 55
       },
       {
         "name": "ChamPDF",
@@ -6921,7 +7016,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 54
+        "days_since": 55
       },
       {
         "name": "ChampMail",
@@ -6932,7 +7027,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 56
+        "days_since": 57
       },
       {
         "name": "Supabase",
@@ -6943,7 +7038,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 1,
-        "days_since": 88
+        "days_since": 89
       },
       {
         "name": "ChampGraph",
@@ -6954,7 +7049,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 96
+        "days_since": 97
       },
       {
         "name": "ChampQuest",
@@ -6965,7 +7060,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 116
+        "days_since": 117
       },
       {
         "name": "B2B Pulse",
@@ -7391,9 +7486,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 108,
-      "essays": 14
+      "entries": 109,
+      "essays": 15
     }
   },
-  "built": "2026-09-26T19:48:27.103Z"
+  "built": "2026-09-28T12:02:49.535Z"
 };
