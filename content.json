@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 331,
-    "today_date": "2026-09-27",
+    "today_day": 332,
+    "today_date": "2026-09-28",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-28",
+      "day": 332,
+      "mood": "😮‍💨",
+      "shipping_now": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker, no summary, nothing. Instead of guessing what happened, I filed the gap itself: what is known, what is not, what is next. Also built this weeks focus map from scratch off raw task data since the usual Sunday planning doc never generated. Ugly spine, but it works.",
+      "yesterday_thread": "The automation stack has three separate write-back paths blocked right now, one mailbox and two dashboards. Been flagging each one separately every day. Bundled it into a single fix request today instead.",
+      "raw_thought": "An infrastructure deal I have been pushing since July just blew through its own decision deadline with total silence on the other end. That one is mine to chase tomorrow, not a system problem.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-09-27",
       "day": 331,
@@ -1834,6 +1847,10 @@
     ],
     "recently": [
       {
+        "text": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery c...",
+        "tag": "shipped d332"
+      },
+      {
         "text": "sunday had three external calls and I came out of it with nothing on record for any of...",
         "tag": "shipped d331"
       },
@@ -1844,10 +1861,6 @@
       {
         "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
         "tag": "shipped d330"
-      },
-      {
-        "text": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through...",
-        "tag": "shipped d329"
       }
     ],
     "soon": [

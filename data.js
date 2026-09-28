@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-28T12:02:49.535Z
+// Built 2026-09-28T19:42:41.412Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 331,
-    "today_date": "2026-09-27",
+    "today_day": 332,
+    "today_date": "2026-09-28",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 332,
+          "date": "2026-09-28",
+          "shipping_now": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker,…",
+          "arc_color": "blue"
+        },
         {
           "day": 331,
           "date": "2026-09-27",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "day": 311,
           "date": "2026-09-07",
           "shipping_now": "ChampReply v1 built and verified. Email reply assistant with a knowledge base. Also cleared a 75-meeting Zoom backlog from the…",
-          "arc_color": "green"
-        },
-        {
-          "day": 306,
-          "date": "2026-09-02",
-          "shipping_now": "rewrote all 66 custom skills to one standard and packaged them as a 7-plugin marketplace in git. validator: 608 errors to 0.…",
           "arc_color": "green"
         }
       ],
@@ -548,7 +548,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 16,
+      "days_since": 17,
       "entries_30d": 3,
       "recent": [
         {
@@ -617,7 +617,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 16,
+      "days_since": 17,
       "entries_30d": 3,
       "recent": [
         {
@@ -691,7 +691,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-25",
       "last_ship_day": 329,
-      "days_since": 3,
+      "days_since": 4,
       "entries_30d": 15,
       "recent": [
         {
@@ -761,7 +761,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 5,
+      "days_since": 6,
       "entries_30d": 3,
       "recent": [
         {
@@ -837,6 +837,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-28",
+      "day": 332,
+      "mood": "😮‍💨",
+      "shipping_now": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker, no summary, nothing. Instead of guessing what happened, I filed the gap itself: what is known, what is not, what is next. Also built this weeks focus map from scratch off raw task data since the usual Sunday planning doc never generated. Ugly spine, but it works.",
+      "yesterday_thread": "The automation stack has three separate write-back paths blocked right now, one mailbox and two dashboards. Been flagging each one separately every day. Bundled it into a single fix request today instead.",
+      "raw_thought": "An infrastructure deal I have been pushing since July just blew through its own decision deadline with total silence on the other end. That one is mine to chase tomorrow, not a system problem.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-09-27",
       "day": 331,
@@ -3857,7 +3882,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 331 · Sep 27",
+    "last_ship": "day 332 · Sep 28",
     "state": "shipping"
   },
   "status_board": {
@@ -3881,6 +3906,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery c...",
+        "tag": "shipped d332"
+      },
+      {
         "text": "sunday had three external calls and I came out of it with nothing on record for any of...",
         "tag": "shipped d331"
       },
@@ -3891,10 +3920,6 @@ window.DH_DATA = {
       {
         "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
         "tag": "shipped d330"
-      },
-      {
-        "text": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through...",
-        "tag": "shipped d329"
       }
     ],
     "soon": [
@@ -5782,33 +5807,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-09-28T12:02:49.519Z",
-    "built_date": "2026-09-28",
+    "built": "2026-09-28T19:42:41.396Z",
+    "built_date": "2026-09-29",
     "newest_entry": {
-      "date": "2026-09-27",
-      "day": 331
+      "date": "2026-09-28",
+      "day": 332
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 108,
+        "days_old": 109,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 96,
+        "days_old": 97,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 96,
+        "days_old": 97,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 332,
+      "date": "2026-09-28",
+      "mood": "😮‍💨",
+      "arc_color": "blue",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "ship": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker, no summary, nothing. Instead of guessing what happened, I filed the gap itself: what is known, what is not, what is next. Also built this weeks focus map from scratch off raw task data since the usual Sunday planning doc never generated. Ugly spine, but it works."
+    },
     {
       "day": 331,
       "date": "2026-09-27",
@@ -5950,17 +5986,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over TypeScript, weekly 15 to 20 minute check-ins, deliverable based. The month-one target is concrete, a queryable chatbot trained on our own schema, with a senior teammate assigned as buddy."
-    },
-    {
-      "day": 318,
-      "date": "2026-09-14",
-      "mood": "🧭",
-      "arc_color": "blue",
-      "arcs": [
-        "Lake B2B",
-        "Event Scout"
-      ],
-      "ship": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into two buckets, campaigns or enrichment, on a 12-step architecture, backed by a real per-rep budget to close on 100 targeted accounts."
     }
   ],
   "heatmap": {
@@ -6812,13 +6837,13 @@ window.DH_DATA = {
         "date": "2026-09-28",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 332,
+        "arc_color": "blue",
+        "ship": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely da"
       },
       {
         "date": "2026-09-29",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -6867,11 +6892,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 331,
-    "entries": 109,
-    "entries_30d": 25,
-    "entries_this_month": 24,
-    "streak_weekdays": 72,
+    "days_public": 332,
+    "entries": 110,
+    "entries_30d": 26,
+    "entries_this_month": 25,
+    "streak_weekdays": 73,
     "essays": 15,
     "companies": 12,
     "companies_active_90d": 5,
@@ -6884,11 +6909,11 @@ window.DH_DATA = {
       },
       {
         "arc": "Champions Operations",
-        "n": 7
+        "n": 8
       },
       {
         "arc": "ChampOps",
-        "n": 6
+        "n": 7
       },
       {
         "arc": "Celsus OS",
@@ -6950,8 +6975,8 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-09-27",
-        "mentions_90d": 11,
+        "last_seen": "2026-09-28",
+        "mentions_90d": 12,
         "days_since": 1
       },
       {
@@ -6962,7 +6987,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-09-25",
         "mentions_90d": 2,
-        "days_since": 3
+        "days_since": 4
       },
       {
         "name": "Event Scout",
@@ -6973,7 +6998,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 14
+        "days_since": 15
       },
       {
         "name": "ChampUTM",
@@ -6984,7 +7009,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 16
+        "days_since": 17
       },
       {
         "name": "Cloudflare",
@@ -6994,7 +7019,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 40
+        "days_since": 41
       },
       {
         "name": "LakeStream",
@@ -7005,7 +7030,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 2,
-        "days_since": 55
+        "days_since": 56
       },
       {
         "name": "ChamPDF",
@@ -7016,7 +7041,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 55
+        "days_since": 56
       },
       {
         "name": "ChampMail",
@@ -7027,7 +7052,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 57
+        "days_since": 58
       },
       {
         "name": "Supabase",
@@ -7038,7 +7063,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 1,
-        "days_since": 89
+        "days_since": 90
       },
       {
         "name": "ChampGraph",
@@ -7049,7 +7074,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 97
+        "days_since": 98
       },
       {
         "name": "ChampQuest",
@@ -7060,7 +7085,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 117
+        "days_since": 118
       },
       {
         "name": "B2B Pulse",
@@ -7486,9 +7511,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 109,
+      "entries": 110,
       "essays": 15
     }
   },
-  "built": "2026-09-28T12:02:49.535Z"
+  "built": "2026-09-28T19:42:41.412Z"
 };
