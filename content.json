@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 332,
-    "today_date": "2026-09-28",
+    "today_day": 333,
+    "today_date": "2026-09-29",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-29",
+      "day": 333,
+      "mood": "🎯",
+      "shipping_now": "the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two months, no visibility into who is actually dialing. came out of it with a 10-day trial instead of a walkout, daily updates, a shared channel, a named owner on the stalled campaign. also caught four numbers in our own reporting that were just wrong before they reached the client. one of them, a headline figure we had repeated for two months, had no source anywhere in the files at all.",
+      "yesterday_thread": "closed out an org restructure that had been open for weeks too. one report line now goes straight to me, one open question parked on purpose instead of forced through tonight.",
+      "raw_thought": "an infrastructure partnership decision that was supposed to get a yes or no tonight went dark again, fifth time in three weeks. same avoidance pattern as sunday. chasing that one down directly tomorrow instead of waiting for it to fix itself.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-09-28",
       "day": 332,
@@ -1847,16 +1860,16 @@
     ],
     "recently": [
       {
+        "text": "the enterprise IT services client call happened tonight, the one that told us flat out...",
+        "tag": "shipped d333"
+      },
+      {
         "text": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery c...",
         "tag": "shipped d332"
       },
       {
         "text": "sunday had three external calls and I came out of it with nothing on record for any of...",
         "tag": "shipped d331"
-      },
-      {
-        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
-        "tag": "shipped d330"
       },
       {
         "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
