@@ -958,9 +958,9 @@ Link: https://deependhq.com/journey.html#day-243
 
 q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the lake b2b enterprise governance pack two accounts had been asking for.
 
-Thread: monday landed an intent-signal pitch with a global cloud observability platform’s EMEA abm team. proposal stage locked. separately, a saas automation startup came in with a two-tier partnership proposal: equity-for-services through the accelerator is on the table.
+Thread: monday landed an intent-signal pitch with a global cloud observability platform's EMEA abm team. proposal stage locked. separately, a saas automation startup came in with a two-tier partnership proposal: equity-for-services through the accelerator is on the table.
 
-Raw thought: quarter-end surfaces every ‘i’ll deal with it later.’ the governance pack two enterprise accounts needed has sat pending for weeks. sometimes shipping the artifact matters more than scheduling another meeting about it.
+Raw thought: quarter-end surfaces every 'i'll deal with it later.' the governance pack two enterprise accounts needed has sat pending for weeks. sometimes shipping the artifact matters more than scheduling another meeting about it.
 
 Arcs: Lake B2B, Champions Operations
 
@@ -1390,7 +1390,7 @@ called it a knowledge graph for two years. it was a pile. this week it got a map
 
 wednesday was the vault. restructured from a monolith into a five-layer context architecture, so every task loads only the layer it needs instead of the whole thing. same knowledge, a third of the noise. it felt more like editing than building, which is usually the sign a structure was overdue.
 
-thursday, one enterprise data account went from roughly 400 usable contacts to over 9,000 overnight after a new data source got plugged in. walked into that week’s review able to argue depth instead of apologizing for the lack of it.
+thursday, one enterprise data account went from roughly 400 usable contacts to over 9,000 overnight after a new data source got plugged in. walked into that week's review able to argue depth instead of apologizing for the lack of it.
 
 friday shipped ChampLantern v0, an internal appointment-booking product, backend to frontend, on a seeded demo. 118 backend tests green, a real end-to-end run against the live API passing 2 for 2. a vendor books, ops approves, a prospect confirms, the client sees the reminder land. first time that build ran start to finish instead of in pieces. no box on the task list got checked for it. the work that matters does not always look like the work that gets tracked.
 
@@ -1666,13 +1666,13 @@ That is the lesson, and it is not a comfortable one. The last day of a sprint is
 
 2026-06-13, 6 min read, Champions Operations. https://deependhq.com/post.html?slug=week-30-the-enterprise-arc
 
-The week went wide before it went deep. Enterprise BD, a data partnership, and the full org’s KRAs put to rest.
+The week went wide before it went deep. Enterprise BD, a data partnership, and the full org's KRAs put to rest.
 
-Week 30 opened with a chairman-initiated first touch at one of india’s largest conglomerate real-estate arms and closed with the entire marketing floor on paper. In between, a data partnership signed, a new vertical got its PRD, and a gulf carrier group’s call rewrote its own brief by the second hour.
+Week 30 opened with a chairman-initiated first touch at one of india's largest conglomerate real-estate arms and closed with the entire marketing floor on paper. In between, a data partnership signed, a new vertical got its PRD, and a gulf carrier group's call rewrote its own brief by the second hour.
 
 The enterprise pipeline went wide
 
-Monday opened with a chairman-level first call into a major conglomerate’s real-estate division. The ask on paper was NRI sales data and digital infrastructure. The conversation on the call was bigger. Chairman-level engagement usually is. The brief has already expanded twice since the debrief.
+Monday opened with a chairman-level first call into a major conglomerate's real-estate division. The ask on paper was NRI sales data and digital infrastructure. The conversation on the call was bigger. Chairman-level engagement usually is. The brief has already expanded twice since the debrief.
 
 Thursday, a gulf-based carrier group sat down for what was billed as a data intelligence conversation. By the second hour the buyer had shifted from the brand side to the network side. An IP exchange play. The kind of infrastructure ask that does not come from procurement. The kind that comes from someone who runs the pipe.
 

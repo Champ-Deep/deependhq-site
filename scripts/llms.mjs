@@ -18,7 +18,10 @@ import { join } from 'node:path';
 const SITE = 'https://deependhq.com';
 const KIND = { green: 'building', blue: 'thinking', gold: 'a real outcome' };
 // House rule: no em or en dashes in anything this site publishes.
-const clean = (s) => String(s || '').replace(/\s*—\s*/g, ', ').replace(/–/g, ' to ').replace(/\s+/g, ' ').trim();
+// Served as text/plain with no charset, so keep it ASCII: curly quotes, ellipses and
+// arrows become their plain forms.
+const ASCII = [[/[\u2018\u2019\u201B]/g, "'"], [/[\u201C\u201D]/g, '"'], [/\u2026/g, '...'], [/\u2192/g, '->'], [/\u00A0/g, ' ']];
+const clean = (s) => ASCII.reduce((t, [re, to]) => t.replace(re, to), String(s || '')).replace(/\s*\u2014\s*/g, ', ').replace(/\u2013/g, ' to ').replace(/\s+/g, ' ').trim();
 const oneLine = (s, n = 160) => { const t = clean(s); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '...' : t; };
 const host = (u) => String(u || '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
