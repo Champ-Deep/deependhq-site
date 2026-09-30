@@ -32,10 +32,13 @@ mkdirSync(FONT_DIR, { recursive: true });
 
 // Exactly what the design system declares in system.css.
 const FAMILIES = [
-  { css: 'Inter:wght@400;500;600;700', local: 'Inter', file: 'inter' },
+  // 800 is the operator display weight in the design system (Inter 700/800).
+  { css: 'Inter:wght@400;500;600;700;800', local: 'Inter', file: 'inter' },
   { css: 'JetBrains+Mono:wght@400;600', local: 'JetBrains Mono', file: 'jetbrains-mono' },
   // Fraunces is a variable optical-size serif. The site uses 700 and 800 only.
-  { css: 'Fraunces:opsz,wght@9..144,700;9..144,800', local: 'Fraunces', file: 'fraunces' },
+  // The homepage hero sets its second line in Fraunces italic 700, so the
+  // italic ships too. Only the latin italic file downloads for English text.
+  { css: 'Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700', local: 'Fraunces', file: 'fraunces' },
 ];
 
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
@@ -103,7 +106,8 @@ for (const f of faces) {
 }
 
 for (const f of byContent.values()) {
-  const name = `${fam.file}-${f.subset}.woff2`;
+  // Italic faces get their own file name, or they would overwrite the upright one.
+  const name = `${fam.file}${f.style === 'italic' ? '-italic' : ''}-${f.subset}.woff2`;
   const dest = join(FONT_DIR, name);
   if (!existsSync(dest)) {
     const buf = await get(f.url, true);
@@ -111,7 +115,7 @@ for (const f of byContent.values()) {
     count++;
     bytes += buf.length;
   }
-  const ws = [...f.weights].sort();
+  const ws = [...f.weights].sort((x, y) => Number(x) - Number(y));
   const weight = ws.length > 1 ? `${ws[0]} ${ws[ws.length - 1]}` : ws[0];
   out.push(
     '@font-face {',
@@ -156,7 +160,8 @@ for (const p of pages) {
     .replace(/[ \t]*<link rel="preconnect" href="https:\/\/fonts\.(googleapis|gstatic)\.com"[^>]*>\n?/g, '')
     .replace(/[ \t]*<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^"]*"[^>]*>\n?/g, '')
     // Make sure the local sheet is loaded, ahead of the legacy sheets.
-    .replace(/(<link rel="stylesheet" href="colors_and_type\.css">)/, '$1\n  <link rel="stylesheet" href="fonts.css">');
+    // Idempotent: only add the local sheet when the page does not load it yet.
+    .replace(/(<link rel="stylesheet" href="colors_and_type\.css">)/, (m) => (/href="fonts\.css"/.test(orig) ? m : `${m}\n  <link rel="stylesheet" href="fonts.css">`));
   if (src !== orig) { writeFileSync(path, src, 'utf8'); touched++; }
 }
 

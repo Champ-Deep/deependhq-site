@@ -1,126 +1,422 @@
-// Home.jsx : the homepage sections, Sep 2026 system.
-// Editorial shell (identity, essays, ways in) around an operator core (today,
-// the log strip, the stack, the twelve). Every number is derived in data.js.
+// Home.jsx : the homepage, "The Window". Oct 2026.
+// Design note: Efforts/Active/DeependHQ Site/DeepEndHQ Homepage Redesign 2026-10-01.md
+//
+// HOW THIS PAGE RUNS
+// These components run at BUILD time only. scripts/prerender.mjs renders them
+// to static HTML inside #root, and index.html ships that HTML plus home.js, a
+// small vanilla island. The homepage does not load React or Babel in the
+// browser, so nothing re-renders over the markup and restarts the motion.
+// Scroll-linked motion is CSS (animation-timeline) in home.css. home.js does
+// ages, the COMPILE behaviour, the pinned day, the heatmap readout, the glyph
+// field and the lazy cmd+K palette.
+//
+// Every number is derived from data.js at build time. Every date also carries
+// its ISO value so home.js can recompute its age in the visitor's browser.
+// No em dashes.
 
 (() => {
-const { Age, Chip, fmtDate, arcTone } = window.Sys;
+const { fmtDate, ageOf } = window.Sys;
 const DH = window.DH_DATA;
+const BOOK = 'https://scheduler.zoom.us/sreedeep';
+const EXT = { target: '_blank', rel: 'noopener noreferrer' };
+const KIND = { green: 'building', blue: 'thinking', gold: 'a real outcome' };
+const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const dow = (iso) => { const [y, m, d] = iso.split('-').map(Number); return DOW[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]; };
 
-// ---------------------------------------------------------------- hero
-const HeroBento = () => {
+// Age chip. Rendered at build time, recomputed live by home.js from dateTime
+// and data-age, which is 'log' (weekday aware) or a day limit.
+// 'plain' shows the age without a fresh/warn/stale colour: old history is not stale.
+const WxAge = ({ date, mode }) => {
+  const a = ageOf(date, mode === 'plain' ? 99999 : mode);
+  if (mode === 'plain') return <time className="wx-age-plain" dateTime={date} data-age="plain">{a.label}</time>;
+  return <time className="age" dateTime={date} data-age={String(mode)} data-state={a.state}>{a.label}</time>;
+};
+
+const istClock = (iso) => {
+  try {
+    return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(iso)).replace(',', '');
+  } catch (e) { return ''; }
+};
+
+// ---------------------------------------------------------------- 15:00 hero
+const Hero = () => {
   const e = DH.journey[0];
-  const st = DH.stats || {};
-  const link = (arc) => ((e.company_links || []).find((l) => l.arc === arc && l.slug) || {}).slug;
+  const champ = (DH.pillars || []).find((p) => p.slug === 'champ') || {};
+  const beam = (champ.products || []).find((p) => p.name === 'ChampBeam') || { url: 'https://champbeam.com' };
+  const glyphs = DH.journey.slice(0, 12).map((j) => j.shipping_now).join(' ');
   return (
-    <header className="hero sys" id="top">
-      <div className="wrap hero-grid">
-        <div className="hero-rail mode-operator" aria-label="log numbers">
-          <div className="card stat"><b className="build">{st.days_public}</b><span>days in public</span></div>
-          <div className="card stat"><b>{st.entries_this_month}</b><span>entries this month</span></div>
-          <div className="card stat"><b>{st.streak_weekdays}</b><span>weekday streak</span></div>
-        </div>
-
-        <div className="hero-main">
-          <div className="card hero-id mode-editorial">
-            <span className="who">Sreedeep Surapaneni · Bangalore</span>
-            <h1>Past the hype cycle. <em>Into the infrastructure.</em></h1>
-            <p className="line">group cmo, champions group. 12 companies, one vault. i ship something every weekday and write it down here, 3 pm to 2 am ist.</p>
-            <div className="ctas">
-              <a className="btn btn-gold" href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer">Book a call</a>
-              <a className="alt" href={`journey.html#day-${e.day}`}>or start with <b>what shipped today →</b></a>
-            </div>
-            <div className="desk">
-              <span className="k">on my desk, last 30 days</span>
-              <span className="chips">{(st.arcs_30d || []).map((a) => <Chip key={a.arc} tone="win">{a.arc} <b style={{ color: 'var(--text)', fontWeight: 600 }}>{a.n}</b></Chip>)}</span>
-            </div>
-          </div>
-
-          <div className="card hero-today mode-operator">
-            <span className="eyebrow">live from the log <Age date={e.date} mode="log" /></span>
-            <div className="today-head">
-              <span className="day">day {e.day}</span>
-              <span className="date">{fmtDate(e.date, true)}</span>
-              <span className="mood" aria-label="mood">{e.mood}</span>
-            </div>
-            <p className="ship">{e.shipping_now}</p>
-            {e.yesterday_thread && <p className="thread">{e.yesterday_thread}</p>}
-            <div className="chips">
-              {(e.arcs || []).slice(0, 3).map((a) => <Chip key={a} tone={arcTone(e.arc_color)} href={link(a) ? `company.html?slug=${encodeURIComponent(link(a))}` : undefined}>{a}</Chip>)}
-            </div>
-            <div className="today-foot">
-              <a href={`journey.html#day-${e.day}`}>read the full entry →</a>
-              {DH.journey[1] && <a href={`journey.html#day-${DH.journey[1].day}`} className="dim">yesterday: day {DH.journey[1].day}</a>}
-            </div>
+    <section className="wx-hero mode-editorial" id="top" aria-labelledby="wx-hero-h">
+      <canvas className="wx-ascii" aria-hidden="true" data-glyphs={glyphs} />
+      <p className="wx-eyebrow-ed">Sreedeep Surapaneni · Bangalore</p>
+      <h1 className="wx-hero-h" id="wx-hero-h">
+        <span className="wx-ln"><span>Past the hype cycle.</span></span>
+        <span className="wx-ln"><span><em>Into the infrastructure.</em><span className="wx-cursor" aria-hidden="true" /></span></span>
+      </h1>
+      <div className="wx-hero-row">
+        <div className="wx-hero-copy">
+          <p className="wx-hero-sub">Group CMO at Champions Group. <b>Twelve companies, one vault.</b> I ship something every weekday and write it down here.</p>
+          <div className="wx-hero-cta">
+            <a className="btn btn-gold" href={BOOK} {...EXT}>Book a call</a>
+            <a className="wx-tlink" href="#log">or start with what shipped today ↓</a>
           </div>
         </div>
-
-        <div className="hero-rail mode-operator" aria-label="site numbers">
-          <div className="card stat"><b>{st.companies}</b><span>companies</span></div>
-          <div className="card stat"><b className="win">{st.essays}</b><span>essays</span></div>
-          <div className="card stat"><b>{st.entries}</b><span>public entries</span></div>
+        <div className="wx-hero-side mode-operator">
+          <article className="wx-live" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day}>
+            <p className="wx-live-k">live from the log · <WxAge date={e.date} mode="log" /></p>
+            <p className="wx-live-day">day {e.day} <span>{fmtDate(e.date, true)}</span></p>
+            <p className="wx-live-txt" data-compile="">{e.shipping_now}</p>
+            <ul className="wx-chips">{(e.arcs || []).slice(0, 2).map((a) => <li key={a}>{a}</li>)}</ul>
+            <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} in full →</a>
+          </article>
+          <a className="wx-beam" href={beam.url || 'https://champbeam.com'} {...EXT}>
+            <span className="wx-beam-k">featured build</span>
+            <span className="wx-beam-name">Champ<b>Beam</b></span>
+            <span className="wx-beam-line">Send it. Know they saw it.</span>
+            <span className="wx-beam-meta">Smart links, QR codes and file tracking in one product. champbeam.com ↗</span>
+          </a>
         </div>
       </div>
-    </header>
+      <div className="wx-hero-rule" aria-hidden="true" />
+    </section>
   );
 };
 
-// ------------------------------------------------------------ log strip
-const Heatmap = () => {
-  const H = DH.heatmap;
-  const cols = [];
-  for (let i = 0; i < H.weeks; i++) cols.push(H.cells.slice(i * 7, i * 7 + 7));
-  const logged = H.cells.filter((c) => c.day).length;
+// ---------------------------------------------------------------- 15:40 proof
+const Proof = () => {
+  const st = DH.stats || {};
+  const figs = [
+    { k: 'days in public', n: st.days_public, sub: 'derived nightly, never typed in', live: true },
+    { k: 'weekday streak', n: st.streak_weekdays, sub: 'weekends do not count, gaps do' },
+    { k: `entries since ${fmtDate(st.first_entry)}`, n: st.entries, sub: `${st.entries_30d} in the last 30 days` },
+    { k: 'companies, 1 operator', n: st.companies, sub: `${st.companies_active_90d} made the log in the last 90 days` },
+  ];
   return (
-    <div>
-      <div className="heat" role="img" aria-label={`${logged} logged days in the last ${H.weeks} weeks, ${fmtDate(H.start, true)} to ${fmtDate(H.end, true)}`}>
-        {cols.map((col, i) => (
-          <div className="col" key={i}>
-            {col.map((c) => c.day
-              ? <a key={c.date} className={`cell ${c.arc_color}`} href={`journey.html#day-${c.day}`} title={`day ${c.day} · ${fmtDate(c.date)} · ${c.ship}`} aria-label={`day ${c.day}, ${fmtDate(c.date)}`} />
-              : <span key={c.date} className={`cell${c.weekend ? ' weekend' : ''}${c.future ? ' future' : ''}`} aria-hidden="true" />)}
+    <section className="wx-band mode-operator" id="proof" aria-label="The log in numbers">
+      <dl className="wx-figs">
+        {figs.map((f) => (
+          <div key={f.k} className={`wx-fig${f.live ? ' wx-fig-live' : ''}`}>
+            <dt className="wx-fig-k">{f.k}</dt>
+            <dd className="wx-fig-n"><span>{f.n}</span></dd>
+            <dd className="wx-fig-sub">{f.sub}</dd>
           </div>
         ))}
+      </dl>
+    </section>
+  );
+};
+
+// ------------------------------------------------ 15:00 to 02:00 the pinned day
+// Stage lines are reconstructed from days 333 and 334 until the asciinema
+// recordings exist (build plan 3.6). The compile stage reads the real build.
+// The clock keyframes in home.css key off these hours: 15:00, 19:00, 23:00,
+// 01:03 (the daily-note-recap schedule) and 02:00.
+const STAGES = [
+  { hour: '15:00', short: 'calls', title: 'Calls first.',
+    body: 'Client, vendor and partner calls fill the afternoon. Each one lands in the vault as a note, or it did not happen.',
+    lines: [['cmd', 'ls vault/Calendar/Meetings | tail -1'], ['out', '2026-09-29 enterprise IT services client.md'], ['out', '+ <b>10-day trial</b> instead of a walkout · daily updates · shared sheet']] },
+  { hour: '19:00', short: 'build', title: 'Build what the calls exposed.',
+    body: 'If a call surfaced a gap, it gets built that night, without a ticket or a slot on a roadmap.',
+    lines: [['cmd', 'git push origin main'], ['out', '<b>141 files</b> changed · <b>56</b> backend tests green'], ['ok', 'end-to-end run passed twice']] },
+  { hour: '23:00', short: 'write', title: 'Write it down, unedited.',
+    body: 'The daily note is the raw material: what shipped, what it connects to, what I think.',
+    lines: [['cmd', 'open vault/Calendar/Daily/2026-09-30.md'], ['out', 'shipping_now · yesterday_thread · raw_thought · arcs']] },
+  { hour: '01:03', short: 'compile', title: 'An agent compiles the entry.',
+    body: 'A nightly agent reads the note, writes the entry and rebuilds every number on this page from source. Nothing is typed in by hand.',
+    lines: null },
+  { hour: '02:00', short: 'ship', title: 'Live by 2 AM.',
+    body: 'It pushes, the Cloudflare Worker serves it, and when an entry is late the top of the site says so.',
+    lines: [['cmd', 'bash scripts/publish.sh'], ['ok', 'deploy ok · deependhq.com'], ['out', 'next window opens 15:00 IST']] },
+];
+// Stage boundaries as fractions of the pinned range. They match the clock
+// keyframes (30, 55, 75, 90 percent) so the stage and the clock agree.
+const BOUNDS = [0, 0.30, 0.55, 0.75, 0.90, 1];
+const TRACK = 420; // svh, keep in step with .wx-anat-track height in home.css
+
+const Day = () => {
+  const st = DH.stats || {};
+  const stages = STAGES.map((s) => (s.lines ? s : { ...s, lines: [
+    ['cmd', 'node scripts/build-data.mjs'],
+    ['out', `day <b>${st.days_public}</b> · <b>${st.entries}</b> entries · <b>${st.essays}</b> essays · <b>${st.companies}</b> companies`],
+    ['ok', `data.js written · built ${istClock(DH.built)} IST`],
+  ] }));
+  const sent = STAGES.map((_, i) => {
+    const top = i === 0 ? 0 : BOUNDS[i] * (TRACK - 100) + 50;
+    const end = i === STAGES.length - 1 ? TRACK : BOUNDS[i + 1] * (TRACK - 100) + 50;
+    return { top: +top.toFixed(2), h: +(end - top).toFixed(2) };
+  });
+  return (
+    <section className="wx-anat wx-sec mode-operator" id="day" aria-labelledby="wx-day-h">
+      <header className="wx-sec-head">
+        <p className="wx-eyebrow-op">how this site runs</p>
+        <h2 className="wx-op-h wx-ink" id="wx-day-h">How a day becomes an entry.</h2>
+        <p className="wx-lead">The window runs 3 PM to 2 AM IST. At 2 AM the site publishes itself.</p>
+      </header>
+      <div className="wx-anat-track">
+        <div className="wx-anat-stick">
+          <div className="wx-anat-left">
+            <div>
+              <p className="wx-anat-ctx">how a day becomes an entry</p>
+              <p className="wx-anat-clock" aria-hidden="true"><span className="wx-v">15:00</span></p>
+              <p className="wx-anat-clock-k" aria-hidden="true">IST, inside the working window</p>
+            </div>
+            <ol className="wx-stages">
+              {stages.map((s) => (
+                <li key={s.hour} className="wx-stage" data-hour={s.hour}>
+                  <p className="wx-stage-clock">{s.hour}</p>
+                  <h3 className="wx-stage-t">{s.title}</h3>
+                  <p className="wx-stage-c">{s.body}</p>
+                  <div className="wx-term" role="img" aria-label={`Terminal, ${s.title}`}>
+                    <div className="wx-term-body">
+                      {s.lines.map(([k, t], i) => <p key={i} className={`wx-tl wx-${k}`} data-compile="" dangerouslySetInnerHTML={{ __html: t }} />)}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <ol className="wx-anat-rail" aria-label="The five stages">
+              {stages.map((s) => <li key={s.hour}><b>{s.hour}</b>{s.short}</li>)}
+            </ol>
+          </div>
+          <div className="wx-anat-right" aria-hidden="true">
+            <div className="wx-term">
+              <div className="wx-term-bar"><span className="wx-term-dots"><i /><i /><i /></span><span className="wx-term-title">reconstructed from days 333 and 334 · recordings replace this</span></div>
+              <div className="wx-anat-meter"><span>15:00</span><i /><span>02:00</span></div>
+              <div className="wx-term-body" />
+            </div>
+          </div>
+        </div>
+        {sent.map((s, i) => <span key={i} className="wx-anat-sent" data-s={i + 1} style={{ top: `${s.top}svh`, height: `${s.h}svh` }} />)}
       </div>
-      <div className="heat-legend">
-        <span><i className="dot green" /> building</span>
-        <span><i className="dot blue" /> thinking</span>
-        <span><i className="dot gold" /> a real outcome</span>
-        <span><i className="dot" style={{ background: 'var(--card-2)' }} /> no entry</span>
-        <span className="dim">{fmtDate(H.start)} to {fmtDate(H.end)} · hover or focus a cell, click to open the day</span>
-      </div>
+    </section>
+  );
+};
+
+// ---------------------------------------------------------------- 17:00 the log
+const Heat = () => {
+  const H = DH.heatmap;
+  const seen = new Set();
+  const months = [];
+  const latestIdx = H.cells.reduce((m, c, i) => (c.day ? i : m), 0);
+  const cells = H.cells.map((c, i) => {
+    const col = Math.floor(i / 7) + 2, row = (i % 7) + 2;
+    const mon = fmtDate(c.date).split(' ')[0];
+    const dnum = parseInt(c.date.slice(8), 10);
+    if (row === 2 && dnum <= 7 && !seen.has(mon)) { seen.add(mon); months.push({ col, label: mon.toLowerCase() }); }
+    const label = `${dow(c.date)} ${fmtDate(c.date)}`;
+    let cls = '', kind;
+    if (c.day) kind = KIND[c.arc_color] || 'logged';
+    else if (c.future) { cls = 'wx-future'; kind = 'not yet'; }
+    else if (c.weekend) { cls = 'wx-wkend'; kind = 'weekend, no entry'; }
+    else { cls = 'wx-gap'; kind = 'no entry, a missed weekday'; }
+    const aria = c.day ? `${label}, day ${c.day}, ${kind}` : `${label}, ${kind}`;
+    return (
+      <button key={c.date} type="button" className={`wx-cell ${cls}`.trim()} style={{ gridColumn: col, gridRow: row, '--i': i }}
+        tabIndex={i === latestIdx ? 0 : -1} data-date={c.date} data-label={label} data-kind={kind}
+        data-day={c.day || undefined} data-arc={c.arc_color || undefined} data-ship={c.ship ? String(c.ship).slice(0, 150) : undefined}
+        aria-label={aria} />
+    );
+  });
+  if (!months.length || months[0].col !== 2) months.unshift({ col: 2, label: fmtDate(H.start).split(' ')[0].toLowerCase() });
+  return (
+    <div className="wx-heat-grid" role="group" aria-label={`Sixteen weeks of entries, ${fmtDate(H.start)} to ${fmtDate(H.end)}. Arrow keys move by day and week.`}>
+      {months.map((m) => <span key={m.label} className="wx-hm" style={{ gridColumn: m.col }}>{m.label}</span>)}
+      {['Mon', '', 'Wed', '', 'Fri', '', 'Sun'].map((w, i) => <span key={i} className="wx-hd" style={{ gridRow: i + 2 }}>{w}</span>)}
+      {cells}
     </div>
   );
 };
 
-const LogStrip = () => {
+const Log = () => {
   const st = DH.stats || {};
-  const days = (DH.recent || []).slice(0, 10);
+  const e = DH.journey[0];
+  const arcs = (st.arcs_30d || []).slice(0, 6);
+  const mx = Math.max(1, ...arcs.map((a) => a.n));
+  const rail = DH.journey.slice(0, 10);
   return (
-    <section className="section sys mode-operator" id="log" aria-labelledby="log-h">
-      <div className="wrap">
-        <div className="section-head">
-          <div>
-            <span className="eyebrow">the public log</span>
-            <h2 id="log-h">Every weekday, one entry. No skipping.</h2>
-            <p className="lead">{st.entries} entries since {fmtDate(st.first_entry, true)}. {st.entries_30d} in the last 30 days. the gaps are real and they stay visible.</p>
+    <section className="wx-log wx-sec mode-operator" id="log" aria-labelledby="wx-log-h">
+      <header className="wx-sec-head wx-split">
+        <p className="wx-eyebrow-op">the public log</p>
+        <h2 className="wx-op-h wx-ink" id="wx-log-h">Every weekday, one entry. No skipping.</h2>
+        <p className="wx-lead">{st.entries} entries since {fmtDate(st.first_entry)}. {st.entries_30d} in the last 30 days. The gaps are real and they stay visible.</p>
+        <a className="wx-tlink" href="journey.html">the whole log →</a>
+      </header>
+      <div className="wx-log-grid">
+        <figure className="wx-heat">
+          <div className="wx-legend" aria-hidden="true">
+            <span><i style={{ '--c': 'var(--build)' }} />building</span>
+            <span><i style={{ '--c': 'var(--think)' }} />thinking</span>
+            <span><i style={{ '--c': 'var(--win)' }} />a real outcome</span>
+            <span><i style={{ '--c': 'transparent', boxShadow: 'inset 0 0 0 1px var(--line-2)' }} />no entry</span>
           </div>
-          <a className="section-link" href="journey.html">the whole log →</a>
-        </div>
-        <div className="heat-wrap">
-          <div className="card"><Heatmap /></div>
-          <div className="heat-side">
-            <div className="card stat"><b className="build">{st.entries_30d}</b><span>last 30 days</span></div>
-            <div className="card stat"><b>{st.streak_weekdays}</b><span>weekday streak</span></div>
-            <div className="card stat"><b className="win">{st.companies_active_90d}</b><span>companies in the log, 90d</span></div>
-            <div className="card stat"><b>{(st.arcs_30d && st.arcs_30d[0]) ? st.arcs_30d[0].n : 0}</b><span>{(st.arcs_30d && st.arcs_30d[0]) ? `${st.arcs_30d[0].arc} entries, 30d` : 'busiest arc'}</span></div>
+          <div className="wx-heat-scroll"><Heat /></div>
+          <figcaption className="wx-readout" aria-live="polite">
+            <span><b>day {e.day}</b> · {fmtDate(e.date)} · {KIND[e.arc_color] || 'logged'}</span>
+            <span>Hover, focus or tap any day. Every gap is a weekday I missed.</span>
+          </figcaption>
+        </figure>
+        <aside className="wx-log-meta" aria-label="Log statistics">
+          <p className="wx-kv"><b>{st.entries_30d}</b><span>entries in the<br />last 30 days</span></p>
+          <p className="wx-kv"><b>{st.streak_weekdays}</b><span>weekday<br />streak</span></p>
+          <div className="wx-arcs">
+            <h3>what the last 30 days were about</h3>
+            <ul>{arcs.map((a) => <li key={a.arc}><span style={{ '--w': `${Math.round((100 * a.n) / mx)}%` }}>{a.arc}</span><b>{a.n}</b></li>)}</ul>
           </div>
+        </aside>
+      </div>
+
+      <div className="wx-rail-wrap">
+        <div className="wx-rail-stick">
+          <div className="wx-rail-head">
+            <h3 className="wx-ink">The last ten entries.</h3>
+            <p>scroll, swipe or tab through</p>
+          </div>
+          <ol className="wx-rail" aria-label="The last ten entries">
+            {rail.map((d) => (
+              <li key={d.day} className="wx-rc" data-arc={d.arc_color}>
+                <p className="wx-rc-top"><span className="wx-rc-day">{d.day}</span><span className="wx-rc-kind">{KIND[d.arc_color] || 'logged'}</span></p>
+                <p className="wx-rc-date">{dow(d.date)} · {fmtDate(d.date)} · <WxAge date={d.date} mode="plain" /></p>
+                <p className="wx-rc-txt">{d.shipping_now}</p>
+                <ul className="wx-chips">{(d.arcs || []).slice(0, 2).map((a) => <li key={a}>{a}</li>)}</ul>
+                <a className="wx-tlink" href={`journey.html#day-${d.day}`}>day {d.day} in full →</a>
+              </li>
+            ))}
+            <li style={{ display: 'contents' }}><a className="wx-rc-end" href="journey.html"><b>{st.entries}</b><span>the whole log →</span></a></li>
+          </ol>
+          <p className="wx-rail-ruler" aria-hidden="true"><span>day {rail[0].day} · {fmtDate(rail[0].date)}</span><i /><span>day {rail[rail.length - 1].day} · {fmtDate(rail[rail.length - 1].date)}</span></p>
         </div>
-        <div className="days">
-          {days.map((d) => (
-            <a key={d.day} className={`card link day-card ${d.arc_color}`} href={`journey.html#day-${d.day}`}>
-              <span className="k"><b>day {d.day}</b><span>{fmtDate(d.date)} · <Age date={d.date} mode={7} /></span></span>
-              <span className="t">{d.ship}</span>
-              <span className="chips">{d.arcs.map((a) => <Chip key={a} tone={arcTone(d.arc_color)}>{a}</Chip>)}<span className="chip">{d.mood}</span></span>
+      </div>
+    </section>
+  );
+};
+
+// ---------------------------------------------------------------- 19:00 stack
+// Featured first: things that are not rows in stack_now yet. Each one drops
+// out of this list on its own once content.json carries it.
+const FEATURED = [
+  { name: 'Deep Scanner', url: null, tag: 'new', meta: 'in build, open source',
+    what: 'Checks any folder before it reaches a cloud agent. First run: 8,357 files, 6 blocked, 392 flagged.' },
+  { name: 'ChampBeam', url: 'https://champbeam.com', tag: 'live', meta: 'champbeam.com',
+    what: 'Smart links, QR codes and file tracking in one product. Send it, know they saw it.' },
+];
+// ChampUTM lives inside ChampBeam now, so it does not get its own row.
+const MERGED = new Set(['ChampUTM']);
+
+const Stack = () => {
+  const S = DH.stack_now || { items: [], counts: {} };
+  const byName = new Map(S.items.map((i) => [i.name, i]));
+  const featured = FEATURED.filter((f) => !byName.has(f.name));
+  const scorer = byName.get('Lead Scorer');
+  const rows = [
+    ...featured,
+    ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'live', meta: 'on this site', what: 'Upload a lead list. Jev ranks who to call first and writes the first line.' }] : []),
+    ...S.items
+      .filter((i) => i.kind === 'built' && i.last_seen && !MERGED.has(i.name))
+      .sort((a, b) => String(b.last_seen).localeCompare(String(a.last_seen)))
+      .slice(0, 5)
+      .map((i) => ({ name: i.name, url: i.url, tag: '', meta: `log · ${fmtDate(i.last_seen)}`, what: i.what })),
+  ];
+  const builtTotal = S.counts.built || 0;
+  const shownBuilt = rows.filter((r) => !r.tag).length;
+  const using = ['ChampOps', 'Obsidian + Celsus', 'Claude + Cowork', 'Cloudflare', 'Supabase', 'Jules'].map((n) => byName.get(n)).filter(Boolean);
+  const list = (k) => S.items.filter((i) => i.kind === k).map((i) => i.name).join(', ') + '.';
+  return (
+    <section className="wx-stack wx-sec mode-operator" id="stack" aria-labelledby="wx-stack-h">
+      <header className="wx-sec-head wx-split">
+        <h2 className="wx-op-h wx-ink" id="wx-stack-h">What I build with.</h2>
+        <p className="wx-lead">{S.items.length} tools. A tool only earns a date once it shows up in a day's entry.</p>
+        <a className="wx-tlink" href="toolkit.html">the full stack →</a>
+      </header>
+      <div className="wx-stack-grid">
+        <div className="wx-index-wrap">
+          <div className="wx-index">
+            {rows.map((r) => {
+              const inner = (
+                <React.Fragment>
+                  <span className="wx-ix-name">{r.name}</span>
+                  <span className="wx-ix-what">{r.what}</span>
+                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-${r.tag}`}>{r.tag}</span>}{r.meta}</span>
+                </React.Fragment>
+              );
+              if (!r.url) return <div key={r.name} className="wx-ix">{inner}</div>;
+              const ext = /^https?:/.test(r.url);
+              return <a key={r.name} className="wx-ix" href={r.url} {...(ext ? EXT : {})}>{inner}</a>;
+            })}
+          </div>
+          <a className="wx-tlink wx-ix-more" href="toolkit.html">{Math.max(0, builtTotal - shownBuilt)} more repos in the toolkit →</a>
+        </div>
+        <aside className="wx-side" aria-label="Tools in use">
+          <div><h3><span>in daily use</span><span>{S.counts.using || using.length}</span></h3>
+            <ul>{using.map((t) => <li key={t.name}>{t.name}<span>{t.last_seen ? `log · ${fmtDate(t.last_seen)}` : ''}</span></li>)}</ul></div>
+          <div><h3><span>trying</span><span>{S.counts.trying || 0}</span></h3><p className="wx-side-run">{list('trying')}</p></div>
+          <div><h3><span>watching</span><span>{S.counts.watching || 0}</span></h3><p className="wx-side-run">{list('watching')}</p></div>
+        </aside>
+      </div>
+    </section>
+  );
+};
+
+// ---------------------------------------------------------------- 21:00 pillars
+const GO = { champ: 'open the product suite', 'infratech-lagoons': 'see the properties', lakeb2b: 'see the data companies', accelerator: 'meet the cohorts' };
+const Pillars = () => {
+  const used = new Set();
+  return (
+    <section className="wx-pillars wx-sec mode-editorial" id="ecosystem" aria-labelledby="wx-eco-h">
+      <header className="wx-sec-head wx-split">
+        <h2 className="wx-ed-h wx-ink" id="wx-eco-h">12 companies, 1 operator.</h2>
+        <p className="wx-lead">Four doors into Champions Group. Each one shows the last day it made the public log.</p>
+        <a className="wx-tlink" href="pillars.html">all four pillars →</a>
+      </header>
+      <div className="wx-pl-row">
+        {(DH.pillars || []).map((p) => {
+          // No two doors end on the same line: skip a recent entry another door already used.
+          const rec = (p.recent || []).find((r) => !used.has(r.day)) || (p.recent || [])[0];
+          if (rec) used.add(rec.day);
+          const cos = (p.companies || []).length > 1 ? p.companies : (p.products || []).slice(0, 5).map((x) => x.name);
+          return (
+            <a key={p.slug} className="wx-pl" data-acc={p.accent} href={`pillars.html#${p.slug}`}>
+              <h3 className="wx-pl-name">{p.name}</h3>
+              <p className="wx-pl-blurb">{p.blurb}</p>
+              <ul className="wx-pl-cos">{cos.map((c) => <li key={c}>{c}</li>)}</ul>
+              <div className="wx-pl-foot">
+                {p.last_ship
+                  ? <p className="wx-pl-last"><span>last in the log</span><span><b>day {p.last_ship_day}</b> · <WxAge date={p.last_ship} mode={21} /></span></p>
+                  : <p className="wx-pl-last"><span>{(p.counts || {}).products || 0} products</span></p>}
+                {rec && <div className="wx-pl-more"><p><span>day {rec.day}: {rec.ship}</span></p></div>}
+                <span className="wx-pl-go">{GO[p.slug] || 'open'} →</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+
+// ---------------------------------------------------------------- 22:30 writing
+const Writing = () => {
+  const posts = (DH.posts || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const [lead, ...rest] = posts;
+  if (!lead) return null;
+  const range = (lead.day_range || '').replace(/\s*[-\u2013\u2014]\s*/, ' to ');
+  return (
+    <section className="wx-writing wx-sec mode-editorial" id="writing" aria-labelledby="wx-w-h">
+      <header className="wx-sec-head wx-split">
+        <h2 className="wx-ed-h wx-ink" id="wx-w-h">The weekly narratives.</h2>
+        <p className="wx-lead">One essay a week, written from the log, not from a content calendar. {posts.length} so far.</p>
+        <a className="wx-tlink" href="writing.html">all essays →</a>
+      </header>
+      <div className="wx-w-grid">
+        <a className="wx-w-feat" href={`post.html?slug=${encodeURIComponent(lead.slug)}`}>
+          <p className="wx-w-meta"><span className="wx-latest">latest</span>{lead.week && <span>week {lead.week}</span>}{range && <span>{range}</span>}<span>{lead.read}</span>{lead.arc && <span>{lead.arc}</span>}</p>
+          <h3 className="wx-w-title wx-ink">{lead.title}</h3>
+          {lead.deck && <p className="wx-w-deck">{lead.deck}</p>}
+          <span className="wx-tlink">read {lead.week ? `week ${lead.week}` : 'it'} →</span>
+        </a>
+        <div className="wx-w-list">
+          {rest.slice(0, 3).map((p) => (
+            <a key={p.slug} className="wx-w-row" href={`post.html?slug=${encodeURIComponent(p.slug)}`}>
+              <p className="wx-w-meta">{p.week && <span>week {p.week}</span>}<span>{fmtDate(p.date)}</span><span>{p.read}</span></p>
+              <h3>{p.title}</h3>
             </a>
           ))}
         </div>
@@ -129,168 +425,67 @@ const LogStrip = () => {
   );
 };
 
-// ------------------------------------------------------------ stack now
-const KIND_LABEL = { built: 'built here', using: 'in daily use', trying: 'trying', watching: 'watching', skill: 'skills and resources' };
-const StackNow = () => {
-  const S = DH.stack_now || { items: [], counts: {} };
-  const st = DH.stats || {};
-  const groups = ['built', 'using', 'trying', 'watching', 'skill'].map((k) => ({ k, items: S.items.filter((i) => i.kind === k).slice(0, 6), total: S.counts[k] || 0 })).filter((g) => g.items.length);
-  const seen = (it) => it.last_seen ? <span className={`m${it.days_since <= 30 ? ' on' : ''}`} title={`last in the log ${it.last_seen}`}>log · {fmtDate(it.last_seen)}</span> : <span className="m" aria-hidden="true">·</span>;
+// ---------------------------------------------------------------- 00:30 off the clock
+// Written from off_hours in content.json. Rewrite this line when those change.
+const HUMAN_LINE = 'Sundays at sunrise, the gray mare at Bangalore Turf Club. Jiu-jitsu two mornings a week, purple belt, still terrible at takedowns. One more turn of Civ at 2 AM. 47 attempts at the perfect sambar, 0 finals. Caro, Iyer and Naipaul for the long flights.';
+const Human = () => {
+  const words = HUMAN_LINE.split(' ');
+  const step = +(52 / words.length).toFixed(3);
   return (
-    <section className="section sys mode-operator" id="stack" aria-labelledby="stack-h">
-      <div className="wrap">
-        <div className="section-head">
-          <div>
-            <span className="eyebrow">the stack</span>
-            <h2 id="stack-h">What I build with, what I am trying, what I am watching.</h2>
-            <p className="lead">{S.items.length} tools. dates are mined from the log itself, so a tool only earns a date once it shows up in a day's entry.</p>
-          </div>
-          <a className="section-link" href="toolkit.html">the full stack →</a>
+    <section className="wx-human wx-sec mode-editorial" id="human" aria-labelledby="wx-human-k">
+      <div className="wx-human-grid">
+        <div className="wx-human-main">
+          <p className="wx-eyebrow-ed" id="wx-human-k" style={{ marginBottom: 'var(--s5)' }}>off the clock</p>
+          <p className="wx-human-big" style={{ '--step': `${step}%` }}>
+            {words.map((w, i) => <React.Fragment key={i}><span className="wx-w" style={{ '--i': i }}>{w}</span>{' '}</React.Fragment>)}
+          </p>
         </div>
-        <div className="stack-groups">
-          {groups.map((g) => (
-            <div className="card stack-group" key={g.k}>
-              <h3><span>{KIND_LABEL[g.k]}</span><b>{g.total}</b></h3>
-              <div>
-                {g.items.map((it) => (
-                  it.url
-                    ? <a key={it.name} className="tool" href={it.url} target="_blank" rel="noreferrer"><span className="n">{it.name} ↗</span>{seen(it)}<span className="w">{it.what}</span></a>
-                    : <div key={it.name} className="tool"><span className="n">{it.name}</span>{seen(it)}<span className="w">{it.what}</span></div>
-                ))}
-              </div>
-            </div>
-          ))}
-          <div className="card stack-side">
-            <h3><span>how this site runs</span><b>{S.active_30d} tools in the log, 30d</b></h3>
-            <dl className="kv">
-              {(DH.stack || []).slice(0, 7).map((l) => <React.Fragment key={l.layer}><dt>{l.layer.toLowerCase()}</dt><dd>{l.what}</dd></React.Fragment>)}
-            </dl>
-            <p className="dim" style={{ fontSize: 'var(--text-xs)' }}>a tool earns a date the day it is named in an entry. most of the log talks about outcomes, not tools, so the dates are sparse on purpose.</p>
-          </div>
+        <div className="wx-human-side">
+          <h3>dms I answer</h3>
+          <ul>{(DH.rolodex || []).map((r) => <li key={r.who}><b>{r.who}</b><span>{r.how}</span></li>)}</ul>
         </div>
       </div>
     </section>
   );
 };
 
-// ------------------------------------------------------------ companies
-const Companies = () => {
-  const cos = DH.companies || [];
-  return (
-    <section className="section sys mode-operator" id="ecosystem" aria-labelledby="co-h">
-      <div className="wrap">
-        <div className="section-head">
-          <div>
-            <span className="eyebrow">the twelve</span>
-            <h2 id="co-h">Twelve companies. One operating system.</h2>
-            <p className="lead">what each one does, what it ships, and the last day it made the public log.</p>
-          </div>
-          <a className="section-link" href="pillars.html">all four doors →</a>
-        </div>
-        <div className="co-grid">
-          {cos.map((c) => {
-            const pl = (DH.pillars || []).find((x) => x.slug === c.pillar);
-            const last = (c.related_journey || [])[0];
-            return (
-              <a key={c.slug} className={`card link co-card accent-${(pl && pl.accent) || ''}`} href={`company.html?slug=${encodeURIComponent(c.slug)}`}>
-                <span className="h"><b>{c.name}</b><span>{c.tag}</span></span>
-                <span className="d">{c.desc}</span>
-                <span className="chips">{((c.products || []).length ? c.products.slice(0, 2) : [c.tag]).map((p) => <Chip key={p}>{p}</Chip>)}</span>
-                <span className="last">{last
-                  ? <React.Fragment><i className={`dot ${last.arc_color}`} /><b>day {last.day}</b> · {fmtDate(last.date)} · <Age date={last.date} mode={30} /></React.Fragment>
-                  : <React.Fragment><i className="dot" /><b>{(c.url || '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '') || c.tag}</b> · company page →</React.Fragment>}</span>
-              </a>
-            );
-          })}
-        </div>
-        {(() => {
-          const ps = (DH.pillars || []).map((p) => {
-            const last = (p.recent || [])[0];
-            return (
-              <a key={p.slug} className={`card link pillar-mini accent-${p.accent}`} href={`pillars.html#${p.slug}`}>
-                <span className="h"><b>{p.name}</b><span>{p.counts.companies} cos · {p.counts.products} prod</span></span>
-                <span className="last">{p.last_ship
-                  ? <React.Fragment><i className="dot" /><b>day {p.last_ship_day}</b> · {fmtDate(p.last_ship)} · <Age date={p.last_ship} mode={45} /></React.Fragment>
-                  : <span className="dim">quiet in the log</span>}</span>
-                {last && <span className="t">{last.ship}</span>}
-              </a>
-            );
-          });
-          return <div className="pillar-row">{ps}</div>;
-        })()}
-      </div>
-    </section>
-  );
-};
-
-// ------------------------------------------------------------ writing
-const Writing = () => {
-  const posts = (DH.posts || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
-  const [lead, ...rest] = posts;
-  if (!lead) return null;
-  return (
-    <section className="section sys mode-editorial" id="writing" aria-labelledby="wr-h">
-      <div className="wrap">
-        <div className="section-head">
-          <div>
-            <h2 id="wr-h">The weekly narratives.</h2>
-            <p className="lead">one essay a week, written from the log, not from a content calendar. {posts.length} so far.</p>
-          </div>
-          <a className="section-link" href="writing.html">all essays →</a>
-        </div>
-        <div className="essays">
-          <a className="card link essay" href={`post.html?slug=${encodeURIComponent(lead.slug)}`}>
-            <span className="k"><span className="chip win">latest</span><span>{fmtDate(lead.date, true)}</span><span>{lead.read}</span>{lead.arc && <span>{lead.arc}</span>}</span>
-            <h3>{lead.title}</h3>
-            <p className="deck">{lead.deck}</p>
-            {(() => { const l = (lead.body || []).find((b) => b && b.type === 'lede'); return l ? <p className="deck" style={{ color: 'var(--text)' }}>{l.text}</p> : null; })()}
-            <span className="chips">{(lead.tags || []).map((t) => <Chip key={t}>{t}</Chip>)}{lead.day_range && <Chip tone="win">{lead.day_range}</Chip>}</span>
-            <span className="mono" style={{ color: 'var(--win)', fontWeight: 600, fontSize: 'var(--text-sm)' }}>read it →</span>
-          </a>
-          <div className="essay-list">
-            {rest.slice(0, 3).map((p) => (
-              <a key={p.slug} className="card link essay small" href={`post.html?slug=${encodeURIComponent(p.slug)}`}>
-                <span className="k"><span>{fmtDate(p.date, true)}</span><span>{p.read}</span></span>
-                <h3>{p.title}</h3>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// ------------------------------------------------------------ ways in
-const WaysIn = () => (
-  <section className="section sys mode-editorial" id="ways" aria-labelledby="ways-h">
-    <div className="wrap">
-      <div className="section-head">
-        <div>
-          <h2 id="ways-h">Three doors. Same person behind each one.</h2>
-          <p className="lead">no funnel, no form. a call, a repo, or one inbox.</p>
-        </div>
-      </div>
-      <div className="ways">
-        <div className="card way">
-          <h3>Founders</h3>
-          <p>Thirty minutes, no deck. Bring the thing you are stuck on, leave with a next move.</p>
-          <a className="btn btn-gold" href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer">Book 30 minutes</a>
-        </div>
-        <div className="card way">
-          <h3>Operators and builders</h3>
-          <p>Everything I ship is in the open. Read the log, fork the repos, tell me where I am wrong.</p>
-          <a className="btn btn-ghost" href="https://github.com/Champ-Deep" target="_blank" rel="noreferrer">github / Champ-Deep ↗</a>
-        </div>
-        <div className="card way">
-          <h3>Recruiters, press, everyone else</h3>
-          <p>One inbox. Plain text wins. I answer the ones that read like a human wrote them.</p>
-          <a className="btn btn-ghost" href="mailto:deep@championsmail.com">deep@championsmail.com</a>
+// ---------------------------------------------------------------- 01:30 three doors
+// The hero's pair in reverse: the command compiles first, then the headline inks.
+const Doors = () => (
+  <section className="wx-doors wx-sec mode-editorial" id="ways" aria-labelledby="wx-doors-h">
+    <p className="wx-cmd-line" data-compile="">book --30min --no-deck</p>
+    <h2 className="wx-doors-h wx-ink" id="wx-doors-h">Three doors. Same person behind each one.</h2>
+    <div className="wx-doors-grid">
+      <a className="wx-door wx-door-main" href={BOOK} {...EXT}>
+        <span className="wx-door-k">founders</span>
+        <span className="wx-door-t">Thirty minutes, no deck. Bring the thing you are stuck on, leave with a next move.</span>
+        <span className="btn btn-gold">Book 30 minutes</span>
+      </a>
+      <div className="wx-door-side">
+        <a className="wx-door" href="https://github.com/Champ-Deep" {...EXT}>
+          <span className="wx-door-k">operators and builders</span>
+          <span className="wx-door-t">Everything I ship is in the open. Read the log, fork the repos, tell me where I am wrong.</span>
+          <span className="wx-door-go">github / Champ-Deep ↗</span>
+        </a>
+        <div className="wx-door">
+          <span className="wx-door-k">recruiters, press, everyone else</span>
+          <span className="wx-door-t">One inbox. Plain text wins. I answer the ones that read like a human wrote them.</span>
+          <span className="wx-mailrow"><a className="wx-mail" href="mailto:deep@championsmail.com">deep@championsmail.com</a><button className="wx-copy" type="button" data-copy="deep@championsmail.com">copy</button></span>
         </div>
       </div>
     </div>
   </section>
 );
 
-window.HomeSections = { HeroBento, LogStrip, StackNow, Companies, Writing, WaysIn, Heatmap };
+// ---------------------------------------------------------------- 02:00 sign-off
+const Signoff = () => (
+  <div className="wx-signoff mode-operator">
+    <p className="wx-foot-line" data-compile="">02:00 IST. The nightly agent rebuilds this page from the vault. The window opens again at 3 PM.</p>
+    <p className="wx-wordmark" aria-label="deep">deep <span className="wx-gt">&gt;<span className="wx-us">_</span></span></p>
+  </div>
+);
+
+const Boundary = () => <div className="wx-boundary" aria-hidden="true" />;
+
+window.HomeSections = { Hero, Proof, Day, Log, Stack, Pillars, Writing, Human, Doors, Signoff, Boundary };
 })();

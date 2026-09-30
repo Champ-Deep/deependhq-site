@@ -3,7 +3,9 @@
 // The old footer carried a hand-typed version pill, a build number and a
 // "47 days online" that never changed. None of that survives.
 
-const Footer = () => {
+// compact: the homepage shows off-the-clock and DMs in their own section, so
+// the footer drops those two columns there.
+const Footer = ({ compact = false }) => {
   const D = window.DH_DATA;
   const S = window.Sys;
   const newest = D.journey && D.journey[0];
@@ -32,14 +34,14 @@ const Footer = () => {
             <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer">book 30 minutes ↗</a>
             <a className="foot-mail" href="mailto:deep@championsmail.com">deep@championsmail.com</a>
           </div>
-          <div className="foot-col">
+          {!compact && <div className="foot-col">
             <h4>off the clock</h4>
             {(D.off_hours || []).map((o) => <span key={o.what} className="i"><b>{o.what}.</b> {o.detail}</span>)}
-          </div>
-          <div className="foot-col">
+          </div>}
+          {!compact && <div className="foot-col">
             <h4>DMs I answer</h4>
             {(D.rolodex || []).map((r) => <span key={r.who} className="i"><b>{r.who}</b> · {r.how}</span>)}
-          </div>
+          </div>}
           <div className="foot-col">
             <h4>the twelve</h4>
             {(D.companies || []).map((c) => <a key={c.slug} href={`company.html?slug=${encodeURIComponent(c.slug)}`}>{c.name}</a>)}

@@ -12,7 +12,8 @@ const NAV_LINKS = [
   { id: 'now',     label: 'Now',         href: 'now.html' },
 ];
 
-const Nav = ({ active = 'home' }) => {
+// progress: the homepage draws a gold-to-green scroll progress line under the bar.
+const Nav = ({ active = 'home', progress = false }) => {
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
     if (!open) return;
@@ -45,6 +46,7 @@ const Nav = ({ active = 'home' }) => {
           <a href="index.html" aria-current={cur('home')}>Home</a>
           {NAV_LINKS.map((l) => <a key={l.id} href={l.href} aria-current={cur(l.id)}>{l.label}</a>)}
         </div>
+        {progress && <div className="wx-nav-progress" aria-hidden="true" />}
       </nav>
       {window.Sys && <window.Sys.StaleBanner />}
     </React.Fragment>

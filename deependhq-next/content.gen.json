@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 330,
-    "today_date": "2026-09-26",
+    "today_day": 334,
+    "today_date": "2026-09-30",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,58 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-30",
+      "day": 334,
+      "mood": "🛠️",
+      "shipping_now": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline both sides can see their own slice of. 141 files, 56 backend tests green, a real end-to-end run passed twice. pushed to main, deploy is the last step left.",
+      "yesterday_thread": "day one of the enterprise it services trial from last nights call landed with zero dials placed on the stalled line. told the client that straight, no massaging it, fixing it before tomorrows sync.",
+      "raw_thought": "also quietly shipped a skills cleanup today, 137 down to 110, nobody will ever see that one. the unglamorous stuff is still what keeps everything else from rotting.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-09-29",
+      "day": 333,
+      "mood": "🎯",
+      "shipping_now": "the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two months, no visibility into who is actually dialing. came out of it with a 10-day trial instead of a walkout, daily updates, a shared channel, a named owner on the stalled campaign. also caught four numbers in our own reporting that were just wrong before they reached the client. one of them, a headline figure we had repeated for two months, had no source anywhere in the files at all.",
+      "yesterday_thread": "closed out an org restructure that had been open for weeks too. one report line now goes straight to me, one open question parked on purpose instead of forced through tonight.",
+      "raw_thought": "an infrastructure partnership decision that was supposed to get a yes or no tonight went dark again, fifth time in three weeks. same avoidance pattern as sunday. chasing that one down directly tomorrow instead of waiting for it to fix itself.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-09-28",
+      "day": 332,
+      "mood": "😮‍💨",
+      "shipping_now": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker, no summary, nothing. Instead of guessing what happened, I filed the gap itself: what is known, what is not, what is next. Also built this weeks focus map from scratch off raw task data since the usual Sunday planning doc never generated. Ugly spine, but it works.",
+      "yesterday_thread": "The automation stack has three separate write-back paths blocked right now, one mailbox and two dashboards. Been flagging each one separately every day. Bundled it into a single fix request today instead.",
+      "raw_thought": "An infrastructure deal I have been pushing since July just blew through its own decision deadline with total silence on the other end. That one is mine to chase tomorrow, not a system problem.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
+    {
+      "date": "2026-09-27",
+      "day": 331,
+      "mood": "🌑",
+      "shipping_now": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter deadline for a partnership decision thats been circling since july. thirteen dark sessions in a row and the go or no go date just came and went with nobody writing down what got decided. thats not a data problem anymore, its an avoidance problem.",
+      "yesterday_thread": "also had a chairman level exec sit in on a cold inbound call from a tiny startup and nobody can tell me why. sometimes the most interesting fact of the day is the one nobody explains.",
+      "raw_thought": "the automation thats supposed to catch every meeting has a blind spot, it only watches one call platform, and every call today ran on the other one. built a triage system and then routed three straight meetings around it without noticing.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-09-26",
       "day": 330,
@@ -1821,20 +1873,20 @@
     ],
     "recently": [
       {
-        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
-        "tag": "shipped d330"
+        "text": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links...",
+        "tag": "shipped d334"
       },
       {
-        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
-        "tag": "shipped d330"
+        "text": "the enterprise IT services client call happened tonight, the one that told us flat out...",
+        "tag": "shipped d333"
       },
       {
-        "text": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through...",
-        "tag": "shipped d329"
+        "text": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery c...",
+        "tag": "shipped d332"
       },
       {
-        "text": "ran the entity-resolution model against my whole second brain today as a shadow test, n...",
-        "tag": "shipped d328"
+        "text": "sunday had three external calls and I came out of it with nothing on record for any of...",
+        "tag": "shipped d331"
       }
     ],
     "soon": [
@@ -2297,6 +2349,63 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-45-the-wall-we-named",
+      "kind": "weekly",
+      "week": 45,
+      "eyebrow": ">_ week 45 - the wall we named",
+      "title": "Spent the week diagnosing why things dont ship. Sunday proved the diagnosis right.",
+      "deck": "A dead discovery call came back to life, a voice agent finally reached Chief, and a shadow test judged 2861 notes for under two cents. Then a partnership deadline that had been circling since July arrived on a Sunday and passed with nobody writing down what happened, because the same wall that had been blocking outreach all week was blocking meeting capture too.",
+      "date": "2026-09-27",
+      "day_range": "Sep 21 - 27",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "ops",
+        "automation",
+        "lessons"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 45 started with a wall and ended with the same wall, further along the pipe. monday it was a week of drafted outreach emails sitting unsent because a permission setting had been broken for two weeks. sunday it was three external meetings that vanished with nothing written down, for the same underlying reason: a system built to catch things automatically ran into a permission it did not have, and nobody was watching closely enough to notice in time."
+        },
+        {
+          "type": "p",
+          "text": "the week had real wins in between. a discovery call that looked dead came back to life on a sunday night callback and turned into a real partnership conversation: an agency takes on overflow microsite and lead-gen work, we take a cut. a build plan for the AI SDR project got locked, eight work packages, about four dev days, one hard rule attached to it: do not touch the old backend until the new one can rebuild itself without taking the server down, which it has done twice already."
+        },
+        {
+          "type": "p",
+          "text": "tuesday a voice agent placed an automated birthday call to Chief. missed the first attempt, connected on retry at midnight, and he liked it enough to ask for more: anniversaries, milestone follow-ups, the whole calendar. small thing, but it is the first automation this month that made someone smile instead of just closing a ticket."
+        },
+        {
+          "type": "pull",
+          "text": "built a triage system to catch everything, then routed three straight meetings around it in a single day without anyone noticing until the next morning."
+        },
+        {
+          "type": "p",
+          "text": "wednesday ran an entity-resolution model against the whole second brain as a shadow test, no writes to anything live: 2861 notes, 67 thousand links, 635 ambiguous mentions judged in under two minutes for under two cents, 45 clean merges, zero errors. the kind of result that makes you want to flip it on immediately and the exact moment to slow down instead. thursday shipped a 10-slide intent-signal carousel straight through to a published post, and the same day a recurring automation hit a permission wall for the fifth day running. not a bug. a platform-level denial on the exact call it needs to run unattended."
+        },
+        {
+          "type": "p",
+          "text": "saturday was the diagnosis. filed a full restructure of how the fleet hands off work: three lanes, the agent owns it end to end, the agent preps it and I tap approve, or it is mine alone. the real finding, after a week of evidence including over 1,500 open items in the task list and the same number filed five separate times: the bottleneck was never drafting capacity. it was permission walls and duplicate filing. named it in writing, on a saturday, feeling like real progress."
+        },
+        {
+          "type": "callout",
+          "head": "sunday, the proof",
+          "lines": [
+            "three external calls held, zero captured: a recurring product sync, a chairman-level cold inbound call with no explanation on file, and a partnership recap that has been counting down to a quarter deadline since july.",
+            "that deadline arrived on schedule and passed with no signed agreement, no explicit downgrade, nothing written down on either side. thirteen dark sessions in a row on that one thread alone.",
+            "the automation watching for missed meetings only watches one call platform. every one of sunday's three calls ran on the other one, and no sweep even attempted to catch them."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "wrote the diagnosis on saturday and watched it cost a real deadline on sunday, less than 24 hours later. that is not a coincidence, it is the same gap showing up twice in one week: once as unsent email, once as an unrecorded decision. the fix is now a filed task instead of a feeling, which is the only real difference between this week and the ones before it."
+        }
+      ]
+    },
     {
       "slug": "week-44-the-discipline-arc",
       "kind": "weekly",
