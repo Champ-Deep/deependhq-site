@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-09-29T20:07:22.783Z
+// Built 2026-09-30T19:39:02.946Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 333,
-    "today_date": "2026-09-29",
+    "today_day": 334,
+    "today_date": "2026-09-30",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 334,
+          "date": "2026-09-30",
+          "shipping_now": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline…",
+          "arc_color": "green"
+        },
         {
           "day": 333,
           "date": "2026-09-29",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-09-15",
           "shipping_now": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over TypeScript, weekly 15…",
           "arc_color": "green"
-        },
-        {
-          "day": 314,
-          "date": "2026-09-10",
-          "shipping_now": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -548,7 +548,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 18,
+      "days_since": 19,
       "entries_30d": 3,
       "recent": [
         {
@@ -617,7 +617,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 18,
+      "days_since": 19,
       "entries_30d": 3,
       "recent": [
         {
@@ -691,8 +691,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-29",
       "last_ship_day": 333,
-      "days_since": 1,
-      "entries_30d": 16,
+      "days_since": 2,
+      "entries_30d": 15,
       "recent": [
         {
           "day": 333,
@@ -761,7 +761,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 7,
+      "days_since": 8,
       "entries_30d": 3,
       "recent": [
         {
@@ -837,6 +837,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-09-30",
+      "day": 334,
+      "mood": "🛠️",
+      "shipping_now": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline both sides can see their own slice of. 141 files, 56 backend tests green, a real end-to-end run passed twice. pushed to main, deploy is the last step left.",
+      "yesterday_thread": "day one of the enterprise it services trial from last nights call landed with zero dials placed on the stalled line. told the client that straight, no massaging it, fixing it before tomorrows sync.",
+      "raw_thought": "also quietly shipped a skills cleanup today, 137 down to 110, nobody will ever see that one. the unglamorous stuff is still what keeps everything else from rotting.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-09-29",
       "day": 333,
@@ -3910,7 +3935,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 333 · Sep 29",
+    "last_ship": "day 334 · Sep 30",
     "state": "shipping"
   },
   "status_board": {
@@ -3934,6 +3959,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links...",
+        "tag": "shipped d334"
+      },
+      {
         "text": "the enterprise IT services client call happened tonight, the one that told us flat out...",
         "tag": "shipped d333"
       },
@@ -3944,10 +3973,6 @@ window.DH_DATA = {
       {
         "text": "sunday had three external calls and I came out of it with nothing on record for any of...",
         "tag": "shipped d331"
-      },
-      {
-        "text": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating...",
-        "tag": "shipped d330"
       }
     ],
     "soon": [
@@ -5835,33 +5860,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-09-29T20:07:22.766Z",
-    "built_date": "2026-09-30",
+    "built": "2026-09-30T19:39:02.926Z",
+    "built_date": "2026-10-01",
     "newest_entry": {
-      "date": "2026-09-29",
-      "day": 333
+      "date": "2026-09-30",
+      "day": 334
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 110,
+        "days_old": 111,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 98,
+        "days_old": 99,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 98,
+        "days_old": 99,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 334,
+      "date": "2026-09-30",
+      "mood": "🛠️",
+      "arc_color": "green",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "ship": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline both sides can see their own slice of. 141 files, 56 backend tests green, a real end-to-end run passed twice. pushed to main, deploy is the last step left."
+    },
     {
       "day": 333,
       "date": "2026-09-29",
@@ -6003,17 +6039,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new partnership conversation the same day too, voice tech meets data, five concrete next steps out of one call."
-    },
-    {
-      "day": 320,
-      "date": "2026-09-16",
-      "mood": "🔓",
-      "arc_color": "green",
-      "arcs": [
-        "Lake B2B",
-        "Vendor Ops"
-      ],
-      "ship": "Restarted a delivery-partner account that had been stuck for days. Split the client database between two vendors, signed off a new partner to start onboarding tonight, and unblocked three campaigns that were all waiting on the same call."
     }
   ],
   "heatmap": {
@@ -6881,13 +6906,13 @@ window.DH_DATA = {
         "date": "2026-09-30",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 334,
+        "arc_color": "green",
+        "ship": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a p"
       },
       {
         "date": "2026-10-01",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -6920,11 +6945,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 333,
-    "entries": 111,
+    "days_public": 334,
+    "entries": 112,
     "entries_30d": 27,
-    "entries_this_month": 26,
-    "streak_weekdays": 74,
+    "entries_this_month": 0,
+    "streak_weekdays": 75,
     "essays": 15,
     "companies": 12,
     "companies_active_90d": 5,
@@ -6933,15 +6958,19 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Lake B2B",
-        "n": 15
+        "n": 14
       },
       {
         "arc": "Champions Operations",
-        "n": 9
+        "n": 10
       },
       {
         "arc": "ChampOps",
         "n": 7
+      },
+      {
+        "arc": "TheDeepEndHQ",
+        "n": 2
       },
       {
         "arc": "Celsus OS",
@@ -6954,10 +6983,6 @@ window.DH_DATA = {
       {
         "arc": "InfraTech",
         "n": 2
-      },
-      {
-        "arc": "TheDeepEndHQ",
-        "n": 1
       },
       {
         "arc": "pipeline",
@@ -7005,7 +7030,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-28",
         "mentions_90d": 12,
-        "days_since": 2
+        "days_since": 3
       },
       {
         "name": "Obsidian + Celsus",
@@ -7015,7 +7040,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-09-25",
         "mentions_90d": 2,
-        "days_since": 5
+        "days_since": 6
       },
       {
         "name": "Event Scout",
@@ -7026,7 +7051,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 16
+        "days_since": 17
       },
       {
         "name": "ChampUTM",
@@ -7037,7 +7062,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 18
+        "days_since": 19
       },
       {
         "name": "Cloudflare",
@@ -7047,7 +7072,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 42
+        "days_since": 43
       },
       {
         "name": "LakeStream",
@@ -7057,8 +7082,8 @@ window.DH_DATA = {
         "category": "repo",
         "featured": false,
         "last_seen": "2026-08-04",
-        "mentions_90d": 2,
-        "days_since": 57
+        "mentions_90d": 1,
+        "days_since": 58
       },
       {
         "name": "ChamPDF",
@@ -7069,7 +7094,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 57
+        "days_since": 58
       },
       {
         "name": "ChampMail",
@@ -7080,7 +7105,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 59
+        "days_since": 60
       },
       {
         "name": "Supabase",
@@ -7091,7 +7116,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 91
+        "days_since": 92
       },
       {
         "name": "ChampGraph",
@@ -7102,7 +7127,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 99
+        "days_since": 100
       },
       {
         "name": "ChampQuest",
@@ -7113,7 +7138,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 119
+        "days_since": 120
       },
       {
         "name": "B2B Pulse",
@@ -7539,9 +7564,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 111,
+      "entries": 112,
       "essays": 15
     }
   },
-  "built": "2026-09-29T20:07:22.783Z"
+  "built": "2026-09-30T19:39:02.946Z"
 };
