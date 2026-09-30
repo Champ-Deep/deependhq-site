@@ -49,7 +49,7 @@ const Footer = ({ compact = false }) => {
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© 2026 Sreedeep Surapaneni · Champions Group · no cookies, no trackers</span>
+          <span>© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat is run by Widgo and <a className="foot-inline" href="https://www.widgo.ai/legal/cookie-policy" target="_blank" rel="noopener noreferrer">uses cookies</a></span>
           <span>{newest ? `day ${newest.day} of building in public` : ''}{builtLabel ? ` · built ${builtLabel}` : ''}</span>
           <span>no-build React · Cloudflare Workers · publishes itself nightly · press ⌘K</span>
         </div>

@@ -5,8 +5,8 @@
 // WHY
 // Every page load was a round trip to fonts.googleapis.com for a CSS file that
 // then pulled woff2 files from fonts.gstatic.com. That is a third-party
-// dependency in the critical path, a privacy leak on a site whose footer claims
-// "no cookies, no trackers", and two more hosts the CSP has to allow forever.
+// dependency in the critical path, a third-party request on every page view,
+// and two more hosts the CSP has to allow forever.
 //
 // WHAT IT DOES
 // Reads the Google Fonts CSS with a modern browser UA (that is what gets woff2

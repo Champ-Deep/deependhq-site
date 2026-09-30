@@ -1,6 +1,23 @@
-# deependhq.com
+#
+#        █████                                ███
+#       ░░███                                ░░░███
+#     ███████   ██████   ██████  ████████      ░░░███
+#    ███░░███  ███░░███ ███░░███░░███░░███       ░░░███
+#   ░███ ░███ ░███████ ░███████  ░███ ░███        ███░
+#   ░███ ░███ ░███░░░  ░███░░░   ░███ ░███      ███░
+#   ░░████████░░██████ ░░██████  ░███████     ███░      █████████
+#    ░░░░░░░░  ░░░░░░   ░░░░░░   ░███░░░     ░░░       ░░░░░░░░░
+#                                ░███
+#                                █████
+#                               ░░░░░
+#
+# deependhq.com/robots.txt
+# past the hype cycle. into the infrastructure. crawl gently.
+#
+# New entries land every weekday around 01:00 IST. Coming back after that is enough.
 # Assistants: start at https://deependhq.com/llms.txt and read /agents.txt.
 # Humans: /humans.txt
+#
 # Owned by this repo. Cloudflare managed robots.txt is intentionally OFF.
 # Enforcement of AI crawler blocking lives in Cloudflare AI Crawl Control,
 # not in this file. This file states intent only.
@@ -41,3 +58,22 @@ User-agent: meta-externalagent
 Disallow: /
 
 Sitemap: https://deependhq.com/sitemap.xml
+
+#
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⣠⣴⣶⣶⣶⣶⣄⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀
+#   ⠀⠀⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⢀⣠⣤⣤⣄⣀⣠⣤⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀
+#   ⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠈⢿⣿⣿⡇
+#   ⠀⠀⠀⠀⠻⠟⠁⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⢹⣿⡿
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⡟⠉⠉⠛⠛⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⢻⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢿⣿⣿⡿⠀⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⠀⣰⣿⠟⠋⠀⠀⣾⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⡇⠀⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⠀⣰⡟⠃⠀⠀⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣄⠀⠀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀⢻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠁⠹⣧⣀⠀⠀⠀
+#   ⠀⠀⠀⠀⠀⢿⠀⠀⠀⠀⠀⠀⠀⠀⢻⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠒⠀⠀
+#
+#   the gray mare doesn't crawl. she gallops.

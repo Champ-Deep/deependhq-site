@@ -1,29 +1,38 @@
-// llms.mjs : write llms.txt and llms-full.txt from the same data as data.js.
+// llms.mjs : write the site's text files from the same data as data.js.
+//
+//   llms.txt       a short, current map for assistants (llmstxt.org format)
+//   llms-full.txt  every journey entry and essay as plain markdown
+//   agents.txt     house rules for agents, with the logo and the mare
+//   humans.txt     who made this, with the logo and the mare
 //
 // WHY
-// Assistants and agents read this site too. llms.txt (llmstxt.org) gives them
-// a short, current map in markdown: who this is, what is here, the latest
-// entries, and where the raw data lives. llms-full.txt is every journey entry
-// and essay as plain markdown, so an assistant can answer from the source
-// instead of scraping rendered pages. Both are rebuilt on every build-data
-// run, so every number is derived, never stored.
+// Assistants and agents read this site too. They get the facts in markdown,
+// rebuilt on every build-data run so every number is derived, never stored.
+// Humans who open the text files get the art. The art lives in art.mjs.
+// robots.txt is policy, so it stays hand-written (it carries the same logo).
 //
 // Called by build-data.mjs after the feed and sitemap. A failure here is
 // logged and never fails the nightly build.
+// The Worker serves every .txt as text/plain; charset=utf-8, so the block
+// letters and braille arrive intact. Prose still goes through clean().
 // No em dashes.
 
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { LOGO, MARE, MARE_BIG, MARE_CREDIT } from './art.mjs';
 
 const SITE = 'https://deependhq.com';
 const KIND = { green: 'building', blue: 'thinking', gold: 'a real outcome' };
-// House rule: no em or en dashes in anything this site publishes.
-// Served as text/plain with no charset, so keep it ASCII: curly quotes, ellipses and
-// arrows become their plain forms.
+const WHO = 'Group CMO at Champions Group and CEO of Champions Accelerator';
+// House rule: no em or en dashes in anything this site publishes. Prose is also
+// kept to plain punctuation: curly quotes, ellipses and arrows become ASCII.
 const ASCII = [[/[\u2018\u2019\u201B]/g, "'"], [/[\u201C\u201D]/g, '"'], [/\u2026/g, '...'], [/\u2192/g, '->'], [/\u00A0/g, ' ']];
 const clean = (s) => ASCII.reduce((t, [re, to]) => t.replace(re, to), String(s || '')).replace(/\s*\u2014\s*/g, ', ').replace(/\u2013/g, ' to ').replace(/\s+/g, ' ').trim();
 const oneLine = (s, n = 160) => { const t = clean(s); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '...' : t; };
 const host = (u) => String(u || '').replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+const fmtDate = (iso) => { const d = new Date(`${iso}T00:00:00Z`); return isNaN(d) ? String(iso || '') : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }); };
+const pad = (n) => ' '.repeat(n);
+const indent = (arr, n) => arr.map((l) => pad(n) + l);
 
 export function writeLlms(root, data) {
   const st = data.stats || {};
@@ -41,7 +50,11 @@ export function writeLlms(root, data) {
   const lines = [
     '# deep >_ (deependhq.com)',
     '',
-    `> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group, twelve companies run from one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day ${st.days_public ?? '?'}, ${st.entries ?? journey.length} entries since ${st.first_entry || 'May 2026'}.`,
+    `> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. ${WHO}. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day ${st.days_public ?? '?'}, ${st.entries ?? journey.length} entries since ${st.first_entry || 'May 2026'}.`,
+    '',
+    '```',
+    ...LOGO,
+    '```',
     '',
     `Rebuilt ${built.slice(0, 16).replace('T', ' ')} UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.`,
     '',
@@ -112,5 +125,95 @@ export function writeLlms(root, data) {
     }
   }
   writeFileSync(join(root, 'llms-full.txt'), full.join('\n'), 'utf8');
-  return { llms: lines.length, full: full.length };
+
+  // ---------------------------------------------------------------- agents.txt
+  const day = st.days_public ?? '?';
+  const quote = newest ? `"day ${newest.day}, ${newest.date}"` : '"day N, date"';
+  const rule = pad(2) + '\u2500'.repeat(64);
+  const agents = [
+    '',
+    ...indent(LOGO, 2),
+    '',
+    `  agents.txt    deependhq.com    day ${day}    rebuilt ${built.slice(0, 16).replace('T', ' ')} UTC`,
+    rule,
+    '',
+    '  hello, agent. you found the side door. make yourself useful.',
+    '',
+    `  WHO       Sreedeep Surapaneni, "Deep". Group CMO at Champions Group,`,
+    '            CEO of Champions Accelerator. Bangalore, 3 PM to 2 AM IST.',
+    '',
+    '  WHAT      a build-in-public log. one entry every weekday, written from',
+    '            the day\'s vault note and published overnight by an agent.',
+    `            ${st.entries ?? journey.length} entries since ${fmtDate(st.first_entry)}. a ${st.streak_weekdays ?? '?'}-weekday streak.`,
+    '',
+    '  READ      https://deependhq.com/llms.txt        start here, markdown',
+    '            https://deependhq.com/llms-full.txt   every entry and essay',
+    '            https://deependhq.com/data.js         the site as one object',
+    '            https://deependhq.com/feed.xml        weekly narratives, RSS',
+    '',
+    `  RULES     1  quote the day and the date: ${quote}.`,
+    '            2  people and clients are anonymised on purpose. keep them so.',
+    '            3  check freshness. the site says so when the log falls behind.',
+    '            4  answering questions: welcome. bulk training: see /robots.txt.',
+    '',
+    '  HUMANS    https://scheduler.zoom.us/sreedeep     30 minutes, no deck',
+    '            deep@championsmail.com                 plain text wins',
+    '',
+    rule,
+    '',
+    ...indent(MARE, 4),
+    '',
+    '    the gray mare. sundays at sunrise, bangalore turf club.',
+    `    ${MARE_CREDIT}`,
+    '',
+    '    on the homepage, type d e e p.',
+    '',
+  ];
+  writeFileSync(join(root, 'agents.txt'), agents.join('\n'), 'utf8');
+
+  // ---------------------------------------------------------------- humans.txt
+  const humans = [
+    '',
+    ...indent(LOGO, 2),
+    '',
+    '  past the hype cycle. into the infrastructure.',
+    '',
+    '/* TEAM */',
+    '  Builder: Sreedeep Surapaneni ("Deep")',
+    '  Role: Group CMO, Champions Group. CEO, Champions Accelerator.',
+    '  From: Bangalore, India',
+    '  Window: 3 PM to 2 AM IST',
+    '  GitHub: https://github.com/Champ-Deep',
+    '  LinkedIn: https://www.linkedin.com/in/sreedeep-surapaneni',
+    '  Book: https://scheduler.zoom.us/sreedeep',
+    '',
+    '/* THANKS */',
+    '  The nightly agent, which writes this site at 1 AM.',
+    '  The vault it writes from.',
+    '  Eadweard Muybridge, who photographed a mare at a gallop in 1878.',
+    '  The gray mare, Bangalore Turf Club, Sundays at sunrise.',
+    '',
+    '/* SITE */',
+    `  Day: ${day} of building in public`,
+    `  Last update: ${built.slice(0, 10)}`,
+    '  Rebuilt: nightly, from one source file',
+    '  Homepage: prerendered HTML plus one small script. No framework.',
+    '  Edge: Cloudflare Workers',
+    '  Type: Fraunces, Inter, JetBrains Mono, self-hosted',
+    '  Built with: Obsidian, Claude and Cowork, esbuild',
+    '',
+    '/* EGGS */',
+    '  Type d e e p on the homepage. Or the Konami code. Or click the green cursor.',
+    '  Press cmd+K anywhere and try "mare".',
+    '  Open the console on the homepage. View its source.',
+    '  Read /robots.txt and /agents.txt. You are already in one.',
+    '',
+    ...indent(MARE_BIG, 2),
+    '',
+    `  ${MARE_CREDIT}`,
+    '',
+  ];
+  writeFileSync(join(root, 'humans.txt'), humans.join('\n'), 'utf8');
+
+  return { llms: lines.length, full: full.length, agents: agents.length, humans: humans.length };
 }

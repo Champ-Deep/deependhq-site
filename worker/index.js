@@ -12,8 +12,8 @@
 //   GET  /showcase?d=          a one-page growth brief for one domain
 //
 // Guardrails baked in here:
-//   - No Set-Cookie is ever set. The site claims "no cookies, no trackers" in the
-//     footer and this file is what has to keep that true.
+//   - This Worker never sets a cookie. The Ask Deep chat is a third-party widget
+//     (Widgo) with its own storage and privacy policy, and the footer says so.
 //   - No visitor identity is derived from IP. Only country and timezone, both
 //     coarse Cloudflare fields, and the timezone is only used for a clock greeting.
 //   - The OpenRouter key is a Worker secret. It is never in this file, never in
@@ -330,6 +330,14 @@ export default {
     }
     const res = await env.ASSETS.fetch(request);
     const ct = res.headers.get('content-type') || '';
+    // The .txt files (robots, llms, agents, humans) carry block letters and
+    // braille art. Assets serve them as bare text/plain, which browsers read as
+    // Latin-1, so name the charset. wrangler.jsonc routes them here first.
+    if (ct.startsWith('text/plain') && !/charset/i.test(ct)) {
+      const h = new Headers(res.headers);
+      h.set('content-type', 'text/plain; charset=utf-8');
+      return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
+    }
     if (!ct.includes('text/html') || res.status >= 400) return res;
 
     const cf = request.cf || {};
@@ -341,8 +349,8 @@ export default {
     const transformed = new HTMLRewriter().on('html', {
       element(el) {
         p.segment(el);
-        // Defence in depth: the footer says "no cookies, no trackers". Make the
-        // header agree even if something upstream adds one.
+        // Defence in depth: the site's own pages carry no consent attribute,
+        // even if something upstream adds one.
         el.removeAttribute('data-consent');
       },
     }).transform(res);

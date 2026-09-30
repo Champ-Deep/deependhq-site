@@ -428,8 +428,13 @@ a.wx-door:hover{border-color:var(--line-2);background:var(--card)}
 
 /* ---------- the gray mare (easter egg). Parks left of the Ask Deep launcher, bottom-right stays clear ---------- */
 .wx-hero .wx-cursor{cursor:pointer}
-.wx-mare{position:fixed;left:0;bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:45;pointer-events:none;will-change:transform}
-.wx-mare pre{margin:0;padding:8px 12px;border-radius:40%;background:radial-gradient(closest-side,color-mix(in oklab,var(--bg) 92%,transparent) 62%,transparent);font:600 13px/1.15 var(--font-mono);color:var(--muted);text-shadow:0 0 14px var(--bg),0 0 4px var(--bg)}
-.wx-mare-say{position:absolute;right:0;bottom:100%;margin:0 0 6px;padding:4px 8px;font:500 var(--text-xs)/1.3 var(--font-mono);color:var(--build);background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-md);white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity var(--dur-2) var(--ease-out),transform var(--dur-2) var(--ease-out)}
+.wx-mare{position:fixed;left:0;bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:45;pointer-events:none;will-change:transform;--mare-font:'Apple Braille','Segoe UI Symbol','DejaVu Sans Mono','Noto Sans Symbols 2',var(--font-mono),monospace}
+/* braille: two dots across, four down per cell. line-height 1 keeps the dot pitch
+   square at a 0.6em advance, which is what the frames were drawn for */
+.wx-mare pre{margin:0;padding:10px 14px;border-radius:40%;background:radial-gradient(closest-side,color-mix(in oklab,var(--bg) 90%,transparent) 66%,transparent);font:400 12px/1 var(--mare-font);letter-spacing:0;color:var(--muted);text-shadow:0 0 10px var(--bg)}
+.wx-mare-dust{position:absolute;left:-2.6em;bottom:14px;font:400 12px/1 var(--mare-font);color:var(--dim);white-space:pre}
+.wx-mare-say{position:absolute;right:0;bottom:100%;margin:0 0 4px;padding:4px 8px;font:500 var(--text-xs)/1.3 var(--font-mono);color:var(--build);background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-md);white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity var(--dur-2) var(--ease-out),transform var(--dur-2) var(--ease-out)}
 .wx-mare-talk .wx-mare-say{opacity:1;transform:none}
+.wx-mare-say small{display:block;margin-top:2px;font-size:10px;letter-spacing:.03em;color:var(--dim)}
+@media (max-width:48rem){.wx-mare pre,.wx-mare-dust{font-size:9px}.wx-mare-dust{bottom:10px}}
 @media (prefers-reduced-motion:reduce){.wx-mare-say{transition:none}}

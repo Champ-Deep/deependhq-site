@@ -271,6 +271,8 @@ a.chip:hover { text-decoration: none; border-color: var(--line-2); }
 .foot-col a:hover { color: var(--text); text-decoration: underline; }
 .foot-col .i b { color: var(--text); font-weight: 600; }
 .foot-bottom { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); justify-content: space-between; margin-top: var(--s10); padding-top: var(--s4); border-top: 1px solid var(--line); color: var(--dim); font-size: var(--text-xs); }
+.foot-inline { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.foot-inline:hover { color: var(--text); }
 .foot-mail { display: inline-flex; align-items: center; gap: var(--s2); min-height: 44px; color: var(--text); text-decoration: none; font-weight: 600; }
 .foot-mail:hover { color: var(--build); }
 

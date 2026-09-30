@@ -229,25 +229,65 @@
 
   /* ---------- easter eggs: the logo in the console, and the gray mare ----------
      Type d e e p anywhere on the page (or the Konami code), click the hero's
-     green cursor, or run "mare" from cmd+K. She trots in from the left and parks
-     just left of the Ask Deep widget, whichever state it is in, so she never hides under it. */
-  var LOGO = "     _                  __\n  __| | ___  ___ _ __   \\ \\\n / _` |/ _ \\/ _ \\ '_ \\   \\ \\\n| (_| |  __/  __/ |_) |  / /\n \\__,_|\\___|\\___| .__/  /_/____\n                |_|      |_____|";
-  var MARE = ["              ,/)\n      _______/ 'o\\\n    ,/           _>\n   /(   ________/\n     /|        /|\n    / |       / |", "              ,/)\n      _______/ 'o\\\n    ,/           _>\n   /(   ________/\n     |\\        |\\\n     | \\       | \\"];
+     green cursor, or run "mare" from cmd+K. She gallops in from the left on
+     Eadweard Muybridge's 1878 frames (15 of them, drawn in braille, fetched from
+     /mare.json on first use), slows, and stops just left of the Ask Deep widget,
+     whichever state it is in, so she never hides under it. Her legs advance with
+     the distance she covers, so they slow as she does, and the last frame lands
+     on the still pose. The art lives in scripts/art.mjs. */
+  var LOGO = ["     █████                                ███","    ░░███                                ░░░███","  ███████   ██████   ██████  ████████      ░░░███"," ███░░███  ███░░███ ███░░███░░███░░███       ░░░███","░███ ░███ ░███████ ░███████  ░███ ░███        ███░","░███ ░███ ░███░░░  ░███░░░   ░███ ░███      ███░","░░████████░░██████ ░░██████  ░███████     ███░      █████████"," ░░░░░░░░  ░░░░░░   ░░░░░░   ░███░░░     ░░░       ░░░░░░░░░","                             ░███","                             █████","                            ░░░░░"];
+  var LOGO_SPLIT = 38;
+  var STILL = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⣠⣴⣶⣶⣶⣶⣄⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀\n⠀⠀⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⢀⣠⣤⣤⣄⣀⣠⣤⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀\n⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠈⢿⣿⣿⡇\n⠀⠀⠀⠀⠻⠟⠁⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⢹⣿⡿\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⡟⠉⠉⠛⠛⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⢻⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢿⣿⣿⡿⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⣰⣿⠟⠋⠀⠀⣾⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⡇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⣰⡟⠃⠀⠀⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣄⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀⢻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠁⠹⣧⣀⠀⠀⠀\n⠀⠀⠀⠀⠀⢿⠀⠀⠀⠀⠀⠀⠀⠀⢻⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠒⠀⠀";
   try {
-    console.log('%c' + LOGO + '\n\n%c' + MARE[0] + '\n\n%chello, console reader.\nthis page is prerendered html plus one small script. no framework.\nfor machines: /llms.txt and /agents.txt. for humans: /humans.txt\ntype d e e p on the page, or press cmd+K and try "mare".\nbook 30 minutes: https://scheduler.zoom.us/sreedeep',
-      'color:#30E060;font-family:monospace;font-size:11px;line-height:1.1',
-      'color:#A8A8A2;font-family:monospace;font-size:11px;line-height:1.1',
-      'color:#E8E4DC;font-family:monospace;font-size:12px;line-height:1.5');
+    var fmt = '', st = [];
+    LOGO.forEach(function (l) {
+      fmt += '%c' + l.slice(0, LOGO_SPLIT) + '%c' + l.slice(LOGO_SPLIT) + '\n';
+      st.push('color:#E8E4DC;font-family:monospace;line-height:1.05', 'color:#30E060;font-family:monospace;line-height:1.05');
+    });
+    fmt += '\n%c' + STILL + '\n%c' + "after Eadweard Muybridge, The Horse in Motion, 1878. public domain." + '\n\n%c' +
+      'hello, console reader.\nthis page is prerendered html plus one small script. no framework.\n' +
+      'for machines: /llms.txt and /agents.txt. for humans: /humans.txt\n' +
+      'type d e e p on the page, or press cmd+K and try "mare".\n' +
+      'book 30 minutes: https://scheduler.zoom.us/sreedeep';
+    st.push('color:#A8A8A2;line-height:1', 'color:#6E6E68;font-family:monospace;font-size:10px', 'color:#E8E4DC;font-family:monospace;font-size:12px;line-height:1.5');
+    console.log.apply(console, [fmt].concat(st));
   } catch (e) {}
+
+  var mareData = null, mareLoading = null;
+  var loadMare = function () {
+    if (mareData) return Promise.resolve(mareData);
+    if (!mareLoading) {
+      mareLoading = fetch('mare.json').then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (j && j.frames && j.frames.length) mareData = j; return mareData; })
+        .catch(function () { return null; })
+        .then(function (j) { mareLoading = null; return j; });
+    }
+    return mareLoading;
+  };
+  var DUST = '\u2801\u2802\u2804\u2840\u2808\u2810\u2820\u2880';
   var mareBusy = false;
-  var mare = function () {
-    if (mareBusy) return;
-    mareBusy = true;
+  var gallop = function (j) {
+    var frames = j ? j.frames.map(function (f) { return f.join('\n'); }) : [STILL];
+    var still = j ? frames[j.still || 0] : STILL, n = frames.length, si = j ? (j.still || 0) : 0;
     var el = d.createElement('div'); el.className = 'wx-mare'; el.setAttribute('aria-hidden', 'true');
     var say = d.createElement('p'); say.className = 'wx-mare-say'; say.textContent = 'sundays at sunrise.';
-    var pre = d.createElement('pre'); pre.textContent = MARE[0];
-    el.appendChild(say); el.appendChild(pre); d.body.appendChild(el);
-    var W = window.innerWidth, w = el.offsetWidth;
+    var pre = d.createElement('pre'); pre.textContent = still;
+    var dust = d.createElement('span'); dust.className = 'wx-mare-dust';
+    var cap = d.createElement('small'); cap.textContent = 'after muybridge, 1878'; say.appendChild(cap);
+    el.appendChild(say); el.appendChild(dust); el.appendChild(pre); d.body.appendChild(el);
+    var W = window.innerWidth;
+    /* Braille comes from whichever system font has it, and its advance runs from
+       about 0.55em to 0.75em. Measure it, then size the sprite to a fixed width and
+       set the line height so the dots keep the pitch the frames were drawn for. */
+    var cols = (frames[0].split('\n')[0] || '').length || 40, cs = getComputedStyle(pre);
+    var fs0 = parseFloat(cs.fontSize) || 12;
+    var inner = pre.getBoundingClientRect().width - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+    var ratio = inner > 0 ? inner / cols / fs0 : 0.6;
+    var target = W <= 768 ? Math.min(210, W * 0.56) : 300;
+    var fs = Math.max(6, Math.min(16, target / (cols * ratio)));
+    pre.style.fontSize = dust.style.fontSize = fs.toFixed(2) + 'px';
+    pre.style.lineHeight = dust.style.lineHeight = (fs * ratio * 5 / 3).toFixed(2) + 'px';
+    var w = el.offsetWidth;
     /* park left of whatever the Ask Deep widget covers right now (bubble, card or
        panel), measured by widgo-gate.js as --ask-w. Never closer than the phone launcher. */
     if (window.__askZone) try { window.__askZone(); } catch (e) {}
@@ -258,15 +298,36 @@
       el.classList.add('wx-mare-talk');
       setTimeout(function () {
         if (RM || !el.animate) return done();
-        el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: 'forwards' }).onfinish = done;
-      }, 2600);
+        el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, fill: 'forwards' }).onfinish = done;
+      }, 2800);
     };
-    if (RM || !el.animate) { el.style.transform = 'translateX(' + stop + 'px)'; talk(); return; }
-    var f = 0, iv = setInterval(function () { f ^= 1; pre.textContent = MARE[f]; }, 170);
-    el.animate([{ transform: 'translateX(' + (-w) + 'px)' }, { transform: 'translateX(' + stop + 'px)' }],
-      { duration: 4200, easing: 'cubic-bezier(.3,.1,.3,1)', fill: 'forwards' }).onfinish = function () {
-      clearInterval(iv); pre.textContent = MARE[0]; talk();
+    if (RM || n < 2) { el.style.transform = 'translateX(' + stop + 'px)'; talk(); return; }
+    var from = -w - 40, dist = stop - from;
+    var T = Math.max(2400, dist * 3.2);               /* ms; ease-out, so she arrives slowing */
+    var per = w / 9;                                  /* px of ground per frame: one stride is about 1.7 body lengths */
+    var laps = Math.max(1, Math.round(dist / per / n));
+    per = dist / (laps * n);                          /* land exactly on the still frame */
+    var t0 = 0, last = -1, raf = 0;
+    var tick = function (t) {
+      if (!t0) t0 = t;
+      var u = Math.min(1, (t - t0) / T), p = 1 - (1 - u) * (1 - u), x = from + dist * p;
+      el.style.transform = 'translateX(' + x.toFixed(1) + 'px)';
+      var fi = (si + Math.floor((x - from) / per)) % n;
+      if (fi !== last) {
+        last = fi; pre.textContent = frames[fi];
+        var s = '', v = 1 - u;
+        for (var k = 0; k < 5; k++) s += Math.random() < v * 0.8 ? DUST.charAt((Math.random() * 8) | 0) : '\u2800';
+        dust.textContent = s; dust.style.opacity = v.toFixed(2);
+      }
+      if (u < 1) raf = requestAnimationFrame(tick);
+      else { pre.textContent = still; dust.textContent = ''; talk(); }
     };
+    raf = requestAnimationFrame(tick);
+  };
+  var mare = function () {
+    if (mareBusy) return;
+    mareBusy = true;
+    loadMare().then(gallop, function () { gallop(null); });
   };
   window.addEventListener('dh:mare', mare);
   var cursorEl = d.querySelector('.wx-hero .wx-cursor');

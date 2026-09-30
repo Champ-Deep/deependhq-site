@@ -1,42 +1,69 @@
-/* deep >_ */
 
-     _                  __
-  __| | ___  ___ _ __   \ \
- / _` |/ _ \/ _ \ '_ \   \ \
-| (_| |  __/  __/ |_) |  / /
- \__,_|\___|\___| .__/  /_/____
-                |_|      |_____|
+       █████                                ███
+      ░░███                                ░░░███
+    ███████   ██████   ██████  ████████      ░░░███
+   ███░░███  ███░░███ ███░░███░░███░░███       ░░░███
+  ░███ ░███ ░███████ ░███████  ░███ ░███        ███░
+  ░███ ░███ ░███░░░  ░███░░░   ░███ ░███      ███░
+  ░░████████░░██████ ░░██████  ░███████     ███░      █████████
+   ░░░░░░░░  ░░░░░░   ░░░░░░   ░███░░░     ░░░       ░░░░░░░░░
+                               ░███
+                               █████
+                              ░░░░░
+
+  past the hype cycle. into the infrastructure.
 
 /* TEAM */
-Builder: Sreedeep Surapaneni ("Deep")
-Role: Group CMO, Champions Group. CEO, Champions Accelerator.
-From: Bangalore, India
-Window: 3 PM to 2 AM IST
-GitHub: https://github.com/Champ-Deep
-LinkedIn: https://www.linkedin.com/in/sreedeep-surapaneni
-Book: https://scheduler.zoom.us/sreedeep
+  Builder: Sreedeep Surapaneni ("Deep")
+  Role: Group CMO, Champions Group. CEO, Champions Accelerator.
+  From: Bangalore, India
+  Window: 3 PM to 2 AM IST
+  GitHub: https://github.com/Champ-Deep
+  LinkedIn: https://www.linkedin.com/in/sreedeep-surapaneni
+  Book: https://scheduler.zoom.us/sreedeep
 
 /* THANKS */
-The nightly agent, which writes this site at 1 AM.
-The vault, 2,800 notes and counting, which it writes from.
-The gray mare, Bangalore Turf Club, Sundays at sunrise.
+  The nightly agent, which writes this site at 1 AM.
+  The vault it writes from.
+  Eadweard Muybridge, who photographed a mare at a gallop in 1878.
+  The gray mare, Bangalore Turf Club, Sundays at sunrise.
 
 /* SITE */
-Rebuilt: nightly, from one source file, content.json
-Homepage: prerendered HTML plus one small script. No framework.
-Other pages: React 18, compiled in the browser, prerendered for crawlers
-Edge: Cloudflare Workers
-Type: Fraunces, Inter, JetBrains Mono, self-hosted
-Built with: Obsidian, Claude and Cowork, esbuild
+  Day: 334 of building in public
+  Last update: 2026-09-30
+  Rebuilt: nightly, from one source file
+  Homepage: prerendered HTML plus one small script. No framework.
+  Edge: Cloudflare Workers
+  Type: Fraunces, Inter, JetBrains Mono, self-hosted
+  Built with: Obsidian, Claude and Cowork, esbuild
 
 /* EGGS */
-Type d e e p on the homepage.
-Press cmd+K anywhere and try "mare".
-View source on the homepage.
+  Type d e e p on the homepage. Or the Konami code. Or click the green cursor.
+  Press cmd+K anywhere and try "mare".
+  Open the console on the homepage. View its source.
+  Read /robots.txt and /agents.txt. You are already in one.
 
-              ,/)
-      _______/ 'o\
-    ,/           _>
-   /(   ________/
-     /|        /|
-    / |       / |
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣾⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣿⣿⣿⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⡿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡀⠀⢀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡄⠀⠀⠀⣀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀
+  ⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣤⣀⣀⠀⠀⢀⣠⣤⣶⣶⣿⣶⣶⣶⣶⣶⣾⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⣿⣿⣿⣿⣿⣇⠀
+  ⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠈⣿⣿⣿⣿⣿⡀
+  ⠀⠀⠀⠀⠀⠀⢻⣿⡿⠟⠋⠋⠉⠛⠁⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠈⠙⣿⣿⣿⣧
+  ⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠸⠿⠿⠋
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠛⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠈⠉⠉⠙⠛⠻⠟⠿⠟⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⡿⠛⠉⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⠟⠁⠀⠀⢀⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⠟⠁⠀⠀⠀⠀⣼⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⠛⠁⠀⠀⠀⠀⠀⢸⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⢿⣦⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠟⠀⠻⣷⣄⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⢰⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣷⣆⡀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠙⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣦⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠋⠀⠀⠀
+
+  after Eadweard Muybridge, The Horse in Motion, 1878. public domain.
