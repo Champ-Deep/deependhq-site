@@ -2192,7 +2192,8 @@
       "description": "Template-based web scraper for B2B data enrichment. YouTube transcripts included.",
       "url": "https://github.com/Champ-Deep/LakeStream",
       "category": "repo",
-      "featured": false
+      "featured": false,
+      "status": "internal"
     },
     {
       "title": "5-Level Email Personalizer",
@@ -2203,17 +2204,21 @@
     },
     {
       "title": "ChamPDF",
-      "description": "pdf extraction and processing for the presales floor. live.",
+      "description": "Free PDF tools that run in the browser: merge, split, compress, convert. No signup. Started as extraction for the presales floor.",
       "url": "https://github.com/Champ-Deep/ChamPDF",
       "category": "tool",
-      "featured": true
+      "featured": true,
+      "site": "https://champdf.com",
+      "status": "building"
     },
     {
       "title": "Event Scout",
       "description": "Mobile PWA for event contact capture. Business card scanner plus AI chat.",
       "url": "https://github.com/Champ-Deep/event-scout",
       "category": "repo",
-      "featured": false
+      "featured": false,
+      "site": "https://event-scout-delta.vercel.app",
+      "status": "building"
     },
     {
       "title": "Champ Obscura",

@@ -306,17 +306,26 @@ const Stack = () => {
   const byName = new Map(S.items.map((i) => [i.name, i]));
   const featured = FEATURED.filter((f) => !byName.has(f.name));
   const scorer = byName.get('Lead Scorer');
+  // Projects in active development (toolkit `status`) come first. A public
+  // `site` wins over the repo link, so a live product opens as the product.
+  const building = (i) => (i.status === 'building' || i.status === 'internal' ? 0 : 1);
   const rows = [
     ...featured,
     ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'live', meta: 'on this site', what: 'Upload a lead list. Jev ranks who to call first and writes the first line.' }] : []),
     ...S.items
-      .filter((i) => i.kind === 'built' && i.last_seen && !MERGED.has(i.name))
-      .sort((a, b) => String(b.last_seen).localeCompare(String(a.last_seen)))
+      .filter((i) => i.kind === 'built' && (i.last_seen || i.status) && !MERGED.has(i.name))
+      .sort((a, b) => building(a) - building(b) || String(b.last_seen || '').localeCompare(String(a.last_seen || '')))
       .slice(0, 5)
-      .map((i) => ({ name: i.name, url: i.url, tag: '', meta: `log · ${fmtDate(i.last_seen)}`, what: i.what })),
+      .map((i) => ({
+        name: i.name,
+        url: i.site || i.url,
+        tag: i.site ? 'live' : i.status === 'internal' ? 'internal' : '',
+        meta: i.last_seen ? `log · ${fmtDate(i.last_seen)}` : (i.status === 'internal' ? 'runs in-house' : ''),
+        what: i.what,
+      })),
   ];
   const builtTotal = S.counts.built || 0;
-  const shownBuilt = rows.filter((r) => !r.tag).length;
+  const shownBuilt = rows.filter((r) => byName.has(r.name) && byName.get(r.name).kind === 'built').length;
   const using = ['ChampOps', 'Obsidian + Celsus', 'Claude + Cowork', 'Cloudflare', 'Supabase', 'Jules'].map((n) => byName.get(n)).filter(Boolean);
   const list = (k) => S.items.filter((i) => i.kind === k).map((i) => i.name).join(', ') + '.';
   return (
@@ -334,7 +343,7 @@ const Stack = () => {
                 <React.Fragment>
                   <span className="wx-ix-name">{r.name}</span>
                   <span className="wx-ix-what">{r.what}</span>
-                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-${r.tag}`}>{r.tag}</span>}{r.meta}</span>
+                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-tag-${r.tag}`}>{r.tag}</span>}{r.meta}</span>
                 </React.Fragment>
               );
               if (!r.url) return <div key={r.name} className="wx-ix">{inner}</div>;

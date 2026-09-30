@@ -9,6 +9,7 @@
      glyph field   the hero canvas, paused off-screen and in hidden tabs
      nav drawer    the burger, since React does not run on this page
      cmd+K         loads React, Babel and Palette.jsx on first use only
+     eggs          the logo in the console, and the gray mare (type d e e p)
    No scroll listeners. Scroll-linked motion lives in home.css (animation-timeline).
    Everything degrades: without this file the page is complete and still.
    No em dashes. */
@@ -225,6 +226,59 @@
     var rt = 0;
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); draw(); }, 150); });
   }
+
+  /* ---------- easter eggs: the logo in the console, and the gray mare ----------
+     Type d e e p anywhere on the page (or the Konami code), click the hero's
+     green cursor, or run "mare" from cmd+K. She trots in from the left and parks
+     just left of the Ask Deep widget, whichever state it is in, so she never hides under it. */
+  var LOGO = "     _                  __\n  __| | ___  ___ _ __   \\ \\\n / _` |/ _ \\/ _ \\ '_ \\   \\ \\\n| (_| |  __/  __/ |_) |  / /\n \\__,_|\\___|\\___| .__/  /_/____\n                |_|      |_____|";
+  var MARE = ["              ,/)\n      _______/ 'o\\\n    ,/           _>\n   /(   ________/\n     /|        /|\n    / |       / |", "              ,/)\n      _______/ 'o\\\n    ,/           _>\n   /(   ________/\n     |\\        |\\\n     | \\       | \\"];
+  try {
+    console.log('%c' + LOGO + '\n\n%c' + MARE[0] + '\n\n%chello, console reader.\nthis page is prerendered html plus one small script. no framework.\nfor machines: /llms.txt and /agents.txt. for humans: /humans.txt\ntype d e e p on the page, or press cmd+K and try "mare".\nbook 30 minutes: https://scheduler.zoom.us/sreedeep',
+      'color:#30E060;font-family:monospace;font-size:11px;line-height:1.1',
+      'color:#A8A8A2;font-family:monospace;font-size:11px;line-height:1.1',
+      'color:#E8E4DC;font-family:monospace;font-size:12px;line-height:1.5');
+  } catch (e) {}
+  var mareBusy = false;
+  var mare = function () {
+    if (mareBusy) return;
+    mareBusy = true;
+    var el = d.createElement('div'); el.className = 'wx-mare'; el.setAttribute('aria-hidden', 'true');
+    var say = d.createElement('p'); say.className = 'wx-mare-say'; say.textContent = 'sundays at sunrise.';
+    var pre = d.createElement('pre'); pre.textContent = MARE[0];
+    el.appendChild(say); el.appendChild(pre); d.body.appendChild(el);
+    var W = window.innerWidth, w = el.offsetWidth;
+    /* park left of whatever the Ask Deep widget covers right now (bubble, card or
+       panel), measured by widgo-gate.js as --ask-w. Never closer than the phone launcher. */
+    if (window.__askZone) try { window.__askZone(); } catch (e) {}
+    var askW = parseFloat(getComputedStyle(d.documentElement).getPropertyValue('--ask-w')) || 0;
+    var stop = Math.max(8, W - w - Math.max(askW, 72) - 24);
+    var done = function () { if (el.parentNode) el.parentNode.removeChild(el); mareBusy = false; };
+    var talk = function () {
+      el.classList.add('wx-mare-talk');
+      setTimeout(function () {
+        if (RM || !el.animate) return done();
+        el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: 'forwards' }).onfinish = done;
+      }, 2600);
+    };
+    if (RM || !el.animate) { el.style.transform = 'translateX(' + stop + 'px)'; talk(); return; }
+    var f = 0, iv = setInterval(function () { f ^= 1; pre.textContent = MARE[f]; }, 170);
+    el.animate([{ transform: 'translateX(' + (-w) + 'px)' }, { transform: 'translateX(' + stop + 'px)' }],
+      { duration: 4200, easing: 'cubic-bezier(.3,.1,.3,1)', fill: 'forwards' }).onfinish = function () {
+      clearInterval(iv); pre.textContent = MARE[0]; talk();
+    };
+  };
+  window.addEventListener('dh:mare', mare);
+  var cursorEl = d.querySelector('.wx-hero .wx-cursor');
+  if (cursorEl) cursorEl.addEventListener('click', mare);
+  var typed = '', KONAMI = 'ArrowUp,ArrowUp,ArrowDown,ArrowDown,ArrowLeft,ArrowRight,ArrowLeft,ArrowRight,b,a', keys = [];
+  d.addEventListener('keydown', function (e) {
+    var t = e.target, tag = t && t.tagName;
+    if (e.metaKey || e.ctrlKey || e.altKey || tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+    keys.push(e.key); if (keys.length > 10) keys.shift();
+    if (keys.join(',') === KONAMI) { keys = []; mare(); return; }
+    if (e.key && e.key.length === 1) { typed = (typed + e.key.toLowerCase()).slice(-4); if (typed === 'deep') { typed = ''; mare(); } }
+  });
 
   /* ---------- nav drawer (React does not run on this page) ---------- */
   var burger = d.querySelector('.nav-burger'), drawer = d.getElementById('nav-drawer');

@@ -18,7 +18,7 @@ const root = join(here, '..');
 const SRC = join(root, 'content.json');
 const OUT = join(root, 'data.js');
 
-function main() {
+async function main() {
   const raw = readFileSync(SRC, 'utf8');
   let content;
   try {
@@ -234,10 +234,20 @@ function main() {
   writeFileSync(join(root, 'sitemap.xml'), sitemap, 'utf8');
   console.log(`feed.xml: ${feedPosts.length} items · sitemap.xml: ${urls.length} urls`);
 
+  // llms.txt and llms-full.txt for assistants and agents. Loaded lazily so a
+  // missing or broken llms.mjs is logged and never fails the build.
+  try {
+    const { writeLlms } = await import('./llms.mjs');
+    const r = writeLlms(root, data);
+    console.log(`llms.txt: ${r.llms} lines · llms-full.txt: ${r.full} lines`);
+  } catch (err) {
+    console.log(`llms.txt: skipped (${err.message})`);
+  }
+
   const days = data?.brand?.today_day ?? '?';
   const postCount = Array.isArray(data?.posts) ? data.posts.length : 0;
   const entryCount = Array.isArray(data?.journey) ? data.journey.length : 0;
   console.log(`built data.js: day ${days}, ${entryCount} journey entries, ${postCount} posts`);
 }
 
-main();
+main().catch((err) => { console.error(err); process.exit(1); });

@@ -100,4 +100,45 @@
     last = now;
     apply();
   });
+
+  // THE ASK ZONE
+  // The widget has three states: the Ask Deep bubble, a small welcome card, and
+  // the full chat panel, all bottom right. Its DOM sits in a closed shadow root,
+  // so we cannot read its size. We can hit-test it: elementFromPoint returns the
+  // shadow host for anything inside it. Two short scans (one row, one column)
+  // measure how much of the corner it covers right now, and publish that as
+  // --ask-w / --ask-h on <html> plus data-ask="none|bubble|card|panel".
+  // The footer pads itself by --ask-h and the homepage mare parks left of --ask-w,
+  // so nothing the site cares about ends up underneath the widget.
+  var html = document.documentElement;
+  var isWidget = function (el) {
+    if (!el || el === html || el === document.body) return false;
+    var root = document.getElementById('root');
+    if (root && root.contains(el)) return false;
+    return !(el.closest && el.closest('.dhk-overlay, .wx-mare, script, style'));
+  };
+  var measure = function () {
+    var W = window.innerWidth, H = window.innerHeight, x, y, minX = W, minY = H, miss = 0;
+    for (x = W - 6; x > W - 560 && x > 0; x -= 8) {
+      if (isWidget(document.elementFromPoint(x, H - 28))) { minX = x; miss = 0; } else if (minX < W && (miss += 8) > 32) break;
+    }
+    miss = 0;
+    for (y = H - 6; y > H * 0.1; y -= 8) {
+      if (isWidget(document.elementFromPoint(W - 44, y))) { minY = y; miss = 0; } else if (minY < H && (miss += 8) > 32) break;
+    }
+    var w = minX < W ? W - minX : 0, h = minY < H ? H - minY : 0;
+    var state = !w || !h ? 'none' : h < 110 ? 'bubble' : h < 420 ? 'card' : 'panel';
+    html.style.setProperty('--ask-w', w + 'px');
+    html.style.setProperty('--ask-h', h + 'px');
+    if (html.getAttribute('data-ask') !== state) html.setAttribute('data-ask', state);
+  };
+  var soon = function () { setTimeout(measure, 350); setTimeout(measure, 1100); };
+  window.__askZone = measure;
+  // The widget loads late and opens itself on a timer, so check a few times early,
+  // then every few seconds while the tab is visible. Each check is under 200 hit tests.
+  [1200, 3000, 6000, 10000].forEach(function (t) { setTimeout(measure, t); });
+  setInterval(function () { if (!document.hidden) measure(); }, 3000);
+  window.addEventListener('resize', soon);
+  // Clicks inside the widget reach the page retargeted to its host: re-measure after it animates.
+  document.addEventListener('click', function (e) { if (isWidget(e.target)) soon(); }, true);
 })();

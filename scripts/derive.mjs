@@ -220,7 +220,9 @@ export function derive(data, now = new Date()) {
   for (const t of Array.isArray(data.toolkit) ? data.toolkit : []) {
     const isRepo = /github\.com\//.test(t.url || '');
     const kind = t.category === 'skill' || t.category === 'resource' ? 'skill' : (isRepo ? 'built' : 'using');
-    push({ name: t.title, what: t.description || '', url: t.url && t.url !== '#' ? t.url : null, kind, category: t.category || 'tool', featured: !!t.featured });
+    // Optional: `site` is a public live URL (the repo stays in `url`), and
+    // `status` is 'building' or 'internal' for projects in active development.
+    push({ name: t.title, what: t.description || '', url: t.url && t.url !== '#' ? t.url : null, site: t.site || null, status: t.status || null, kind, category: t.category || 'tool', featured: !!t.featured });
   }
   for (const s of (data.shoutouts && Array.isArray(data.shoutouts.items)) ? data.shoutouts.items : []) {
     push({ name: s.name, what: s.what || '', url: s.url || null, kind: s.tag || 'using', category: 'external', repo: s.repo || null });

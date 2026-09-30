@@ -247,8 +247,9 @@ html{overflow-x:clip;scroll-padding-top:calc(61px + 8px)}
 .wx-ix-meta{display:flex;align-items:center;gap:var(--s2);font:400 var(--text-xs)/1.2 var(--font-mono);color:var(--dim);white-space:nowrap;grid-row:1;grid-column:2}
 @media (min-width:48rem){.wx-ix-meta{grid-row:auto;grid-column:auto}}
 .wx-tag{font:600 var(--text-xs)/1 var(--font-mono);text-transform:uppercase;letter-spacing:var(--track-caps);padding:4px 6px;border-radius:var(--r-sm);border:1px solid var(--line-2);color:var(--muted)}
-.wx-tag.wx-live{color:var(--build);border-color:var(--build-dim)}
-.wx-tag.wx-new{color:var(--win);border-color:var(--win-dim)}
+.wx-tag-live{color:var(--build);border-color:var(--build-dim)}
+.wx-tag-new{color:var(--win);border-color:var(--win-dim)}
+.wx-tag-internal{color:var(--think-text);border-color:var(--think-dim)}
 a.wx-ix:hover{background:var(--surface)}
 a.wx-ix:hover .wx-ix-name::before,a.wx-ix:focus-visible .wx-ix-name::before{width:.45em;margin-right:.3em}
 .wx-ix-more{display:inline-flex;margin-top:var(--s4)}
@@ -424,3 +425,11 @@ a.wx-door:hover{border-color:var(--line-2);background:var(--card)}
 .dhk-hint{font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
 .dhk-empty{padding:18px;font-family:var(--font-mono);font-size:.875rem;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.dhk-overlay{backdrop-filter:none}}
+
+/* ---------- the gray mare (easter egg). Parks left of the Ask Deep launcher, bottom-right stays clear ---------- */
+.wx-hero .wx-cursor{cursor:pointer}
+.wx-mare{position:fixed;left:0;bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:45;pointer-events:none;will-change:transform}
+.wx-mare pre{margin:0;padding:8px 12px;border-radius:40%;background:radial-gradient(closest-side,color-mix(in oklab,var(--bg) 92%,transparent) 62%,transparent);font:600 13px/1.15 var(--font-mono);color:var(--muted);text-shadow:0 0 14px var(--bg),0 0 4px var(--bg)}
+.wx-mare-say{position:absolute;right:0;bottom:100%;margin:0 0 6px;padding:4px 8px;font:500 var(--text-xs)/1.3 var(--font-mono);color:var(--build);background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-md);white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity var(--dur-2) var(--ease-out),transform var(--dur-2) var(--ease-out)}
+.wx-mare-talk .wx-mare-say{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.wx-mare-say{transition:none}}

@@ -1,0 +1,60 @@
+# deep >_ (deependhq.com)
+
+> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group, twelve companies run from one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 334, 112 entries since 2026-05-04.
+
+Rebuilt 2026-09-30 21:54 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
+
+## Read
+- [Home](https://deependhq.com/): the working window, 3 PM to 2 AM IST, and how a day becomes an entry
+- [Mission Log](https://deependhq.com/journey.html): every weekday entry, newest first, with arcs and dates
+- [Writing](https://deependhq.com/writing.html): the weekly narratives, one essay a week written from the log
+- [Pillars](https://deependhq.com/pillars.html): the four pillars of Champions Group and the companies in each
+- [Stack](https://deependhq.com/toolkit.html): tools built, used, tried and watched, dated by their last mention in the log
+- [Now](https://deependhq.com/now.html): what has attention right now
+
+## Latest entries
+- [Day 334, 2026-09-30](https://deependhq.com/journey.html#day-334): shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline both sides can see their own...
+- [Day 333, 2026-09-29](https://deependhq.com/journey.html#day-333): the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two months, no visibility into...
+- [Day 332, 2026-09-28](https://deependhq.com/journey.html#day-332): Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker, no summary, nothing. Instead...
+- [Day 331, 2026-09-27](https://deependhq.com/journey.html#day-331): sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter deadline for a partnership...
+- [Day 330, 2026-09-26](https://deependhq.com/journey.html#day-330): spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, agent owns it end to end, agent preps it and i tap...
+- [Day 329, 2026-09-25](https://deependhq.com/journey.html#day-329): built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post. explains the buying-signal data play in...
+- [Day 328, 2026-09-24](https://deependhq.com/journey.html#day-328): ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes, 67k wikilinks, 635 ambiguous...
+
+## Essays
+- [Spent the week diagnosing why things dont ship. Sunday proved the diagnosis right.](https://deependhq.com/post.html?slug=week-45-the-wall-we-named): 2026-09-27, 4 min
+- [Got disciplined about everything this week except the thing we paid cash for.](https://deependhq.com/post.html?slug=week-44-the-discipline-arc): 2026-09-19, 4 min
+- [Five systems, five days, none of them talked to each other.](https://deependhq.com/post.html?slug=week-43-five-systems-five-days): 2026-09-12, 4 min
+- [The signals were everywhere. The outbox was not.](https://deependhq.com/post.html?slug=week-38-the-signals-were-everywhere): 2026-08-09, 4 min
+- [The calendar was full. The outbox was empty.](https://deependhq.com/post.html?slug=week-37-the-calendar-was-full): 2026-08-02, 4 min
+- [The doctor said yes. The hospital said committee.](https://deependhq.com/post.html?slug=week-36-the-doctor-said-yes): 2026-07-25, 6 min
+
+## Built here
+- [Event Scout](https://event-scout-delta.vercel.app): Mobile PWA for event contact capture. Business card scanner plus AI chat. (live at event-scout-delta.vercel.app)
+- [ChamPDF](https://champdf.com): Free PDF tools that run in the browser: merge, split, compress, convert. No signup. Started as extraction for the... (live at champdf.com)
+- [LakeStream](https://github.com/Champ-Deep/LakeStream): Template-based web scraper for B2B data enrichment. YouTube transcripts included. (internal, runs in-house)
+- [ChampUTM](https://github.com/Champ-Deep/ChampUTM): UTM link builder and tracker. React/Vite. Open source.
+- [ChampMail](https://github.com/Champ-Deep/ChampMail): email outreach automation. human-cadence sending, self-hosted Stalwart SMTP. live and scaling.
+- [ChampGraph](https://github.com/Champ-Deep/Graphiti-knowledge-graph): Knowledge graph per prospect. Neo4j/FalkorDB. The brain behind the AI SDR.
+- [ChampQuest](https://github.com/Champ-Deep/ChampQuest): Rewarding task tracking for teams. Now being reborn as a ranch scavenger JRPG.
+- [B2B Pulse](https://github.com/Champ-Deep/B2B-Pulse): LinkedIn and Meta engagement automator. Powers the 5 PM IST daily social triage.
+- [deependhq-site](https://github.com/Champ-Deep/deependhq-site): This site. No-build React on Cloudflare Pages. Auto-updates daily from the vault.
+- [ChampCMS](https://github.com/Champ-Deep/ChampCMS): Full-stack Astro CMS on Cloudflare. D1, R2, passkeys, TipTap, plugin isolates.
+- [ChampLens](https://github.com/Champ-Deep/ChampLens): QR-to-video AR business card platform. Scan a card, meet a person.
+- [ChampIQ](https://github.com/Champ-Deep/ChampIQ): The AI SDR orchestration layer. Graph-driven prospecting across every channel.
+
+## Machine-readable
+- [llms-full.txt](https://deependhq.com/llms-full.txt): every journey entry and essay as plain markdown
+- [data.js](https://deependhq.com/data.js): the whole site as one object, window.DH_DATA, rebuilt nightly around 01:00 IST
+- [feed.xml](https://deependhq.com/feed.xml): RSS for the weekly narratives
+- [sitemap.xml](https://deependhq.com/sitemap.xml)
+- [agents.txt](https://deependhq.com/agents.txt): house rules for assistants and agents
+
+## Contact
+- Book 30 minutes: https://scheduler.zoom.us/sreedeep
+- Email: deep@championsmail.com
+- GitHub: https://github.com/Champ-Deep
+
+## Optional
+- [humans.txt](https://deependhq.com/humans.txt): who made this, and a gray mare
+- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 334, 2026-09-30.

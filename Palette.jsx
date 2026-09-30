@@ -40,6 +40,7 @@ const CommandPalette = () => {
     { grp: 'do', label: 'GitHub', hint: 'github.com/Champ-Deep', run: () => { window.open('https://github.com/Champ-Deep', '_blank'); } },
     { grp: 'do', label: 'LinkedIn', hint: 'in/sreedeep-surapaneni', run: () => { window.open('https://www.linkedin.com/in/sreedeep-surapaneni', '_blank'); } },
     { grp: 'fun', label: 'Confetti', hint: 'just because', run: () => { dhkConfetti(); return 'wheee.'; } },
+    { grp: 'fun', label: 'mare', hint: 'sundays at sunrise', run: () => { if (document.querySelector('.home-wx')) { window.dispatchEvent(new CustomEvent('dh:mare')); return undefined; } return 'the gray mare lives on the homepage. type d e e p there.'; } },
     { grp: 'fun', label: 'whoami', hint: 'who is this', run: () => 'sreedeep · group cmo, building an ai operating system across 12 companies. day ' + day + '.' },
     { grp: 'fun', label: 'theme green', hint: 'matrix', run: () => window.dhTheme.set('green') },
     { grp: 'fun', label: 'theme blue', hint: 'arc', run: () => window.dhTheme.set('blue') },

@@ -62,16 +62,16 @@ const ToolkitPage = () => {
               {items.map((it) => {
                 const Inner = (
                   <React.Fragment>
-                    <span className="h"><b>{it.name}{it.url ? ' ↗' : ''}</b><Chip tone={KIND_TONE[it.kind]}>{KINDS.find((k) => k.id === it.kind)?.label || it.kind}</Chip></span>
+                    <span className="h"><b>{it.name}{(it.site || it.url) ? ' ↗' : ''}</b><Chip tone={KIND_TONE[it.kind]}>{KINDS.find((k) => k.id === it.kind)?.label || it.kind}</Chip></span>
                     <span className="w">{it.what}</span>
                     <span className="f">
-                      <span>{it.category && it.category !== 'external' ? it.category : (it.repo || (it.url ? it.url.replace(/^https?:\/\/(www\.)?/, '').split('/').slice(0, 2).join('/') : 'internal'))}</span>
+                      <span>{it.site ? <React.Fragment><b style={{ color: 'var(--build)' }}>live</b> · {it.site.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}</React.Fragment> : it.status === 'internal' ? 'internal, runs in-house' : (it.category && it.category !== 'external' ? it.category : (it.repo || (it.url ? it.url.replace(/^https?:\/\/(www\.)?/, '').split('/').slice(0, 2).join('/') : 'internal')))}</span>
                       {it.last_seen ? <span>in the log <b style={{ color: 'var(--text)' }}>{fmtDate(it.last_seen)}</b> · <Age date={it.last_seen} mode={60} /></span> : <span className="dim">no log mention yet</span>}
                     </span>
                   </React.Fragment>
                 );
-                return it.url
-                  ? <a key={it.name} className="card link tool-card" href={it.url} target="_blank" rel="noreferrer">{Inner}</a>
+                return (it.site || it.url)
+                  ? <a key={it.name} className="card link tool-card" href={it.site || it.url} target="_blank" rel="noreferrer">{Inner}</a>
                   : <div key={it.name} className="card tool-card">{Inner}</div>;
               })}
             </div>

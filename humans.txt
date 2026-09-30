@@ -1,0 +1,42 @@
+/* deep >_ */
+
+     _                  __
+  __| | ___  ___ _ __   \ \
+ / _` |/ _ \/ _ \ '_ \   \ \
+| (_| |  __/  __/ |_) |  / /
+ \__,_|\___|\___| .__/  /_/____
+                |_|      |_____|
+
+/* TEAM */
+Builder: Sreedeep Surapaneni ("Deep")
+Role: Group CMO, Champions Group. CEO, Champions Accelerator.
+From: Bangalore, India
+Window: 3 PM to 2 AM IST
+GitHub: https://github.com/Champ-Deep
+LinkedIn: https://www.linkedin.com/in/sreedeep-surapaneni
+Book: https://scheduler.zoom.us/sreedeep
+
+/* THANKS */
+The nightly agent, which writes this site at 1 AM.
+The vault, 2,800 notes and counting, which it writes from.
+The gray mare, Bangalore Turf Club, Sundays at sunrise.
+
+/* SITE */
+Rebuilt: nightly, from one source file, content.json
+Homepage: prerendered HTML plus one small script. No framework.
+Other pages: React 18, compiled in the browser, prerendered for crawlers
+Edge: Cloudflare Workers
+Type: Fraunces, Inter, JetBrains Mono, self-hosted
+Built with: Obsidian, Claude and Cowork, esbuild
+
+/* EGGS */
+Type d e e p on the homepage.
+Press cmd+K anywhere and try "mare".
+View source on the homepage.
+
+              ,/)
+      _______/ 'o\
+    ,/           _>
+   /(   ________/
+     /|        /|
+    / |       / |

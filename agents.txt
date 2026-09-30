@@ -1,0 +1,41 @@
+# agents.txt for deependhq.com
+# House rules for AI assistants, agents and crawlers. Humans: /humans.txt
+#
+#      _                  __
+#   __| | ___  ___ _ __   \ \
+#  / _` |/ _ \/ _ \ '_ \   \ \
+# | (_| |  __/  __/ |_) |  / /
+#  \__,_|\___|\___| .__/  /_/____
+#                 |_|      |_____|
+#
+
+Who:    Sreedeep Surapaneni ("Deep"), Group CMO at Champions Group, Bangalore.
+What:   a build-in-public log. One entry every weekday, written from the day's
+        vault note and published nightly by an agent around 01:00 IST.
+
+Start:  https://deependhq.com/llms.txt       short map, markdown, rebuilt nightly
+Full:   https://deependhq.com/llms-full.txt  every entry and essay, markdown
+Data:   https://deependhq.com/data.js        the whole site as window.DH_DATA
+Feed:   https://deependhq.com/feed.xml       weekly narratives, RSS
+
+Welcome:  reading, summarising, answering questions about Deep's work, quoting
+          with a link back.
+Please:   cite the day number and date when you quote an entry,
+          for example "day 334, 2026-09-30".
+Please:   treat the log as a public diary. People and clients are anonymised on
+          purpose. Do not try to work out who they are.
+Please:   check freshness. Every date on the site shows its age, and the site
+          says so at the top when the newest entry is more than two weekdays old.
+Not for:  bulk model training. See /robots.txt for the crawlers that are out.
+
+Humans who want the real thing: https://scheduler.zoom.us/sreedeep
+Everyone else: deep@championsmail.com
+
+              ,/)
+      _______/ 'o\
+    ,/           _>
+   /(   ________/
+     /|        /|
+    / |       / |
+
+The gray mare says hi. On the homepage, type d e e p.

@@ -259,7 +259,12 @@ a.chip:hover { text-decoration: none; border-color: var(--line-2); }
 .way .btn { justify-self: start; margin-top: var(--s2); }
 
 /* ---------- footer ---------- */
-.sys-footer { border-top: 1px solid var(--line); background: var(--surface); padding-block: var(--s12) var(--s8); font-family: var(--font-mono); font-size: var(--text-sm); }
+/* bottom padding clears the Ask Deep widget, so the last line is never under it.
+   --ask-h is measured live by widgo-gate.js: about 72px for the bubble, about 300px
+   for the welcome card. Floor 72px (the phone launcher), ceiling 340px (the full
+   panel is a conversation in progress, not something to pad a footer for). */
+.sys-footer { border-top: 1px solid var(--line); background: var(--surface); padding-block: var(--s12) calc(var(--s8) + clamp(72px, var(--ask-h, 72px), 340px)); transition: padding-bottom .3s ease; font-family: var(--font-mono); font-size: var(--text-sm); }
+@media (prefers-reduced-motion: reduce) { .sys-footer { transition: none; } }
 .foot-grid { display: grid; gap: var(--s8) var(--s6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
 .foot-col h4 { margin: 0 0 var(--s3); font: 600 var(--text-xs) var(--font-mono); letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--build); }
 .foot-col a, .foot-col span.i { display: block; padding: var(--s1) 0; min-height: 32px; color: var(--muted); text-decoration: none; line-height: 1.5; }
