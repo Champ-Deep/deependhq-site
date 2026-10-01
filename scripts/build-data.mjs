@@ -218,7 +218,7 @@ async function main() {
   ].join('\n');
   writeFileSync(join(root, 'feed.xml'), rss, 'utf8');
 
-  const staticPages = ['', 'command', 'now', 'journey', 'writing', 'field-notes', 'toolkit'];
+  const staticPages = ['', 'command', 'now', 'journey', 'writing', 'field-notes', 'toolkit', 'privacy'];
   // Entity URLs are the real static paths the prerenderer now emits, one file
   // per document at post/<slug>/ and company/<slug>/. Listing the old
   // query-string form here pointed Google at a redirect for every essay, which

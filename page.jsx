@@ -21,6 +21,7 @@ const PageShell = ({ pageId }) => {
   else if (pageId === 'toolkit') Body = <ToolkitPage />;
   else if (pageId === 'field-notes') Body = <FieldNotesPage />;
   else if (pageId === 'now')     Body = <NowPage />;
+  else if (pageId === 'privacy')  Body = <PrivacyPage />;
   else if (pageId === 'pillars') Body = <PillarsPage />;
   else if (pageId === 'writing') Body = <WritingPage />;
   else if (pageId === 'post')    Body = <PostPage />;

@@ -81,12 +81,14 @@ const SHARED = ['Sys.jsx', 'Nav.jsx', 'Footer.jsx', 'Palette.jsx', 'Rail.jsx'];
 const ALL_PAGES = [
   'JourneyPage.jsx', 'ToolkitPage.jsx', 'FieldNotesPage.jsx', 'NowPage.jsx',
   'PillarsPage.jsx', 'WritingPage.jsx', 'PostPage.jsx', 'CompanyPage.jsx',
+  'PrivacyPage.jsx',
 ];
 
 const PAGES = [
   { html: 'index.html', kind: 'app', modules: ['Sys.jsx', 'Nav.jsx', 'Home.jsx', 'Footer.jsx', 'Palette.jsx', 'app.jsx'] },
   { html: 'pillars.html', kind: 'page', id: 'pillars', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'now.html', kind: 'page', id: 'now', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
+  { html: 'privacy.html', kind: 'page', id: 'privacy', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'journey.html', kind: 'page', id: 'journey', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'toolkit.html', kind: 'page', id: 'toolkit', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'writing.html', kind: 'page', id: 'writing', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
