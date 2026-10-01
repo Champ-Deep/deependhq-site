@@ -1,5 +1,5 @@
-// CompanyPage.jsx — single company at company.html?slug=<slug>.
-// Reads the slug from the query string, finds the company in DH_DATA.companies,
+// CompanyPage.jsx — single company, canonical URL /company/<slug>/.
+// Reads the slug from the path or the legacy query string, finds the company in DH_DATA.companies,
 // and renders its journey cross-links, related writing, and products. The
 // prominent external CTA is the deliberate "go see their real site" moment.
 
@@ -25,8 +25,13 @@ const CompanyJourneyCard = ({ entry }) => (
 
 const CompanyPage = () => {
   const D = window.DH_DATA;
+  // Query string on the legacy /company.html?slug= URLs, path on the canonical
+  // /company/<slug>/ ones. Without the path branch the canonical URL renders
+  // "company not found" the moment React hydrates.
   const params = new URLSearchParams(window.location.search);
-  const slug = params.get('slug');
+  const slug = params.get('slug')
+    || (window.location.pathname.match(/\/company\/([^/]+)\/?$/) || [])[1]
+    || null;
   const companies = D.companies || [];
   const company = companies.find((c) => c.slug === slug) || null;
 
@@ -93,7 +98,7 @@ const CompanyPage = () => {
           {writing.length > 0 ? (
             <div className="dh-writing-list">
               {writing.map((w) => (
-                <a key={w.slug} className="dh-writing-row" href={`post.html?slug=${encodeURIComponent(w.slug)}`}>
+                <a key={w.slug} className="dh-writing-row" href={`post/${w.slug}`}>
                   <div>
                     <h3 className="dh-writing-title">{w.title}</h3>
                   </div>

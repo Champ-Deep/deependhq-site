@@ -1,5 +1,5 @@
-// PostPage.jsx — single blog post at post.html?slug=<slug>.
-// Reads the slug from the query string, finds the post in DH_DATA.posts, and
+// PostPage.jsx — single blog post, canonical URL /post/<slug>/.
+// Reads the slug from the path or the legacy query string, finds the post in DH_DATA.posts, and
 // renders its body blocks with the bp-* (blog) styles from pages.css.
 // Extras: a reading-progress bar, copy-link, and prev/next navigation.
 
@@ -48,8 +48,14 @@ const ReadingBar = () => {
 
 const PostPage = () => {
   const D = window.DH_DATA;
+  // The slug lives in the query string on the old /post.html?slug= URLs and in
+  // the path on the canonical /post/<slug>/ ones. Read both, or the canonical
+  // URL renders posts[0]: right title in the served HTML, then React overwrites
+  // it with the newest post the moment the page hydrates.
   const params = new URLSearchParams(window.location.search);
-  const slug = params.get('slug');
+  const slug = params.get('slug')
+    || (window.location.pathname.match(/\/post\/([^/]+)\/?$/) || [])[1]
+    || null;
   const posts = (D.posts || []).slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   const idx = Math.max(0, posts.findIndex((p) => p.slug === slug));
   const post = posts.find((p) => p.slug === slug) || posts[0] || null;
@@ -110,7 +116,7 @@ const PostPage = () => {
             <span className="bp-related-k"><span className="dh-gt">&gt;_</span>reads into</span>
             <div className="bp-related-pills">
               {post.related_companies.map((rc) => (
-                <a key={rc.slug} className="dh-pill dh-pill-gold" href={`company.html?slug=${encodeURIComponent(rc.slug)}`}>{rc.name} →</a>
+                <a key={rc.slug} className="dh-pill dh-pill-gold" href={`company/${rc.slug}`}>{rc.name} →</a>
               ))}
             </div>
           </div>
@@ -119,13 +125,13 @@ const PostPage = () => {
         {(newer || older) && (
           <nav className="bp-prevnext">
             {newer ? (
-              <a className="bp-pn bp-pn-prev" href={`post.html?slug=${encodeURIComponent(newer.slug)}`}>
+              <a className="bp-pn bp-pn-prev" href={`post/${newer.slug}`}>
                 <span className="bp-pn-k">&larr; newer</span>
                 <span className="bp-pn-t">{newer.title}</span>
               </a>
             ) : <span />}
             {older ? (
-              <a className="bp-pn bp-pn-next" href={`post.html?slug=${encodeURIComponent(older.slug)}`}>
+              <a className="bp-pn bp-pn-next" href={`post/${older.slug}`}>
                 <span className="bp-pn-k">older &rarr;</span>
                 <span className="bp-pn-t">{older.title}</span>
               </a>

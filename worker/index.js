@@ -60,13 +60,16 @@ const json = (body, status, extra = {}) =>
 // pass-through below, not just the /showcase page.
 // wss://ai.widgo.ai is here because the widget opens a websocket, and a CSP
 // connect-src without it makes the browser log a refusal and kill the socket.
+// static.cloudflareinsights.com is Cloudflare Web Analytics. Without it the
+// browser refuses the beacon on every page load and the site has no traffic
+// baseline of its own. It sets no cookie and does no cross-site tracking.
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.widgo.ai",
+  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.widgo.ai https://static.cloudflareinsights.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob:",
-  "connect-src 'self' https://ai.widgo.ai wss://ai.widgo.ai https://openrouter.ai",
+  "connect-src 'self' https://ai.widgo.ai wss://ai.widgo.ai https://openrouter.ai https://cloudflareinsights.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -310,6 +313,27 @@ export default {
     if (r) {
       const to = r.to.startsWith('http') ? r.to : `${url.origin}${r.to}`;
       return new Response(null, { status: r.code, headers: { location: to, 'cache-control': 'public, max-age=3600' } });
+    }
+
+    // Entity URL migration. The prerenderer now emits one real file per post
+    // and per company at /post/<slug>/ and /company/<slug>/, because a single
+    // prerendered post.html served the newest essay at every query string and
+    // Google indexed one page for all fifteen. Old ?slug= links stay working,
+    // and the redirect preserves UTM so attribution survives the hop. 301
+    // because the new path is the canonical one and appears in the sitemap.
+    if (url.pathname === '/post' || url.pathname === '/company' || url.pathname === '/post.html' || url.pathname === '/company.html') {
+      const kind = url.pathname.replace('.html', '').replace('/', '');
+      const slug = url.searchParams.get('slug');
+      if (slug) {
+        const dest = `${url.origin}/${kind}/${encodeURIComponent(slug)}`;
+        const passthrough = url.search.replace(/^\?/, '').replace(/^slug=[^&]*&?/, '');
+        const q = passthrough ? `${dest}?${passthrough}` : dest;
+        return new Response(null, { status: 301, headers: { location: q, 'cache-control': 'public, max-age=3600' } });
+      }
+      // No slug: the index of that kind, which does not exist as its own page.
+      // Sending them to the writing index and the pillars page beats a 404.
+      const fallback = kind === 'post' ? `${url.origin}/writing` : `${url.origin}/pillars`;
+      return new Response(null, { status: 301, headers: { location: fallback, 'cache-control': 'public, max-age=3600' } });
     }
 
     if (url.pathname === '/api/decide') return handleDecide(request, env);

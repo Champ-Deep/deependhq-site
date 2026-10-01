@@ -90,8 +90,11 @@ const PAGES = [
   { html: 'journey.html', kind: 'page', id: 'journey', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'toolkit.html', kind: 'page', id: 'toolkit', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'writing.html', kind: 'page', id: 'writing', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
-  { html: 'post.html', kind: 'page', id: 'post', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
-  { html: 'company.html', kind: 'page', id: 'company', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
+  // post.html and company.html are emitted ONCE PER ENTITY, not once per file.
+  // See expandEntities: a single prerendered post.html baked posts[0] into every
+  // URL, so all 15 slugs served the newest essay and Google indexed one page.
+  { html: 'post.html', kind: 'page', id: 'post', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'], entity: 'posts' },
+  { html: 'company.html', kind: 'page', id: 'company', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'], entity: 'companies' },
   { html: 'field-notes.html', kind: 'page', id: 'field-notes', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
 ];
 
@@ -150,71 +153,40 @@ async function main() {
       html = readFileSync(htmlPath, 'utf8');
       const dataSrc = readFileSync(join(root, 'data.js'), 'utf8');
 
-      // A sandbox with the same globals the browser provides. The components
-      // only touch window, document.getElementById, location and history.
-      const listeners = {};
-      const sandbox = {
-        React,
-        // app.jsx and page.jsx reference ReactDOM.createRoot. The mount call is
-        // stripped below, but the identifier still has to resolve or the module
-        // body throws before the strip is reached.
-        ReactDOM: { createRoot: () => ({ render() {} }) },
-        console,
-        setTimeout, clearTimeout, setInterval, clearInterval,
-        Intl, Date, Math, JSON, URL, URLSearchParams,
-        navigator: { userAgent: 'prerender' },
-        location: {
-          href: `https://deependhq.com/${page.html}`,
-          pathname: `/${page.id || ''}`,
-          search: '', hash: '', origin: 'https://deependhq.com',
-        },
-        history: { replaceState() {}, pushState() {} },
-        sessionStorage: { getItem: () => null, setItem() {}, removeItem() {} },
-        localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
-        addEventListener: (t, f) => { (listeners[t] = listeners[t] || []).push(f); },
-        removeEventListener() {},
-        document: {
-          getElementById: (id) => (id === 'root' ? { getAttribute: () => page.id, dataset: { page: page.id }, setAttribute() {} } : null),
-          querySelector: () => null,
-          querySelectorAll: () => [],
-          addEventListener() {},
-          documentElement: { getAttribute: () => null, setAttribute() {} },
-          body: { appendChild() {}, classList: { add() {}, remove() {} } },
-          createElement: () => ({ setAttribute() {}, style: {}, appendChild() {}, classList: { add() {} }, addEventListener() {} }),
-        },
-        fetch: async () => { throw new Error('prerender: no network'); },
-      };
-      // The homepage hero draws the gray mare's still frame from mare-hero.json
-      // (Home.jsx reads window.DH_MARE_HERO). Missing file: the hero renders
-      // without her, which is a smaller page, not a broken one.
-      try {
-        const mh = JSON.parse(readFileSync(join(root, 'mare-hero.json'), 'utf8'));
-        sandbox.DH_MARE_HERO = { cols: mh.cols, rows: mh.rows, stillFrame: mh.stillFrame };
-      } catch (e) { sandbox.DH_MARE_HERO = null; }
-      sandbox.window = sandbox;
-      sandbox.globalThis = sandbox;
-      sandbox.self = sandbox;
-      vm.createContext(sandbox);
-
-      // data.js assigns window.DH_DATA
-      vm.runInContext(dataSrc, sandbox, { filename: 'data.js' });
-      // The bundle attaches components to window and, for app.jsx, mounts.
-      // We do not want the mount: renderToString does the work.
-      const patched = readFileSync(bundlePath, 'utf8').replace(
-        /ReactDOM\.createRoot\([^)]*\)\.render\([^;]*\);?/g,
-        '/* mount suppressed for prerender */'
-      );
-      vm.runInContext(patched, sandbox, { filename: `${page.html}.bundle` });
-
-      const markup = renderPage(sandbox, page, ReactDOMServer, React);
-      if (!markup || markup.length < 200) {
-        failed.push([page.html, `render produced ${markup ? markup.length : 0} bytes`]);
+      // An entity page is rendered once per item, with the slug present in the
+      // sandbox location so the component picks the right record. Without this
+      // the query string is empty at build time and every page gets posts[0].
+      const variants = page.entity ? entitiesFor(dataSrc, page.entity) : [null];
+      if (page.entity && variants.length === 0) {
+        failed.push([page.html, `no entities under "${page.entity}"`]);
         continue;
       }
-      const injected = inject(html, markup);
-      writeFileSync(htmlPath, injected, 'utf8');
-      ok++;
-      console.log(`prerender ${page.html}: ${markup.length} bytes into #root`);
+
+      for (const variant of variants) {
+        const slug = variant ? variant.slug : null;
+        const target = slug ? entityPath(page, slug) : htmlPath;
+        try {
+          const markup = renderVariant({
+            html, dataSrc, bundlePath, page, variant, slug,
+            ReactDOMServer, React,
+          });
+          if (!markup || markup.length < 200) {
+            failed.push([target, `render produced ${markup ? markup.length : 0} bytes`]);
+            continue;
+          }
+          let out = inject(html, markup);
+          out = applyHead(out, headFor(page, variant));
+          // Only the nested copies get a base href. The root shells must not,
+          // or a stray <base> would change how every existing page resolves.
+          if (slug) out = applyBase(out);
+          mkdirSync(dirname(target), { recursive: true });
+          writeFileSync(target, out, 'utf8');
+          ok++;
+          console.log(`prerender ${target.replace(root + '/', '')}: ${markup.length} bytes into #root`);
+        } catch (err) {
+          failed.push([slug ? entityPath(page, slug) : page.html, `render: ${err.message}`]);
+        }
+      }
     } catch (err) {
       failed.push([page.html, `render: ${err.message}`]);
     }
@@ -223,6 +195,90 @@ async function main() {
   console.log(`\nprerender: ${ok}/${PAGES.length} pages carry content without JavaScript.`);
   for (const [page, why] of failed) console.log(`  FAILED ${page}: ${why}`);
   if (failed.length) process.exitCode = 1;
+}
+
+// One rendered page per entity, in a sandbox whose location carries the slug so
+// the component selects the right record. Extracted from the original single
+// prerender loop; the sandbox is identical apart from `search`.
+function renderVariant({ dataSrc, bundlePath, page, slug, ReactDOMServer, React }) {
+  const listeners = {};
+  const search = slug ? `?slug=${encodeURIComponent(slug)}` : '';
+  const path = slug ? `/${page.entity === 'posts' ? 'post' : 'company'}/${slug}`
+    : `/${page.id || ''}`;
+  const sandbox = {
+    React,
+    // app.jsx and page.jsx reference ReactDOM.createRoot. The mount call is
+    // stripped below, but the identifier still has to resolve or the module
+    // body throws before the strip is reached.
+    ReactDOM: { createRoot: () => ({ render() {} }) },
+    console,
+    setTimeout, clearTimeout, setInterval, clearInterval,
+    Intl, Date, Math, JSON, URL, URLSearchParams,
+    navigator: { userAgent: 'prerender' },
+    location: {
+      href: `https://deependhq.com${path}${search}`,
+      pathname: path,
+      search, hash: '', origin: 'https://deependhq.com',
+    },
+    history: { replaceState() {}, pushState() {} },
+    sessionStorage: { getItem: () => null, setItem() {}, removeItem() {} },
+    localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
+    addEventListener: (t, f) => { (listeners[t] = listeners[t] || []).push(f); },
+    removeEventListener() {},
+    document: {
+      getElementById: (id) => (id === 'root' ? { getAttribute: () => page.id, dataset: { page: page.id }, setAttribute() {} } : null),
+      querySelector: () => null,
+      querySelectorAll: () => [],
+      addEventListener() {},
+      documentElement: { getAttribute: () => null, setAttribute() {} },
+      body: { appendChild() {}, classList: { add() {}, remove() {} } },
+      createElement: () => ({ setAttribute() {}, style: {}, appendChild() {}, classList: { add() {} }, addEventListener() {} }),
+    },
+    fetch: async () => { throw new Error('prerender: no network'); },
+  };
+  // The homepage hero draws the gray mare's still frame from mare-hero.json
+  // (Home.jsx reads window.DH_MARE_HERO). Missing file: the hero renders
+  // without her, which is a smaller page, not a broken one.
+  try {
+    const mh = JSON.parse(readFileSync(join(root, 'mare-hero.json'), 'utf8'));
+    sandbox.DH_MARE_HERO = { cols: mh.cols, rows: mh.rows, stillFrame: mh.stillFrame };
+  } catch (e) { sandbox.DH_MARE_HERO = null; }
+  sandbox.window = sandbox;
+  sandbox.globalThis = sandbox;
+  sandbox.self = sandbox;
+  vm.createContext(sandbox);
+
+  // data.js assigns window.DH_DATA
+  vm.runInContext(dataSrc, sandbox, { filename: 'data.js' });
+  // The bundle attaches components to window and, for app.jsx, mounts.
+  // We do not want the mount: renderToString does the work.
+  const patched = readFileSync(bundlePath, 'utf8').replace(
+    /ReactDOM\.createRoot\([^)]*\)\.render\([^;]*\);?/g,
+    '/* mount suppressed for prerender */'
+  );
+  vm.runInContext(patched, sandbox, { filename: `${page.html}.bundle` });
+  return renderPage(sandbox, page, ReactDOMServer, React);
+}
+
+// Read the entity list straight out of data.js by evaluating it in a throwaway
+// context. Parsing the JSON out of the file with a regex would break the moment
+// data.js is minified or reformatted, and this is the build, not a hot path.
+function entitiesFor(dataSrc, key) {
+  const box = { window: {}, globalThis: {}, self: {}, console };
+  box.window = box; box.globalThis = box; box.self = box;
+  vm.createContext(box);
+  vm.runInContext(dataSrc, box, { filename: 'data.js' });
+  const data = box.window.DH_DATA || box.DH_DATA || {};
+  const list = data[key] || [];
+  return Array.isArray(list) ? list.filter((x) => x && x.slug) : [];
+}
+
+// Where an entity's prerendered file lands. post/<slug>/index.html and
+// company/<slug>/index.html give a real static path per document, which is what
+// makes them indexable and linkable without the Worker doing any routing.
+function entityPath(page, slug) {
+  const dir = page.entity === 'posts' ? 'post' : 'company';
+  return join(root, dir, slug, 'index.html');
 }
 
 // The shells mount differently: index.html uses App via app.jsx, every other
@@ -235,6 +291,95 @@ function renderPage(sandbox, page, ReactDOMServer, React) {
   }
   if (typeof sandbox.PageShell !== 'function') throw new Error('PageShell not exported');
   return ReactDOMServer.renderToStaticMarkup(React.createElement(sandbox.PageShell, { pageId: page.id }));
+}
+
+const esc = (s) => String(s == null ? '' : s)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+// Per-entity <head>. Without this every post.html ships the same <title> and no
+// canonical, which is the second half of the duplicate-page problem: even with
+// distinct bodies, Google needs one title and one self-referencing canonical
+// per URL to treat them as separate documents.
+function firstProse(p) {
+  const b = p.body || [];
+  for (const block of b) {
+    if (typeof block === 'string' && !block.startsWith('#') && block.length > 60) return block;
+  }
+  return '';
+}
+
+function headFor(page, variant) {
+  if (!variant) return '';
+  const base = 'https://deependhq.com';
+  if (page.entity === 'posts') {
+    const p = variant;
+    const title = `${p.title} · deep >_`;
+    const desc = (p.deck || firstProse(p) || `Week ${p.week}, built in public.`)
+      .replace(/\s+/g, ' ').trim().slice(0, 158);
+    const canon = `${base}/post/${p.slug}`;
+    return { title, desc, canon, ld: {
+      '@context': 'https://schema.org', '@type': 'BlogPosting',
+      headline: p.title, description: (p.deck || '').slice(0, 200),
+      url: canon, datePublished: p.date || undefined,
+      dateModified: p.date || undefined,
+      author: { '@type': 'Person', name: 'Sreedeep Surapaneni', url: `${base}/` },
+      publisher: { '@type': 'Person', name: 'Sreedeep Surapaneni', url: `${base}/` },
+      mainEntityOfPage: canon,
+      keywords: (p.tags || []).join(', ') || undefined,
+    }};
+  }
+  if (page.entity === 'companies') {
+    const c = variant;
+    const title = `${c.name} · deep >_`;
+    const desc = (c.blurb || c.one_liner || c.tagline || `${c.name}, one of twelve companies, one operator.`)
+      .replace(/\s+/g, ' ').trim().slice(0, 158);
+    const canon = `${base}/company/${c.slug}`;
+    const ld = {
+      '@context': 'https://schema.org', '@type': 'Organization',
+      name: c.name, description: (c.blurb || c.one_liner || '').slice(0, 200), url: canon,
+    };
+    if (c.site) ld.sameAs = [c.site];
+    return { title, desc, canon, ld };
+  }
+  return '';
+}
+
+// A nested entity page (post/<slug>/index.html) sits two directories deep, so
+// every relative href in the shell, styles.css and data.js included, would
+// resolve against post/<slug>/ and 404. A root base href is the one-line fix
+// that makes the whole shell behave as if it lived at the root, which is where
+// the Worker serves it from.
+function applyBase(html) {
+  if (/<base\s/i.test(html)) return html;
+  return html.replace(/<head([^>]*)>/i, '<head$1>\n  <base href="/">');
+}
+
+// Rewrite title, description and canonical, and append JSON-LD. Only the first
+// occurrence of each is touched, so a page cannot end up with two titles.
+function applyHead(html, h) {
+  if (!h) return html;
+  let out = html;
+  const t = esc(h.title);
+  if (/<title>[\s\S]*?<\/title>/i.test(out)) {
+    out = out.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
+  } else {
+    out = out.replace(/<\/head>/i, `  <title>${t}</title>\n</head>`);
+  }
+  const meta = `<meta name="description" content="${esc(h.desc)}">` +
+    `<link rel="canonical" href="${esc(h.canon)}">`;
+  if (/<link rel="canonical"/i.test(out)) {
+    out = out.replace(/<link rel="canonical"[^>]*>/i, `<link rel="canonical" href="${esc(h.canon)}">`);
+  } else if (/<meta name="description"/i.test(out)) {
+    out = out.replace(/(<meta name="description"[^>]*>)/i, `$1\n  ${meta}`);
+  } else {
+    out = out.replace(/<\/head>/i, `  ${meta}\n</head>`);
+  }
+  const ld = `<script type="application/ld+json">${JSON.stringify(h.ld)}</script>`;
+  if (!/application\/ld\+json/.test(out)) {
+    out = out.replace(/<\/head>/i, `  ${ld}\n</head>`);
+  }
+  return out;
 }
 
 function inject(html, markup) {

@@ -52,6 +52,21 @@ const seen = new Map(); // href -> Set of pages that link to it
 for (const page of pages) {
   const rel = page.slice(root.length + 1);
   const html = readFileSync(page, 'utf8');
+  // A page may declare <base href="...">, which changes how the browser
+  // resolves every relative href on it. The nested entity pages
+  // (post/<slug>/index.html) do exactly that, because they are served from the
+  // root but sit two directories deep on disk. Ignoring the base tag made every
+  // relative link on those pages look broken, which was a false positive, so
+  // resolve against the base the way a browser would.
+  const baseTag = html.match(/<base\s[^>]*href=["']([^"']+)["']/i);
+  // resolvePath, not dirname(join(...)): join(root, '/') keeps a trailing
+  // slash and dirname of that is the PARENT of root, which sent every
+  // relative link one level too high and reported all 27 pages as broken.
+  const baseDir = baseTag
+    ? (baseTag[1].startsWith('/')
+      ? resolvePath(root, `.${baseTag[1]}`)
+      : resolvePath(dirname(page), baseTag[1]))
+    : dirname(page);
   // Every href and src in the built output, plus the two JSX-ish sources the
   // browser executes (Babel inlines them at runtime, so their links are live too).
   const targets = [];
@@ -72,14 +87,20 @@ for (const page of pages) {
       // A root-absolute path. The Worker serves .html for extensionless routes
       // only where a redirect or a route exists, so an extensionless root path
       // is a 404 unless a page of that exact name is deployed.
-      const asHtml = clean.endsWith('.html') ? clean : `${clean}.html`;
-      targetFile = existsSync(join(root, asHtml.replace(/^\//, ''))) ? asHtml.replace(/^\//, '') : null;
+      // "/" is the one exception: it is the site root and is served by
+      // index.html, so appending .html to it would look for "/.html" and
+      // report the homepage as broken on every page that links to it.
+      if (clean === '/') { targetFile = 'index.html'; }
+      else {
+        const asHtml = clean.endsWith('.html') ? clean : `${clean}.html`;
+        targetFile = existsSync(join(root, asHtml.replace(/^\//, ''))) ? asHtml.replace(/^\//, '') : null;
+      }
     } else {
       targetFile = clean;
     }
     if (targetFile === null) { broken.push({ from: rel, href, why: 'no such page' }); continue; }
 
-    const abs = resolvePath(dirname(page), targetFile);
+    const abs = resolvePath(baseDir, targetFile);
     const relTarget = abs.startsWith(root) ? abs.slice(root.length + 1) : abs;
     if (existsSync(abs)) continue;
 

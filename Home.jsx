@@ -426,7 +426,7 @@ const Writing = () => {
         <a className="wx-tlink" href="writing.html">all essays →</a>
       </header>
       <div className="wx-w-grid">
-        <a className="wx-w-feat" href={`post.html?slug=${encodeURIComponent(lead.slug)}`}>
+        <a className="wx-w-feat" href={`post/${lead.slug}`}>
           <p className="wx-w-meta"><span className="wx-latest">latest</span>{lead.week && <span>week {lead.week}</span>}{range && <span>{range}</span>}<span>{lead.read}</span>{lead.arc && <span>{lead.arc}</span>}</p>
           <h3 className="wx-w-title wx-ink">{lead.title}</h3>
           {lead.deck && <p className="wx-w-deck">{lead.deck}</p>}
@@ -434,7 +434,7 @@ const Writing = () => {
         </a>
         <div className="wx-w-list">
           {rest.slice(0, 3).map((p) => (
-            <a key={p.slug} className="wx-w-row" href={`post.html?slug=${encodeURIComponent(p.slug)}`}>
+            <a key={p.slug} className="wx-w-row" href={`post/${p.slug}`}>
               <p className="wx-w-meta">{p.week && <span>week {p.week}</span>}<span>{fmtDate(p.date)}</span><span>{p.read}</span></p>
               <h3>{p.title}</h3>
             </a>

@@ -86,7 +86,7 @@ const PillarsPage = () => {
                 {members.length > 0 && (
                   <div className="members">
                     {members.map((c) => (
-                      <a key={c.slug} href={`company.html?slug=${encodeURIComponent(c.slug)}`} className="member">
+                      <a key={c.slug} href={`company/${c.slug}`} className="member">
                         <b>{c.name}</b>
                         <span>{c.tag}</span>
                       </a>
@@ -140,7 +140,7 @@ const PillarsPage = () => {
             {cos.map((c) => {
               const p = pillars.find((x) => x.slug === c.pillar);
               return (
-                <a key={c.slug} className="card link co-card" href={`company.html?slug=${encodeURIComponent(c.slug)}`}>
+                <a key={c.slug} className="card link co-card" href={`company/${c.slug}`}>
                   <span className="h"><b>{c.name}</b><span>{c.tag}</span></span>
                   <span className="d">{c.desc}</span>
                   <span className="chips">

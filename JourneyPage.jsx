@@ -83,7 +83,7 @@ const EntryV2 = ({ entry }) => {
             const link = (entry.company_links || []).find((l) => l.arc === a && l.slug);
             const cls = `dh-pill dh-pill-${entry.arc_color}`;
             return link
-              ? <a key={a} className={cls} href={`company.html?slug=${encodeURIComponent(link.slug)}`}>{a}</a>
+              ? <a key={a} className={cls} href={`company/${link.slug}`}>{a}</a>
               : <span key={a} className={cls}>{a}</span>;
           })}
         </span>

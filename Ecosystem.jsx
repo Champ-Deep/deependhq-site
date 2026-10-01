@@ -13,7 +13,7 @@ const Ecosystem = () => {
       </div>
       <div className="dh-companies">
         {companies.map((c) => (
-          <a key={c.name} className="dh-company" href={`company.html?slug=${encodeURIComponent(c.slug)}`}>
+          <a key={c.name} className="dh-company" href={`company/${c.slug}`}>
             <div className="dh-company-head">
               <h3 className="dh-company-name">{c.name}</h3>
               <span className="dh-company-arrow">→</span>

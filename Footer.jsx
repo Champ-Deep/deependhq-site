@@ -45,7 +45,7 @@ const Footer = ({ compact = false }) => {
           </div>}
           <div className="foot-col">
             <h4>the twelve</h4>
-            {(D.companies || []).map((c) => <a key={c.slug} href={`company.html?slug=${encodeURIComponent(c.slug)}`}>{c.name}</a>)}
+            {(D.companies || []).map((c) => <a key={c.slug} href={`company/${c.slug}`}>{c.name}</a>)}
           </div>
         </div>
         <div className="foot-bottom">
