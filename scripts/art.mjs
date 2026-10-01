@@ -7,7 +7,8 @@
 // The homepage animates all 15 frames from /mare.json; the text files use
 // frame 6. Every braille line keeps its blank cells as U+2800 rather than
 // spaces, so the art stays aligned in any font that has braille.
-// Regenerate with the scripts in the vault note, not by hand. No em dashes.
+// Regenerate with the scripts in Celsus/Efforts/Active/DeependHQ Site/mare-art,
+// not by hand. No em dashes.
 
 export const LOGO = [
   "     █████                                ███",

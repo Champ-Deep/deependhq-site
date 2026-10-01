@@ -39,41 +39,52 @@ const istClock = (iso) => {
 };
 
 // ---------------------------------------------------------------- 15:00 hero
+// The hero is an editorial grid: the headline is set in three giant rows with
+// the words spaced across twelve columns, hairline guides at each row's x-height
+// and baseline, and small notes in the margins. The visual is the gray mare at a
+// gallop, drawn in braille from Muybridge's 1878 frames, with speed streaks
+// trailing off her back like a scanline smear. prerender.mjs puts the still frame
+// on window.DH_MARE_HERO from mare-hero.json; home.js gallops her on load and on
+// hover from the same file. Word order in the DOM reads as one sentence.
+const NUM = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
 const Hero = () => {
   const e = DH.journey[0];
-  const champ = (DH.pillars || []).find((p) => p.slug === 'champ') || {};
-  const beam = (champ.products || []).find((p) => p.name === 'ChampBeam') || { url: 'https://champbeam.com' };
-  const glyphs = DH.journey.slice(0, 12).map((j) => j.shipping_now).join(' ');
+  const st = DH.stats || {};
+  const nCo = (DH.companies || []).length;
+  const MH = window.DH_MARE_HERO;
+  const still = MH && MH.stillFrame ? MH.stillFrame.join('\n') : '';
+  let i = 0;
+  const W = (t, k) => <span className={`wx-hw wx-hw-${k}`} style={{ '--i': i++ }}>{t}</span>;
   return (
     <section className="wx-hero mode-editorial" id="top" aria-labelledby="wx-hero-h">
-      <canvas className="wx-ascii" aria-hidden="true" data-glyphs={glyphs} />
-      <p className="wx-eyebrow-ed">Sreedeep Surapaneni · Bangalore</p>
-      <h1 className="wx-hero-h" id="wx-hero-h">
-        <span className="wx-ln"><span>Past the hype cycle.</span></span>
-        <span className="wx-ln"><span><em>Into the infrastructure.</em><span className="wx-cursor" aria-hidden="true" /></span></span>
-      </h1>
-      <div className="wx-hero-row">
-        <div className="wx-hero-copy">
-          <p className="wx-hero-sub">Group CMO at Champions Group. <b>Twelve companies, one vault.</b> I ship something every weekday and write it down here.</p>
-          <div className="wx-hero-cta">
-            <a className="btn btn-gold" href={BOOK} {...EXT}>Book a call</a>
-            <a className="wx-tlink" href="#log">or start with what shipped today ↓</a>
-          </div>
-        </div>
-        <div className="wx-hero-side mode-operator">
-          <article className="wx-live" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day}>
+      <div className="wx-hx">
+        <p className="wx-eyebrow-ed wx-hx-eye">Sreedeep Surapaneni · Bangalore</p>
+        <span className="wx-hx-gl wx-hx-gl1" aria-hidden="true" />
+        <span className="wx-hx-gl wx-hx-gl2" aria-hidden="true" />
+        <span className="wx-hx-gl wx-hx-gl3" aria-hidden="true" />
+        <h1 className="wx-hx-h" id="wx-hero-h">
+          {W('i’m', 'im')} {W('Deep', 'deep')}<span className="wx-hbr" aria-hidden="true" />{' '}
+          {W('and', 'and')} {W('i', 'i')} {W('ship', 'ship')}<span className="wx-hbr" aria-hidden="true" />{' '}
+          {W('every', 'every')}<span className="wx-hbr wx-hbr-sm" aria-hidden="true" />{' '}
+          <span className="wx-hw wx-hw-wk" style={{ '--i': i++ }}><em>weekday</em><span className="wx-cursor" aria-hidden="true" /></span>
+        </h1>
+        <p className="wx-hx-note wx-hx-n1">group cmo,<br />champions group</p>
+        <p className="wx-hx-note wx-hx-n2">day {st.days_public}<br />of building in public</p>
+        <p className="wx-hx-note wx-hx-n3">ceo,<br />champions accelerator</p>
+        <p className="wx-hx-note wx-hx-n4">{NUM[nCo] || nCo} companies,<br />one vault</p>
+        <div className="wx-hx-mare" aria-hidden="true" style={{ '--cols': MH ? MH.cols : 102 }}><pre>{still}</pre></div>
+        <div className="wx-hx-foot">
+          <p className="wx-hx-lede">Past the hype cycle, into the infrastructure. Every entry starts as a note in the vault and goes live by 2 AM IST.</p>
+          <article className="wx-live wx-hx-live mode-operator" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day}>
             <p className="wx-live-k">live from the log · <WxAge date={e.date} mode="log" /></p>
-            <p className="wx-live-day">day {e.day} <span>{fmtDate(e.date, true)}</span></p>
+            <p className="wx-hx-live-t"><b>day {e.day}</b> <span>{fmtDate(e.date, true)}</span></p>
             <p className="wx-live-txt" data-compile="">{e.shipping_now}</p>
-            <ul className="wx-chips">{(e.arcs || []).slice(0, 2).map((a) => <li key={a}>{a}</li>)}</ul>
             <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} in full →</a>
           </article>
-          <a className="wx-beam" href={beam.url || 'https://champbeam.com'} {...EXT}>
-            <span className="wx-beam-k">featured build</span>
-            <span className="wx-beam-name">Champ<b>Beam</b></span>
-            <span className="wx-beam-line">Send it. Know they saw it.</span>
-            <span className="wx-beam-meta">Smart links, QR codes and file tracking in one product. champbeam.com ↗</span>
-          </a>
+        </div>
+        <div className="wx-hx-cta">
+          <a className="wx-hx-paren wx-hx-book" href={BOOK} {...EXT}>book 30 minutes</a>
+          <a className="wx-hx-paren" href="#log">what shipped today ↓</a>
         </div>
       </div>
       <div className="wx-hero-rule" aria-hidden="true" />

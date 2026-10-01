@@ -69,47 +69,72 @@ html{overflow-x:clip;scroll-padding-top:calc(61px + 8px)}
 @media (min-width:64rem){.home-wx .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .home-wx .foot-col a,.home-wx .foot-col span.i{min-height:44px;display:flex;align-items:center}
 
-/* ---------- hero ---------- */
-.wx-hero{position:relative;isolation:isolate;overflow:hidden;padding:var(--s16) var(--pad) var(--s12)}
-.wx-ascii{position:absolute;z-index:-1;top:0;right:0;bottom:0;left:36%;width:64%;height:100%;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%,#000 100%),linear-gradient(0deg,transparent 0,#000 25%);
-  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 28%,#000 100%),linear-gradient(0deg,transparent 0,#000 25%);mask-composite:intersect;pointer-events:none}
-@media (max-width:63.99rem){.wx-ascii{left:0;width:100%;-webkit-mask-image:linear-gradient(180deg,#000 0,transparent 38%);mask-image:linear-gradient(180deg,#000 0,transparent 38%)}}
-.wx-hero-h{font-family:var(--font-display);font-weight:800;font-size:var(--text-display);line-height:.94;letter-spacing:var(--track-serif);font-optical-sizing:auto;margin-block:var(--s6) var(--s10);max-width:none}
-.wx-hero-h .wx-ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.wx-hero-h .wx-ln>span{display:inline-block}
-.wx-hero-h em{font-style:italic;font-weight:700;color:var(--win)}
+/* ---------- hero: the editorial grid ----------
+   Three giant rows, words spaced across twelve columns, a hairline at every
+   row's x-height and baseline (Fraunces 800 at line-height 1, measured: x-height
+   top .41em, baseline .86em), small notes in the margins, and the gray mare at a gallop
+   in the middle. Below 64rem the rows flow and the mare sits under them. */
+.wx-hero{position:relative;isolation:isolate;overflow:hidden;padding:var(--s10) var(--pad) var(--s12)}
+.wx-hx{--hx-fs:clamp(2.75rem,14.6vw,5.5rem);position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--s4);align-items:start}
+.wx-hx-eye{grid-column:1 / -1;margin-bottom:var(--s5)}
+.wx-hx-gl{display:none}
+.wx-hx-h{grid-column:1 / -1;display:flex;flex-wrap:wrap;column-gap:.24em;align-items:baseline;margin:0;
+  font:800 var(--hx-fs)/1 var(--font-display);letter-spacing:var(--track-serif);font-optical-sizing:auto;color:var(--text);
+  background:repeating-linear-gradient(180deg,transparent 0 .41em,var(--line) .41em calc(.41em + 1px),transparent calc(.41em + 1px) .86em,var(--line) .86em calc(.86em + 1px),transparent calc(.86em + 1px) 1em)}
+.wx-hw{display:block;position:relative;z-index:1}
+.wx-hw em{font-style:italic;font-weight:700;color:var(--win)}
+.wx-hbr{flex-basis:100%;height:0}
 .wx-cursor{display:inline-block;width:.42em;height:.72em;margin-left:.08em;background:var(--build);vertical-align:-.02em;box-shadow:var(--build-glow)}
-.wx-hero-row{display:grid;gap:var(--s8);align-items:end}
-.wx-hero-copy{display:grid;gap:var(--s6);max-width:36rem}
-.wx-hero-sub{font-size:1.1875rem;line-height:1.55;color:var(--muted)}
-.wx-hero-sub b{color:var(--text);font-weight:600}
-.wx-hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5)}
-.wx-hero-rule{height:1px;background:linear-gradient(90deg,var(--win) 0,var(--build) 48px,var(--line) 48px);transform-origin:left;margin-top:var(--s12)}
-.wx-hero-side{display:grid;gap:var(--bento-gap)}
-@media (min-width:48rem){.wx-hero-side{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}}
+.wx-hx-note{position:relative;z-index:1;margin:0;padding:var(--s3) 0;border-top:1px solid var(--line);font:500 var(--text-sm)/1.35 var(--font-ui);color:var(--muted);text-transform:lowercase}
+.wx-hx-n1,.wx-hx-n3{grid-column:1 / span 2}
+.wx-hx-n2,.wx-hx-n4{grid-column:3 / span 2}
+.wx-hx-note:first-of-type{margin-top:var(--s6)}
+.wx-hx-mare{grid-column:1 / -1;container-type:inline-size;margin:var(--s6) 0 var(--s4);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);mask-image:linear-gradient(90deg,transparent 0,#000 34%)}
+.wx-hx-mare pre{margin:0;font:400 calc(100cqi / (var(--cols,102) * .62))/1 var(--mare-font);letter-spacing:0;color:var(--muted);white-space:pre;overflow:hidden}
+.wx-hx-foot{position:relative;z-index:1;grid-column:1 / -1;display:grid;gap:var(--s6)}
+.wx-hx-lede{margin:0;max-width:34rem;font:400 var(--text-lg)/1.55 var(--font-ui);color:var(--muted)}
+.wx-hx-live{display:grid;gap:var(--s2);padding-top:var(--s4);border-top:1px solid var(--line)}
+.wx-hx-live-t{display:flex;align-items:baseline;gap:var(--s3);margin:0;font:800 var(--text-h3)/1.2 var(--font-ui);letter-spacing:var(--track-display);color:var(--text)}
+.wx-hx-live-t span{font:400 var(--text-sm)/1 var(--font-mono);letter-spacing:0;color:var(--dim)}
+.wx-hx-live .wx-live-txt{-webkit-line-clamp:2}
+.wx-hx-cta{position:relative;z-index:1;grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:0 var(--s6);margin-top:var(--s5)}
+.wx-hx-paren{display:inline-flex;align-items:center;min-height:44px;font:600 var(--text-sm)/1 var(--font-ui);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text);text-decoration:none;white-space:nowrap}
+.wx-hx-paren::before{content:"(";margin-right:.6em;color:var(--dim)}
+.wx-hx-paren::after{content:")";margin-left:.6em;color:var(--dim)}
+.wx-hx-paren:hover{color:var(--win)}
+.wx-hx-book{color:var(--win)}
+.wx-hx-book:hover{color:var(--win-hover)}
+@media (min-width:40rem){.wx-hbr-sm{display:none}.wx-hx{--hx-fs:clamp(4rem,11vw,6.5rem)}}
 @media (min-width:64rem){
-  .wx-hero-row{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--s8)}
-  .wx-hero-copy{grid-column:1 / span 5}
-  .wx-hero-side{grid-column:6 / span 7}
+  .wx-hx{--hx-fs:clamp(5rem,7.3vw,8.75rem);grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--s4)}
+  .wx-hx-h{display:grid;grid-template-columns:subgrid;grid-auto-rows:1em;column-gap:var(--s4)}
+  .wx-hbr{display:none}
+  .wx-hw-im{grid-area:1 / 3 / 2 / 6}
+  .wx-hw-deep{grid-area:1 / 6 / 2 / 11}
+  .wx-hw-and{grid-area:2 / 1 / 3 / 4}
+  .wx-hw-i{grid-area:2 / 4 / 3 / 5}
+  .wx-hw-ship{grid-area:2 / 9 / 3 / 11}
+  .wx-hw-every{grid-area:3 / 3 / 4 / 7}
+  .wx-hw-wk{grid-area:3 / 8 / 4 / 13;justify-self:end}
+  /* notes sit on each row's x-height line, inside the row they annotate */
+  .wx-hx-note{grid-row:2;border-top:0;padding:0;margin-top:calc(var(--hx-fs) * .41 + 6px)}
+  .wx-hx-note:first-of-type{margin-top:calc(var(--hx-fs) * .41 + 6px)}
+  .wx-hx-n1{grid-column:1 / 3}
+  .wx-hx-n2{grid-column:11 / 13;text-align:right}
+  .wx-hx-n3{grid-column:11 / 13;text-align:right;margin-top:calc(var(--hx-fs) * 1.41 + 6px)}
+  .wx-hx-n4{grid-column:1 / 3;margin-top:calc(var(--hx-fs) * 2.41 + 6px)}
+  .wx-hx-h{grid-row:2}
+  .wx-hx-mare{position:absolute;z-index:0;left:27%;width:53%;bottom:calc(-1 * var(--s12) + 2px);margin:0}
+  .wx-hx-foot{grid-row:3;grid-column:1 / 5;padding-top:var(--s10);gap:var(--s5)}
+  .wx-hx-cta{grid-row:3;grid-column:9 / 13;flex-direction:column;align-items:flex-end;gap:0;margin-top:0;padding-top:var(--s10)}
 }
-.wx-live{display:grid;gap:var(--s3);align-content:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s5)}
-.wx-live-k{display:flex;align-items:center;gap:var(--s2);font:500 var(--text-xs)/1.2 var(--font-mono);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--build)}
+.wx-hero-rule{height:1px;background:linear-gradient(90deg,var(--win) 0,var(--build) 48px,var(--line) 48px);transform-origin:left;margin-top:var(--s12)}
+.wx-live-k{display:flex;align-items:center;gap:var(--s2);margin:0;font:500 var(--text-xs)/1.2 var(--font-mono);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--build)}
 .wx-live-k::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--build);box-shadow:var(--build-glow)}
 .wx-live-k time{color:var(--dim);text-transform:none;letter-spacing:0}
-.wx-live-day{display:flex;align-items:baseline;gap:var(--s3);font:800 var(--text-h2)/1 var(--font-ui);letter-spacing:var(--track-display)}
-.wx-live-day span{font:400 var(--text-sm)/1 var(--font-mono);letter-spacing:0;color:var(--dim)}
-.wx-live-txt{font:400 var(--text-md)/1.65 var(--font-mono);color:var(--text);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.wx-live-txt{margin:0;font:400 var(--text-md)/1.65 var(--font-mono);color:var(--text);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .wx-live .wx-tlink{min-height:44px}
-.wx-beam{position:relative;display:grid;align-content:space-between;gap:var(--s4);padding:var(--s5);border-radius:var(--r-lg);text-decoration:none;
-  background:radial-gradient(120% 90% at 100% 0%,color-mix(in oklab,var(--beam-char) 85%,var(--card)) 0,var(--card) 70%);border:1px solid color-mix(in oklab,var(--beam) 40%,var(--card));transition:border-color var(--dur-2) var(--ease-out)}
-.wx-beam:hover{border-color:var(--beam-glow)}
-.wx-beam:focus-visible{outline-color:var(--beam-glow)}
-.wx-beam-k{font:500 var(--text-xs)/1.2 var(--font-mono);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--beam-glow)}
-.wx-beam-name{font:800 var(--text-h2)/1 var(--font-ui);letter-spacing:var(--track-display);color:var(--text)}
-.wx-beam-name b{color:var(--beam-glow);font-weight:800}
-.wx-beam-line{font:700 var(--text-lg)/1.3 var(--font-ui);color:var(--text)}
-.wx-beam-meta{font:400 var(--text-sm)/1.5 var(--font-mono);color:var(--muted)}
 
 /* ---------- proof band ---------- */
 .wx-band{border-block:1px solid var(--line);padding-inline:var(--pad)}
@@ -357,11 +382,11 @@ a.wx-door:hover{border-color:var(--line-2);background:var(--card)}
 
 @media (prefers-reduced-motion:no-preference){
   /* hero load sequence: Ink the headline line by line, then the operator side compiles */
-  .wx-hero-h .wx-ln>span{animation:rise var(--dur-3) var(--ease-out) both}
-  .wx-hero-h .wx-ln:nth-child(2)>span{animation-delay:var(--dur-1)}
+  .wx-hw{animation:ink var(--dur-3) var(--ease-out) calc(var(--i) * 70ms) both}
   .wx-hero .wx-eyebrow-ed{animation:fadeup var(--dur-3) var(--ease-out) both}
-  .wx-hero-copy{animation:fadeup var(--dur-3) var(--ease-out) 240ms both}
-  .wx-hero-side{animation:fadeup var(--dur-3) var(--ease-out) 360ms both}
+  .wx-hx-note{animation:fadeup var(--dur-3) var(--ease-out) 420ms both}
+  .wx-hx-foot,.wx-hx-cta{animation:fadeup var(--dur-3) var(--ease-out) 560ms both}
+  .wx-hx-mare{animation:fadeup var(--dur-3) var(--ease-out) 300ms both}
   .wx-hero-rule{animation:draw var(--dur-3) var(--ease-out) 480ms both}
   .wx-cursor{animation:blink 1.06s steps(1) 600ms infinite}
   .wx-wordmark .wx-us{animation:blink 1.06s steps(1) infinite}
@@ -428,7 +453,8 @@ a.wx-door:hover{border-color:var(--line-2);background:var(--card)}
 
 /* ---------- the gray mare (easter egg). Parks left of the Ask Deep launcher, bottom-right stays clear ---------- */
 .wx-hero .wx-cursor{cursor:pointer}
-.wx-mare{position:fixed;left:0;bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:45;pointer-events:none;will-change:transform;--mare-font:'Apple Braille','Segoe UI Symbol','DejaVu Sans Mono','Noto Sans Symbols 2',var(--font-mono),monospace}
+.wx-mare,.wx-hx-mare{--mare-font:'Apple Braille','Segoe UI Symbol','DejaVu Sans Mono','Noto Sans Symbols 2',var(--font-mono),monospace}
+.wx-mare{position:fixed;left:0;bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:45;pointer-events:none;will-change:transform}
 /* braille: two dots across, four down per cell. line-height 1 keeps the dot pitch
    square at a 0.6em advance, which is what the frames were drawn for */
 .wx-mare pre{margin:0;padding:10px 14px;border-radius:40%;background:radial-gradient(closest-side,color-mix(in oklab,var(--bg) 90%,transparent) 66%,transparent);font:400 12px/1 var(--mare-font);letter-spacing:0;color:var(--muted);text-shadow:0 0 10px var(--bg)}

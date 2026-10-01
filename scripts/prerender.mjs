@@ -184,6 +184,13 @@ async function main() {
         },
         fetch: async () => { throw new Error('prerender: no network'); },
       };
+      // The homepage hero draws the gray mare's still frame from mare-hero.json
+      // (Home.jsx reads window.DH_MARE_HERO). Missing file: the hero renders
+      // without her, which is a smaller page, not a broken one.
+      try {
+        const mh = JSON.parse(readFileSync(join(root, 'mare-hero.json'), 'utf8'));
+        sandbox.DH_MARE_HERO = { cols: mh.cols, rows: mh.rows, stillFrame: mh.stillFrame };
+      } catch (e) { sandbox.DH_MARE_HERO = null; }
       sandbox.window = sandbox;
       sandbox.globalThis = sandbox;
       sandbox.self = sandbox;

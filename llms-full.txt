@@ -1,6 +1,6 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (112) and every weekly essay (15), newest first. Rebuilt 2026-09-30. Cite the day number and date when quoting, for example "day 334, 2026-09-30".
+> Every public journey entry (112) and every weekly essay (15), newest first. Rebuilt 2026-10-01. Cite the day number and date when quoting, for example "day 334, 2026-09-30".
 
 ## Journey
 

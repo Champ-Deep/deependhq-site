@@ -6,7 +6,7 @@
      COMPILE       mono text resolves from glyphs behind a green cursor, once
      pinned day    stage switching by sentinels crossing the viewport middle
      heatmap       readout on hover, focus or tap; arrow keys move by day and week
-     glyph field   the hero canvas, paused off-screen and in hidden tabs
+     hero mare     the braille gallop in the hero, once on load and on hover
      nav drawer    the burger, since React does not run on this page
      cmd+K         loads React, Babel and Palette.jsx on first use only
      eggs          the logo in the console, and the gray mare (type d e e p)
@@ -167,64 +167,56 @@
     });
   }
 
-  /* ---------- hero glyph field: the log's own words, recompiling in a slow diagonal wave ---------- */
-  var cv = d.querySelector('.wx-ascii');
-  if (cv && cv.getContext) {
-    var ctx = cv.getContext('2d');
-    var src = (cv.getAttribute('data-glyphs') || 'deep >_ ').toLowerCase().replace(/\s+/g, ' ') + ' ';
-    var C_SET = '#1B1E27', C_SCR = '#2E3240', C_CUR = '#1E5E35', C_HOT = '#24452F';
-    var DPR = Math.min(2, window.devicePixelRatio || 1), W = 0, H = 0, cols = 0, rows = 0, cw = 7.5, LH = 18, FS = 12.5;
-    var off = 0, front = 0, span = 0, running = false, visible = true, lastT = 0, raf = 0, pauseUntil = 0;
-    var size = function () {
-      var r = cv.getBoundingClientRect();
-      W = r.width; H = r.height;
-      cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      ctx.font = '400 ' + FS + 'px "JetBrains Mono", ui-monospace, monospace';
-      cw = ctx.measureText('M').width || 7.5;
-      cols = Math.ceil(W / cw); rows = Math.ceil(H / LH);
-      span = cols + rows * 0.6 + 8;
+  /* ---------- hero mare: one gallop on load, another on hover, then the still ----------
+     The prerendered <pre> holds the still frame. mare-hero.json (about 10KB
+     gzipped) holds 15 streaked frames from Muybridge's 1878 plates. Braille comes
+     from whichever system font has it, so measure its advance, size the art to
+     fill its box, and set the line height so the dots keep a square pitch. */
+  var hm = d.querySelector('.wx-hx-mare'), hpre = hm && hm.querySelector('pre');
+  if (hm && hpre) {
+    var hcols = parseFloat(getComputedStyle(hm).getPropertyValue('--cols')) || 102;
+    var hfit = function () {
+      var fs = parseFloat(getComputedStyle(hpre).fontSize) || 10;
+      var probe = d.createElement('span');
+      probe.textContent = '\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff';
+      probe.style.cssText = 'position:absolute;visibility:hidden;white-space:pre';
+      hpre.appendChild(probe);
+      var adv = probe.getBoundingClientRect().width / 10 / fs;
+      hpre.removeChild(probe);
+      if (!(adv > 0.3 && adv < 1.2)) adv = 0.6;
+      var box = hm.getBoundingClientRect().width;
+      if (!box) return;
+      var nfs = box / (hcols * adv);
+      hpre.style.fontSize = nfs.toFixed(3) + 'px';
+      hpre.style.lineHeight = (nfs * adv * 5 / 3).toFixed(3) + 'px';
     };
-    var at = function (r, c, o) { var i = ((r + o) * cols + c) % src.length; return src[i < 0 ? i + src.length : i]; };
-    var draw = function () {
-      ctx.clearRect(0, 0, W, H);
-      for (var r = 0; r < rows; r++) {
-        var y = r * LH + LH * 0.78;
-        for (var c = 0; c < cols; c++) {
-          var dist = front - (c + r * 0.6), g, col;
-          if (dist < 0) { g = at(r, c, off - 1); col = C_SET; }
-          else if (dist < 1.2) { g = '█'; col = C_CUR; }
-          else if (dist < 7) { g = GL[(Math.random() * GL.length) | 0]; col = C_SCR; }
-          else { g = at(r, c, off); col = (dist < 14 && ((r + c) % 9 === 0)) ? C_HOT : C_SET; }
-          if (g !== ' ') { ctx.fillStyle = col; ctx.fillText(g, c * cw, y); }
-        }
-      }
+    (d.fonts && d.fonts.ready ? d.fonts.ready : Promise.resolve()).then(hfit, hfit);
+    var hrt = 0;
+    window.addEventListener('resize', function () { clearTimeout(hrt); hrt = setTimeout(hfit, 150); });
+
+    var hstill = hpre.textContent, hframes = null, hsi = 6, hraf = 0, hend = 0, hlast = 0, hcur = 6;
+    var hgallop = function (ms) {
+      if (RM || !hframes || d.hidden) return;
+      hend = Math.max(hend, performance.now() + ms);
+      if (hraf) return;
+      var step = function (t) {
+        if (t - hlast >= 72) { hlast = t; hcur = (hcur + 1) % hframes.length; hpre.textContent = hframes[hcur]; }
+        if (t < hend || hcur !== hsi) hraf = requestAnimationFrame(step);
+        else { hraf = 0; hpre.textContent = hstill; }
+      };
+      hraf = requestAnimationFrame(step);
     };
-    var tick = function (t) {
-      raf = 0;
-      if (!running) return;
-      if (t - lastT >= 66 && t >= pauseUntil) {
-        lastT = t;
-        front += span / 90;
-        if (front > span) { front = 0; off += 1; pauseUntil = t + 1400; }
-        draw();
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    var start = function () { if (!running && visible && !d.hidden && !RM) { running = true; raf = requestAnimationFrame(tick); } };
-    var stop = function () { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; };
-    var boot = function () {
-      size();
-      if (RM) { front = span + 1; off = 1; draw(); return; }
-      front = span * 0.35; draw(); start();
-    };
-    (d.fonts && d.fonts.ready ? d.fonts.ready : Promise.resolve()).then(boot, boot);
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) start(); else stop(); }).observe(cv);
+    if (!RM) {
+      fetch('mare-hero.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+        if (!j || !j.frames || !j.frames.length) return;
+        hframes = j.frames.map(function (f) { return f.join('\n'); });
+        hsi = hcur = j.still || 0;
+        var r = hm.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) setTimeout(function () { hgallop(2200); }, 400);
+      }).catch(function () {});
+      hm.addEventListener('pointerenter', function () { hgallop(1600); });
+      hm.addEventListener('click', function () { window.dispatchEvent(new CustomEvent('dh:mare')); });
     }
-    d.addEventListener('visibilitychange', function () { if (d.hidden) stop(); else start(); });
-    var rt = 0;
-    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); draw(); }, 150); });
   }
 
   /* ---------- easter eggs: the logo in the console, and the gray mare ----------
