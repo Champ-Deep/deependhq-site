@@ -40,7 +40,82 @@ const REDIRECTS = {
 };
 
 // ---------------------------------------------------------------------------
-// helpers
+// /api/collect : first-party analytics ingest
+//
+// The client (analytics.js) posts {name, props} here. This Worker adds what
+// the client cannot know, the Cloudflare geo and network fields from
+// request.cf, and writes one row per event to Analytics Engine.
+//
+// Storage is Workers Analytics Engine, not PostHog. Analytics Engine is a
+// Cloudflare-native log that needs no third-party script, sets no cookie, keeps
+// no visitor identity, and is queryable from the Cloudflare dashboard or the
+// GraphQL API. That fits a site whose footer says "no cookies, no trackers".
+//
+// To add PostHog later, forward the same payload from here rather than adding a
+// script tag. One integration point, one place to reason about privacy.
+//
+// If the ANALYTICS binding is missing the endpoint still answers 204, so a
+// missing binding never breaks a page or spams the console with errors.
+
+const EVENT_NAMES = new Set(['page', 'engage', 'outbound', 'cta', 'nav', 'scroll', 'easter_egg', 'widget']);
+const MAX_BODY = 2048;
+
+function clip(v, n) {
+  const s = String(v == null ? '' : v);
+  return s.length > n ? s.slice(0, n) : s;
+}
+
+async function handleCollect(request, env, ctx) {
+  if (request.method !== 'POST') return json({ error: 'POST only' }, 405);
+  const engine = env && env.ANALYTICS;
+  if (!engine || typeof engine.writeDataPoint !== 'function') return new Response(null, { status: 204 });
+
+  let payload;
+  try {
+    const raw = await request.text();
+    if (!raw || raw.length > MAX_BODY) return new Response(null, { status: 204 });
+    payload = JSON.parse(raw);
+  } catch (e) {
+    return json({ error: 'bad json' }, 400);
+  }
+
+  const name = clip(payload && payload.name, 24);
+  if (!EVENT_NAMES.has(name)) return new Response(null, { status: 204 });
+  const p = (payload && payload.props) || {};
+
+  const cf = request.cf || {};
+  // Everything written here is a column. Analytics Engine wants blobs indexed
+  // low and short, so keep the high-cardinality fields (page_id, path) out of
+  // the indexes and only index what we actually group by.
+  const blob1 = clip(p.path, 256);                       // index 1
+  const blob2 = clip(p.ref_host || p.host || p.label || '', 64); // index 2
+
+  try {
+    env.ANALYTICS.writeDataPoint({
+      // Partition by day. Query with SUM/GROUP BY over the partitions.
+      // index 1 is the event name, which is the only dimension every query
+      // groups by. Index 2 is the page, 3 the referrer or action label. Keeping
+      // page_id out of the indexes matters: it is unique per load and would
+      // make every index entry a singleton.
+      indexes: [name, blob2],
+      // blob1: which page, the highest-cardinality field, deliberately NOT
+      // indexed so it is cheap to store and only read when explicitly asked.
+      blobs: [blob1, blob2, clip(p.country || cf.country || '', 2).toUpperCase()],
+      doubles: [
+        Number(p.depth) || 0,
+        Number(p.secs) || 0,
+        Number(p.max_scroll) || 0,
+        Number(p.hour) || new Date().getUTCHours(),
+        1, // count
+      ],
+    });
+  } catch (e) {
+    // A write failure must never surface to the page. Log it, move on.
+    console.warn('deependhq: analytics write failed:', e && e.message);
+  }
+  return new Response(null, { status: 204 });
+}
+
 // ---------------------------------------------------------------------------
 
 const json = (body, status, extra = {}) =>
@@ -336,6 +411,7 @@ export default {
       return new Response(null, { status: 301, headers: { location: fallback, 'cache-control': 'public, max-age=3600' } });
     }
 
+    if (url.pathname === '/api/collect') return handleCollect(request, env, ctx);
     if (url.pathname === '/api/decide') return handleDecide(request, env);
     if (url.pathname === '/showcase') return handleShowcase(request, env, url);
 

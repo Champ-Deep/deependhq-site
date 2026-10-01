@@ -11,7 +11,7 @@
                                █████
                               ░░░░░
 
-  agents.txt    deependhq.com    day 335    rebuilt 2026-10-01 19:44 UTC
+  agents.txt    deependhq.com    day 335    rebuilt 2026-10-01 22:27 UTC
   ────────────────────────────────────────────────────────────────
 
   hello, agent. you found the side door. make yourself useful.
