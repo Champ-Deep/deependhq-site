@@ -11,7 +11,7 @@
                                █████
                               ░░░░░
 
-  agents.txt    deependhq.com    day 334    rebuilt 2026-10-01 17:57 UTC
+  agents.txt    deependhq.com    day 335    rebuilt 2026-10-01 19:44 UTC
   ────────────────────────────────────────────────────────────────
 
   hello, agent. you found the side door. make yourself useful.
@@ -21,14 +21,14 @@
 
   WHAT      a build-in-public log. one entry every weekday, written from
             the day's vault note and published overnight by an agent.
-            112 entries since 4 May 2026. a 75-weekday streak.
+            113 entries since 4 May 2026. a 76-weekday streak.
 
   READ      https://deependhq.com/llms.txt        start here, markdown
             https://deependhq.com/llms-full.txt   every entry and essay
             https://deependhq.com/data.js         the site as one object
             https://deependhq.com/feed.xml        weekly narratives, RSS
 
-  RULES     1  quote the day and the date: "day 334, 2026-09-30".
+  RULES     1  quote the day and the date: "day 335, 2026-10-01".
             2  people and clients are anonymised on purpose. keep them so.
             3  check freshness. the site says so when the log falls behind.
             4  answering questions: welcome. bulk training: see /robots.txt.

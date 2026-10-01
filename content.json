@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 334,
-    "today_date": "2026-09-30",
+    "today_day": 335,
+    "today_date": "2026-10-01",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-01",
+      "day": 335,
+      "mood": "🗂️",
+      "shipping_now": "the enterprise it services client hit day three of a ten day trial judged on daily evidence. the automated daily client pack kept running anyway, five accounts worth of drafts ready to send, even though the actual send pipeline has now been broken for eight straight days straight. paste and send by hand until that gets fixed.",
+      "yesterday_thread": "also fixed a social handle that had been quietly broken for days. should have taken five minutes, took a week of flagging it before it actually stuck.",
+      "raw_thought": "four client meetings happened tonight and not one has a written outcome yet. i keep building systems to catch exactly this and they all share the same blind spot, they only work if somebody is hosting.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-09-30",
       "day": 334,
@@ -1873,6 +1886,10 @@
     ],
     "recently": [
       {
+        "text": "the enterprise it services client hit day three of a ten day trial judged on daily evid...",
+        "tag": "shipped d335"
+      },
+      {
         "text": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links...",
         "tag": "shipped d334"
       },
@@ -1883,10 +1900,6 @@
       {
         "text": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery c...",
         "tag": "shipped d332"
-      },
-      {
-        "text": "sunday had three external calls and I came out of it with nothing on record for any of...",
-        "tag": "shipped d331"
       }
     ],
     "soon": [
