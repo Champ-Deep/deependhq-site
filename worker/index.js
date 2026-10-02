@@ -412,7 +412,9 @@ const NARRATIVE_PATHS = /^\/(writing|journey|now|post)(\/|$)/;
 function classifySegment(pathname, refHost) {
   const h = String(refHost || '').toLowerCase();
   if (h.includes('github')) return 'operator';
-  if (h.includes('linkedin') || h.includes('bluesky') || h.includes('substack')) return 'narrative';
+  // bsky.app is the real Bluesky host. 'bluesky' as a substring never matches it,
+  // which is the same bug segment.js had until its selftest caught it.
+  if (h.includes('linkedin') || h.includes('bsky') || h.includes('bluesky') || h.includes('substack')) return 'narrative';
   if (OPERATOR_PATHS.test(pathname)) return 'operator';
   if (NARRATIVE_PATHS.test(pathname)) return 'narrative';
   return 'explorer';
@@ -428,18 +430,24 @@ class Personalize {
     // The full three-way classification, including the explorer control.
     // data-ref stays as the old operator/narrative pair so nothing that already
     // reads it breaks, and data-segment carries the new label.
-    this.segment = classifySegment(pathname || '/', this.ref);
-    this.legacy = this.segment === 'explorer' ? '' : this.segment;
+    //
+    // NAMED this.seg, NOT this.segment. Storing the label on this.segment while
+    // also defining a method called segment() means the prototype method silently
+    // shadows the property. The HTMLRewriter call site reads p.segment(el), gets a
+    // string, and throws mid-stream, which truncates every page on the site to a
+    // sixteen-byte "<!doctype html>". That happened on 2026-10-02 and took the
+    // whole site down. A property and a method sharing a name is a real footgun,
+    // and scripts/selftest-worker.mjs now asserts they never collide.
+    this.seg = classifySegment(pathname || '/', this.ref);
+    this.legacy = this.seg === 'explorer' ? '' : this.seg;
   }
   // Coarse class, not a person. operator / narrative / explorer(control).
-  segment_(el) {
+  segment(el) {
     el.setAttribute('data-tz', this.tz);
     el.setAttribute('data-country', this.country);
     el.setAttribute('data-ref', this.legacy);
-    el.setAttribute('data-segment', this.segment);
+    el.setAttribute('data-segment', this.seg);
   }
-  // Kept under the original name because the call site reads it.
-  segment(el) { this.segment_(el); }
 }
 
 let ctxWaitUntil = (p) => { try { p.catch(() => {}); } catch {} };
