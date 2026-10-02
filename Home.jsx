@@ -69,12 +69,18 @@ const Hero = () => {
           <span className="wx-hw wx-hw-wk" style={{ '--i': i++ }}><em>weekday</em><span className="wx-cursor" aria-hidden="true" /></span>
         </h1>
         <p className="wx-hx-note wx-hx-n1">group cmo,<br />champions group</p>
-        <p className="wx-hx-note wx-hx-n2">day {st.days_public}<br />of building in public</p>
+        <p className="wx-hx-note wx-hx-n2" data-dh-frozen>day {st.days_public}<br />of building in public</p>
         <p className="wx-hx-note wx-hx-n3">ceo,<br />champions accelerator</p>
-        <p className="wx-hx-note wx-hx-n4">{NUM[nCo] || nCo} companies,<br />one vault</p>
+        <p className="wx-hx-note wx-hx-n4" data-dh-frozen>{NUM[nCo] || nCo} companies,<br />one vault</p>
         <div className="wx-hx-mare" aria-hidden="true" style={{ '--cols': MH ? MH.cols : 102 }}><pre>{still}</pre></div>
         <div className="wx-hx-foot">
-          <p className="wx-hx-lede">Past the hype cycle, into the infrastructure. Every entry starts as a note in the vault and goes live by 2 AM IST.</p>
+          {/* data-dh-hero: the ONLY prose in the hero the copy engine may rewrite.
+            It carries no build-time number and no claim that could be falsified.
+            The h1 above and every note beside it are deliberately left untagged,
+            and the numbered notes are additionally frozen, because "day 335" and
+            "twelve companies" are facts derived at build time and an engine must
+            never be able to edit a fact. */}
+        <p className="wx-hx-lede" data-dh-hero="hero_subline">Past the hype cycle, into the infrastructure. Every entry starts as a note in the vault and goes live by 2 AM IST.</p>
           <article className="wx-live wx-hx-live mode-operator" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day}>
             <p className="wx-live-k">live from the log · <WxAge date={e.date} mode="log" /></p>
             <p className="wx-hx-live-t"><b>day {e.day}</b> <span>{fmtDate(e.date, true)}</span></p>
@@ -83,7 +89,10 @@ const Hero = () => {
           </article>
         </div>
         <div className="wx-hx-cta">
-          <a className="wx-hx-paren wx-hx-book" href={BOOK} {...EXT}>book 30 minutes</a>
+          {/* data-dh-cta: the second and last element the copy engine may rewrite.
+              Only the LABEL varies; the href is untouched, so the destination can
+              never be changed by personalization. */}
+          <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>book 30 minutes</a>
           <a className="wx-hx-paren" href="#log">what shipped today ↓</a>
         </div>
       </div>

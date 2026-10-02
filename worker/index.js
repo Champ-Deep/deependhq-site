@@ -57,12 +57,28 @@ const REDIRECTS = {
 // If the ANALYTICS binding is missing the endpoint still answers 204, so a
 // missing binding never breaks a page or spams the console with errors.
 
-const EVENT_NAMES = new Set(['page', 'engage', 'outbound', 'cta', 'nav', 'scroll', 'easter_egg', 'widget']);
+const EVENT_NAMES = new Set([
+  'page', 'engage', 'outbound', 'cta', 'nav', 'scroll', 'easter_egg', 'widget', 'ask',
+]);
 const MAX_BODY = 2048;
 
 function clip(v, n) {
   const s = String(v == null ? '' : v);
   return s.length > n ? s.slice(0, n) : s;
+}
+
+// A short, non-cryptographic hash. Its only job is to make distinct-visitor
+// counts possible without storing the raw token in a readable column, so it does
+// not need to resist an attacker. If it ever did, the right answer would be to
+// stop storing visitor ids, not to upgrade this function.
+function simpleHash(s) {
+  let h = 0;
+  const str = String(s);
+  for (let i = 0; i < str.length; i++) {
+    h = (h << 5) - h + str.charCodeAt(i);
+    h |= 0; // keep it a 32-bit int
+  }
+  return 'v' + (h >>> 0).toString(36);
 }
 
 async function handleCollect(request, env, ctx) {
@@ -84,29 +100,48 @@ async function handleCollect(request, env, ctx) {
   const p = (payload && payload.props) || {};
 
   const cf = request.cf || {};
-  // Everything written here is a column. Analytics Engine wants blobs indexed
-  // low and short, so keep the high-cardinality fields (page_id, path) out of
-  // the indexes and only index what we actually group by.
-  const blob1 = clip(p.path, 256);                       // index 1
-  const blob2 = clip(p.ref_host || p.host || p.label || '', 64); // index 2
+  // blob1 is the page: the highest-cardinality field, deliberately NOT indexed so
+  // it is cheap to store and only read when a query explicitly asks for it.
+  // blob2 is what the query groups by, referrer or action label.
+  const blob1 = clip(p.path, 256);
+  const blob2 = clip(p.ref_host || p.host || p.label || '', 64);
+  // The visitor id is a random first-party token. It is stored, because Deep
+  // chose full visitor profiles on 2026-10-02, but it is hashed into the index
+  // rather than kept in a readable column: the dashboard needs "distinct
+  // visitors", it never needs the raw token, and storing the raw token would
+  // make this dataset a list of people rather than a list of sessions.
+  const vid = clip(p.vid, 64);
+  const vidHash = vid ? simpleHash(vid) : '';
+  const segment = ['operator', 'narrative', 'explorer'].indexOf(p.segment) !== -1
+    ? p.segment
+    : classifySegment(String(p.path || '/'), String(p.ref_host || ''));
 
   try {
     env.ANALYTICS.writeDataPoint({
       // Partition by day. Query with SUM/GROUP BY over the partitions.
       // index 1 is the event name, which is the only dimension every query
-      // groups by. Index 2 is the page, 3 the referrer or action label. Keeping
+      // groups by. Index 2 is the referrer or action label. Keeping
       // page_id out of the indexes matters: it is unique per load and would
       // make every index entry a singleton.
       indexes: [name, blob2],
       // blob1: which page, the highest-cardinality field, deliberately NOT
       // indexed so it is cheap to store and only read when explicitly asked.
-      blobs: [blob1, blob2, clip(p.country || cf.country || '', 2).toUpperCase()],
+      blobs: [
+        blob1,
+        blob2,
+        clip(p.country || cf.country || '', 2).toUpperCase(),
+        segment,          // blob4: the treated/control label, queryable
+        vidHash,          // blob5: hashed visitor, for distinct counts
+        clip(p.band || '', 8),        // blob6: cold / warm / hot
+      ],
       doubles: [
         Number(p.depth) || 0,
         Number(p.secs) || 0,
         Number(p.max_scroll) || 0,
         Number(p.hour) || new Date().getUTCHours(),
         1, // count
+        Number(p.intent) || 0,       // double6: booking intent score
+        Number(p.visits) || 0,       // double7: which return visit
       ],
     });
   } catch (e) {
@@ -354,22 +389,57 @@ async function handleShowcase(request, env, url) {
 // HTMLRewriter: personalization hints, no identity
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Visitor segmentation, server side
+//
+// CLASSIFICATION LIVES HERE, NOT IN THE CLIENT, for one reason: the treated and
+// control arms have to be comparable. If the server rendered different HTML for
+// an operator visitor than for an explorer, the two arms would differ in every
+// way at once and a comparison between them would prove nothing. So the Worker
+// only stamps a label, and the client applies emphasis. A crawler and a no-JS
+// reader get identical bytes regardless of segment.
+//
+// "explorer" is the control group. Personalization is only worth having if the
+// treated segments beat the control, and that comparison is impossible without a
+// group nobody treated. Never remove the control to make the numbers look better.
+//
+// These rules are a STARTING HYPOTHESIS, not a finding. There is no traffic data
+// yet. They are deliberately simple so that when real data arrives it is obvious
+// whether they were right.
+const OPERATOR_PATHS = /^\/(toolkit|command|pillars)(\/|$)/;
+const NARRATIVE_PATHS = /^\/(writing|journey|now|post)(\/|$)/;
+
+function classifySegment(pathname, refHost) {
+  const h = String(refHost || '').toLowerCase();
+  if (h.includes('github')) return 'operator';
+  if (h.includes('linkedin') || h.includes('bluesky') || h.includes('substack')) return 'narrative';
+  if (OPERATOR_PATHS.test(pathname)) return 'operator';
+  if (NARRATIVE_PATHS.test(pathname)) return 'narrative';
+  return 'explorer';
+}
+
+// ---------------------------------------------------------------------------
+
 class Personalize {
-  constructor(tz, country, ref) {
+  constructor(tz, country, ref, pathname) {
     this.tz = tz || '';
     this.country = (country || '').toUpperCase().slice(0, 2);
     this.ref = ref || '';
+    // The full three-way classification, including the explorer control.
+    // data-ref stays as the old operator/narrative pair so nothing that already
+    // reads it breaks, and data-segment carries the new label.
+    this.segment = classifySegment(pathname || '/', this.ref);
+    this.legacy = this.segment === 'explorer' ? '' : this.segment;
   }
-  // Coarse class, not a person. operator-first vs narrative-first only.
-  segment(el) {
-    const host = this.ref.replace(/^https?:\/\//, '').split('/')[0].toLowerCase();
-    let seg = '';
-    if (host.includes('github')) seg = 'operator';
-    else if (host.includes('linkedin')) seg = 'narrative';
+  // Coarse class, not a person. operator / narrative / explorer(control).
+  segment_(el) {
     el.setAttribute('data-tz', this.tz);
     el.setAttribute('data-country', this.country);
-    el.setAttribute('data-ref', seg);
+    el.setAttribute('data-ref', this.legacy);
+    el.setAttribute('data-segment', this.segment);
   }
+  // Kept under the original name because the call site reads it.
+  segment(el) { this.segment_(el); }
 }
 
 let ctxWaitUntil = (p) => { try { p.catch(() => {}); } catch {} };
@@ -444,7 +514,8 @@ export default {
     const p = new Personalize(
       cf.timezone || '',
       cf.country || '',
-      request.headers.get('referer') || ''
+      request.headers.get('referer') || '',
+      url.pathname
     );
     const transformed = new HTMLRewriter().on('html', {
       element(el) {

@@ -1,0 +1,12 @@
+{
+  "supported": false,
+  "reason": "No traffic data yet. The dataset deependhq_events does not exist, so no variant has beaten control and none may be applied.",
+  "min_visitors": 30,
+  "min_lift": 0.15,
+  "allowed_fields": [
+    "hero_subline",
+    "cta_label"
+  ],
+  "variants_enabled": {},
+  "evidence": []
+}

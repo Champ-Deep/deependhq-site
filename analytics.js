@@ -14,15 +14,15 @@
 //   outbound  every external link, labelled by destination
 //   intent    the calls to action, which are the only thing that matters
 //
-// WHAT IT DOES NOT COLLECT
-// No cookie, no localStorage identity, no IP-derived person ID, no fingerprint.
-// A "session" is one page load. That is a real limitation and a deliberate one:
-// see the honesty rule in the design system. A returning visitor is counted as
-// a new visit, so treat "visitors" as "visits" and say so on any dashboard.
+// THE VISITOR ID, 2026-10-02
+// This file previously carried no identity at all and said so. Deep chose full
+// visitor profiles, so there is now a persistent first-party id (visitor-id.js)
+// and every event carries it. That makes "visitors" mean visitors rather than
+// visits. /privacy was rewritten in the same change. The two must never disagree.
 
 // A page load gets one id so the engage events that follow can be tied to it.
-// It is not an identity: it lives in memory, dies with the tab, and is never
-// written anywhere the next page load can read it.
+// The per-load id is separate from the persistent visitor id on purpose: this one
+// groups the events of a single visit, the other groups visits of a person.
 const PAGE_ID = (crypto && crypto.randomUUID)
   ? crypto.randomUUID()
   : 'p' + Math.random().toString(36).slice(2) + Date.now().toString(36);
@@ -40,6 +40,21 @@ const dhRoot = document.documentElement;
 const country = (dhRoot && dhRoot.getAttribute('data-country')) || '';
 const tz = (dhRoot && dhRoot.getAttribute('data-tz')) || '';
 const refClass = (dhRoot && dhRoot.getAttribute('data-ref')) || '';
+const serverSegment = (dhRoot && dhRoot.getAttribute('data-segment')) || '';
+
+// Night or day, from the visitor's own clock. Deep works 15:00 to 02:00 IST, so
+// the site has a genuinely different character after midnight and the hour is
+// worth knowing about. This is a coarse flag, not a location: the hour comes from
+// the browser clock and the timezone string comes from Cloudflare.
+function night() {
+  const h = new Date().getHours();
+  return h >= 21 || h < 6 ? 'night' : 'day';
+}
+
+// visitor-id.js loads before this file. If it did not, we degrade to anonymous
+// rather than throwing: analytics must never be the reason a page breaks.
+const V = window.DHVisitor || null;
+const visitorId = V ? V.getVisitorId() : '';
 
 function baseProps() {
   const w = window.innerWidth || 0;
@@ -88,9 +103,65 @@ function send(name, props) {
   } catch (e) { /* analytics must never break the page */ }
 }
 
+// Exposed so ask.js and the copy engine can emit without reimplementing the
+// transport. It is the same send(), so one queue, one blob, one beacon.
+window.DHTrack = function (name, props) { send(name, props); };
+
 // ---------------------------------------------------------------- page view
 
-send('page', { title: document.title });
+send('page', {
+  title: document.title,
+  vid: visitorId,
+  path: location.pathname,
+  segment: serverSegment,
+  ref_host: document.referrer.replace(/^https?:\/\//, '').split('/')[0] || '',
+  night: night(),
+  hour: new Date().getHours(),
+  viewport: (innerWidth < 640 ? 'm' : innerWidth < 1100 ? 't' : 'd'),
+  language: navigator.language,
+});
+
+// Fold this load into the persistent profile, and score the booking intent on
+// the way OUT rather than on the way in. Almost every intent signal (scroll depth,
+// dwell, clicks) only exists by the end of the visit, so scoring at load time
+// would put essentially everyone in cold, and a band that never moves is worse
+// than no band at all.
+if (V && window.DHSegment) {
+  const S2 = window.DHSegment;
+  const profileSeg = serverSegment || S2.classify({
+    path: location.pathname,
+    refHost: document.referrer.replace(/^https?:\/\//, '').split('/')[0],
+  });
+  V.recordPageView(location.pathname, profileSeg);
+
+  addEventListener('pagehide', function () {
+    const prof = V.getProfile();
+    const dwell = (Date.now() - started) / 1000;
+    const depth = prof.max_scroll[location.pathname] || maxScroll;
+    const scored = S2.scoreIntent({
+      ctaClicked: prof.ctas.length > 0,
+      maxScroll: depth,
+      path: location.pathname,
+      outboundLabels: Object.keys(prof.outbound),
+      visits: prof.visits,
+      dwellSecs: dwell,
+    });
+    const b = S2.band(scored.score);
+    send('engage', {
+      secs: Math.round(dwell),
+      max_scroll: depth,
+      intent: scored.score,
+      band: b,
+      visits: prof.visits,
+      why: scored.why,
+    });
+    // Publish the band so the page can apply its treatment, and so the digest
+    // can attribute bookings to a band without guessing.
+    const el = document.documentElement;
+    el.setAttribute('data-intent', b);
+    el.setAttribute('data-intent-why', scored.why);
+  }, { once: true });
+}
 
 // SPA-ish navigation: the site is a handful of static pages, but the nav can
 // move between them without a full load in some flows, so watch the path.
@@ -115,25 +186,37 @@ function onScroll() {
   for (const m of [25, 50, 75, 100]) {
     if (pct >= m && !marks.has(m)) {
       marks.add(m);
-      send('scroll', { depth: m });
+      if (V) V.recordScroll(lastPath, pct);
+      send('scroll', { depth: m, segment: serverSegment });
     }
   }
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// Dwell, on unload and on visibility change. A reader who stayed nine minutes
-// is a different person from one who bounced, and pageviews alone cannot tell.
+// Dwell, on visibility change only.
+//
+// This used to also fire on pagehide, which meant pagehide produced TWO engage
+// events: this one and the intent-bearing one further up. The intent scorer runs
+// on pagehide because most of its inputs only exist at the end of a visit, so the
+// pagehide report is the authoritative one and reporting dwell from two places
+// double-counted every session in the dataset.
+//
+// So pagehide emits exactly ONE engage: the intent-bearing one above, which
+// already carries secs and max_scroll. This function therefore handles only the
+// mid-visit case, where a reader tabs away and the page never unloads, so the
+// intent report at line 137 never runs and the time would otherwise be lost.
+let dwellReported = false;
 function reportDwell(reason) {
+  if (dwellReported) return;
+  dwellReported = true;
   const secs = Math.round((Date.now() - started) / 1000);
   if (secs < 2) return;
   send('engage', { secs, max_scroll: maxScroll, reason });
 }
-window.addEventListener('pagehide', () => reportDwell('pagehide'));
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden') reportDwell('hidden');
 });
-
 // ---------------------------------------------------------------- intent
 
 // The only events worth a dashboard. Everything else is context for these.
@@ -163,7 +246,23 @@ document.addEventListener('click', function (e) {
     let host = '';
     try { host = new URL(href).hostname.replace(/^www\./, ''); } catch (err) { host = 'external'; }
     if (host && host !== location.hostname) {
-      send('outbound', { label: labelFor(href), host, text });
+      const label = labelFor(href);
+      // Same reason as the CTA: outbound history is an intent input, and the
+      // score is computed on unload, so it has to reach the profile.
+      if (V) V.recordOutbound(label);
+
+      // THE BOOKING CTA IS AN EXTERNAL LINK. It points at the scheduler, so it
+      // used to return here as a plain outbound and never reach the isCta branch
+      // below, which meant clicking "book 30 minutes" recorded an outbound click
+      // but NOT a cta click, and the intent scorer saw no cta at all. The single
+      // highest-intent action on the site scored lower than scrolling. So a cta is
+      // recorded here as well, on top of the outbound event, and never instead of
+      // it: it genuinely is both a labelled outbound and the call to action.
+      const clsEarly = a.className && typeof a.className === 'string' ? a.className : '';
+      const ctaish = /cta|btn-book|book|dh-cta/i.test(clsEarly) || /book a call|get in touch/i.test(text);
+      if (ctaish && V) V.recordCta(text || 'book_a_call');
+
+      send('outbound', { label, host, text, segment: serverSegment, cta: ctaish ? 1 : 0 });
     }
     return;
   }
@@ -173,7 +272,11 @@ document.addEventListener('click', function (e) {
   const cls = a.className && typeof a.className === 'string' ? a.className : '';
   const isCta = /cta|btn-book|book|dh-cta/i.test(cls) || /book a call|get in touch/i.test(text);
   if (isCta) {
-    send('cta', { label: text || 'book_a_call', href });
+    const label = text || 'book_a_call';
+    // Feed the profile too: the intent score is computed on unload, so a click
+    // that is only ever an event would be invisible to it.
+    if (V) V.recordCta(label);
+    send('cta', { label, href, band: document.documentElement.getAttribute('data-intent') || '' });
   } else if (href && href !== '#') {
     send('nav', { href, text });
   }
