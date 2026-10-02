@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-02T18:21:44.685Z
+// Built 2026-10-02T19:50:39.652Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 335,
-    "today_date": "2026-10-01",
+    "today_day": 336,
+    "today_date": "2026-10-02",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -548,7 +548,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 20,
+      "days_since": 21,
       "entries_30d": 3,
       "recent": [
         {
@@ -617,7 +617,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 20,
+      "days_since": 21,
       "entries_30d": 3,
       "recent": [
         {
@@ -691,8 +691,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-01",
       "last_ship_day": 335,
-      "days_since": 1,
-      "entries_30d": 15,
+      "days_since": 2,
+      "entries_30d": 14,
       "recent": [
         {
           "day": 335,
@@ -761,7 +761,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 9,
+      "days_since": 10,
       "entries_30d": 3,
       "recent": [
         {
@@ -837,6 +837,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-02",
+      "day": 336,
+      "mood": "🔍",
+      "shipping_now": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilinks graded against the real vault, zero edits applied, cost eleven cents. caught something scarier than a typo: last week's proposed auto-merge would have fused two different people into one, my company's chairman and an unrelated product lead at a different company.",
+      "yesterday_thread": "also locked the three systems for this site itself: adapt, convert, learn. personalization only turns on after there's enough evidence to prove it, never before.",
+      "raw_thought": "the system that exists to catch confusion for everyone else almost became the thing it was supposed to catch. that's the actual lesson today, not the uptime number.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "systems"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "systems",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-10-01",
       "day": 335,
@@ -3963,7 +3988,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 335 · Oct 1",
+    "last_ship": "day 336 · Oct 2",
     "state": "shipping"
   },
   "status_board": {
@@ -3987,6 +4012,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
+        "tag": "shipped d336"
+      },
+      {
         "text": "the enterprise it services client hit day three of a ten day trial judged on daily evid...",
         "tag": "shipped d335"
       },
@@ -3997,10 +4026,6 @@ window.DH_DATA = {
       {
         "text": "the enterprise IT services client call happened tonight, the one that told us flat out...",
         "tag": "shipped d333"
-      },
-      {
-        "text": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery c...",
-        "tag": "shipped d332"
       }
     ],
     "soon": [
@@ -5893,33 +5918,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-02T18:21:44.669Z",
-    "built_date": "2026-10-02",
+    "built": "2026-10-02T19:50:39.542Z",
+    "built_date": "2026-10-03",
     "newest_entry": {
-      "date": "2026-10-01",
-      "day": 335
+      "date": "2026-10-02",
+      "day": 336
     },
-    "weekdays_stale": 1,
+    "weekdays_stale": 0,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 112,
+        "days_old": 113,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 100,
+        "days_old": 101,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 100,
+        "days_old": 101,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 336,
+      "date": "2026-10-02",
+      "mood": "🔍",
+      "arc_color": "green",
+      "arcs": [
+        "TheDeepEndHQ",
+        "systems"
+      ],
+      "ship": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilinks graded against the real vault, zero edits applied, cost eleven cents. caught something scarier than a typo: last week's proposed auto-merge would have fused two different people into one, my company's chairman and an unrelated product lead at a different company."
+    },
     {
       "day": 335,
       "date": "2026-10-01",
@@ -6061,17 +6097,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that a deliverable we paid for, a panel slot, sat unclaimed for eleven days and the agenda published without us. New standing rule out of it: any paid sponsorship deliverable gets an owner and a deadline the week we pay, not a thread mention."
-    },
-    {
-      "day": 322,
-      "date": "2026-09-18",
-      "mood": "🔍",
-      "arc_color": "green",
-      "arcs": [
-        "Lake B2B",
-        "Champions Operations"
-      ],
-      "ship": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic down 52 percent in two years, their flagship launch page outranked in search by a copycat domain with zero authority. Everything is rendered in the client's own brand colors and sitting ready, one signature away from going out."
     }
   ],
   "heatmap": {
@@ -6955,13 +6980,13 @@ window.DH_DATA = {
         "date": "2026-10-02",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 336,
+        "arc_color": "green",
+        "ship": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilinks graded against the r"
       },
       {
         "date": "2026-10-03",
-        "future": true,
+        "future": false,
         "weekend": true,
         "day": null,
         "arc_color": null,
@@ -6978,11 +7003,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 335,
-    "entries": 113,
+    "days_public": 336,
+    "entries": 114,
     "entries_30d": 27,
-    "entries_this_month": 1,
-    "streak_weekdays": 76,
+    "entries_this_month": 2,
+    "streak_weekdays": 77,
     "essays": 15,
     "companies": 12,
     "companies_active_90d": 5,
@@ -6991,7 +7016,7 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Lake B2B",
-        "n": 14
+        "n": 13
       },
       {
         "arc": "Champions Operations",
@@ -6999,11 +7024,11 @@ window.DH_DATA = {
       },
       {
         "arc": "ChampOps",
-        "n": 6
+        "n": 5
       },
       {
         "arc": "TheDeepEndHQ",
-        "n": 2
+        "n": 3
       },
       {
         "arc": "Celsus OS",
@@ -7018,7 +7043,7 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "pipeline",
+        "arc": "systems",
         "n": 1
       }
     ],
@@ -7055,6 +7080,16 @@ window.DH_DATA = {
   "stack_now": {
     "items": [
       {
+        "name": "Obsidian + Celsus",
+        "what": "One graph, 12 companies. The single source of truth everything else reads from.",
+        "url": null,
+        "kind": "using",
+        "category": "system",
+        "last_seen": "2026-10-02",
+        "mentions_90d": 3,
+        "days_since": 1
+      },
+      {
         "name": "ChampOps",
         "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
         "url": null,
@@ -7065,17 +7100,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-28",
         "mentions_90d": 12,
-        "days_since": 4
-      },
-      {
-        "name": "Obsidian + Celsus",
-        "what": "One graph, 12 companies. The single source of truth everything else reads from.",
-        "url": null,
-        "kind": "using",
-        "category": "system",
-        "last_seen": "2026-09-25",
-        "mentions_90d": 2,
-        "days_since": 7
+        "days_since": 5
       },
       {
         "name": "Event Scout",
@@ -7088,7 +7113,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 18
+        "days_since": 19
       },
       {
         "name": "ChampUTM",
@@ -7101,7 +7126,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 20
+        "days_since": 21
       },
       {
         "name": "Cloudflare",
@@ -7111,7 +7136,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 44
+        "days_since": 45
       },
       {
         "name": "LakeStream",
@@ -7124,7 +7149,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 59
+        "days_since": 60
       },
       {
         "name": "ChamPDF",
@@ -7137,7 +7162,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 59
+        "days_since": 60
       },
       {
         "name": "ChampMail",
@@ -7150,7 +7175,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 61
+        "days_since": 62
       },
       {
         "name": "Supabase",
@@ -7161,7 +7186,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 93
+        "days_since": 94
       },
       {
         "name": "ChampGraph",
@@ -7174,7 +7199,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 101
+        "days_since": 102
       },
       {
         "name": "ChampQuest",
@@ -7187,7 +7212,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 121
+        "days_since": 122
       },
       {
         "name": "B2B Pulse",
@@ -7653,9 +7678,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 113,
+      "entries": 114,
       "essays": 15
     }
   },
-  "built": "2026-10-02T18:21:44.685Z"
+  "built": "2026-10-02T19:50:39.652Z"
 };

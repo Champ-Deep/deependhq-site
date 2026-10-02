@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (113) and every weekly essay (15), newest first. Rebuilt 2026-10-02. Cite the day number and date when quoting, for example "day 335, 2026-10-01".
+> Every public journey entry (114) and every weekly essay (15), newest first. Rebuilt 2026-10-02. Cite the day number and date when quoting, for example "day 336, 2026-10-02".
 
 ## Journey
+
+### Day 336, 2026-10-02 (building)
+
+ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilinks graded against the real vault, zero edits applied, cost eleven cents. caught something scarier than a typo: last week's proposed auto-merge would have fused two different people into one, my company's chairman and an unrelated product lead at a different company.
+
+Thread: also locked the three systems for this site itself: adapt, convert, learn. personalization only turns on after there's enough evidence to prove it, never before.
+
+Raw thought: the system that exists to catch confusion for everyone else almost became the thing it was supposed to catch. that's the actual lesson today, not the uptime number.
+
+Arcs: TheDeepEndHQ, systems
+
+Link: https://deependhq.com/journey.html#day-336
 
 ### Day 335, 2026-10-01 (thinking)
 

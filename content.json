@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 335,
-    "today_date": "2026-10-01",
+    "today_day": 336,
+    "today_date": "2026-10-02",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-02",
+      "day": 336,
+      "mood": "🔍",
+      "shipping_now": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilinks graded against the real vault, zero edits applied, cost eleven cents. caught something scarier than a typo: last week's proposed auto-merge would have fused two different people into one, my company's chairman and an unrelated product lead at a different company.",
+      "yesterday_thread": "also locked the three systems for this site itself: adapt, convert, learn. personalization only turns on after there's enough evidence to prove it, never before.",
+      "raw_thought": "the system that exists to catch confusion for everyone else almost became the thing it was supposed to catch. that's the actual lesson today, not the uptime number.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "systems"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-01",
       "day": 335,
@@ -1886,6 +1899,10 @@
     ],
     "recently": [
       {
+        "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
+        "tag": "shipped d336"
+      },
+      {
         "text": "the enterprise it services client hit day three of a ten day trial judged on daily evid...",
         "tag": "shipped d335"
       },
@@ -1896,10 +1913,6 @@
       {
         "text": "the enterprise IT services client call happened tonight, the one that told us flat out...",
         "tag": "shipped d333"
-      },
-      {
-        "text": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery c...",
-        "tag": "shipped d332"
       }
     ],
     "soon": [
