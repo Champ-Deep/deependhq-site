@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (114) and every weekly essay (15), newest first. Rebuilt 2026-10-02. Cite the day number and date when quoting, for example "day 336, 2026-10-02".
+> Every public journey entry (115) and every weekly essay (15), newest first. Rebuilt 2026-10-03. Cite the day number and date when quoting, for example "day 337, 2026-10-03".
 
 ## Journey
+
+### Day 337, 2026-10-03 (building)
+
+the saturday client dispatch run caught its own mistake before it shipped: a client draft said "monday 4 october," and the 4th is actually a sunday. the system flagged it instead of a client catching it later. small save, but it is the entire reason the catch step exists.
+
+Thread: a cold outreach link got a reply inside two minutes today, best signal from that channel in weeks. still waiting to see if it turns into an actual booked call.
+
+Raw thought: zero tasks closed today and the queue grew by four anyway. one account has sent three messages about money with no reply on our side in days. a system can catch a wrong date. it cannot make an overdue reply happen on its own.
+
+Arcs: Champions Operations
+
+Link: https://deependhq.com/journey.html#day-337
 
 ### Day 336, 2026-10-02 (building)
 

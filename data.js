@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-02T19:50:39.652Z
+// Built 2026-10-03T19:44:01.857Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 336,
-    "today_date": "2026-10-02",
+    "today_day": 337,
+    "today_date": "2026-10-03",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 337,
+          "date": "2026-10-03",
+          "shipping_now": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 october,\" and the 4th is…",
+          "arc_color": "green"
+        },
         {
           "day": 335,
           "date": "2026-10-01",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-09-18",
           "shipping_now": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic…",
           "arc_color": "green"
-        },
-        {
-          "day": 321,
-          "date": "2026-09-17",
-          "shipping_now": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -548,7 +548,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 21,
+      "days_since": 22,
       "entries_30d": 3,
       "recent": [
         {
@@ -617,8 +617,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 21,
-      "entries_30d": 3,
+      "days_since": 22,
+      "entries_30d": 2,
       "recent": [
         {
           "day": 316,
@@ -629,11 +629,6 @@ window.DH_DATA = {
           "day": 312,
           "date": "2026-09-08",
           "ship": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and docum"
-        },
-        {
-          "day": 307,
-          "date": "2026-09-03",
-          "ship": "day two of the apac daily loop. the automation ran on time, compiled the tracker, and found it empty. two days"
         }
       ],
       "company_slugs": [
@@ -691,8 +686,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-01",
       "last_ship_day": 335,
-      "days_since": 2,
-      "entries_30d": 14,
+      "days_since": 3,
+      "entries_30d": 13,
       "recent": [
         {
           "day": 335,
@@ -761,7 +756,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 10,
+      "days_since": 11,
       "entries_30d": 3,
       "recent": [
         {
@@ -837,6 +832,25 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-03",
+      "day": 337,
+      "mood": "⚠️",
+      "shipping_now": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 october,\" and the 4th is actually a sunday. the system flagged it instead of a client catching it later. small save, but it is the entire reason the catch step exists.",
+      "yesterday_thread": "a cold outreach link got a reply inside two minutes today, best signal from that channel in weeks. still waiting to see if it turns into an actual booked call.",
+      "raw_thought": "zero tasks closed today and the queue grew by four anyway. one account has sent three messages about money with no reply on our side in days. a system can catch a wrong date. it cannot make an overdue reply happen on its own.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-02",
       "day": 336,
@@ -3988,7 +4002,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 336 · Oct 2",
+    "last_ship": "day 337 · Oct 3",
     "state": "shipping"
   },
   "status_board": {
@@ -4012,6 +4026,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "the saturday client dispatch run caught its own mistake before it shipped: a client dra...",
+        "tag": "shipped d337"
+      },
+      {
         "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
         "tag": "shipped d336"
       },
@@ -4022,10 +4040,6 @@ window.DH_DATA = {
       {
         "text": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links...",
         "tag": "shipped d334"
-      },
-      {
-        "text": "the enterprise IT services client call happened tonight, the one that told us flat out...",
-        "tag": "shipped d333"
       }
     ],
     "soon": [
@@ -5918,33 +5932,43 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-02T19:50:39.542Z",
-    "built_date": "2026-10-03",
+    "built": "2026-10-03T19:44:01.840Z",
+    "built_date": "2026-10-04",
     "newest_entry": {
-      "date": "2026-10-02",
-      "day": 336
+      "date": "2026-10-03",
+      "day": 337
     },
     "weekdays_stale": 0,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 113,
+        "days_old": 114,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 101,
+        "days_old": 102,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 101,
+        "days_old": 102,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 337,
+      "date": "2026-10-03",
+      "mood": "⚠️",
+      "arc_color": "green",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "ship": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 october,\" and the 4th is actually a sunday. the system flagged it instead of a client catching it later. small save, but it is the entire reason the catch step exists."
+    },
     {
       "day": 336,
       "date": "2026-10-02",
@@ -6086,17 +6110,6 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when a different endpoint on the same meeting hands back the full transcript anyway. Would have caught several recent client calls we thought were just lost. Patched the retry order tonight."
-    },
-    {
-      "day": 323,
-      "date": "2026-09-19",
-      "mood": "😤",
-      "arc_color": "blue",
-      "arcs": [
-        "Longevity",
-        "Champions Operations"
-      ],
-      "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that a deliverable we paid for, a panel slot, sat unclaimed for eleven days and the agenda published without us. New standing rule out of it: any paid sponsorship deliverable gets an owner and a deadline the week we pay, not a thread mention."
     }
   ],
   "heatmap": {
@@ -6988,13 +7001,13 @@ window.DH_DATA = {
         "date": "2026-10-03",
         "future": false,
         "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 337,
+        "arc_color": "green",
+        "ship": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 octob"
       },
       {
         "date": "2026-10-04",
-        "future": true,
+        "future": false,
         "weekend": true,
         "day": null,
         "arc_color": null,
@@ -7003,10 +7016,10 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 336,
-    "entries": 114,
+    "days_public": 337,
+    "entries": 115,
     "entries_30d": 27,
-    "entries_this_month": 2,
+    "entries_this_month": 3,
     "streak_weekdays": 77,
     "essays": 15,
     "companies": 12,
@@ -7015,12 +7028,12 @@ window.DH_DATA = {
     "day_one": null,
     "arcs_30d": [
       {
-        "arc": "Lake B2B",
-        "n": 13
+        "arc": "Champions Operations",
+        "n": 12
       },
       {
-        "arc": "Champions Operations",
-        "n": 11
+        "arc": "Lake B2B",
+        "n": 12
       },
       {
         "arc": "ChampOps",
@@ -7039,11 +7052,11 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "InfraTech",
-        "n": 2
+        "arc": "systems",
+        "n": 1
       },
       {
-        "arc": "systems",
+        "arc": "pipeline",
         "n": 1
       }
     ],
@@ -7087,7 +7100,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-02",
         "mentions_90d": 3,
-        "days_since": 1
+        "days_since": 2
       },
       {
         "name": "ChampOps",
@@ -7100,7 +7113,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-28",
         "mentions_90d": 12,
-        "days_since": 5
+        "days_since": 6
       },
       {
         "name": "Event Scout",
@@ -7113,7 +7126,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 19
+        "days_since": 20
       },
       {
         "name": "ChampUTM",
@@ -7126,7 +7139,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 21
+        "days_since": 22
       },
       {
         "name": "Cloudflare",
@@ -7136,7 +7149,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 45
+        "days_since": 46
       },
       {
         "name": "LakeStream",
@@ -7149,7 +7162,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 60
+        "days_since": 61
       },
       {
         "name": "ChamPDF",
@@ -7162,7 +7175,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 60
+        "days_since": 61
       },
       {
         "name": "ChampMail",
@@ -7175,7 +7188,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 62
+        "days_since": 63
       },
       {
         "name": "Supabase",
@@ -7186,7 +7199,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 94
+        "days_since": 95
       },
       {
         "name": "ChampGraph",
@@ -7199,7 +7212,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 102
+        "days_since": 103
       },
       {
         "name": "ChampQuest",
@@ -7212,7 +7225,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 122
+        "days_since": 123
       },
       {
         "name": "B2B Pulse",
@@ -7678,9 +7691,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 114,
+      "entries": 115,
       "essays": 15
     }
   },
-  "built": "2026-10-02T19:50:39.652Z"
+  "built": "2026-10-03T19:44:01.857Z"
 };

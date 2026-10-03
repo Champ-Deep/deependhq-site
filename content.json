@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 336,
-    "today_date": "2026-10-02",
+    "today_day": 337,
+    "today_date": "2026-10-03",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,18 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-03",
+      "day": 337,
+      "mood": "⚠️",
+      "shipping_now": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 october,\" and the 4th is actually a sunday. the system flagged it instead of a client catching it later. small save, but it is the entire reason the catch step exists.",
+      "yesterday_thread": "a cold outreach link got a reply inside two minutes today, best signal from that channel in weeks. still waiting to see if it turns into an actual booked call.",
+      "raw_thought": "zero tasks closed today and the queue grew by four anyway. one account has sent three messages about money with no reply on our side in days. a system can catch a wrong date. it cannot make an overdue reply happen on its own.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-02",
       "day": 336,
@@ -1899,6 +1911,10 @@
     ],
     "recently": [
       {
+        "text": "the saturday client dispatch run caught its own mistake before it shipped: a client dra...",
+        "tag": "shipped d337"
+      },
+      {
         "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
         "tag": "shipped d336"
       },
@@ -1909,10 +1925,6 @@
       {
         "text": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links...",
         "tag": "shipped d334"
-      },
-      {
-        "text": "the enterprise IT services client call happened tonight, the one that told us flat out...",
-        "tag": "shipped d333"
       }
     ],
     "soon": [
