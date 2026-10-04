@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-03T19:44:01.857Z
+// Built 2026-10-04T19:53:00.369Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 337,
-    "today_date": "2026-10-03",
+    "today_day": 338,
+    "today_date": "2026-10-04",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 338,
+          "date": "2026-10-04",
+          "shipping_now": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to…",
+          "arc_color": "blue"
+        },
         {
           "day": 337,
           "date": "2026-10-03",
@@ -89,15 +95,15 @@ window.DH_DATA = {
           "date": "2026-09-19",
           "shipping_now": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that a deliverable we…",
           "arc_color": "blue"
-        },
-        {
-          "day": 322,
-          "date": "2026-09-18",
-          "shipping_now": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-46-the-empty-room-arc",
+          "title": "This week the system caught everything except the empty rooms.",
+          "date": "2026-10-04",
+          "read": "4 min"
+        },
         {
           "slug": "week-45-the-wall-we-named",
           "title": "Spent the week diagnosing why things dont ship. Sunday proved the diagnosis right.",
@@ -548,7 +554,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 22,
+      "days_since": 23,
       "entries_30d": 3,
       "recent": [
         {
@@ -617,7 +623,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 22,
+      "days_since": 23,
       "entries_30d": 2,
       "recent": [
         {
@@ -686,8 +692,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-01",
       "last_ship_day": 335,
-      "days_since": 3,
-      "entries_30d": 13,
+      "days_since": 4,
+      "entries_30d": 12,
       "recent": [
         {
           "day": 335,
@@ -756,7 +762,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 11,
+      "days_since": 12,
       "entries_30d": 3,
       "recent": [
         {
@@ -832,6 +838,29 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-04",
+      "day": 338,
+      "mood": "📋",
+      "shipping_now": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to decide continue-or-cancel, and a data project stuck on one handoff, each now has a day it has to land by. everything else on the list waits on one of those three.",
+      "yesterday_thread": "the date bug a weekend check caught (a client draft asked for a day of the week that doesn't exist this month) got the actual fix written into today's draft. catching it and fixing it a day apart is normal, not a flaw.",
+      "raw_thought": "two recurring sunday calls happened today and neither left anything behind that anyone could point to afterward. fourth week straight for one, sixth-plus for the other. good triage can flag the gap. it can't make someone hit record.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "meetings": {
+        "count": 2,
+        "external": 1
+      },
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-03",
       "day": 337,
@@ -3990,19 +4019,19 @@ window.DH_DATA = {
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 32,
+  "weekly_narratives_count": 33,
   "latest_narrative": {
-    "week": 44,
-    "title": "Got disciplined about everything this week except the thing we paid cash for.",
-    "body": "A strategy reset that kills generic pitching, a new hire's tooling locked in a day, a stalled delivery partner restarted, a ten day cold thread that finally booked a call, a full growth audit for a real prospect. Then a paid conference slot sat unclaimed for eleven days and the agenda went out without us.",
-    "day_range": "Sep 14 - 19",
-    "date": "2026-09-19",
+    "week": 46,
+    "title": "This week the system caught everything except the empty rooms.",
+    "body": "A crisis call with a struggling account turned into a ten-day trial instead of a walkout. A shadow-mode entity judge caught a merge that would have fused the chairman with an unrelated person at another company. A weekend check caught a date that does not exist before it reached a client. And twice this week, calls already on the calendar simply did not happen: no notetaker, no summary, nothing, for the fourth and sixth time running.",
+    "day_range": "Sep 28 - Oct 4",
+    "date": "2026-10-04",
     "read": "4 min",
-    "slug": "week-44-the-discipline-arc"
+    "slug": "week-46-the-empty-room-arc"
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 337 · Oct 3",
+    "last_ship": "day 338 · Oct 4",
     "state": "shipping"
   },
   "status_board": {
@@ -4026,6 +4055,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "wrote next week's plan before monday hits: three decisions, a partnership that's gone q...",
+        "tag": "shipped d338"
+      },
+      {
         "text": "the saturday client dispatch run caught its own mistake before it shipped: a client dra...",
         "tag": "shipped d337"
       },
@@ -4036,10 +4069,6 @@ window.DH_DATA = {
       {
         "text": "the enterprise it services client hit day three of a ten day trial judged on daily evid...",
         "tag": "shipped d335"
-      },
-      {
-        "text": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links...",
-        "tag": "shipped d334"
       }
     ],
     "soon": [
@@ -4507,6 +4536,82 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-46-the-empty-room-arc",
+      "kind": "weekly",
+      "week": 46,
+      "eyebrow": ">_ week 46 - the empty room arc",
+      "title": "This week the system caught everything except the empty rooms.",
+      "deck": "A crisis call with a struggling account turned into a ten-day trial instead of a walkout. A shadow-mode entity judge caught a merge that would have fused the chairman with an unrelated person at another company. A weekend check caught a date that does not exist before it reached a client. And twice this week, calls already on the calendar simply did not happen: no notetaker, no summary, nothing, for the fourth and sixth time running.",
+      "date": "2026-10-04",
+      "day_range": "Sep 28 - Oct 4",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "ops",
+        "triage",
+        "decisions"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 46 opened on a sunday with two calls that went completely dark and closed on a sunday with two more that did the same thing. in between, nearly everything that could be checked got checked: a client's trial numbers, four wrong figures in our own reporting, a wikilink merge that would have fused two different people into one, a date that does not exist on this year's calendar. the systems worked. the humans on the other end of a video call still did not show up with a notetaker running."
+        },
+        {
+          "type": "p",
+          "text": "sunday the week started, two calls, an infrastructure strategy session and a first client discovery call, went completely dark. no notetaker, no summary, nothing. instead of guessing what happened, filed the gap itself, what is known, what is not, what is next, and built the week's focus map from raw task data since the usual sunday planning doc never generated. monday the pattern repeated somewhere else: a long-running infrastructure partnership blew through its own decision deadline with total silence on the other end, the same avoidance pattern as sunday, fifth time in three weeks."
+        },
+        {
+          "type": "p",
+          "text": "monday night had the opposite problem, too much attention on one call instead of none. an enterprise it-services client had told us flat out two days earlier: zero qualified leads in two months, no visibility into who was actually dialing. the call could have ended in a walkout. instead it ended in a ten-day trial, daily updates, a shared channel, a named owner on the stalled campaign. prepping for it also caught four numbers in our own reporting that were simply wrong before they reached the client, one of them a headline figure repeated for two months with no source anywhere in the files."
+        },
+        {
+          "type": "h2",
+          "text": "the week that kept checking its own work"
+        },
+        {
+          "type": "p",
+          "text": "tuesday shipped the middleman layer for a vendor-to-client matchmaking product: tracked links, an approval gate, a per-account timeline both sides can see their own slice of, 141 files, 56 backend tests green, a real end-to-end run passed twice. the same day, day one of the new trial landed with zero dials placed on the stalled line. told the client that straight, no massaging it, and fixed it before the next sync. also quietly cut the skills library from 137 down to 110, the kind of cleanup nobody will ever see and the only reason everything else stays usable."
+        },
+        {
+          "type": "p",
+          "text": "wednesday the trial hit day three and the automated client dispatch kept running anyway, five accounts worth of drafts ready to send, even though the actual send pipeline had been broken for eight straight days. paste and send by hand until that gets fixed is not a great sentence to write twice in one week."
+        },
+        {
+          "type": "pull",
+          "text": "i keep building systems to catch exactly this, and they all share the same blind spot: they only work if somebody is hosting."
+        },
+        {
+          "type": "p",
+          "text": "thursday ran the first live shadow test of an internal entity-resolution judge against the real vault: 400 ambiguous wikilinks graded, zero edits applied, cost eleven cents. it caught something scarier than a typo, a proposed auto-merge from the week before would have fused two different people into one, the company's chairman and an unrelated product lead at a different company entirely. the uptime number was never the point. catching that merge before it ran was."
+        },
+        {
+          "type": "p",
+          "text": "saturday a weekend dispatch check caught a different kind of error: a client draft asking for feedback by a day of the week that does not exist this month. the catch and the fix landed a day apart, saturday to sunday, which is the system working as designed, not a flaw in it."
+        },
+        {
+          "type": "callout",
+          "head": "sunday, again",
+          "lines": [
+            "two more recurring calls happened, an infrastructure strategy recap and a weekly dev sync, and neither left a record anyone could point to afterward. fourth dark week straight for one, sixth-plus for the other.",
+            "zero tasks closed for the day. nine new ones filed instead, none urgent enough on its own to explain why the queue keeps growing faster than it empties.",
+            "closed the week by writing next week's plan early: three decisions, the quiet partnership, the trial's continue-or-cancel call, and the data project stuck on one handoff, each now carries a day it has to land by."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "every catch this week was a system doing its job: a wrong number, a wrong date, a wrong merge, all stopped before they reached anyone outside the building. the one thing none of them caught is the thing that keeps costing the most, an empty room with nobody running a recorder. that is not a system problem anymore. it goes on next week's list with a name attached, mine."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
+      ]
+    },
     {
       "slug": "week-45-the-wall-we-named",
       "kind": "weekly",
@@ -5932,33 +6037,43 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-03T19:44:01.840Z",
-    "built_date": "2026-10-04",
+    "built": "2026-10-04T19:53:00.347Z",
+    "built_date": "2026-10-05",
     "newest_entry": {
-      "date": "2026-10-03",
-      "day": 337
+      "date": "2026-10-04",
+      "day": 338
     },
-    "weekdays_stale": 0,
+    "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 114,
+        "days_old": 115,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 102,
+        "days_old": 103,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 102,
+        "days_old": 103,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 338,
+      "date": "2026-10-04",
+      "mood": "📋",
+      "arc_color": "blue",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "ship": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to decide continue-or-cancel, and a data project stuck on one handoff, each now has a day it has to land by. everything else on the list waits on one of those three."
+    },
     {
       "day": 337,
       "date": "2026-10-03",
@@ -6100,79 +6215,13 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold vendor pitch and moved on. then at 10pm he called back and we spent 22 minutes shaping a real deal: his agency takes on our microsite refresh and lead-gen overflow work, we take a cut. not signed yet, but its the first real partner conversation to come out of a dead-looking booking in a while."
-    },
-    {
-      "day": 324,
-      "date": "2026-09-20",
-      "mood": "🔧",
-      "arc_color": "green",
-      "arcs": [
-        "ChampOps"
-      ],
-      "ship": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when a different endpoint on the same meeting hands back the full transcript anyway. Would have caught several recent client calls we thought were just lost. Patched the retry order tonight."
     }
   ],
   "heatmap": {
-    "start": "2026-06-15",
-    "end": "2026-10-04",
+    "start": "2026-06-22",
+    "end": "2026-10-11",
     "weeks": 16,
     "cells": [
-      {
-        "date": "2026-06-15",
-        "future": false,
-        "weekend": false,
-        "day": 227,
-        "arc_color": "green",
-        "ship": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator that touches tens of thou"
-      },
-      {
-        "date": "2026-06-16",
-        "future": false,
-        "weekend": false,
-        "day": 228,
-        "arc_color": "green",
-        "ship": "minted per-repo ssh deploy keys for the three repos in this week's product push and moved their deploys off th"
-      },
-      {
-        "date": "2026-06-17",
-        "future": false,
-        "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
-      {
-        "date": "2026-06-18",
-        "future": false,
-        "weekend": false,
-        "day": 230,
-        "arc_color": "green",
-        "ship": "the a/b toggle for the prospect-research engine is committed. two web backends, one third-party and one we bui"
-      },
-      {
-        "date": "2026-06-19",
-        "future": false,
-        "weekend": false,
-        "day": 231,
-        "arc_color": "green",
-        "ship": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor tha"
-      },
-      {
-        "date": "2026-06-20",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
-      {
-        "date": "2026-06-21",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
       {
         "date": "2026-06-22",
         "future": false,
@@ -7009,6 +7058,62 @@ window.DH_DATA = {
         "date": "2026-10-04",
         "future": false,
         "weekend": true,
+        "day": 338,
+        "arc_color": "blue",
+        "ship": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a tria"
+      },
+      {
+        "date": "2026-10-05",
+        "future": false,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-06",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-07",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-08",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-09",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-10",
+        "future": true,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-11",
+        "future": true,
+        "weekend": true,
         "day": null,
         "arc_color": null,
         "ship": null
@@ -7016,12 +7121,12 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 337,
-    "entries": 115,
+    "days_public": 338,
+    "entries": 116,
     "entries_30d": 27,
-    "entries_this_month": 3,
+    "entries_this_month": 4,
     "streak_weekdays": 77,
-    "essays": 15,
+    "essays": 16,
     "companies": 12,
     "companies_active_90d": 5,
     "first_entry": "2026-05-04",
@@ -7029,11 +7134,11 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 12
+        "n": 13
       },
       {
         "arc": "Lake B2B",
-        "n": 12
+        "n": 11
       },
       {
         "arc": "ChampOps",
@@ -7100,7 +7205,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-02",
         "mentions_90d": 3,
-        "days_since": 2
+        "days_since": 3
       },
       {
         "name": "ChampOps",
@@ -7113,7 +7218,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-28",
         "mentions_90d": 12,
-        "days_since": 6
+        "days_since": 7
       },
       {
         "name": "Event Scout",
@@ -7126,7 +7231,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 20
+        "days_since": 21
       },
       {
         "name": "ChampUTM",
@@ -7139,7 +7244,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 22
+        "days_since": 23
       },
       {
         "name": "Cloudflare",
@@ -7149,7 +7254,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 46
+        "days_since": 47
       },
       {
         "name": "LakeStream",
@@ -7162,7 +7267,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 61
+        "days_since": 62
       },
       {
         "name": "ChamPDF",
@@ -7175,7 +7280,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 61
+        "days_since": 62
       },
       {
         "name": "ChampMail",
@@ -7188,7 +7293,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 63
+        "days_since": 64
       },
       {
         "name": "Supabase",
@@ -7199,7 +7304,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 95
+        "days_since": 96
       },
       {
         "name": "ChampGraph",
@@ -7212,7 +7317,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 103
+        "days_since": 104
       },
       {
         "name": "ChampQuest",
@@ -7225,7 +7330,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 123
+        "days_since": 124
       },
       {
         "name": "B2B Pulse",
@@ -7691,9 +7796,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 115,
-      "essays": 15
+      "entries": 116,
+      "essays": 16
     }
   },
-  "built": "2026-10-03T19:44:01.857Z"
+  "built": "2026-10-04T19:53:00.369Z"
 };

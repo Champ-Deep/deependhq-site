@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 337,
-    "today_date": "2026-10-03",
+    "today_day": 338,
+    "today_date": "2026-10-04",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,22 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-04",
+      "day": 338,
+      "mood": "📋",
+      "shipping_now": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to decide continue-or-cancel, and a data project stuck on one handoff, each now has a day it has to land by. everything else on the list waits on one of those three.",
+      "yesterday_thread": "the date bug a weekend check caught (a client draft asked for a day of the week that doesn't exist this month) got the actual fix written into today's draft. catching it and fixing it a day apart is normal, not a flaw.",
+      "raw_thought": "two recurring sunday calls happened today and neither left anything behind that anyone could point to afterward. fourth week straight for one, sixth-plus for the other. good triage can flag the gap. it can't make someone hit record.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "meetings": {
+        "count": 2,
+        "external": 1
+      }
+    },
     {
       "date": "2026-10-03",
       "day": 337,
@@ -1877,15 +1893,15 @@
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 32,
+  "weekly_narratives_count": 33,
   "latest_narrative": {
-    "week": 44,
-    "title": "Got disciplined about everything this week except the thing we paid cash for.",
-    "body": "A strategy reset that kills generic pitching, a new hire's tooling locked in a day, a stalled delivery partner restarted, a ten day cold thread that finally booked a call, a full growth audit for a real prospect. Then a paid conference slot sat unclaimed for eleven days and the agenda went out without us.",
-    "day_range": "Sep 14 - 19",
-    "date": "2026-09-19",
+    "week": 46,
+    "title": "This week the system caught everything except the empty rooms.",
+    "body": "A crisis call with a struggling account turned into a ten-day trial instead of a walkout. A shadow-mode entity judge caught a merge that would have fused the chairman with an unrelated person at another company. A weekend check caught a date that does not exist before it reached a client. And twice this week, calls already on the calendar simply did not happen: no notetaker, no summary, nothing, for the fourth and sixth time running.",
+    "day_range": "Sep 28 - Oct 4",
+    "date": "2026-10-04",
     "read": "4 min",
-    "slug": "week-44-the-discipline-arc"
+    "slug": "week-46-the-empty-room-arc"
   },
   "status": {
     "location": "Bangalore, IN"
@@ -1911,6 +1927,10 @@
     ],
     "recently": [
       {
+        "text": "wrote next week's plan before monday hits: three decisions, a partnership that's gone q...",
+        "tag": "shipped d338"
+      },
+      {
         "text": "the saturday client dispatch run caught its own mistake before it shipped: a client dra...",
         "tag": "shipped d337"
       },
@@ -1921,10 +1941,6 @@
       {
         "text": "the enterprise it services client hit day three of a ten day trial judged on daily evid...",
         "tag": "shipped d335"
-      },
-      {
-        "text": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links...",
-        "tag": "shipped d334"
       }
     ],
     "soon": [
@@ -2392,6 +2408,75 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-46-the-empty-room-arc",
+      "kind": "weekly",
+      "week": 46,
+      "eyebrow": ">_ week 46 - the empty room arc",
+      "title": "This week the system caught everything except the empty rooms.",
+      "deck": "A crisis call with a struggling account turned into a ten-day trial instead of a walkout. A shadow-mode entity judge caught a merge that would have fused the chairman with an unrelated person at another company. A weekend check caught a date that does not exist before it reached a client. And twice this week, calls already on the calendar simply did not happen: no notetaker, no summary, nothing, for the fourth and sixth time running.",
+      "date": "2026-10-04",
+      "day_range": "Sep 28 - Oct 4",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "blue",
+      "tags": [
+        "ops",
+        "triage",
+        "decisions"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 46 opened on a sunday with two calls that went completely dark and closed on a sunday with two more that did the same thing. in between, nearly everything that could be checked got checked: a client's trial numbers, four wrong figures in our own reporting, a wikilink merge that would have fused two different people into one, a date that does not exist on this year's calendar. the systems worked. the humans on the other end of a video call still did not show up with a notetaker running."
+        },
+        {
+          "type": "p",
+          "text": "sunday the week started, two calls, an infrastructure strategy session and a first client discovery call, went completely dark. no notetaker, no summary, nothing. instead of guessing what happened, filed the gap itself, what is known, what is not, what is next, and built the week's focus map from raw task data since the usual sunday planning doc never generated. monday the pattern repeated somewhere else: a long-running infrastructure partnership blew through its own decision deadline with total silence on the other end, the same avoidance pattern as sunday, fifth time in three weeks."
+        },
+        {
+          "type": "p",
+          "text": "monday night had the opposite problem, too much attention on one call instead of none. an enterprise it-services client had told us flat out two days earlier: zero qualified leads in two months, no visibility into who was actually dialing. the call could have ended in a walkout. instead it ended in a ten-day trial, daily updates, a shared channel, a named owner on the stalled campaign. prepping for it also caught four numbers in our own reporting that were simply wrong before they reached the client, one of them a headline figure repeated for two months with no source anywhere in the files."
+        },
+        {
+          "type": "h2",
+          "text": "the week that kept checking its own work"
+        },
+        {
+          "type": "p",
+          "text": "tuesday shipped the middleman layer for a vendor-to-client matchmaking product: tracked links, an approval gate, a per-account timeline both sides can see their own slice of, 141 files, 56 backend tests green, a real end-to-end run passed twice. the same day, day one of the new trial landed with zero dials placed on the stalled line. told the client that straight, no massaging it, and fixed it before the next sync. also quietly cut the skills library from 137 down to 110, the kind of cleanup nobody will ever see and the only reason everything else stays usable."
+        },
+        {
+          "type": "p",
+          "text": "wednesday the trial hit day three and the automated client dispatch kept running anyway, five accounts worth of drafts ready to send, even though the actual send pipeline had been broken for eight straight days. paste and send by hand until that gets fixed is not a great sentence to write twice in one week."
+        },
+        {
+          "type": "pull",
+          "text": "i keep building systems to catch exactly this, and they all share the same blind spot: they only work if somebody is hosting."
+        },
+        {
+          "type": "p",
+          "text": "thursday ran the first live shadow test of an internal entity-resolution judge against the real vault: 400 ambiguous wikilinks graded, zero edits applied, cost eleven cents. it caught something scarier than a typo, a proposed auto-merge from the week before would have fused two different people into one, the company's chairman and an unrelated product lead at a different company entirely. the uptime number was never the point. catching that merge before it ran was."
+        },
+        {
+          "type": "p",
+          "text": "saturday a weekend dispatch check caught a different kind of error: a client draft asking for feedback by a day of the week that does not exist this month. the catch and the fix landed a day apart, saturday to sunday, which is the system working as designed, not a flaw in it."
+        },
+        {
+          "type": "callout",
+          "head": "sunday, again",
+          "lines": [
+            "two more recurring calls happened, an infrastructure strategy recap and a weekly dev sync, and neither left a record anyone could point to afterward. fourth dark week straight for one, sixth-plus for the other.",
+            "zero tasks closed for the day. nine new ones filed instead, none urgent enough on its own to explain why the queue keeps growing faster than it empties.",
+            "closed the week by writing next week's plan early: three decisions, the quiet partnership, the trial's continue-or-cancel call, and the data project stuck on one handoff, each now carries a day it has to land by."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "every catch this week was a system doing its job: a wrong number, a wrong date, a wrong merge, all stopped before they reached anyone outside the building. the one thing none of them caught is the thing that keeps costing the most, an empty room with nobody running a recorder. that is not a system problem anymore. it goes on next week's list with a name attached, mine."
+        }
+      ]
+    },
     {
       "slug": "week-45-the-wall-we-named",
       "kind": "weekly",
