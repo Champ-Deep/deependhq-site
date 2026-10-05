@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-04T19:53:00.369Z
+// Built 2026-10-05T19:42:57.242Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 338,
-    "today_date": "2026-10-04",
+    "today_day": 339,
+    "today_date": "2026-10-05",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 339,
+          "date": "2026-10-05",
+          "shipping_now": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each. eight for eight.…",
+          "arc_color": "gold"
+        },
         {
           "day": 338,
           "date": "2026-10-04",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-09-20",
           "shipping_now": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when…",
           "arc_color": "green"
-        },
-        {
-          "day": 323,
-          "date": "2026-09-19",
-          "shipping_now": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that a deliverable we…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -554,7 +554,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 23,
+      "days_since": 24,
       "entries_30d": 3,
       "recent": [
         {
@@ -623,7 +623,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 23,
+      "days_since": 24,
       "entries_30d": 2,
       "recent": [
         {
@@ -692,7 +692,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-01",
       "last_ship_day": 335,
-      "days_since": 4,
+      "days_since": 5,
       "entries_30d": 12,
       "recent": [
         {
@@ -762,7 +762,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-23",
       "last_ship_day": 327,
-      "days_since": 12,
+      "days_since": 13,
       "entries_30d": 3,
       "recent": [
         {
@@ -838,6 +838,25 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-05",
+      "day": 339,
+      "mood": "📋",
+      "shipping_now": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each. eight for eight. the kind of gap that sits for a month until someone just does all of them in one day.",
+      "yesterday_thread": "also solved a four-day mystery: a partnership call sat on the calendar with no name attached to it. the call happened, the recording said who was actually on it, and it wasn't the guess everyone had been running with.",
+      "raw_thought": "zero tasks closed today, six new ones filed. closing a planning gap like that doesn't move the task counter at all, and it was still the best thing that happened today.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-04",
       "day": 338,
@@ -4031,7 +4050,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 338 · Oct 4",
+    "last_ship": "day 339 · Oct 5",
     "state": "shipping"
   },
   "status_board": {
@@ -4055,6 +4074,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "shipped october plans for every person on the team today, a dated plan, a handover pack...",
+        "tag": "shipped d339"
+      },
+      {
         "text": "wrote next week's plan before monday hits: three decisions, a partnership that's gone q...",
         "tag": "shipped d338"
       },
@@ -4065,10 +4088,6 @@ window.DH_DATA = {
       {
         "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
         "tag": "shipped d336"
-      },
-      {
-        "text": "the enterprise it services client hit day three of a ten day trial judged on daily evid...",
-        "tag": "shipped d335"
       }
     ],
     "soon": [
@@ -6037,33 +6056,43 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-04T19:53:00.347Z",
-    "built_date": "2026-10-05",
+    "built": "2026-10-05T19:42:57.220Z",
+    "built_date": "2026-10-06",
     "newest_entry": {
-      "date": "2026-10-04",
-      "day": 338
+      "date": "2026-10-05",
+      "day": 339
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 115,
+        "days_old": 116,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 103,
+        "days_old": 104,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 103,
+        "days_old": 104,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 339,
+      "date": "2026-10-05",
+      "mood": "📋",
+      "arc_color": "gold",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "ship": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each. eight for eight. the kind of gap that sits for a month until someone just does all of them in one day."
+    },
     {
       "day": 338,
       "date": "2026-10-04",
@@ -6204,17 +6233,6 @@ window.DH_DATA = {
         "chief"
       ],
       "ship": "the birthday voice agent actually called chief. missed the first try, connected on retry at midnight, and he liked it enough to ask for more: anniversaries, linkedin signals, milestone follow-ups."
-    },
-    {
-      "day": 325,
-      "date": "2026-09-21",
-      "mood": "🤝",
-      "arc_color": "gold",
-      "arcs": [
-        "Lake B2B",
-        "ChampOps"
-      ],
-      "ship": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold vendor pitch and moved on. then at 10pm he called back and we spent 22 minutes shaping a real deal: his agency takes on our microsite refresh and lead-gen overflow work, we take a cut. not signed yet, but its the first real partner conversation to come out of a dead-looking booking in a while."
     }
   ],
   "heatmap": {
@@ -7066,13 +7084,13 @@ window.DH_DATA = {
         "date": "2026-10-05",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 339,
+        "arc_color": "gold",
+        "ship": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each."
       },
       {
         "date": "2026-10-06",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -7121,11 +7139,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 338,
-    "entries": 116,
-    "entries_30d": 27,
-    "entries_this_month": 4,
-    "streak_weekdays": 77,
+    "days_public": 339,
+    "entries": 117,
+    "entries_30d": 28,
+    "entries_this_month": 5,
+    "streak_weekdays": 78,
     "essays": 16,
     "companies": 12,
     "companies_active_90d": 5,
@@ -7134,7 +7152,7 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 13
+        "n": 14
       },
       {
         "arc": "Lake B2B",
@@ -7205,7 +7223,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-02",
         "mentions_90d": 3,
-        "days_since": 3
+        "days_since": 4
       },
       {
         "name": "ChampOps",
@@ -7218,7 +7236,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-28",
         "mentions_90d": 12,
-        "days_since": 7
+        "days_since": 8
       },
       {
         "name": "Event Scout",
@@ -7231,7 +7249,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 21
+        "days_since": 22
       },
       {
         "name": "ChampUTM",
@@ -7244,7 +7262,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 23
+        "days_since": 24
       },
       {
         "name": "Cloudflare",
@@ -7254,7 +7272,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 47
+        "days_since": 48
       },
       {
         "name": "LakeStream",
@@ -7267,7 +7285,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 62
+        "days_since": 63
       },
       {
         "name": "ChamPDF",
@@ -7280,7 +7298,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 62
+        "days_since": 63
       },
       {
         "name": "ChampMail",
@@ -7293,7 +7311,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 64
+        "days_since": 65
       },
       {
         "name": "Supabase",
@@ -7304,7 +7322,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 96
+        "days_since": 97
       },
       {
         "name": "ChampGraph",
@@ -7317,7 +7335,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 104
+        "days_since": 105
       },
       {
         "name": "ChampQuest",
@@ -7330,7 +7348,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 124
+        "days_since": 125
       },
       {
         "name": "B2B Pulse",
@@ -7796,9 +7814,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 116,
+      "entries": 117,
       "essays": 16
     }
   },
-  "built": "2026-10-04T19:53:00.369Z"
+  "built": "2026-10-05T19:42:57.242Z"
 };

@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 338,
-    "today_date": "2026-10-04",
+    "today_day": 339,
+    "today_date": "2026-10-05",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,18 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-05",
+      "day": 339,
+      "mood": "📋",
+      "shipping_now": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each. eight for eight. the kind of gap that sits for a month until someone just does all of them in one day.",
+      "yesterday_thread": "also solved a four-day mystery: a partnership call sat on the calendar with no name attached to it. the call happened, the recording said who was actually on it, and it wasn't the guess everyone had been running with.",
+      "raw_thought": "zero tasks closed today, six new ones filed. closing a planning gap like that doesn't move the task counter at all, and it was still the best thing that happened today.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-10-04",
       "day": 338,
@@ -1927,6 +1939,10 @@
     ],
     "recently": [
       {
+        "text": "shipped october plans for every person on the team today, a dated plan, a handover pack...",
+        "tag": "shipped d339"
+      },
+      {
         "text": "wrote next week's plan before monday hits: three decisions, a partnership that's gone q...",
         "tag": "shipped d338"
       },
@@ -1937,10 +1953,6 @@
       {
         "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
         "tag": "shipped d336"
-      },
-      {
-        "text": "the enterprise it services client hit day three of a ten day trial judged on daily evid...",
-        "tag": "shipped d335"
       }
     ],
     "soon": [
