@@ -1,6 +1,6 @@
 # deep >_ (deependhq.com)
 
-> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 339, 117 entries since 2026-05-04.
+> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 340, 118 entries since 2026-05-04.
 
 ```
      █████                                ███
@@ -16,7 +16,7 @@
                             ░░░░░
 ```
 
-Rebuilt 2026-10-05 19:42 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
+Rebuilt 2026-10-06 19:45 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
 
 ## Read
 - [Home](https://deependhq.com/): the working window, 3 PM to 2 AM IST, and how a day becomes an entry
@@ -27,13 +27,13 @@ Rebuilt 2026-10-05 19:42 UTC. Every number on the site is derived from one sourc
 - [Now](https://deependhq.com/now.html): what has attention right now
 
 ## Latest entries
+- [Day 340, 2026-10-06](https://deependhq.com/journey.html#day-340): the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the pivot to corporate clients...
 - [Day 339, 2026-10-05](https://deependhq.com/journey.html#day-339): shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each. eight for eight. the kind of gap that sits for...
 - [Day 338, 2026-10-04](https://deependhq.com/journey.html#day-338): wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to decide continue-or-cancel,...
 - [Day 337, 2026-10-03](https://deependhq.com/journey.html#day-337): the saturday client dispatch run caught its own mistake before it shipped: a client draft said "monday 4 october," and the 4th is actually a sunday. the...
 - [Day 336, 2026-10-02](https://deependhq.com/journey.html#day-336): ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilinks graded against the real vault, zero edits applied, cost eleven...
 - [Day 335, 2026-10-01](https://deependhq.com/journey.html#day-335): the enterprise it services client hit day three of a ten day trial judged on daily evidence. the automated daily client pack kept running anyway, five...
 - [Day 334, 2026-09-30](https://deependhq.com/journey.html#day-334): shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline both sides can see their own...
-- [Day 333, 2026-09-29](https://deependhq.com/journey.html#day-333): the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two months, no visibility into...
 
 ## Essays
 - [This week the system caught everything except the empty rooms.](https://deependhq.com/post.html?slug=week-46-the-empty-room-arc): 2026-10-04, 4 min
@@ -71,4 +71,4 @@ Rebuilt 2026-10-05 19:42 UTC. Every number on the site is derived from one sourc
 
 ## Optional
 - [humans.txt](https://deependhq.com/humans.txt): who made this, and a gray mare
-- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 339, 2026-10-05.
+- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 340, 2026-10-06.

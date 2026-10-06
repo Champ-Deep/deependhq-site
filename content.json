@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 339,
-    "today_date": "2026-10-05",
+    "today_day": 340,
+    "today_date": "2026-10-06",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-06",
+      "day": 340,
+      "mood": "🧭",
+      "shipping_now": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the pivot to corporate clients over consumers, all locked in one call. thursday's soft launch just became real.",
+      "yesterday_thread": "also spent part of the day getting one luxury brand to agree with itself. three different properties, one positioning, with an outside pr voice in the room instead of just us talking to ourselves.",
+      "raw_thought": "a trial account's weekly review happened tonight and left nothing behind. no notes, no recording, nothing. three days before that account decides whether to stay, and the one meeting that should have moved the needle just vanished.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-10-05",
       "day": 339,
@@ -1939,6 +1952,10 @@
     ],
     "recently": [
       {
+        "text": "the longevity build got its biggest single session in months tonight. app redesign, cli...",
+        "tag": "shipped d340"
+      },
+      {
         "text": "shipped october plans for every person on the team today, a dated plan, a handover pack...",
         "tag": "shipped d339"
       },
@@ -1949,10 +1966,6 @@
       {
         "text": "the saturday client dispatch run caught its own mistake before it shipped: a client dra...",
         "tag": "shipped d337"
-      },
-      {
-        "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
-        "tag": "shipped d336"
       }
     ],
     "soon": [

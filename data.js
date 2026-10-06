@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-05T19:42:57.242Z
+// Built 2026-10-06T19:45:05.883Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 339,
-    "today_date": "2026-10-05",
+    "today_day": 340,
+    "today_date": "2026-10-06",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 340,
+          "date": "2026-10-06",
+          "shipping_now": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the…",
+          "arc_color": "gold"
+        },
         {
           "day": 339,
           "date": "2026-10-05",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-09-21",
           "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold…",
           "arc_color": "gold"
-        },
-        {
-          "day": 324,
-          "date": "2026-09-20",
-          "shipping_now": "Fixed a dumb one today. Our meeting-notes automation has been retrying an endpoint that flatly denies it access, for weeks, when…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -554,7 +554,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 24,
+      "days_since": 25,
       "entries_30d": 3,
       "recent": [
         {
@@ -623,7 +623,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 24,
+      "days_since": 25,
       "entries_30d": 2,
       "recent": [
         {
@@ -692,7 +692,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-01",
       "last_ship_day": 335,
-      "days_since": 5,
+      "days_since": 6,
       "entries_30d": 12,
       "recent": [
         {
@@ -760,11 +760,16 @@ window.DH_DATA = {
         "Event Scout",
         "Social Automator"
       ],
-      "last_ship": "2026-09-23",
-      "last_ship_day": 327,
-      "days_since": 13,
-      "entries_30d": 3,
+      "last_ship": "2026-10-06",
+      "last_ship_day": 340,
+      "days_since": 1,
+      "entries_30d": 4,
       "recent": [
+        {
+          "day": 340,
+          "date": "2026-10-06",
+          "ship": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named"
+        },
         {
           "day": 327,
           "date": "2026-09-23",
@@ -838,6 +843,34 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-06",
+      "day": 340,
+      "mood": "🧭",
+      "shipping_now": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the pivot to corporate clients over consumers, all locked in one call. thursday's soft launch just became real.",
+      "yesterday_thread": "also spent part of the day getting one luxury brand to agree with itself. three different properties, one positioning, with an outside pr voice in the room instead of just us talking to ourselves.",
+      "raw_thought": "a trial account's weekly review happened tonight and left nothing behind. no notes, no recording, nothing. three days before that account decides whether to stay, and the one meeting that should have moved the needle just vanished.",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Longevity",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ],
+      "pillars": [
+        "accelerator"
+      ]
+    },
     {
       "date": "2026-10-05",
       "day": 339,
@@ -4050,7 +4083,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 339 · Oct 5",
+    "last_ship": "day 340 · Oct 6",
     "state": "shipping"
   },
   "status_board": {
@@ -4074,6 +4107,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "the longevity build got its biggest single session in months tonight. app redesign, cli...",
+        "tag": "shipped d340"
+      },
+      {
         "text": "shipped october plans for every person on the team today, a dated plan, a handover pack...",
         "tag": "shipped d339"
       },
@@ -4084,10 +4121,6 @@ window.DH_DATA = {
       {
         "text": "the saturday client dispatch run caught its own mistake before it shipped: a client dra...",
         "tag": "shipped d337"
-      },
-      {
-        "text": "ran the first live shadow test of celsus os's entity judge today. 400 ambiguous wikilin...",
-        "tag": "shipped d336"
       }
     ],
     "soon": [
@@ -6056,33 +6089,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-05T19:42:57.220Z",
-    "built_date": "2026-10-06",
+    "built": "2026-10-06T19:45:05.864Z",
+    "built_date": "2026-10-07",
     "newest_entry": {
-      "date": "2026-10-05",
-      "day": 339
+      "date": "2026-10-06",
+      "day": 340
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 116,
+        "days_old": 117,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 104,
+        "days_old": 105,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 104,
+        "days_old": 105,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 340,
+      "date": "2026-10-06",
+      "mood": "🧭",
+      "arc_color": "gold",
+      "arcs": [
+        "Longevity",
+        "Champions Operations"
+      ],
+      "ship": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the pivot to corporate clients over consumers, all locked in one call. thursday's soft launch just became real."
+    },
     {
       "day": 339,
       "date": "2026-10-05",
@@ -6222,17 +6266,6 @@ window.DH_DATA = {
         "longevity"
       ],
       "ship": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it needed, just an identity check before the room closed. still figuring out if the real conversation happened somewhere else or just didnt happen."
-    },
-    {
-      "day": 326,
-      "date": "2026-09-22",
-      "mood": "📞",
-      "arc_color": "gold",
-      "arcs": [
-        "voice-agent",
-        "chief"
-      ],
-      "ship": "the birthday voice agent actually called chief. missed the first try, connected on retry at midnight, and he liked it enough to ask for more: anniversaries, linkedin signals, milestone follow-ups."
     }
   ],
   "heatmap": {
@@ -7092,13 +7125,13 @@ window.DH_DATA = {
         "date": "2026-10-06",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 340,
+        "arc_color": "gold",
+        "ship": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named"
       },
       {
         "date": "2026-10-07",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -7139,11 +7172,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 339,
-    "entries": 117,
-    "entries_30d": 28,
-    "entries_this_month": 5,
-    "streak_weekdays": 78,
+    "days_public": 340,
+    "entries": 118,
+    "entries_30d": 29,
+    "entries_this_month": 6,
+    "streak_weekdays": 79,
     "essays": 16,
     "companies": 12,
     "companies_active_90d": 5,
@@ -7152,7 +7185,7 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 14
+        "n": 15
       },
       {
         "arc": "Lake B2B",
@@ -7167,6 +7200,10 @@ window.DH_DATA = {
         "n": 3
       },
       {
+        "arc": "Longevity",
+        "n": 2
+      },
+      {
         "arc": "Celsus OS",
         "n": 2
       },
@@ -7176,10 +7213,6 @@ window.DH_DATA = {
       },
       {
         "arc": "systems",
-        "n": 1
-      },
-      {
-        "arc": "pipeline",
         "n": 1
       }
     ],
@@ -7223,7 +7256,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-02",
         "mentions_90d": 3,
-        "days_since": 4
+        "days_since": 5
       },
       {
         "name": "ChampOps",
@@ -7236,7 +7269,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-28",
         "mentions_90d": 12,
-        "days_since": 8
+        "days_since": 9
       },
       {
         "name": "Event Scout",
@@ -7249,7 +7282,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 22
+        "days_since": 23
       },
       {
         "name": "ChampUTM",
@@ -7262,7 +7295,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 24
+        "days_since": 25
       },
       {
         "name": "Cloudflare",
@@ -7272,7 +7305,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 48
+        "days_since": 49
       },
       {
         "name": "LakeStream",
@@ -7285,7 +7318,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 63
+        "days_since": 64
       },
       {
         "name": "ChamPDF",
@@ -7298,7 +7331,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 63
+        "days_since": 64
       },
       {
         "name": "ChampMail",
@@ -7311,7 +7344,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 65
+        "days_since": 66
       },
       {
         "name": "Supabase",
@@ -7322,7 +7355,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 97
+        "days_since": 98
       },
       {
         "name": "ChampGraph",
@@ -7335,7 +7368,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 105
+        "days_since": 106
       },
       {
         "name": "ChampQuest",
@@ -7348,7 +7381,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 125
+        "days_since": 126
       },
       {
         "name": "B2B Pulse",
@@ -7814,9 +7847,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 117,
+      "entries": 118,
       "essays": 16
     }
   },
-  "built": "2026-10-05T19:42:57.242Z"
+  "built": "2026-10-06T19:45:05.883Z"
 };
