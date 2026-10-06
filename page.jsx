@@ -1,4 +1,4 @@
-// page.jsx — shared entry point for inner pages (journey, toolkit, field-notes).
+// page.jsx : shared entry point for inner pages (journey, toolkit, field-notes).
 // Renders <Nav> + the chosen page body + <Footer>. Determined by data-page attribute on #root.
 
 const { useState: useStateP, useEffect: useEffectP } = React;
@@ -35,6 +35,7 @@ const PageShell = ({ pageId }) => {
     <div className="dh-app">
       <Nav active={navActive} />
       {Body}
+      {window.SignOff && <window.SignOff />}
       <Footer />
       {window.CommandPalette && React.createElement(window.CommandPalette)}
       {toast && (

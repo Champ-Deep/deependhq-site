@@ -16,7 +16,7 @@
                             ░░░░░
 ```
 
-Rebuilt 2026-10-06 19:45 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
+Rebuilt 2026-10-06 21:01 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
 
 ## Read
 - [Home](https://deependhq.com/): the working window, 3 PM to 2 AM IST, and how a day becomes an entry
@@ -45,8 +45,10 @@ Rebuilt 2026-10-06 19:45 UTC. Every number on the site is derived from one sourc
 
 ## Built here
 - [Event Scout](https://event-scout-delta.vercel.app): Mobile PWA for event contact capture. Business card scanner plus AI chat. (live at event-scout-delta.vercel.app)
+- [ChampBeam](https://champbeam.com): Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now. (live at champbeam.com)
 - [ChamPDF](https://champdf.com): Free PDF tools that run in the browser: merge, split, compress, convert. No signup. Started as extraction for the... (live at champdf.com)
 - [LakeStream](https://github.com/Champ-Deep/LakeStream): Template-based web scraper for B2B data enrichment. YouTube transcripts included. (internal, runs in-house)
+- Deep Scanner: Checks any folder before it reaches a cloud agent. Blocks live secrets and ID documents, flags what a human should...
 - [ChampUTM](https://github.com/Champ-Deep/ChampUTM): UTM link builder and tracker. React/Vite. Open source.
 - [ChampMail](https://github.com/Champ-Deep/ChampMail): email outreach automation. human-cadence sending, self-hosted Stalwart SMTP. live and scaling.
 - [ChampGraph](https://github.com/Champ-Deep/Graphiti-knowledge-graph): Knowledge graph per prospect. Neo4j/FalkorDB. The brain behind the AI SDR.
@@ -54,8 +56,6 @@ Rebuilt 2026-10-06 19:45 UTC. Every number on the site is derived from one sourc
 - [B2B Pulse](https://github.com/Champ-Deep/B2B-Pulse): LinkedIn and Meta engagement automator. Powers the 5 PM IST daily social triage.
 - [deependhq-site](https://github.com/Champ-Deep/deependhq-site): This site. No-build React on Cloudflare Pages. Auto-updates daily from the vault.
 - [ChampCMS](https://github.com/Champ-Deep/ChampCMS): Full-stack Astro CMS on Cloudflare. D1, R2, passkeys, TipTap, plugin isolates.
-- [ChampLens](https://github.com/Champ-Deep/ChampLens): QR-to-video AR business card platform. Scan a card, meet a person.
-- [ChampIQ](https://github.com/Champ-Deep/ChampIQ): The AI SDR orchestration layer. Graph-driven prospecting across every channel.
 
 ## Machine-readable
 - [llms-full.txt](https://deependhq.com/llms-full.txt): every journey entry and essay as plain markdown

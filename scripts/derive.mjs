@@ -219,7 +219,10 @@ export function derive(data, now = new Date()) {
   };
   for (const t of Array.isArray(data.toolkit) ? data.toolkit : []) {
     const isRepo = /github\.com\//.test(t.url || '');
-    const kind = t.category === 'skill' || t.category === 'resource' ? 'skill' : (isRepo ? 'built' : 'using');
+    // Optional `kind` overrides the guess, for a thing Deep built whose repo is
+    // not public yet (Deep Scanner before its repo opens).
+    const KINDS = new Set(['built', 'using', 'trying', 'watching', 'skill']);
+    const kind = KINDS.has(t.kind) ? t.kind : (t.category === 'skill' || t.category === 'resource' ? 'skill' : (isRepo ? 'built' : 'using'));
     // Optional: `site` is a public live URL (the repo stays in `url`), and
     // `status` is 'building' or 'internal' for projects in active development.
     push({ name: t.title, what: t.description || '', url: t.url && t.url !== '#' ? t.url : null, site: t.site || null, status: t.status || null, kind, category: t.category || 'tool', featured: !!t.featured });

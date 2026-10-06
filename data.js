@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-06T19:45:05.883Z
+// Built 2026-10-06T21:01:47.120Z
 
 window.DH_DATA = {
   "brand": {
@@ -4289,6 +4289,23 @@ window.DH_DATA = {
   ],
   "toolkit": [
     {
+      "title": "ChampBeam",
+      "description": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
+      "url": "https://github.com/Champ-Deep/ChampBeam",
+      "category": "tool",
+      "featured": true,
+      "site": "https://champbeam.com"
+    },
+    {
+      "title": "Deep Scanner",
+      "description": "Checks any folder before it reaches a cloud agent. Blocks live secrets and ID documents, flags what a human should decide. First run: 8,357 files, 6 blocked, 392 flagged.",
+      "url": "#",
+      "category": "repo",
+      "featured": true,
+      "status": "building",
+      "kind": "built"
+    },
+    {
       "title": "Lead Scorer",
       "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
       "url": "/lead-scorer",
@@ -6089,7 +6106,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-06T19:45:05.864Z",
+    "built": "2026-10-06T21:01:47.103Z",
     "built_date": "2026-10-07",
     "newest_entry": {
       "date": "2026-10-06",
@@ -7308,6 +7325,19 @@ window.DH_DATA = {
         "days_since": 49
       },
       {
+        "name": "ChampBeam",
+        "what": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
+        "url": "https://github.com/Champ-Deep/ChampBeam",
+        "site": "https://champbeam.com",
+        "status": null,
+        "kind": "built",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-08-04",
+        "mentions_90d": 3,
+        "days_since": 64
+      },
+      {
         "name": "LakeStream",
         "what": "Template-based web scraper for B2B data enrichment. YouTube transcripts included.",
         "url": "https://github.com/Champ-Deep/LakeStream",
@@ -7382,6 +7412,19 @@ window.DH_DATA = {
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
         "days_since": 126
+      },
+      {
+        "name": "Deep Scanner",
+        "what": "Checks any folder before it reaches a cloud agent. Blocks live secrets and ID documents, flags what a human should decide. First run: 8,357 files, 6 blocked, 392 flagged.",
+        "url": null,
+        "site": null,
+        "status": "building",
+        "kind": "built",
+        "category": "repo",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
       },
       {
         "name": "B2B Pulse",
@@ -7840,7 +7883,7 @@ window.DH_DATA = {
     ],
     "counts": {
       "using": 15,
-      "built": 17,
+      "built": 19,
       "trying": 4,
       "watching": 5,
       "skill": 8
@@ -7851,5 +7894,5 @@ window.DH_DATA = {
       "essays": 16
     }
   },
-  "built": "2026-10-06T19:45:05.883Z"
+  "built": "2026-10-06T21:01:47.120Z"
 };

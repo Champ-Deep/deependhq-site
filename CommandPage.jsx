@@ -1,4 +1,4 @@
-// CommandPage.jsx — /command : the public Command Center.
+// CommandPage.jsx : /command : the public Command Center.
 // One screen: live vitals, status board, the build, the public log + real
 // commit graph, an interactive ecosystem graph, live repos, a rotating
 // shoutouts feed, and a playable terminal. Enhanced with VANTA (hero),
@@ -11,16 +11,20 @@ const { useState: useStateC, useEffect: useEffectC, useRef: useRefC, useMemo: us
 
 const DAY_ONE = '2025-11-01';
 const C_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const ACCENTS = ['#30E060', '#4A7BF7', '#C9A84C'];
+// Canvas, SVG attributes and confetti need literal colours, so read the system.css tokens once at runtime.
+const ccTokCache = {};
+const ccTok = (name, fb) => { if (!(name in ccTokCache)) { let v = ''; try { v = getComputedStyle(document.documentElement).getPropertyValue(name).trim(); } catch (e) {} ccTokCache[name] = v || fb; } return ccTokCache[name]; };
+const ccRgba = (hex, a) => { const m = /^#([0-9a-f]{6})$/i.exec(hex); if (!m) return hex; const n = parseInt(m[1], 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`; };
+const ACCENTS = () => [ccTok('--build', '#30E060'), ccTok('--think', '#4A7BF7'), ccTok('--win', '#F4A62A')];
 const LANG_COLOR = {
   Python: '#3572A5', JavaScript: '#f1e05a', TypeScript: '#3178c6',
-  HTML: '#e34c26', CSS: '#563d7c', Shell: '#89e051', Go: '#00ADD8', null: '#8A8A8A',
+  HTML: '#e34c26', CSS: '#563d7c', Shell: '#89e051', Go: '#00ADD8', null: 'var(--dim)',
 };
 
 const prefersReduced = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 const fireConfetti = (opts) => {
   if (!window.confetti || prefersReduced()) return;
-  window.confetti(Object.assign({ particleCount: 90, spread: 72, startVelocity: 38, ticks: 160, origin: { y: 0.72 }, colors: ['#30E060', '#C9A84C', '#E8E4DC', '#4A7BF7'] }, opts || {}));
+  window.confetti(Object.assign({ particleCount: 90, spread: 72, startVelocity: 38, ticks: 160, origin: { y: 0.72 }, colors: [ccTok('--build', '#30E060'), ccTok('--win', '#F4A62A'), ccTok('--text', '#F4EBD9'), ccTok('--think', '#4A7BF7')] }, opts || {}));
 };
 const istClock = () => {
   try { return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(new Date()) + ' IST'; }
@@ -36,7 +40,7 @@ const relTime = (iso) => {
 };
 
 /* ---------- Rough Notation: annotate a phrase when it scrolls into view ---------- */
-const Annotate = ({ children, type = 'underline', color = '#30E060', className }) => {
+const Annotate = ({ children, type = 'underline', color = ccTok('--build', '#30E060'), className }) => {
   const ref = useRefC(null);
   useEffectC(() => {
     if (!window.RoughNotation || !ref.current) return;
@@ -71,9 +75,10 @@ const startMatrixRain = (host) => {
   const ctx = cv.getContext('2d');
   let raf, w, h, cols, drops, last = 0;
   const chars = '01<>/_$#{}[]=+*?;:';
+  const fadeCol = ccRgba(ccTok('--bg', '#0E1A33'), 0.30), hiCol = ccTok('--text', '#F4EBD9'), dropCol = ccRgba(ccTok('--build', '#30E060'), 0.6);
   const resize = () => { const r = host.getBoundingClientRect(); w = cv.width = Math.max(1, r.width); h = cv.height = Math.max(1, r.height); cols = Math.floor(w / 14); drops = new Array(cols).fill(0).map(() => Math.random() * (h / 16)); };
   resize(); window.addEventListener('resize', resize);
-  const draw = (ts) => { raf = requestAnimationFrame(draw); if (ts - last < 70) return; last = ts; ctx.fillStyle = 'rgba(13,15,20,0.30)'; ctx.fillRect(0, 0, w, h); ctx.font = '12px monospace'; for (let i = 0; i < cols; i++) { const ch = chars[Math.floor(Math.random() * chars.length)]; const x = i * 14, y = drops[i] * 16; ctx.fillStyle = Math.random() > 0.975 ? '#E8E4DC' : 'rgba(48,224,96,0.6)'; ctx.fillText(ch, x, y); if (y > h && Math.random() > 0.975) drops[i] = 0; else drops[i] += 1; } };
+  const draw = (ts) => { raf = requestAnimationFrame(draw); if (ts - last < 70) return; last = ts; ctx.fillStyle = fadeCol; ctx.fillRect(0, 0, w, h); ctx.font = '12px monospace'; for (let i = 0; i < cols; i++) { const ch = chars[Math.floor(Math.random() * chars.length)]; const x = i * 14, y = drops[i] * 16; ctx.fillStyle = Math.random() > 0.975 ? hiCol : dropCol; ctx.fillText(ch, x, y); if (y > h && Math.random() > 0.975) drops[i] = 0; else drops[i] += 1; } };
   raf = requestAnimationFrame(draw);
   return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); try { host.removeChild(cv); } catch (e) {} };
 };
@@ -143,7 +148,7 @@ const Heatmap = ({ journey }) => {
 };
 
 /* ---------- Real GitHub contribution graph (self-fetched, themed) ---------- */
-const ghCellBg = (lv) => (lv ? `rgba(48,224,96,${0.2 + lv * 0.2})` : '#161A22');
+const ghCellBg = (lv) => (lv ? `color-mix(in oklab, var(--build) ${Math.round((0.2 + lv * 0.2) * 100)}%, transparent)` : 'var(--surface)');
 const GitHubCal = () => {
   const [days, setDays] = useStateC(null); // null = loading, [] = failed (hide)
   const [tip, setTip] = useStateC(null);
@@ -203,13 +208,13 @@ const ConstellationSVGInner = ({ companies, onSelect }) => {
   const VW = 800, VH = 460, cx = 400, cy = 230, rx = 320, ry = 168;
   const nodes = useMemoC(() => (companies || []).map((co, i) => {
     const n = Math.max(companies.length, 1); const ang = (i / n) * Math.PI * 2 - Math.PI / 2;
-    return { ...co, x: cx + rx * Math.cos(ang), y: cy + ry * Math.sin(ang), color: ACCENTS[i % 3], dur: (6 + (i % 5)).toFixed(1) + 's', delay: (-(i * 0.6)).toFixed(1) + 's' };
+    return { ...co, x: cx + rx * Math.cos(ang), y: cy + ry * Math.sin(ang), color: ACCENTS()[i % 3], dur: (6 + (i % 5)).toFixed(1) + 's', delay: (-(i * 0.6)).toFixed(1) + 's' };
   }), [companies]);
   return (
     <div className="cc-constellation" onMouseLeave={() => { setHover(null); setTip(null); }}>
       <svg viewBox={`0 0 ${VW} ${VH}`} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ecosystem of companies">
         {nodes.map((n, i) => (<line key={'e' + i} className="cc-edge" x1={cx} y1={cy} x2={n.x} y2={n.y} style={{ opacity: hover === null ? 0.3 : (hover === i ? 0.85 : 0.08) }} />))}
-        <g><circle className="cc-node-hub" cx={cx} cy={cy} r="34" /><text x={cx} y={cy - 2} className="cc-node-lab" style={{ fill: '#E8E4DC', fontSize: 13 }}>deep</text><text x={cx} y={cy + 13} className="cc-node-lab" style={{ fill: '#30E060', fontSize: 13 }}>{'>_'}</text></g>
+        <g><circle className="cc-node-hub" cx={cx} cy={cy} r="34" /><text x={cx} y={cy - 2} className="cc-node-lab" style={{ fill: 'var(--text)', fontSize: 13 }}>deep</text><text x={cx} y={cy + 13} className="cc-node-lab" style={{ fill: 'var(--build)', fontSize: 13 }}>{'>_'}</text></g>
         {nodes.map((n, i) => (
           <g key={i} className="cc-node-g cc-float" style={{ '--cc-dur': n.dur, animationDelay: n.delay, cursor: 'pointer' }} onMouseEnter={(e) => { setHover(i); setTip({ x: e.clientX, y: e.clientY, n }); }} onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, n })} onClick={() => onSelect && onSelect(n)}>
             <circle className="cc-node" cx={n.x} cy={n.y} r={hover === i ? 11 : 7} fill={n.color} style={{ filter: `drop-shadow(0 0 7px ${n.color})` }} />
@@ -217,7 +222,7 @@ const ConstellationSVGInner = ({ companies, onSelect }) => {
           </g>
         ))}
       </svg>
-      {tip && (<div className="cc-tip" style={{ left: tip.x, top: tip.y }}><div className="cc-tip-day">{tip.n.tag || 'venture'}</div><div className="cc-tip-text"><b style={{ color: '#E8E4DC' }}>{tip.n.name}</b><br />{tip.n.desc}</div></div>)}
+      {tip && (<div className="cc-tip" style={{ left: tip.x, top: tip.y }}><div className="cc-tip-day">{tip.n.tag || 'venture'}</div><div className="cc-tip-text"><b style={{ color: 'var(--text)' }}>{tip.n.name}</b><br />{tip.n.desc}</div></div>)}
     </div>
   );
 };
@@ -240,8 +245,9 @@ const Constellation = ({ companies }) => {
   useEffectC(() => {
     if (!window.ForceGraph || !elRef.current) { setUseFG(false); return; }
     const el = elRef.current;
-    const nodes = [{ id: '__hub', name: 'deep >_', hub: true }, ...companies.map((c, i) => ({ id: c.name, name: c.name, desc: c.desc, tag: c.tag, col: ACCENTS[i % 3] }))];
+    const nodes = [{ id: '__hub', name: 'deep >_', hub: true }, ...companies.map((c, i) => ({ id: c.name, name: c.name, desc: c.desc, tag: c.tag, col: ACCENTS()[i % 3] }))];
     const links = companies.map((c) => ({ source: '__hub', target: c.name }));
+    const linkCol = ccRgba(ccTok('--think', '#4A7BF7'), 0.22), hubCol = ccTok('--build', '#30E060'), hubFill = ccTok('--bg', '#0E1A33'), hubLab = ccTok('--text', '#F4EBD9'), nodeLab = ccTok('--muted', '#A9ABA6');
     let g;
     try {
       g = window.ForceGraph()(el)
@@ -251,7 +257,7 @@ const Constellation = ({ companies }) => {
         .nodeRelSize(6)
         .nodeVal((n) => (n.hub ? 9 : 3))
         .nodeLabel((n) => (n.hub ? '12 companies, one operating system' : `${n.name} · ${n.desc || ''}`))
-        .linkColor(() => 'rgba(74,123,247,0.22)')
+        .linkColor(() => linkCol)
         .linkWidth(1)
         .onNodeClick((n) => { if (n.hub) { setSelected(null); return; } const co = byName[n.name]; if (co) setSelected(co); })
         .onBackgroundClick(() => setSelected(null))
@@ -259,13 +265,13 @@ const Constellation = ({ companies }) => {
         .nodeCanvasObject((n, ctx, scale) => {
           const r = n.hub ? 10 : 6;
           ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 2 * Math.PI);
-          ctx.shadowColor = n.hub ? '#30E060' : n.col; ctx.shadowBlur = 12;
-          ctx.fillStyle = n.hub ? '#0D0F14' : n.col; ctx.fill();
+          ctx.shadowColor = n.hub ? hubCol : n.col; ctx.shadowBlur = 12;
+          ctx.fillStyle = n.hub ? hubFill : n.col; ctx.fill();
           ctx.shadowBlur = 0;
-          if (n.hub) { ctx.lineWidth = 1.6; ctx.strokeStyle = '#30E060'; ctx.stroke(); }
+          if (n.hub) { ctx.lineWidth = 1.6; ctx.strokeStyle = hubCol; ctx.stroke(); }
           const fs = Math.max(9, 12 / scale);
           ctx.font = `${fs}px 'JetBrains Mono', monospace`;
-          ctx.fillStyle = n.hub ? '#E8E4DC' : '#C9C7C0';
+          ctx.fillStyle = n.hub ? hubLab : nodeLab;
           ctx.textAlign = 'center'; ctx.textBaseline = 'top';
           ctx.fillText(n.hub ? 'deep >_' : n.name, n.x, n.y + r + 5);
         })
@@ -307,7 +313,7 @@ const RepoCard = ({ name, desc, lang, updated, url }) => (
   <a className="cc-repo" href={url || 'https://github.com/Champ-Deep'} target="_blank" rel="noreferrer">
     <div className="cc-repo-top"><span className="cc-repo-name">{name}</span><span className="cc-repo-meta" aria-hidden="true">↗</span></div>
     <div className="cc-repo-desc">{desc}</div>
-    <div className="cc-repo-meta"><span><span className="cc-lang-dot" style={{ background: LANG_COLOR[lang] || '#8A8A8A' }} />{lang || 'code'}</span>{updated && <span>pushed {updated}</span>}</div>
+    <div className="cc-repo-meta"><span><span className="cc-lang-dot" style={{ background: LANG_COLOR[lang] || 'var(--dim)' }} />{lang || 'code'}</span>{updated && <span>pushed {updated}</span>}</div>
   </a>
 );
 const LiveRepos = () => {
@@ -425,7 +431,7 @@ const Terminal = () => {
     }
     if (lc.startsWith('echo ')) return [{ cls: 'out', segs: [seg(cmd.slice(5), null)] }];
     if (lc === 'coffee') { const n = coffee + 1; setCoffee(n); return [{ cls: 'out', segs: [seg('  ( ( (\n   )_)_)\n  |____| ', 'gd'), seg(' cup #' + n + '. the build runs on it.', null)] }]; }
-    if (lc === 'matrix') { fireConfetti({ particleCount: 140, spread: 100, colors: ['#30E060', '#E8E4DC'] }); return [{ cls: 'out', segs: [seg('wake up, neo... the vault has you.', 'g')] }]; }
+    if (lc === 'matrix') { fireConfetti({ particleCount: 140, spread: 100, colors: [ccTok('--build', '#30E060'), ccTok('--text', '#F4EBD9')] }); return [{ cls: 'out', segs: [seg('wake up, neo... the vault has you.', 'g')] }]; }
     if (lc === 'party' || lc === 'confetti') { fireConfetti({ particleCount: 160, spread: 110 }); return [{ cls: 'out', segs: [seg('🎉 shipped.', 'gd')] }]; }
     if (lc === 'sudo hire' || lc === 'hire') return [{ cls: 'out', segs: [seg('smart move. ', null), seg('scheduler.zoom.us/sreedeep', 'g'), seg('. let us build you one.', null)] }];
     if (lc.startsWith('sudo')) return [{ cls: 'out', segs: [seg('nice try. you are not root here. but ', null), seg('sudo hire', 'g'), seg(' works.', null)] }];

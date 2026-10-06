@@ -12,7 +12,9 @@ const NAV_LINKS = [
   { id: 'now',     label: 'Now',         href: 'now.html' },
 ];
 
-// progress: the homepage draws a gold-to-green scroll progress line under the bar.
+// progress: the homepage draws a marigold-to-green scroll progress line under the bar.
+// The brand is the favicon cut of the D under water plus the word in Fraunces
+// and a marigold cursor (identity kit v1, Oct 2026).
 const Nav = ({ active = 'home', progress = false }) => {
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
@@ -28,13 +30,14 @@ const Nav = ({ active = 'home', progress = false }) => {
       <nav className="sys-nav sys" aria-label="primary">
         <div className="wrap">
           <a className="brand" href="index.html" aria-current={cur('home')} aria-label="deep, home">
-            <span>deep</span><span className="gt">&gt;_</span>
+            <img src="favicon.svg" width="32" height="32" alt="" />
+            <span className="brand-word">deep</span><span className="brand-cur" aria-hidden="true">_</span>
           </a>
           <div className="nav-links">
             {NAV_LINKS.map((l) => <a key={l.id} href={l.href} aria-current={cur(l.id)}>{l.label}</a>)}
           </div>
           <div className="nav-right">
-            <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ minHeight: 40, padding: '0 16px', fontSize: 'var(--text-sm)' }}>Book a call</a>
+            <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ minHeight: 44, padding: '0 16px', fontSize: 'var(--text-sm)' }}>Book a call</a>
             <button className="nav-burger" aria-label={open ? 'close menu' : 'open menu'} aria-expanded={open} aria-controls="nav-drawer" onClick={() => setOpen(!open)}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                 {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round"/> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round"/>}

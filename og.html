@@ -3,38 +3,60 @@
 <head>
   <meta charset="utf-8">
   <title>og image</title>
-  <link rel="stylesheet" href="colors_and_type.css">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0E1A33">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="system.css">
   <style>
-    html, body { margin: 0; background: var(--color-bg); }
-    .og { width: 1200px; height: 630px; box-sizing: border-box; padding: 80px; display: flex; flex-direction: column; justify-content: space-between; background:
-      radial-gradient(1200px 600px at 80% -20%, rgba(48,224,96,0.10), transparent 60%), var(--color-bg); }
-    .og-top { display: flex; align-items: center; gap: 14px; font-family: var(--font-code); color: var(--color-text-secondary); font-size: 26px; }
-    .og-gt { color: var(--color-accent-primary); font-weight: 600; }
-    .og-tag { display: inline-block; font-family: var(--font-code); font-size: 22px; color: var(--color-accent-secondary); border: 1px solid var(--color-border); border-radius: 100px; padding: 6px 18px; margin-bottom: 24px; }
-    .og-title { font-family: var(--font-display); font-weight: 800; color: var(--color-text-primary); font-size: 78px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: 1000px; }
-    .og-sub { font-family: var(--font-body); color: var(--color-text-secondary); font-size: 30px; margin: 24px 0 0; max-width: 940px; }
-    .og-foot { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 24px; color: var(--color-text-secondary); }
-    .og-foot b { color: var(--color-text-primary); font-weight: 600; }
+    /* The brand OG template, identity kit v1 (Oct 2026). 1200 by 630.
+       scripts/brand/og-render.mjs screenshots og.html?page=<id> into og/<id>.png.
+       Title, wordmark and mare stay inside the area platforms do not crop. */
+    html, body { margin: 0; background: var(--navy); }
+    .og { position: relative; width: 1200px; height: 630px; box-sizing: border-box; overflow: hidden; background: var(--navy); color: var(--text); }
+    .og-wm { position: absolute; left: 96px; top: 64px; width: 240px; height: auto; }
+    .og-tag { position: absolute; right: 96px; top: 84px; font: 600 22px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--win); }
+    .og-body { position: absolute; left: 96px; top: 246px; width: 700px; }
+    .og-title { margin: 0; font: 900 76px/1.02 var(--font-display); font-variation-settings: "WONK" 1; letter-spacing: -.015em; color: var(--text); text-wrap: balance; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .og-sub { margin: 22px 0 0; font: 400 30px/1.3 var(--font-ui); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .og-mare { position: absolute; right: 96px; bottom: 60px; height: 300px; width: auto; }
+    .og-foot { position: absolute; left: 0; right: 0; bottom: 0; }
+    .og-foot .drops { margin: 0 96px 18px; width: auto; }
+    .og-url { position: absolute; left: 96px; bottom: 82px; font: 500 22px/1 var(--font-mono); color: var(--dim); }
   </style>
 </head>
 <body>
   <div class="og" id="og">
-    <div class="og-top"><span class="og-gt">deep&nbsp;&gt;_</span> <span>deependhq.com</span></div>
-    <div>
-      <span class="og-tag" id="tag">building in public</span>
-      <h1 class="og-title" id="title">Past the hype cycle. Into the infrastructure.</h1>
-      <p class="og-sub" id="sub">Group CMO at Champions Group. 12 companies, one vault, shipped in public.</p>
+    <img class="og-wm" src="brand/wordmark.svg" width="240" height="145" alt="Deep">
+    <span class="og-tag" id="tag">building in public</span>
+    <div class="og-body">
+      <h1 class="og-title" id="title">i’m Deep and i ship every weekday.</h1>
+      <p class="og-sub" id="sub">12 companies, 1 operator, one public log.</p>
     </div>
-    <div class="og-foot"><span id="meta">day 214</span><span><b>sreedeep surapaneni</b></span></div>
+    <span class="og-url">deependhq.com</span>
+    <img class="og-mare" src="brand/mare-sticker.svg" width="268" height="300" alt="">
+    <div class="og-foot"><div class="drops"></div><div class="stripes"></div></div>
   </div>
   <script>
-    // Render any variant from query params, e.g.
-    // og.html?title=Four%20sales%20teams&sub=...&tag=week%2028&meta=days%20191-197
-    const q = new URLSearchParams(location.search);
-    const set = (id, key) => { const v = q.get(key); if (v) document.getElementById(id).textContent = v; };
-    set('title', 'title'); set('sub', 'sub'); set('tag', 'tag'); set('meta', 'meta');
+    // One card per top-level page, keyed by id. ?title= ?sub= ?tag= override,
+    // which is how a per-entry card can be rendered later.
+    var PAGES = {
+      home: { title: 'i’m Deep and i ship every weekday.', sub: '12 companies, 1 operator, one public log.', tag: 'building in public' },
+      journey: { title: 'Mission Log.', sub: 'One entry every weekday. The gaps stay visible.', tag: 'mission log' },
+      writing: { title: 'The weekly narratives.', sub: 'One essay a week, written from the log.', tag: 'writing' },
+      toolkit: { title: 'What I build with.', sub: 'Built here, in daily use, trying, watching.', tag: 'the stack' },
+      now: { title: 'What I am on right now.', sub: 'This month, in one snapshot.', tag: 'now' },
+      pillars: { title: '12 companies, 1 operator.', sub: 'Four pillars, each with its last day in the log.', tag: 'pillars' },
+      company: { title: 'One of the twelve.', sub: 'A Champions Group company, run in public.', tag: 'company' },
+      'field-notes': { title: 'Field notes.', sub: 'The tools, arcs and words of building in public.', tag: 'field notes' },
+      default: { title: 'Built in public, every weekday.', sub: 'Sreedeep Surapaneni, from 3 PM to 2 AM IST.', tag: 'deependhq.com' }
+    };
+    var q = new URLSearchParams(location.search);
+    var p = PAGES[q.get('page')] || PAGES.home;
+    ['title', 'sub', 'tag'].forEach(function (k) { document.getElementById(k).textContent = q.get(k) || p[k]; });
   </script>
 </body>
 </html>

@@ -35,10 +35,14 @@ const FAMILIES = [
   // 800 is the operator display weight in the design system (Inter 700/800).
   { css: 'Inter:wght@400;500;600;700;800', local: 'Inter', file: 'inter' },
   { css: 'JetBrains+Mono:wght@400;600', local: 'JetBrains Mono', file: 'jetbrains-mono' },
-  // Fraunces is a variable optical-size serif. The site uses 700 and 800 only.
-  // The homepage hero sets its second line in Fraunces italic 700, so the
-  // italic ships too. Only the latin italic file downloads for English text.
-  { css: 'Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700', local: 'Fraunces', file: 'fraunces' },
+  // Fraunces, identity kit v1 (Oct 2026). The identity needs the SOFT and WONK
+  // axes, so the request asks for all four axes, weights 700 to 900. Axis tags
+  // are sorted lowercase first, which the CSS2 API requires. The downloaded
+  // files are then cut down by scripts/brand/instance-fraunces.py (SOFT pinned
+  // at 100, wght limited to 700..900, opsz and WONK kept), which brings them
+  // back to roughly the old size. The -v2 suffix is what allows fonts/* to be
+  // cached as immutable: any future change to these files needs a new name.
+  { css: 'Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,700..900,0..100,0..1;1,9..144,700..900,0..100,0..1', local: 'Fraunces', file: 'fraunces', suffix: '-v2' },
 ];
 
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
@@ -107,7 +111,7 @@ for (const f of faces) {
 
 for (const f of byContent.values()) {
   // Italic faces get their own file name, or they would overwrite the upright one.
-  const name = `${fam.file}${f.style === 'italic' ? '-italic' : ''}-${f.subset}.woff2`;
+  const name = `${fam.file}${f.style === 'italic' ? '-italic' : ''}-${f.subset}${fam.suffix || ''}.woff2`;
   const dest = join(FONT_DIR, name);
   if (!existsSync(dest)) {
     const buf = await get(f.url, true);

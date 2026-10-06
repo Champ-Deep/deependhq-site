@@ -1,5 +1,5 @@
 /* ============================================================
-   ui_kits/website — Gotham Workshop styles
+   ui_kits/website : Gotham Workshop styles
    ============================================================ */
 
 @import url('../../colors_and_type.css');
@@ -58,16 +58,16 @@ body { color: var(--color-text-primary); font-family: var(--font-body); }
 }
 .dh-pill-dot { width: 5px; height: 5px; border-radius: 100px; background: currentColor; }
 .dh-pill-green { background: var(--color-accent-primary-10); color: var(--color-accent-primary); }
-.dh-pill-blue  { background: var(--color-accent-secondary-10); color: var(--color-accent-secondary); }
+.dh-pill-blue  { background: var(--color-accent-secondary-10); color: var(--think-text); }
 .dh-pill-gold  { background: var(--color-accent-tertiary-10); color: var(--color-accent-tertiary); }
-.dh-pill-muted { background: rgba(138, 138, 138, 0.10); color: var(--color-text-secondary); }
+.dh-pill-muted { background: color-mix(in oklab, var(--muted) 10%, transparent); color: var(--color-text-secondary); }
 
 /* ---------- Nav ---------- */
 .dh-nav {
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   height: 64px; padding: 0 var(--pad-desktop);
-  background: rgba(13, 15, 20, 0.80);
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
@@ -87,7 +87,7 @@ body { color: var(--color-text-primary); font-family: var(--font-body); }
   .dh-nav-links {
     position: absolute; top: 64px; left: 0; right: 0;
     flex-direction: column; gap: 0;
-    background: rgba(13,15,20,0.95); backdrop-filter: blur(12px);
+    background: color-mix(in oklab, var(--bg) 95%, transparent); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border);
     padding: 8px 24px 16px;
     display: none;
@@ -201,10 +201,10 @@ body { color: var(--color-text-primary); font-family: var(--font-body); }
   white-space: nowrap;
 }
 .dh-day-green { background: var(--color-accent-primary-10); color: var(--color-accent-primary); }
-.dh-day-blue  { background: var(--color-accent-secondary-10); color: var(--color-accent-secondary); }
+.dh-day-blue  { background: var(--color-accent-secondary-10); color: var(--think-text); }
 .dh-day-gold  { background: var(--color-accent-tertiary-10); color: var(--color-accent-tertiary); }
 
-/* ---------- How I Think — POV cards ---------- */
+/* ---------- How I Think: POV cards ---------- */
 .dh-takes {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -713,7 +713,7 @@ body { color: var(--color-text-primary); font-family: var(--font-body); }
 /* ============================================================
    ⌘K Command Palette (sitewide) + footer hint
    ============================================================ */
-.dhk-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(5,7,10,0.6); backdrop-filter: blur(3px); display: flex; align-items: flex-start; justify-content: center; padding-top: 14vh; }
+.dhk-overlay { position: fixed; inset: 0; z-index: 200; background: color-mix(in oklab, color-mix(in oklab, var(--navy) 50%, black) 60%, transparent); backdrop-filter: blur(3px); display: flex; align-items: flex-start; justify-content: center; padding-top: 14vh; }
 .dhk { width: min(560px, 92vw); background: var(--color-bg-elevated); border: 1px solid var(--color-border-hover); border-radius: var(--radius-lg); box-shadow: 0 24px 80px rgba(0,0,0,0.6); overflow: hidden; }
 .dhk-in-row { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--color-border); }
 .dhk-gt { color: var(--color-accent-primary); font-family: var(--font-code); font-weight: 600; }

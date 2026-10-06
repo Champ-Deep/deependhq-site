@@ -285,8 +285,8 @@ const JourneyPage = () => {
   return (
     <main className="dh-page" id="main">
       <header className="dh-page-head">
-        <div className="dh-eyebrow"><span className="dh-eyebrow-dot dh-eyebrow-dot-green" /> The journey</div>
-        <h1 className="dh-page-title">The Journey.</h1>
+        <div className="dh-eyebrow"><span className="dh-eyebrow-dot dh-eyebrow-dot-green" /> every weekday, one entry</div>
+        <h1 className="dh-page-title">Mission Log.</h1>
         <p className="dh-page-sub">Day by day. Build by build. The receipts behind the hero line.</p>
         <div className="dh-page-meta">
           <span className="dh-mono">{all.length} entries</span>

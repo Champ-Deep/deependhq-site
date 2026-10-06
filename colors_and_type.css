@@ -1,48 +1,45 @@
 @import url('fonts.css');
 /* ============================================================
-   Gotham Workshop — Design Tokens
-   Brand: TheDeepEndHQ
-   Mode: Dark only. No light mode. This site lives at night.
+   Legacy token sheet. Every value now points at the system tokens in
+   system.css (identity kit v1, Oct 2026), which every page loads after this.
+   Mode: dark only. No light mode. This site lives at night.
    ============================================================ */
 
 :root {
   /* ---------- Color: Base surfaces ---------- */
-  --color-bg:            #0D0F14; /* Gotham — page, hero, root */
-  --color-bg-elevated:   #181C26; /* Slate — cards, code, nav, modals */
-  --color-bg-hover:      #1E2330; /* Slate Light — hover, active nav */
+  --color-bg:            var(--bg);      /* navy night: page, hero, root */
+  --color-bg-elevated:   var(--card);    /* cards, code, nav, modals */
+  --color-bg-hover:      var(--card-2);  /* hover, active nav */
 
   /* ---------- Color: Accents ---------- */
-  --color-accent-primary:   #30E060; /* Matrix — code, shipping, CTAs */
-  --color-accent-secondary: #4A7BF7; /* Arc — ideas, journey, planning */
-  --color-accent-tertiary:  #C9A84C; /* Gold — wins, milestones */
+  --color-accent-primary:   var(--build); /* code, shipping, operator CTAs */
+  --color-accent-secondary: var(--think); /* ideas, journey, planning */
+  --color-accent-tertiary:  var(--win);   /* marigold: wins, milestones */
 
   /* ---------- Color: Text ---------- */
-  --color-text-primary:   #E8E4DC; /* Bone — body, headings */
-  --color-text-secondary: #8A8A8A; /* Muted — metadata, timestamps */
+  --color-text-primary:   var(--text);  /* paper cream: body, headings */
+  --color-text-secondary: var(--muted); /* metadata, timestamps */
 
   /* ---------- Color: Borders ---------- */
-  --color-border:       #2A2E3A; /* Edge */
-  --color-border-hover: #3A3F50; /* Edge Light */
+  --color-border:       var(--line);
+  --color-border-hover: var(--line-2);
 
   /* ---------- Color: Accent alpha variants ---------- */
-  --color-accent-primary-10:   rgba(48, 224, 96, 0.10);
-  --color-accent-primary-20:   rgba(48, 224, 96, 0.20);
-  --color-accent-secondary-10: rgba(74, 123, 247, 0.10);
-  --color-accent-secondary-20: rgba(74, 123, 247, 0.20);
-  --color-accent-tertiary-10:  rgba(201, 168, 76, 0.10);
-  --color-accent-tertiary-20:  rgba(201, 168, 76, 0.20);
+  --color-accent-primary-10:   color-mix(in oklab, var(--build) 10%, transparent);
+  --color-accent-primary-20:   color-mix(in oklab, var(--build) 20%, transparent);
+  --color-accent-secondary-10: color-mix(in oklab, var(--think) 10%, transparent);
+  --color-accent-secondary-20: color-mix(in oklab, var(--think) 20%, transparent);
+  --color-accent-tertiary-10:  color-mix(in oklab, var(--win) 10%, transparent);
+  --color-accent-tertiary-20:  color-mix(in oklab, var(--win) 20%, transparent);
 
   /* ---------- Semantic role aliases ---------- */
   --fg:        var(--color-text-primary);
   --fg-muted:  var(--color-text-secondary);
-  --bg:        var(--color-bg);
   --bg-card:   var(--color-bg-elevated);
   --bg-hover:  var(--color-bg-hover);
   --border:    var(--color-border);
   --link:      var(--color-accent-primary);
   --ship:      var(--color-accent-primary);  /* green = building */
-  --think:     var(--color-accent-secondary); /* blue = ideas */
-  --win:       var(--color-accent-tertiary); /* gold = wins */
 
   /* ---------- Typography: Families ---------- */
   --font-display: 'Fraunces', Georgia, serif;
@@ -92,9 +89,9 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow-green: 0 0 20px rgba(48, 224, 96, 0.15);
-  --shadow-glow-blue:  0 0 20px rgba(74, 123, 247, 0.15);
-  --shadow-glow-gold:  0 0 12px rgba(201, 168, 76, 0.10);
+  --shadow-glow-green: 0 0 20px color-mix(in oklab, var(--build) 15%, transparent);
+  --shadow-glow-blue:  0 0 20px color-mix(in oklab, var(--think) 15%, transparent);
+  --shadow-glow-gold:  0 0 12px color-mix(in oklab, var(--win) 10%, transparent);
 
   /* ---------- Motion ---------- */
   --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);

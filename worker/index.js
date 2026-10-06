@@ -310,7 +310,7 @@ async function handleDecide(request, env) {
     const out = await res.json();
     const answer =
       (out.choices && out.choices[0] && out.choices[0].message && out.choices[0].message.content) || '';
-    return json({ answers: { [demo]: String(answer).replace(/\s*[—–]\s*/g, ', ').trim() }, model: DECIDE_MODEL, ms });
+    return json({ answers: { [demo]: String(answer).replace(/\s*[\u2014\u2013]\s*/g, ', ').trim() }, model: DECIDE_MODEL, ms });
   } catch (err) {
     const ms = Date.now() - started;
     if (err && err.name === 'AbortError') {
@@ -501,7 +501,7 @@ export default {
       console.error('deependhq: env.ASSETS binding missing. wrangler.jsonc needs an assets block with a directory, alongside "main".');
       return html(
         '<!doctype html><meta charset="utf-8"><title>deep &gt;_</title>' +
-          '<body style="font:16px ui-monospace,Menlo,monospace;padding:40px;background:#0d0e0c;color:#f5f2ea">' +
+          '<body style="font:16px ui-monospace,Menlo,monospace;padding:40px;background:#0E1A33;color:#F4EBD9">' +
           '<p>&gt;_ assets binding missing. this is a deploy misconfiguration, not a content problem.</p></body>',
         500
       );
@@ -555,7 +555,7 @@ const SHOWCASE_HEAD = `<!doctype html>
 <meta name="description" content="A short operator read on {{DOMAIN}}.">
 <link rel="canonical" href="{{SITE}}/showcase?d={{DOMAIN}}">
 <style>
-:root{--bg:#0d0e0c;--fg:#f5f2ea;--dim:#9aa0aa;--line:#24261f;--win:#c9a227;--build:#4ade80;--think:#60a5fa;--gold:#eab308}
+:root{--bg:#0E1A33;--surface:#15213A;--card:#1C2841;--fg:#F4EBD9;--dim:#A9ABA6;--line:#303C53;--win:#F4A62A;--build:#30E060;--think:#4A7BF7;--gold:#F4A62A}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",sans-serif;padding:24px}
 main{max-width:720px;margin:0 auto}
@@ -571,7 +571,7 @@ ul{list-style:none;padding:0;margin:0}
 li{border-left:2px solid var(--line);padding:10px 0 10px 14px;margin:0 0 10px}
 li b{display:block}
 li span{color:var(--dim);font-size:14px}
-.door{background:#14150f;border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:0 0 28px}
+.door{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:0 0 28px}
 .door b{color:var(--win)}
 .note{color:var(--dim);font-size:14px;border-top:1px solid var(--line);padding-top:20px;margin-top:36px}
 .foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font:12px/1.7 ui-monospace,Menlo,monospace}

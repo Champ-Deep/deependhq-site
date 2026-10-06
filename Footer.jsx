@@ -49,7 +49,7 @@ const Footer = ({ compact = false }) => {
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat is run by Widgo and <a className="foot-inline" href="https://www.widgo.ai/legal/cookie-policy" target="_blank" rel="noopener noreferrer">uses cookies</a> · this site records page views, scroll depth and outbound clicks on its own server: no third-party tracker, no ad network, and a random first-party id so returning readers are not counted as new ones. the numbers are on <a className="foot-inline" href="/privacy">/privacy</a></span>
+          <span className="foot-id"><img src="favicon.svg" width="24" height="24" alt="" />© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat is run by Widgo and <a className="foot-inline" href="https://www.widgo.ai/legal/cookie-policy" target="_blank" rel="noopener noreferrer">uses cookies</a> · this site records page views, scroll depth and outbound clicks on its own server: no third-party tracker, no ad network, and a random first-party id so returning readers are not counted as new ones. the numbers are on <a className="foot-inline" href="/privacy">/privacy</a></span>
           <span>{newest ? `day ${newest.day} of building in public` : ''}{builtLabel ? ` · built ${builtLabel}` : ''}</span>
           <span>no-build React · Cloudflare Workers · publishes itself nightly · press ⌘K</span>
         </div>

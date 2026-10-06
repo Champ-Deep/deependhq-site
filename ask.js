@@ -66,17 +66,17 @@
     host.setAttribute('data-dh-ask', '');
     host.style.cssText = [
       'max-width:640px', 'margin:32px auto 8px', 'padding:16px 18px',
-      'border:1px solid var(--border, #2a2a2a)', 'border-radius:4px',
+      'border:1px solid var(--line)', 'border-radius:4px',
       'font:400 15px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace',
-      'color:var(--fg,#e8e4dc)', 'background:var(--bg-soft,#141414)',
+      'color:var(--text)', 'background:var(--card)',
     ].join(';');
 
     host.innerHTML =
       '<p style="margin:0 0 10px">' + q.text + '</p>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
       '<button type="button" data-dh-ask-yes style="cursor:pointer;padding:6px 12px;border-radius:3px;border:1px solid currentColor;background:transparent;color:inherit;font:inherit">' + q.yes + '</button>' +
-      '<button type="button" data-dh-ask-no style="cursor:pointer;padding:6px 12px;border-radius:3px;border:1px solid var(--border,#2a2a2a);background:transparent;color:var(--fg-muted,#a8a29a);font:inherit">' + q.no + '</button>' +
-      '<button type="button" data-dh-ask-skip style="cursor:pointer;padding:6px 12px;border:0;background:transparent;color:var(--fg-muted,#a8a29a);font:inherit;text-decoration:underline">no thanks</button>' +
+      '<button type="button" data-dh-ask-no style="cursor:pointer;padding:6px 12px;border-radius:3px;border:1px solid var(--line);background:transparent;color:var(--muted);font:inherit">' + q.no + '</button>' +
+      '<button type="button" data-dh-ask-skip style="cursor:pointer;padding:6px 12px;border:0;background:transparent;color:var(--muted);font:inherit;text-decoration:underline">no thanks</button>' +
       '</div>';
 
     // Append to the article if there is one, otherwise to the page.

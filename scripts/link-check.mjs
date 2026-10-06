@@ -91,6 +91,11 @@ for (const page of pages) {
       // index.html, so appending .html to it would look for "/.html" and
       // report the homepage as broken on every page that links to it.
       if (clean === '/') { targetFile = 'index.html'; }
+      // A root-absolute asset (/favicon.ico, /brand/mare-night.svg, /system.css)
+      // is a file, not a route: check that exact file, never "<asset>.html".
+      else if (/\.[a-z0-9]+$/i.test(clean) && !clean.endsWith('.html')) {
+        targetFile = existsSync(join(root, clean.slice(1))) ? clean.slice(1) : null;
+      }
       else {
         const asHtml = clean.endsWith('.html') ? clean : `${clean}.html`;
         targetFile = existsSync(join(root, asHtml.replace(/^\//, ''))) ? asHtml.replace(/^\//, '') : null;

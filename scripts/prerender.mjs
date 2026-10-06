@@ -77,7 +77,7 @@ async function downloadDeps() {
 // chain, so the shared module list has to carry all of them even when only one
 // renders. Loading the ones a page does not use costs nothing at runtime
 // because the prerender bundle is never shipped.
-const SHARED = ['Sys.jsx', 'Nav.jsx', 'Footer.jsx', 'Palette.jsx', 'Rail.jsx'];
+const SHARED = ['Sys.jsx', 'Nav.jsx', 'SignOff.jsx', 'Footer.jsx', 'Palette.jsx', 'Rail.jsx'];
 const ALL_PAGES = [
   'JourneyPage.jsx', 'ToolkitPage.jsx', 'FieldNotesPage.jsx', 'NowPage.jsx',
   'PillarsPage.jsx', 'WritingPage.jsx', 'PostPage.jsx', 'CompanyPage.jsx',
@@ -85,7 +85,7 @@ const ALL_PAGES = [
 ];
 
 const PAGES = [
-  { html: 'index.html', kind: 'app', modules: ['Sys.jsx', 'Nav.jsx', 'Home.jsx', 'Footer.jsx', 'Palette.jsx', 'app.jsx'] },
+  { html: 'index.html', kind: 'app', modules: ['Sys.jsx', 'Nav.jsx', 'Home.jsx', 'SignOff.jsx', 'Footer.jsx', 'Palette.jsx', 'app.jsx'] },
   { html: 'pillars.html', kind: 'page', id: 'pillars', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'now.html', kind: 'page', id: 'now', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'privacy.html', kind: 'page', id: 'privacy', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
@@ -238,13 +238,17 @@ function renderVariant({ dataSrc, bundlePath, page, slug, ReactDOMServer, React 
     },
     fetch: async () => { throw new Error('prerender: no network'); },
   };
-  // The homepage hero draws the gray mare's still frame from mare-hero.json
-  // (Home.jsx reads window.DH_MARE_HERO). Missing file: the hero renders
-  // without her, which is a smaller page, not a broken one.
+  // The homepage hero inlines the gray mare (identity kit v1) from
+  // brand/mare-hero.svg: Home.jsx reads window.DH_MARE_SVG. Inline means no
+  // extra request, and home.css can animate .mare, .smear and .blaze. The SVG
+  // is decorative inside its button, so it is hidden from assistive tech.
+  // Missing file: the hero renders without her, a smaller page, not a broken one.
   try {
-    const mh = JSON.parse(readFileSync(join(root, 'mare-hero.json'), 'utf8'));
-    sandbox.DH_MARE_HERO = { cols: mh.cols, rows: mh.rows, stillFrame: mh.stillFrame };
-  } catch (e) { sandbox.DH_MARE_HERO = null; }
+    sandbox.DH_MARE_SVG = readFileSync(join(root, 'brand', 'mare-hero.svg'), 'utf8')
+      .replace(/<\?xml[^>]*>\s*/, '')
+      .replace(/<svg /, '<svg aria-hidden="true" focusable="false" ')
+      .trim();
+  } catch (e) { sandbox.DH_MARE_SVG = ''; }
   sandbox.window = sandbox;
   sandbox.globalThis = sandbox;
   sandbox.self = sandbox;

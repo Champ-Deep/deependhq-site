@@ -167,61 +167,16 @@
     });
   }
 
-  /* ---------- hero mare: one gallop on load, another on hover, then the still ----------
-     The prerendered <pre> holds the still frame. mare-hero.json (about 10KB
-     gzipped) holds 15 streaked frames from Muybridge's 1878 plates. Braille comes
-     from whichever system font has it, so measure its advance, size the art to
-     fill its box, and set the line height so the dots keep a square pitch. */
-  var hm = d.querySelector('.wx-hx-mare'), hpre = hm && hm.querySelector('pre');
-  if (hm && hpre) {
-    var hcols = parseFloat(getComputedStyle(hm).getPropertyValue('--cols')) || 102;
-    var hfit = function () {
-      var fs = parseFloat(getComputedStyle(hpre).fontSize) || 10;
-      var probe = d.createElement('span');
-      probe.textContent = '\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff\u28ff';
-      probe.style.cssText = 'position:absolute;visibility:hidden;white-space:pre';
-      hpre.appendChild(probe);
-      var adv = probe.getBoundingClientRect().width / 10 / fs;
-      hpre.removeChild(probe);
-      if (!(adv > 0.3 && adv < 1.2)) adv = 0.6;
-      var box = hm.getBoundingClientRect().width;
-      if (!box) return;
-      var nfs = box / (hcols * adv);
-      hpre.style.fontSize = nfs.toFixed(3) + 'px';
-      hpre.style.lineHeight = (nfs * adv * 5 / 3).toFixed(3) + 'px';
-    };
-    (d.fonts && d.fonts.ready ? d.fonts.ready : Promise.resolve()).then(hfit, hfit);
-    var hrt = 0;
-    window.addEventListener('resize', function () { clearTimeout(hrt); hrt = setTimeout(hfit, 150); });
-
-    var hstill = hpre.textContent, hframes = null, hsi = 6, hraf = 0, hend = 0, hlast = 0, hcur = 6;
-    var hgallop = function (ms) {
-      if (RM || !hframes || d.hidden) return;
-      hend = Math.max(hend, performance.now() + ms);
-      if (hraf) return;
-      var step = function (t) {
-        if (t - hlast >= 72) { hlast = t; hcur = (hcur + 1) % hframes.length; hpre.textContent = hframes[hcur]; }
-        if (t < hend || hcur !== hsi) hraf = requestAnimationFrame(step);
-        else { hraf = 0; hpre.textContent = hstill; }
-      };
-      hraf = requestAnimationFrame(step);
-    };
-    if (!RM) {
-      fetch('mare-hero.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-        if (!j || !j.frames || !j.frames.length) return;
-        hframes = j.frames.map(function (f) { return f.join('\n'); });
-        hsi = hcur = j.still || 0;
-        var r = hm.getBoundingClientRect();
-        if (r.top < window.innerHeight && r.bottom > 0) setTimeout(function () { hgallop(2200); }, 400);
-      }).catch(function () {});
-      hm.addEventListener('pointerenter', function () { hgallop(1600); });
-      hm.addEventListener('click', function () { window.dispatchEvent(new CustomEvent('dh:mare')); });
-    }
-  }
+  /* ---------- hero mare: identity kit v1 ----------
+     The vector mare is a <button> in the prerendered hero. Her trot-in, the
+     blaze flicker and the smear stretch are pure CSS (home.css). Click, Enter
+     or Space sends the braille gallop egg along the bottom of the screen. */
+  var hm = d.querySelector('.wx-hx-mare');
+  if (hm) hm.addEventListener('click', function () { window.dispatchEvent(new CustomEvent('dh:mare')); });
 
   /* ---------- easter eggs: the logo in the console, and the gray mare ----------
-     Type d e e p anywhere on the page (or the Konami code), click the hero's
-     green cursor, or run "mare" from cmd+K. She gallops in from the left on
+     Type d e e p anywhere on the page (or the Konami code), click the hero
+     mare or the cursor, or run "mare" from cmd+K. She gallops in from the left on
      Eadweard Muybridge's 1878 frames (15 of them, drawn in braille, fetched from
      /mare.json on first use), slows, and stops just left of the Ask Deep widget,
      whichever state it is in, so she never hides under it. Her legs advance with
@@ -231,17 +186,21 @@
   var LOGO_SPLIT = 38;
   var STILL = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⣠⣴⣶⣶⣶⣶⣄⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀\n⠀⠀⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⢀⣠⣤⣤⣄⣀⣠⣤⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀\n⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠈⢿⣿⣿⡇\n⠀⠀⠀⠀⠻⠟⠁⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⢹⣿⡿\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⡟⠉⠉⠛⠛⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⢻⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢿⣿⣿⡿⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⣰⣿⠟⠋⠀⠀⣾⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⡇⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⣰⡟⠃⠀⠀⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣄⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀⢻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠁⠹⣧⣀⠀⠀⠀\n⠀⠀⠀⠀⠀⢿⠀⠀⠀⠀⠀⠀⠀⠀⢻⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠒⠀⠀";
   try {
+    // Console styles cannot read custom properties, so read the tokens once.
+    var cs = getComputedStyle(d.documentElement);
+    var tk = function (n, f) { return (cs.getPropertyValue(n) || '').trim() || f; };
+    var cText = tk('--text', '#F4EBD9'), cWin = tk('--win', '#F4A62A'), cMuted = tk('--muted', '#A9ABA6'), cDim = tk('--dim', '#9098AA');
     var fmt = '', st = [];
     LOGO.forEach(function (l) {
       fmt += '%c' + l.slice(0, LOGO_SPLIT) + '%c' + l.slice(LOGO_SPLIT) + '\n';
-      st.push('color:#E8E4DC;font-family:monospace;line-height:1.05', 'color:#30E060;font-family:monospace;line-height:1.05');
+      st.push('color:' + cText + ';font-family:monospace;line-height:1.05', 'color:' + cWin + ';font-family:monospace;line-height:1.05');
     });
     fmt += '\n%c' + STILL + '\n%c' + "after Eadweard Muybridge, The Horse in Motion, 1878. public domain." + '\n\n%c' +
       'hello, console reader.\nthis page is prerendered html plus one small script. no framework.\n' +
       'for machines: /llms.txt and /agents.txt. for humans: /humans.txt\n' +
       'type d e e p on the page, or press cmd+K and try "mare".\n' +
       'book 30 minutes: https://scheduler.zoom.us/sreedeep';
-    st.push('color:#A8A8A2;line-height:1', 'color:#6E6E68;font-family:monospace;font-size:10px', 'color:#E8E4DC;font-family:monospace;font-size:12px;line-height:1.5');
+    st.push('color:' + cMuted + ';line-height:1', 'color:' + cDim + ';font-family:monospace;font-size:10px', 'color:' + cText + ';font-family:monospace;font-size:12px;line-height:1.5');
     console.log.apply(console, [fmt].concat(st));
   } catch (e) {}
 

@@ -1,7 +1,7 @@
 // app.jsx : the homepage entry. Oct 2026, "The Window".
 // Reading order follows the working window: identity at 15:00, the numbers,
 // how a day becomes an entry, the log, the stack, the four pillars, writing,
-// off the clock, three doors, and the 02:00 sign-off.
+// off the clock, three doors, the 02:00 sign-off, and the paper band.
 //
 // index.html no longer loads React or Babel. scripts/prerender.mjs renders
 // <App /> to static HTML at build time and home.js adds the interaction. The
@@ -26,6 +26,7 @@ const App = () => {
         <H.Doors />
       </main>
       <H.Signoff />
+      {window.SignOff && <window.SignOff />}
       <Footer compact />
       {window.CommandPalette && React.createElement(window.CommandPalette)}
     </div>

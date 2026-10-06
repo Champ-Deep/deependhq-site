@@ -1,5 +1,5 @@
 /* ============================================================
-   command.css — The Command Center (public)
+   command.css : The Command Center (public)
    The operator's dashboard view of deependhq.com.
    Borrows the vitals aesthetic of the old internal command-center,
    reframed as a public showcase. Dark only. Light text explicit.
@@ -81,7 +81,7 @@
 /* vitals tiles */
 .cc-vitals { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
 .cc-vital {
-  background: rgba(13,15,20,0.55); border: 1px solid var(--color-border);
+  background: color-mix(in oklab, var(--bg) 55%, transparent); border: 1px solid var(--color-border);
   border-radius: var(--radius); padding: var(--space-4);
   display: flex; flex-direction: column; gap: 2px;
 }
@@ -147,12 +147,12 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 }
 .cc-heat-cell {
   width: 13px; height: 13px; border-radius: 3px;
-  background: #161A22; border: 1px solid rgba(255,255,255,0.03);
+  background: var(--surface); border: 1px solid color-mix(in oklab, var(--text) 3%, transparent);
   transition: transform var(--dur-fast) var(--ease-out);
 }
-.cc-heat-cell.lv-green { background: var(--color-accent-primary); box-shadow: 0 0 6px rgba(48,224,96,0.35); }
-.cc-heat-cell.lv-blue { background: var(--color-accent-secondary); box-shadow: 0 0 6px rgba(74,123,247,0.3); }
-.cc-heat-cell.lv-gold { background: var(--color-accent-tertiary); box-shadow: 0 0 6px rgba(201,168,76,0.3); }
+.cc-heat-cell.lv-green { background: var(--color-accent-primary); box-shadow: 0 0 6px color-mix(in oklab, var(--build) 35%, transparent); }
+.cc-heat-cell.lv-blue { background: var(--color-accent-secondary); box-shadow: 0 0 6px color-mix(in oklab, var(--think) 30%, transparent); }
+.cc-heat-cell.lv-gold { background: var(--color-accent-tertiary); box-shadow: 0 0 6px color-mix(in oklab, var(--win) 30%, transparent); }
 .cc-heat-cell:hover { transform: scale(1.45); cursor: pointer; outline: 1px solid var(--color-text-primary); }
 .cc-heat-legend { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-4); flex-wrap: wrap; }
 .cc-legend-item { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
@@ -160,7 +160,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 .cc-legend-sw.green { background: var(--color-accent-primary); }
 .cc-legend-sw.blue { background: var(--color-accent-secondary); }
 .cc-legend-sw.gold { background: var(--color-accent-tertiary); }
-.cc-legend-sw.empty { background: #161A22; border: 1px solid var(--color-border); }
+.cc-legend-sw.empty { background: var(--surface); border: 1px solid var(--color-border); }
 
 .cc-tip {
   position: fixed; z-index: 50; pointer-events: none;
@@ -216,12 +216,12 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
    INTERACTIVE TERMINAL
    ============================================================ */
 .cc-term {
-  background: #0A0C10; border: 1px solid var(--color-border);
+  background: color-mix(in oklab, var(--navy) 80%, black); border: 1px solid var(--color-border);
   border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);
 }
 .cc-term-bar { display: flex; align-items: center; gap: 7px; padding: 10px var(--space-4); border-bottom: 1px solid var(--color-border); background: var(--color-bg-elevated); }
 .cc-term-dot { width: 11px; height: 11px; border-radius: 50%; }
-.cc-term-dot.r { background: #E04848; } .cc-term-dot.y { background: #C9A84C; } .cc-term-dot.g { background: #30E060; }
+.cc-term-dot.r { background: var(--danger); } .cc-term-dot.y { background: var(--win); } .cc-term-dot.g { background: var(--build); }
 .cc-term-title { margin-left: 6px; font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); }
 .cc-term-body { padding: var(--space-4); font-family: var(--font-code); font-size: var(--text-terminal); line-height: 1.7; min-height: 230px; max-height: 360px; overflow-y: auto; color: var(--color-text-primary); }
 .cc-term-line { white-space: pre-wrap; word-break: break-word; }
@@ -229,7 +229,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 .cc-term-line.out { color: var(--color-text-secondary); }
 .cc-term-line.out b { color: var(--color-text-primary); font-weight: 600; }
 .cc-term-line.out .g { color: var(--color-accent-primary); }
-.cc-term-line.out .bl { color: var(--color-accent-secondary); }
+.cc-term-line.out .bl { color: var(--think-text); }
 .cc-term-line.out .gd { color: var(--color-accent-tertiary); }
 .cc-term-input-row { display: flex; align-items: center; gap: 8px; }
 .cc-term-input-row .p { color: var(--color-accent-primary); }
@@ -270,7 +270,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 }
 
 /* ============================================================
-   SHOUTOUTS — rotating "on my radar" feed
+   SHOUTOUTS: rotating "on my radar" feed
    ============================================================ */
 .cc-shout { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-6); }
 .cc-shout-spot {
@@ -284,7 +284,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 @keyframes cc-shout-fill { from { width: 0; } to { width: 100%; } }
 .cc-shout-tag { align-self: flex-start; font-family: var(--font-code); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: var(--radius-pill); border: 1px solid; }
 .cc-shout-tag.tag-using { color: var(--color-accent-primary); border-color: var(--color-accent-primary); background: var(--color-accent-primary-10); }
-.cc-shout-tag.tag-trying { color: var(--color-accent-secondary); border-color: var(--color-accent-secondary); background: var(--color-accent-secondary-10); }
+.cc-shout-tag.tag-trying { color: var(--think-text); border-color: var(--color-accent-secondary); background: var(--color-accent-secondary-10); }
 .cc-shout-tag.tag-watching { color: var(--color-accent-tertiary); border-color: var(--color-accent-tertiary); background: var(--color-accent-tertiary-10); }
 .cc-shout-name { font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; color: var(--color-text-primary); margin-top: 10px; }
 .cc-shout-arrow { font-size: 1rem; color: var(--color-text-secondary); }
@@ -307,7 +307,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 @media (prefers-reduced-motion: reduce) { .cc-shout-bar { animation: none; width: 100%; } }
 
 /* ============================================================
-   LIBRARY FLAIR — slim cursor, typed prompt, force-graph, gh-calendar
+   LIBRARY FLAIR: slim cursor, typed prompt, force-graph, gh-calendar
    ============================================================ */
 /* slim blinking cursor (replaces the fat block) */
 .cc-hero-title .cc-cursor {
@@ -321,7 +321,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 .cc-hero-prompt .cc-gt { color: var(--color-accent-primary); font-weight: 600; margin-right: 6px; }
 .cc-typed { color: var(--color-text-secondary); }
 /* force-graph container */
-.cc-forcegraph { width: 100%; height: 440px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: radial-gradient(720px 320px at 50% 42%, rgba(48,224,96,0.05), transparent 70%), var(--color-bg-elevated); overflow: hidden; }
+.cc-forcegraph { width: 100%; height: 440px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: radial-gradient(720px 320px at 50% 42%, color-mix(in oklab, var(--build) 5%, transparent), transparent 70%), var(--color-bg-elevated); overflow: hidden; }
 .cc-forcegraph canvas { display: block; }
 /* github-calendar dark theme overrides */
 .cc-ghcal { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); color: var(--color-text-secondary); font-family: var(--font-code); font-size: var(--text-small); min-height: 120px; overflow-x: auto; }
@@ -333,7 +333,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
 .cc-drill { margin-top: var(--space-4); background: var(--color-bg-elevated); border: 1px solid var(--color-border-hover); border-radius: var(--radius-lg); padding: var(--space-6); position: relative; }
 .cc-drill-close { position: absolute; top: 12px; right: 14px; background: transparent; border: 0; color: var(--color-text-secondary); font-family: var(--font-code); cursor: pointer; font-size: 1.1rem; line-height: 1; }
 .cc-drill-close:hover { color: var(--color-text-primary); }
-.cc-drill-tag { font-family: var(--font-code); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent-secondary); }
+.cc-drill-tag { font-family: var(--font-code); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--think-text); }
 .cc-drill-name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-h3); color: var(--color-text-primary); margin: 4px 0 6px; }
 .cc-drill-desc { color: var(--color-text-secondary); font-size: var(--text-small); margin: 0 0 var(--space-3); max-width: 60ch; }
 .cc-drill-k { font-family: var(--font-code); font-size: var(--text-xs); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-right: var(--space-2); }
@@ -349,7 +349,7 @@ a.cc-prod:hover .cc-arrow { transform: translate(2px,-2px); }
   background:
     radial-gradient(1100px 380px at 18% -10%, var(--color-accent-primary-10), transparent 60%),
     radial-gradient(900px 360px at 100% 0%, var(--color-accent-secondary-10), transparent 55%),
-    rgba(13,15,20,0.45);
+    color-mix(in oklab, var(--bg) 45%, transparent);
 }
 .cc-forcegraph { background: transparent; height: 520px; }
 

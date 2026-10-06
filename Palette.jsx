@@ -1,11 +1,11 @@
-// Palette.jsx — sitewide ⌘K command palette + theme accent persistence.
+// Palette.jsx : sitewide ⌘K command palette + theme accent persistence.
 // Deliberately quiet: no banner, just a tiny footer hint. People discover it.
 // Also exposes window.dhTheme so the terminal `theme` command can recolor live.
 // Aliases suffixed K to avoid global-scope collisions with app.jsx / page.jsx.
 
 const { useState: useStateK, useEffect: useEffectK, useRef: useRefK, useMemo: useMemoK } = React;
 
-const DH_ACCENTS = { green: '#30E060', blue: '#4A7BF7', gold: '#C9A84C', cyan: '#22D3EE', magenta: '#E45FB0' };
+const DH_ACCENTS = { green: '#30E060', blue: '#4A7BF7', gold: '#F4A62A', cyan: '#22D3EE', magenta: '#E45FB0' };
 window.dhTheme = {
   set(name) {
     if (name === 'reset') { document.documentElement.style.removeProperty('--color-accent-primary'); try { localStorage.removeItem('dh-accent'); } catch (e) {} return 'accent reset to matrix green.'; }
@@ -18,7 +18,8 @@ window.dhTheme = {
 };
 window.dhTheme.apply();
 
-const dhkConfetti = (o) => { if (window.confetti && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) window.confetti(Object.assign({ particleCount: 90, spread: 72, origin: { y: 0.7 }, colors: ['#30E060', '#C9A84C', '#E8E4DC', '#4A7BF7'] }, o || {})); };
+const dhkTok = (name, fb) => { try { return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fb; } catch (e) { return fb; } };
+const dhkConfetti = (o) => { if (window.confetti && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) window.confetti(Object.assign({ particleCount: 90, spread: 72, origin: { y: 0.7 }, colors: [dhkTok('--build', '#30E060'), dhkTok('--win', '#F4A62A'), dhkTok('--text', '#F4EBD9'), dhkTok('--think', '#4A7BF7')] }, o || {})); };
 
 const CommandPalette = () => {
   const [open, setOpen] = useStateK(false);

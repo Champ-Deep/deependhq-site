@@ -1,5 +1,5 @@
 /* ============================================================
-   styles-x.css — extensions for the expanded site
+   styles-x.css : extensions for the expanded site
    Loaded after styles.css. Anything new added in v2 lives here.
    ============================================================ */
 
@@ -46,7 +46,7 @@
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   background:
-    repeating-linear-gradient(135deg, transparent 0 12px, rgba(48,224,96,0.015) 12px 14px),
+    repeating-linear-gradient(135deg, transparent 0 12px, color-mix(in oklab, var(--build) 1.5%, transparent) 12px 14px),
     var(--color-bg-elevated);
   overflow: hidden;
   white-space: nowrap;
@@ -83,7 +83,7 @@
 
 .dh-ticker-val.tick-gold  { color: var(--color-accent-tertiary); }
 
-.dh-ticker-val.tick-mag   { color: #e754c4; }
+.dh-ticker-val.tick-mag   { color: var(--human-text); }
 
 .dh-ticker-val.pulse::before {
   content: ''; display: inline-block; width: 6px; height: 6px;

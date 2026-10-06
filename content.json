@@ -2134,6 +2134,23 @@
   ],
   "toolkit": [
     {
+      "title": "ChampBeam",
+      "description": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
+      "url": "https://github.com/Champ-Deep/ChampBeam",
+      "category": "tool",
+      "featured": true,
+      "site": "https://champbeam.com"
+    },
+    {
+      "title": "Deep Scanner",
+      "description": "Checks any folder before it reaches a cloud agent. Blocks live secrets and ID documents, flags what a human should decide. First run: 8,357 files, 6 blocked, 392 flagged.",
+      "url": "#",
+      "category": "repo",
+      "featured": true,
+      "status": "building",
+      "kind": "built"
+    },
+    {
       "title": "Lead Scorer",
       "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
       "url": "/lead-scorer",

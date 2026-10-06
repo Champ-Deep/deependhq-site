@@ -32,6 +32,12 @@ const WxAge = ({ date, mode }) => {
   return <time className="age" dateTime={date} data-age={String(mode)} data-state={a.state}>{a.label}</time>;
 };
 
+// Brand illustration from the identity sprite (brand/icons.svg). Always beside a
+// text label, so it stays out of the accessibility tree. Never a UI control.
+const Ico = ({ id, size = 48 }) => (
+  <svg className="ico" width={size} height={size} aria-hidden="true" focusable="false"><use href={`brand/icons.svg#i-${id}`} /></svg>
+);
+
 const istClock = (iso) => {
   try {
     return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(iso)).replace(',', '');
@@ -41,18 +47,23 @@ const istClock = (iso) => {
 // ---------------------------------------------------------------- 15:00 hero
 // The hero is an editorial grid: the headline is set in three giant rows with
 // the words spaced across twelve columns, hairline guides at each row's x-height
-// and baseline, and small notes in the margins. The visual is the gray mare at a
-// gallop, drawn in braille from Muybridge's 1878 frames, with speed streaks
-// trailing off her back like a scanline smear. prerender.mjs puts the still frame
-// on window.DH_MARE_HERO from mare-hero.json; home.js gallops her on load and on
-// hover from the same file. Word order in the DOM reads as one sentence.
+// and baseline, and small notes in the margins. The visual is the gray mare from
+// identity kit v1 (Oct 2026), the sticker cut so her navy outline survives the
+// navy ground, with speed streaks trailing off her back. prerender.mjs inlines
+// brand/mare-hero.svg on window.DH_MARE_SVG, so there is no extra request and
+// home.css can reach .mare, .smear and .blaze. She is a button: click or Enter
+// sends the braille gallop egg along the bottom of the screen. Word order in
+// the DOM reads as one sentence.
+//
+// ChampBeam gets the one product cell in the hero, in Beam violet held to that
+// cell. The link carries utm tags so the traffic it sends shows up in Beam.
+const BEAM = 'https://champbeam.com/?utm_source=deependhq&utm_medium=hero&utm_campaign=identity-v1';
 const NUM = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
 const Hero = () => {
   const e = DH.journey[0];
   const st = DH.stats || {};
   const nCo = (DH.companies || []).length;
-  const MH = window.DH_MARE_HERO;
-  const still = MH && MH.stillFrame ? MH.stillFrame.join('\n') : '';
+  const MARE = window.DH_MARE_SVG || '';
   let i = 0;
   const W = (t, k) => <span className={`wx-hw wx-hw-${k}`} style={{ '--i': i++ }}>{t}</span>;
   return (
@@ -72,7 +83,7 @@ const Hero = () => {
         <p className="wx-hx-note wx-hx-n2" data-dh-frozen>day {st.days_public}<br />of building in public</p>
         <p className="wx-hx-note wx-hx-n3">ceo,<br />champions accelerator</p>
         <p className="wx-hx-note wx-hx-n4" data-dh-frozen>{NUM[nCo] || nCo} companies,<br />one vault</p>
-        <div className="wx-hx-mare" aria-hidden="true" style={{ '--cols': MH ? MH.cols : 102 }}><pre>{still}</pre></div>
+        {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
         <div className="wx-hx-foot">
           {/* data-dh-hero: the ONLY prose in the hero the copy engine may rewrite.
             It carries no build-time number and no claim that could be falsified.
@@ -94,6 +105,12 @@ const Hero = () => {
               never be changed by personalization. */}
           <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>book 30 minutes</a>
           <a className="wx-hx-paren" href="#log">what shipped today ↓</a>
+          <a className="wx-beam" href={BEAM} {...EXT} aria-label="ChampBeam, new and live at champbeam.com: send it, know they saw it">
+            <span className="wx-beam-k"><i aria-hidden="true" />new from the build</span>
+            <span className="wx-beam-t">ChampBeam</span>
+            <span className="wx-beam-d">Send it. Know they saw it. Smart links, QR codes and file tracking in one product.</span>
+            <span className="wx-beam-go">champbeam.com ↗</span>
+          </a>
         </div>
       </div>
       <div className="wx-hero-rule" aria-hidden="true" />
@@ -131,7 +148,7 @@ const Proof = () => {
 // The clock keyframes in home.css key off these hours: 15:00, 19:00, 23:00,
 // 01:03 (the daily-note-recap schedule) and 02:00.
 const STAGES = [
-  { hour: '15:00', short: 'calls', title: 'Calls first.',
+  { hour: '15:00', short: 'calls', icon: 'prompt', title: 'Calls first.',
     body: 'Client, vendor and partner calls fill the afternoon. Each one lands in the vault as a note, or it did not happen.',
     lines: [['cmd', 'ls vault/Calendar/Meetings | tail -1'], ['out', '2026-09-29 enterprise IT services client.md'], ['out', '+ <b>10-day trial</b> instead of a walkout · daily updates · shared sheet']] },
   { hour: '19:00', short: 'build', title: 'Build what the calls exposed.',
@@ -140,10 +157,10 @@ const STAGES = [
   { hour: '23:00', short: 'write', title: 'Write it down, unedited.',
     body: 'The daily note is the raw material: what shipped, what it connects to, what I think.',
     lines: [['cmd', 'open vault/Calendar/Daily/2026-09-30.md'], ['out', 'shipping_now · yesterday_thread · raw_thought · arcs']] },
-  { hour: '01:03', short: 'compile', title: 'An agent compiles the entry.',
+  { hour: '01:03', short: 'compile', icon: 'moon', title: 'An agent compiles the entry.',
     body: 'A nightly agent reads the note, writes the entry and rebuilds every number on this page from source. Nothing is typed in by hand.',
     lines: null },
-  { hour: '02:00', short: 'ship', title: 'Live by 2 AM.',
+  { hour: '02:00', short: 'ship', icon: 'diya', title: 'Live by 2 AM.',
     body: 'It pushes, the Cloudflare Worker serves it, and when an entry is late the top of the site says so.',
     lines: [['cmd', 'bash scripts/publish.sh'], ['ok', 'deploy ok · deependhq.com'], ['out', 'next window opens 15:00 IST']] },
 ];
@@ -183,7 +200,7 @@ const Day = () => {
               {stages.map((s) => (
                 <li key={s.hour} className="wx-stage" data-hour={s.hour}>
                   <p className="wx-stage-clock">{s.hour}</p>
-                  <h3 className="wx-stage-t">{s.title}</h3>
+                  <h3 className="wx-stage-t">{s.icon && <Ico id={s.icon} size={40} />}{s.title}</h3>
                   <p className="wx-stage-c">{s.body}</p>
                   <div className="wx-term" role="img" aria-label={`Terminal, ${s.title}`}>
                     <div className="wx-term-body">
@@ -310,12 +327,13 @@ const Log = () => {
 };
 
 // ---------------------------------------------------------------- 19:00 stack
-// Featured first: things that are not rows in stack_now yet. Each one drops
-// out of this list on its own once content.json carries it.
+// Featured first, always: the two newest builds lead the index whether or not
+// content.json carries them yet, and they are skipped further down so they
+// never show twice. Deep Scanner has no public repo yet, so it has no link.
 const FEATURED = [
-  { name: 'Deep Scanner', url: null, tag: 'new', meta: 'in build, open source',
+  { name: 'Deep Scanner', url: null, tag: 'new', meta: 'in build, open source soon',
     what: 'Checks any folder before it reaches a cloud agent. First run: 8,357 files, 6 blocked, 392 flagged.' },
-  { name: 'ChampBeam', url: 'https://champbeam.com', tag: 'live', meta: 'champbeam.com',
+  { name: 'ChampBeam', url: 'https://champbeam.com/?utm_source=deependhq&utm_medium=stack', tag: 'live', meta: 'champbeam.com',
     what: 'Smart links, QR codes and file tracking in one product. Send it, know they saw it.' },
 ];
 // ChampUTM lives inside ChampBeam now, so it does not get its own row.
@@ -324,7 +342,8 @@ const MERGED = new Set(['ChampUTM']);
 const Stack = () => {
   const S = DH.stack_now || { items: [], counts: {} };
   const byName = new Map(S.items.map((i) => [i.name, i]));
-  const featured = FEATURED.filter((f) => !byName.has(f.name));
+  const featured = FEATURED;
+  const pinned = new Set(FEATURED.map((f) => f.name));
   const scorer = byName.get('Lead Scorer');
   // Projects in active development (toolkit `status`) come first. A public
   // `site` wins over the repo link, so a live product opens as the product.
@@ -333,7 +352,7 @@ const Stack = () => {
     ...featured,
     ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'live', meta: 'on this site', what: 'Upload a lead list. Jev ranks who to call first and writes the first line.' }] : []),
     ...S.items
-      .filter((i) => i.kind === 'built' && (i.last_seen || i.status) && !MERGED.has(i.name))
+      .filter((i) => i.kind === 'built' && (i.last_seen || i.status) && !MERGED.has(i.name) && !pinned.has(i.name))
       .sort((a, b) => building(a) - building(b) || String(b.last_seen || '').localeCompare(String(a.last_seen || '')))
       .slice(0, 5)
       .map((i) => ({
@@ -457,6 +476,14 @@ const Writing = () => {
 // ---------------------------------------------------------------- 00:30 off the clock
 // Written from off_hours in content.json. Rewrite this line when those change.
 const HUMAN_LINE = 'Sundays at sunrise, the gray mare at Bangalore Turf Club. Jiu-jitsu two mornings a week, purple belt, still terrible at takedowns. One more turn of Civ at 2 AM. 47 attempts at the perfect sambar, 0 finals. Caro, Iyer and Naipaul for the long flights.';
+// One icon per thing in the line above, each with its own label.
+const HUMAN_ICONS = [
+  { id: 'horseshoe', label: 'sunday rides' },
+  { id: 'belt', label: 'jiu-jitsu' },
+  { id: 'crown', label: 'one more turn' },
+  { id: 'pot', label: 'sambar, attempt 47' },
+  { id: 'book', label: 'long-flight reading' },
+];
 const Human = () => {
   const words = HUMAN_LINE.split(' ');
   const step = +(52 / words.length).toFixed(3);
@@ -468,6 +495,9 @@ const Human = () => {
           <p className="wx-human-big" style={{ '--step': `${step}%` }}>
             {words.map((w, i) => <React.Fragment key={i}><span className="wx-w" style={{ '--i': i }}>{w}</span>{' '}</React.Fragment>)}
           </p>
+          <ul className="wx-human-ico" aria-label="Off the clock, in five objects">
+            {HUMAN_ICONS.map((h) => <li key={h.id}><Ico id={h.id} /><span>{h.label}</span></li>)}
+          </ul>
         </div>
         <div className="wx-human-side">
           <h3>dms I answer</h3>
@@ -507,10 +537,12 @@ const Doors = () => (
 );
 
 // ---------------------------------------------------------------- 02:00 sign-off
+// The compile line closes the night. The marks come right after it, in the
+// sitewide paper band (SignOff.jsx): the wordmark is always the SVG, never
+// live text, so the old typed "deep >_" wordmark is gone from here.
 const Signoff = () => (
   <div className="wx-signoff mode-operator">
     <p className="wx-foot-line" data-compile="">02:00 IST. The nightly agent rebuilds this page from the vault. The window opens again at 3 PM.</p>
-    <p className="wx-wordmark" aria-label="deep">deep <span className="wx-gt">&gt;<span className="wx-us">_</span></span></p>
   </div>
 );
 
