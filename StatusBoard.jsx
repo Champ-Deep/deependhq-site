@@ -1,4 +1,4 @@
-// StatusBoard.jsx — Now / Recently / Soon. The disciplined kanban.
+// StatusBoard.jsx: Now / Recently / Soon. The disciplined kanban.
 
 const StatusColumn = ({ title, slug, items, color, glyph }) => (
   <div className={`dh-sb-col dh-sb-${color}`}>

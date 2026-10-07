@@ -1,4 +1,4 @@
-// FieldNotesPage.jsx — /journey/field-notes wiki page.
+// FieldNotesPage.jsx: /journey/field-notes wiki page.
 
 const STATUS_DOT = {
   active:   { color: 'green', label: 'active' },
@@ -46,7 +46,7 @@ const FieldNotesPage = () => {
 
       <div className="dh-rail-layout">
       <div>
-      {/* Tools — the systems and agents that run the operation. People stay in the vault, not on the public site. */}
+      {/* Tools, the systems and agents that run the operation. People stay in the vault, not on the public site. */}
       <section id="tools" className="dh-wiki-section">
         <h2 className="dh-wiki-title">Tools</h2>
         <p className="dh-wiki-lede">The systems and agents I use to operate. People stay in the vault. Tools go on the site.</p>

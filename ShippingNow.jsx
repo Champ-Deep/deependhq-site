@@ -1,4 +1,4 @@
-// ShippingNow.jsx — homepage preview of the latest 3 journey entries.
+// ShippingNow.jsx: homepage preview of the latest 3 journey entries.
 // Reuses the JourneyEntry component (defined alongside).
 
 const formatDate = (iso) => {

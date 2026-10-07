@@ -223,7 +223,7 @@ function main() {
 
   const content = JSON.parse(readFileSync(SRC, 'utf8'));
 
-  // 1. journey — de-dupe by date, then unshift newest first.
+  // 1. journey, de-dupe by date, then unshift newest first.
   const journeyEntry = {
     date: entry.date, day: entry.day, mood: entry.mood,
     shipping_now: entry.shipping_now,
@@ -249,7 +249,7 @@ function main() {
   //    status strip is now derived in scripts/derive.mjs from the newest entry,
   //    so an entry cannot write a number the log does not support.
 
-  // 4. status_board.recently — prepend this ship, keep freshest 4.
+  // 4. status_board.recently, prepend this ship, keep freshest 4.
   content.status_board = content.status_board || {};
   const recently = content.status_board.recently || [];
   const shortText = entry.shipping_now.length > 90

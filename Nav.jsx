@@ -30,13 +30,22 @@ const Nav = ({ active = 'home', progress = false }) => {
       <nav className="sys-nav sys" aria-label="primary">
         <div className="wrap">
           <a className="brand" href="index.html" aria-current={cur('home')} aria-label="deep, home">
-            <img src="favicon.svg" width="32" height="32" alt="" />
-            <span className="brand-word">deep</span><span className="brand-cur" aria-hidden="true">_</span>
+            <span className="only-navy" style={{ display: 'contents' }}>
+              <img src="favicon.svg" width="32" height="32" alt="" />
+              <span className="brand-word">deep</span><span className="brand-cur" aria-hidden="true">_</span>
+            </span>
+            <span className="only-classic brand-classic">deep<span className="gt">&gt;_</span></span>
           </a>
           <div className="nav-links">
             {NAV_LINKS.map((l) => <a key={l.id} href={l.href} aria-current={cur(l.id)}>{l.label}</a>)}
           </div>
           <div className="nav-right">
+            {/* Two looks. The inline script in each page head owns the click and
+                the saved choice, so this works on the static homepage too. */}
+            <button type="button" className="theme-switch" data-dh-theme="" title="Switch between the navy look and the classic terminal look">
+              <span className="sw" aria-hidden="true"><i /><i /><i /></span>
+              <span className="lbl"><span className="sr">look: </span><span className="only-navy">navy</span><span className="only-classic">classic</span></span>
+            </button>
             <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ minHeight: 44, padding: '0 16px', fontSize: 'var(--text-sm)' }}>Book a call</a>
             <button className="nav-burger" aria-label={open ? 'close menu' : 'open menu'} aria-expanded={open} aria-controls="nav-drawer" onClick={() => setOpen(!open)}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">

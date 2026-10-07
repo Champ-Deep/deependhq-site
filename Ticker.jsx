@@ -1,4 +1,4 @@
-// Ticker.jsx — the live "output strip" under the hero. Reads like a system monitor.
+// Ticker.jsx: the live "output strip" under the hero. Reads like a system monitor.
 // The clock ticks client-side (no server needed). Other live fields come from an
 // optional Cloudflare Worker at /api/status; if it is missing or slow, the strip
 // falls back to the static values baked into DH_DATA.status. See WORKERS.md.

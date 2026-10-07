@@ -7,7 +7,7 @@
 //
 // No dependencies. Node 18+.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -34,7 +34,7 @@ async function main() {
   // Hard rule: NO em-dashes in any published output. Strip them from every
   // string value as a deterministic safety net, regardless of how they got in
   // (authoring slip, paste, manual edit). en-dashes too.
-  const deDash = (s) => s.replace(/\s*[—–]\s*/g, ', ').replace(/[—–]/g, ', ');
+  const deDash = (s) => s.replace(/\s*[\u2014\u2013]\s*/g, ', ').replace(/[\u2014\u2013]/g, ', ');
   const scrub = (o) => Array.isArray(o) ? o.map(scrub)
     : (o && typeof o === 'object') ? Object.fromEntries(Object.entries(o).map(([k, v]) => [k, scrub(v)]))
     : (typeof o === 'string' ? deDash(o) : o);
@@ -159,6 +159,19 @@ async function main() {
   const withJourney = companies.filter((c) => c.related_journey.length > 0).length;
   const linkedPosts = posts.filter((p) => (p.related_companies || []).length > 0).length;
   console.log(`cross-links: ${withJourney}/${companies.length} companies have journey, ${linkedPosts} posts linked`);
+
+  // Essay audio. scripts/essay-audio.mjs writes audio/<slug>.mp3 and a
+  // sidecar audio/<slug>.json (voice, length, where each block starts). A post
+  // carries `audio` only when both files exist, so the player never points at
+  // a file that is not there. Read here, not in derive.mjs, which stays pure.
+  for (const p of posts) {
+    try {
+      const meta = JSON.parse(readFileSync(join(root, 'audio', `${p.slug}.json`), 'utf8'));
+      if (meta && existsSync(join(root, 'audio', `${p.slug}.mp3`))) {
+        p.audio = { src: `audio/${p.slug}.mp3`, duration: meta.duration, voice: meta.voice_name || 'AI voice', starts: meta.starts || [], bytes: meta.bytes };
+      }
+    } catch (e) { /* no audio yet: the page offers the browser voice */ }
+  }
 
   // Derived, never stored: health, recent, heatmap, stats, stack_now. See derive.mjs.
   derive(data, new Date());

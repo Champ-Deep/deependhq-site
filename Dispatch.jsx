@@ -1,4 +1,4 @@
-// Dispatch.jsx — newsletter signup with quirky header.
+// Dispatch.jsx: newsletter signup with quirky header.
 
 const { useState: useStateD } = React;
 

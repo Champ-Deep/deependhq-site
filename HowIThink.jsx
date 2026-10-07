@@ -1,4 +1,4 @@
-// HowIThink.jsx — punchy POV takes (3 real ones from data.js)
+// HowIThink.jsx: punchy POV takes (3 real ones from data.js)
 
 const HowIThink = () => {
   const takes = window.DH_DATA.takes;

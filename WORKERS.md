@@ -1,4 +1,4 @@
-# deependhq.com — live endpoints (Cloudflare Workers)
+# deependhq.com, live endpoints (Cloudflare Workers)
 
 The site works fully without these. They are progressive enhancement: when a
 Worker is present the ticker and newsletter go live; when it is absent the site

@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-06T21:01:47.120Z
+// Built 2026-10-07T06:44:25.379Z
 
 window.DH_DATA = {
   "brand": {
@@ -4679,7 +4679,232 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "audio": {
+        "src": "audio/week-46-the-empty-room-arc.mp3",
+        "duration": 317.5,
+        "voice": "Brian",
+        "starts": [
+          {
+            "i": -1,
+            "t": 0
+          },
+          {
+            "i": 0,
+            "t": 33.12
+          },
+          {
+            "i": 1,
+            "t": 63.24
+          },
+          {
+            "i": 2,
+            "t": 101.13
+          },
+          {
+            "i": 3,
+            "t": 136.65
+          },
+          {
+            "i": 4,
+            "t": 138.79
+          },
+          {
+            "i": 5,
+            "t": 177.79
+          },
+          {
+            "i": 6,
+            "t": 196.87
+          },
+          {
+            "i": 7,
+            "t": 205.56
+          },
+          {
+            "i": 8,
+            "t": 237.73
+          },
+          {
+            "i": 9,
+            "t": 254.92
+          },
+          {
+            "i": 10,
+            "t": 293.15
+          }
+        ],
+        "bytes": 2540145
+      },
+      "viz": {
+        "window": {
+          "start": "2026-09-28",
+          "end": "2026-10-04"
+        },
+        "days": [
+          {
+            "date": "2026-09-28",
+            "dow": "mon",
+            "day": 332,
+            "arc_color": "blue",
+            "arcs": [
+              "ChampOps",
+              "Champions Operations"
+            ],
+            "ship": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark."
+          },
+          {
+            "date": "2026-09-29",
+            "dow": "tue",
+            "day": 333,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two months, no "
+          },
+          {
+            "date": "2026-09-30",
+            "dow": "wed",
+            "day": 334,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "Champions Operations"
+            ],
+            "ship": "shipped the middleman layer for the vendor-to-client matchmaking product."
+          },
+          {
+            "date": "2026-10-01",
+            "dow": "thu",
+            "day": 335,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "the enterprise it services client hit day three of a ten day trial judged on daily evidence."
+          },
+          {
+            "date": "2026-10-02",
+            "dow": "fri",
+            "day": 336,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "systems"
+            ],
+            "ship": "ran the first live shadow test of celsus os's entity judge today."
+          },
+          {
+            "date": "2026-10-03",
+            "dow": "sat",
+            "day": 337,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations"
+            ],
+            "ship": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 october,\" and the 4th is actually a"
+          },
+          {
+            "date": "2026-10-04",
+            "dow": "sun",
+            "day": 338,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations"
+            ],
+            "ship": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to decide cont"
+          }
+        ],
+        "para_days": [
+          [
+            "2026-10-04"
+          ],
+          [
+            "2026-10-04",
+            "2026-09-28"
+          ],
+          [
+            "2026-09-29"
+          ],
+          [],
+          [
+            "2026-09-30"
+          ],
+          [
+            "2026-10-01"
+          ],
+          [
+            "2026-10-01"
+          ],
+          [
+            "2026-10-02"
+          ],
+          [
+            "2026-10-04"
+          ],
+          [
+            "2026-10-04"
+          ],
+          [
+            "2026-10-03"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 6,
+            "paras": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              8,
+              9,
+              10
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 2,
+            "paras": [
+              2,
+              5,
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "TheDeepEndHQ",
+            "n": 2,
+            "paras": [
+              4,
+              7
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 1,
+            "paras": [
+              1
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 770,
+        "entries": 7,
+        "listen_min": 5
+      }
     },
     {
       "slug": "week-45-the-wall-we-named",
@@ -4743,7 +4968,171 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-09-21",
+          "end": "2026-09-27"
+        },
+        "days": [
+          {
+            "date": "2026-09-21",
+            "dow": "mon",
+            "day": 325,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "ChampOps"
+            ],
+            "ship": "a discovery call that looked dead came back to life tonight."
+          },
+          {
+            "date": "2026-09-22",
+            "dow": "tue",
+            "day": 326,
+            "arc_color": "gold",
+            "arcs": [
+              "voice-agent",
+              "chief"
+            ],
+            "ship": "the birthday voice agent actually called chief."
+          },
+          {
+            "date": "2026-09-23",
+            "dow": "wed",
+            "day": 327,
+            "arc_color": "blue",
+            "arcs": [
+              "pipeline",
+              "longevity"
+            ],
+            "ship": "the one lead a summit sponsorship actually produced got a 71-second call today."
+          },
+          {
+            "date": "2026-09-24",
+            "dow": "thu",
+            "day": 328,
+            "arc_color": "green",
+            "arcs": [
+              "Celsus OS",
+              "Lake B2B"
+            ],
+            "ship": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph."
+          },
+          {
+            "date": "2026-09-25",
+            "dow": "fri",
+            "day": 329,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Celsus OS"
+            ],
+            "ship": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post."
+          },
+          {
+            "date": "2026-09-26",
+            "dow": "sat",
+            "day": 330,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "TheDeepEndHQ"
+            ],
+            "ship": "spent saturday writing the plan instead of shipping code."
+          },
+          {
+            "date": "2026-09-27",
+            "dow": "sun",
+            "day": 331,
+            "arc_color": "blue",
+            "arcs": [
+              "ChampOps",
+              "Champions Operations"
+            ],
+            "ship": "sunday had three external calls and I came out of it with nothing on record for any of them."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-09-27",
+            "2026-09-21"
+          ],
+          [
+            "2026-09-27"
+          ],
+          [
+            "2026-09-22"
+          ],
+          [
+            "2026-09-27"
+          ],
+          [
+            "2026-09-24"
+          ],
+          [
+            "2026-09-26"
+          ],
+          [
+            "2026-09-27"
+          ],
+          [
+            "2026-09-27",
+            "2026-09-26"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 3,
+            "paras": [
+              0,
+              4
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 2,
+            "paras": [
+              0,
+              1,
+              3,
+              6,
+              7
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Celsus OS",
+            "n": 2,
+            "paras": [
+              4
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 2,
+            "paras": [
+              0,
+              1,
+              3,
+              5,
+              6,
+              7
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 607,
+        "entries": 7,
+        "listen_min": 4
+      }
     },
     {
       "slug": "week-44-the-discipline-arc",
@@ -4811,7 +5200,202 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "audio": {
+        "src": "audio/week-44-the-discipline-arc.mp3",
+        "duration": 165.8,
+        "voice": "Brian",
+        "starts": [
+          {
+            "i": -1,
+            "t": 0
+          },
+          {
+            "i": 0,
+            "t": 26.93
+          },
+          {
+            "i": 1,
+            "t": 41.08
+          },
+          {
+            "i": 2,
+            "t": 58.73
+          },
+          {
+            "i": 3,
+            "t": 78.01
+          },
+          {
+            "i": 4,
+            "t": 89.29
+          },
+          {
+            "i": 5,
+            "t": 101.03
+          },
+          {
+            "i": 6,
+            "t": 113
+          },
+          {
+            "i": 7,
+            "t": 134.11
+          },
+          {
+            "i": 8,
+            "t": 158.38
+          }
+        ],
+        "bytes": 1326184
+      },
+      "viz": {
+        "window": {
+          "start": "2026-09-14",
+          "end": "2026-09-19"
+        },
+        "days": [
+          {
+            "date": "2026-09-14",
+            "dow": "mon",
+            "day": 318,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Event Scout"
+            ],
+            "ship": "Ran a Show and Sell strategy reset with Chief in the room."
+          },
+          {
+            "date": "2026-09-15",
+            "dow": "tue",
+            "day": 319,
+            "arc_color": "green",
+            "arcs": [
+              "Lake Sonar",
+              "Champions Operations"
+            ],
+            "ship": "Locked working style and tooling for a new Lake Sonar hire today: five tools total, Python and FastAPI over TypeScript, weekly 15 to 20 minu"
+          },
+          {
+            "date": "2026-09-16",
+            "dow": "wed",
+            "day": 320,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Vendor Ops"
+            ],
+            "ship": "Restarted a delivery-partner account that had been stuck for days."
+          },
+          {
+            "date": "2026-09-17",
+            "dow": "thu",
+            "day": 321,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks."
+          },
+          {
+            "date": "2026-09-18",
+            "dow": "fri",
+            "day": 322,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic down 52 perc"
+          },
+          {
+            "date": "2026-09-19",
+            "dow": "sat",
+            "day": 323,
+            "arc_color": "blue",
+            "arcs": [
+              "Longevity",
+              "Champions Operations"
+            ],
+            "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored."
+          }
+        ],
+        "para_days": [
+          [],
+          [
+            "2026-09-14"
+          ],
+          [
+            "2026-09-15"
+          ],
+          [
+            "2026-09-16"
+          ],
+          [
+            "2026-09-19"
+          ],
+          [
+            "2026-09-17"
+          ],
+          [
+            "2026-09-18"
+          ],
+          [
+            "2026-09-19"
+          ],
+          []
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 4,
+            "paras": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 4,
+            "paras": [
+              2,
+              4,
+              5,
+              6,
+              7
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Event Scout",
+            "n": 1,
+            "paras": [
+              1
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake Sonar",
+            "n": 1,
+            "paras": [
+              2
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 390,
+        "entries": 6,
+        "listen_min": 2
+      }
     },
     {
       "slug": "week-43-five-systems-five-days",
@@ -4882,7 +5466,155 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-09-07",
+          "end": "2026-09-12"
+        },
+        "days": [
+          {
+            "date": "2026-09-07",
+            "dow": "mon",
+            "day": 311,
+            "arc_color": "green",
+            "arcs": [
+              "ChampReply",
+              "ChampOps"
+            ],
+            "ship": "ChampReply v1 built and verified."
+          },
+          {
+            "date": "2026-09-08",
+            "dow": "tue",
+            "day": 312,
+            "arc_color": "green",
+            "arcs": [
+              "InfraTech",
+              "Lake B2B"
+            ],
+            "ship": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and documented two intern ramp plans."
+          },
+          {
+            "date": "2026-09-09",
+            "dow": "wed",
+            "day": 313,
+            "arc_color": "gold",
+            "arcs": [
+              "vault infra",
+              "client ops"
+            ],
+            "ship": "restructured the vault from a monolith into a five-layer context architecture."
+          },
+          {
+            "date": "2026-09-10",
+            "dow": "thu",
+            "day": 314,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data source."
+          },
+          {
+            "date": "2026-09-11",
+            "dow": "fri",
+            "day": 315,
+            "arc_color": "green",
+            "arcs": [
+              "Champ Suite",
+              "Vendor Ops"
+            ],
+            "ship": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo."
+          },
+          {
+            "date": "2026-09-12",
+            "dow": "sat",
+            "day": 316,
+            "arc_color": "green",
+            "arcs": [
+              "ChampUTM",
+              "Champions Club"
+            ],
+            "ship": "Built the reference version of the new UTM tool today."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-09-08"
+          ],
+          [
+            "2026-09-07"
+          ],
+          [
+            "2026-09-08"
+          ],
+          [
+            "2026-09-09"
+          ],
+          [
+            "2026-09-09"
+          ],
+          [
+            "2026-09-10"
+          ],
+          [
+            "2026-09-11"
+          ],
+          [
+            "2026-09-12"
+          ],
+          [
+            "2026-09-12"
+          ],
+          []
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 2,
+            "paras": [
+              0,
+              2,
+              5
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampReply",
+            "n": 1,
+            "paras": [
+              1
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 1,
+            "paras": [
+              1
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "InfraTech",
+            "n": 1,
+            "paras": [
+              0,
+              2
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 501,
+        "entries": 6,
+        "listen_min": 3
+      }
     },
     {
       "slug": "week-38-the-signals-were-everywhere",
@@ -4953,7 +5685,179 @@ window.DH_DATA = {
           "slug": "lake-b2b",
           "tag": "Data & Services"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-08-03",
+          "end": "2026-08-09"
+        },
+        "days": [
+          {
+            "date": "2026-08-03",
+            "dow": "mon",
+            "day": 276,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "hosted the champions group hr + payroll portal planning session tonight."
+          },
+          {
+            "date": "2026-08-04",
+            "dow": "tue",
+            "day": 277,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "ChampOps"
+            ],
+            "ship": "full backend audit of the marketing platform."
+          },
+          {
+            "date": "2026-08-05",
+            "dow": "wed",
+            "day": 278,
+            "arc_color": "gold",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "a new relationship walked in from the india wealth and fund management space."
+          },
+          {
+            "date": "2026-08-06",
+            "dow": "thu",
+            "day": 279,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "pitched a legacy luxury travel brand's consultant team tonight."
+          },
+          {
+            "date": "2026-08-07",
+            "dow": "fri",
+            "day": 280,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "sat across a nuclear infrastructure firm tonight."
+          },
+          {
+            "date": "2026-08-08",
+            "dow": "sat",
+            "day": 281,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "saturday."
+          },
+          {
+            "date": "2026-08-09",
+            "dow": "sun",
+            "day": 282,
+            "arc_color": "blue",
+            "arcs": [
+              "Longevity",
+              "Champions Operations"
+            ],
+            "ship": "sunday closed with two strategy calls back to back."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-08-08"
+          ],
+          [
+            "2026-08-03"
+          ],
+          [
+            "2026-08-04"
+          ],
+          [],
+          [
+            "2026-08-05"
+          ],
+          [
+            "2026-08-06"
+          ],
+          [
+            "2026-08-07"
+          ],
+          [
+            "2026-08-08"
+          ],
+          [
+            "2026-08-05",
+            "2026-08-08"
+          ],
+          [],
+          [
+            "2026-08-09"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 6,
+            "paras": [
+              0,
+              1,
+              4,
+              5,
+              6,
+              7,
+              8,
+              10
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 6,
+            "paras": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 1,
+            "paras": [
+              2
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Longevity",
+            "n": 1,
+            "paras": [
+              10
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 555,
+        "entries": 7,
+        "listen_min": 3
+      }
     },
     {
       "slug": "week-37-the-calendar-was-full",
@@ -5030,7 +5934,176 @@ window.DH_DATA = {
           "slug": "lake-b2b",
           "tag": "Data & Services"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-07-27",
+          "end": "2026-08-02"
+        },
+        "days": [
+          {
+            "date": "2026-07-27",
+            "dow": "mon",
+            "day": 269,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "Monday in W31 opened with two hard clocks: a legal doc review for the EU-India entity registration and a committed NDA send to a Singapore-b"
+          },
+          {
+            "date": "2026-07-28",
+            "dow": "tue",
+            "day": 270,
+            "arc_color": "gold",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "Founders 2.0 Singapore bronze sponsorship closed."
+          },
+          {
+            "date": "2026-07-29",
+            "dow": "wed",
+            "day": 271,
+            "arc_color": "gold",
+            "arcs": [
+              "Cirralogix",
+              "Champions Operations"
+            ],
+            "ship": "a 7-year cirralogix client just renewed their salesforce contract."
+          },
+          {
+            "date": "2026-07-30",
+            "dow": "thu",
+            "day": 272,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "lake b2b category pivot confirmed."
+          },
+          {
+            "date": "2026-07-31",
+            "dow": "fri",
+            "day": 273,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "three hours of architecture calls."
+          },
+          {
+            "date": "2026-08-01",
+            "dow": "sat",
+            "day": 274,
+            "arc_color": "blue",
+            "arcs": [
+              "ChampOps",
+              "Champions Operations"
+            ],
+            "ship": "saturday."
+          },
+          {
+            "date": "2026-08-02",
+            "dow": "sun",
+            "day": 275,
+            "arc_color": "blue",
+            "arcs": [
+              "Longevity",
+              "Champions Operations"
+            ],
+            "ship": "w32 brief locked."
+          }
+        ],
+        "para_days": [
+          [],
+          [
+            "2026-07-29"
+          ],
+          [
+            "2026-07-30"
+          ],
+          [
+            "2026-07-31"
+          ],
+          [
+            "2026-08-01"
+          ],
+          [],
+          [
+            "2026-07-29"
+          ],
+          [],
+          [],
+          [],
+          [
+            "2026-08-02",
+            "2026-07-27"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 7,
+            "paras": [
+              1,
+              2,
+              3,
+              4,
+              6,
+              10
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 4,
+            "paras": [
+              2,
+              3,
+              10
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Cirralogix",
+            "n": 1,
+            "paras": [
+              1,
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 1,
+            "paras": [
+              4
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "tool",
+            "name": "ChampMail",
+            "n": 1,
+            "paras": [
+              8
+            ],
+            "href": "toolkit.html"
+          }
+        ],
+        "words": 433,
+        "entries": 7,
+        "listen_min": 3
+      }
     },
     {
       "slug": "week-35-three-calls-one-friday",
@@ -5123,7 +6196,175 @@ window.DH_DATA = {
           "slug": "lake-b2b",
           "tag": "Data & Services"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-07-13",
+          "end": "2026-07-18"
+        },
+        "days": [
+          {
+            "date": "2026-07-13",
+            "dow": "mon",
+            "day": 255,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Longevity"
+            ],
+            "ship": "a call with a vc portfolio director opened two unexpected doors."
+          },
+          {
+            "date": "2026-07-14",
+            "dow": "tue",
+            "day": 256,
+            "arc_color": "gold",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "heavy external day: two meetings, two new threads."
+          },
+          {
+            "date": "2026-07-15",
+            "dow": "wed",
+            "day": 257,
+            "arc_color": "green",
+            "arcs": [
+              "Champmail",
+              "Lake B2B"
+            ],
+            "ship": "ran 3 discovery calls in one afternoon."
+          },
+          {
+            "date": "2026-07-16",
+            "dow": "thu",
+            "day": 258,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champ IQ"
+            ],
+            "ship": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team."
+          },
+          {
+            "date": "2026-07-17",
+            "dow": "fri",
+            "day": 259,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test an ask-ai button on the homepa"
+          },
+          {
+            "date": "2026-07-18",
+            "dow": "sat",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          }
+        ],
+        "para_days": [
+          [
+            "2026-07-13"
+          ],
+          [],
+          [
+            "2026-07-13"
+          ],
+          [],
+          [
+            "2026-07-15"
+          ],
+          [],
+          [
+            "2026-07-16",
+            "2026-07-17"
+          ],
+          [
+            "2026-07-17"
+          ],
+          [
+            "2026-07-17"
+          ],
+          [],
+          [
+            "2026-07-17"
+          ],
+          [
+            "2026-07-17"
+          ],
+          [],
+          [
+            "2026-07-13",
+            "2026-07-17"
+          ],
+          [
+            "2026-07-13"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 5,
+            "paras": [
+              0,
+              2,
+              4,
+              6,
+              7,
+              8,
+              10,
+              11,
+              13,
+              14
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 2,
+            "paras": [
+              6,
+              7,
+              8,
+              10,
+              11,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Longevity",
+            "n": 1,
+            "paras": [
+              0,
+              2,
+              13,
+              14
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champmail",
+            "n": 1,
+            "paras": [
+              4
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 591,
+        "entries": 5,
+        "listen_min": 4
+      }
     },
     {
       "slug": "week-34-the-side-door",
@@ -5221,7 +6462,182 @@ window.DH_DATA = {
           "slug": "cirralogix",
           "tag": "Cloud & DevOps"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-07-06",
+          "end": "2026-07-11"
+        },
+        "days": [
+          {
+            "date": "2026-07-06",
+            "dow": "mon",
+            "day": 248,
+            "arc_color": "green",
+            "arcs": [
+              "Five-Level Personalizer",
+              "Champions Operations"
+            ],
+            "ship": "wired gmail and outlook oauth into the email personalizer."
+          },
+          {
+            "date": "2026-07-07",
+            "dow": "tue",
+            "day": 249,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at the HSR office, then a three-ho"
+          },
+          {
+            "date": "2026-07-08",
+            "dow": "wed",
+            "day": 250,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "heavy meetings day."
+          },
+          {
+            "date": "2026-07-09",
+            "dow": "thu",
+            "day": 251,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Longevity"
+            ],
+            "ship": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to our exact ICP."
+          },
+          {
+            "date": "2026-07-10",
+            "dow": "fri",
+            "day": 252,
+            "arc_color": "green",
+            "arcs": [
+              "Cadence",
+              "Lake B2B"
+            ],
+            "ship": "hni partnership confirmed today on a revenue-share model."
+          },
+          {
+            "date": "2026-07-11",
+            "dow": "sat",
+            "day": 253,
+            "arc_color": "blue",
+            "arcs": [
+              "Cirralogix",
+              "Champions Operations"
+            ],
+            "ship": "evaluating salesforce org migration for cirralogix."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-07-11"
+          ],
+          [],
+          [
+            "2026-07-06"
+          ],
+          [
+            "2026-07-07"
+          ],
+          [
+            "2026-07-08"
+          ],
+          [],
+          [
+            "2026-07-09"
+          ],
+          [
+            "2026-07-09"
+          ],
+          [
+            "2026-07-10"
+          ],
+          [],
+          [
+            "2026-07-07",
+            "2026-07-11"
+          ],
+          [
+            "2026-07-11"
+          ],
+          [],
+          [
+            "2026-07-06"
+          ],
+          []
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 4,
+            "paras": [
+              0,
+              2,
+              3,
+              4,
+              10,
+              11,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 4,
+            "paras": [
+              3,
+              4,
+              6,
+              7,
+              8,
+              10
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Five-Level Personalizer",
+            "n": 1,
+            "paras": [
+              2,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Longevity",
+            "n": 1,
+            "paras": [
+              6,
+              7
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "company",
+            "name": "Cirralogix",
+            "n": 1,
+            "paras": [
+              10
+            ],
+            "href": "company/cirralogix"
+          }
+        ],
+        "words": 502,
+        "entries": 6,
+        "listen_min": 3
+      }
     },
     {
       "slug": "week-33-the-quarter-turns",
@@ -5318,7 +6734,145 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-06-29",
+          "end": "2026-07-03"
+        },
+        "days": [
+          {
+            "date": "2026-06-29",
+            "dow": "mon",
+            "day": 241,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform."
+          },
+          {
+            "date": "2026-06-30",
+            "dow": "tue",
+            "day": 242,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "q2 closed."
+          },
+          {
+            "date": "2026-07-01",
+            "dow": "wed",
+            "day": 243,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "Longevity"
+            ],
+            "ship": "q3 day one."
+          },
+          {
+            "date": "2026-07-02",
+            "dow": "thu",
+            "day": 244,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Longevity"
+            ],
+            "ship": "all nine independence day video clips are done."
+          },
+          {
+            "date": "2026-07-03",
+            "dow": "fri",
+            "day": 245,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "july 4th campaign distributed to all 22 reps across four sales teams."
+          }
+        ],
+        "para_days": [
+          [],
+          [
+            "2026-06-29"
+          ],
+          [],
+          [
+            "2026-06-30"
+          ],
+          [],
+          [
+            "2026-07-01"
+          ],
+          [],
+          [],
+          [
+            "2026-07-03"
+          ],
+          [
+            "2026-07-03"
+          ],
+          [],
+          [],
+          [
+            "2026-07-02",
+            "2026-07-03"
+          ],
+          [
+            "2026-07-03"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 4,
+            "paras": [
+              1,
+              3,
+              8,
+              9,
+              12,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 4,
+            "paras": [
+              1,
+              3,
+              5,
+              8,
+              9,
+              12,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Longevity",
+            "n": 2,
+            "paras": [
+              5,
+              12
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 569,
+        "entries": 5,
+        "listen_min": 3
+      }
     },
     {
       "slug": "week-32-the-build-reflex",
@@ -5402,7 +6956,174 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-06-21",
+          "end": "2026-06-27"
+        },
+        "days": [
+          {
+            "date": "2026-06-21",
+            "dow": "sun",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-06-22",
+            "dow": "mon",
+            "day": 234,
+            "arc_color": "green",
+            "arcs": [
+              "Cirralogix",
+              "Champions Operations"
+            ],
+            "ship": "locked the architecture for a new resume-intelligence engine today."
+          },
+          {
+            "date": "2026-06-23",
+            "dow": "tue",
+            "day": 235,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "ChampGraph"
+            ],
+            "ship": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it writing instead."
+          },
+          {
+            "date": "2026-06-24",
+            "dow": "wed",
+            "day": 236,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "Champions Operations"
+            ],
+            "ship": "the site grew a command center today."
+          },
+          {
+            "date": "2026-06-25",
+            "dow": "thu",
+            "day": 237,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am."
+          },
+          {
+            "date": "2026-06-26",
+            "dow": "fri",
+            "day": 238,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "TheDeepEndHQ"
+            ],
+            "ship": "filed the GTM brief for an investor-matching platform."
+          },
+          {
+            "date": "2026-06-27",
+            "dow": "sat",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          }
+        ],
+        "para_days": [
+          [
+            "2026-06-24",
+            "2026-06-26"
+          ],
+          [],
+          [
+            "2026-06-22"
+          ],
+          [
+            "2026-06-23"
+          ],
+          [
+            "2026-06-23"
+          ],
+          [],
+          [
+            "2026-06-24"
+          ],
+          [
+            "2026-06-24"
+          ],
+          [],
+          [
+            "2026-06-25",
+            "2026-06-26"
+          ],
+          [
+            "2026-06-25"
+          ],
+          [
+            "2026-06-25"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 4,
+            "paras": [
+              0,
+              2,
+              6,
+              7,
+              9,
+              10,
+              11
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 2,
+            "paras": [
+              3,
+              4,
+              9,
+              10,
+              11
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "TheDeepEndHQ",
+            "n": 2,
+            "paras": [
+              0,
+              6,
+              7,
+              9
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Cirralogix",
+            "n": 1,
+            "paras": [
+              2
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 691,
+        "entries": 5,
+        "listen_min": 4
+      }
     },
     {
       "slug": "week-31-the-proof-arc",
@@ -5489,7 +7210,158 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-06-14",
+          "end": "2026-06-20"
+        },
+        "days": [
+          {
+            "date": "2026-06-14",
+            "dow": "sun",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-06-15",
+            "dow": "mon",
+            "day": 227,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "built a fifteen-slide pitch guide for a meeting with a 29-country systems integrator that touches tens of thousands of enterprise accounts."
+          },
+          {
+            "date": "2026-06-16",
+            "dow": "tue",
+            "day": 228,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "Lake B2B"
+            ],
+            "ship": "minted per-repo ssh deploy keys for the three repos in this week's product push and moved their deploys off the shared token that expires ne"
+          },
+          {
+            "date": "2026-06-17",
+            "dow": "wed",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-06-18",
+            "dow": "thu",
+            "day": 230,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "the a/b toggle for the prospect-research engine is committed."
+          },
+          {
+            "date": "2026-06-19",
+            "dow": "fri",
+            "day": 231,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "today was a proof-or-nothing call with a dry-bulk chartering operator who had been burned once by a vendor that went silent on him."
+          },
+          {
+            "date": "2026-06-20",
+            "dow": "sat",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          }
+        ],
+        "para_days": [
+          [
+            "2026-06-19"
+          ],
+          [],
+          [
+            "2026-06-19"
+          ],
+          [],
+          [],
+          [
+            "2026-06-18"
+          ],
+          [
+            "2026-06-16"
+          ],
+          [],
+          [
+            "2026-06-19"
+          ],
+          [
+            "2026-06-19"
+          ],
+          [
+            "2026-06-19"
+          ],
+          [
+            "2026-06-18"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 4,
+            "paras": [
+              0,
+              2,
+              5,
+              6,
+              8,
+              9,
+              10,
+              11
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 3,
+            "paras": [
+              0,
+              2,
+              5,
+              8,
+              9,
+              10,
+              11
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "TheDeepEndHQ",
+            "n": 1,
+            "paras": [
+              6
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 538,
+        "entries": 4,
+        "listen_min": 3
+      }
     },
     {
       "slug": "week-30-the-enterprise-arc",
@@ -5584,7 +7456,157 @@ window.DH_DATA = {
           "slug": "lake-b2b",
           "tag": "Data & Services"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-06-07",
+          "end": "2026-06-13"
+        },
+        "days": [
+          {
+            "date": "2026-06-07",
+            "dow": "sun",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-06-08",
+            "dow": "mon",
+            "day": 220,
+            "arc_color": "gold",
+            "arcs": [
+              "Champ IQ",
+              "Champions Operations"
+            ],
+            "ship": "week 24 opened with a first call into one of india's largest conglomerates."
+          },
+          {
+            "date": "2026-06-09",
+            "dow": "tue",
+            "day": 221,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B"
+            ],
+            "ship": "took a one-off enrichment win and turned it into a product."
+          },
+          {
+            "date": "2026-06-10",
+            "dow": "wed",
+            "day": 222,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations"
+            ],
+            "ship": "built a full deep-prep dossier for a chairman-initiated first touch with a major gulf carrier group."
+          },
+          {
+            "date": "2026-06-11",
+            "dow": "thu",
+            "day": 223,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations"
+            ],
+            "ship": "the first call with the gulf carrier group rewrote the brief."
+          },
+          {
+            "date": "2026-06-12",
+            "dow": "fri",
+            "day": 224,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations",
+              "TheDeepEndHQ"
+            ],
+            "ship": "completed the q2 kra review wave."
+          },
+          {
+            "date": "2026-06-13",
+            "dow": "sat",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          }
+        ],
+        "para_days": [
+          [
+            "2026-06-08"
+          ],
+          [],
+          [
+            "2026-06-08"
+          ],
+          [
+            "2026-06-12"
+          ],
+          [],
+          [],
+          [
+            "2026-06-10"
+          ],
+          [],
+          [],
+          [
+            "2026-06-12"
+          ],
+          [],
+          [],
+          [],
+          []
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 4,
+            "paras": [
+              0,
+              2,
+              3,
+              6,
+              9
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champ IQ",
+            "n": 1,
+            "paras": [
+              0,
+              2,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 1,
+            "paras": [
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "TheDeepEndHQ",
+            "n": 1,
+            "paras": [
+              3,
+              9
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 386,
+        "entries": 5,
+        "listen_min": 2
+      }
     },
     {
       "slug": "week-29-the-reach-arc",
@@ -5665,7 +7687,178 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-05-31",
+          "end": "2026-06-06"
+        },
+        "days": [
+          {
+            "date": "2026-05-31",
+            "dow": "sun",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-06-01",
+            "dow": "mon",
+            "day": 213,
+            "arc_color": "green",
+            "arcs": [
+              "Longevity",
+              "Lake B2B"
+            ],
+            "ship": "locked longevity design system v1."
+          },
+          {
+            "date": "2026-06-02",
+            "dow": "tue",
+            "day": 214,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "ChampOps"
+            ],
+            "ship": "Shipped /now and /writing for deependhq.com, plus a daily auto-publish pipeline."
+          },
+          {
+            "date": "2026-06-03",
+            "dow": "wed",
+            "day": 215,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations",
+              "ChampQuest"
+            ],
+            "ship": "cleared five threads in one sprint."
+          },
+          {
+            "date": "2026-06-04",
+            "dow": "thu",
+            "day": 216,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "spent the day clearing P0 inbox debt before a stacked friday."
+          },
+          {
+            "date": "2026-06-05",
+            "dow": "fri",
+            "day": 217,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "built a full pitch kit for a cold 9pm call with a marketplace founder."
+          },
+          {
+            "date": "2026-06-06",
+            "dow": "sat",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          }
+        ],
+        "para_days": [
+          [
+            "2026-06-01"
+          ],
+          [
+            "2026-06-01",
+            "2026-06-03",
+            "2026-06-05"
+          ],
+          [],
+          [
+            "2026-06-04"
+          ],
+          [
+            "2026-06-03"
+          ],
+          [],
+          [
+            "2026-06-05"
+          ],
+          [
+            "2026-06-05"
+          ],
+          [
+            "2026-06-05"
+          ],
+          [
+            "2026-06-05"
+          ],
+          [],
+          [
+            "2026-06-01",
+            "2026-06-02",
+            "2026-06-06"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 3,
+            "paras": [
+              0,
+              1,
+              3,
+              6,
+              7,
+              8,
+              9,
+              11
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 3,
+            "paras": [
+              1,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Longevity",
+            "n": 1,
+            "paras": [
+              0,
+              1,
+              11
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "TheDeepEndHQ",
+            "n": 1,
+            "paras": [
+              11
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 508,
+        "entries": 5,
+        "listen_min": 3
+      }
     },
     {
       "slug": "week-28-four-sales-teams",
@@ -5749,7 +7942,132 @@ window.DH_DATA = {
           "slug": "champions-accelerator",
           "tag": "Accelerator"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-05-11",
+          "end": "2026-05-17"
+        },
+        "days": [
+          {
+            "date": "2026-05-11",
+            "dow": "mon",
+            "day": 191,
+            "arc_color": "green",
+            "arcs": [
+              "ChampOps"
+            ],
+            "ship": "ChampOps triage engine running clean."
+          },
+          {
+            "date": "2026-05-12",
+            "dow": "tue",
+            "day": 192,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations"
+            ],
+            "ship": "Restructured all 4 sales teams."
+          },
+          {
+            "date": "2026-05-13",
+            "dow": "wed",
+            "day": 193,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ"
+            ],
+            "ship": "Shipping the design system for deependhq.com."
+          },
+          {
+            "date": "2026-05-14",
+            "dow": "thu",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-05-15",
+            "dow": "fri",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-05-16",
+            "dow": "sat",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          },
+          {
+            "date": "2026-05-17",
+            "dow": "sun",
+            "day": null,
+            "arc_color": null,
+            "arcs": [],
+            "ship": null
+          }
+        ],
+        "para_days": [
+          [
+            "2026-05-12",
+            "2026-05-15"
+          ],
+          [
+            "2026-05-12"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "2026-05-12"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "2026-05-12"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 1,
+            "paras": [],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 1,
+            "paras": [
+              0,
+              1,
+              6,
+              12
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "TheDeepEndHQ",
+            "n": 1,
+            "paras": [],
+            "href": "journey.html"
+          }
+        ],
+        "words": 386,
+        "entries": 3,
+        "listen_min": 2
+      }
     },
     {
       "slug": "week-27-data-is-not-a-product",
@@ -5825,7 +8143,149 @@ window.DH_DATA = {
           "slug": "lake-b2b",
           "tag": "Data & Services"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-05-04",
+          "end": "2026-05-10"
+        },
+        "days": [
+          {
+            "date": "2026-05-04",
+            "dow": "mon",
+            "day": 184,
+            "arc_color": "blue",
+            "arcs": [
+              "InfraTech",
+              "Champions Operations"
+            ],
+            "ship": "Champions Ranch productization v1 done."
+          },
+          {
+            "date": "2026-05-05",
+            "dow": "tue",
+            "day": 185,
+            "arc_color": "green",
+            "arcs": [
+              "ChampOps",
+              "Social Automator"
+            ],
+            "ship": "Social triage automation deployed."
+          },
+          {
+            "date": "2026-05-06",
+            "dow": "wed",
+            "day": 186,
+            "arc_color": "gold",
+            "arcs": [
+              "Champions Operations"
+            ],
+            "ship": "EU-India partnership structure drafted."
+          },
+          {
+            "date": "2026-05-07",
+            "dow": "thu",
+            "day": 187,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "Champ IQ"
+            ],
+            "ship": "Chief's directive: 20 growth marketers, new channels beyond email, budget unlocked."
+          },
+          {
+            "date": "2026-05-08",
+            "dow": "fri",
+            "day": 188,
+            "arc_color": "gold",
+            "arcs": [
+              "Cirralogix",
+              "Champions Operations"
+            ],
+            "ship": "Cirralogix restructuring complete."
+          },
+          {
+            "date": "2026-05-09",
+            "dow": "sat",
+            "day": 189,
+            "arc_color": "blue",
+            "arcs": [
+              "SEO Strategy"
+            ],
+            "ship": "AI-era SEO content principles codified."
+          },
+          {
+            "date": "2026-05-10",
+            "dow": "sun",
+            "day": 190,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "Content Strategy"
+            ],
+            "ship": "Lake B2B growth stack positioning locked."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-05-10"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "2026-05-10"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 4,
+            "paras": [],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "InfraTech",
+            "n": 1,
+            "paras": [],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 1,
+            "paras": [],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Social Automator",
+            "n": 1,
+            "paras": [],
+            "href": "journey.html"
+          },
+          {
+            "kind": "company",
+            "name": "Lake B2B",
+            "n": 1,
+            "paras": [
+              1
+            ],
+            "href": "company/lake-b2b"
+          }
+        ],
+        "words": 334,
+        "entries": 7,
+        "listen_min": 2
+      }
     },
     {
       "slug": "week-36-the-doctor-said-yes",
@@ -5942,7 +8402,199 @@ window.DH_DATA = {
           "slug": "lake-b2b",
           "tag": "Data & Services"
         }
-      ]
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-07-20",
+          "end": "2026-07-25"
+        },
+        "days": [
+          {
+            "date": "2026-07-20",
+            "dow": "mon",
+            "day": 262,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call."
+          },
+          {
+            "date": "2026-07-21",
+            "dow": "tue",
+            "day": 263,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "first direct call with a US oncology AI company."
+          },
+          {
+            "date": "2026-07-22",
+            "dow": "wed",
+            "day": 264,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions."
+          },
+          {
+            "date": "2026-07-23",
+            "dow": "thu",
+            "day": 265,
+            "arc_color": "green",
+            "arcs": [
+              "ChampBeam",
+              "Lake B2B"
+            ],
+            "ship": "champbeam is live on deepify."
+          },
+          {
+            "date": "2026-07-24",
+            "dow": "fri",
+            "day": 266,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open."
+          },
+          {
+            "date": "2026-07-25",
+            "dow": "sat",
+            "day": 267,
+            "arc_color": "blue",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundraise support starts now."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-07-20"
+          ],
+          [
+            "2026-07-21",
+            "2026-07-23",
+            "2026-07-24",
+            "2026-07-25"
+          ],
+          [],
+          [
+            "2026-07-20"
+          ],
+          [],
+          [
+            "2026-07-21"
+          ],
+          [
+            "2026-07-21"
+          ],
+          [],
+          [
+            "2026-07-22"
+          ],
+          [],
+          [
+            "2026-07-23"
+          ],
+          [
+            "2026-07-23"
+          ],
+          [],
+          [
+            "2026-07-24"
+          ],
+          [
+            "2026-07-25"
+          ],
+          [
+            "2026-07-25"
+          ],
+          [
+            "2026-07-25"
+          ],
+          [
+            "2026-07-25"
+          ],
+          [],
+          [
+            "2026-07-25"
+          ],
+          [
+            "2026-07-25"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 6,
+            "paras": [
+              0,
+              1,
+              3,
+              5,
+              6,
+              7,
+              8,
+              10,
+              11,
+              13,
+              14,
+              15,
+              16,
+              17,
+              19,
+              20
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 5,
+            "paras": [
+              0,
+              1,
+              3,
+              5,
+              6,
+              8,
+              13,
+              14,
+              15,
+              16,
+              17,
+              19,
+              20
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampBeam",
+            "n": 1,
+            "paras": [
+              1,
+              9,
+              10,
+              11
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 906,
+        "entries": 6,
+        "listen_min": 5
+      }
     }
   ],
   "build_lanes": {
@@ -6106,7 +8758,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-06T21:01:47.103Z",
+    "built": "2026-10-07T06:44:25.349Z",
     "built_date": "2026-10-07",
     "newest_entry": {
       "date": "2026-10-06",
@@ -7894,5 +10546,5 @@ window.DH_DATA = {
       "essays": 16
     }
   },
-  "built": "2026-10-06T21:01:47.120Z"
+  "built": "2026-10-07T06:44:25.379Z"
 };

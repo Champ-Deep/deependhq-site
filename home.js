@@ -174,6 +174,31 @@
   var hm = d.querySelector('.wx-hx-mare');
   if (hm) hm.addEventListener('click', function () { window.dispatchEvent(new CustomEvent('dh:mare')); });
 
+  /* ---------- weekly narratives: inline listen ----------
+     The latest essay's audio plays right here. The <audio> element is made on
+     the first click, so the homepage downloads nothing until someone asks. */
+  var wp = d.querySelector('.wx-wplay[data-src]');
+  if (wp) {
+    var wbtn = wp.querySelector('.wx-wplay-btn'), wbar = wp.querySelector('.wx-wplay-bar i'), wt = wp.querySelector('.wx-wplay-t');
+    var wdur = parseFloat(wp.getAttribute('data-dur')) || 0, wa = null;
+    var wclock = function (x) { x = Math.max(0, Math.round(x)); return Math.floor(x / 60) + ':' + String(x % 60).padStart(2, '0'); };
+    wbtn.addEventListener('click', function () {
+      if (!wa) {
+        wa = new Audio(wp.getAttribute('data-src'));
+        wa.preload = 'auto';
+        wa.addEventListener('play', function () { wp.classList.add('is-playing'); wbtn.setAttribute('aria-label', 'Pause'); });
+        wa.addEventListener('pause', function () { wp.classList.remove('is-playing'); wbtn.setAttribute('aria-label', 'Play'); });
+        wa.addEventListener('ended', function () { wp.classList.remove('is-playing'); });
+        wa.addEventListener('timeupdate', function () {
+          var dur = wa.duration && isFinite(wa.duration) ? wa.duration : wdur;
+          if (wbar && dur) wbar.style.setProperty('--p', (100 * wa.currentTime / dur).toFixed(1) + '%');
+          if (wt) wt.textContent = wclock(wa.currentTime) + ' / ' + wclock(dur);
+        });
+      }
+      if (wa.paused) wa.play().catch(function () {}); else wa.pause();
+    });
+  }
+
   /* ---------- easter eggs: the logo in the console, and the gray mare ----------
      Type d e e p anywhere on the page (or the Konami code), click the hero
      mare or the cursor, or run "mare" from cmd+K. She gallops in from the left on

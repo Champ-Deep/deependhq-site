@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// check-gaps.mjs — catch-up guard for the daily auto-publish pipeline.
+// check-gaps.mjs: catch-up guard for the daily auto-publish pipeline.
 //
 // Prints any WEEKDAY dates between the newest journey entry and yesterday (IST)
 // that have NO journey entry yet. The daily publish task should read this, then

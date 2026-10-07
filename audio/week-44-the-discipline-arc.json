@@ -1,0 +1,54 @@
+{
+  "slug": "week-44-the-discipline-arc",
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "voice_name": "Brian",
+  "model": "eleven_multilingual_v2",
+  "format": "mp3_44100_64",
+  "chars": 2598,
+  "bytes": 1326184,
+  "duration": 165.8,
+  "starts": [
+    {
+      "i": -1,
+      "t": 0
+    },
+    {
+      "i": 0,
+      "t": 26.93
+    },
+    {
+      "i": 1,
+      "t": 41.08
+    },
+    {
+      "i": 2,
+      "t": 58.73
+    },
+    {
+      "i": 3,
+      "t": 78.01
+    },
+    {
+      "i": 4,
+      "t": 89.29
+    },
+    {
+      "i": 5,
+      "t": 101.03
+    },
+    {
+      "i": 6,
+      "t": 113
+    },
+    {
+      "i": 7,
+      "t": 134.11
+    },
+    {
+      "i": 8,
+      "t": 158.38
+    }
+  ],
+  "text_sha": "b1cad81d845d3ff6",
+  "generated": "2026-10-07T06:17:32.084Z"
+}

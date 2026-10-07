@@ -17,7 +17,7 @@ const root = join(here, '..');
 
 const work = mkdtempSync(join(tmpdir(), 'dh-ingest-'));
 mkdirSync(join(work, 'scripts'), { recursive: true });
-for (const f of ['ingest-entry.mjs', 'build-data.mjs', 'derive.mjs', 'guard.mjs', 'denylist.json']) {
+for (const f of ['ingest-entry.mjs', 'build-data.mjs', 'derive.mjs', 'derive-posts.mjs', 'guard.mjs', 'denylist.json']) {
   copyFileSync(join(here, f), join(work, 'scripts', f));
 }
 

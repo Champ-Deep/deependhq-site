@@ -1,4 +1,4 @@
-// Rail.jsx — shared context-rail utilities for the content-aware layout.
+// Rail.jsx: shared context-rail utilities for the content-aware layout.
 // Used by field-notes, toolkit, and now pages. Journey implements its own
 // richer rail in JourneyPage.jsx.
 

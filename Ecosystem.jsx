@@ -1,4 +1,4 @@
-// Ecosystem.jsx — the 12 real companies.
+// Ecosystem.jsx: the 12 real companies.
 
 const Ecosystem = () => {
   const companies = window.DH_DATA.companies;

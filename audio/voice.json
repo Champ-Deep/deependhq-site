@@ -1,0 +1,7 @@
+{
+  "//": "The voice that reads the essays. Change voice_id, then run node scripts/essay-audio.mjs --missing --force to re-read them. Samples of the shortlist sit in the vault: Efforts/Active/DeependHQ Site/voice-samples/.",
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "name": "Brian",
+  "model": "eleven_multilingual_v2",
+  "settings": { "stability": 0.5, "similarity_boost": 0.75, "style": 0, "use_speaker_boost": true }
+}

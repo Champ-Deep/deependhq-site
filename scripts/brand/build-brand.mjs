@@ -65,14 +65,19 @@ const COPY = [
   ['flame.svg', 'brand/flame.svg'],
   ['favicon.svg', 'favicon.svg'],
 ];
-const ICONS = ['diya', 'moon', 'prompt', 'horseshoe', 'belt', 'crown', 'pot', 'book'];
+// 'gi' replaced the belt knot on 7 Oct 2026 (it read as a bow). Its source is
+// in scripts/brand/icons/, beside any other icon drawn after the kit; the
+// vault masters are never edited.
+const ICONS = ['diya', 'moon', 'prompt', 'horseshoe', 'gi', 'crown', 'pot', 'book'];
+const LOCAL_ICONS = join(here, 'icons');
+const iconSrc = (n) => (existsSync(join(LOCAL_ICONS, `icon-${n}.svg`)) ? join(LOCAL_ICONS, `icon-${n}.svg`) : join(A, `icon-${n}.svg`));
 
 // ---- 1, 2: SVGO pass ---------------------------------------------------------
 const tmp = join(tmpdir(), `dh-brand-${process.pid}`);
 rmSync(tmp, { recursive: true, force: true });
 mkdirSync(join(tmp, 'in'), { recursive: true });
 for (const [src] of COPY) copyFileSync(join(A, src), join(tmp, 'in', src));
-for (const n of ICONS) copyFileSync(join(A, `icon-${n}.svg`), join(tmp, 'in', `icon-${n}.svg`));
+for (const n of ICONS) copyFileSync(iconSrc(n), join(tmp, 'in', `icon-${n}.svg`));
 execFileSync('npx', ['--yes', 'svgo@4', '-q', '-f', join(tmp, 'in'), '-o', join(tmp, 'out')], { stdio: 'inherit' });
 
 let total = 0;

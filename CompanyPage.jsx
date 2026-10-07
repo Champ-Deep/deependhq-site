@@ -1,4 +1,4 @@
-// CompanyPage.jsx — single company, canonical URL /company/<slug>/.
+// CompanyPage.jsx: single company, canonical URL /company/<slug>/.
 // Reads the slug from the path or the legacy query string, finds the company in DH_DATA.companies,
 // and renders its journey cross-links, related writing, and products. The
 // prominent external CTA is the deliberate "go see their real site" moment.

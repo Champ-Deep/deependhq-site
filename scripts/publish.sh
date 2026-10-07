@@ -17,7 +17,7 @@
 # REUSABLE TEMPLATE
 # Works for any static microsite. Override via env vars:
 #   PUBLISH_REPO         owner/repo               (default Champ-Deep/deependhq-site)
-#   PUBLISH_BRANCH       branch CF deploys        (default main — Workers Builds production branch)
+#   PUBLISH_BRANCH       branch CF deploys        (default main, the Workers Builds production branch)
 #   PUBLISH_SRC          worktree dir             (default: parent of this script)
 #   PUBLISH_KEY_FILE     private deploy key       (default: <vault>/Other/.secrets/deploy_key_<repo-name>)
 #   PUBLISH_KNOWN_HOSTS  pinned host keys         (default: <vault>/Other/.secrets/github_known_hosts)
@@ -61,6 +61,19 @@ if ! git clone --quiet --depth 1 --branch "$BRANCH" \
   echo "write access) on github.com/$REPO -> Settings -> Deploy keys. Raw error:" >&2
   cat "$TMP/clone.err" >&2
   exit 3
+fi
+
+# Audio: the listen version of any essay from the last 14 days that does not
+# have one yet, read by the ElevenLabs voice in audio/voice.json. It runs in the
+# worktree so the new files are mirrored below like everything else. It never
+# blocks a publish: no key, no credits or no network means the essay ships with
+# the browser-voice fallback and the next run tries again.
+#   PUBLISH_SKIP_AUDIO=1   skip it for this run
+AUDIO_KEY="${ELEVENLABS_KEY_FILE:-$VAULT_ROOT/Other/.secrets/elevenlabs_api_key}"
+if [ "${PUBLISH_SKIP_AUDIO:-0}" != "1" ] && [ -f "$AUDIO_KEY" ] && [ -f "$SRC_DIR/scripts/essay-audio.mjs" ]; then
+  echo "audio: reading new essays aloud (never blocks the publish) ..."
+  ( cd "$SRC_DIR" && ELEVENLABS_KEY_FILE="$AUDIO_KEY" node scripts/essay-audio.mjs --missing --since 14 ) \
+    || echo "audio: nothing new this run, the essay page falls back to the browser voice." >&2
 fi
 
 # Mirror the worktree onto the clone. .gitignore in the repo keeps scratch out.

@@ -1,4 +1,4 @@
-// Pipeline.jsx — "this site builds itself" section. The honest flex:
+// Pipeline.jsx: "this site builds itself" section. The honest flex:
 // an animated trace of the nightly autopublish loop, terminal style.
 
 const PIPE_STEPS = [

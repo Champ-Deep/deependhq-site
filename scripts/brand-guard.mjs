@@ -9,7 +9,8 @@
 // Scope: *.css *.jsx *.js *.html *.mjs, excluding node_modules, deependhq-next,
 // lead-scorer.html (a standalone team tool), scripts/brand/ (the brand build
 // reads the masters) and this file. Also checks the rgb() spellings of the
-// two colours that were most often written that way. No em dashes.
+// two colours that were most often written that way. The classic theme block
+// is exempt by marker (see below), and nothing else is. No em dashes.
 
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -43,7 +44,14 @@ function walk(dir) {
     }
     if (!EXT.has(extname(name)) || SKIP_FILES.has(rel)) continue;
     const lines = readFileSync(p, 'utf8').split('\n');
+    // The classic theme (the visitor toggle) is the one place the old values
+    // live on purpose. They sit between brand-guard:classic-start and
+    // brand-guard:classic-end, or on a line that says brand-guard:classic.
+    let classic = false;
     lines.forEach((line, i) => {
+      if (/brand-guard:classic-start/.test(line)) { classic = true; return; }
+      if (/brand-guard:classic-end/.test(line)) { classic = false; return; }
+      if (classic || /brand-guard:classic\b/.test(line)) return;
       const h = line.match(new RegExp(`#${hexRe.source}`, 'i'));
       if (h) hits.push(`${rel}:${i + 1}  ${h[0]}`);
       const r = line.match(rgbRe);

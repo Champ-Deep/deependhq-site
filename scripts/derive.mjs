@@ -11,6 +11,9 @@
 //   data.stack_now  toolkit + shoutouts + tools, merged, with last-seen dates
 //                   mined from the journey and the essays
 //
+//   posts[].viz     the week each essay covers, for the essay side panel
+//                   (derive-posts.mjs)
+//
 // No dependencies. Node 18+. Pure: same input, same output (given `now`).
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -35,6 +38,8 @@ export function weekdaysAfter(from, to) {
   for (let d = addDays(from, 1); d <= to; d = addDays(d, 1)) if (!isWeekend(d)) n++;
   return n;
 }
+
+import { derivePosts } from './derive-posts.mjs';
 
 export function derive(data, now = new Date()) {
   const today = istDate(now);
@@ -290,5 +295,8 @@ export function derive(data, now = new Date()) {
     keep.state = data.health.stale ? 'quiet' : 'shipping';
     data.status = keep;
   }
+  // ---- essays: the week each one covers --------------------------------------
+  derivePosts(data);
+
   return data;
 }

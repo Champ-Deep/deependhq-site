@@ -484,20 +484,20 @@ a.dh-art:hover { color: var(--build); }
 /* ---------- the sign-off band (SignOff.jsx), above the footer on every page ---------- */
 .signoff { position: relative; overflow: hidden; }
 .signoff-in { display: grid; gap: var(--s8); padding: var(--section-y) var(--pad) calc(var(--s10) + 14px); }
-/* phones: wordmark and mare share the first row, the tagline sits under them */
+/* phones: wordmark and mare share the first row, the line sits under them */
 .signoff-marks { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s5) var(--s4); align-items: center; }
 .signoff-wm { width: min(100%, 220px); height: auto; display: block; }
-.signoff-tag { grid-column: 1; width: min(100%, 220px); height: auto; display: block; }
+.signoff-wm-classic { margin: 0; font: 800 clamp(2.5rem, 6vw, 4rem)/1 var(--font-ui); letter-spacing: var(--track-display); color: var(--text); }
+.signoff-wm-classic .gt { margin-left: .12em; }
 .signoff-mare { grid-column: 2; grid-row: 1 / span 2; height: 140px; width: auto; display: block; }
-.signoff-row { display: grid; gap: var(--s4); }
-.signoff-line { font: italic 700 clamp(1.375rem, 2.6vw, 2rem)/1.1 var(--font-display); letter-spacing: var(--track-serif); color: var(--text); font-variation-settings: "WONK" 1; margin: 0; }
+.signoff-line { grid-column: 1; font: italic 700 clamp(1.5rem, 3vw, 2.5rem)/1.1 var(--font-display); letter-spacing: var(--track-serif); color: var(--text); font-variation-settings: "WONK" 1; margin: 0; text-wrap: balance; }
 .signoff .stripes { position: absolute; left: 0; right: 0; bottom: 0; }
-/* wider: the three marks spread across the full width, so no column sits empty */
+/* wider: wordmark, the line and the mare spread across the full width */
 @media (min-width: 48rem) {
-  .signoff-marks { display: flex; justify-content: space-between; gap: var(--s8); }
+  .signoff-marks { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: clamp(32px, 5vw, 96px); }
   .signoff-wm { width: clamp(180px, 20vw, 260px); }
-  .signoff-tag { width: clamp(200px, 22vw, 300px); }
-  .signoff-mare { height: clamp(140px, 13vw, 180px); }
+  .signoff-line { grid-column: 2; grid-row: 1; }
+  .signoff-mare { grid-column: 3; grid-row: 1; height: clamp(140px, 13vw, 180px); justify-self: end; }
 }
 @media (min-width: 64rem) { .signoff-in { padding-block: var(--section-y-lg) calc(var(--s12) + 14px); } }
 /* Motion signature, repeated: the mare trots in as the band scrolls into view,
@@ -524,3 +524,57 @@ a.dh-art:hover { color: var(--build); }
   .signoff-mare:hover { rotate: none; translate: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+
+/* ---------------------------------------------------------------------------
+   Two looks, one switch (Oct 2026). Navy is the default. "Classic" is the
+   original near-black, gold and green terminal system, kept as a choice the
+   visitor makes with the switch in the nav. The choice lives in localStorage
+   (dh_theme) and is applied by the inline script in every page head before
+   first paint, so there is no flash. Only tokens change here, which is why
+   every component follows without a special case.
+--------------------------------------------------------------------------- */
+/* brand-guard:classic-start */
+:root[data-theme="classic"] {
+  --navy: #0D0F14; --marigold: #C9A84C;
+  --bg: #0D0F14; --surface: #12151D; --card: #181C26; --card-2: #1E2330;
+  --line: #2A2E3A; --line-2: #3A3F50;
+  --text: #E8E4DC;   /* 15.12 on bg, 13.43 on card */
+  --muted: #A8A8A2;  /*  8.02 on bg,  7.13 on card */
+  --dim: #8A8A92;    /*  5.60 on bg,  4.58 on card-2 */
+  --win: #C9A84C;    /*  7.45 on card */
+  --danger-text: #EC6A4A;
+}
+:root[data-theme="classic"] .wx-hx-mare .smear [fill="#434e64"] { fill: #3A3F50; }
+:root[data-theme="classic"] .wx-hx-mare .smear [fill="#303c53"] { fill: #2A2E3A; }
+/* brand-guard:classic-end */
+:root[data-theme="classic"] body { background: var(--bg); }
+/* the sign-off band goes dark in classic: there is no paper in the terminal look */
+:root[data-theme="classic"] .band-paper {
+  /* brand-guard:classic-start */
+  --text: #E8E4DC; --muted: #A8A8A2; --dim: #8A8A92;
+  --line: #2A2E3A; --line-2: #3A3F50; --card: #181C26; --card-2: #1E2330;
+  --accent: #C9A84C; --accent-text: #C9A84C; --ink: #E8E4DC; --paper-muted: #A8A8A2; --marigold-ink: #C9A84C; --paper-line: #3A3F50;
+  background: #12151D; color: #E8E4DC;
+  /* brand-guard:classic-end */
+}
+:root[data-theme="classic"] .band-paper .ico { color: var(--text); --icon-cut: var(--surface); }
+:root[data-theme="classic"] .signoff { border-top: 1px solid var(--line); }
+:root[data-theme="classic"] .wx-cursor { background: var(--build); box-shadow: var(--build-glow); }
+
+/* look-specific marks: render both, show one */
+.only-classic { display: none !important; }
+:root[data-theme="classic"] .only-classic { display: revert !important; }
+:root[data-theme="classic"] .only-navy { display: none !important; }
+.brand-classic { font: 700 1.125rem/1 var(--font-ui); letter-spacing: var(--track-display); color: var(--text); }
+.brand-classic .gt { margin: 0 0 0 4px; }
+
+/* the switch */
+.theme-switch { display: inline-flex; align-items: center; gap: var(--s2); min-height: 44px; min-width: 44px; padding: 0 var(--s3); border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--muted); font: 500 var(--text-xs) var(--font-mono); letter-spacing: .04em; cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
+.theme-switch:hover { border-color: var(--line-2); color: var(--text); }
+.theme-switch .sw { display: inline-flex; width: 26px; height: 14px; border-radius: 7px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line-2); flex: none; }
+.theme-switch .sw i { flex: 1; }
+.theme-switch .sw i:nth-child(1) { background: var(--bg); }
+.theme-switch .sw i:nth-child(2) { background: var(--win); }
+.theme-switch .sw i:nth-child(3) { background: var(--build); }
+.theme-switch .lbl { white-space: nowrap; }
+@media (max-width: 47.99rem) { .theme-switch { padding: 0; justify-content: center; } .theme-switch .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }

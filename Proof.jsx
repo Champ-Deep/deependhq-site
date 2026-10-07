@@ -1,4 +1,4 @@
-// Proof.jsx — one-line wins. Not a logo wall.
+// Proof.jsx: one-line wins. Not a logo wall.
 
 const Proof = () => {
   const lines = window.DH_DATA.proof;

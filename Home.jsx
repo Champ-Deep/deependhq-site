@@ -441,30 +441,82 @@ const Pillars = () => {
 };
 
 // ---------------------------------------------------------------- 22:30 writing
+// The newest essay leads on the left with an inline listen button (home.js
+// plays the MP3 when it exists, otherwise the button opens the essay, which
+// offers the browser voice) and the Ask AI links. The right side carries the
+// week it was written from, the same strip the essay page pins beside the text.
+// The next three essays sit underneath as cards with their own small strips.
+const W_KIND = { green: 'building', blue: 'thinking', gold: 'a real outcome' };
+const wClock = (s) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
+const askLinks = (slug) => {
+  const q = encodeURIComponent(`Read this essay by Sreedeep Surapaneni and give me the three main ideas in plain words, then one thing an operator could try this week: https://deependhq.com/post/${slug}`);
+  return [['ChatGPT', `https://chatgpt.com/?q=${q}`], ['Claude', `https://claude.ai/new?q=${q}`], ['Perplexity', `https://www.perplexity.ai/search/new?q=${q}`], ['Google AI Mode', `https://www.google.com/search?udm=50&q=${q}`]];
+};
+const MiniStrip = ({ p, big }) => {
+  const v = p.viz || { days: [], para_days: [] };
+  const counts = v.days.map((d) => v.para_days.filter((ds) => ds.includes(d.date)).length);
+  const mx = Math.max(1, ...counts);
+  return (
+    <span className={`wx-ws${big ? ' wx-ws-big' : ''}`} aria-hidden="true">
+      {v.days.slice(0, 7).map((d, k) => <i key={d.date} className={d.day ? `arc-${d.arc_color || 'none'}` : 'is-empty'} style={{ '--h': d.day ? `${Math.round(25 + 75 * (counts[k] / mx))}%` : '0' }} />)}
+    </span>
+  );
+};
 const Writing = () => {
   const posts = (DH.posts || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
   const [lead, ...rest] = posts;
   if (!lead) return null;
   const range = (lead.day_range || '').replace(/\s*[-\u2013\u2014]\s*/, ' to ');
+  const v = lead.viz || { days: [], nodes: [], entries: 0, listen_min: 1 };
+  const A = lead.audio;
   return (
     <section className="wx-writing wx-sec mode-editorial" id="writing" aria-labelledby="wx-w-h">
       <header className="wx-sec-head wx-split">
         <h2 className="wx-ed-h wx-ink" id="wx-w-h">The weekly narratives.</h2>
-        <p className="wx-lead">One essay a week, written from the log, not from a content calendar. {posts.length} so far.</p>
+        <p className="wx-lead">One essay a week, written from the log, not from a content calendar. {posts.length} so far, each one with the week behind it and a listen button.</p>
         <a className="wx-tlink" href="writing.html">all essays →</a>
       </header>
       <div className="wx-w-grid">
-        <a className="wx-w-feat" href={`post/${lead.slug}`}>
-          <p className="wx-w-meta"><span className="wx-latest">latest</span>{lead.week && <span>week {lead.week}</span>}{range && <span>{range}</span>}<span>{lead.read}</span>{lead.arc && <span>{lead.arc}</span>}</p>
-          <h3 className="wx-w-title wx-ink">{lead.title}</h3>
+        <div className="wx-w-feat">
+          <p className="wx-w-meta"><span className="wx-latest">latest</span>{lead.week && <span>week {lead.week}</span>}{range && <span>{range}</span>}<span>{lead.read} read</span>{lead.arc && <span>{lead.arc}</span>}</p>
+          <h3 className="wx-w-title wx-ink"><a href={`post/${lead.slug}`}>{lead.title}</a></h3>
           {lead.deck && <p className="wx-w-deck">{lead.deck}</p>}
-          <span className="wx-tlink">read {lead.week ? `week ${lead.week}` : 'it'} →</span>
-        </a>
-        <div className="wx-w-list">
+          <div className={`wx-wplay${A ? '' : ' is-link'}`} data-src={A ? A.src : undefined} data-dur={A ? A.duration : undefined}>
+            {A
+              ? <button type="button" className="wx-wplay-btn" aria-label={`Play week ${lead.week}, ${wClock(A.duration)}`}><svg className="i-play" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v12l10-6z" fill="currentColor" /></svg><svg className="i-pause" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor" /></svg></button>
+              : <a className="wx-wplay-btn" href={`post/${lead.slug}`} aria-label={`Listen to week ${lead.week} on the essay page`}><svg className="i-play" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v12l10-6z" fill="currentColor" /></svg></a>}
+            <span className="wx-wplay-mid">
+              <span className="wx-wplay-k"><b>listen</b><span className="wx-wplay-t">{A ? wClock(A.duration) : `about ${v.listen_min} min`}</span><span>{A ? `AI voice, ElevenLabs ${A.voice}` : 'browser voice on the essay page'}</span></span>
+              <span className="wx-wplay-bar" aria-hidden="true"><i /></span>
+            </span>
+          </div>
+          <div className="wx-wask"><span className="wx-wask-k">ask AI about it</span>{askLinks(lead.slug).map(([n, h]) => <a key={n} href={h} target="_blank" rel="noopener noreferrer">{n} ↗</a>)}</div>
+          <a className="wx-tlink" href={`post/${lead.slug}`}>read week {lead.week} →</a>
+        </div>
+        <aside className="wx-w-week" aria-label={`The week behind week ${lead.week}`}>
+          <p className="wx-w-week-k">the week behind it<span>{v.entries} log entries</span></p>
+          <ol className="wx-wk-row">
+            {v.days.map((d) => (
+              <li key={d.date}>{d.day
+                ? <a className={`wx-wk arc-${d.arc_color || 'none'}`} href={`journey.html#day-${d.day}`} aria-label={`${d.dow} day ${d.day}, ${W_KIND[d.arc_color] || 'logged'}`}><span>{d.dow}</span><b>{d.day}</b><em>{W_KIND[d.arc_color] || 'logged'}</em></a>
+                : <span className="wx-wk is-empty"><span>{d.dow}</span><b>&nbsp;</b><em>no entry</em></span>}</li>
+            ))}
+          </ol>
+          {(v.nodes || []).length > 0 && (
+            <div className="wx-w-touch"><p>what the week touched</p><ul>{v.nodes.slice(0, 6).map((n) => <li key={n.name} className={`k-${n.kind}`}><a href={n.href}>{n.name}</a></li>)}</ul></div>
+          )}
+          <div className="wx-w-spend">
+            <p>where the essay spends its words</p>
+            <MiniStrip p={lead} big />
+            <p className="wx-w-stats"><span><b>{v.words}</b> words</span><span><b>{(v.para_days || []).filter((d) => d.length).length}</b> paragraphs tied to a day</span><span><b>{A ? wClock(A.duration) : `${v.listen_min} min`}</b> to listen</span></p>
+          </div>
+        </aside>
+        <div className="wx-w-more">
           {rest.slice(0, 3).map((p) => (
-            <a key={p.slug} className="wx-w-row" href={`post/${p.slug}`}>
-              <p className="wx-w-meta">{p.week && <span>week {p.week}</span>}<span>{fmtDate(p.date)}</span><span>{p.read}</span></p>
+            <a key={p.slug} className="wx-w-card" href={`post/${p.slug}`}>
+              <p className="wx-w-meta">{p.week && <span>week {p.week}</span>}<span>{fmtDate(p.date)}</span><span>{p.audio ? `listen ${wClock(p.audio.duration)}` : `listen, ${p.viz ? p.viz.listen_min : 1} min`}</span></p>
               <h3>{p.title}</h3>
+              <MiniStrip p={p} />
             </a>
           ))}
         </div>
@@ -479,7 +531,7 @@ const HUMAN_LINE = 'Sundays at sunrise, the gray mare at Bangalore Turf Club. Ji
 // One icon per thing in the line above, each with its own label.
 const HUMAN_ICONS = [
   { id: 'horseshoe', label: 'sunday rides' },
-  { id: 'belt', label: 'jiu-jitsu' },
+  { id: 'gi', label: 'jiu-jitsu' },
   { id: 'crown', label: 'one more turn' },
   { id: 'pot', label: 'sambar, attempt 47' },
   { id: 'book', label: 'long-flight reading' },

@@ -225,6 +225,9 @@ const OUTBOUND_LABELS = [
   [/github\.com/i, 'github'],
   [/bluesky\.net/i, 'bluesky'],
   [/scheduler\.zoom\.us|cal\.com|calendly/i, 'book_a_call'],
+  // the essay page's Ask AI links and the Google preferred source link
+  [/chatgpt\.com\/\?q=|claude\.ai\/new\?q=|perplexity\.ai\/search|google\.com\/search\?udm=50/i, 'ask_ai'],
+  [/google\.com\/preferences\/source/i, 'preferred_source'],
   [/\.pdf($|\?)/i, 'pdf'],
   [/(champ|lake|span|ampliz|cirralogix|recruit|infratech|health)\w*\.(com|fit|ai|io)/i, 'client_site'],
 ];

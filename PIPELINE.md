@@ -1,4 +1,4 @@
-# deependhq.com — content + daily auto-publish pipeline
+# deependhq.com, content + daily auto-publish pipeline
 
 The site is a no-build static React kit (HTML + Babel standalone). It loads
 `data.js`, which is **generated**. Do not hand-edit `data.js`.
@@ -38,9 +38,9 @@ Scheduled task `deependhq-daily-publish` runs at **01:30 IST daily**. It:
 
 1. Reads the day's daily note (`Calendar/Daily Notes/YYYY/MM/…`) + GitHub commit count.
 2. Claude **authors** a journey entry in [[Sreedeep Surapaneni]]'s voice (mood, arcs, three lines), applying the public-naming rules below.
-3. Runs `node scripts/ingest-entry.mjs '<json>'` — unshifts the entry, bumps the day counter, refreshes the status strip and "recently shipped", regenerates `data.js`.
+3. Runs `node scripts/ingest-entry.mjs '<json>'`, unshifts the entry, bumps the day counter, refreshes the status strip and "recently shipped", regenerates `data.js`.
 4. On Sundays, optionally authors a weekly narrative into `posts[]`.
-5. Runs `bash scripts/publish.sh` — fresh shallow clone over SSH using the
+5. Runs `bash scripts/publish.sh`, fresh shallow clone over SSH using the
    repo-scoped deploy key at `Other/.secrets/deploy_key_deependhq-site` (vault),
    rsyncs this worktree onto it, commits, pushes `main`. Cloudflare Workers
    Builds redeploys.
@@ -65,17 +65,17 @@ This is a personal-brand surface, not a company page.
 
 deependhq.com is served by Cloudflare **Worker** `deependhq` (static assets),
 built from this GitHub repo via Workers Builds. **Production branch: `main`**
-(the repo default). Pushes to other branches only create preview builds — this
+(the repo default). Pushes to other branches only create preview builds, this
 is exactly how the June catch-up publish initially "succeeded" without going
 live (it pushed `initial-site`). `initial-site` is legacy; publish to `main`.
 
 Two publish paths (see AUTOPUBLISH-TEMPLATE.md for the full design):
 
-- **Primary — `scripts/publish.sh`**: works from ANY environment with SSH
+- **Primary, `scripts/publish.sh`**: works from ANY environment with SSH
   egress (including sandboxed agent sessions). Fresh shallow clone over SSH
   using a repo-scoped DEPLOY KEY, mirror worktree, commit, push. Never touches
   this clone's `.git`, so stale lockfiles are irrelevant.
-- **Fallback — `scripts/publish-native.sh`**: runs on the Mac via LaunchAgent
+- **Fallback, `scripts/publish-native.sh`**: runs on the Mac via LaunchAgent
   `com.champ.deependhq-publish` (daily 02:15 IST), uses the local `.git` +
   [[Sreedeep Surapaneni]]'s personal SSH key, clears stale `index.lock` itself. Installer:
   `bash scripts/install-native-publisher.sh` (run once in Terminal).

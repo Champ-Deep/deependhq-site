@@ -1,4 +1,4 @@
-// TheStack.jsx — colophon-style "what powers this site"
+// TheStack.jsx: colophon-style "what powers this site"
 
 const TheStack = () => {
   const stack = window.DH_DATA.stack;

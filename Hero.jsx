@@ -1,4 +1,4 @@
-// Hero.jsx — the Signal. One line. One CTA.
+// Hero.jsx: the Signal. One line. One CTA.
 
 const HERO_ROTATIONS = [
   'shipping the design system for deependhq.com',

@@ -1,4 +1,4 @@
-// SecondCTA.jsx — the Pull. Weekly narrative teaser + closing CTA.
+// SecondCTA.jsx: the Pull. Weekly narrative teaser + closing CTA.
 
 const SecondCTA = ({ onBook }) => {
   const D = window.DH_DATA;
