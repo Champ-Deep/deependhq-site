@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 340,
-    "today_date": "2026-10-06",
+    "today_day": 341,
+    "today_date": "2026-10-07",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,20 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-07",
+      "day": 341,
+      "mood": "🔧",
+      "shipping_now": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests green. prospects can now book straight into a rep calendar instead of waiting on an email back and forth.",
+      "yesterday_thread": "spent the afternoon pricing a WhatsApp and RCS pilot with a new messaging vendor for one of the group hospitality brands. two lakh messages for about 60k rupees, our own data, no celebrity faces needed.",
+      "raw_thought": "shipped more code than I closed decisions today. the backlog of things only I can decide is growing faster than the backlog of things engineers can build. need to block time for decisions, not just demos.",
+      "arcs": [
+        "ChampLantern",
+        "Champions Club"
+      ],
+      "arc_color": "green",
+      "github_commits": 7
+    },
     {
       "date": "2026-10-06",
       "day": 340,
@@ -1952,6 +1966,10 @@
     ],
     "recently": [
       {
+        "text": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests gree...",
+        "tag": "shipped d341"
+      },
+      {
         "text": "the longevity build got its biggest single session in months tonight. app redesign, cli...",
         "tag": "shipped d340"
       },
@@ -1962,10 +1980,6 @@
       {
         "text": "wrote next week's plan before monday hits: three decisions, a partnership that's gone q...",
         "tag": "shipped d338"
-      },
-      {
-        "text": "the saturday client dispatch run caught its own mistake before it shipped: a client dra...",
-        "tag": "shipped d337"
       }
     ],
     "soon": [
