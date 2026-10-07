@@ -453,6 +453,38 @@ class Personalize {
 let ctxWaitUntil = (p) => { try { p.catch(() => {}); } catch {} };
 
 // ---------------------------------------------------------------------------
+// /audio/*: the essay readings. The asset store answers a Range request with
+// the whole file and a 200, and a browser cannot seek in audio served that way
+// (the play-from-here buttons and the scrubber jump back to 0:00). Files are a
+// few MB, so the Worker reads the asset once and slices it. No em dashes.
+// ---------------------------------------------------------------------------
+
+async function handleAudio(request, env) {
+  const plain = new Request(request.url, { method: request.method === 'HEAD' ? 'HEAD' : 'GET' });
+  const res = await env.ASSETS.fetch(plain);
+  if (res.status !== 200) return res;
+  const headers = new Headers(res.headers);
+  headers.set('accept-ranges', 'bytes');
+  headers.set('cache-control', 'public, max-age=86400');
+  headers.set('x-content-type-options', 'nosniff');
+  const range = request.headers.get('range');
+  const m = range && /^bytes=(\d*)-(\d*)$/.exec(range.trim());
+  if (!m || request.method === 'HEAD') return new Response(request.method === 'HEAD' ? null : res.body, { status: 200, headers });
+  const buf = new Uint8Array(await res.arrayBuffer());
+  const size = buf.length;
+  let start = m[1] === '' ? Math.max(0, size - Number(m[2] || 0)) : Number(m[1]);
+  let end = m[1] === '' || m[2] === '' ? size - 1 : Math.min(Number(m[2]), size - 1);
+  if (!(start <= end) || start >= size) {
+    headers.set('content-range', `bytes */${size}`);
+    headers.delete('content-length');
+    return new Response(null, { status: 416, headers });
+  }
+  headers.set('content-range', `bytes ${start}-${end}/${size}`);
+  headers.set('content-length', String(end - start + 1));
+  return new Response(buf.slice(start, end + 1), { status: 206, headers });
+}
+
+// ---------------------------------------------------------------------------
 // router
 // ---------------------------------------------------------------------------
 
@@ -506,6 +538,7 @@ export default {
         500
       );
     }
+    if (url.pathname.startsWith('/audio/')) return handleAudio(request, env);
     const res = await env.ASSETS.fetch(request);
     const ct = res.headers.get('content-type') || '';
     // The .txt files (robots, llms, agents, humans) carry block letters and

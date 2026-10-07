@@ -138,6 +138,34 @@ for (const [path, ref, want] of cases) {
 check('a path that merely contains a segment word does not leak', cls('/api/post', ''), 'explorer');
 check('a deep path still classifies', cls('/post/a/b/c/', ''), 'narrative');
 
+// ------------------------------------------------ audio ranges
+// The asset store answers a Range request with the whole file, so a browser
+// cannot seek in an essay reading. handleAudio slices it. Run it for real.
+console.log('\naudio: Range requests get a 206 the browser can seek with');
+{
+  const aStart = src.indexOf('async function handleAudio');
+  const aSrc = src.slice(aStart, src.indexOf('// ---------', aStart));
+  const ab = { console, Response, Headers, URL, Request };
+  ab.globalThis = ab; vm.createContext(ab);
+  vm.runInContext(aSrc + '\nglobalThis.handleAudio = handleAudio;', ab, { filename: 'audio-snippet.js' });
+  const body = new Uint8Array(1000).map((_, i) => i % 251);
+  const env = { ASSETS: { fetch: async () => new Response(body, { status: 200, headers: { 'content-type': 'audio/mpeg', 'content-length': '1000' } }) } };
+  const get = (range) => ab.handleAudio(new Request('https://deependhq.com/audio/x.mp3', { headers: range ? { range } : {} }), env);
+  const full = await get();
+  check('no Range: 200 with accept-ranges', `${full.status} ${full.headers.get('accept-ranges')}`, '200 bytes');
+  const mid = await get('bytes=100-199');
+  const midBody = new Uint8Array(await mid.arrayBuffer());
+  check('bytes=100-199 is a 206', mid.status, 206);
+  check('bytes=100-199 says where it is', mid.headers.get('content-range'), 'bytes 100-199/1000');
+  check('bytes=100-199 returns those 100 bytes', `${midBody.length} ${midBody[0]}`, `100 ${100 % 251}`);
+  const open = await get('bytes=900-');
+  check('an open range runs to the end', open.headers.get('content-range'), 'bytes 900-999/1000');
+  const tail = await get('bytes=-50');
+  check('a suffix range is the last bytes', tail.headers.get('content-range'), 'bytes 950-999/1000');
+  const bad = await get('bytes=2000-');
+  check('a range past the end is a 416', bad.status, 416);
+}
+
 console.log(`\n${pass} passed, ${fails.length} failed`);
 if (fails.length) {
   for (const f of fails) console.error('  FAIL ' + f);
