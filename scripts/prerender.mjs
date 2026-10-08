@@ -77,7 +77,7 @@ async function downloadDeps() {
 // chain, so the shared module list has to carry all of them even when only one
 // renders. Loading the ones a page does not use costs nothing at runtime
 // because the prerender bundle is never shipped.
-const SHARED = ['Sys.jsx', 'Nav.jsx', 'SignOff.jsx', 'Footer.jsx', 'Palette.jsx', 'Rail.jsx', 'ContributionSkyline.jsx', 'Workshop.jsx'];
+const SHARED = ['Sys.jsx', 'Fx.jsx', 'Nav.jsx', 'SignOff.jsx', 'Footer.jsx', 'Palette.jsx', 'Rail.jsx', 'ContributionSkyline.jsx', 'Workshop.jsx'];
 const ALL_PAGES = [
   'JourneyPage.jsx', 'ToolkitPage.jsx', 'FieldNotesPage.jsx', 'NowPage.jsx',
   'PillarsPage.jsx', 'WritingPage.jsx', 'PostPage.jsx', 'CompanyPage.jsx',
