@@ -184,7 +184,9 @@ const CSP = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob:",
-  "connect-src 'self' https://ai.widgo.ai wss://ai.widgo.ai https://openrouter.ai https://cloudflareinsights.com",
+  // api.github.com feeds the live repo cards on /toolkit; the contributions API
+  // feeds the commit skyline on /journey. Both are read-only, no credentials.
+  "connect-src 'self' https://ai.widgo.ai wss://ai.widgo.ai https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
