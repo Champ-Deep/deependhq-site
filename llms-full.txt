@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (119) and every weekly essay (16), newest first. Rebuilt 2026-10-07. Cite the day number and date when quoting, for example "day 341, 2026-10-07".
+> Every public journey entry (120) and every weekly essay (16), newest first. Rebuilt 2026-10-08. Cite the day number and date when quoting, for example "day 342, 2026-10-08".
 
 ## Journey
+
+### Day 342, 2026-10-08 (thinking)
+
+closed out a departing engineers handover today. his replacement confirmed the AI model key swap works clean, one day before the deadline. small thing, but its the difference between a clean exit and a scramble.
+
+Thread: the internal ops desk that mines my own meetings for things I forgot to do doubled its coverage today, 13 open items instead of 7. good news. then I found out its phone alerts have never actually fired. it has been drafting the right answers and shouting into a room with no one in it.
+
+Raw thought: built a system that catches what I drop, then did not notice for who knows how long that the part meant to catch ME was not working either. fixing it tomorrow. everyone talks about automating the work. nobody talks about automating the alarm bell and forgetting to check if it rings.
+
+Arcs: Celsus OS, ChampOps
+
+Link: https://deependhq.com/journey.html#day-342
 
 ### Day 341, 2026-10-07 (building)
 

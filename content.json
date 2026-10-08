@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 341,
-    "today_date": "2026-10-07",
+    "today_day": 342,
+    "today_date": "2026-10-08",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-08",
+      "day": 342,
+      "mood": "🔧",
+      "shipping_now": "closed out a departing engineers handover today. his replacement confirmed the AI model key swap works clean, one day before the deadline. small thing, but its the difference between a clean exit and a scramble.",
+      "yesterday_thread": "the internal ops desk that mines my own meetings for things I forgot to do doubled its coverage today, 13 open items instead of 7. good news. then I found out its phone alerts have never actually fired. it has been drafting the right answers and shouting into a room with no one in it.",
+      "raw_thought": "built a system that catches what I drop, then did not notice for who knows how long that the part meant to catch ME was not working either. fixing it tomorrow. everyone talks about automating the work. nobody talks about automating the alarm bell and forgetting to check if it rings.",
+      "arcs": [
+        "Celsus OS",
+        "ChampOps"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-10-07",
       "day": 341,
@@ -1966,6 +1979,10 @@
     ],
     "recently": [
       {
+        "text": "closed out a departing engineers handover today. his replacement confirmed the AI model...",
+        "tag": "shipped d342"
+      },
+      {
         "text": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests gree...",
         "tag": "shipped d341"
       },
@@ -1976,10 +1993,6 @@
       {
         "text": "shipped october plans for every person on the team today, a dated plan, a handover pack...",
         "tag": "shipped d339"
-      },
-      {
-        "text": "wrote next week's plan before monday hits: three decisions, a partnership that's gone q...",
-        "tag": "shipped d338"
       }
     ],
     "soon": [
