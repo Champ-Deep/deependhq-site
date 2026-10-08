@@ -75,6 +75,8 @@ const NowPage = () => {
             ))}
           </div>
         </section>
+
+        {window.Shoutouts && <window.Shoutouts />}
       </div>
     </main>
   );

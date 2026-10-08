@@ -25,7 +25,7 @@
   // Paths that are themselves a strong statement of intent. Visiting the stack
   // page unprompted is a stronger operator signal than arriving from github,
   // because it costs a click.
-  const OPERATOR_PATHS = /^\/(toolkit|command|pillars)(\/|$)/;
+  const OPERATOR_PATHS = /^\/(toolkit|pillars)(\/|$)/;
   const NARRATIVE_PATHS = /^\/(writing|journey|now|post)(\/|$)/;
 
   // Client properties that suggest a visitor is doing operator work.

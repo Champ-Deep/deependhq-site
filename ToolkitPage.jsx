@@ -91,6 +91,8 @@ const ToolkitPage = () => {
             </div>
           </aside>
         </div>
+
+        {window.LiveRepos && <window.LiveRepos />}
       </div>
     </main>
   );

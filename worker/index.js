@@ -37,6 +37,11 @@ const REDIRECTS = {
   // worse than an ugly URL. Flip this when mission-log.html ships.
   '/field-notes': { to: '/journey', code: 301 },
   '/companies': { to: '/pillars', code: 301 },
+  // The Command Center was folded into the pages it duplicated (Oct 2026):
+  // commit skyline on the Mission Log, repos on the Stack, radar on Now, the
+  // shell behind cmd+K. Old links land on the skyline.
+  '/command': { to: '/journey#commits', code: 301 },
+  '/command.html': { to: '/journey#commits', code: 301 },
 };
 
 // ---------------------------------------------------------------------------
@@ -406,7 +411,7 @@ async function handleShowcase(request, env, url) {
 // These rules are a STARTING HYPOTHESIS, not a finding. There is no traffic data
 // yet. They are deliberately simple so that when real data arrives it is obvious
 // whether they were right.
-const OPERATOR_PATHS = /^\/(toolkit|command|pillars)(\/|$)/;
+const OPERATOR_PATHS = /^\/(toolkit|pillars)(\/|$)/;
 const NARRATIVE_PATHS = /^\/(writing|journey|now|post)(\/|$)/;
 
 function classifySegment(pathname, refHost) {

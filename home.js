@@ -371,7 +371,7 @@
         palState = 2;
         setTimeout(function () { window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, ctrlKey: true, bubbles: true })); }, 150);
       })
-      .catch(function () { palState = 0; location.href = 'command.html'; });
+      .catch(function () { palState = 0; location.href = 'journey.html'; });
   };
   window.addEventListener('keydown', function (e) {
     if (palState === 2) return;

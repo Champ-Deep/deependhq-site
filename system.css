@@ -578,3 +578,174 @@ a.dh-art:hover { color: var(--build); }
 .theme-switch .sw i:nth-child(3) { background: var(--build); }
 .theme-switch .lbl { white-space: nowrap; }
 @media (max-width: 47.99rem) { .theme-switch { padding: 0; justify-content: center; } .theme-switch .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
+
+/* ============================================================
+   CARRIED OVER FROM /command (retired Oct 2026)
+   The repo cards (Stack), the radar (Now), the commit skyline
+   (Mission Log) and the shell inside the command palette. System
+   tokens only, so every page, the homepage included, can render them.
+   ============================================================ */
+
+/* ---------- live repo cards ---------- */
+.ws-repos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); }
+@media (min-width: 1100px) { .ws-repos { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.ws-repo {
+  display: flex; flex-direction: column; gap: 6px; color: inherit; text-decoration: none;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s4);
+  transition: border-color var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+}
+.ws-repo:hover { border-color: var(--build); transform: translateY(-2px); text-decoration: none; }
+.ws-repo-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ws-repo-name { font: 600 var(--text-sm) var(--font-mono); color: var(--text); }
+.ws-repo:hover .ws-repo-name { color: var(--build); }
+.ws-repo-desc { color: var(--muted); font-size: var(--text-sm); line-height: 1.45; flex: 1; }
+.ws-repo-meta { display: flex; align-items: center; gap: var(--s4); font: 500 var(--text-xs) var(--font-mono); color: var(--dim); }
+.ws-lang-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; background: var(--dim); }
+.ws-repo-skel { height: 116px; border-radius: var(--r-lg); border: 1px solid var(--line); background: linear-gradient(100deg, var(--card) 30%, var(--card-2) 50%, var(--card) 70%); background-size: 200% 100%; animation: ws-shimmer 1.3s linear infinite; }
+@keyframes ws-shimmer { to { background-position: -200% 0; } }
+@media (max-width: 900px) { .ws-repos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ws-repos { grid-template-columns: 1fr; } }
+
+/* ---------- on my radar ---------- */
+.ws-shout { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--s6); }
+.ws-shout-spot {
+  position: relative; display: flex; flex-direction: column; gap: 4px; overflow: hidden; color: inherit; text-decoration: none;
+  background: radial-gradient(620px 200px at 0% 0%, var(--build-wash), transparent 60%), var(--card);
+  border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s8); min-height: 210px;
+}
+.ws-shout-spot:hover { border-color: var(--line-2); text-decoration: none; }
+.ws-shout-bar { position: absolute; top: 0; left: 0; height: 3px; width: 0; background: var(--build); box-shadow: 0 0 8px var(--build); animation: ws-shout-fill 4.8s linear forwards; }
+.ws-shout-bar.paused { animation-play-state: paused; }
+@keyframes ws-shout-fill { from { width: 0; } to { width: 100%; } }
+.ws-shout-tag { align-self: flex-start; font: 500 .66rem var(--font-mono); text-transform: uppercase; letter-spacing: .08em; padding: 3px 10px; border-radius: var(--r-pill); border: 1px solid; }
+.ws-shout-tag.tag-using { color: var(--build); border-color: var(--build); background: var(--build-wash); }
+.ws-shout-tag.tag-trying { color: var(--think-text); border-color: var(--think); background: var(--think-wash); }
+.ws-shout-tag.tag-watching { color: var(--win); border-color: var(--win); background: var(--win-wash); }
+.ws-shout-name { font: 700 1.7rem var(--font-display); letter-spacing: var(--track-display); color: var(--text); margin-top: 10px; }
+.ws-shout-arrow { font-size: 1rem; color: var(--muted); }
+.ws-shout-spot:hover .ws-shout-name { color: var(--build); }
+.ws-shout-repo { font: 500 var(--text-xs) var(--font-mono); color: var(--dim); }
+.ws-shout-what { color: var(--muted); font-size: var(--text-sm); margin-top: 6px; line-height: 1.5; }
+.ws-shout-side { display: flex; flex-direction: column; gap: var(--s3); }
+.ws-shout-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.ws-shout-fbtn { font: 500 var(--text-xs) var(--font-mono); min-height: 32px; padding: 5px 11px; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
+.ws-shout-fbtn.active, .ws-shout-fbtn:hover { color: var(--text); border-color: var(--line-2); background: var(--card-2); }
+.ws-shout-chips { display: flex; flex-wrap: wrap; gap: 7px; align-content: flex-start; }
+.ws-shout-chip { display: inline-flex; align-items: center; gap: 7px; font: 500 var(--text-xs) var(--font-mono); min-height: 32px; padding: 6px 10px; border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
+.ws-shout-chip:hover { border-color: var(--line-2); color: var(--text); }
+.ws-shout-chip.active { color: var(--text); border-color: var(--build); background: var(--build-wash); }
+.ws-shout-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.ws-shout-dot.tag-using { background: var(--build); }
+.ws-shout-dot.tag-trying { background: var(--think); }
+.ws-shout-dot.tag-watching { background: var(--win); }
+@media (max-width: 900px) { .ws-shout { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .ws-shout-bar { animation: none; width: 100%; } .ws-repo-skel { animation: none; } }
+
+/* ---------- the shell inside the command palette ---------- */
+.dhk-term { padding: 6px; }
+.dhk-term-body { padding: var(--s3) var(--s4); font: 400 .8125rem/1.7 var(--font-mono); min-height: 220px; max-height: 46vh; overflow-y: auto; color: var(--text); background: color-mix(in oklab, var(--navy) 80%, black); border: 1px solid var(--line); border-radius: var(--r-md); }
+.dhk-term-line { white-space: pre-wrap; word-break: break-word; }
+.dhk-term-line .p { color: var(--build); }
+.dhk-term-line.out { color: var(--muted); }
+.dhk-term-line.out b { color: var(--text); font-weight: 600; }
+.dhk-term-line.out .g { color: var(--build); }
+.dhk-term-line.out .bl { color: var(--think-text); }
+.dhk-term-line.out .gd { color: var(--win); }
+.dhk-term-row { display: flex; align-items: center; gap: 8px; }
+.dhk-term-row .p { color: var(--build); white-space: nowrap; }
+.dhk-term-input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; font: inherit; color: var(--text); caret-color: var(--build); }
+.dhk-term-hint { margin: var(--s2) var(--s2) var(--s1); font: 500 var(--text-xs) var(--font-mono); color: var(--dim); }
+.dhk-term-hint b { color: var(--text); font-weight: 600; }
+
+/* ============================================================
+   CONTRIBUTION SKYLINE (the real GitHub graph, 2D to 3D)
+   Styles for ContributionSkyline.jsx. The canvas reads this block's
+   color and background at runtime, so the ground stays a token.
+   ============================================================ */
+.cs-root {
+  position: relative; width: 100%;
+  background: var(--card); color: var(--text);
+  border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 16px; font-family: var(--font-ui);
+}
+@media (min-width: 640px) { .cs-root { padding: 20px; } }
+.cs-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin: 0 0 12px; }
+.cs-title { margin: 0; font: 400 15px/1.4 var(--font-ui); color: var(--text); }
+.cs-title a { color: var(--text); text-decoration-color: var(--line-2); }
+.cs-title a:hover { color: var(--build); }
+.cs-title-num { font-weight: 600; font-variant-numeric: tabular-nums; }
+.cs-toggle { position: relative; display: inline-flex; padding: 2px; border: 1px solid var(--line); border-radius: var(--r-md); }
+.cs-toggle-thumb { position: absolute; top: 2px; bottom: 2px; left: 2px; width: 32px; border-radius: var(--r-sm); background: var(--text); transition: transform .5s; }
+.cs-toggle-btn {
+  position: relative; z-index: 1; display: grid; place-items: center; height: 28px; width: 32px;
+  padding: 0; border: 0; border-radius: var(--r-sm); background: transparent; cursor: pointer;
+  color: var(--dim); transition: color .5s;
+}
+.cs-toggle-btn.is-on { color: var(--card); }
+.cs-toggle-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.cs-frame { position: relative; border: 1px solid var(--line); border-radius: var(--r-md); }
+.cs-stage-wrap { position: relative; padding: 12px 12px 0; }
+@media (min-width: 640px) { .cs-stage-wrap { padding: 16px 16px 0; } }
+.cs-stage { position: relative; width: 100%; overflow: hidden; border-radius: var(--r-sm); outline-offset: 4px; }
+.cs-stage:has(:focus-visible) { outline: 2px solid var(--text); }
+.cs-canvas { position: absolute; top: 0; left: 0; display: block; max-width: none; outline: none; }
+
+.cs-corner { position: absolute; display: flex; flex-direction: column; gap: 20px; pointer-events: none; transition-property: opacity, transform; }
+.cs-corner-tr { top: 4px; right: 4px; align-items: flex-end; }
+.cs-corner-bl { bottom: 4px; left: 4px; align-items: flex-start; }
+
+.cs-stat { min-width: 0; }
+.cs-stat-label { font: 400 13px/1.25 var(--font-ui); color: var(--dim); }
+.cs-stat-value { font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.02em; line-height: 1; transition: color .5s; }
+.cs-stat-value-big { text-align: right; line-height: .95; }
+.cs-stat-unit { font-size: 14px; }
+.cs-stat-sub { font: 400 12px/1.3 var(--font-mono); color: var(--dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cs-stat-stack .cs-stat-row { display: flex; align-items: baseline; gap: 6px; margin-top: 4px; }
+.cs-stat-stack .cs-stat-sub { margin-top: 2px; }
+.cs-stat-corner { display: grid; grid-template-columns: auto auto; align-items: end; column-gap: 8px; }
+.cs-stat-start { justify-content: start; }
+.cs-stat-end { justify-content: end; }
+.cs-stat-side { padding-bottom: .15em; line-height: 1.25; }
+.cs-stat-side .cs-stat-unit { font-size: 15px; }
+.cs-stat-side .cs-stat-sub { font-size: 13px; }
+
+.cs-tip {
+  position: absolute; top: 12px; left: 12px; z-index: 20; pointer-events: none; white-space: nowrap;
+  padding: 6px 10px; border-radius: var(--r-md); font: 400 12px/1 var(--font-ui);
+  background: var(--text); color: var(--card); box-shadow: var(--shadow-lg, 0 10px 30px rgba(0,0,0,.35));
+  transition: opacity .15s;
+}
+@media (min-width: 640px) { .cs-tip { top: 16px; left: 16px; } }
+.cs-tip strong { font-weight: 600; }
+.cs-tip-date { opacity: .75; }
+.cs-tip-arrow {
+  position: absolute; top: 100%; left: var(--arrow, 50%); margin-left: -5px; width: 0; height: 0;
+  border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid var(--text);
+}
+
+.cs-row { display: grid; transition-property: grid-template-rows, opacity; }
+.cs-row-clip { min-height: 0; overflow: hidden; }
+.cs-row-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 16px 12px 4px; }
+@media (min-width: 640px) { .cs-row-grid { padding-left: 16px; padding-right: 16px; } }
+@media (min-width: 768px) { .cs-row-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.cs-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 12px; font: 400 12px/1.4 var(--font-mono); color: var(--dim); }
+@media (min-width: 640px) { .cs-foot { padding-left: 16px; padding-right: 16px; } }
+.cs-hints { position: relative; display: grid; flex: 1; }
+.cs-hint { grid-area: 1 / 1; transition: opacity .5s; }
+.cs-legend { display: flex; align-items: center; gap: 6px; }
+.cs-legend > span:first-child { margin-right: 2px; }
+.cs-legend > span:last-child { margin-left: 2px; }
+.cs-swatch {
+  width: 11px; height: 11px; padding: 0; border: 0; border-radius: 2px; cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(127,127,127,.12);
+  transition: background-color .5s, transform .5s;
+}
+.cs-swatch:hover { transform: scale(1.25); }
+.cs-swatch:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; }
+.cs-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-toggle-thumb, .cs-toggle-btn, .cs-corner, .cs-stat-value, .cs-tip, .cs-row, .cs-hint, .cs-swatch { transition: none !important; }
+}

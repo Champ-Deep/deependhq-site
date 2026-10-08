@@ -22,7 +22,6 @@ const Footer = ({ compact = false }) => {
             <a href="writing.html">Writing</a>
             <a href="pillars.html">Pillars</a>
             <a href="toolkit.html">Stack</a>
-            <a href="command.html">Command</a>
             <a href="now.html">Now</a>
             <a href="feed.xml">RSS</a>
             <a href="llms.txt">llms.txt</a>

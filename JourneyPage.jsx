@@ -315,6 +315,7 @@ const JourneyPage = () => {
               <window.HomeSections.Heatmap />
             </div>
           )}
+          {window.GitHubSkyline && <window.GitHubSkyline />}
           <div className="dh-feed-v2">
             {groups.map((g) => (
               <React.Fragment key={g.key}>
