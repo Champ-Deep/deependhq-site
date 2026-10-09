@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 342,
-    "today_date": "2026-10-08",
+    "today_day": 343,
+    "today_date": "2026-10-09",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-09",
+      "day": 343,
+      "mood": "🫥",
+      "shipping_now": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on it, and a booked client call left no record at all, not even a log of the call happening. meanwhile the ops desk pulled 13 real action items out of two calls that did happen, two of them decided on their own from past calls.",
+      "yesterday_thread": "also scoped two new experiments tonight. a catalog that shows up the moment a client has paid half, and video-first cold opens for product launches with no demo reel yet. neither is built. both get a hand-built first phase before anything gets automated.",
+      "raw_thought": "the empty-room pattern is still the scariest one in this whole system. a bad meeting at least leaves a mess to clean up. a meeting that leaves nothing behind, you dont even know what you lost.",
+      "arcs": [
+        "Celsus OS",
+        "ChampOps"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-10-08",
       "day": 342,
@@ -1979,6 +1992,10 @@
     ],
     "recently": [
       {
+        "text": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on...",
+        "tag": "shipped d343"
+      },
+      {
         "text": "closed out a departing engineers handover today. his replacement confirmed the AI model...",
         "tag": "shipped d342"
       },
@@ -1989,10 +2006,6 @@
       {
         "text": "the longevity build got its biggest single session in months tonight. app redesign, cli...",
         "tag": "shipped d340"
-      },
-      {
-        "text": "shipped october plans for every person on the team today, a dated plan, a handover pack...",
-        "tag": "shipped d339"
       }
     ],
     "soon": [

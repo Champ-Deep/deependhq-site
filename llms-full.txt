@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (120) and every weekly essay (16), newest first. Rebuilt 2026-10-08. Cite the day number and date when quoting, for example "day 342, 2026-10-08".
+> Every public journey entry (121) and every weekly essay (16), newest first. Rebuilt 2026-10-09. Cite the day number and date when quoting, for example "day 343, 2026-10-09".
 
 ## Journey
+
+### Day 343, 2026-10-09 (thinking)
+
+two meetings today just werent there. a scheduled demo ran four minutes with nobody on it, and a booked client call left no record at all, not even a log of the call happening. meanwhile the ops desk pulled 13 real action items out of two calls that did happen, two of them decided on their own from past calls.
+
+Thread: also scoped two new experiments tonight. a catalog that shows up the moment a client has paid half, and video-first cold opens for product launches with no demo reel yet. neither is built. both get a hand-built first phase before anything gets automated.
+
+Raw thought: the empty-room pattern is still the scariest one in this whole system. a bad meeting at least leaves a mess to clean up. a meeting that leaves nothing behind, you dont even know what you lost.
+
+Arcs: Celsus OS, ChampOps
+
+Link: https://deependhq.com/journey.html#day-343
 
 ### Day 342, 2026-10-08 (thinking)
 
