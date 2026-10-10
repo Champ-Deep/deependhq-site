@@ -1,0 +1,50 @@
+{
+  "slug": "week-45-the-wall-we-named",
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "voice_name": "Brian",
+  "model": "eleven_multilingual_v2",
+  "format": "mp3_44100_64",
+  "chars": 3970,
+  "bytes": 2034206,
+  "duration": 254.3,
+  "starts": [
+    {
+      "i": -1,
+      "t": 0
+    },
+    {
+      "i": 0,
+      "t": 29.41
+    },
+    {
+      "i": 1,
+      "t": 56.55
+    },
+    {
+      "i": 2,
+      "t": 89.13
+    },
+    {
+      "i": 3,
+      "t": 110.72
+    },
+    {
+      "i": 4,
+      "t": 119.43
+    },
+    {
+      "i": 5,
+      "t": 160.99
+    },
+    {
+      "i": 6,
+      "t": 193.5
+    },
+    {
+      "i": 7,
+      "t": 230.85
+    }
+  ],
+  "text_sha": "ded6249cc3cb1371",
+  "generated": "2026-10-10T19:42:52.058Z"
+}

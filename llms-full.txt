@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (121) and every weekly essay (16), newest first. Rebuilt 2026-10-09. Cite the day number and date when quoting, for example "day 343, 2026-10-09".
+> Every public journey entry (122) and every weekly essay (16), newest first. Rebuilt 2026-10-10. Cite the day number and date when quoting, for example "day 344, 2026-10-10".
 
 ## Journey
+
+### Day 344, 2026-10-10 (thinking)
+
+spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second usage tier, split cowork vs claude code by task weight, and put notion in the middle so any agent can pick up the context. wrote the whole thing up as a plain whatsapp message instead of a deck, because that is what actually gets read.
+
+Thread: my own task list crossed 1,600 open items tonight. zero closed today, 22 new ones filed by the automation that watches zoom and email while i was off. the oldest open thread on there is 9 days old and still mine to answer.
+
+Raw thought: i keep telling clients to turn repeat work into a skill instead of re-running the same chat. i have at least three things in my own system that qualify and have not done it either. saturday nights are apparently for noticing that out loud.
+
+Arcs: AI Tooling Advisory, ChampOps
+
+Link: https://deependhq.com/journey.html#day-344
 
 ### Day 343, 2026-10-09 (thinking)
 

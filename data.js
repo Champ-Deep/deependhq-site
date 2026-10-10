@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-09T21:12:04.643Z
+// Built 2026-10-10T19:42:52.433Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 343,
-    "today_date": "2026-10-09",
+    "today_day": 344,
+    "today_date": "2026-10-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 344,
+          "date": "2026-10-10",
+          "shipping_now": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second…",
+          "arc_color": "blue"
+        },
         {
           "day": 343,
           "date": "2026-10-09",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "day": 331,
           "date": "2026-09-27",
           "shipping_now": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 330,
-          "date": "2026-09-26",
-          "shipping_now": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, agent owns it end to…",
           "arc_color": "blue"
         }
       ],
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 28,
+      "days_since": 29,
       "entries_30d": 2,
       "recent": [
         {
@@ -624,7 +624,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 3,
+      "days_since": 4,
       "entries_30d": 2,
       "recent": [
         {
@@ -693,8 +693,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-01",
       "last_ship_day": 335,
-      "days_since": 9,
-      "entries_30d": 11,
+      "days_since": 10,
+      "entries_30d": 10,
       "recent": [
         {
           "day": 335,
@@ -763,7 +763,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 4,
+      "days_since": 5,
       "entries_30d": 4,
       "recent": [
         {
@@ -844,6 +844,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-10",
+      "day": 344,
+      "mood": "🫠",
+      "shipping_now": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second usage tier, split cowork vs claude code by task weight, and put notion in the middle so any agent can pick up the context. wrote the whole thing up as a plain whatsapp message instead of a deck, because that is what actually gets read.",
+      "yesterday_thread": "my own task list crossed 1,600 open items tonight. zero closed today, 22 new ones filed by the automation that watches zoom and email while i was off. the oldest open thread on there is 9 days old and still mine to answer.",
+      "raw_thought": "i keep telling clients to turn repeat work into a skill instead of re-running the same chat. i have at least three things in my own system that qualify and have not done it either. saturday nights are apparently for noticing that out loud.",
+      "arcs": [
+        "AI Tooling Advisory",
+        "ChampOps"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "AI Tooling Advisory",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-09",
       "day": 343,
@@ -4163,7 +4188,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 343 · Oct 9",
+    "last_ship": "day 344 · Oct 10",
     "state": "shipping"
   },
   "status_board": {
@@ -4187,6 +4212,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff...",
+        "tag": "shipped d344"
+      },
+      {
         "text": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on...",
         "tag": "shipped d343"
       },
@@ -4197,10 +4226,6 @@ window.DH_DATA = {
       {
         "text": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests gree...",
         "tag": "shipped d341"
-      },
-      {
-        "text": "the longevity build got its biggest single session in months tonight. app redesign, cli...",
-        "tag": "shipped d340"
       }
     ],
     "soon": [
@@ -5049,6 +5074,50 @@ window.DH_DATA = {
           "tag": "Accelerator"
         }
       ],
+      "audio": {
+        "src": "audio/week-45-the-wall-we-named.mp3",
+        "duration": 254.3,
+        "voice": "Brian",
+        "starts": [
+          {
+            "i": -1,
+            "t": 0
+          },
+          {
+            "i": 0,
+            "t": 29.41
+          },
+          {
+            "i": 1,
+            "t": 56.55
+          },
+          {
+            "i": 2,
+            "t": 89.13
+          },
+          {
+            "i": 3,
+            "t": 110.72
+          },
+          {
+            "i": 4,
+            "t": 119.43
+          },
+          {
+            "i": 5,
+            "t": 160.99
+          },
+          {
+            "i": 6,
+            "t": 193.5
+          },
+          {
+            "i": 7,
+            "t": 230.85
+          }
+        ],
+        "bytes": 2034206
+      },
       "viz": {
         "window": {
           "start": "2026-09-21",
@@ -8838,33 +8907,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-09T21:12:04.614Z",
-    "built_date": "2026-10-10",
+    "built": "2026-10-10T19:42:52.402Z",
+    "built_date": "2026-10-11",
     "newest_entry": {
-      "date": "2026-10-09",
-      "day": 343
+      "date": "2026-10-10",
+      "day": 344
     },
     "weekdays_stale": 0,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 120,
+        "days_old": 121,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 108,
+        "days_old": 109,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 108,
+        "days_old": 109,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 344,
+      "date": "2026-10-10",
+      "mood": "🫠",
+      "arc_color": "blue",
+      "arcs": [
+        "AI Tooling Advisory",
+        "ChampOps"
+      ],
+      "ship": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second usage tier, split cowork vs claude code by task weight, and put notion in the middle so any agent can pick up the context. wrote the whole thing up as a plain whatsapp message instead of a deck, because that is what actually gets read."
+    },
     {
       "day": 343,
       "date": "2026-10-09",
@@ -9004,17 +9084,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter deadline for a partnership decision thats been circling since july. thirteen dark sessions in a row and the go or no go date just came and went with nobody writing down what got decided. thats not a data problem anymore, its an avoidance problem."
-    },
-    {
-      "day": 330,
-      "date": "2026-09-26",
-      "mood": "🧭",
-      "arc_color": "blue",
-      "arcs": [
-        "Champions Operations",
-        "TheDeepEndHQ"
-      ],
-      "ship": "spent saturday writing the plan instead of shipping code. filed the W40 agent operating plan: three lanes, agent owns it end to end, agent preps it and i tap approve, or its mine alone, plus a daily approval queue. the real finding, my bottleneck was never drafting, it was permission walls and the same task getting filed five times over."
     }
   ],
   "heatmap": {
@@ -9906,13 +9975,13 @@ window.DH_DATA = {
         "date": "2026-10-10",
         "future": false,
         "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 344,
+        "arc_color": "blue",
+        "ship": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop pay"
       },
       {
         "date": "2026-10-11",
-        "future": true,
+        "future": false,
         "weekend": true,
         "day": null,
         "arc_color": null,
@@ -9921,10 +9990,10 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 343,
-    "entries": 121,
+    "days_public": 344,
+    "entries": 122,
     "entries_30d": 29,
-    "entries_this_month": 9,
+    "entries_this_month": 10,
     "streak_weekdays": 82,
     "essays": 16,
     "companies": 12,
@@ -9934,15 +10003,15 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 15
+        "n": 14
       },
       {
         "arc": "Lake B2B",
-        "n": 10
+        "n": 9
       },
       {
         "arc": "ChampOps",
-        "n": 6
+        "n": 7
       },
       {
         "arc": "Celsus OS",
@@ -10006,8 +10075,18 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-10-09",
-        "mentions_90d": 14,
+        "last_seen": "2026-10-10",
+        "mentions_90d": 15,
+        "days_since": 1
+      },
+      {
+        "name": "Claude + Cowork",
+        "what": "The strategy and writing partner that also drives the vault, the browser, and this site's build.",
+        "url": null,
+        "kind": "using",
+        "category": "ai",
+        "last_seen": "2026-10-10",
+        "mentions_90d": 2,
         "days_since": 1
       },
       {
@@ -10018,7 +10097,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-09",
         "mentions_90d": 5,
-        "days_since": 1
+        "days_since": 2
       },
       {
         "name": "Event Scout",
@@ -10031,7 +10110,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 26
+        "days_since": 27
       },
       {
         "name": "ChampUTM",
@@ -10044,7 +10123,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 28
+        "days_since": 29
       },
       {
         "name": "Cloudflare",
@@ -10054,7 +10133,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 52
+        "days_since": 53
       },
       {
         "name": "ChampBeam",
@@ -10067,7 +10146,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 3,
-        "days_since": 67
+        "days_since": 68
       },
       {
         "name": "LakeStream",
@@ -10080,7 +10159,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 67
+        "days_since": 68
       },
       {
         "name": "ChamPDF",
@@ -10093,7 +10172,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 67
+        "days_since": 68
       },
       {
         "name": "ChampMail",
@@ -10106,7 +10185,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 69
+        "days_since": 70
       },
       {
         "name": "Supabase",
@@ -10117,7 +10196,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 101
+        "days_since": 102
       },
       {
         "name": "ChampGraph",
@@ -10130,7 +10209,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 109
+        "days_since": 110
       },
       {
         "name": "ChampQuest",
@@ -10143,7 +10222,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 129
+        "days_since": 130
       },
       {
         "name": "Deep Scanner",
@@ -10365,16 +10444,6 @@ window.DH_DATA = {
         "kind": "using",
         "category": "external",
         "repo": "HKUDS/LightRAG",
-        "last_seen": null,
-        "mentions_90d": 0,
-        "days_since": null
-      },
-      {
-        "name": "Claude + Cowork",
-        "what": "The strategy and writing partner that also drives the vault, the browser, and this site's build.",
-        "url": null,
-        "kind": "using",
-        "category": "ai",
         "last_seen": null,
         "mentions_90d": 0,
         "days_since": null
@@ -10620,11 +10689,11 @@ window.DH_DATA = {
       "watching": 5,
       "skill": 8
     },
-    "active_30d": 4,
+    "active_30d": 5,
     "mined_from": {
-      "entries": 121,
+      "entries": 122,
       "essays": 16
     }
   },
-  "built": "2026-10-09T21:12:04.643Z"
+  "built": "2026-10-10T19:42:52.433Z"
 };

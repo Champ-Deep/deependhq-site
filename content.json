@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 343,
-    "today_date": "2026-10-09",
+    "today_day": 344,
+    "today_date": "2026-10-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-10",
+      "day": 344,
+      "mood": "🫠",
+      "shipping_now": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second usage tier, split cowork vs claude code by task weight, and put notion in the middle so any agent can pick up the context. wrote the whole thing up as a plain whatsapp message instead of a deck, because that is what actually gets read.",
+      "yesterday_thread": "my own task list crossed 1,600 open items tonight. zero closed today, 22 new ones filed by the automation that watches zoom and email while i was off. the oldest open thread on there is 9 days old and still mine to answer.",
+      "raw_thought": "i keep telling clients to turn repeat work into a skill instead of re-running the same chat. i have at least three things in my own system that qualify and have not done it either. saturday nights are apparently for noticing that out loud.",
+      "arcs": [
+        "AI Tooling Advisory",
+        "ChampOps"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-10-09",
       "day": 343,
@@ -1992,6 +2005,10 @@
     ],
     "recently": [
       {
+        "text": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff...",
+        "tag": "shipped d344"
+      },
+      {
         "text": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on...",
         "tag": "shipped d343"
       },
@@ -2002,10 +2019,6 @@
       {
         "text": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests gree...",
         "tag": "shipped d341"
-      },
-      {
-        "text": "the longevity build got its biggest single session in months tonight. app redesign, cli...",
-        "tag": "shipped d340"
       }
     ],
     "soon": [
