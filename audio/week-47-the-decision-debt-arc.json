@@ -1,0 +1,54 @@
+{
+  "slug": "week-47-the-decision-debt-arc",
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "voice_name": "Brian",
+  "model": "eleven_multilingual_v2",
+  "format": "mp3_44100_64",
+  "chars": 4186,
+  "bytes": 2036088,
+  "duration": 254.5,
+  "starts": [
+    {
+      "i": -1,
+      "t": 0
+    },
+    {
+      "i": 0,
+      "t": 28.33
+    },
+    {
+      "i": 1,
+      "t": 54.87
+    },
+    {
+      "i": 2,
+      "t": 92.85
+    },
+    {
+      "i": 3,
+      "t": 95.18
+    },
+    {
+      "i": 4,
+      "t": 123.37
+    },
+    {
+      "i": 5,
+      "t": 127.84
+    },
+    {
+      "i": 6,
+      "t": 168.84
+    },
+    {
+      "i": 7,
+      "t": 199.16
+    },
+    {
+      "i": 8,
+      "t": 225.05
+    }
+  ],
+  "text_sha": "141200e775c88482",
+  "generated": "2026-10-11T19:41:54.368Z"
+}

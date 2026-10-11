@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (122) and every weekly essay (16), newest first. Rebuilt 2026-10-10. Cite the day number and date when quoting, for example "day 344, 2026-10-10".
+> Every public journey entry (123) and every weekly essay (17), newest first. Rebuilt 2026-10-11. Cite the day number and date when quoting, for example "day 345, 2026-10-11".
 
 ## Journey
+
+### Day 345, 2026-10-11 (thinking)
+
+closed out a 5-day retry loop clean today. a meeting summary that never showed up finally got marked dead instead of nagging me forever, after 10 attempts.
+
+Thread: still hitting the empty-room problem. two calendar meetings today, neither on zoom, so the system that watches my meetings had nothing to watch. one of those two has now gone unrecorded for five sundays straight.
+
+Raw thought: i built a thing to catch what i drop. today it correctly noticed it has nothing to catch, because the meetings that matter most dont happen on the one channel it can see. meanwhile a decision i owe a partner is now undecided for the eighth week running, and no amount of automation fixes that one. that ones just on me.
+
+Arcs: Celsus OS
+
+Link: https://deependhq.com/journey.html#day-345
 
 ### Day 344, 2026-10-10 (thinking)
 
@@ -1451,6 +1463,28 @@ Arcs: InfraTech, Champions Operations
 Link: https://deependhq.com/journey.html#day-184
 
 ## Essays
+
+### This week I shipped faster than ever and still could not close the oldest decision on my list.
+
+2026-10-11, 4 min, Celsus OS. https://deependhq.com/post.html?slug=week-47-the-decision-debt-arc
+
+Eight team plans in one day. The biggest product session in months for one build. A booking handoff that went green in 630 tests. A departing engineer's handover closed one day before deadline. And a partner decision that is now undecided for the eighth week running, bookended by two more meetings that left no record at all.
+
+week 47 opened on a sunday closing a dead retry loop and closed on a sunday closing another one. in between sat four of the most productive weekdays in a while: a planning sweep, a product build session, a shipped feature, a clean handover. the week proved the building muscle works fine. it also proved that the one decision sitting at the top of my list for two straight months does not move just because everything around it does.
+
+monday was coverage, not creativity: a dated plan, a handover pack, and a dashboard for every person on the team, eight for eight, same day. that is the kind of gap that normally sits open for a month until someone just sits down and does all of them at once. tuesday was the opposite, one long call, the biggest single build session a product of ours has had in months: app redesign, a new clinic layout, three named advisors, and a real pivot from consumer to corporate clients, all locked in one sitting. thursday's launch stopped being a maybe and became a date on a calendar.
+
+the middle of the week, shipped clean
+
+wednesday shipped the booking handoff for a client integration, 7 commits, 630 tests green, prospects now book straight into a rep's calendar instead of trading emails back and forth. thursday closed a departing engineer's handover, his replacement confirmed the ai model key swap worked clean a day ahead of deadline. small on its own, but it is the entire difference between a tidy exit and a scramble three weeks later when nobody can remember who rotated what.
+
+the building muscle worked all week. the deciding muscle did not move once.
+
+then friday the week's other pattern showed up again, the one from last week's arc. two meetings that were already on the calendar simply were not there: a scheduled demo that ran four minutes with nobody on it, and a booked client call that left no record of happening at all, not even a log. the same day, the ops desk that mines my meetings for things i drop pulled 13 real action items out of the two calls that did happen, almost double its usual catch, two of them decided entirely on their own by cross-referencing past calls. the system is getting better at catching what i forget. it still cannot catch a meeting that never happened on a channel it can see.
+
+saturday i spent the day on someone else's stack instead of my own, told a client to stop paying for a duplicate usage tier, split their tool usage by task weight instead of habit, and put a shared workspace in the middle so any agent could pick up the same context. wrote the whole recommendation as a plain message instead of a deck, because that is what actually gets read and acted on. good advice to give. i am still sitting on at least three repeat workflows in my own system that need exactly the same fix and have not gotten it.
+
+sunday closed the loop the way it opened. a dead retry that had been chasing one missing meeting summary for five days finally got marked lapsed instead of nagging forever, a small, genuinely satisfying piece of housekeeping. but the decision that matters more than any of this week's shipped work sat through its own slot again, tentative rsvp and all. automating the catch is the easy half. the deciding is still entirely mine, and this week it is the one thing that did not ship.
 
 ### This week the system caught everything except the empty rooms.
 

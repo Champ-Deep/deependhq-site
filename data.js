@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-10T19:42:52.433Z
+// Built 2026-10-11T19:41:54.850Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 344,
-    "today_date": "2026-10-10",
+    "today_day": 345,
+    "today_date": "2026-10-11",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -560,18 +560,13 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 29,
-      "entries_30d": 2,
+      "days_since": 30,
+      "entries_30d": 1,
       "recent": [
         {
           "day": 316,
           "date": "2026-09-12",
           "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spellin"
-        },
-        {
-          "day": 315,
-          "date": "2026-09-11",
-          "ship": "Shipped ChampLantern v0 today, an internal appointment-booking product, backend to frontend, on a seeded demo."
         }
       ],
       "company_slugs": [
@@ -624,7 +619,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 4,
+      "days_since": 5,
       "entries_30d": 2,
       "recent": [
         {
@@ -693,7 +688,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-01",
       "last_ship_day": 335,
-      "days_since": 10,
+      "days_since": 11,
       "entries_30d": 10,
       "recent": [
         {
@@ -763,7 +758,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 5,
+      "days_since": 6,
       "entries_30d": 4,
       "recent": [
         {
@@ -844,6 +839,25 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-11",
+      "day": 345,
+      "mood": "🌫️",
+      "shipping_now": "closed out a 5-day retry loop clean today. a meeting summary that never showed up finally got marked dead instead of nagging me forever, after 10 attempts.",
+      "yesterday_thread": "still hitting the empty-room problem. two calendar meetings today, neither on zoom, so the system that watches my meetings had nothing to watch. one of those two has now gone unrecorded for five sundays straight.",
+      "raw_thought": "i built a thing to catch what i drop. today it correctly noticed it has nothing to catch, because the meetings that matter most dont happen on the one channel it can see. meanwhile a decision i owe a partner is now undecided for the eighth week running, and no amount of automation fixes that one. that ones just on me.",
+      "arcs": [
+        "Celsus OS"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Celsus OS",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-10-10",
       "day": 344,
@@ -4176,19 +4190,19 @@ window.DH_DATA = {
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 33,
+  "weekly_narratives_count": 34,
   "latest_narrative": {
-    "week": 46,
-    "title": "This week the system caught everything except the empty rooms.",
-    "body": "A crisis call with a struggling account turned into a ten-day trial instead of a walkout. A shadow-mode entity judge caught a merge that would have fused the chairman with an unrelated person at another company. A weekend check caught a date that does not exist before it reached a client. And twice this week, calls already on the calendar simply did not happen: no notetaker, no summary, nothing, for the fourth and sixth time running.",
-    "day_range": "Sep 28 - Oct 4",
-    "date": "2026-10-04",
+    "week": 47,
+    "title": "This week I shipped faster than ever and still could not close the oldest decision on my list.",
+    "body": "Eight team plans in one day. The biggest product session in months for one build. A booking handoff that went green in 630 tests. A departing engineer's handover closed one day before deadline. And a partner decision that is now undecided for the eighth week running, bookended by two more meetings that left no record at all.",
+    "day_range": "Oct 5 - Oct 11",
+    "date": "2026-10-11",
     "read": "4 min",
-    "slug": "week-46-the-empty-room-arc"
+    "slug": "week-47-the-decision-debt-arc"
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 344 · Oct 10",
+    "last_ship": "day 345 · Oct 11",
     "state": "shipping"
   },
   "status_board": {
@@ -4212,6 +4226,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "closed out a 5-day retry loop clean today. a meeting summary that never showed up final...",
+        "tag": "shipped d345"
+      },
+      {
         "text": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff...",
         "tag": "shipped d344"
       },
@@ -4222,10 +4240,6 @@ window.DH_DATA = {
       {
         "text": "closed out a departing engineers handover today. his replacement confirmed the AI model...",
         "tag": "shipped d342"
-      },
-      {
-        "text": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests gree...",
-        "tag": "shipped d341"
       }
     ],
     "soon": [
@@ -4710,6 +4724,275 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-47-the-decision-debt-arc",
+      "kind": "weekly",
+      "week": 47,
+      "eyebrow": ">_ week 47 - the decision debt arc",
+      "title": "This week I shipped faster than ever and still could not close the oldest decision on my list.",
+      "deck": "Eight team plans in one day. The biggest product session in months for one build. A booking handoff that went green in 630 tests. A departing engineer's handover closed one day before deadline. And a partner decision that is now undecided for the eighth week running, bookended by two more meetings that left no record at all.",
+      "date": "2026-10-11",
+      "day_range": "Oct 5 - Oct 11",
+      "read": "4 min",
+      "arc": "Celsus OS",
+      "arc_color": "blue",
+      "tags": [
+        "ops",
+        "shipping",
+        "decisions"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 47 opened on a sunday closing a dead retry loop and closed on a sunday closing another one. in between sat four of the most productive weekdays in a while: a planning sweep, a product build session, a shipped feature, a clean handover. the week proved the building muscle works fine. it also proved that the one decision sitting at the top of my list for two straight months does not move just because everything around it does."
+        },
+        {
+          "type": "p",
+          "text": "monday was coverage, not creativity: a dated plan, a handover pack, and a dashboard for every person on the team, eight for eight, same day. that is the kind of gap that normally sits open for a month until someone just sits down and does all of them at once. tuesday was the opposite, one long call, the biggest single build session a product of ours has had in months: app redesign, a new clinic layout, three named advisors, and a real pivot from consumer to corporate clients, all locked in one sitting. thursday's launch stopped being a maybe and became a date on a calendar."
+        },
+        {
+          "type": "h2",
+          "text": "the middle of the week, shipped clean"
+        },
+        {
+          "type": "p",
+          "text": "wednesday shipped the booking handoff for a client integration, 7 commits, 630 tests green, prospects now book straight into a rep's calendar instead of trading emails back and forth. thursday closed a departing engineer's handover, his replacement confirmed the ai model key swap worked clean a day ahead of deadline. small on its own, but it is the entire difference between a tidy exit and a scramble three weeks later when nobody can remember who rotated what."
+        },
+        {
+          "type": "pull",
+          "text": "the building muscle worked all week. the deciding muscle did not move once."
+        },
+        {
+          "type": "p",
+          "text": "then friday the week's other pattern showed up again, the one from last week's arc. two meetings that were already on the calendar simply were not there: a scheduled demo that ran four minutes with nobody on it, and a booked client call that left no record of happening at all, not even a log. the same day, the ops desk that mines my meetings for things i drop pulled 13 real action items out of the two calls that did happen, almost double its usual catch, two of them decided entirely on their own by cross-referencing past calls. the system is getting better at catching what i forget. it still cannot catch a meeting that never happened on a channel it can see."
+        },
+        {
+          "type": "p",
+          "text": "saturday i spent the day on someone else's stack instead of my own, told a client to stop paying for a duplicate usage tier, split their tool usage by task weight instead of habit, and put a shared workspace in the middle so any agent could pick up the same context. wrote the whole recommendation as a plain message instead of a deck, because that is what actually gets read and acted on. good advice to give. i am still sitting on at least three repeat workflows in my own system that need exactly the same fix and have not gotten it."
+        },
+        {
+          "type": "callout",
+          "head": "what did not move",
+          "lines": [
+            "a strategic partner decision has now gone through eight consecutive undecided calendar invites since the original deadline passed in late september.",
+            "two recurring internal syncs have logged zero captured outcomes for five straight weeks because neither happens on a channel the system can read.",
+            "a personnel matter sitting at the top of the open-items list is now ten days and seven automated runs past its first unanswered message."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "sunday closed the loop the way it opened. a dead retry that had been chasing one missing meeting summary for five days finally got marked lapsed instead of nagging forever, a small, genuinely satisfying piece of housekeeping. but the decision that matters more than any of this week's shipped work sat through its own slot again, tentative rsvp and all. automating the catch is the easy half. the deciding is still entirely mine, and this week it is the one thing that did not ship."
+        }
+      ],
+      "related_companies": [],
+      "audio": {
+        "src": "audio/week-47-the-decision-debt-arc.mp3",
+        "duration": 254.5,
+        "voice": "Brian",
+        "starts": [
+          {
+            "i": -1,
+            "t": 0
+          },
+          {
+            "i": 0,
+            "t": 28.33
+          },
+          {
+            "i": 1,
+            "t": 54.87
+          },
+          {
+            "i": 2,
+            "t": 92.85
+          },
+          {
+            "i": 3,
+            "t": 95.18
+          },
+          {
+            "i": 4,
+            "t": 123.37
+          },
+          {
+            "i": 5,
+            "t": 127.84
+          },
+          {
+            "i": 6,
+            "t": 168.84
+          },
+          {
+            "i": 7,
+            "t": 199.16
+          },
+          {
+            "i": 8,
+            "t": 225.05
+          }
+        ],
+        "bytes": 2036088
+      },
+      "viz": {
+        "window": {
+          "start": "2026-10-05",
+          "end": "2026-10-11"
+        },
+        "days": [
+          {
+            "date": "2026-10-05",
+            "dow": "mon",
+            "day": 339,
+            "arc_color": "gold",
+            "arcs": [
+              "Champions Operations"
+            ],
+            "ship": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each."
+          },
+          {
+            "date": "2026-10-06",
+            "dow": "tue",
+            "day": 340,
+            "arc_color": "gold",
+            "arcs": [
+              "Longevity",
+              "Champions Operations"
+            ],
+            "ship": "the longevity build got its biggest single session in months tonight."
+          },
+          {
+            "date": "2026-10-07",
+            "dow": "wed",
+            "day": 341,
+            "arc_color": "green",
+            "arcs": [
+              "ChampLantern",
+              "Champions Club"
+            ],
+            "ship": "shipped the booking handoff for a client integration tonight."
+          },
+          {
+            "date": "2026-10-08",
+            "dow": "thu",
+            "day": 342,
+            "arc_color": "blue",
+            "arcs": [
+              "Celsus OS",
+              "ChampOps"
+            ],
+            "ship": "closed out a departing engineers handover today."
+          },
+          {
+            "date": "2026-10-09",
+            "dow": "fri",
+            "day": 343,
+            "arc_color": "blue",
+            "arcs": [
+              "Celsus OS",
+              "ChampOps"
+            ],
+            "ship": "two meetings today just werent there."
+          },
+          {
+            "date": "2026-10-10",
+            "dow": "sat",
+            "day": 344,
+            "arc_color": "blue",
+            "arcs": [
+              "AI Tooling Advisory",
+              "ChampOps"
+            ],
+            "ship": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff."
+          },
+          {
+            "date": "2026-10-11",
+            "dow": "sun",
+            "day": 345,
+            "arc_color": "blue",
+            "arcs": [
+              "Celsus OS"
+            ],
+            "ship": "closed out a 5-day retry loop clean today."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-10-11"
+          ],
+          [
+            "2026-10-06",
+            "2026-10-08"
+          ],
+          [],
+          [
+            "2026-10-07",
+            "2026-10-08"
+          ],
+          [],
+          [
+            "2026-10-09"
+          ],
+          [
+            "2026-10-10"
+          ],
+          [
+            "2026-10-11"
+          ],
+          [
+            "2026-10-11"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Celsus OS",
+            "n": 3,
+            "paras": [
+              0,
+              1,
+              3,
+              5,
+              7,
+              8
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 3,
+            "paras": [
+              1,
+              3,
+              5,
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 2,
+            "paras": [
+              1
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Longevity",
+            "n": 1,
+            "paras": [
+              1
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 665,
+        "entries": 7,
+        "listen_min": 4
+      }
+    },
     {
       "slug": "week-46-the-empty-room-arc",
       "kind": "weekly",
@@ -8907,33 +9190,43 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-10T19:42:52.402Z",
-    "built_date": "2026-10-11",
+    "built": "2026-10-11T19:41:54.810Z",
+    "built_date": "2026-10-12",
     "newest_entry": {
-      "date": "2026-10-10",
-      "day": 344
+      "date": "2026-10-11",
+      "day": 345
     },
-    "weekdays_stale": 0,
+    "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 121,
+        "days_old": 122,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 109,
+        "days_old": 110,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 109,
+        "days_old": 110,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 345,
+      "date": "2026-10-11",
+      "mood": "🌫️",
+      "arc_color": "blue",
+      "arcs": [
+        "Celsus OS"
+      ],
+      "ship": "closed out a 5-day retry loop clean today. a meeting summary that never showed up finally got marked dead instead of nagging me forever, after 10 attempts."
+    },
     {
       "day": 344,
       "date": "2026-10-10",
@@ -9073,80 +9366,13 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker, no summary, nothing. Instead of guessing what happened, I filed the gap itself: what is known, what is not, what is next. Also built this weeks focus map from scratch off raw task data since the usual Sunday planning doc never generated. Ugly spine, but it works."
-    },
-    {
-      "day": 331,
-      "date": "2026-09-27",
-      "mood": "🌑",
-      "arc_color": "blue",
-      "arcs": [
-        "ChampOps",
-        "Champions Operations"
-      ],
-      "ship": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter deadline for a partnership decision thats been circling since july. thirteen dark sessions in a row and the go or no go date just came and went with nobody writing down what got decided. thats not a data problem anymore, its an avoidance problem."
     }
   ],
   "heatmap": {
-    "start": "2026-06-22",
-    "end": "2026-10-11",
+    "start": "2026-06-29",
+    "end": "2026-10-18",
     "weeks": 16,
     "cells": [
-      {
-        "date": "2026-06-22",
-        "future": false,
-        "weekend": false,
-        "day": 234,
-        "arc_color": "green",
-        "ship": "locked the architecture for a new resume-intelligence engine today. phase one is semantic search across the fu"
-      },
-      {
-        "date": "2026-06-23",
-        "future": false,
-        "weekend": false,
-        "day": 235,
-        "arc_color": "blue",
-        "ship": "the day was booked for phone calls and gate-clearing, so naturally i spent part of it writing instead. i pulle"
-      },
-      {
-        "date": "2026-06-24",
-        "future": false,
-        "weekend": false,
-        "day": 236,
-        "arc_color": "green",
-        "ship": "the site grew a command center today. a /command page that reads live, a matrix-style hero, the twelve-company"
-      },
-      {
-        "date": "2026-06-25",
-        "future": false,
-        "weekend": false,
-        "day": 237,
-        "arc_color": "blue",
-        "ship": "a noon meeting with a boutique wealth-management firm turned into a full deal room by 2am. mutual nda drafted,"
-      },
-      {
-        "date": "2026-06-26",
-        "future": false,
-        "weekend": false,
-        "day": 238,
-        "arc_color": "blue",
-        "ship": "filed the GTM brief for an investor-matching platform. the wedge is the match, not the million-record database"
-      },
-      {
-        "date": "2026-06-27",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
-      {
-        "date": "2026-06-28",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
       {
         "date": "2026-06-29",
         "future": false,
@@ -9983,6 +10209,62 @@ window.DH_DATA = {
         "date": "2026-10-11",
         "future": false,
         "weekend": true,
+        "day": 345,
+        "arc_color": "blue",
+        "ship": "closed out a 5-day retry loop clean today. a meeting summary that never showed up finally got marked dead inst"
+      },
+      {
+        "date": "2026-10-12",
+        "future": false,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-13",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-14",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-15",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-16",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-17",
+        "future": true,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-18",
+        "future": true,
+        "weekend": true,
         "day": null,
         "arc_color": null,
         "ship": null
@@ -9990,12 +10272,12 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 344,
-    "entries": 122,
+    "days_public": 345,
+    "entries": 123,
     "entries_30d": 29,
-    "entries_this_month": 10,
+    "entries_this_month": 11,
     "streak_weekdays": 82,
-    "essays": 16,
+    "essays": 17,
     "companies": 12,
     "companies_active_90d": 5,
     "first_entry": "2026-05-04",
@@ -10015,7 +10297,7 @@ window.DH_DATA = {
       },
       {
         "arc": "Celsus OS",
-        "n": 4
+        "n": 5
       },
       {
         "arc": "TheDeepEndHQ",
@@ -10030,8 +10312,8 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "Vendor Ops",
-        "n": 2
+        "arc": "AI Tooling Advisory",
+        "n": 1
       }
     ],
     "pillars": 4
@@ -10067,6 +10349,16 @@ window.DH_DATA = {
   "stack_now": {
     "items": [
       {
+        "name": "Obsidian + Celsus",
+        "what": "One graph, 12 companies. The single source of truth everything else reads from.",
+        "url": null,
+        "kind": "using",
+        "category": "system",
+        "last_seen": "2026-10-11",
+        "mentions_90d": 6,
+        "days_since": 1
+      },
+      {
         "name": "ChampOps",
         "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
         "url": null,
@@ -10077,7 +10369,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-10",
         "mentions_90d": 15,
-        "days_since": 1
+        "days_since": 2
       },
       {
         "name": "Claude + Cowork",
@@ -10087,16 +10379,6 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 1
-      },
-      {
-        "name": "Obsidian + Celsus",
-        "what": "One graph, 12 companies. The single source of truth everything else reads from.",
-        "url": null,
-        "kind": "using",
-        "category": "system",
-        "last_seen": "2026-10-09",
-        "mentions_90d": 5,
         "days_since": 2
       },
       {
@@ -10110,7 +10392,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 27
+        "days_since": 28
       },
       {
         "name": "ChampUTM",
@@ -10123,7 +10405,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 29
+        "days_since": 30
       },
       {
         "name": "Cloudflare",
@@ -10133,7 +10415,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 53
+        "days_since": 54
       },
       {
         "name": "ChampBeam",
@@ -10146,7 +10428,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 3,
-        "days_since": 68
+        "days_since": 69
       },
       {
         "name": "LakeStream",
@@ -10159,7 +10441,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 68
+        "days_since": 69
       },
       {
         "name": "ChamPDF",
@@ -10172,7 +10454,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 68
+        "days_since": 69
       },
       {
         "name": "ChampMail",
@@ -10185,7 +10467,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 70
+        "days_since": 71
       },
       {
         "name": "Supabase",
@@ -10196,7 +10478,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 102
+        "days_since": 103
       },
       {
         "name": "ChampGraph",
@@ -10209,7 +10491,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 110
+        "days_since": 111
       },
       {
         "name": "ChampQuest",
@@ -10222,7 +10504,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 130
+        "days_since": 131
       },
       {
         "name": "Deep Scanner",
@@ -10691,9 +10973,9 @@ window.DH_DATA = {
     },
     "active_30d": 5,
     "mined_from": {
-      "entries": 122,
-      "essays": 16
+      "entries": 123,
+      "essays": 17
     }
   },
-  "built": "2026-10-10T19:42:52.433Z"
+  "built": "2026-10-11T19:41:54.850Z"
 };
