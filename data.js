@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-11T19:41:54.850Z
+// Built 2026-10-12T19:42:20.418Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 345,
-    "today_date": "2026-10-11",
+    "today_day": 346,
+    "today_date": "2026-10-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 346,
+          "date": "2026-10-12",
+          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200…",
+          "arc_color": "gold"
+        },
         {
           "day": 344,
           "date": "2026-10-10",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "day": 332,
           "date": "2026-09-28",
           "shipping_now": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker,…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 331,
-          "date": "2026-09-27",
-          "shipping_now": "sunday had three external calls and I came out of it with nothing on record for any of them. the one that mattered was a quarter…",
           "arc_color": "blue"
         }
       ],
@@ -232,6 +232,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 346,
+          "date": "2026-10-12",
+          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200…",
+          "arc_color": "gold"
+        },
+        {
           "day": 335,
           "date": "2026-10-01",
           "shipping_now": "the enterprise it services client hit day three of a ten day trial judged on daily evidence. the automated daily client pack kept…",
@@ -296,12 +302,6 @@ window.DH_DATA = {
           "date": "2026-09-08",
           "shipping_now": "Opened a credible infra investor thread on the Ranch project, shipped a full client campaign report, and documented two intern…",
           "arc_color": "green"
-        },
-        {
-          "day": 308,
-          "date": "2026-09-04",
-          "shipping_now": "day three. nine of nine tracker rows blank, still 0 of 30 sqls. the client update was written as a holding line, not fake…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -560,15 +560,9 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 30,
-      "entries_30d": 1,
-      "recent": [
-        {
-          "day": 316,
-          "date": "2026-09-12",
-          "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spellin"
-        }
-      ],
+      "days_since": 31,
+      "entries_30d": 0,
+      "recent": [],
       "company_slugs": [
         "champions-infometrics"
       ],
@@ -619,18 +613,13 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 5,
-      "entries_30d": 2,
+      "days_since": 6,
+      "entries_30d": 1,
       "recent": [
         {
           "day": 341,
           "date": "2026-10-07",
           "ship": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests green. prospects can now bo"
-        },
-        {
-          "day": 316,
-          "date": "2026-09-12",
-          "ship": "Built the reference version of the new UTM tool today. Paste any link, get it back tagged, no invented spellin"
         }
       ],
       "company_slugs": [
@@ -686,11 +675,16 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-10-01",
-      "last_ship_day": 335,
-      "days_since": 11,
-      "entries_30d": 10,
+      "last_ship": "2026-10-12",
+      "last_ship_day": 346,
+      "days_since": 1,
+      "entries_30d": 11,
       "recent": [
+        {
+          "day": 346,
+          "date": "2026-10-12",
+          "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against ind"
+        },
         {
           "day": 335,
           "date": "2026-10-01",
@@ -705,11 +699,6 @@ window.DH_DATA = {
           "day": 329,
           "date": "2026-09-25",
           "ship": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedi"
-        },
-        {
-          "day": 328,
-          "date": "2026-09-24",
-          "ship": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real gr"
         }
       ],
       "company_slugs": [
@@ -758,7 +747,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 6,
+      "days_since": 7,
       "entries_30d": 4,
       "recent": [
         {
@@ -839,6 +828,34 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-12",
+      "day": 346,
+      "mood": "🔍",
+      "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.",
+      "yesterday_thread": "also got champbeam unstuck. a pr thats been sitting has the whole railway to coolify cutover mapped out, ci green, just needs a merge.",
+      "raw_thought": "not sure yet which is the bigger deal, the audit or the partnership angle it opened. meanwhile a gratuity reply thats now 11 days old got flagged by the automation again today and i still havent answered it.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
     {
       "date": "2026-10-11",
       "day": 345,
@@ -4202,7 +4219,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 345 · Oct 11",
+    "last_ship": "day 346 · Oct 12",
     "state": "shipping"
   },
   "status_board": {
@@ -4226,6 +4243,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our o...",
+        "tag": "shipped d346"
+      },
+      {
         "text": "closed out a 5-day retry loop clean today. a meeting summary that never showed up final...",
         "tag": "shipped d345"
       },
@@ -4236,10 +4257,6 @@ window.DH_DATA = {
       {
         "text": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on...",
         "tag": "shipped d343"
-      },
-      {
-        "text": "closed out a departing engineers handover today. his replacement confirmed the AI model...",
-        "tag": "shipped d342"
       }
     ],
     "soon": [
@@ -9190,33 +9207,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-11T19:41:54.810Z",
-    "built_date": "2026-10-12",
+    "built": "2026-10-12T19:42:20.385Z",
+    "built_date": "2026-10-13",
     "newest_entry": {
-      "date": "2026-10-11",
-      "day": 345
+      "date": "2026-10-12",
+      "day": 346
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 122,
+        "days_old": 123,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 110,
+        "days_old": 111,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 110,
+        "days_old": 111,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 346,
+      "date": "2026-10-12",
+      "mood": "🔍",
+      "arc_color": "gold",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call."
+    },
     {
       "day": 345,
       "date": "2026-10-11",
@@ -9355,17 +9383,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two months, no visibility into who is actually dialing. came out of it with a 10-day trial instead of a walkout, daily updates, a shared channel, a named owner on the stalled campaign. also caught four numbers in our own reporting that were just wrong before they reached the client. one of them, a headline figure we had repeated for two months, had no source anywhere in the files at all."
-    },
-    {
-      "day": 332,
-      "date": "2026-09-28",
-      "mood": "😮‍💨",
-      "arc_color": "blue",
-      "arcs": [
-        "ChampOps",
-        "Champions Operations"
-      ],
-      "ship": "Two Sunday calls, an infrastructure SPV strategy session and a first client discovery call, went completely dark. No notetaker, no summary, nothing. Instead of guessing what happened, I filed the gap itself: what is known, what is not, what is next. Also built this weeks focus map from scratch off raw task data since the usual Sunday planning doc never generated. Ugly spine, but it works."
     }
   ],
   "heatmap": {
@@ -10217,13 +10234,13 @@ window.DH_DATA = {
         "date": "2026-10-12",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 346,
+        "arc_color": "gold",
+        "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against ind"
       },
       {
         "date": "2026-10-13",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -10272,11 +10289,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 345,
-    "entries": 123,
+    "days_public": 346,
+    "entries": 124,
     "entries_30d": 29,
-    "entries_this_month": 11,
-    "streak_weekdays": 82,
+    "entries_this_month": 12,
+    "streak_weekdays": 83,
     "essays": 17,
     "companies": 12,
     "companies_active_90d": 5,
@@ -10289,11 +10306,11 @@ window.DH_DATA = {
       },
       {
         "arc": "Lake B2B",
-        "n": 9
+        "n": 10
       },
       {
         "arc": "ChampOps",
-        "n": 7
+        "n": 8
       },
       {
         "arc": "Celsus OS",
@@ -10304,15 +10321,15 @@ window.DH_DATA = {
         "n": 3
       },
       {
-        "arc": "Champions Club",
-        "n": 2
-      },
-      {
         "arc": "Longevity",
         "n": 2
       },
       {
         "arc": "AI Tooling Advisory",
+        "n": 1
+      },
+      {
+        "arc": "ChampLantern",
         "n": 1
       }
     ],
@@ -10349,13 +10366,16 @@ window.DH_DATA = {
   "stack_now": {
     "items": [
       {
-        "name": "Obsidian + Celsus",
-        "what": "One graph, 12 companies. The single source of truth everything else reads from.",
-        "url": null,
-        "kind": "using",
-        "category": "system",
-        "last_seen": "2026-10-11",
-        "mentions_90d": 6,
+        "name": "ChampBeam",
+        "what": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
+        "url": "https://github.com/Champ-Deep/ChampBeam",
+        "site": "https://champbeam.com",
+        "status": null,
+        "kind": "built",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-10-12",
+        "mentions_90d": 4,
         "days_since": 1
       },
       {
@@ -10367,8 +10387,18 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-10-10",
-        "mentions_90d": 15,
+        "last_seen": "2026-10-12",
+        "mentions_90d": 16,
+        "days_since": 1
+      },
+      {
+        "name": "Obsidian + Celsus",
+        "what": "One graph, 12 companies. The single source of truth everything else reads from.",
+        "url": null,
+        "kind": "using",
+        "category": "system",
+        "last_seen": "2026-10-11",
+        "mentions_90d": 6,
         "days_since": 2
       },
       {
@@ -10379,7 +10409,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 2
+        "days_since": 3
       },
       {
         "name": "Event Scout",
@@ -10392,7 +10422,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 28
+        "days_since": 29
       },
       {
         "name": "ChampUTM",
@@ -10405,7 +10435,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 30
+        "days_since": 31
       },
       {
         "name": "Cloudflare",
@@ -10415,20 +10445,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 54
-      },
-      {
-        "name": "ChampBeam",
-        "what": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
-        "url": "https://github.com/Champ-Deep/ChampBeam",
-        "site": "https://champbeam.com",
-        "status": null,
-        "kind": "built",
-        "category": "tool",
-        "featured": true,
-        "last_seen": "2026-08-04",
-        "mentions_90d": 3,
-        "days_since": 69
+        "days_since": 55
       },
       {
         "name": "LakeStream",
@@ -10441,7 +10458,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 69
+        "days_since": 70
       },
       {
         "name": "ChamPDF",
@@ -10454,7 +10471,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 69
+        "days_since": 70
       },
       {
         "name": "ChampMail",
@@ -10467,7 +10484,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 5,
-        "days_since": 71
+        "days_since": 72
       },
       {
         "name": "Supabase",
@@ -10478,7 +10495,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 103
+        "days_since": 104
       },
       {
         "name": "ChampGraph",
@@ -10491,7 +10508,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 111
+        "days_since": 112
       },
       {
         "name": "ChampQuest",
@@ -10504,7 +10521,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 131
+        "days_since": 132
       },
       {
         "name": "Deep Scanner",
@@ -10965,17 +10982,17 @@ window.DH_DATA = {
       }
     ],
     "counts": {
-      "using": 15,
       "built": 19,
+      "using": 15,
       "trying": 4,
       "watching": 5,
       "skill": 8
     },
     "active_30d": 5,
     "mined_from": {
-      "entries": 123,
+      "entries": 124,
       "essays": 17
     }
   },
-  "built": "2026-10-11T19:41:54.850Z"
+  "built": "2026-10-12T19:42:20.418Z"
 };

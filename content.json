@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 345,
-    "today_date": "2026-10-11",
+    "today_day": 346,
+    "today_date": "2026-10-12",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-12",
+      "day": 346,
+      "mood": "🔍",
+      "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.",
+      "yesterday_thread": "also got champbeam unstuck. a pr thats been sitting has the whole railway to coolify cutover mapped out, ci green, just needs a merge.",
+      "raw_thought": "not sure yet which is the bigger deal, the audit or the partnership angle it opened. meanwhile a gratuity reply thats now 11 days old got flagged by the automation again today and i still havent answered it.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-10-11",
       "day": 345,
@@ -2017,6 +2030,10 @@
     ],
     "recently": [
       {
+        "text": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our o...",
+        "tag": "shipped d346"
+      },
+      {
         "text": "closed out a 5-day retry loop clean today. a meeting summary that never showed up final...",
         "tag": "shipped d345"
       },
@@ -2027,10 +2044,6 @@
       {
         "text": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on...",
         "tag": "shipped d343"
-      },
-      {
-        "text": "closed out a departing engineers handover today. his replacement confirmed the AI model...",
-        "tag": "shipped d342"
       }
     ],
     "soon": [

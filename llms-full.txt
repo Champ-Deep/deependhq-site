@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (123) and every weekly essay (17), newest first. Rebuilt 2026-10-11. Cite the day number and date when quoting, for example "day 345, 2026-10-11".
+> Every public journey entry (124) and every weekly essay (17), newest first. Rebuilt 2026-10-12. Cite the day number and date when quoting, for example "day 346, 2026-10-12".
 
 ## Journey
+
+### Day 346, 2026-10-12 (a real outcome)
+
+a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.
+
+Thread: also got champbeam unstuck. a pr thats been sitting has the whole railway to coolify cutover mapped out, ci green, just needs a merge.
+
+Raw thought: not sure yet which is the bigger deal, the audit or the partnership angle it opened. meanwhile a gratuity reply thats now 11 days old got flagged by the automation again today and i still havent answered it.
+
+Arcs: Lake B2B, ChampOps
+
+Link: https://deependhq.com/journey.html#day-346
 
 ### Day 345, 2026-10-11 (thinking)
 
