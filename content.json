@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 346,
-    "today_date": "2026-10-12",
+    "today_day": 347,
+    "today_date": "2026-10-13",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-13",
+      "day": 347,
+      "mood": "🚀",
+      "shipping_now": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle hero pieces. So tonight internal review had something real to react to instead of a deck of ideas.",
+      "yesterday_thread": "A family office growth fund leaned toward our data business over the real estate play we also pitched them. Shorter path to revenue wins again.",
+      "raw_thought": "Two pilot decisions are sitting on my desk tonight, and I still do not have the actual verdict from the enterprise review that just happened. Captured everything except the one thing that matters.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-12",
       "day": 346,
@@ -2030,6 +2043,10 @@
     ],
     "recently": [
       {
+        "text": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carou...",
+        "tag": "shipped d347"
+      },
+      {
         "text": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our o...",
         "tag": "shipped d346"
       },
@@ -2040,10 +2057,6 @@
       {
         "text": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff...",
         "tag": "shipped d344"
-      },
-      {
-        "text": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on...",
-        "tag": "shipped d343"
       }
     ],
     "soon": [
