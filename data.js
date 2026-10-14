@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-13T19:44:01.458Z
+// Built 2026-10-14T19:42:42.328Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 347,
-    "today_date": "2026-10-13",
+    "today_day": 348,
+    "today_date": "2026-10-14",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 348,
+          "date": "2026-10-14",
+          "shipping_now": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live…",
+          "arc_color": "green"
+        },
         {
           "day": 347,
           "date": "2026-10-13",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-09-30",
           "shipping_now": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline…",
           "arc_color": "green"
-        },
-        {
-          "day": 333,
-          "date": "2026-09-29",
-          "shipping_now": "the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -232,6 +232,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 348,
+          "date": "2026-10-14",
+          "shipping_now": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live…",
+          "arc_color": "green"
+        },
+        {
           "day": 347,
           "date": "2026-10-13",
           "shipping_now": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle…",
@@ -296,12 +302,6 @@ window.DH_DATA = {
           "date": "2026-09-14",
           "shipping_now": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: every deal splits into…",
           "arc_color": "blue"
-        },
-        {
-          "day": 314,
-          "date": "2026-09-10",
-          "shipping_now": "One of our enterprise data accounts went from roughly 400 usable contacts to over 9,000 overnight after we plugged in a new data…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 32,
+      "days_since": 33,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -613,7 +613,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 7,
+      "days_since": 8,
       "entries_30d": 1,
       "recent": [
         {
@@ -675,11 +675,16 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-10-13",
-      "last_ship_day": 347,
+      "last_ship": "2026-10-14",
+      "last_ship_day": 348,
       "days_since": 1,
       "entries_30d": 12,
       "recent": [
+        {
+          "day": 348,
+          "date": "2026-10-14",
+          "ship": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for"
+        },
         {
           "day": 347,
           "date": "2026-10-13",
@@ -694,11 +699,6 @@ window.DH_DATA = {
           "day": 335,
           "date": "2026-10-01",
           "ship": "the enterprise it services client hit day three of a ten day trial judged on daily evidence. the automated dai"
-        },
-        {
-          "day": 333,
-          "date": "2026-09-29",
-          "ship": "the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qual"
         }
       ],
       "company_slugs": [
@@ -747,8 +747,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 8,
-      "entries_30d": 4,
+      "days_since": 9,
+      "entries_30d": 3,
       "recent": [
         {
           "day": 340,
@@ -764,11 +764,6 @@ window.DH_DATA = {
           "day": 323,
           "date": "2026-09-19",
           "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that "
-        },
-        {
-          "day": 318,
-          "date": "2026-09-14",
-          "ship": "Ran a Show and Sell strategy reset with Chief in the room. We stop pitching generic B2B data starting now: eve"
         }
       ],
       "company_slugs": [
@@ -828,6 +823,34 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-14",
+      "day": 348,
+      "mood": "🌀",
+      "shipping_now": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live account, the works. one of those someone-finally-built-the-thing days.",
+      "yesterday_thread": "also locked the page type plan for a client's data product with the content team. comparison pages, category hubs, answer pages, finally a shared vocabulary instead of everyone guessing.",
+      "raw_thought": "an advisory call went sideways today because nobody prepped a deck beforehand. that one is on me for not catching it in time. sending the real materials tonight instead of tomorrow.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
     {
       "date": "2026-10-13",
       "day": 347,
@@ -4247,7 +4270,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 347 · Oct 13",
+    "last_ship": "day 348 · Oct 14",
     "state": "shipping"
   },
   "status_board": {
@@ -4271,6 +4294,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "shipped a full onboarding kit for a new apac account manager who started today. 30 day...",
+        "tag": "shipped d348"
+      },
+      {
         "text": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carou...",
         "tag": "shipped d347"
       },
@@ -4281,10 +4308,6 @@ window.DH_DATA = {
       {
         "text": "closed out a 5-day retry loop clean today. a meeting summary that never showed up final...",
         "tag": "shipped d345"
-      },
-      {
-        "text": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff...",
-        "tag": "shipped d344"
       }
     ],
     "soon": [
@@ -9235,33 +9258,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-13T19:44:01.422Z",
-    "built_date": "2026-10-14",
+    "built": "2026-10-14T19:42:42.286Z",
+    "built_date": "2026-10-15",
     "newest_entry": {
-      "date": "2026-10-13",
-      "day": 347
+      "date": "2026-10-14",
+      "day": 348
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 124,
+        "days_old": 125,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 112,
+        "days_old": 113,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 112,
+        "days_old": 113,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 348,
+      "date": "2026-10-14",
+      "mood": "🌀",
+      "arc_color": "green",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "ship": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live account, the works. one of those someone-finally-built-the-thing days."
+    },
     {
       "day": 347,
       "date": "2026-10-13",
@@ -9400,17 +9434,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "the enterprise it services client hit day three of a ten day trial judged on daily evidence. the automated daily client pack kept running anyway, five accounts worth of drafts ready to send, even though the actual send pipeline has now been broken for eight straight days straight. paste and send by hand until that gets fixed."
-    },
-    {
-      "day": 334,
-      "date": "2026-09-30",
-      "mood": "🛠️",
-      "arc_color": "green",
-      "arcs": [
-        "TheDeepEndHQ",
-        "Champions Operations"
-      ],
-      "ship": "shipped the middleman layer for the vendor-to-client matchmaking product. tracked links, an approval gate, a per-account timeline both sides can see their own slice of. 141 files, 56 backend tests green, a real end-to-end run passed twice. pushed to main, deploy is the last step left."
     }
   ],
   "heatmap": {
@@ -10278,13 +10301,13 @@ window.DH_DATA = {
         "date": "2026-10-14",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 348,
+        "arc_color": "green",
+        "ship": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for"
       },
       {
         "date": "2026-10-15",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -10317,11 +10340,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 347,
-    "entries": 125,
+    "days_public": 348,
+    "entries": 126,
     "entries_30d": 30,
-    "entries_this_month": 13,
-    "streak_weekdays": 84,
+    "entries_this_month": 14,
+    "streak_weekdays": 85,
     "essays": 17,
     "companies": 12,
     "companies_active_90d": 5,
@@ -10330,7 +10353,7 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 15
+        "n": 16
       },
       {
         "arc": "Lake B2B",
@@ -10404,7 +10427,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 4,
-        "days_since": 2
+        "days_since": 3
       },
       {
         "name": "ChampOps",
@@ -10417,7 +10440,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 16,
-        "days_since": 2
+        "days_since": 3
       },
       {
         "name": "Obsidian + Celsus",
@@ -10427,7 +10450,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 3
+        "days_since": 4
       },
       {
         "name": "Claude + Cowork",
@@ -10437,7 +10460,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 4
+        "days_since": 5
       },
       {
         "name": "Event Scout",
@@ -10450,7 +10473,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 30
+        "days_since": 31
       },
       {
         "name": "ChampUTM",
@@ -10463,7 +10486,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 32
+        "days_since": 33
       },
       {
         "name": "Cloudflare",
@@ -10473,7 +10496,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 56
+        "days_since": 57
       },
       {
         "name": "LakeStream",
@@ -10486,7 +10509,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 71
+        "days_since": 72
       },
       {
         "name": "ChamPDF",
@@ -10499,7 +10522,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 71
+        "days_since": 72
       },
       {
         "name": "ChampMail",
@@ -10511,8 +10534,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-08-02",
-        "mentions_90d": 4,
-        "days_since": 73
+        "mentions_90d": 3,
+        "days_since": 74
       },
       {
         "name": "Supabase",
@@ -10523,7 +10546,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 105
+        "days_since": 106
       },
       {
         "name": "ChampGraph",
@@ -10536,7 +10559,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 113
+        "days_since": 114
       },
       {
         "name": "ChampQuest",
@@ -10549,7 +10572,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 133
+        "days_since": 134
       },
       {
         "name": "Deep Scanner",
@@ -11016,11 +11039,11 @@ window.DH_DATA = {
       "watching": 5,
       "skill": 8
     },
-    "active_30d": 5,
+    "active_30d": 4,
     "mined_from": {
-      "entries": 125,
+      "entries": 126,
       "essays": 17
     }
   },
-  "built": "2026-10-13T19:44:01.458Z"
+  "built": "2026-10-14T19:42:42.328Z"
 };

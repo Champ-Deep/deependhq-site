@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (125) and every weekly essay (17), newest first. Rebuilt 2026-10-13. Cite the day number and date when quoting, for example "day 347, 2026-10-13".
+> Every public journey entry (126) and every weekly essay (17), newest first. Rebuilt 2026-10-14. Cite the day number and date when quoting, for example "day 348, 2026-10-14".
 
 ## Journey
+
+### Day 348, 2026-10-14 (building)
+
+shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live account, the works. one of those someone-finally-built-the-thing days.
+
+Thread: also locked the page type plan for a client's data product with the content team. comparison pages, category hubs, answer pages, finally a shared vocabulary instead of everyone guessing.
+
+Raw thought: an advisory call went sideways today because nobody prepped a deck beforehand. that one is on me for not catching it in time. sending the real materials tonight instead of tomorrow.
+
+Arcs: Champions Operations, Lake B2B
+
+Link: https://deependhq.com/journey.html#day-348
 
 ### Day 347, 2026-10-13 (building)
 
