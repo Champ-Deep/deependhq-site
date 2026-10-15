@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 348,
-    "today_date": "2026-10-14",
+    "today_day": 349,
+    "today_date": "2026-10-15",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-15",
+      "day": 349,
+      "mood": "🧹",
+      "shipping_now": "closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut it, i had been sitting on the call. decided tonight: cut it. a decided no beats an undecided yes every time, and now the ops team can actually execute instead of wait on me.",
+      "yesterday_thread": "meanwhile the factory quietly shipped six things in 24 hours while i was in back to back meetings. dependency cleanup, two ci fixes, two feature issues closed. one thing is still stuck on a backend connectivity bug that refuses to die.",
+      "raw_thought": "found a live api key sitting in plaintext in one of my own notes tonight. not the first time this year. i keep building automation to catch the things i drop and somehow this is the exact kind of thing that keeps slipping through it.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-10-14",
       "day": 348,
@@ -2056,6 +2069,10 @@
     ],
     "recently": [
       {
+        "text": "closed out a vendor relationship that had been circling the drain for six days. an acco...",
+        "tag": "shipped d349"
+      },
+      {
         "text": "shipped a full onboarding kit for a new apac account manager who started today. 30 day...",
         "tag": "shipped d348"
       },
@@ -2066,10 +2083,6 @@
       {
         "text": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our o...",
         "tag": "shipped d346"
-      },
-      {
-        "text": "closed out a 5-day retry loop clean today. a meeting summary that never showed up final...",
-        "tag": "shipped d345"
       }
     ],
     "soon": [

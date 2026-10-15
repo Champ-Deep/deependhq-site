@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (126) and every weekly essay (17), newest first. Rebuilt 2026-10-14. Cite the day number and date when quoting, for example "day 348, 2026-10-14".
+> Every public journey entry (127) and every weekly essay (17), newest first. Rebuilt 2026-10-15. Cite the day number and date when quoting, for example "day 349, 2026-10-15".
 
 ## Journey
+
+### Day 349, 2026-10-15 (a real outcome)
+
+closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut it, i had been sitting on the call. decided tonight: cut it. a decided no beats an undecided yes every time, and now the ops team can actually execute instead of wait on me.
+
+Thread: meanwhile the factory quietly shipped six things in 24 hours while i was in back to back meetings. dependency cleanup, two ci fixes, two feature issues closed. one thing is still stuck on a backend connectivity bug that refuses to die.
+
+Raw thought: found a live api key sitting in plaintext in one of my own notes tonight. not the first time this year. i keep building automation to catch the things i drop and somehow this is the exact kind of thing that keeps slipping through it.
+
+Arcs: Lake B2B, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-349
 
 ### Day 348, 2026-10-14 (building)
 
