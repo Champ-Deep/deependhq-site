@@ -265,7 +265,7 @@
     pre.style.lineHeight = dust.style.lineHeight = (fs * ratio * 5 / 3).toFixed(2) + 'px';
     var w = el.offsetWidth;
     /* park left of whatever the Ask Deep widget covers right now (bubble, card or
-       panel), measured by widgo-gate.js as --ask-w. Never closer than the phone launcher. */
+       panel), was measured by the retired widgo-gate.js as --ask-w; now unset, so 0. Never closer than the phone launcher. */
     if (window.__askZone) try { window.__askZone(); } catch (e) {}
     var askW = parseFloat(getComputedStyle(d.documentElement).getPropertyValue('--ask-w')) || 0;
     var stop = Math.max(8, W - w - Math.max(askW, 72) - 24);
