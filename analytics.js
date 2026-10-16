@@ -291,11 +291,8 @@ document.addEventListener('keydown', function (e) {
   if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) send('easter_egg', { egg: 'command_palette' });
 }, { passive: true });
 
-// The Ask Deep widget is third party, so we only know it opened, not what was
-// asked inside it. Reporting the open and not the contents is the honest
-// boundary; the contents belong to Widgo's own policy.
-window.addEventListener('message', function (e) {
-  if (e && e.data && typeof e.data.type === 'string' && /widgo|chat.*open/i.test(e.data.type)) {
-    send('widget', { widget: 'ask_deep', state: 'open' });
-  }
+// The Ask Deep assistant is ours, but its conversations live on its own server,
+// so this beacon records only that it opened, never what was asked.
+document.addEventListener('deep-assistant:open', function () {
+  send('widget', { widget: 'ask_deep', state: 'open' });
 }, { passive: true });

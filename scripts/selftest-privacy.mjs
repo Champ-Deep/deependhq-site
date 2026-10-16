@@ -126,7 +126,8 @@ check('the worker writes no ip field', /blobs:\s*\[[^\]]*\bip\b/i.test(worker), 
 
 // ------------------------------------------------ third-party claims
 console.log('the third-party claims');
-check('privacy names the one real exception (Widgo)', /Widgo/.test(privacy), true);
+check('privacy describes the assistant honestly (no cookies, stores IP)', /not use cookies/i.test(prose(privacy)) && /IP address/i.test(prose(privacy)), true);
+check('and no longer names Widgo', /Widgo/.test(privacy), false);
 check('and still refuses third-party analytics', /No third-party analytics script/i.test(prose(privacy)), true);
 
 // ------------------------------------------------ forget control

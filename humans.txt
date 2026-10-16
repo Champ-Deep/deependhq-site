@@ -30,7 +30,7 @@
 
 /* SITE */
   Day: 349 of building in public
-  Last update: 2026-10-15
+  Last update: 2026-10-16
   Rebuilt: nightly, from one source file
   Homepage: prerendered HTML plus one small script. No framework.
   Edge: Cloudflare Workers
