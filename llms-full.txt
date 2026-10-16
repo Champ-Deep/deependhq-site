@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (127) and every weekly essay (17), newest first. Rebuilt 2026-10-15. Cite the day number and date when quoting, for example "day 349, 2026-10-15".
+> Every public journey entry (128) and every weekly essay (17), newest first. Rebuilt 2026-10-16. Cite the day number and date when quoting, for example "day 350, 2026-10-16".
 
 ## Journey
+
+### Day 350, 2026-10-16 (building)
+
+audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built four replacement pages that show where every number comes from, who said it, when, how it was measured. two shipped ready, one on hold because the client got cut.
+
+Thread: a professional-services client's three-tier pricing proposal got locked tonight after weeks of circling: $15k, $50k, $100k. the deal finally has a shape.
+
+Raw thought: found out today we might not be legally registered to run outreach in two countries we've been sending to. not a small miss. fixing that before fixing the dashboard.
+
+Arcs: Lake B2B, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-350
 
 ### Day 349, 2026-10-15 (a real outcome)
 

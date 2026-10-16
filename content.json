@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 349,
-    "today_date": "2026-10-15",
+    "today_day": 350,
+    "today_date": "2026-10-16",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-16",
+      "day": 350,
+      "mood": "🛠️",
+      "shipping_now": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built four replacement pages that show where every number comes from, who said it, when, how it was measured. two shipped ready, one on hold because the client got cut.",
+      "yesterday_thread": "a professional-services client's three-tier pricing proposal got locked tonight after weeks of circling: $15k, $50k, $100k. the deal finally has a shape.",
+      "raw_thought": "found out today we might not be legally registered to run outreach in two countries we've been sending to. not a small miss. fixing that before fixing the dashboard.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-15",
       "day": 349,
@@ -2069,6 +2082,10 @@
     ],
     "recently": [
       {
+        "text": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with...",
+        "tag": "shipped d350"
+      },
+      {
         "text": "closed out a vendor relationship that had been circling the drain for six days. an acco...",
         "tag": "shipped d349"
       },
@@ -2079,10 +2096,6 @@
       {
         "text": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carou...",
         "tag": "shipped d347"
-      },
-      {
-        "text": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our o...",
-        "tag": "shipped d346"
       }
     ],
     "soon": [
