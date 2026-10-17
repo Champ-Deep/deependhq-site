@@ -303,9 +303,14 @@ document.addEventListener('deep-assistant:open', function () {
 document.addEventListener('deep-assistant:me', function (e) {
   const m = e.detail || {};
   const cta = document.querySelector('[data-dh-cta]');
-  const widget = document.querySelector('deep-assistant');
-  if (!m.returning || !m.last_topic || !cta || !widget || cta.hasAttribute('data-dh-frozen')) return;
+  if (!m.returning || !m.last_topic || !cta || cta.hasAttribute('data-dh-frozen')) return;
   cta.textContent = 'pick up where you left off';
   cta.setAttribute('data-dh-frozen', '');
-  cta.addEventListener('click', function (ev) { ev.preventDefault(); widget.open(); send('cta', { label: 'continue_thread', band: 'returning' }); });
+  cta.addEventListener('click', function (ev) {
+    ev.preventDefault();
+    // before the first tap only the loader's launcher exists; after it, the component
+    const w = document.querySelector('deep-assistant'); const btn = document.getElementById('dh-assistant-btn');
+    if (w) w.open(); else if (btn) btn.click();
+    send('cta', { label: 'continue_thread', band: 'returning' });
+  });
 }, { passive: true });
