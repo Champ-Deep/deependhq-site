@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-16T19:42:29.125Z
+// Built 2026-10-17T19:43:37.150Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 350,
-    "today_date": "2026-10-16",
+    "today_day": 351,
+    "today_date": "2026-10-17",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 351,
+          "date": "2026-10-17",
+          "shipping_now": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday,…",
+          "arc_color": "green"
+        },
         {
           "day": 350,
           "date": "2026-10-16",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-10-04",
           "shipping_now": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to…",
           "arc_color": "blue"
-        },
-        {
-          "day": 337,
-          "date": "2026-10-03",
-          "shipping_now": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 october,\" and the 4th is…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-09-12",
       "last_ship_day": 316,
-      "days_since": 35,
+      "days_since": 36,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -613,7 +613,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 10,
+      "days_since": 11,
       "entries_30d": 1,
       "recent": [
         {
@@ -677,8 +677,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-16",
       "last_ship_day": 350,
-      "days_since": 1,
-      "entries_30d": 12,
+      "days_since": 2,
+      "entries_30d": 11,
       "recent": [
         {
           "day": 350,
@@ -747,7 +747,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 11,
+      "days_since": 12,
       "entries_30d": 3,
       "recent": [
         {
@@ -823,6 +823,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-17",
+      "day": 351,
+      "mood": "⚙️",
+      "shipping_now": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday, without anyone pushing it. today's take: a shared field like active meaning something different in every system is the real ai reliability problem, not stale data.",
+      "yesterday_thread": "the automation also quietly cleared four zoom call summaries that had been stuck in permission-denied purgatory for five days straight. sometimes the win is just letting the dead weight finally drop off the list.",
+      "raw_thought": "the command center has been blocked on the same yes or no decision for four days running and i still havent made the call. automating everything except the one decision that is actually mine.",
+      "arcs": [
+        "Content Strategy",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Content Strategy",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-16",
       "day": 350,
@@ -4326,7 +4351,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 350 · Oct 16",
+    "last_ship": "day 351 · Oct 17",
     "state": "shipping"
   },
   "status_board": {
@@ -4350,6 +4375,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
+        "tag": "shipped d351"
+      },
+      {
         "text": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with...",
         "tag": "shipped d350"
       },
@@ -4360,10 +4389,6 @@ window.DH_DATA = {
       {
         "text": "shipped a full onboarding kit for a new apac account manager who started today. 30 day...",
         "tag": "shipped d348"
-      },
-      {
-        "text": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carou...",
-        "tag": "shipped d347"
       }
     ],
     "soon": [
@@ -9314,33 +9339,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-16T19:42:29.090Z",
-    "built_date": "2026-10-17",
+    "built": "2026-10-17T19:43:37.114Z",
+    "built_date": "2026-10-18",
     "newest_entry": {
-      "date": "2026-10-16",
-      "day": 350
+      "date": "2026-10-17",
+      "day": 351
     },
     "weekdays_stale": 0,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 127,
+        "days_old": 128,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 115,
+        "days_old": 116,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 115,
+        "days_old": 116,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 351,
+      "date": "2026-10-17",
+      "mood": "⚙️",
+      "arc_color": "green",
+      "arcs": [
+        "Content Strategy",
+        "Champions Operations"
+      ],
+      "ship": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday, without anyone pushing it. today's take: a shared field like active meaning something different in every system is the real ai reliability problem, not stale data."
+    },
     {
       "day": 350,
       "date": "2026-10-16",
@@ -9480,16 +9516,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to decide continue-or-cancel, and a data project stuck on one handoff, each now has a day it has to land by. everything else on the list waits on one of those three."
-    },
-    {
-      "day": 337,
-      "date": "2026-10-03",
-      "mood": "⚠️",
-      "arc_color": "green",
-      "arcs": [
-        "Champions Operations"
-      ],
-      "ship": "the saturday client dispatch run caught its own mistake before it shipped: a client draft said \"monday 4 october,\" and the 4th is actually a sunday. the system flagged it instead of a client catching it later. small save, but it is the entire reason the catch step exists."
     }
   ],
   "heatmap": {
@@ -10381,13 +10407,13 @@ window.DH_DATA = {
         "date": "2026-10-17",
         "future": false,
         "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 351,
+        "arc_color": "green",
+        "ship": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, "
       },
       {
         "date": "2026-10-18",
-        "future": true,
+        "future": false,
         "weekend": true,
         "day": null,
         "arc_color": null,
@@ -10396,10 +10422,10 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 350,
-    "entries": 128,
+    "days_public": 351,
+    "entries": 129,
     "entries_30d": 30,
-    "entries_this_month": 16,
+    "entries_this_month": 17,
     "streak_weekdays": 87,
     "essays": 17,
     "companies": 12,
@@ -10413,7 +10439,7 @@ window.DH_DATA = {
       },
       {
         "arc": "Lake B2B",
-        "n": 12
+        "n": 11
       },
       {
         "arc": "ChampOps",
@@ -10432,11 +10458,11 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "AI Tooling Advisory",
+        "arc": "Content Strategy",
         "n": 1
       },
       {
-        "arc": "ChampLantern",
+        "arc": "AI Tooling Advisory",
         "n": 1
       }
     ],
@@ -10483,7 +10509,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 4,
-        "days_since": 5
+        "days_since": 6
       },
       {
         "name": "ChampOps",
@@ -10496,7 +10522,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 16,
-        "days_since": 5
+        "days_since": 6
       },
       {
         "name": "Obsidian + Celsus",
@@ -10506,7 +10532,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 6
+        "days_since": 7
       },
       {
         "name": "Claude + Cowork",
@@ -10516,7 +10542,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 7
+        "days_since": 8
       },
       {
         "name": "Event Scout",
@@ -10529,7 +10555,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 33
+        "days_since": 34
       },
       {
         "name": "ChampUTM",
@@ -10542,7 +10568,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 35
+        "days_since": 36
       },
       {
         "name": "Cloudflare",
@@ -10552,7 +10578,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 59
+        "days_since": 60
       },
       {
         "name": "LakeStream",
@@ -10565,7 +10591,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 74
+        "days_since": 75
       },
       {
         "name": "ChamPDF",
@@ -10578,7 +10604,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 74
+        "days_since": 75
       },
       {
         "name": "ChampMail",
@@ -10590,8 +10616,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-08-02",
-        "mentions_90d": 2,
-        "days_since": 76
+        "mentions_90d": 1,
+        "days_since": 77
       },
       {
         "name": "Supabase",
@@ -10602,7 +10628,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 108
+        "days_since": 109
       },
       {
         "name": "ChampGraph",
@@ -10615,7 +10641,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 116
+        "days_since": 117
       },
       {
         "name": "ChampQuest",
@@ -10628,7 +10654,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 136
+        "days_since": 137
       },
       {
         "name": "Deep Scanner",
@@ -11097,9 +11123,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 128,
+      "entries": 129,
       "essays": 17
     }
   },
-  "built": "2026-10-16T19:42:29.125Z"
+  "built": "2026-10-17T19:43:37.150Z"
 };

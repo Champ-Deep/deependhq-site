@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 350,
-    "today_date": "2026-10-16",
+    "today_day": 351,
+    "today_date": "2026-10-17",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-17",
+      "day": 351,
+      "mood": "⚙️",
+      "shipping_now": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday, without anyone pushing it. today's take: a shared field like active meaning something different in every system is the real ai reliability problem, not stale data.",
+      "yesterday_thread": "the automation also quietly cleared four zoom call summaries that had been stuck in permission-denied purgatory for five days straight. sometimes the win is just letting the dead weight finally drop off the list.",
+      "raw_thought": "the command center has been blocked on the same yes or no decision for four days running and i still havent made the call. automating everything except the one decision that is actually mine.",
+      "arcs": [
+        "Content Strategy",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-16",
       "day": 350,
@@ -2082,6 +2095,10 @@
     ],
     "recently": [
       {
+        "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
+        "tag": "shipped d351"
+      },
+      {
         "text": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with...",
         "tag": "shipped d350"
       },
@@ -2092,10 +2109,6 @@
       {
         "text": "shipped a full onboarding kit for a new apac account manager who started today. 30 day...",
         "tag": "shipped d348"
-      },
-      {
-        "text": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carou...",
-        "tag": "shipped d347"
       }
     ],
     "soon": [

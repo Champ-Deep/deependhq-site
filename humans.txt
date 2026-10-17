@@ -29,8 +29,8 @@
   The gray mare, Bangalore Turf Club, Sundays at sunrise.
 
 /* SITE */
-  Day: 350 of building in public
-  Last update: 2026-10-16
+  Day: 351 of building in public
+  Last update: 2026-10-17
   Rebuilt: nightly, from one source file
   Homepage: prerendered HTML plus one small script. No framework.
   Edge: Cloudflare Workers
