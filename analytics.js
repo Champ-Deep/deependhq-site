@@ -291,11 +291,21 @@ document.addEventListener('keydown', function (e) {
   if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) send('easter_egg', { egg: 'command_palette' });
 }, { passive: true });
 
-// The Ask Deep widget is third party, so we only know it opened, not what was
-// asked inside it. Reporting the open and not the contents is the honest
-// boundary; the contents belong to Widgo's own policy.
-window.addEventListener('message', function (e) {
-  if (e && e.data && typeof e.data.type === 'string' && /widgo|chat.*open/i.test(e.data.type)) {
-    send('widget', { widget: 'ask_deep', state: 'open' });
-  }
+// The Ask Deep assistant is ours, but its conversations live on its own server,
+// so this beacon records only that it opened, never what was asked.
+document.addEventListener('deep-assistant:open', function () {
+  send('widget', { widget: 'ask_deep', state: 'open' });
+}, { passive: true });
+
+// The assistant's return-visitor memory (its /me: device-keyed, same data its welcome screen shows). A visitor with a
+// thread open gets a hero CTA that continues it in the chat instead of asking them to book from scratch; the href stays
+// as the no-JS fallback. Frozen so the copy engine never fights it. shortcut: last_topic only, add upcoming-booking copy when bookings exist.
+document.addEventListener('deep-assistant:me', function (e) {
+  const m = e.detail || {};
+  const cta = document.querySelector('[data-dh-cta]');
+  const widget = document.querySelector('deep-assistant');
+  if (!m.returning || !m.last_topic || !cta || !widget || cta.hasAttribute('data-dh-frozen')) return;
+  cta.textContent = 'pick up where you left off';
+  cta.setAttribute('data-dh-frozen', '');
+  cta.addEventListener('click', function (ev) { ev.preventDefault(); widget.open(); send('cta', { label: 'continue_thread', band: 'returning' }); });
 }, { passive: true });

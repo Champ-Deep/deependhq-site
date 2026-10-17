@@ -136,18 +136,16 @@ const PrivacyPage = () => {
           <div className="section-head" style={{ marginBottom: 'var(--s5)' }}>
             <div>
               <span className="eyebrow">the exception</span>
-              <h2 id="third-h">The chat widget does use cookies.</h2>
+              <h2 id="third-h">The chat assistant stores nothing in cookies, but it does keep records.</h2>
             </div>
           </div>
           <p>
-            The "Ask Deep" assistant in the corner is run by Widgo, a third party, and it has its own
-            storage and its own policy. I can see that you opened it. I cannot see what you typed to
-            it, and I do not want to: that is between you and them, under
-            {' '}
-            <a className="dh-link" href="https://www.widgo.ai/legal/cookie-policy" target="_blank" rel="noopener noreferrer">
-              their cookie policy
-            </a>
-            . The widget is the only thing on this page that sets a cookie.
+            The "Ask Deep" assistant in the corner runs on our own server at assistant.deependhq.com. It does
+            not use cookies: it keeps a session id in this site's sessionStorage and a random visitor id in
+            localStorage. It does store your chat messages, any booking details you give (name, email, reason,
+            chosen time), your IP address with its approximate location, and the page you came from, for 90
+            days, and booking details are emailed to me. Approximate location comes from ipwho.is, which
+            receives your IP address to answer that lookup.
           </p>
         </section>
 

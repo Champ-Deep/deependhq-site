@@ -13,7 +13,7 @@
 //
 // Guardrails baked in here:
 //   - This Worker never sets a cookie. The Ask Deep chat is a third-party widget
-//     (Widgo) with its own storage and privacy policy, and the footer says so.
+//     (the Ask Deep assistant on assistant.deependhq.com), and the footer says so.
 //   - No visitor identity is derived from IP. Only country and timezone, both
 //     coarse Cloudflare fields, and the timezone is only used for a clock greeting.
 //   - The OpenRouter key is a Worker secret. It is never in this file, never in
@@ -173,20 +173,20 @@ const json = (body, status, extra = {}) =>
 // The site loads React, Babel and the widget from cdnjs. Keep that explicit
 // and narrow rather than leaving it wide open. Also applied to the plain asset
 // pass-through below, not just the /showcase page.
-// wss://ai.widgo.ai is here because the widget opens a websocket, and a CSP
-// connect-src without it makes the browser log a refusal and kill the socket.
+// The Ask Deep assistant host is in script-src (widget.js and the component)
+// and connect-src (its API and SSE stream). It needs no websocket.
 // static.cloudflareinsights.com is Cloudflare Web Analytics. Without it the
 // browser refuses the beacon on every page load and the site has no traffic
 // baseline of its own. It sets no cookie and does no cross-site tracking.
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.widgo.ai https://static.cloudflareinsights.com",
+  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob:",
   // api.github.com feeds the live repo cards on /toolkit; the contributions API
   // feeds the commit skyline on /journey. Both are read-only, no credentials.
-  "connect-src 'self' https://ai.widgo.ai wss://ai.widgo.ai https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de",
+  "connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

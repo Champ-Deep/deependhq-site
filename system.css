@@ -280,7 +280,7 @@ a.chip:hover { text-decoration: none; border-color: var(--line-2); }
 
 /* ---------- footer ---------- */
 /* bottom padding clears the Ask Deep widget, so the last line is never under it.
-   --ask-h is measured live by widgo-gate.js: about 72px for the bubble, about 300px
+   --ask-h is (was measured by the retired widgo-gate.js; the 72px fallback now applies): about 72px for the bubble, about 300px
    for the welcome card. Floor 72px (the phone launcher), ceiling 340px (the full
    panel is a conversation in progress, not something to pad a footer for). */
 .sys-footer { border-top: 1px solid var(--line); background: var(--surface); padding-block: var(--s12) calc(var(--s8) + clamp(72px, var(--ask-h, 72px), 340px)); transition: padding-bottom .3s ease; font-family: var(--font-mono); font-size: var(--text-sm); }
