@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 351,
-    "today_date": "2026-10-17",
+    "today_day": 353,
+    "today_date": "2026-10-19",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,32 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-19",
+      "day": 353,
+      "mood": "⚖️",
+      "shipping_now": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the running for something far smaller we need internally, pick due by month end.",
+      "yesterday_thread": "a reputation platform pilot missed its third straight review in a row today. same decision sitting six days overdue, and the review that was supposed to force it came back denied again.",
+      "raw_thought": "two big proposals landed today needing a yes or no by thursday, and i still have a decision sitting in the same queue since june. i automate away everything except the choices that are actually mine to make.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-10-18",
+      "day": 352,
+      "mood": "🚀",
+      "shipping_now": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed, every test green including a full playwright journey end to end. zero to a working product in one sitting.",
+      "yesterday_thread": "also got the self hosted voice stack live on railway tonight, replacing the old dial vendor. agent and webhook integration both verified end to end. one twilio token away from the first real call.",
+      "raw_thought": "found out tonight the real decision tool already has 27 decisions and 30 items waiting on me, not some hypothetical dashboard i keep debating whether to build. the data backs the decision i still havent made. shipping products is somehow easier than answering my own inbox.",
+      "arcs": [
+        "Champ Harbinger",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-17",
       "day": 351,
@@ -2063,13 +2089,13 @@
   ],
   "weekly_narratives_count": 34,
   "latest_narrative": {
-    "week": 47,
-    "title": "This week I shipped faster than ever and still could not close the oldest decision on my list.",
-    "body": "Eight team plans in one day. The biggest product session in months for one build. A booking handoff that went green in 630 tests. A departing engineer's handover closed one day before deadline. And a partner decision that is now undecided for the eighth week running, bookended by two more meetings that left no record at all.",
-    "day_range": "Oct 5 - Oct 11",
-    "date": "2026-10-11",
+    "week": 48,
+    "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
+    "body": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+    "day_range": "Oct 12 - Oct 18",
+    "date": "2026-10-18",
     "read": "4 min",
-    "slug": "week-47-the-decision-debt-arc"
+    "slug": "week-48-the-receipts-arc"
   },
   "status": {
     "location": "Bangalore, IN"
@@ -2095,20 +2121,20 @@
     ],
     "recently": [
       {
+        "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
+        "tag": "shipped d353"
+      },
+      {
+        "text": "built a full deleteme clone from scratch tonight. white label, brand switching wired in...",
+        "tag": "shipped d352"
+      },
+      {
         "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
         "tag": "shipped d351"
       },
       {
         "text": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with...",
         "tag": "shipped d350"
-      },
-      {
-        "text": "closed out a vendor relationship that had been circling the drain for six days. an acco...",
-        "tag": "shipped d349"
-      },
-      {
-        "text": "shipped a full onboarding kit for a new apac account manager who started today. 30 day...",
-        "tag": "shipped d348"
       }
     ],
     "soon": [
@@ -2593,6 +2619,79 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-48-the-receipts-arc",
+      "kind": "weekly",
+      "week": 48,
+      "eyebrow": ">_ week 48 - the receipts arc",
+      "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
+      "deck": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+      "date": "2026-10-18",
+      "day_range": "Oct 12 - Oct 18",
+      "read": "4 min",
+      "arc": "Celsus OS",
+      "arc_color": "green",
+      "tags": [
+        "shipping",
+        "decisions",
+        "ops"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 48 ran through a compliance scare nobody booked, a vendor relationship that finally got a straight answer, a case study page that had been making claims it could not back up, and closed with two products going from nothing to tested and working in the same weekend. the one decision that has sat open for over two months did not close either. it just ran out of places to hide."
+        },
+        {
+          "type": "p",
+          "text": "monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act, 200 million records, no consent system in place today. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in."
+        },
+        {
+          "type": "p",
+          "text": "tuesday built a full creative kit in a day for an enterprise prospect, a five panel carousel, a motion piece, two pitch angles, so the next internal review had something real to react to instead of a deck of ideas. wednesday did the quieter version of the same instinct: a complete 30 day onboarding plan and handover docs for a new account manager's first day, the kind of groundwork that usually slips for weeks because nobody ever finds a free afternoon for it."
+        },
+        {
+          "type": "h2",
+          "text": "the no that finally came"
+        },
+        {
+          "type": "p",
+          "text": "thursday was the week's cleanest moment. a vendor relationship that had been circling the drain for six days got an actual answer. cut it. an account lead had already asked for the call and the decision had been sitting with me. a decided no beats an undecided yes every time, and the ops team could finally execute instead of wait."
+        },
+        {
+          "type": "pull",
+          "text": "a decided no beats an undecided yes every time."
+        },
+        {
+          "type": "p",
+          "text": "friday turned the lens inward. audited every case study on our own site, 156 of them, zero carrying a named quote, zero carrying a client logo, after years of asking clients for exactly that kind of proof. built four replacement pages that show the receipt behind every number: who said it, when, how it was measured. two shipped ready. one is on hold, because the client behind it is the one thursday just cut."
+        },
+        {
+          "type": "p",
+          "text": "saturday the thought leadership line hit a fourth straight day of writing something genuinely different without anyone pushing it, unsupervised, on a saturday. easy to miss in a week this full, but five days running of not repeating yourself is its own kind of discipline."
+        },
+        {
+          "type": "h2",
+          "text": "then sunday did a week's worth of building in one sitting"
+        },
+        {
+          "type": "p",
+          "text": "sunday closed the week by not slowing down at all. built a full white label clone of a personal data removal product from scratch, three brand identities wired in, verified clean end to end including a full browser journey through every step a real user would take. the same night, a separate self hosted voice stack went live on another project, replacing a vendor we had been paying for, with every piece of the integration verified and only one telephony credential standing between it and a real phone call. two products, zero to working, one day."
+        },
+        {
+          "type": "callout",
+          "head": "what still has not moved",
+          "lines": [
+            "the same partner decision that was eight weeks undecided last week is now backed by actual numbers: 27 open items and 30 inbox entries sitting in the tool everyone already uses day to day, not a hypothetical dashboard that has never been built.",
+            "the recurring sunday call with that same partner has now gone dark eight times running with no record it happened at all.",
+            "a venue launch call has sat at the top of the open items list for over four months waiting on one go ahead that takes five seconds to give."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "shipping two products in a day turned out to be the easy half of this week. the decision that keeps blocking everything did not get any closer to closing, it just got a better case file. the numbers now say plainly what everyone already suspected. that is supposed to make deciding easier. we will see."
+        }
+      ]
+    },
     {
       "slug": "week-47-the-decision-debt-arc",
       "kind": "weekly",

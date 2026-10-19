@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-17T23:59:53.779Z
+// Built 2026-10-19T19:50:01.680Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 351,
-    "today_date": "2026-10-17",
+    "today_day": 353,
+    "today_date": "2026-10-19",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,18 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 353,
+          "date": "2026-10-19",
+          "shipping_now": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the…",
+          "arc_color": "green"
+        },
+        {
+          "day": 352,
+          "date": "2026-10-18",
+          "shipping_now": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed,…",
+          "arc_color": "green"
+        },
         {
           "day": 351,
           "date": "2026-10-17",
@@ -83,18 +95,6 @@ window.DH_DATA = {
           "date": "2026-10-06",
           "shipping_now": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the…",
           "arc_color": "gold"
-        },
-        {
-          "day": 339,
-          "date": "2026-10-05",
-          "shipping_now": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each. eight for eight.…",
-          "arc_color": "gold"
-        },
-        {
-          "day": 338,
-          "date": "2026-10-04",
-          "shipping_now": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -232,6 +232,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 353,
+          "date": "2026-10-19",
+          "shipping_now": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the…",
+          "arc_color": "green"
+        },
+        {
           "day": 350,
           "date": "2026-10-16",
           "shipping_now": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built four replacement…",
@@ -296,12 +302,6 @@ window.DH_DATA = {
           "date": "2026-09-18",
           "shipping_now": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic…",
           "arc_color": "green"
-        },
-        {
-          "day": 321,
-          "date": "2026-09-17",
-          "shipping_now": "A ten-day-old outreach thread finally converted into a booked call for tomorrow, the best pipeline move in weeks. Opened a new…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -558,11 +558,17 @@ window.DH_DATA = {
         "ChamPDF",
         "ChampSets"
       ],
-      "last_ship": "2026-09-12",
-      "last_ship_day": 316,
-      "days_since": 36,
-      "entries_30d": 0,
-      "recent": [],
+      "last_ship": "2026-10-18",
+      "last_ship_day": 352,
+      "days_since": 2,
+      "entries_30d": 1,
+      "recent": [
+        {
+          "day": 352,
+          "date": "2026-10-18",
+          "ship": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identitie"
+        }
+      ],
       "company_slugs": [
         "champions-infometrics"
       ],
@@ -613,7 +619,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 11,
+      "days_since": 13,
       "entries_30d": 1,
       "recent": [
         {
@@ -675,11 +681,16 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-10-16",
-      "last_ship_day": 350,
-      "days_since": 2,
+      "last_ship": "2026-10-19",
+      "last_ship_day": 353,
+      "days_since": 1,
       "entries_30d": 11,
       "recent": [
+        {
+          "day": 353,
+          "date": "2026-10-19",
+          "ship": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three v"
+        },
         {
           "day": 350,
           "date": "2026-10-16",
@@ -694,11 +705,6 @@ window.DH_DATA = {
           "day": 348,
           "date": "2026-10-14",
           "ship": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for"
-        },
-        {
-          "day": 347,
-          "date": "2026-10-13",
-          "ship": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, an"
         }
       ],
       "company_slugs": [
@@ -747,8 +753,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 12,
-      "entries_30d": 3,
+      "days_since": 14,
+      "entries_30d": 2,
       "recent": [
         {
           "day": 340,
@@ -759,11 +765,6 @@ window.DH_DATA = {
           "day": 327,
           "date": "2026-09-23",
           "ship": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it "
-        },
-        {
-          "day": 323,
-          "date": "2026-09-19",
-          "ship": "Spent a full Saturday, 8:30am to 8:30pm, on site at a biosciences summit we sponsored. Found out mid-day that "
         }
       ],
       "company_slugs": [
@@ -823,6 +824,62 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-19",
+      "day": 353,
+      "mood": "⚖️",
+      "shipping_now": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the running for something far smaller we need internally, pick due by month end.",
+      "yesterday_thread": "a reputation platform pilot missed its third straight review in a row today. same decision sitting six days overdue, and the review that was supposed to force it came back denied again.",
+      "raw_thought": "two big proposals landed today needing a yes or no by thursday, and i still have a decision sitting in the same queue since june. i automate away everything except the choices that are actually mine to make.",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "day": 352,
+      "mood": "🚀",
+      "shipping_now": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed, every test green including a full playwright journey end to end. zero to a working product in one sitting.",
+      "yesterday_thread": "also got the self hosted voice stack live on railway tonight, replacing the old dial vendor. agent and webhook integration both verified end to end. one twilio token away from the first real call.",
+      "raw_thought": "found out tonight the real decision tool already has 27 decisions and 30 items waiting on me, not some hypothetical dashboard i keep debating whether to build. the data backs the decision i still havent made. shipping products is somehow easier than answering my own inbox.",
+      "arcs": [
+        "Champ Harbinger",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champ Harbinger",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ],
+      "pillars": [
+        "champ"
+      ]
+    },
     {
       "date": "2026-10-17",
       "day": 351,
@@ -4341,17 +4398,17 @@ window.DH_DATA = {
   ],
   "weekly_narratives_count": 34,
   "latest_narrative": {
-    "week": 47,
-    "title": "This week I shipped faster than ever and still could not close the oldest decision on my list.",
-    "body": "Eight team plans in one day. The biggest product session in months for one build. A booking handoff that went green in 630 tests. A departing engineer's handover closed one day before deadline. And a partner decision that is now undecided for the eighth week running, bookended by two more meetings that left no record at all.",
-    "day_range": "Oct 5 - Oct 11",
-    "date": "2026-10-11",
+    "week": 48,
+    "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
+    "body": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+    "day_range": "Oct 12 - Oct 18",
+    "date": "2026-10-18",
     "read": "4 min",
-    "slug": "week-47-the-decision-debt-arc"
+    "slug": "week-48-the-receipts-arc"
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 351 · Oct 17",
+    "last_ship": "day 353 · Oct 19",
     "state": "shipping"
   },
   "status_board": {
@@ -4375,20 +4432,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
+        "tag": "shipped d353"
+      },
+      {
+        "text": "built a full deleteme clone from scratch tonight. white label, brand switching wired in...",
+        "tag": "shipped d352"
+      },
+      {
         "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
         "tag": "shipped d351"
       },
       {
         "text": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with...",
         "tag": "shipped d350"
-      },
-      {
-        "text": "closed out a vendor relationship that had been circling the drain for six days. an acco...",
-        "tag": "shipped d349"
-      },
-      {
-        "text": "shipped a full onboarding kit for a new apac account manager who started today. 30 day...",
-        "tag": "shipped d348"
       }
     ],
     "soon": [
@@ -4873,6 +4930,253 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-48-the-receipts-arc",
+      "kind": "weekly",
+      "week": 48,
+      "eyebrow": ">_ week 48 - the receipts arc",
+      "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
+      "deck": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+      "date": "2026-10-18",
+      "day_range": "Oct 12 - Oct 18",
+      "read": "4 min",
+      "arc": "Celsus OS",
+      "arc_color": "green",
+      "tags": [
+        "shipping",
+        "decisions",
+        "ops"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "week 48 ran through a compliance scare nobody booked, a vendor relationship that finally got a straight answer, a case study page that had been making claims it could not back up, and closed with two products going from nothing to tested and working in the same weekend. the one decision that has sat open for over two months did not close either. it just ran out of places to hide."
+        },
+        {
+          "type": "p",
+          "text": "monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act, 200 million records, no consent system in place today. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in."
+        },
+        {
+          "type": "p",
+          "text": "tuesday built a full creative kit in a day for an enterprise prospect, a five panel carousel, a motion piece, two pitch angles, so the next internal review had something real to react to instead of a deck of ideas. wednesday did the quieter version of the same instinct: a complete 30 day onboarding plan and handover docs for a new account manager's first day, the kind of groundwork that usually slips for weeks because nobody ever finds a free afternoon for it."
+        },
+        {
+          "type": "h2",
+          "text": "the no that finally came"
+        },
+        {
+          "type": "p",
+          "text": "thursday was the week's cleanest moment. a vendor relationship that had been circling the drain for six days got an actual answer. cut it. an account lead had already asked for the call and the decision had been sitting with me. a decided no beats an undecided yes every time, and the ops team could finally execute instead of wait."
+        },
+        {
+          "type": "pull",
+          "text": "a decided no beats an undecided yes every time."
+        },
+        {
+          "type": "p",
+          "text": "friday turned the lens inward. audited every case study on our own site, 156 of them, zero carrying a named quote, zero carrying a client logo, after years of asking clients for exactly that kind of proof. built four replacement pages that show the receipt behind every number: who said it, when, how it was measured. two shipped ready. one is on hold, because the client behind it is the one thursday just cut."
+        },
+        {
+          "type": "p",
+          "text": "saturday the thought leadership line hit a fourth straight day of writing something genuinely different without anyone pushing it, unsupervised, on a saturday. easy to miss in a week this full, but five days running of not repeating yourself is its own kind of discipline."
+        },
+        {
+          "type": "h2",
+          "text": "then sunday did a week's worth of building in one sitting"
+        },
+        {
+          "type": "p",
+          "text": "sunday closed the week by not slowing down at all. built a full white label clone of a personal data removal product from scratch, three brand identities wired in, verified clean end to end including a full browser journey through every step a real user would take. the same night, a separate self hosted voice stack went live on another project, replacing a vendor we had been paying for, with every piece of the integration verified and only one telephony credential standing between it and a real phone call. two products, zero to working, one day."
+        },
+        {
+          "type": "callout",
+          "head": "what still has not moved",
+          "lines": [
+            "the same partner decision that was eight weeks undecided last week is now backed by actual numbers: 27 open items and 30 inbox entries sitting in the tool everyone already uses day to day, not a hypothetical dashboard that has never been built.",
+            "the recurring sunday call with that same partner has now gone dark eight times running with no record it happened at all.",
+            "a venue launch call has sat at the top of the open items list for over four months waiting on one go ahead that takes five seconds to give."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "shipping two products in a day turned out to be the easy half of this week. the decision that keeps blocking everything did not get any closer to closing, it just got a better case file. the numbers now say plainly what everyone already suspected. that is supposed to make deciding easier. we will see."
+        }
+      ],
+      "related_companies": [],
+      "viz": {
+        "window": {
+          "start": "2026-10-12",
+          "end": "2026-10-18"
+        },
+        "days": [
+          {
+            "date": "2026-10-12",
+            "dow": "mon",
+            "day": 346,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "ChampOps"
+            ],
+            "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act."
+          },
+          {
+            "date": "2026-10-13",
+            "dow": "tue",
+            "day": 347,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle hero pieces."
+          },
+          {
+            "date": "2026-10-14",
+            "dow": "wed",
+            "day": 348,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "shipped a full onboarding kit for a new apac account manager who started today."
+          },
+          {
+            "date": "2026-10-15",
+            "dow": "thu",
+            "day": 349,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "closed out a vendor relationship that had been circling the drain for six days."
+          },
+          {
+            "date": "2026-10-16",
+            "dow": "fri",
+            "day": 350,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo."
+          },
+          {
+            "date": "2026-10-17",
+            "dow": "sat",
+            "day": 351,
+            "arc_color": "green",
+            "arcs": [
+              "Content Strategy",
+              "Champions Operations"
+            ],
+            "ship": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday, without anyone "
+          },
+          {
+            "date": "2026-10-18",
+            "dow": "sun",
+            "day": 352,
+            "arc_color": "green",
+            "arcs": [
+              "Champ Harbinger",
+              "Champions Operations"
+            ],
+            "ship": "built a full deleteme clone from scratch tonight."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-10-15"
+          ],
+          [
+            "2026-10-12"
+          ],
+          [
+            "2026-10-13",
+            "2026-10-14"
+          ],
+          [],
+          [
+            "2026-10-15"
+          ],
+          [],
+          [
+            "2026-10-16"
+          ],
+          [
+            "2026-10-17"
+          ],
+          [
+            "2026-10-18"
+          ],
+          [
+            "2026-10-18"
+          ],
+          [
+            "2026-10-18"
+          ],
+          [
+            "2026-10-18"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 6,
+            "paras": [
+              0,
+              2,
+              4,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 5,
+            "paras": [
+              0,
+              1,
+              2,
+              4,
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 1,
+            "paras": [
+              1
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Content Strategy",
+            "n": 1,
+            "paras": [
+              7
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 674,
+        "entries": 7,
+        "listen_min": 4
+      }
+    },
     {
       "slug": "week-47-the-decision-debt-arc",
       "kind": "weekly",
@@ -9339,33 +9643,55 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-17T23:59:53.749Z",
-    "built_date": "2026-10-18",
+    "built": "2026-10-19T19:50:01.642Z",
+    "built_date": "2026-10-20",
     "newest_entry": {
-      "date": "2026-10-17",
-      "day": 351
+      "date": "2026-10-19",
+      "day": 353
     },
-    "weekdays_stale": 0,
+    "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 128,
+        "days_old": 130,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 116,
+        "days_old": 118,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 116,
+        "days_old": 118,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 353,
+      "date": "2026-10-19",
+      "mood": "⚖️",
+      "arc_color": "green",
+      "arcs": [
+        "Champions Operations",
+        "Lake B2B"
+      ],
+      "ship": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the running for something far smaller we need internally, pick due by month end."
+    },
+    {
+      "day": 352,
+      "date": "2026-10-18",
+      "mood": "🚀",
+      "arc_color": "green",
+      "arcs": [
+        "Champ Harbinger",
+        "Champions Operations"
+      ],
+      "ship": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed, every test green including a full playwright journey end to end. zero to a working product in one sitting."
+    },
     {
       "day": 351,
       "date": "2026-10-17",
@@ -9496,89 +9822,13 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the pivot to corporate clients over consumers, all locked in one call. thursday's soft launch just became real."
-    },
-    {
-      "day": 339,
-      "date": "2026-10-05",
-      "mood": "📋",
-      "arc_color": "gold",
-      "arcs": [
-        "Champions Operations"
-      ],
-      "ship": "shipped october plans for every person on the team today, a dated plan, a handover pack, and a dashboard each. eight for eight. the kind of gap that sits for a month until someone just does all of them in one day."
-    },
-    {
-      "day": 338,
-      "date": "2026-10-04",
-      "mood": "📋",
-      "arc_color": "blue",
-      "arcs": [
-        "Champions Operations"
-      ],
-      "ship": "wrote next week's plan before monday hits: three decisions, a partnership that's gone quiet for months, a trial account about to decide continue-or-cancel, and a data project stuck on one handoff, each now has a day it has to land by. everything else on the list waits on one of those three."
     }
   ],
   "heatmap": {
-    "start": "2026-06-29",
-    "end": "2026-10-18",
+    "start": "2026-07-06",
+    "end": "2026-10-25",
     "weeks": 16,
     "cells": [
-      {
-        "date": "2026-06-29",
-        "future": false,
-        "weekend": false,
-        "day": 241,
-        "arc_color": "green",
-        "ship": "Pitched intent-signal-driven webinar promotion to the EMEA ABM team at a global DevOps platform. ~150 enterpri"
-      },
-      {
-        "date": "2026-06-30",
-        "future": false,
-        "weekend": false,
-        "day": 242,
-        "arc_color": "blue",
-        "ship": "q2 closed. authorized the quarter-end wire, joined two external partnership calls, and started drafting the la"
-      },
-      {
-        "date": "2026-07-01",
-        "future": false,
-        "weekend": false,
-        "day": 243,
-        "arc_color": "blue",
-        "ship": "q3 day one. led a strategic growth discussion with an investment bank on champions group expansion and what th"
-      },
-      {
-        "date": "2026-07-02",
-        "future": false,
-        "weekend": false,
-        "day": 244,
-        "arc_color": "green",
-        "ship": "all nine independence day video clips are done. prompt library locked, both cut styles wrapped. the thing is b"
-      },
-      {
-        "date": "2026-07-03",
-        "future": false,
-        "weekend": false,
-        "day": 245,
-        "arc_color": "green",
-        "ship": "july 4th campaign distributed to all 22 reps across four sales teams. independence day video final cut assembl"
-      },
-      {
-        "date": "2026-07-04",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
-      {
-        "date": "2026-07-05",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
       {
         "date": "2026-07-06",
         "future": false,
@@ -10415,6 +10665,62 @@ window.DH_DATA = {
         "date": "2026-10-18",
         "future": false,
         "weekend": true,
+        "day": 352,
+        "arc_color": "green",
+        "ship": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identitie"
+      },
+      {
+        "date": "2026-10-19",
+        "future": false,
+        "weekend": false,
+        "day": 353,
+        "arc_color": "green",
+        "ship": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three v"
+      },
+      {
+        "date": "2026-10-20",
+        "future": false,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-21",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-22",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-23",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-24",
+        "future": true,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-25",
+        "future": true,
+        "weekend": true,
         "day": null,
         "arc_color": null,
         "ship": null
@@ -10422,12 +10728,12 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 351,
-    "entries": 129,
+    "days_public": 353,
+    "entries": 131,
     "entries_30d": 30,
-    "entries_this_month": 17,
-    "streak_weekdays": 87,
-    "essays": 17,
+    "entries_this_month": 19,
+    "streak_weekdays": 88,
+    "essays": 18,
     "companies": 12,
     "companies_active_90d": 5,
     "first_entry": "2026-05-04",
@@ -10454,8 +10760,8 @@ window.DH_DATA = {
         "n": 3
       },
       {
-        "arc": "Longevity",
-        "n": 2
+        "arc": "Champ Harbinger",
+        "n": 1
       },
       {
         "arc": "Content Strategy",
@@ -10509,7 +10815,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 4,
-        "days_since": 6
+        "days_since": 8
       },
       {
         "name": "ChampOps",
@@ -10522,7 +10828,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 16,
-        "days_since": 6
+        "days_since": 8
       },
       {
         "name": "Obsidian + Celsus",
@@ -10532,7 +10838,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 7
+        "days_since": 9
       },
       {
         "name": "Claude + Cowork",
@@ -10542,7 +10848,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 8
+        "days_since": 10
       },
       {
         "name": "Event Scout",
@@ -10555,7 +10861,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 34
+        "days_since": 36
       },
       {
         "name": "ChampUTM",
@@ -10568,7 +10874,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 36
+        "days_since": 38
       },
       {
         "name": "Cloudflare",
@@ -10578,7 +10884,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 60
+        "days_since": 62
       },
       {
         "name": "LakeStream",
@@ -10591,7 +10897,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 75
+        "days_since": 77
       },
       {
         "name": "ChamPDF",
@@ -10604,7 +10910,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 75
+        "days_since": 77
       },
       {
         "name": "ChampMail",
@@ -10617,7 +10923,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 77
+        "days_since": 79
       },
       {
         "name": "Supabase",
@@ -10628,7 +10934,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 109
+        "days_since": 111
       },
       {
         "name": "ChampGraph",
@@ -10641,7 +10947,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 117
+        "days_since": 119
       },
       {
         "name": "ChampQuest",
@@ -10654,7 +10960,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 137
+        "days_since": 139
       },
       {
         "name": "Deep Scanner",
@@ -11123,9 +11429,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 129,
-      "essays": 17
+      "entries": 131,
+      "essays": 18
     }
   },
-  "built": "2026-10-17T23:59:53.779Z"
+  "built": "2026-10-19T19:50:01.680Z"
 };
