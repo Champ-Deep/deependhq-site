@@ -268,9 +268,9 @@ html{overflow-x:clip;scroll-padding-top:calc(61px + 8px)}
 .wx-rail-ruler{display:none}
 .wx-rail{display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--s3);margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad);overscroll-behavior-x:contain}
 .wx-rc{flex:0 0 var(--cw);scroll-snap-align:start;display:grid;grid-template-rows:auto auto 1fr auto auto;gap:var(--s3);background:var(--card);border:1px solid var(--line);border-top:2px solid var(--acc,var(--line-2));border-radius:var(--r-lg);padding:var(--s5)}
-.wx-rc[data-arc=green]{--acc:var(--build);--acc-t:var(--build)}
+.wx-rc[data-arc=green]{--acc:var(--build);--acc-t:var(--build-text)}
 .wx-rc[data-arc=blue]{--acc:var(--think);--acc-t:var(--think-text)}
-.wx-rc[data-arc=gold]{--acc:var(--win);--acc-t:var(--win)}
+.wx-rc[data-arc=gold]{--acc:var(--win);--acc-t:var(--win-text)}
 .wx-rc-top{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s3)}
 .wx-rc-day{font:800 var(--text-h1)/1 var(--font-ui);letter-spacing:var(--track-display);font-variant-numeric:tabular-nums}
 .wx-rc-kind{font:500 var(--text-xs)/1 var(--font-mono);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--acc-t,var(--muted))}
@@ -315,8 +315,8 @@ a.wx-ix:hover .wx-ix-name::before,a.wx-ix:focus-visible .wx-ix-name::before{widt
 @media (min-width:48rem){.wx-pl-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:64rem){.wx-pl-row{display:flex}}
 .wx-pl{flex:1 1 0;min-width:0;display:grid;grid-template-rows:auto auto 1fr auto;gap:var(--s4);padding:var(--s6) var(--s6) var(--s5);background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:var(--r-lg);text-decoration:none;color:var(--text);transition:flex-grow var(--dur-3) var(--ease-out),background-color var(--dur-2)}
-.wx-pl[data-acc=build]{--acc:var(--build);--acc-t:var(--build)}
-.wx-pl[data-acc=win]{--acc:var(--win);--acc-t:var(--win)}
+.wx-pl[data-acc=build]{--acc:var(--build);--acc-t:var(--build-text)}
+.wx-pl[data-acc=win]{--acc:var(--win);--acc-t:var(--win-text)}
 .wx-pl[data-acc=think]{--acc:var(--think);--acc-t:var(--think-text)}
 .wx-pl[data-acc=human]{--acc:var(--human);--acc-t:var(--human-text)}
 .wx-pl:hover,.wx-pl:focus-within{background:var(--card)}

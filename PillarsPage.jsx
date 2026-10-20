@@ -10,7 +10,7 @@
 const { useState: useStatePl, useMemo: useMemoPl } = React;
 
 const P_ACCENT = { build: 'var(--build)', win: 'var(--win)', think: 'var(--think)', human: 'var(--human)' };
-const P_TEXT = { build: 'var(--build)', win: 'var(--win)', think: 'var(--think-text)', human: 'var(--human-text)' };
+const P_TEXT = { build: 'var(--build-text)', win: 'var(--win-text)', think: 'var(--think-text)', human: 'var(--human-text)' };
 
 const PillarsPage = () => {
   const { Age, Chip, fmtDate } = window.Sys;
@@ -94,7 +94,7 @@ const PillarsPage = () => {
             const quiet = !p.last_ship || (p.days_since != null && p.days_since > 45);
             const members = (p.companies || []).map((n) => cos.find((c) => c.name === n)).filter(Boolean);
             const accent = P_ACCENT[p.accent] || 'var(--build)';
-            const text = P_TEXT[p.accent] || 'var(--build)';
+            const text = P_TEXT[p.accent] || 'var(--build-text)';
             const weeks = weeksByDoor[p.slug] || [];
             return (
               <Spot as="article" key={p.slug} className={'card door accent-' + p.accent} accent={accent} id={p.slug} data-reveal style={{ '--i': i }}>

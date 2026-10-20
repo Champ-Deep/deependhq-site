@@ -391,6 +391,9 @@ const ContributionSkyline = ({
     const colGoal = new Float32Array(15);
     let colReady = false;
     let fg = CS_FG_FALLBACK, bg = CS_BG_FALLBACK, isDark = true;
+    // label colour: the --dim token, read on retheme. The old bg/fg mix landed
+    // at 3.9:1 on warm white, under AA for the 10px month labels.
+    let labelRGB = null;
     // cells
     let n = 0, weeks = 0;
     let wk = new Float32Array(0), dy = new Float32Array(0), lv = new Uint8Array(0), hgt = new Float32Array(0), zs = new Float32Array(0);
@@ -432,6 +435,7 @@ const ContributionSkyline = ({
       const b = csToRGB(cs.backgroundColor, null);
       bg = b || (csLuminance(fg) > 0.5 ? [10, 10, 10] : [255, 255, 255]);
       isDark = csLuminance(bg) < 0.45;
+      labelRGB = csToRGB((cs.getPropertyValue('--dim') || '').trim(), null) || csMixRGB(bg, fg, 0.55);
       font = '400 10px ' + (cs.fontFamily || 'sans-serif');
       const pal = csResolvePalette(cfg.current.palette, isDark);
       const empty = csMixRGB(bg, fg, isDark ? 0.11 : 0.075);
@@ -577,7 +581,7 @@ const ContributionSkyline = ({
       }
 
       // Labels: along the top and left in 2D, along the front edge in 3D. They fade, never pop.
-      const muted = csMixRGB(bg, fg, 0.55);
+      const muted = labelRGB || csMixRGB(bg, fg, 0.55);
       ctx.font = font;
       const a2 = 1 - csSmoothstep(0, 0.4, e);
       const a3 = csSmoothstep(0.62, 1, e);

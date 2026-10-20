@@ -399,9 +399,9 @@ a.dh-art:hover { color: var(--build-text); }
    Only the left rail and the count take the colour; the body stays neutral so
    the page does not turn into a colour chart.
 --------------------------------------------------------------------------- */
-.accent-build  { --door: var(--build);  --door-wash: var(--build-wash);  --door-text: var(--build); }
+.accent-build  { --door: var(--build);  --door-wash: var(--build-wash);  --door-text: var(--build-text); }
 .accent-think  { --door: var(--think);  --door-wash: var(--think-wash);  --door-text: var(--think-text); }
-.accent-win    { --door: var(--win);    --door-wash: var(--win-wash);    --door-text: var(--win); }
+.accent-win    { --door: var(--win);    --door-wash: var(--win-wash);    --door-text: var(--win-text); }
 .accent-human  { --door: var(--human);  --door-wash: var(--human-wash);  --door-text: var(--human-text); }
 
 .pillar-grid { display: grid; gap: var(--bento-gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }

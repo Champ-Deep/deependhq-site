@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "scrollW": 375,
+  "clientW": 375,
+  "overflow": false,
+  "offenders": [
+    "div.wx-heat-grid",
+    "span.wx-hm",
+    "button.wx-cell",
+    "button.wx-cell",
+    "button.wx-cell",
+    "button.wx-cell"
+  ],
+  "rootText": 12467,
+  "h1": "i’m\nDeep\nand\ni\nship\nevery\nweekday",
+  "title": "deep >_ Past the hype cycle. Into the infrastructure.",
+  "selText": null,
+  "errors": [],
+  "failedReq": [],
+  "external": []
+}
