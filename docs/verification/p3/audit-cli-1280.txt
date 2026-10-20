@@ -1,0 +1,12 @@
+
+  Interface audit  http://127.0.0.1:58335/docs/verification/p3/fixture.html?scheme=dark
+  1280px  dark theme
+
+  [WARN] default-font: body font is "inter", an AI default; choose deliberately
+  [INFO] skip-link: no "skip to content" link found
+  [INFO] three-card-row: three structurally identical cards in a row: the default AI layout
+         -> div.wx-w-more "week 47 Oct 11 listen 4:15 This week I shipp"
+
+  0 fail   1 warn   2 info
+  A clean audit is necessary, not sufficient. Look at the screenshots.
+

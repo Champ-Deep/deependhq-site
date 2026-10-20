@@ -11,7 +11,8 @@
     "islands": "node scripts/build-islands.mjs",
     "contrast": "node scripts/contrast.mjs",
     "check": "node scripts/guard.mjs && node scripts/brand-guard.mjs && node scripts/build-data.mjs && node scripts/link-check.mjs",
-    "test": "node scripts/guard-selftest.mjs && node scripts/ingest-selftest.mjs",
+    "test": "node scripts/guard-selftest.mjs && node scripts/ingest-selftest.mjs && node scripts/p3-selftest.mjs",
+    "test:p3:browser": "node scripts/p3-browser.mjs",
     "links": "node scripts/link-check.mjs",
     "gaps": "node scripts/check-gaps.mjs",
     "publish": "bash scripts/publish.sh",
@@ -24,8 +25,9 @@
   "dependencies": {
     "@clerk/backend": "3.25.0",
     "esbuild": "0.24.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "motion": "^14.4.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "playwright-core": "1.49.1",

@@ -267,17 +267,23 @@ const Log = () => {
   const st = DH.stats || {};
   const e = DH.journey[0];
   const arcs = (st.arcs_30d || []).slice(0, 6);
-  const mx = Math.max(1, ...arcs.map((a) => a.n));
-  const rail = DH.journey.slice(0, 10);
+  const rail = DH.journey.slice(0, 10).map((d) => ({ ...d, id: String(d.day), label: `Day ${d.day}, ${KIND[d.arc_color] || 'logged'}`, dateLabel: `${dow(d.date)} · ${fmtDate(d.date)}`, ageLabel: ageOf(d.date, 99999).label }));
+  const metrics = [
+    ['days in public', st.days_public], ['weekday streak', st.streak_weekdays],
+    ['log entries', st.entries], ['companies, 1 operator', st.companies],
+  ];
   return (
-    <section className="wx-log wx-sec mode-operator" id="log" aria-labelledby="wx-log-h">
+    <section className="wx-log wx-metric-log wx-sec mode-operator" id="log" aria-labelledby="wx-log-h">
       <header className="wx-sec-head wx-split">
         <p className="wx-eyebrow-op">the public log</p>
         <h2 className="wx-op-h wx-ink" id="wx-log-h">Every weekday, one entry. No skipping.</h2>
         <p className="wx-lead">{st.entries} entries since {fmtDate(st.first_entry)}. {st.entries_30d} in the last 30 days. The gaps are real and they stay visible.</p>
         <a className="wx-tlink" href="journey.html">the whole log →</a>
       </header>
-      <div className="wx-log-grid">
+      <dl className="wx-metric-row" aria-label={`Log metrics as of ${DH.built.slice(0, 10)}`}>
+        {metrics.map(([label, value]) => <div className="wx-metric-card" key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+      </dl>
+      <div className="wx-log-grid wg-log-overview">
         <figure className="wx-heat">
           <div className="wx-legend" aria-hidden="true">
             <span><i style={{ '--c': 'var(--build)' }} />building</span>
@@ -292,35 +298,36 @@ const Log = () => {
           </figcaption>
         </figure>
         <aside className="wx-log-meta" aria-label="Log statistics">
-          <p className="wx-kv"><b>{st.entries_30d}</b><span>entries in the<br />last 30 days</span></p>
-          <p className="wx-kv"><b>{st.streak_weekdays}</b><span>weekday<br />streak</span></p>
-          <div className="wx-arcs">
+          <div className="wx-metric-arcs">
             <h3>what the last 30 days were about</h3>
-            <ul>{arcs.map((a) => <li key={a.arc}><span style={{ '--w': `${Math.round((100 * a.n) / mx)}%` }}>{a.arc}</span><b>{a.n}</b></li>)}</ul>
+            <p>Entries per arc, out of {st.entries_30d}. An entry can carry more than one arc.</p>
+            <ul>{arcs.map((a) => <li key={a.arc}><span>{a.arc}</span><b>{a.n}</b><span className="wx-metric-track" aria-hidden="true"><i style={{ width: `${100 * a.n / Math.max(1, st.entries_30d)}%` }} /></span></li>)}</ul>
           </div>
         </aside>
       </div>
 
-      <div className="wx-rail-wrap">
-        <div className="wx-rail-stick">
-          <div className="wx-rail-head">
+      <div className="wg-recent">
+          <div className="wg-heading">
             <h3 className="wx-ink">The last ten entries.</h3>
-            <p>scroll, swipe or tab through</p>
+            <p>Real days, not a highlight reel.</p>
           </div>
-          <ol className="wx-rail" aria-label="The last ten entries">
+          <ol className="wg-mobile-list" aria-label="Recent log dates">
+            {rail.slice(0, 6).map((d) => <li key={d.day}><a href={`journey.html#day-${d.day}`}>day {d.day}<time dateTime={d.date}>{fmtDate(d.date)}</time><span>{KIND[d.arc_color] || 'logged'}</span></a></li>)}
+          </ol>
+          <div data-island="widget-grid" data-props={JSON.stringify({ entries: rail })}>
+          <ol className="wg-fallback" aria-label="The last ten entries">
             {rail.map((d) => (
-              <li key={d.day} className="wx-rc" data-arc={d.arc_color}>
-                <p className="wx-rc-top"><span className="wx-rc-day">{d.day}</span><span className="wx-rc-kind">{KIND[d.arc_color] || 'logged'}</span></p>
-                <p className="wx-rc-date">{dow(d.date)} · {fmtDate(d.date)} · <WxAge date={d.date} mode="plain" /></p>
-                <p className="wx-rc-txt">{d.shipping_now}</p>
-                <ul className="wx-chips">{(d.arcs || []).slice(0, 2).map((a) => <li key={a}>{a}</li>)}</ul>
-                <a className="wx-tlink" href={`journey.html#day-${d.day}`}>day {d.day} in full →</a>
+              <li key={d.day} className="wg-card" data-kind={d.arc_color}>
+                <p className="wg-top"><b>day {d.day}</b><span>{KIND[d.arc_color] || 'logged'}</span></p>
+                <p className="wg-date">{d.dateLabel}<br /><WxAge date={d.date} mode="plain" /></p>
+                <p className="wg-excerpt">{d.shipping_now}</p>
+                <ul className="wg-arcs">{(d.arcs || []).slice(0, 2).map((a) => <li key={a}>{a}</li>)}</ul>
+                <a className="wg-entry-link" href={`journey.html#day-${d.day}`}>day {d.day} in full →</a>
               </li>
             ))}
-            <li style={{ display: 'contents' }}><a className="wx-rc-end" href="journey.html"><b>{st.entries}</b><span>the whole log →</span></a></li>
           </ol>
-          <p className="wx-rail-ruler" aria-hidden="true"><span>day {rail[0].day} · {fmtDate(rail[0].date)}</span><i /><span>day {rail[rail.length - 1].day} · {fmtDate(rail[rail.length - 1].date)}</span></p>
-        </div>
+          </div>
+          <a className="wg-whole" href="journey.html">all {st.entries} entries in the whole log →</a>
       </div>
     </section>
   );
@@ -562,8 +569,15 @@ const Writing = () => {
   const range = (lead.day_range || '').replace(/\s*[-\u2013\u2014]\s*/, ' to ');
   const v = lead.viz || { days: [], nodes: [], entries: 0, listen_min: 1 };
   const A = lead.audio;
+  const arcWords = (v.nodes || []).filter((n) => n.kind === 'arc').map((n) => ({
+    ...n, words: n.paras.reduce((total, i) => {
+      const b = (lead.body || [])[i];
+      const text = typeof b === 'string' ? b : b ? [b.head, b.text, ...(b.lines || [])].filter(Boolean).join(' ') : '';
+      return total + text.split(/\s+/).filter(Boolean).length;
+    }, 0),
+  }));
   return (
-    <section className="wx-writing wx-sec mode-editorial" id="writing" aria-labelledby="wx-w-h">
+    <section className="wx-writing wx-metric-writing wx-sec mode-editorial" id="writing" aria-labelledby="wx-w-h">
       <header className="wx-sec-head wx-split">
         <h2 className="wx-ed-h wx-ink" id="wx-w-h">The weekly narratives.</h2>
         <p className="wx-lead">One essay a week, written from the log, not from a content calendar. {posts.length} so far, each one with the week behind it and a listen button.</p>
@@ -588,19 +602,17 @@ const Writing = () => {
         </div>
         <aside className="wx-w-week" aria-label={`The week behind week ${lead.week}`}>
           <p className="wx-w-week-k">the week behind it<span>{v.entries} log entries</span></p>
-          <ol className="wx-wk-row">
-            {v.days.map((d) => (
+          <ol className="wx-wk-row wx-metric-week">
+            {v.days.slice(0, 7).map((d) => (
               <li key={d.date}>{d.day
-                ? <a className={`wx-wk arc-${d.arc_color || 'none'}`} href={`journey.html#day-${d.day}`} aria-label={`${d.dow} day ${d.day}, ${W_KIND[d.arc_color] || 'logged'}`}><span>{d.dow}</span><b>{d.day}</b><em>{W_KIND[d.arc_color] || 'logged'}</em></a>
+                ? <a className={`wx-wk arc-${d.arc_color || 'none'}`} href={`journey.html#day-${d.day}`}><span>{d.dow}</span><b>day {d.day}</b><em>{W_KIND[d.arc_color] || 'logged'}</em><small>{Number.isFinite(DH.journey.find((e) => e.day === d.day)?.github_commits) ? `${DH.journey.find((e) => e.day === d.day).github_commits} commits` : (d.arcs || [])[0] || 'no arc recorded'}</small></a>
                 : <span className="wx-wk is-empty"><span>{d.dow}</span><b>&nbsp;</b><em>no entry</em></span>}</li>
             ))}
           </ol>
-          {(v.nodes || []).length > 0 && (
-            <div className="wx-w-touch"><p>what the week touched</p><ul>{v.nodes.slice(0, 6).map((n) => <li key={n.name} className={`k-${n.kind}`}><a href={n.href}>{n.name}</a></li>)}</ul></div>
-          )}
-          <div className="wx-w-spend">
+          <div className="wx-w-spend wx-metric-arcs">
             <p>where the essay spends its words</p>
-            <MiniStrip p={lead} big />
+            <ul>{arcWords.map((n) => <li key={n.name}><span>{n.name}</span><b>{n.words} words</b><span className="wx-metric-track" aria-hidden="true"><i style={{ width: `${100 * n.words / Math.max(1, v.words)}%` }} /></span></li>)}</ul>
+            <p>Share of {v.words} essay words in paragraphs linked to each arc. Arcs overlap, so shares do not add to 100%.</p>
             <p className="wx-w-stats"><span><b>{v.words}</b> words</span><span><b>{(v.para_days || []).filter((d) => d.length).length}</b> paragraphs tied to a day</span><span><b>{A ? wClock(A.duration) : `${v.listen_min} min`}</b> to listen</span></p>
           </div>
         </aside>

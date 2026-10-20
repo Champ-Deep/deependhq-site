@@ -11,10 +11,12 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import HalftoneFooter from './halftone-footer.island.jsx';
 import FolderCards from './folder-cards.island.jsx';
+import WidgetGrid from './widget-grid.island.jsx';
 
 const REGISTRY = {
   'halftone-footer': HalftoneFooter,
   'folder-cards': FolderCards,
+  'widget-grid': WidgetGrid,
 };
 
 export function mountIslands(root) {
