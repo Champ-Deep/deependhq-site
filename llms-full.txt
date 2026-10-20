@@ -102,7 +102,7 @@ Link: https://deependhq.com/journey.html#day-347
 
 ### Day 346, 2026-10-12 (a real outcome)
 
-a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.
+a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.
 
 Thread: also got champbeam unstuck. a pr thats been sitting has the whole railway to coolify cutover mapped out, ci green, just needs a merge.
 
@@ -1576,11 +1576,11 @@ Link: https://deependhq.com/journey.html#day-184
 
 2026-10-18, 4 min, Celsus OS. https://deependhq.com/post.html?slug=week-48-the-receipts-arc
 
-A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.
+A routine demo turned into a compliance audit under India's DPDP act. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.
 
 week 48 ran through a compliance scare nobody booked, a vendor relationship that finally got a straight answer, a case study page that had been making claims it could not back up, and closed with two products going from nothing to tested and working in the same weekend. the one decision that has sat open for over two months did not close either. it just ran out of places to hide.
 
-monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act, 200 million records, no consent system in place today. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in.
+monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in.
 
 tuesday built a full creative kit in a day for an enterprise prospect, a five panel carousel, a motion piece, two pitch angles, so the next internal review had something real to react to instead of a deck of ideas. wednesday did the quieter version of the same instinct: a complete 30 day onboarding plan and handover docs for a new account manager's first day, the kind of groundwork that usually slips for weeks because nobody ever finds a free afternoon for it.
 

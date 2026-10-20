@@ -350,7 +350,7 @@ const Stack = () => {
   const building = (i) => (i.status === 'building' || i.status === 'internal' ? 0 : 1);
   const rows = [
     ...featured,
-    ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'live', meta: 'on this site', what: 'Upload a lead list. Jev ranks who to call first and writes the first line.' }] : []),
+    ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'team tool', meta: 'passcode on this site', what: 'Upload a lead list. Jev ranks who to call first and writes the first line.' }] : []),
     ...S.items
       .filter((i) => i.kind === 'built' && (i.last_seen || i.status) && !MERGED.has(i.name) && !pinned.has(i.name))
       .sort((a, b) => building(a) - building(b) || String(b.last_seen || '').localeCompare(String(a.last_seen || '')))
@@ -382,7 +382,7 @@ const Stack = () => {
                 <React.Fragment>
                   <span className="wx-ix-name">{r.name}</span>
                   <span className="wx-ix-what">{r.what}</span>
-                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-tag-${r.tag}`}>{r.tag}</span>}{r.meta}</span>
+                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-tag-${r.tag.split(' ')[0]}`}>{r.tag}</span>}{r.meta}</span>
                 </React.Fragment>
               );
               if (!r.url) return <div key={r.name} className="wx-ix">{inner}</div>;

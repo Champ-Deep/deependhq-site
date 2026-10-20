@@ -5,9 +5,11 @@
   "description": "deependhq.com. Static assets plus a Cloudflare Worker. Published by scripts/publish.sh.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-data.mjs && node scripts/prerender.mjs",
+    "build": "node scripts/build-data.mjs && node scripts/prerender.mjs && node scripts/build-islands.mjs",
     "build:data": "node scripts/build-data.mjs",
     "prerender": "node scripts/prerender.mjs",
+    "islands": "node scripts/build-islands.mjs",
+    "contrast": "node scripts/contrast.mjs",
     "check": "node scripts/guard.mjs && node scripts/brand-guard.mjs && node scripts/build-data.mjs && node scripts/link-check.mjs",
     "test": "node scripts/guard-selftest.mjs && node scripts/ingest-selftest.mjs",
     "links": "node scripts/link-check.mjs",
@@ -18,9 +20,11 @@
     "brand": "node scripts/brand/build-brand.mjs",
     "brand-guard": "node scripts/brand-guard.mjs"
   },
-  "//dependencies": "esbuild is a BUILD dependency, not a dev one. Cloudflare builds can install with NODE_ENV=production, which skips devDependencies and leaves prerender with no bundler, so the pages would publish with an empty #root. playwright-core and wrangler stay dev: they are only used by hand.",
+  "//dependencies": "esbuild is a BUILD dependency, not a dev one. Cloudflare builds can install with NODE_ENV=production, which skips devDependencies and leaves prerender with no bundler, so the pages would publish with an empty #root. react and react-dom are RUNTIME dependencies: scripts/build-islands.mjs bundles them into home-islands.js for the browser islands. playwright-core and wrangler stay dev: they are only used by hand.",
   "dependencies": {
-    "esbuild": "0.24.0"
+    "esbuild": "0.24.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "playwright-core": "1.49.1",

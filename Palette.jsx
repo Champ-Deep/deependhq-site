@@ -113,7 +113,7 @@ const CommandPalette = () => {
     { grp: 'go', label: 'Home', hint: '/', run: () => { location.href = 'index.html'; } },
     { grp: 'go', label: 'Commit skyline', hint: '/journey#commits', run: () => { location.href = 'journey.html#commits'; } },
     { grp: 'go', label: 'Live repos', hint: '/toolkit#repos', run: () => { location.href = 'toolkit.html#repos'; } },
-    { grp: 'do', label: 'Book a call', hint: 'scheduler', run: () => { window.open('https://scheduler.zoom.us/sreedeep', '_blank'); } },
+    { grp: 'do', label: 'Book 30 minutes', hint: 'scheduler', run: () => { window.open('https://scheduler.zoom.us/sreedeep', '_blank'); } },
     { grp: 'do', label: 'Email deep', hint: 'mailto', run: () => { location.href = 'mailto:deep@championsmail.com'; } },
     { grp: 'do', label: 'GitHub', hint: 'github.com/Champ-Deep', run: () => { window.open('https://github.com/Champ-Deep', '_blank'); } },
     { grp: 'do', label: 'LinkedIn', hint: 'in/sreedeep-surapaneni', run: () => { window.open('https://www.linkedin.com/in/sreedeep-surapaneni', '_blank'); } },

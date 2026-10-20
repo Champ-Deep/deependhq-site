@@ -391,6 +391,9 @@ const ContributionSkyline = ({
     const colGoal = new Float32Array(15);
     let colReady = false;
     let fg = CS_FG_FALLBACK, bg = CS_BG_FALLBACK, isDark = true;
+    // label colour: the --dim token, read on retheme. The old bg/fg mix landed
+    // at 3.9:1 on warm white, under AA for the 10px month labels.
+    let labelRGB = null;
     // cells
     let n = 0, weeks = 0;
     let wk = new Float32Array(0), dy = new Float32Array(0), lv = new Uint8Array(0), hgt = new Float32Array(0), zs = new Float32Array(0);
@@ -432,6 +435,7 @@ const ContributionSkyline = ({
       const b = csToRGB(cs.backgroundColor, null);
       bg = b || (csLuminance(fg) > 0.5 ? [10, 10, 10] : [255, 255, 255]);
       isDark = csLuminance(bg) < 0.45;
+      labelRGB = csToRGB((cs.getPropertyValue('--dim') || '').trim(), null) || csMixRGB(bg, fg, 0.55);
       font = '400 10px ' + (cs.fontFamily || 'sans-serif');
       const pal = csResolvePalette(cfg.current.palette, isDark);
       const empty = csMixRGB(bg, fg, isDark ? 0.11 : 0.075);
@@ -577,7 +581,7 @@ const ContributionSkyline = ({
       }
 
       // Labels: along the top and left in 2D, along the front edge in 3D. They fade, never pop.
-      const muted = csMixRGB(bg, fg, 0.55);
+      const muted = labelRGB || csMixRGB(bg, fg, 0.55);
       ctx.font = font;
       const a2 = 1 - csSmoothstep(0, 0.4, e);
       const a3 = csSmoothstep(0.62, 1, e);
@@ -804,9 +808,9 @@ const ContributionSkyline = ({
     const ro = new ResizeObserver(() => { if (Math.round(stage.clientWidth) !== W) relayout(); });
     ro.observe(stage);
 
-    // Theme switches (the navy / classic toggle) retheme the canvas instead of flipping it.
+    // The scheme toggle rethemes the canvas instead of flipping it.
     const mo = new MutationObserver(retheme);
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style', 'data-theme'] });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style', 'data-scheme'] });
     const onReduce = () => { reduced = reduceMq.matches; kick(); };
     reduceMq.addEventListener('change', onReduce);
     darkMq.addEventListener('change', retheme);
@@ -1034,9 +1038,9 @@ const GitHubSkyline = () => {
     return () => { alive = false; ctrl.abort(); clearTimeout(t); };
   }, []);
   useEffectS(() => {
-    // Rebuild the ramp when the navy / classic toggle flips data-theme on <html>.
+    // Rebuild the ramp when the scheme toggle flips data-scheme on <html>.
     const mo = new MutationObserver(() => setPal(csSitePalette()));
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-scheme', 'class'] });
     return () => mo.disconnect();
   }, []);
   if (days !== null && !days.length) return null; // graceful hide on failure

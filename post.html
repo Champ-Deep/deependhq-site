@@ -6,7 +6,7 @@
   <title>Writing · deep >_</title>
   <meta name="description" content="A piece of long-form writing by Sreedeep Surapaneni.">
   <meta name="theme-color" content="#0E1A33">
-  <script>/* two looks: navy by default, the classic terminal look on request. Runs before paint, owns the nav switch. */(function(d){var r=d.documentElement,m=function(){return d.querySelector('meta[name="theme-color"]')},set=function(c){if(c){r.setAttribute('data-theme','classic')}else{r.removeAttribute('data-theme')}var t=m();if(t)t.setAttribute('content',c?'#0D0F14':'#0E1A33')};try{if(localStorage.getItem('dh_theme')==='classic')set('classic')}catch(e){}d.addEventListener('click',function(e){var b=e.target&&e.target.closest&&e.target.closest('[data-dh-theme]');if(!b)return;var c=r.getAttribute('data-theme')==='classic'?'':'classic';set(c);try{if(c){localStorage.setItem('dh_theme',c)}else{localStorage.removeItem('dh_theme')}}catch(x){}if(window.DHTrack)window.DHTrack('easter_egg',{egg:'theme_'+(c||'navy')})})})(document);</script><!-- brand-guard:classic -->
+  <script>/* scheme before paint. localStorage dh_scheme if set, else prefers-color-scheme light, else dark. This owns html[data-scheme], the theme-color meta, the saved choice and the nav switch, so there is no flash and no React needed. The old two-look easter egg is retired with it. */(function(d){var r=d.documentElement;var meta=function(){return d.querySelector('meta[name="theme-color"]')};var sys=function(){try{return window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}catch(e){return 'dark'}};var mode=null;try{mode=localStorage.getItem('dh_scheme')}catch(e){}if(mode!=='light'&&mode!=='dark')mode='system';var system=sys();function apply(){var s=mode==='system'?system:mode;r.setAttribute('data-scheme',s);var t=meta();if(t)t.setAttribute('content',s==='light'?'#F6F5F2':'#0E1A33');return s}window.DH_SCHEME={mode:mode,scheme:apply()};function label(){var l=d.querySelector('[data-dh-scheme-label]');if(l)l.textContent=mode}d.addEventListener('DOMContentLoaded',label);d.addEventListener('click',function(e){var b=e.target&&e.target.closest&&e.target.closest('[data-dh-scheme]');if(!b)return;mode=mode==='system'?'light':mode==='light'?'dark':'system';try{if(mode==='system'){localStorage.removeItem('dh_scheme')}else{localStorage.setItem('dh_scheme',mode)}}catch(x){}system=sys();window.DH_SCHEME={mode:mode,scheme:apply()};label()})})(document);</script>
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -51,5 +51,6 @@
   <script src="analytics.js" defer></script>
   <script src="ask.js" defer></script>
   <script src="copy-engine.js" defer></script>
+  <script src="home-islands.js" defer></script>
 </body>
 </html>

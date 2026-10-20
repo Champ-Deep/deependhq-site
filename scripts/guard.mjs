@@ -38,12 +38,13 @@ function loadDenylist() {
   // No denylist file means no names configured, not "allow everything silently".
   // It is reported so an empty list cannot be mistaken for a passing check.
   if (!existsSync(DENYLIST_FILE)) {
-    return { names: [], clients: [], configured: false };
+    return { names: [], clients: [], phrases: [], configured: false };
   }
   const raw = JSON.parse(readFileSync(DENYLIST_FILE, 'utf8'));
   return {
     names: (raw.names || []).map((s) => String(s).toLowerCase()).filter(Boolean),
     clients: (raw.clients || []).map((s) => String(s).toLowerCase()).filter(Boolean),
+    phrases: (raw.phrases || []).map((s) => String(s).toLowerCase()).filter(Boolean),
     configured: true,
   };
 }
@@ -128,7 +129,10 @@ function main() {
   const strings = walk(published, '', []);
 
   const nameHits = [];
-  for (const term of list.names.concat(list.clients)) {
+  // names, clients and phrases are all denylist terms. A phrase is a claim
+  // about somebody else that must never be published, so it is refused on the
+  // same walk rather than in a second one.
+  for (const term of list.names.concat(list.clients).concat(list.phrases)) {
     const re = wordRe(term);
     for (const [path, text] of strings) {
       if (re.test(text)) nameHits.push({ term, path, excerpt: excerptAround(text, term) });
@@ -146,7 +150,7 @@ function main() {
 
   console.log('--- guard ---');
   console.log(`scanned ${strings.length} published strings across ${journey.length} journey entries`);
-  console.log(`denylist: ${list.configured ? `${list.names.length} names, ${list.clients.length} client patterns` : 'NOT CONFIGURED (scripts/denylist.json missing)'}`);
+  console.log(`denylist: ${list.configured ? `${list.names.length} names, ${list.clients.length} client patterns, ${list.phrases.length} phrases` : 'NOT CONFIGURED (scripts/denylist.json missing)'}`);
 
   let failed = false;
 

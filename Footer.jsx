@@ -51,6 +51,10 @@ const Footer = ({ compact = false }) => {
           <span className="foot-id"><img src="favicon.svg" width="24" height="24" alt="" />© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (<a className="foot-inline" href="/privacy">details</a>) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on <a className="foot-inline" href="/privacy">/privacy</a></span>
           <span>{newest ? `day ${newest.day} of building in public` : ''}{builtLabel ? ` · built ${builtLabel}` : ''}</span>
           <span>no-build React · Cloudflare Workers · publishes itself nightly · press ⌘K</span>
+          <span className="schb" data-island="scheme-badge" data-props="{}">
+            <span className="schb-t schb-dark">scheme: dark</span>
+            <span className="schb-t schb-light">scheme: light</span>
+          </span>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-20T19:45:56.178Z
+// Built 2026-10-20T22:51:00.933Z
 
 window.DH_DATA = {
   "brand": {
@@ -75,7 +75,7 @@ window.DH_DATA = {
         {
           "day": 346,
           "date": "2026-10-12",
-          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200…",
+          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act.…",
           "arc_color": "gold"
         },
         {
@@ -264,7 +264,7 @@ window.DH_DATA = {
         {
           "day": 346,
           "date": "2026-10-12",
-          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200…",
+          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act.…",
           "arc_color": "gold"
         },
         {
@@ -1046,7 +1046,7 @@ window.DH_DATA = {
       "date": "2026-10-12",
       "day": 346,
       "mood": "🔍",
-      "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.",
+      "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.",
       "yesterday_thread": "also got champbeam unstuck. a pr thats been sitting has the whole railway to coolify cutover mapped out, ci green, just needs a merge.",
       "raw_thought": "not sure yet which is the bigger deal, the audit or the partnership angle it opened. meanwhile a gratuity reply thats now 11 days old got flagged by the automation again today and i still havent answered it.",
       "arcs": [
@@ -4425,7 +4425,7 @@ window.DH_DATA = {
   "latest_narrative": {
     "week": 48,
     "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
-    "body": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+    "body": "A routine demo turned into a compliance audit under India's DPDP act. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
     "day_range": "Oct 12 - Oct 18",
     "date": "2026-10-18",
     "read": "4 min",
@@ -4657,7 +4657,7 @@ window.DH_DATA = {
     },
     {
       "title": "Lead Scorer",
-      "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+      "description": "upload a lead list, jev ranks who to call first and writes the first line. team tool, passcode for the team.",
       "url": "/lead-scorer",
       "category": "tool",
       "featured": true
@@ -4961,7 +4961,7 @@ window.DH_DATA = {
       "week": 48,
       "eyebrow": ">_ week 48 - the receipts arc",
       "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
-      "deck": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+      "deck": "A routine demo turned into a compliance audit under India's DPDP act. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
       "date": "2026-10-18",
       "day_range": "Oct 12 - Oct 18",
       "read": "4 min",
@@ -4979,7 +4979,7 @@ window.DH_DATA = {
         },
         {
           "type": "p",
-          "text": "monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act, 200 million records, no consent system in place today. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in."
+          "text": "monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in."
         },
         {
           "type": "p",
@@ -5197,7 +5197,7 @@ window.DH_DATA = {
             "href": "journey.html"
           }
         ],
-        "words": 674,
+        "words": 665,
         "entries": 7,
         "listen_min": 4
       }
@@ -9668,7 +9668,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-20T19:45:56.140Z",
+    "built": "2026-10-20T22:51:00.902Z",
     "built_date": "2026-10-21",
     "newest_entry": {
       "date": "2026-10-20",
@@ -9792,7 +9792,7 @@ window.DH_DATA = {
         "Lake B2B",
         "ChampOps"
       ],
-      "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call."
+      "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call."
     },
     {
       "day": 345,
@@ -11132,7 +11132,7 @@ window.DH_DATA = {
       },
       {
         "name": "Lead Scorer",
-        "what": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+        "what": "upload a lead list, jev ranks who to call first and writes the first line. team tool, passcode for the team.",
         "url": "/lead-scorer",
         "site": null,
         "status": null,
@@ -11458,5 +11458,5 @@ window.DH_DATA = {
       "essays": 18
     }
   },
-  "built": "2026-10-20T19:45:56.178Z"
+  "built": "2026-10-20T22:51:00.933Z"
 };

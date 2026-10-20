@@ -594,7 +594,7 @@ body { color: var(--color-text-primary); font-family: var(--font-body); }
   text-transform: uppercase; letter-spacing: 0.06em;
 }
 .dh-plot-status-green { color: var(--color-accent-primary); }
-.dh-plot-status-blue  { color: var(--color-accent-secondary); }
+.dh-plot-status-blue  { color: var(--think-text); }
 .dh-plot-status-gold  { color: var(--color-accent-tertiary); }
 .dh-plot-status-muted { color: var(--color-text-secondary); }
 

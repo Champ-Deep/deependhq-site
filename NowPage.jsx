@@ -9,7 +9,7 @@ const { useMemo: useMemoN } = React;
 
 const N_ARC = { green: 'var(--build)', blue: 'var(--think)', gold: 'var(--win)' };
 const N_FOCUS = { green: 'var(--build)', blue: 'var(--think)', gold: 'var(--win)', magenta: 'var(--human)' };
-const N_FOCUS_TEXT = { green: 'var(--build)', blue: 'var(--think-text)', gold: 'var(--win)', magenta: 'var(--human-text)' };
+const N_FOCUS_TEXT = { green: 'var(--build-text)', blue: 'var(--think-text)', gold: 'var(--win-text)', magenta: 'var(--human-text)' };
 
 const NowPage = () => {
   const { Age, Chip, fmtDate, arcTone, ageOf } = window.Sys;
@@ -134,7 +134,7 @@ const NowPage = () => {
             <div className="focus-grid">
               {(now.focus || []).map((f, i) => (
                 <Spot as="div" key={i} className="card focus" accent={N_FOCUS[f.color] || 'var(--build)'} data-reveal style={{ '--i': i }}>
-                  <span className="k" style={{ color: N_FOCUS_TEXT[f.color] || 'var(--build)' }}><i className="dot on" style={{ background: N_FOCUS[f.color] || 'var(--build)' }} />{f.k}</span>
+                  <span className="k" style={{ color: N_FOCUS_TEXT[f.color] || 'var(--build-text)' }}><i className="dot on" style={{ background: N_FOCUS[f.color] || 'var(--build)' }} />{f.k}</span>
                   <span className="t">{f.text}</span>
                 </Spot>
               ))}

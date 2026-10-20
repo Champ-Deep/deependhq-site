@@ -1,0 +1,28 @@
+{
+  "status": 200,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "offenders": [],
+  "rootText": 8520,
+  "h1": "Mission Log.",
+  "title": "Mission Log · deep >_",
+  "selText": null,
+  "errors": [
+    "Failed to load resource: the server responded with a status of 501 (Unsupported method ('POST'))",
+    "Failed to load resource: the server responded with a status of 501 (Unsupported method ('POST'))",
+    "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:8931' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "failedReq": [
+    "https://assistant.deependhq.com/static/deep-assistant.js net::ERR_FAILED"
+  ],
+  "external": [
+    "https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.29.0/babel.min.js",
+    "https://assistant.deependhq.com/static/widget.js",
+    "https://github-contributions-api.jogruber.de/v4/Champ-Deep?y=last",
+    "https://assistant.deependhq.com/static/deep-assistant.js"
+  ]
+}

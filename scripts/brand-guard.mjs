@@ -9,8 +9,11 @@
 // Scope: *.css *.jsx *.js *.html *.mjs, excluding node_modules, deependhq-next,
 // lead-scorer.html (a standalone team tool), scripts/brand/ (the brand build
 // reads the masters) and this file. Also checks the rgb() spellings of the
-// two colours that were most often written that way. The classic theme block
-// is exempt by marker (see below), and nothing else is. No em dashes.
+// two colours that were most often written that way. The classic look was
+// retired on 2026-10-21 when the scheme tokens replaced it, so the old
+// brand-guard:classic exemption is gone with it: a retired value now fails on
+// every line, and a leftover exemption marker fails on sight instead of
+// silently exempting whatever sits under it. No em dashes.
 
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -44,14 +47,11 @@ function walk(dir) {
     }
     if (!EXT.has(extname(name)) || SKIP_FILES.has(rel)) continue;
     const lines = readFileSync(p, 'utf8').split('\n');
-    // The classic theme (the visitor toggle) is the one place the old values
-    // live on purpose. They sit between brand-guard:classic-start and
-    // brand-guard:classic-end, or on a line that says brand-guard:classic.
-    let classic = false;
+    // A brand-guard:classic marker used to exempt the line under it, because
+    // the retired look kept the retired colours on purpose. The look is gone,
+    // so the marker is a fossil: report it rather than honour it.
     lines.forEach((line, i) => {
-      if (/brand-guard:classic-start/.test(line)) { classic = true; return; }
-      if (/brand-guard:classic-end/.test(line)) { classic = false; return; }
-      if (classic || /brand-guard:classic\b/.test(line)) return;
+      if (/brand-guard:classic/.test(line)) { hits.push(`${rel}:${i + 1}  retired brand-guard:classic marker`); return; }
       const h = line.match(new RegExp(`#${hexRe.source}`, 'i'));
       if (h) hits.push(`${rel}:${i + 1}  ${h[0]}`);
       const r = line.match(rgbRe);
@@ -62,7 +62,7 @@ function walk(dir) {
 walk(root);
 
 if (hits.length) {
-  console.error(`brand guard: ${hits.length} retired colour value(s). Use the tokens in system.css.`);
+  console.error(`brand guard: ${hits.length} retired value or fossil marker. Use the tokens in system.css.`);
   for (const h of hits) console.error('  ' + h);
   process.exit(1);
 }
