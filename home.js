@@ -18,7 +18,7 @@
   var d = document, root = d.documentElement;
   var RM = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   var sup = function (q) { try { return !!(window.CSS && CSS.supports(q)); } catch (e) { return false; } };
-  if (sup('animation-timeline: view()') && sup('width: mod(5px, 3px)') && sup('width: round(down, 5px, 2px)')) root.classList.add('wx-cssclock');
+  // The seven-lane clock uses each stage's literal time, including midnight.
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
@@ -114,7 +114,7 @@
       rail.forEach(function (li, i) { if (i + 1 === n) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current'); });
       if (clockV && stages[n - 1]) clockV.textContent = stages[n - 1].getAttribute('data-hour');
       lines.forEach(function (l) {
-        var s = +l.getAttribute('data-s'), on = s <= n, was = l.classList.contains('wx-on');
+        var s = +l.getAttribute('data-s'), on = s === n, was = l.classList.contains('wx-on');
         l.classList.toggle('wx-on', on); l.classList.toggle('wx-past', s < n);
         if (on && !was && s === n) { l.__c = 0; compile(l); }
       });

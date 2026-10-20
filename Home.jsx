@@ -38,80 +38,71 @@ const Ico = ({ id, size = 48 }) => (
   <svg className="ico" width={size} height={size} aria-hidden="true" focusable="false"><use href={`brand/icons.svg#i-${id}`} /></svg>
 );
 
-const istClock = (iso) => {
-  try {
-    return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(iso)).replace(',', '');
-  } catch (e) { return ''; }
-};
 
 // ---------------------------------------------------------------- 15:00 hero
-// The hero is an editorial grid: the headline is set in three giant rows with
-// the words spaced across twelve columns, hairline guides at each row's x-height
-// and baseline, and small notes in the margins. The visual is the gray mare from
-// identity kit v1 (Oct 2026), the sticker cut so her navy outline survives the
-// navy ground, with speed streaks trailing off her back. prerender.mjs inlines
-// brand/mare-hero.svg on window.DH_MARE_SVG, so there is no extra request and
-// home.css can reach .mare, .smear and .blaze. She is a button: click or Enter
-// sends the braille gallop egg along the bottom of the screen. Word order in
-// the DOM reads as one sentence.
-//
-// ChampBeam gets the one product cell in the hero, in Beam violet held to that
-// cell. The link carries utm tags so the traffic it sends shows up in Beam.
-const BEAM = 'https://champbeam.com/?utm_source=deependhq&utm_medium=hero&utm_campaign=identity-v1';
-const NUM = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
+// Server-rendered copy beside the terrain island (H3, plan section 3). The
+// headline, sub and both CTAs are static text: motion never carries the
+// message. The terrain mounts on the right and its server-rendered fallback
+// sits inside the mount, so the page reads with JS off. The four stat tiles
+// moved out of the hero (lane P3 puts them in the log section), and the old
+// word-grid headline, margin notes and the ChampBeam cell go with them.
+// No em dashes.
 const Hero = () => {
   const e = DH.journey[0];
-  const st = DH.stats || {};
-  const nCo = (DH.companies || []).length;
   const MARE = window.DH_MARE_SVG || '';
-  let i = 0;
-  const W = (t, k) => <span className={`wx-hw wx-hw-${k}`} style={{ '--i': i++ }}>{t}</span>;
+  // One column per day since the first entry: height is github_commits where
+  // the log recorded it, else 1 for an entry, 0 for a gap. kinds[] runs
+  // parallel to data and colours the column by that entry's arc, rows carries
+  // the day and first line the readout and click need.
+  const startISO = DH.journey.map((x) => x.date).sort()[0];
+  const endISO = DH.brand.today_date || e.date;
+  const byDate = new Map(DH.journey.map((x) => [x.date, x]));
+  const data = [], kinds = [], rows = [];
+  for (let t = Date.parse(startISO); t <= Date.parse(endISO); t += 864e5) {
+    const iso = new Date(t).toISOString().slice(0, 10);
+    const en = byDate.get(iso);
+    data.push(en ? (en.github_commits != null ? en.github_commits : 1) : 0);
+    kinds.push(en ? en.arc_color : '');
+    rows.push(en ? [en.day, String(en.shipping_now || en.raw_thought || '').slice(0, 140)] : null);
+  }
+  const peak = `day ${e.day}, ${ageOf(e.date, 'log').label}`;
+  const isle = JSON.stringify({ d: data, k: kinds, start: startISO, end: endISO, peak, rows });
   return (
     <section className="wx-hero mode-editorial" id="top" aria-labelledby="wx-hero-h">
-      <div className="wx-hx">
-        <p className="wx-eyebrow-ed wx-hx-eye">Sreedeep Surapaneni · Bangalore</p>
-        <span className="wx-hx-gl wx-hx-gl1" aria-hidden="true" />
-        <span className="wx-hx-gl wx-hx-gl2" aria-hidden="true" />
-        <span className="wx-hx-gl wx-hx-gl3" aria-hidden="true" />
-        <h1 className="wx-hx-h" id="wx-hero-h">
-          {W('i’m', 'im')} {W('Deep', 'deep')}<span className="wx-hbr" aria-hidden="true" />{' '}
-          {W('and', 'and')} {W('i', 'i')} {W('ship', 'ship')}<span className="wx-hbr" aria-hidden="true" />{' '}
-          {W('every', 'every')}<span className="wx-hbr wx-hbr-sm" aria-hidden="true" />{' '}
-          <span className="wx-hw wx-hw-wk" style={{ '--i': i++ }}><em>weekday</em><span className="wx-cursor" aria-hidden="true" /></span>
-        </h1>
-        <p className="wx-hx-note wx-hx-n1">group cmo,<br />champions group</p>
-        <p className="wx-hx-note wx-hx-n2" data-dh-frozen>day {st.days_public}<br />of building in public</p>
-        <p className="wx-hx-note wx-hx-n3">ceo,<br />champions accelerator</p>
-        <p className="wx-hx-note wx-hx-n4" data-dh-frozen>{NUM[nCo] || nCo} companies,<br />one vault</p>
-        {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
-        <div className="wx-hx-foot">
-          {/* data-dh-hero: the ONLY prose in the hero the copy engine may rewrite.
-            It carries no build-time number and no claim that could be falsified.
-            The h1 above and every note beside it are deliberately left untagged,
-            and the numbered notes are additionally frozen, because "day 335" and
-            "twelve companies" are facts derived at build time and an engine must
-            never be able to edit a fact. */}
-        <p className="wx-hx-lede" data-dh-hero="hero_subline">Past the hype cycle, into the infrastructure. Every entry starts as a note in the vault and goes live by 2 AM IST.</p>
+      <div className="wx-hx p4-hx">
+        <p className="wx-eyebrow-ed wx-hx-eye">group cmo, champions group</p>
+        <h1 className="p4-hx-h" id="wx-hero-h">I lead B2B growth and build the systems behind it.</h1>
+        <div className="p4-copy">
+          <p className="wx-hx-lede">Group CMO across twelve companies, CEO of Champions Accelerator. This site publishes itself every weekday from what actually happened.</p>
+          <div className="p4-cta">
+            {/* data-dh-cta: only the LABEL varies; the href is never rewritten. */}
+            <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>Talk to Deep, 30 min</a>
+            <a className="wx-hx-paren" href="#stack">See what I build</a>
+          </div>
+
+        </div>
+        <div className="p4-terr" data-island="terrain" data-props={isle}>
+          {/* server-rendered fallback: the same days as a plain heat strip */}
+          <div className="trn-fb">
+            <p className="trn-fb-k">{data.length} days, one column a day, since {fmtDate(startISO)} · newest <b>{peak}</b></p>
+            <div className="trn-fb-strip" aria-hidden="true">
+              {data.map((h, i) => <i key={i} className={kinds[i] ? `trn-fb-k-${kinds[i]}` : (h ? 'trn-fb-k-log' : 'trn-fb-k-gap')} />)}
+            </div>
+            <p className="trn-fb-note">green building · blue thinking · gold a real outcome · gaps have zero height</p>
+            <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} →</a>
+            <a className="wx-tlink" href="journey.html">the whole log →</a>
+          </div>
+        </div>
+        <div className="p4-foot">
           <article className="wx-live wx-hx-live mode-operator" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day}>
             <p className="wx-live-k">live from the log · <WxAge date={e.date} mode="log" /></p>
             <p className="wx-hx-live-t"><b>day {e.day}</b> <span>{fmtDate(e.date, true)}</span></p>
             <p className="wx-live-txt" data-compile="">{e.shipping_now}</p>
             <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} in full →</a>
           </article>
+          {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
         </div>
-        <div className="wx-hx-cta">
-          {/* data-dh-cta: the second and last element the copy engine may rewrite.
-              Only the LABEL varies; the href is untouched, so the destination can
-              never be changed by personalization. */}
-          <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>book 30 minutes</a>
-          <a className="wx-hx-paren" href="#log">what shipped today ↓</a>
-          <a className="wx-beam" href={BEAM} {...EXT} aria-label="ChampBeam, new and live at champbeam.com: send it, know they saw it">
-            <span className="wx-beam-k"><i aria-hidden="true" />new from the build</span>
-            <span className="wx-beam-t">ChampBeam</span>
-            <span className="wx-beam-d">Send it. Know they saw it. Smart links, QR codes and file tracking in one product.</span>
-            <span className="wx-beam-go">champbeam.com ↗</span>
-          </a>
-        </div>
+        <script src="home-islands.js" defer="" />
       </div>
       <div className="wx-hero-rule" aria-hidden="true" />
     </section>
@@ -143,42 +134,25 @@ const Proof = () => {
 };
 
 // ------------------------------------------------ 15:00 to 02:00 the pinned day
-// Stage lines are reconstructed from days 333 and 334 until the asciinema
-// recordings exist (build plan 3.6). The compile stage reads the real build.
-// The clock keyframes in home.css key off these hours: 15:00, 19:00, 23:00,
-// 01:03 (the daily-note-recap schedule) and 02:00.
-const STAGES = [
-  { hour: '15:00', short: 'calls', icon: 'prompt', title: 'Calls first.',
-    body: 'Client, vendor and partner calls fill the afternoon. Each one lands in the vault as a note, or it did not happen.',
-    lines: [['cmd', 'ls vault/Calendar/Meetings | tail -1'], ['out', '2026-09-29 enterprise IT services client.md'], ['out', '+ <b>10-day trial</b> instead of a walkout · daily updates · shared sheet']] },
-  { hour: '19:00', short: 'build', title: 'Build what the calls exposed.',
-    body: 'If a call surfaced a gap, it gets built that night, without a ticket or a slot on a roadmap.',
-    lines: [['cmd', 'git push origin main'], ['out', '<b>141 files</b> changed · <b>56</b> backend tests green'], ['ok', 'end-to-end run passed twice']] },
-  { hour: '23:00', short: 'write', title: 'Write it down, unedited.',
-    body: 'The daily note is the raw material: what shipped, what it connects to, what I think.',
-    lines: [['cmd', 'open vault/Calendar/Daily/2026-09-30.md'], ['out', 'shipping_now · yesterday_thread · raw_thought · arcs']] },
-  { hour: '01:03', short: 'compile', icon: 'moon', title: 'An agent compiles the entry.',
-    body: 'A nightly agent reads the note, writes the entry and rebuilds every number on this page from source. Nothing is typed in by hand.',
-    lines: null },
-  { hour: '02:00', short: 'ship', icon: 'diya', title: 'Live by 2 AM.',
-    body: 'It pushes, the Cloudflare Worker serves it, and when an entry is late the top of the site says so.',
-    lines: [['cmd', 'bash scripts/publish.sh'], ['ok', 'deploy ok · deependhq.com'], ['out', 'next window opens 15:00 IST']] },
-];
-// Stage boundaries as fractions of the pinned range. They match the clock
-// keyframes (30, 55, 75, 90 percent) so the stage and the clock agree.
-const BOUNDS = [0, 0.30, 0.55, 0.75, 0.90, 1];
+// Seven lanes (plan section 4), driven by lanes[] in content.json: label,
+// clock, snippet. The pinned clock keys which lane is lit: home.js already
+// switches stages as sentinels cross the viewport middle and prints
+// data-hour, so it gains nothing and needs no lane index of its own. Mobile
+// keeps the list and drops the pin (the existing 64rem gate does that).
+// Last-lane dates are omitted: a keyword match cannot prove a lane occurred.
+// No em dashes.
+
+// Stage boundaries as fractions of the pinned range. They only have to be
+// monotonic: the JS clock in home.js prints data-hour per active stage, and
+// the old winclock CSS keyframes (five stages) are no longer opted into.
+const BOUNDS = [0, 0.13, 0.26, 0.38, 0.55, 0.75, 0.88, 1];
 const TRACK = 420; // svh, keep in step with .wx-anat-track height in home.css
 
 const Day = () => {
-  const st = DH.stats || {};
-  const stages = STAGES.map((s) => (s.lines ? s : { ...s, lines: [
-    ['cmd', 'node scripts/build-data.mjs'],
-    ['out', `day <b>${st.days_public}</b> · <b>${st.entries}</b> entries · <b>${st.essays}</b> essays · <b>${st.companies}</b> companies`],
-    ['ok', `data.js written · built ${istClock(DH.built)} IST`],
-  ] }));
-  const sent = STAGES.map((_, i) => {
+  const stages = DH.lanes || [];
+  const sent = stages.map((_, i) => {
     const top = i === 0 ? 0 : BOUNDS[i] * (TRACK - 100) + 50;
-    const end = i === STAGES.length - 1 ? TRACK : BOUNDS[i + 1] * (TRACK - 100) + 50;
+    const end = i === stages.length - 1 ? TRACK : BOUNDS[i + 1] * (TRACK - 100) + 50;
     return { top: +top.toFixed(2), h: +(end - top).toFixed(2) };
   });
   return (
@@ -186,7 +160,7 @@ const Day = () => {
       <header className="wx-sec-head">
         <p className="wx-eyebrow-op">how this site runs</p>
         <h2 className="wx-op-h wx-ink" id="wx-day-h">How a day becomes an entry.</h2>
-        <p className="wx-lead">The window runs 3 PM to 2 AM IST. At 2 AM the site publishes itself.</p>
+        <p className="wx-lead">The window runs 3 PM to 2 AM IST. Seven lanes, then a new entry. Commands below are illustrative, not live terminal output.</p>
       </header>
       <div className="wx-anat-track">
         <div className="wx-anat-stick">
@@ -198,25 +172,25 @@ const Day = () => {
             </div>
             <ol className="wx-stages">
               {stages.map((s) => (
-                <li key={s.hour} className="wx-stage" data-hour={s.hour}>
-                  <p className="wx-stage-clock">{s.hour}</p>
-                  <h3 className="wx-stage-t">{s.icon && <Ico id={s.icon} size={40} />}{s.title}</h3>
-                  <p className="wx-stage-c">{s.body}</p>
-                  <div className="wx-term" role="img" aria-label={`Terminal, ${s.title}`}>
+                <li key={s.clock} className="wx-stage" data-hour={s.clock}>
+                  <p className="wx-stage-clock">{s.clock}</p>
+                  <h3 className="wx-stage-t">{s.label}</h3>
+                  <p className="p4-example">Illustrative command, not live output</p>
+                  <div className="wx-term" aria-label={`Illustrative ${s.label} commands`}>
                     <div className="wx-term-body">
-                      {s.lines.map(([k, t], i) => <p key={i} className={`wx-tl wx-${k}`} data-compile="" dangerouslySetInnerHTML={{ __html: t }} />)}
+                      {s.snippet.map(([k, t], i) => <p key={i} className={`wx-tl wx-${k}`} data-compile="">{t}</p>)}
                     </div>
                   </div>
                 </li>
               ))}
             </ol>
-            <ol className="wx-anat-rail" aria-label="The five stages">
-              {stages.map((s) => <li key={s.hour}><b>{s.hour}</b>{s.short}</li>)}
+            <ol className="wx-anat-rail" aria-label="The seven lanes">
+              {stages.map((s) => <li key={s.clock}><b>{s.clock}</b>{s.label}</li>)}
             </ol>
           </div>
           <div className="wx-anat-right" aria-hidden="true">
             <div className="wx-term">
-              <div className="wx-term-bar"><span className="wx-term-dots"><i /><i /><i /></span><span className="wx-term-title">reconstructed from days 333 and 334 · recordings replace this</span></div>
+              <div className="wx-term-bar"><span className="wx-term-title">Illustrative commands · not a live terminal</span></div>
               <div className="wx-anat-meter"><span>15:00</span><i /><span>02:00</span></div>
               <div className="wx-term-body" />
             </div>

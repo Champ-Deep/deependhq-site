@@ -1,0 +1,43 @@
+
+> deependhq-site@1.0.0 test
+> node scripts/guard-selftest.mjs && node scripts/ingest-selftest.mjs && node scripts/p4-selftest.mjs
+
+--- guard self test ---
+ok   clean content passes (exit 0)
+ok   a denylisted first name fails the build (exit 1)
+ok   a denylisted client name fails the build (exit 1)
+ok   the word pipeline never trips the sensitive gate (exit 0)
+ok   a severance dispute fails the build (exit 1)
+ok   a performance plan fails the build (exit 1)
+ok   a medical detail fails the build (exit 1)
+ok   a sensitive hit passes only with --allow-sensitive (exit 0)
+ok   a name hit still fails even with --allow-sensitive (exit 1)
+
+guard self test: 9/9 cases behave as specified.
+--- ingest schema v2 self test ---
+ok   the minimum viable entry is accepted
+ok   a missing date is rejected
+ok   a missing shipping_now is rejected
+ok   a full v2 entry is accepted with every field intact
+ok   a non-integer github_commits is rejected
+ok   a negative github_commits is rejected
+ok   more than 4 metrics is rejected
+ok   a non-numeric metric is rejected
+ok   a metric with no key is rejected
+ok   an invented artifact kind is rejected
+ok   more than 3 artifacts is rejected
+ok   a non-https artifact href is rejected
+ok   an invented signal is rejected
+ok   energy 0 is rejected
+ok   energy 6 is rejected
+ok   energy 3.5 is rejected
+ok   external meetings above the total is rejected
+ok   media with no alt text is rejected
+ok   media with empty alt text is rejected
+ok   more than 2 media is rejected
+ok   a malformed media date is rejected
+ok   a replay url instead of a path is rejected
+ok   a replay that is not a .cast is rejected
+
+ingest self test: 23/23 cases behave as specified.
+P4: 169 calendar days, 131 real entries, seven exact clocks, existing journey anchors and honest snippets verified.

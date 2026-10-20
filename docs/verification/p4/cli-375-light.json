@@ -1,0 +1,8 @@
+[
+  {
+    "severity": "WARN",
+    "rule": "default-font",
+    "message": "body font is \"inter\", an AI default; choose deliberately",
+    "where": ""
+  }
+]

@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-20T22:57:23.125Z
+// Built 2026-10-20T22:58:26.107Z
 
 window.DH_DATA = {
   "brand": {
@@ -9537,6 +9537,90 @@ window.DH_DATA = {
       }
     }
   ],
+  "lanes": [
+    {
+      "label": "calls",
+      "clock": "15:00",
+      "snippet": [
+        [
+          "cmd",
+          "ls vault/Calendar/Meetings | tail -1"
+        ]
+      ]
+    },
+    {
+      "label": "outreach",
+      "clock": "16:30",
+      "snippet": [
+        [
+          "cmd",
+          "wc -l Efforts/Lead\\ Gen/targets-*.csv"
+        ]
+      ]
+    },
+    {
+      "label": "research",
+      "clock": "18:00",
+      "snippet": [
+        [
+          "cmd",
+          "rg -l \"competitor\" Atlas/ | wc -l"
+        ]
+      ]
+    },
+    {
+      "label": "build",
+      "clock": "19:00",
+      "snippet": [
+        [
+          "cmd",
+          "git log --since=today --oneline | wc -l"
+        ]
+      ]
+    },
+    {
+      "label": "write",
+      "clock": "23:00",
+      "snippet": [
+        [
+          "cmd",
+          "tail -3 Calendar/Daily\\ Notes/<today>.md"
+        ]
+      ]
+    },
+    {
+      "label": "compile",
+      "clock": "01:03",
+      "snippet": [
+        [
+          "cmd",
+          "node scripts/build-data.mjs"
+        ],
+        [
+          "out",
+          "content.json -> data.js -> prerendered pages"
+        ]
+      ]
+    },
+    {
+      "label": "ship",
+      "clock": "02:00",
+      "snippet": [
+        [
+          "cmd",
+          "bash scripts/publish.sh"
+        ],
+        [
+          "ok",
+          "illustrative publish step, not a deployment receipt"
+        ],
+        [
+          "out",
+          "next window opens 15:00 IST"
+        ]
+      ]
+    }
+  ],
   "build_lanes": {
     "updated": "2026-06-24",
     "live": [
@@ -9698,7 +9782,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-20T22:57:23.090Z",
+    "built": "2026-10-20T22:58:26.075Z",
     "built_date": "2026-10-21",
     "newest_entry": {
       "date": "2026-10-20",
@@ -11501,5 +11585,5 @@ window.DH_DATA = {
       "essays": 18
     }
   },
-  "built": "2026-10-20T22:57:23.125Z"
+  "built": "2026-10-20T22:58:26.107Z"
 };

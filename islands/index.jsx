@@ -12,11 +12,13 @@ import { createRoot } from 'react-dom/client';
 import HalftoneFooter from './halftone-footer.island.jsx';
 import FolderCards from './folder-cards.island.jsx';
 import WidgetGrid from './widget-grid.island.jsx';
+import Terrain from './terrain.island.jsx';
 
 const REGISTRY = {
   'halftone-footer': HalftoneFooter,
   'folder-cards': FolderCards,
   'widget-grid': WidgetGrid,
+  'terrain': Terrain,
 };
 
 export function mountIslands(root) {
@@ -47,6 +49,7 @@ export function mountIslands(root) {
 }
 
 if (typeof document !== 'undefined') {
+  new MutationObserver(() => mountIslands(document)).observe(document.documentElement, { childList: true, subtree: true });
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => mountIslands(document));
   } else {
