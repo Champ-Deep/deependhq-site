@@ -331,14 +331,12 @@ const Log = () => {
 // content.json carries them yet, and they are skipped further down so they
 // never show twice. Deep Scanner has no public repo yet, so it has no link.
 const FEATURED = [
-  { name: 'Deep Scanner', url: null, tag: 'new', meta: 'in build, open source soon',
-    what: 'Checks any folder before it reaches a cloud agent. First run: 8,357 files, 6 blocked, 392 flagged.' },
+  { name: 'Deep Scanner', url: null, tag: 'internal', meta: 'public release not verified',
+    what: 'Checks local text files for secrets and sensitive information before cloud sync. A Pass is not a guarantee of safety.' },
   { name: 'ChampBeam', url: 'https://champbeam.com/?utm_source=deependhq&utm_medium=stack', tag: 'live', meta: 'champbeam.com',
     what: 'Smart links, QR codes and file tracking in one product. Send it, know they saw it.' },
 ];
-// ChampUTM lives inside ChampBeam now, so it does not get its own row.
 const MERGED = new Set(['ChampUTM']);
-
 const Stack = () => {
   const S = DH.stack_now || { items: [], counts: {} };
   const T = DH.things_to_try || [];
@@ -351,7 +349,7 @@ const Stack = () => {
   const building = (i) => (i.status === 'building' || i.status === 'internal' ? 0 : 1);
   const rows = [
     ...featured,
-    ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'team tool', meta: 'passcode on this site', what: 'Upload a lead list. Jev ranks who to call first and writes the first line.' }] : []),
+    ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'tool', meta: 'sign-in and credits', what: 'Enrich contacts, check email deliverability and judge fit against your criteria.' }] : []),
     ...S.items
       .filter((i) => i.kind === 'built' && (i.last_seen || i.status) && !MERGED.has(i.name) && !pinned.has(i.name))
       .sort((a, b) => building(a) - building(b) || String(b.last_seen || '').localeCompare(String(a.last_seen || '')))
@@ -391,6 +389,7 @@ const Stack = () => {
           that file. Every one of these anchors keeps a real href, so with JS off
           the card still goes somewhere honest instead of doing nothing. */}
       <script dangerouslySetInnerHTML={{ __html: `(function(){document.addEventListener('click',function(e){var a=e.target.closest('[data-otc-ask],[data-otc-play]');if(!a)return;if(a.hasAttribute('data-otc-ask')){if(!window.deepAssistant)return;e.preventDefault();window.deepAssistant.open();return;}e.preventDefault();var li=a.parentNode,f=document.createElement('iframe');f.className='otc-sp-frame';f.title='Spotify playlist embed';f.loading='lazy';f.src='https://open.spotify.com/embed/playlist/'+a.getAttribute('data-otc-play')+'?theme=0';f.setAttribute('allow','encrypted-media');li.classList.add('is-playing');li.replaceChild(f,a);});})();` }} />
+      <ToolkitChooser />
       <details className="otc-fs">
         <summary><b>the full stack</b><span>{S.items.length} tools. A tool only earns a date once it shows up in a day's entry.</span></summary>
         <div className="wx-stack-grid">
@@ -423,7 +422,52 @@ const Stack = () => {
   );
 };
 
-// ---------------------------------------------------------------- 21:00 pillars
+const ToolkitChooser = () => {
+  const items = DH.toolkit || [];
+  const harbinger = items.find(t => t.title === 'ChampHarbinger');
+  const beam = items.find(t => t.title === 'ChampBeam');
+  const pdf = items.find(t => t.title === 'ChamPDF');
+  return (
+    <div className="tk-home" aria-labelledby="tk-chooser-h">
+      <header className="tk-home-head">
+        <div><h3 id="tk-chooser-h">Tools for the work<br/>in front of you.</h3><p>Start with the job, not the product name.</p></div>
+        <a className="tk-home-all" href="/toolkit">Explore the full toolkit <span aria-hidden="true">↗</span></a>
+      </header>
+      <div className="tk-home-features">
+        <article className="tk-home-feature">
+          <div className="tk-home-product"><span>Lead Scorer</span><span>On this site</span></div>
+          <h3>Which leads<br/>are worth a closer look?</h3>
+          <p>Bring your list. Enrich contacts, check email deliverability and judge fit against your criteria.</p>
+          <dl className="tk-home-io"><div><dt>You bring</dt><dd>A CSV or Excel list</dd></div><div><dt>You get</dt><dd>Fit, email status and evidence</dd></div></dl>
+          <div className="tk-home-flow" aria-label="Lead Scorer workflow"><span>Upload</span><span>Check</span><span>Score</span><span>Export</span></div>
+          <a className="tk-home-action tk-home-action-primary" href="/lead-scorer">Open Lead Scorer <span aria-hidden="true">↗</span></a>
+          <small>Sign-in and credits. Review the maximum cost before running.</small>
+        </article>
+        <article className="tk-home-feature">
+          <div className="tk-home-product"><span>Harbinger</span><span>Separate product</span></div>
+          <h3>Which accounts<br/>have a reason to buy now?</h3>
+          <p>Research buying signals, then investigate the companies and people behind them.</p>
+          <dl className="tk-home-io"><div><dt>You bring</dt><dd>An account or market to research</dd></div><div><dt>You get</dt><dd>Signals and account context</dd></div></dl>
+          <div className="tk-home-signals" aria-label="Harbinger signal types"><span>Hiring</span><span>Funding</span><span>Company news</span></div>
+          {harbinger?.site && <a className="tk-home-action" href={harbinger.site} {...EXT}>Explore Harbinger <span aria-hidden="true">↗</span></a>}
+          <small>Opens its own site. Shared toolkit credits are not connected.</small>
+        </article>
+      </div>
+      <div className="tk-home-secondary">
+        <div className="tk-home-utilities">
+          <a href={beam?.site} {...EXT}><div><h3>Share a link. See what happens.</h3><p>ChampBeam: smart links, QR codes and file tracking.</p></div><span>Open ChampBeam <span aria-hidden="true">↗</span></span><small>Separate product site and account.</small></a>
+          <a href={pdf?.site} {...EXT}><div><h3>Get a PDF job off your desk.</h3><p>ChamPDF: merge, split, compress and convert.</p></div><span>Open ChamPDF <span aria-hidden="true">↗</span></span><small>Free browser tools. No toolkit credits.</small></a>
+        </div>
+        <details className="tk-home-scanner">
+          <summary>And what is Deep Scanner?</summary>
+          <div><h3>File safety, not sales research.</h3><p>It scans local text files for secrets and sensitive information before cloud sync. Results are marked Block, Review or Pass.</p><p>Not a lead finder or a lead-scoring tool.</p><strong>Internal Python scanner. Public release not verified.</strong><p>Regex checks have limits. A Pass is not a guarantee that a file is safe to share.</p></div>
+        </details>
+        <p className="tk-home-footnote">Looking for the tools I use, experiments or source code? <a href="/toolkit#tk-stack">Open the build stack</a>.</p>
+      </div>
+    </div>
+  );
+};
+
 const GO = { champ: 'open the product suite', 'infratech-lagoons': 'see the properties', lakeb2b: 'see the data companies', accelerator: 'meet the cohorts' };
 // What the folder island reads, derived from content.json through data.js at
 // build time and trimmed to the fields the island touches, so data-props in

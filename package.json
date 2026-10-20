@@ -22,6 +22,7 @@
   },
   "//dependencies": "esbuild is a BUILD dependency, not a dev one. Cloudflare builds can install with NODE_ENV=production, which skips devDependencies and leaves prerender with no bundler, so the pages would publish with an empty #root. react and react-dom are RUNTIME dependencies: scripts/build-islands.mjs bundles them into home-islands.js for the browser islands. playwright-core and wrangler stay dev: they are only used by hand.",
   "dependencies": {
+    "@clerk/backend": "3.25.0",
     "esbuild": "0.24.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"

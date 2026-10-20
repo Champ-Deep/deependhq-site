@@ -1,0 +1,101 @@
+# Skill sync record
+
+Only `engineering/clerk-auth/SKILL.md` was staged, committed and pushed under the standing skill-sync instruction. Remote readback matched commit `835fb03f5512505325076f2e20a5873ffd940d0d`. Product code remains uncommitted and undeployed. The skill description and category did not change, so index counts did not change.
+
+All other dirty skill paths below were left untouched by this sync:
+
+```text
+M adapter-seam-extension/SKILL.md
+ M autonomous-ai-agents/parallel-agent-lanes/SKILL.md
+ M champ-portfolio-triage/SKILL.md
+ M champ-suite/voice-agent-telephony/SKILL.md
+ M design/brand-guidelines/champions-group-brand/SKILL.md
+ M design/live-site-design-audit/SKILL.md
+ M design/microsite-refresh/SKILL.md
+ M design/skills/frontend-design/SKILL.md
+ M design/skills/prospect-creative-campaign-builder/SKILL.md
+ M design/skills/prospect-creative-campaign-builder/references/creative-generation.md
+ M design/skills/scroll-journey-kit/SKILL.md
+ M design/skills/showcase-page/SKILL.md
+ M design/skills/showcase-page/references/micro-interactions.md
+ M design/skills/visual-verify/SKILL.md
+ M design/skills/visual-verify/scripts/audit.py
+ M design/skills/viz-kit/SKILL.md
+ M documents/executive-one-pager/SKILL.md
+ M documents/google-workspace/SKILL.md
+ M engineering/defensible-data-counts/SKILL.md
+ M engineering/guarantee-audit/SKILL.md
+ M engineering/interactive-data-app-verification/SKILL.md
+ M engineering/live-server-browser-gates/SKILL.md
+ M engineering/skill-creator/SKILL.md
+ M engineering/sprite-art-pipeline/SKILL.md
+ M engineering/verification-gate-integrity/SKILL.md
+ M engineering/webapp-testing/SKILL.md
+ M fleet-status-dashboard/SKILL.md
+ M knowledge-tier-boundaries/SKILL.md
+ M live-deployment-discovery/SKILL.md
+ M marketing/case-study-builder/SKILL.md
+ M marketing/case-study-builder/references/verification-sources.md
+ M marketing/site-growth-audit/SKILL.md
+ M marketing/site-interlink-audit/PLATFORM.md
+ M marketing/site-interlink-audit/SKILL.md
+ M marketing/site-interlink-audit/scripts/discover.py
+ M marketing/site-interlink-audit/scripts/entities.py
+ M marketing/site-interlink-audit/scripts/pipeline.py
+ M marketing/site-interlink-audit/scripts/plan.py
+ M marketing/site-interlink-audit/scripts/refresh.py
+ M marketing/site-interlink-audit/scripts/report.py
+ M marketing/site-interlink-audit/scripts/report_template.html
+ M marketing/site-interlink-audit/scripts/test_units.py
+ M marketing/site-interlink-audit/scripts/verify_report.py
+ M open-model-runnability-probes/SKILL.md
+ M personal/chat-decision-monitor/SKILL.md
+ M personal/model-api-capability-verification/SKILL.md
+ M personal/release-integration-engineering/SKILL.md
+ M personal/schedule/SKILL.md
+ M personal/skill-repo-sync/SKILL.md
+ M productivity/interactive-quiz/SKILL.md
+ M productivity/intern-month-plan-dashboards/SKILL.md
+ M productivity/meeting-followup/SKILL.md
+ M productivity/meeting-prep/SKILL.md
+ M research/deep-research/references/report-writer.md
+ M sales/reach/SKILL.md
+ M sales/treg-contact-pipeline/SKILL.md
+ M security/credential-and-secret-handling/SKILL.md
+ M software-development/ci-green-verification/SKILL.md
+ M software-development/stalled-repo-rescue/SKILL.md
+?? celsus/kra-authoring/
+?? data-brokerage/
+?? design/interactive-3d-explorer/
+?? design/live-site-design-audit/references/
+?? design/skills/frontend-design/references/
+?? design/skills/prospect-creative-campaign-builder/references/README.md
+?? design/skills/prospect-creative-campaign-builder/references/provocation-patterns.md
+?? design/skills/research-to-visual/
+?? design/skills/visual-report-builder/references/pricing-options.md
+?? design/skills/visual-verify/scripts/offline-check.py
+?? design/skills/viz-kit/references/dot-globe.md
+?? documents/executive-one-pager/references/verification-gates.md
+?? documents/google-workspace/references/workspace-terminal-cli.md
+?? email/
+?? engineering/android-twa-packaging/
+?? engineering/dograh-champvoice-provider/
+?? engineering/rea-web-teardown/
+?? fleet-status-dashboard/references/
+?? google-ai-access/
+?? knowledge-search-agent/
+?? laya-local-decisions/
+?? open-model-runnability-probes/references/
+?? outbound-voice-call/
+?? personal/deependhq-bot/
+?? personal/vault-wide-rename/
+?? productivity/intern-month-plan-dashboards/templates/
+?? productivity/meeting-prep/references/interview-question-design.md
+?? realtime-multi-client-apps/
+?? repo-issue-autopilot/
+?? sales/outbound-email/references/README.md
+?? sales/prospect-campaign-plan/references/README.md
+?? software-development/deepfall-development/
+?? software-development/span-agent-development/
+?? third-party-data-source-adoption/
+```

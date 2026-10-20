@@ -3,333 +3,271 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lead Scorer</title>
+<title>Lead Scorer · deependhq</title>
 <meta name="theme-color" content="#0E1A33">
+<script>/* scheme before paint: a stored choice wins, else the system preference, else dark. */(function(d){var s=null;try{s=localStorage.getItem('dh_scheme')}catch(e){}var light=s?s==='light':!!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches);d.documentElement.setAttribute('data-scheme',light?'light':'dark');var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',light?'#F6F5F2':'#0E1A33');})(document);</script>
+<meta name="description" content="Upload a lead list, map the columns, approve the exact maximum cost, then score it five rows at a time with provider email checks, ICP fit and your own rubrics.">
+<meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<meta name="description" content="Upload a lead list, get it ranked by live signals, with an opener per lead.">
-<meta name="robots" content="noindex">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
-<style>
-:root{
-  --bg:#0D0F14;--surface:#12151D;--card:#181C26;--card-2:#1E2330;--line:#2A2E3A;--line-2:#3A3F50;
-  --text:#E8E4DC;--muted:#A8A8A2;--dim:#8A8A92;
-  --build:#30E060;--think:#4A7BF7;--win:#C9A84C;--danger:#E05030;--think-text:#6D95FF;--danger-text:#EC6A4A;
-  --accent:var(--build);
-  --accent-hover:color-mix(in oklab,var(--accent) 85%,white);
-  --accent-wash:color-mix(in oklab,var(--accent) 12%,transparent);
-  --win-wash:color-mix(in oklab,var(--win) 12%,transparent);
-  --think-wash:color-mix(in oklab,var(--think) 12%,transparent);
-  --font-ui:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;
-  --pad:16px;--r-sm:4px;--r-md:6px;--r-lg:10px;--r-pill:100px;
-  --dur-1:120ms;--dur-2:200ms;--ease-out:cubic-bezier(.16,1,.3,1);
-}
-@media(min-width:40rem){:root{--pad:24px}}
-@media(min-width:64rem){:root{--pad:32px}}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text)}
-body{font:400 14px/1.55 var(--font-mono);-webkit-font-smoothing:antialiased}
-.skip{position:absolute;left:-999px;top:8px;background:var(--card);color:var(--text);padding:8px 12px;border-radius:var(--r-sm)}
-.skip:focus-visible{left:8px;outline:2px solid var(--accent);outline-offset:2px}
-main{max-width:1440px;margin:0 auto;padding:16px var(--pad) 24px;min-height:100dvh;display:flex;flex-direction:column;gap:12px}
-
-/* ----- top bar ----- */
-.bar{display:grid;grid-template-columns:1fr;gap:12px;align-items:center;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg)}
-@media(min-width:64rem){.bar{grid-template-columns:1fr auto}.auth{flex-wrap:nowrap}.auth>div{flex:none;width:200px}.who{flex-wrap:nowrap;width:560px}.who>div:first-child{flex:none;width:170px}}
-.eyebrow{font:600 .6875rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--build);display:flex;align-items:center;gap:8px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--build);display:inline-block}
-.running .dot{animation:breathe 1.6s ease-in-out infinite}
-h1{font:800 clamp(1.25rem,1.9vw,1.625rem)/1.15 var(--font-ui);letter-spacing:-.03em;margin:4px 0 0;text-wrap:balance}
-.sub{color:var(--muted);font-family:var(--font-ui);font-size:.875rem;margin:2px 0 0}
-.auth{display:flex;gap:8px;align-items:end;flex-wrap:wrap}
-.auth>div{flex:1;min-width:140px}
-label{display:block;font-size:.75rem;color:var(--muted);margin:0 0 4px}
-input,textarea,select,button{font:inherit}
-input,textarea,select{width:100%;min-height:40px;background:var(--bg);border:1px solid var(--line-2);color:var(--text);border-radius:var(--r-md);padding:8px 10px}
-textarea{resize:none}
-input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible,.drop:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.btn{min-height:40px;padding:8px 16px;border-radius:var(--r-md);border:1px solid transparent;background:var(--build);color:#0D0F14;font:700 .875rem var(--font-ui);cursor:pointer;white-space:nowrap;transition:background var(--dur-2) var(--ease-out)}
-.btn:hover{background:var(--accent-hover)}
-.btn.sec{background:var(--card-2);color:var(--text);border-color:var(--line-2)}
-.btn.sec:hover{background:var(--line)}
-.btn.win{background:var(--win);color:#0D0F14}
-.btn.big{min-height:44px;padding:10px 22px;font-size:.9375rem}
-.btn:disabled{cursor:default;background:var(--line);color:var(--dim)}
-.who{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.who select{min-width:150px;width:auto;flex:1}
-.spend{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
-.spend .stat{display:flex;justify-content:space-between;gap:12px;font-size:.75rem;color:var(--muted)}.spend .stat>span{min-width:0;white-space:nowrap}
-.spend b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
-.meter{height:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);overflow:hidden}
-.meter i{display:block;height:100%;width:0;background:var(--build);transition:width var(--dur-2) var(--ease-out)}
-.meter.warn i{background:var(--win)}.meter.hot i{background:var(--danger)}
-.running .meter.live i{animation:breathe 1.6s ease-in-out infinite}
-.link{color:var(--think-text);font-size:.75rem;white-space:nowrap}
-.err{color:var(--danger-text);font-size:.8125rem}
-.ok{color:var(--build)}
-
-/* ----- deck ----- */
-.deck{display:grid;grid-template-columns:1fr;gap:12px;flex:1;min-height:0}
-@media(min-width:64rem){.deck{grid-template-columns:5fr 7fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;min-height:0}
-h2{font:700 1rem/1.3 var(--font-ui);letter-spacing:-.02em;margin:0}
-.head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
-.head .d{font-size:.75rem;color:var(--dim)}
-
-/* Otto */
-.otto{display:flex;gap:12px;align-items:center;margin-bottom:10px}
-canvas{image-rendering:pixelated;width:64px;height:64px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);flex:none}
-.otto .say{flex:1;display:flex;gap:8px}
-.petstate{color:var(--dim);font-size:.75rem;margin:0 0 8px 76px;min-height:1.2em}
-.log{display:flex;flex-direction:column;gap:6px;max-height:112px;overflow:auto;margin:0 0 10px}
-.msg{padding:8px 10px;border-radius:var(--r-md);font-size:.8125rem;line-height:1.45;max-width:96%}
-.msg.me{align-self:flex-end;background:var(--card-2);border:1px solid var(--line-2)}
-.msg.otto{align-self:flex-start;background:var(--accent-wash);border:1px solid color-mix(in oklab,var(--build) 40%,transparent)}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px 76px}
-.chips button{min-height:32px;padding:4px 10px;border-radius:var(--r-pill);border:1px solid var(--line-2);background:var(--bg);color:var(--muted);font:400 .6875rem var(--font-mono);cursor:pointer}
-.chips button:hover{color:var(--text);border-color:var(--build)}
-.fields{display:grid;gap:10px;grid-template-rows:auto auto 1fr;flex:1;min-height:0}
-.fields textarea#sell{height:64px}.fields textarea#want{height:100%;min-height:84px}
-.fields>div:last-child{display:flex;flex-direction:column;min-height:0}
-.fields>div:last-child textarea{flex:1}
-
-/* Drop zone and list */
-.drop{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px dashed var(--line-2);border-radius:var(--r-lg);background:var(--surface);padding:24px;text-align:center;cursor:pointer;min-height:220px;transition:border-color var(--dur-2) var(--ease-out),background var(--dur-2) var(--ease-out)}
-.drop:hover,.drop.over{border-color:var(--build);background:var(--accent-wash)}
-.drop svg{width:40px;height:40px;stroke:var(--build);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.drop b{font:700 1rem var(--font-ui);color:var(--text)}
-.drop span{color:var(--muted);font-size:.8125rem;max-width:36ch}
-.drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.mapping{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;margin-top:10px}
-.mapping select{min-height:36px;padding:4px 8px;font-size:.8125rem}
-.runrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
-.toggle{display:flex;gap:8px;align-items:center;min-height:40px;font-size:.8125rem;color:var(--text)}
-.toggle input{width:18px;height:18px;min-height:0;margin:0;accent-color:var(--build)}
-.filemeta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.8125rem;color:var(--muted)}
-.filemeta b{color:var(--text)}
-.pill{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);padding:3px 10px;font-size:.6875rem;color:var(--muted)}
-.pill b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
-
-/* Console */
-.console{flex:1;display:flex;flex-direction:column;min-height:0;gap:10px}
-.tally{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.t{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:8px 10px}
-.t b{display:block;font:700 1.25rem/1 var(--font-ui);font-variant-numeric:tabular-nums}
-.t span{font-size:.625rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
-.t.c1 b{color:var(--build)}.t.c2 b{color:var(--win)}.t.c3 b{color:var(--think-text)}.t.c4 b{color:var(--dim)}
-.prog{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
-.prog b{color:var(--text);font-variant-numeric:tabular-nums}
-.wire{flex:1;min-height:160px;overflow:auto;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg);padding:6px}
-.w{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:6px 8px;border-radius:var(--r-sm);font-size:.75rem;animation:arrive var(--dur-2) var(--ease-out)}
-.w+.w{border-top:1px solid var(--line)}
-.w .n{color:var(--text);font-weight:600;font-family:var(--font-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.w .s{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.w .sc{font:700 .875rem var(--font-ui);font-variant-numeric:tabular-nums;text-align:right;color:var(--dim)}
-.w.c1 .sc{color:var(--build)}.w.c2 .sc{color:var(--win)}.w.c3 .sc{color:var(--think-text)}
-.w .chip{justify-self:end}
-.chip{display:inline-block;padding:1px 8px;border-radius:var(--r-pill);font:600 .625rem/1.7 var(--font-mono);letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;white-space:nowrap}
-.c1 .chip,.chip.c1{background:var(--accent-wash);color:var(--build);border-color:var(--build)}
-.c2 .chip,.chip.c2{background:var(--win-wash);color:var(--win);border-color:var(--win)}
-.c3 .chip,.chip.c3{background:var(--think-wash);color:var(--think-text);border-color:var(--think)}
-.c4 .chip,.chip.c4{color:var(--dim);border-color:var(--line-2)}
-.chip.wait{color:var(--dim);border-color:var(--line)}
-.decide{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--win);border-radius:var(--r-md);background:var(--win-wash);font-size:.8125rem}
-.decide b{font-variant-numeric:tabular-nums}
-
-/* Results */
-.tbl{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:var(--r-md)}
-table{width:100%;border-collapse:collapse;font-size:.8125rem}
-th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{position:sticky;top:0;background:var(--card-2);color:var(--muted);font-weight:600;font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase}
-td.score{font:700 1rem var(--font-ui);font-variant-numeric:tabular-nums}
-td .m{color:var(--muted);font-size:.75rem}td .d{color:var(--dim);font-size:.75rem}
-tr.new{animation:arrive var(--dur-2) var(--ease-out)}
-a{color:var(--think-text)}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.hide{display:none !important}
-.foot{color:var(--dim);font-size:.6875rem;margin:8px 0 0}
-@keyframes arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes breathe{0%,100%{opacity:1}50%{opacity:.55}}
-@media(prefers-reduced-motion:reduce){.w,tr.new{animation:none}.running .dot,.running .meter.live i{animation:none}.btn,.drop,.meter i{transition:none}}
-</style>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="lead-scorer.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="/" aria-label="deep, home">
+    <img src="/favicon.svg" width="24" height="24" alt="">
+    <span>deep<span class="cur" aria-hidden="true">_</span></span>
+  </a>
+  <nav class="topnav" aria-label="toolkit">
+    <a href="/toolkit">Toolkit</a>
+    <a href="/account">Account</a>
+  </nav>
+  <span class="spacer"></span>
+  <div class="auth" id="auth">
+    <span class="auth-hint" id="auth-hint">Checking session</span>
+    <button type="button" class="btn" id="signin" hidden>Sign in</button>
+    <div class="user-slot" id="user-slot"></div>
+  </div>
+</header>
+
 <main id="main">
-  <header class="bar" id="bar">
+  <div class="banner hide" id="setup-banner" role="status">
+    <span><b>Setup needed.</b> <span id="setup-text">The toolkit backend is not configured on this deployment yet, so quoting and runs are off. The upload, mapping and preview work in your browser.</span></span>
+  </div>
+
+  <header class="pagehead">
     <div>
-      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Lead Scorer</div>
-      <h1>Upload a list. Get the order to call it in.</h1>
-      <p class="sub">Live signals on every lead, Jev ranks them, the ones worth it get a first line.</p>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>lead scorer</p>
+      <h1>Score the list before you dial it.</h1>
+      <p class="sub">Upload, map the columns, write the brief, approve the exact maximum cost, then run five rows at a time with a stop between every batch. Email checks come from a provider with source and time, Jev gives the fit call, your rubrics get their buckets, and the export is formula safe.</p>
     </div>
-    <div id="auth">
-      <div id="auth-new" class="auth">
-        <div><label for="pass">Team passcode</label><input id="pass" type="password" autocomplete="off" placeholder="from Champ"></div>
-        <div><label for="name">Your name</label><input id="name" autocomplete="name" placeholder="so your runs are yours"></div>
-        <button class="btn" id="login">Sign in</button>
-        <span id="auth-msg" class="err" style="flex-basis:100%"></span>
+    <aside class="wallet hide" id="wallet" aria-label="Shared credit balance">
+      <div class="w-top">
+        <span class="w-label">Credits available</span>
+        <span class="w-value" id="wallet-credits">0</span>
       </div>
-      <div id="auth-ret" class="who hide">
-        <div><label for="who">Signed in as</label><select id="who" aria-label="Signed in as"></select></div>
-        <div class="spend">
-          <div class="stat"><span>Team spend today <b id="spent">$0.00</b> of <b id="budget">$0</b></span><span>Your rows <b id="myrows">0</b> of <b id="mycap">0</b></span></div>
-          <div class="meter" id="meter"><i></i></div>
-          <div class="stat"><span id="models" class="d" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span><a href="#" id="signout" class="link">Not you?</a></div>
-        </div>
-      </div>
-    </div>
+      <div class="meter" id="wallet-meter"><i></i></div>
+      <p class="w-sub" id="wallet-sub">shared across every toolkit tool</p>
+    </aside>
   </header>
 
-  <section class="deck">
-    <div class="card" aria-labelledby="brief-h">
-      <div class="head"><h2 id="brief-h">The brief</h2><span class="d">Tell Otto, or type it in</span></div>
-      <div class="otto">
-        <canvas id="pet" width="24" height="24" aria-label="Otto, a pixel otter" role="img"></canvas>
-        <div class="say"><input id="say" placeholder="What are you selling, and to whom?" disabled><button class="btn sec" id="send" disabled>Ask</button></div>
-      </div>
-      <p class="petstate" id="petstate">Sign in, then tell me what you sell and who you want.</p>
-      <div class="chips" aria-label="Quick starts">
-        <button type="button" data-q="APAC bank CIOs for LakeB2B outbound. Look for core banking modernization and CIOs who joined in the last 120 days.">APAC bank CIOs</button>
-        <button type="button" data-q="Hospital IT and revenue cycle leaders in the US for Ampliz healthcare data. Signals: EHR migration, new CIO, hiring data engineers.">US hospital IT</button>
-        <button type="button" data-q="Score on the uploaded columns only, no LinkedIn lookups, for a quick pass.">Quick pass</button>
-      </div>
-      <div class="log" id="chat" aria-live="polite"></div>
-      <div class="fields">
-        <div><label for="listname">List name</label><input id="listname" placeholder="e.g. APAC ERP CIOs, Sep 26"></div>
-        <div><label for="sell">What we sell</label><textarea id="sell">LakeB2B: verified B2B data, appointment setting and managed outbound, plus SEO, creative and demand gen. One partner, data to deal.</textarea></div>
-        <div><label for="want">Who we want</label><textarea id="want">IT, digital, data or transformation leaders, Director and above, at mid to large enterprises in APAC, ANZ, MEA and CEE. Best signals: a live modernization, ERP, cloud or data project, or a leader who joined in the last 120 days.</textarea></div>
-      </div>
+  <nav class="tabs" role="tablist" aria-label="Lead scorer sections">
+    <button type="button" role="tab" id="tab-workspace" aria-controls="panel-workspace" aria-selected="true">Workspace</button>
+    <button type="button" role="tab" id="tab-history" aria-controls="panel-history" aria-selected="false" tabindex="-1">History</button>
+    <button type="button" role="tab" id="tab-usage" aria-controls="panel-usage" aria-selected="false" tabindex="-1">Usage</button>
+  </nav>
+
+  <section id="panel-workspace" role="tabpanel" aria-labelledby="tab-workspace" tabindex="0" class="panel">
+    <div class="deck">
+      <section class="card" aria-labelledby="brief-h">
+        <div class="card-head">
+          <h2 id="brief-h">The brief</h2>
+          <span class="meta">feeds the fit call and your rubrics</span>
+        </div>
+        <div class="field">
+          <label for="listname">List name</label>
+          <input id="listname" placeholder="Q4 logistics CIOs" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="sell">What we sell</label>
+          <textarea id="sell" rows="3" placeholder="Two lines on the offer, the buyer and the price point."></textarea>
+        </div>
+        <div class="field">
+          <label for="want">Who we want</label>
+          <textarea id="want" rows="5" placeholder="Roles, seniority, company size, regions, and the signals that make this account timely."></textarea>
+        </div>
+        <p class="counter" id="icp-count" aria-live="polite">0 / 2000 characters for the brief</p>
+
+        <div class="row">
+          <span class="label" id="rubrics-label">Custom rubrics</span>
+          <span class="grow"></span>
+          <button type="button" class="btn sec" id="rubric-add">Add a rubric</button>
+        </div>
+        <div id="rubrics" style="display:flex;flex-direction:column;gap:var(--s3)" aria-labelledby="rubrics-label"></div>
+        <p class="foot">Up to 3 rubrics. Each one returns a bucket label from the criteria you write, never an invented probability. Leave them empty to skip custom judging.</p>
+      </section>
+
+      <section class="card" aria-labelledby="list-h">
+        <div class="card-head">
+          <h2 id="list-h">The list</h2>
+          <span class="meta">CSV or XLSX, 5 MB and 1000 rows max, the file never leaves your browser until you run</span>
+        </div>
+
+        <div id="stage-drop" class="drop" tabindex="0" role="button" aria-label="Upload a CSV or XLSX list">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"/><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+          <b>Drop your list here</b>
+          <span>CSV or XLSX, up to 1,000 rows and 5 MiB. Press Enter on this field to open the file picker, or drop the file here. Nothing is uploaded in this step, only read in your browser.</span>
+          <input id="file" type="file" accept=".csv,.xlsx" aria-label="Choose a CSV or XLSX file">
+        </div>
+
+        <div id="stage-map" class="hide" style="display:flex;flex-direction:column;gap:var(--s3)">
+          <div class="filemeta">
+            <b id="fname"></b>
+            <span class="pill"><b id="frows">0</b> rows</span>
+            <span id="fhint"></span>
+            <span class="grow"></span>
+            <button type="button" class="linkbtn" id="refile">Change file</button>
+          </div>
+          <div class="mapping" id="mapgrid"></div>
+          <p class="foot" id="map-note">Mapping picks the source column for each field. Every other column is kept for your rubrics.</p>
+          <div class="card-head"><h2 style="font-size:var(--text-md)">Preview</h2><span class="meta" id="preview-meta">first 5 mapped rows</span></div>
+          <div class="tbl preview"><table id="preview"><thead><tr></tr></thead><tbody></tbody></table></div>
+          <div class="row">
+            <label class="toggle"><input id="enrich" type="checkbox" checked> Enrich company and profile (Treg)</label>
+            <label class="toggle"><input id="verify" type="checkbox" checked> Verify each email address</label>
+          </div>
+          <p class="err hide" id="list-status" role="status"></p>
+        </div>
+
+        <p class="foot">Enrichment and verification are provider calls that cost credits. <b>Nothing runs until you quote and approve.</b> Rows are sent five at a time, in order, and you can stop between batches.</p>
+      </section>
     </div>
 
-    <div class="card" aria-labelledby="list-h">
-      <div class="head"><h2 id="list-h">The list</h2><span class="d" id="list-d">CSV or XLSX. A LinkedIn column makes signals strong.</span></div>
-
-      <div id="stage-drop" class="drop" tabindex="0" role="button" aria-label="Upload a CSV or XLSX list">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"/><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
-        <b>Drop your list here</b>
-        <span>or click to choose. Nothing is bought yet; the first 100 rows run, then you decide on the rest.</span>
-        <input id="file" type="file" accept=".csv,.xlsx,.xls">
+    <section class="card approve" id="approve" aria-labelledby="approve-h">
+      <div class="card-head">
+        <h2 id="approve-h">Authorize the spend</h2>
+        <span class="meta">one quote per batch of five, summed here. no quote, no run.</span>
       </div>
-
-      <div id="stage-map" class="hide">
-        <div class="filemeta"><b id="fname"></b><span class="pill"><b id="frows">0</b> rows</span><span id="fhint"></span><span style="flex:1"></span><a href="#" id="refile" class="link">Change file</a></div>
-        <div class="mapping" id="mapgrid"></div>
-        <div class="runrow">
-          <label class="toggle"><input id="enrich" type="checkbox" checked> Look up LinkedIn profile and recent posts</label>
-          <span style="flex:1"></span>
-          <button class="btn big" id="run">Score the first 100</button>
+      <div class="quote-grid">
+        <div class="docket-lines" id="quote-docket">
+          <div class="docket-line"><span>No quote yet</span><b>sign in, then get a quote</b></div>
         </div>
-        <div id="status" class="err" style="margin-top:8px"></div>
+        <div class="balance-box">
+          <span class="b-label">Your shared balance</span>
+          <span class="b-value" id="balance-value">sign in</span>
+          <span class="b-sub" id="balance-sub">one balance across every toolkit tool</span>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn sec" id="quote-btn">Get quote</button>
+          <button type="button" class="btn big" id="run-btn" disabled>Run the list</button>
+          <p class="err" id="approve-err" role="status"></p>
+        </div>
       </div>
+      <div class="warns hide" id="quote-warns"></div>
+      <p class="foot" style="color:var(--paper-muted)">The quote is a ceiling computed from configured provider ceilings, not a vendor invoice. Settlement charges what was actually used, releases the rest, and keeps a hold on anything the provider could not price.</p>
+    </section>
 
-      <div id="stage-run" class="console hide" aria-live="polite">
-        <div class="tally">
-          <div class="t c1"><b id="n1">0</b><span>Contact now</span></div>
-          <div class="t c2"><b id="n2">0</b><span>This week</span></div>
-          <div class="t c3"><b id="n3">0</b><span>Nurture</span></div>
-          <div class="t c4"><b id="n4">0</b><span>Skip</span></div>
-        </div>
-        <div class="prog"><span id="p-left">Scoring <b id="p-done">0</b> of <b id="p-total">0</b></span><span><b id="p-time">0:00</b> elapsed, spend <b id="p-cost">$0.000</b></span></div>
-        <div class="meter live"><i id="prog"></i></div>
-        <div class="wire" id="wire"></div>
-        <div class="decide hide" id="decide">
-          <span><b id="c-left">0</b> rows left. Observed <b id="c-rate">$0.000</b> a row, about <b id="c-est">$0.00</b> and <b id="c-min">0</b> min more.</span>
-          <span style="flex:1"></span>
-          <button class="btn win" id="c-go">Score the rest</button><button class="btn sec" id="c-stop">Stop here</button>
-        </div>
-        <div class="row" id="run-actions"><span id="run-msg" class="d" style="flex:1;font-size:.75rem;color:var(--dim)"></span><button class="btn sec" id="again">New list</button></div>
+    <section class="card console hide" id="console" aria-labelledby="console-h">
+      <div class="card-head">
+        <h2 id="console-h">Run</h2>
+        <span class="meta" id="console-meta">batched, five rows at a time</span>
       </div>
-      <p class="foot">Signals: public LinkedIn data, misses are free. Scoring: Jev, a decisions model. Openers: a free model, only for leads at 55 and above. Spend is capped per person and per day.</p>
+      <div class="tiles">
+        <div class="tile"><span class="t-label">Batches</span><span class="t-value" id="t-batches">0 / 0</span><span class="t-sub" id="t-batches-sub">queued</span></div>
+        <div class="tile"><span class="t-label">Rows done</span><span class="t-value" id="t-rows">0</span><span class="t-sub" id="t-rows-sub">of 0</span></div>
+        <div class="tile accent"><span class="t-label">Spent so far</span><span class="t-value" id="t-spend">$0.00</span><span class="t-sub" id="t-spend-sub">0 credits settled</span></div>
+        <div class="tile"><span class="t-label">On hold</span><span class="t-value" id="t-held">$0.00</span><span class="t-sub" id="t-held-sub">unresolved, still reserved</span></div>
+      </div>
+      <div class="meter-row"><span id="prog-text">Queued</span><b id="prog-pct">0%</b></div>
+      <div class="meter" id="prog-meter"><i></i></div>
+      <div class="wire" id="wire" aria-live="polite"></div>
+      <div class="ledger hide" id="ledger">
+        <table><thead><tr><th>Provider</th><th>Endpoint</th><th>Status</th><th>Cost</th><th>Call ceiling</th></tr></thead><tbody id="ledger-body"></tbody></table>
+      </div>
+      <div class="row">
+        <p class="grow dimtext" id="run-status" role="status" style="margin:0;font-size:var(--text-sm)">Idle.</p>
+        <button type="button" class="btn stop" id="cancel-btn" hidden>Stop after this batch</button>
+      </div>
+      <p class="foot">Stopping takes effect between batches. A provider request already in flight cannot be cancelled, and its cost or hold still settles.</p>
+    </section>
+
+    <section class="card hide" id="results" aria-labelledby="results-h">
+      <div class="card-head">
+        <h2 id="results-h">Call sheet</h2>
+        <div class="row">
+          <span class="pill" id="res-count"><b>0</b> scored</span>
+          <button type="button" class="btn sec" id="export-csv">Download CSV (safe cells)</button>
+          <button type="button" class="btn ghost" id="new-list">New list</button>
+        </div>
+      </div>
+      <div class="tiles">
+        <div class="tile"><span class="t-label">Maximum authorized</span><span class="t-value" id="c-max">$0.00</span><span class="t-sub" id="c-max-sub">quoted ceiling for this run</span></div>
+        <div class="tile accent"><span class="t-label">Actual spend</span><span class="t-value" id="c-spent">$0.00</span><span class="t-sub" id="c-spent-sub">0 credits settled</span></div>
+        <div class="tile"><span class="t-label">Unresolved holds</span><span class="t-value" id="c-held">$0.00</span><span class="t-sub" id="c-held-sub">reserved until the provider prices it</span></div>
+      </div>
+      <div class="filters">
+        <input type="search" id="filter-q" placeholder="Search this list" aria-label="Search results">
+        <select id="filter-email" aria-label="Filter by email check result">
+          <option value="">Any email check</option>
+          <option value="deliverable">deliverable</option>
+          <option value="risky">risky</option>
+          <option value="undeliverable">undeliverable</option>
+          <option value="unknown">unknown</option>
+          <option value="not_checked">not checked</option>
+        </select>
+        <select id="filter-fit" aria-label="Filter by ICP fit">
+          <option value="">Any fit</option>
+          <option value="Strong fit">Strong fit</option>
+          <option value="Possible fit">Possible fit</option>
+          <option value="Weak fit">Weak fit</option>
+          <option value="Not a fit">Not a fit</option>
+          <option value="Unjudged">Unjudged</option>
+        </select>
+        <span class="grow"></span>
+        <span class="pill" id="filter-count">showing all</span>
+      </div>
+      <div class="tbl results"><table id="results-table"><thead><tr></tr></thead><tbody></tbody></table></div>
+      <p class="foot">Email status is a provider observation with source and time, not a prediction and not a guarantee of inbox placement. Missing judging output reads <b>Unjudged</b>, never a guessed score.</p>
+    </section>
+  </section>
+
+  <section id="panel-history" role="tabpanel" aria-labelledby="tab-history" tabindex="0" hidden>
+    <div class="card">
+      <div class="card-head">
+        <h2>Run history</h2>
+        <span class="meta">private to your account. nobody else can open your rows, not even an admin.</span>
+      </div>
+      <div class="hist" id="history-list"></div>
+      <p class="foot hide" id="history-empty">No runs yet. Upload a list in the workspace, quote it, and every run lands here.</p>
     </div>
   </section>
 
-  <section class="card hide" id="out" aria-labelledby="out-h" style="flex:none">
-    <div class="head"><h2 id="out-h">Call sheet</h2><div class="row"><span class="pill" id="p-count"></span><span class="pill" id="p-model"></span><button class="btn sec" id="dl">Download CSV</button><button class="btn sec" id="share">Save and share</button><span id="sharelink" class="d" style="font-size:.75rem"></span></div></div>
-    <div class="tbl"><table id="tbl"><thead><tr><th>#</th><th>Score</th><th>Tier</th><th>Lead</th><th>Top signal</th><th>Why</th><th>Opener</th><th>Links</th></tr></thead><tbody></tbody></table></div>
+  <section id="panel-usage" role="tabpanel" aria-labelledby="tab-usage" tabindex="0" hidden>
+    <div class="card">
+      <div class="card-head">
+        <h2>Usage</h2>
+        <span class="meta" id="usage-day">today</span>
+      </div>
+      <div class="banner bad hide" id="usage-disabled" role="status"><span><b>Access paused.</b> This account is disabled for spending. Existing runs stay readable; new runs are refused by the server.</span></div>
+      <div class="tiles">
+        <div class="tile accent"><span class="t-label">Credits available</span><span class="t-value" id="u-available">0</span><span class="t-sub">shared across tools</span></div>
+        <div class="tile"><span class="t-label">Credits held</span><span class="t-value" id="u-held">0</span><span class="t-sub" id="u-held-sub">unresolved operations</span></div>
+        <div class="tile"><span class="t-label">Credits used</span><span class="t-value" id="u-used">0</span><span class="t-sub">settled today</span></div>
+        <div class="tile"><span class="t-label">Spend today</span><span class="t-value" id="u-spend">$0.00</span><span class="t-sub">settled microdollars</span></div>
+        <div class="tile"><span class="t-label">Rows today</span><span class="t-value" id="u-rows">0</span><span class="t-sub" id="u-rows-sub">against your row cap</span></div>
+      </div>
+      <div class="statgrid two">
+        <div>
+          <div class="meter-row"><span>Daily credit cap</span><b id="u-credit-cap-text">no cap set</b></div>
+          <div class="meter" id="u-credit-meter"><i></i></div>
+        </div>
+        <div>
+          <div class="meter-row"><span>Daily row cap</span><b id="u-row-cap-text">no cap set</b></div>
+          <div class="meter" id="u-row-meter"><i></i></div>
+        </div>
+      </div>
+      <div class="kv">
+        <div class="kv-row"><span>Providers configured</span><span class="provider-chips" id="u-providers"></span></div>
+        <div class="kv-row"><span>Settled spend recorded</span><b id="u-spent-micro">0</b></div>
+        <div class="kv-row"><span>Held microdollars</span><b id="u-held-micro">0</b></div>
+      </div>
+      <p class="foot">Credits are an internal allowance measured in thousandths of a dollar of provider budget. One run in any tool lowers this same balance for every other tool.</p>
+    </div>
   </section>
 </main>
-<script>
-const API='https://kdxmzaliwestummrnygd.supabase.co/functions/v1/lead-scorer';
-const $=id=>document.getElementById(id);
-const FIELDS={name:['full name','name','contact','contact name','person'],first:['first name','first','firstname','given name'],last:['last name','last','lastname','surname','family name'],title:['title','job title','designation','position','role'],company:['company','company name','account','organization','organisation','employer'],domain:['domain','website','company url','company website','url','web'],email:['email','business email','work email','email address','e-mail'],linkedin:['linkedin','linkedin url','profile url','prospect url','linkedin profile','li url']};
-let token='',me='',rows=[],headers=[],results=[],list=[],done=0,firstBatch=100,costRun=0,jevRun=0,model='',stopped=false,running=false,t0=0,timer=null;
-const store={get:k=>{try{return localStorage.getItem(k)||''}catch(e){return ''}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
-// ---------- Otto, an original pixel otter ----------
-const P={'.':null,'b':'#8B5A2B','B':'#5C3A1A','c':'#D9B382','e':'#0D0F14','n':'#1E2330'};
-const F1=['........................','........................','.......bbbbbbbbbb.......','......bbbbbbbbbbbb......','.....bbBbbbbbbbBbb......','.....bbbbbbbbbbbbbb.....','.....bbbeebbbbeebbb.....','.....bbbeebbbbeebbb.....','.....bbbbbbccbbbbbb.....','......bbbbcnncbbbb......','......bbbbcccc bbb......','.......bbbbbbbbbb.......','......bbbbbbbbbbbb......','.....bbbbccccccbbbb.....','.....bbbcccccccc bbb....','.....bbbcccccccc bbb....','.....bbbbccccccbbbb.....','......bbbbbbbbbbbb......','.......bbbbbbbbbb.......','......bbb......bbb......','.....bbbb......bbbb.....','........................','........................','........................'];
-const F2=F1.map((r,i)=>i===6||i===7?r.replace(/e/g,'b'):r);
-const F3=F1.map((r,i)=>i>=2&&i<21?F1[i-1]:r);
-function drawPet(f){const c=$('pet').getContext('2d');c.clearRect(0,0,24,24);f.forEach((r,y)=>{[...r].forEach((ch,x)=>{const col=P[ch];if(col){c.fillStyle=col;c.fillRect(x,y,1,1)}})})}
-let petMode='idle',tick=0;
-function petLoop(){tick++;if(reduce){drawPet(F1)}else if(petMode==='think'){drawPet(tick%8<4?F2:F3)}else{drawPet(tick%40===0?F2:(tick%4<2?F1:F3))}setTimeout(petLoop,reduce?100000:250)}
-function setPet(m,txt){petMode=m;if(txt!==undefined)$('petstate').textContent=txt}
-drawPet(F1);petLoop();
+<footer>
+  <div class="foot-in">
+    <span>Runs are private to your owner account. Email checks carry provider, source and time. Spend is capped per account and per day.</span>
+    <span><a href="/account">Account and billing</a> · <a href="/toolkit">Toolkit</a></span>
+  </div>
+</footer>
 
-// ---------- API ----------
-const NET='Could not reach the scorer. Check your connection and try again.';
-async function api(action,body){let r;try{r=await fetch(API+'?action='+action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,...body})})}catch(e){throw new Error(NET)}const d=await r.json();if(!r.ok||d.error)throw Object.assign(new Error(d.error||('HTTP '+r.status)),{data:d});return d}
-
-// ---------- Auth and rolodex ----------
-async function afterLogin(){$('auth-new').classList.add('hide');$('auth-ret').classList.remove('hide');$('say').disabled=false;$('send').disabled=false;setPet('idle','Tell me what you sell and who you want. I will fill the brief.');await refreshUsage();await loadRolodex()}
-async function refreshUsage(){const u=await api('usage',{});firstBatch=u.first_batch||100;$('spent').textContent='$'+u.spent_usd.toFixed(2);$('budget').textContent='$'+u.budget_usd;$('myrows').textContent=u.user_rows_today;$('mycap').textContent=u.user_rows_cap;const pct=Math.min(100,100*u.spent_usd/Math.max(.01,u.budget_usd));const m=$('meter');m.className='meter'+(pct>90?' hot':pct>60?' warn':'');m.firstElementChild.style.width=pct+'%';const mj=u.models.jev.split('/').pop(),mo=u.models.opener.split('/').pop(),mc=u.models.chat.split('/').pop();$('models').textContent=mo===mc?'Jev '+mj+', text by '+mo:'Jev '+mj+', openers '+mo+', Otto '+mc;$('models').title='Scoring '+u.models.jev+'. Openers '+u.models.opener+'. Otto '+u.models.chat;$('run').textContent='Score the first '+firstBatch;return u}
-async function loadRolodex(){const d=await api('rolodex',{});const sel=$('who');sel.innerHTML=d.people.map(p=>'<option '+(p.name===me?'selected':'')+'>'+esc(p.name)+'</option>').join('')+'<option value="__new">Someone new...</option>';if(!d.people.some(p=>p.name===me))sel.insertAdjacentHTML('afterbegin','<option selected>'+esc(me)+'</option>')}
-$('login').addEventListener('click',async()=>{$('auth-msg').textContent='';try{const d=await api('login',{passcode:$('pass').value.trim(),name:$('name').value.trim()});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);$('pass').value='';await afterLogin()}catch(e){$('auth-msg').textContent=e.message}});
-$('pass').addEventListener('keydown',e=>{if(e.key==='Enter')$('login').click()});$('name').addEventListener('keydown',e=>{if(e.key==='Enter')$('login').click()});
-$('who').addEventListener('change',async()=>{let n=$('who').value;if(n==='__new'){n=prompt('Name of the new person');if(!n){await loadRolodex();return}}try{const d=await api('login',{name:n});token=d.token;me=d.name;store.set('ls_token',token);store.set('ls_name',me);await refreshUsage();await loadRolodex()}catch(e){$('auth-msg').textContent=e.message}});
-$('signout').addEventListener('click',e=>{e.preventDefault();token='';me='';store.set('ls_token','');$('auth-ret').classList.add('hide');$('auth-new').classList.remove('hide');$('say').disabled=true;$('send').disabled=true});
-(async()=>{token=store.get('ls_token');me=store.get('ls_name');if(token){try{await afterLogin()}catch(e){token='';$('auth-msg').textContent='Session expired, use the passcode again.'}}else if(me){$('name').value=me}})();
-
-// ---------- Otto chat ----------
-function say(who,text){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;$('chat').appendChild(d);$('chat').scrollTop=1e6}
-function fields(){return{list_name:$('listname').value,what_we_sell:$('sell').value,who_we_want:$('want').value,enrich:$('enrich').checked}}
-async function ask(){const t=$('say').value.trim();if(!t||!token)return;$('say').value='';say('me',t);setPet('think','Thinking...');try{const d=await api('chat',{message:t,fields:fields()});const f=d.fill||{};const alias={who_we_sell:'who_we_want',who:'who_we_want',sell:'what_we_sell',want:'who_we_want',list:'list_name'};for(const k in alias)if(f[k]!==undefined&&f[alias[k]]===undefined)f[alias[k]]=f[k];if(f.list_name)$('listname').value=f.list_name;if(f.what_we_sell)$('sell').value=f.what_we_sell;if(f.who_we_want)$('want').value=f.who_we_want;if(typeof f.enrich==='boolean')$('enrich').checked=f.enrich;say('otto',d.reply||'Done.');setPet('idle',Object.keys(f).length?'Brief updated. Drop the list when ready.':'Anything else?')}catch(e){say('otto','I could not do that: '+e.message);setPet('idle','Try again in a moment.')}}
-$('send').addEventListener('click',ask);$('say').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
-document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{$('say').value=b.dataset.q;$('say').focus()}));
-
-// ---------- File: drop zone and mapping ----------
-function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
-function guess(){const m={};for(const f in FIELDS){m[f]='';for(const h of headers){const n=norm(h);if(FIELDS[f].some(a=>n===a)){m[f]=h;break}}if(!m[f])for(const h of headers){const n=norm(h);if(FIELDS[f].some(a=>n.includes(a))){m[f]=h;break}}}return m}
-function stage(name){['stage-drop','stage-map','stage-run'].forEach(s=>$(s).classList.toggle('hide',s!==name))}
-function loadFile(f){if(!f)return;const r=new FileReader();r.onload=ev=>{let wb;try{wb=XLSX.read(ev.target.result,{type:'array'})}catch(e){setPet('idle','I could not read that file. CSV or XLSX only.');return}const ws=wb.Sheets[wb.SheetNames[0]];rows=XLSX.utils.sheet_to_json(ws,{defval:''});if(!rows.length){setPet('idle','That file has a header but no rows.');return}headers=Object.keys(rows[0]||{});const m=guess();$('mapgrid').innerHTML=Object.keys(FIELDS).map(k=>'<div><label for="m-'+k+'">'+k+'</label><select id="m-'+k+'" data-f="'+k+'"><option value="">(none)</option>'+headers.map(h=>'<option '+(m[k]===h?'selected':'')+'>'+esc(h)+'</option>').join('')+'</select></div>').join('');$('fname').textContent=f.name;$('frows').textContent=rows.length;$('fhint').textContent=m.linkedin?'LinkedIn column found, strong signals.':'No LinkedIn column: name and domain lookups, weaker signals.';$('fhint').className=m.linkedin?'ok':'';$('run').textContent='Score the first '+Math.min(firstBatch,rows.length);if(!$('listname').value)$('listname').value=f.name.replace(/\.[^.]+$/,'');stage('stage-map');setPet('idle',rows.length+' rows loaded. Say the word.')};r.readAsArrayBuffer(f)}
-const dz=$('stage-drop');
-dz.addEventListener('click',()=>$('file').click());dz.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('file').click()}});
-['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('over')}));
-['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('over')}));
-dz.addEventListener('drop',e=>{const f=e.dataTransfer.files&&e.dataTransfer.files[0];loadFile(f)});
-$('file').addEventListener('change',e=>loadFile(e.target.files[0]));
-$('refile').addEventListener('click',e=>{e.preventDefault();$('file').value='';stage('stage-drop')});
-$('again').addEventListener('click',()=>{if(running)return;$('file').value='';stage('stage-drop');document.body.classList.remove('running')});
-function mapped(){const m={};document.querySelectorAll('#mapgrid select').forEach(s=>m[s.dataset.f]=s.value);return rows.map((r,i)=>{const o={_i:i+1};for(const f in m){if(m[f])o[f]=String(r[m[f]]||'').trim()}if(!o.name&&(o.first||o.last))o.name=((o.first||'')+' '+(o.last||'')).trim();if(o.domain)o.domain=o.domain.replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0];if(!o.domain&&o.email&&o.email.includes('@'))o.domain=o.email.split('@')[1];return o})}
-function icp(){return 'What we sell: '+$('sell').value.trim()+'\nWho we want: '+$('want').value.trim()}
-
-// ---------- Streaming run ----------
-const tally={ 'Contact now':0,'This week':0,'Nurture':0,'Skip':0 };
-function tierCls(t){return t==='Contact now'?'c1':t==='This week'?'c2':t==='Nurture'?'c3':'c4'}
-function wireRow(i,name){let el=document.getElementById('w'+i);if(!el){el=document.createElement('div');el.id='w'+i;el.className='w';el.innerHTML='<span class="sc">..</span><span><span class="n"></span><span class="s"></span></span><span class="chip wait">queued</span>';el.querySelector('.n').textContent=name||('Row '+i);$('wire').appendChild(el);$('wire').scrollTop=1e6}return el}
-function wireSet(i,state,cls,score,tier){const el=document.getElementById('w'+i);if(!el)return;el.querySelector('.s').textContent=state?' · '+state:'';if(cls){el.className='w '+cls}if(score!==undefined){el.querySelector('.sc').textContent=score}const chip=el.querySelector('.chip');if(tier){chip.textContent=tier;chip.className='chip'}}
-function fmtT(s){s=Math.round(s);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
-function tickClock(){$('p-time').textContent=fmtT((Date.now()-t0)/1000)}
-function bumpTally(t){tally[t]=(tally[t]||0)+1;$('n1').textContent=tally['Contact now'];$('n2').textContent=tally['This week'];$('n3').textContent=tally['Nurture'];$('n4').textContent=tally['Skip']}
-async function streamBatch(slice){let r;try{r=await fetch(API+'?action=score_stream',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,icp:icp(),enrich:$('enrich').checked,rows:slice})})}catch(e){throw new Error(NET)}if(!r.ok||!r.body){const d=await r.json().catch(()=>({}));throw new Error(d.error||('HTTP '+r.status))}const rd=r.body.getReader();const dec=new TextDecoder();let buf='';let out=null;while(true){const{value,done:fin}=await rd.read();if(fin)break;buf+=dec.decode(value,{stream:true});let nl;while((nl=buf.indexOf('\n'))>=0){const line=buf.slice(0,nl).trim();buf=buf.slice(nl+1);if(!line)continue;let ev;try{ev=JSON.parse(line)}catch(e){continue}handle(ev);if(ev.type==='done')out=ev;if(ev.type==='error')throw new Error(ev.error||'stream error')}}if(!out)throw new Error('The run ended early. Try again.');return out}
-function handle(ev){switch(ev.type){case 'start':wireRow(ev.i,ev.name);wireSet(ev.i,$('enrich').checked?'looking up profile':'reading row');setPet('think','Reading profiles...');break;case 'signals':wireSet(ev.i,ev.enriched?(ev.posts?ev.posts+' recent posts, asking Jev':'profile found, asking Jev'):((ev.note||'no profile')+', asking Jev'));setPet('think','Asking Jev...');break;case 'lead':{const r=ev.result;const cls=tierCls(r.tier);wireSet(r._i,r.top_signal||'',cls,r.score,r.tier);bumpTally(r.tier);results.push(r);done++;$('p-done').textContent=done;$('prog').style.width=Math.round(100*done/list.length)+'%';renderRow(r);break}case 'openers_start':setPet('think','Writing first lines for '+ev.count+' leads...');$('run-msg').textContent='Writing first lines for '+ev.count+' leads';break;case 'opener':{const r=results.find(x=>x._i===ev.i);if(r){r.opener=ev.opener;const td=document.getElementById('op'+ev.i);if(td)td.textContent=ev.opener}break}case 'done':costRun+=ev.cost||0;jevRun+=ev.jev_cost||0;model=ev.model||model;$('p-cost').textContent='$'+(costRun+jevRun).toFixed(3);$('run-msg').textContent=ev.llm_error?'Note: '+ev.llm_error:'';break}}
-async function scoreRange(from,to){const B=16;for(let i=from;i<to&&!stopped;i+=B){const slice=list.slice(i,Math.min(i+B,to));try{await streamBatch(slice)}catch(e){$('run-msg').textContent='Stopped: '+e.message;stopped=true;break}}}
-async function startRun(){if(!token){$('status').textContent='Sign in first (top right).';return}if(running)return;list=mapped();results=[];done=0;costRun=0;jevRun=0;stopped=false;running=true;Object.keys(tally).forEach(k=>tally[k]=0);['n1','n2','n3','n4'].forEach(id=>$(id).textContent='0');$('wire').innerHTML='';$('tbl').querySelector('tbody').innerHTML='';$('out').classList.add('hide');$('decide').classList.add('hide');$('p-total').textContent=list.length;$('p-done').textContent='0';$('prog').style.width='0%';$('run-msg').textContent='';document.body.classList.add('running');stage('stage-run');t0=Date.now();timer=setInterval(tickClock,1000);const n=Math.min(firstBatch,list.length);const s0=Date.now();await scoreRange(0,n);const secs=(Date.now()-s0)/1000;running=false;clearInterval(timer);tickClock();document.body.classList.remove('running');refreshUsage().catch(()=>{});$('p-count').innerHTML='<b>'+results.length+'</b> ranked';$('p-model').textContent=model;$('out').classList.remove('hide');if(stopped)return;if(list.length>n){const left=list.length-n;const rate=(costRun+jevRun)/Math.max(1,done);$('c-left').textContent=left;$('c-rate').textContent='$'+rate.toFixed(4);$('c-est').textContent='$'+(rate*left).toFixed(2);$('c-min').textContent=Math.max(1,Math.round(secs/Math.max(1,done)*left/60));$('decide').classList.remove('hide');$('p-left').innerHTML='First <b>'+done+'</b> of <b>'+list.length+'</b> done';setPet('idle',left+' rows left. Your call.')}else{$('p-left').innerHTML='Done, <b>'+done+'</b> ranked';setPet('idle','Done. Top of the call sheet is your list.')}}
-$('run').addEventListener('click',startRun);
-$('c-go').addEventListener('click',async()=>{$('decide').classList.add('hide');running=true;document.body.classList.add('running');t0=Date.now()-(Date.now()-t0);timer=setInterval(tickClock,1000);setPet('think','Scoring the rest...');await scoreRange(done,list.length);running=false;clearInterval(timer);document.body.classList.remove('running');refreshUsage().catch(()=>{});$('p-count').innerHTML='<b>'+results.length+'</b> ranked';$('p-model').textContent=model;if(!stopped){$('p-left').innerHTML='Done, <b>'+done+'</b> ranked';setPet('idle','All done.')}});
-$('c-stop').addEventListener('click',()=>{$('decide').classList.add('hide');$('p-left').innerHTML='Stopped after <b>'+done+'</b> rows';setPet('idle','Stopped. The call sheet below is final for those rows.')});
-
-// ---------- Call sheet ----------
-function rowHtml(r,i){return '<td class="d">'+i+'</td><td class="score">'+r.score+'</td><td><span class="chip '+tierCls(r.tier)+'">'+esc(r.tier)+'</span></td><td><b>'+esc(r.name)+'</b><br><span class="m">'+esc(r.enriched_title||r.title)+(r.enriched_company||r.company?' at '+esc(r.enriched_company||r.company):'')+'</span></td><td>'+esc(r.top_signal)+'</td><td>'+esc(r.reason)+(r.notes?'<br><span class="d">'+esc(r.notes)+'</span>':'')+'</td><td id="op'+r._i+'">'+esc(r.opener)+'</td><td>'+(r.linkedin?'<a href="'+esc(r.linkedin)+'" target="_blank" rel="noopener">LinkedIn</a>':'')+(r.email?'<br><span class="d">'+esc(r.email)+'</span>':'')+'</td>'}
-function renderRow(r){const tb=$('tbl').querySelector('tbody');const tr=document.createElement('tr');tr.className='new';tr.dataset.score=r.score;tr.innerHTML=rowHtml(r,0);const kids=[...tb.children];const before=kids.find(k=>Number(k.dataset.score)<r.score);tb.insertBefore(tr,before||null);[...tb.children].forEach((k,i)=>k.firstElementChild.textContent=i+1);if($('out').classList.contains('hide')&&results.length===1){$('out').classList.remove('hide')}}
-function renderAll(){results.sort((a,b)=>b.score-a.score);$('tbl').querySelector('tbody').innerHTML=results.map((r,i)=>'<tr data-score="'+r.score+'">'+rowHtml(r,i+1)+'</tr>').join('');$('out').classList.remove('hide')}
-$('dl').addEventListener('click',()=>{const rs=[...results].sort((a,b)=>b.score-a.score);const cols=['score','tier','name','title','enriched_title','company','enriched_company','domain','email','linkedin','top_signal','reason','opener','role_start','recent_posts','notes'];const csv=[cols.join(',')].concat(rs.map(r=>cols.map(c=>'"'+String(r[c]??'').replace(/"/g,'""')+'"').join(','))).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=($('listname').value||'scored')+'-scored.csv';a.click()});
-$('share').addEventListener('click',async()=>{try{const d=await api('save',{list_name:$('listname').value,icp:icp(),results,cost:costRun,jev_cost:jevRun});const u=location.origin+location.pathname+'?run='+d.id;$('sharelink').innerHTML='Saved: <a href="'+u+'">'+u+'</a>'}catch(e){$('sharelink').textContent='Save failed: '+e.message}});
-(async()=>{const id=new URLSearchParams(location.search).get('run');if(!id)return;const r=await fetch(API+'?run='+id);const d=await r.json();if(d.results){results=d.results;costRun=Number(d.treg_cost_usd||0);jevRun=Number(d.jev_cost_usd||0);model='saved run by '+(d.owner||'unknown');$('listname').value=d.list_name||'';$('p-count').innerHTML='<b>'+results.length+'</b> ranked';$('p-model').textContent=model+', '+new Date(d.created_at).toLocaleDateString();renderAll();$('out').scrollIntoView()}})();
-</script>
+<script type="module" src="lead-scorer.js"></script>
 </body>
 </html>

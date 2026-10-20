@@ -1,0 +1,13 @@
+Full Name,Email,Title,Company,Domain,LinkedIn,Notes
+Fixture Lead One,lead.one@example.com,VP Operations,Fixture Labs,fixturelabs.example,https://www.linkedin.example/in/lead-one,"Said ""call after demo"", =check notes"
+Fixture Lead Two,lead.two@example.com,CTO,Sample Systems,sample-systems.example,,+follow up @billing
+Fixture Lead Three,,Head of Data,Example Co,example.com,,"=HYPERLINK(""http://evil.example"",""click"")"
+Fixture Lead Four,four@example.com,Analyst,Fourth Fixtures,fourth.example,-,plain row four
+Fixture Lead Five,five@example.com,Director of Sales,Fifth Fixtures,fifth.example,,row five
+Fixture Lead Six,six@example.com,Head of Growth,Sixth Fixtures,sixth.example,,row six
+Fixture Lead Seven,seven@example.com,VP Engineering,Seventh Fixtures,seventh.example,,row seven
+Fixture Lead Eight,eight@example.com,Chief of Staff,Eighth Fixtures,eighth.example,,row eight
+Fixture Lead Nine,nine@example.com,Product Lead,Ninth Fixtures,ninth.example,,row nine
+Fixture Lead Ten,ten@example.com,Ops Manager,Tenth Fixtures,tenth.example,,row ten
+Fixture Lead Eleven,eleven@example.com,Data Lead,Eleventh Fixtures,eleventh.example,,row eleven
+Fixture Lead Twelve,twelve@example.com,CTO,Twelfth Fixtures,twelfth.example,,row twelve

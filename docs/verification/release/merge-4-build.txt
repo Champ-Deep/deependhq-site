@@ -1,0 +1,57 @@
+
+> deependhq-site@1.0.0 build
+> node scripts/build-data.mjs && node scripts/prerender.mjs && node scripts/build-islands.mjs
+
+--- guard ---
+scanned 2388 published strings across 132 journey entries
+denylist: 0 names, 0 client patterns, 2 phrases
+naming denylist: clean
+sensitive disclosure: clean
+
+GUARD PASSED
+cross-links: 5/12 companies have journey, 16 posts linked
+derived: stale=false (1 weekdays), stack 52 items, 4 active in 30d, streak 89
+feed.xml: 18 items · sitemap.xml: 38 urls
+llms.txt: 75 lines · llms-full.txt: 2096 lines
+built data.js: day 354, 132 journey entries, 18 posts
+prerender index.html: 134920 bytes into #root
+prerender pillars.html: 26887 bytes into #root
+prerender now.html: 26146 bytes into #root
+prerender privacy.html: 14708 bytes into #root
+prerender journey.html: 24996 bytes into #root
+prerender toolkit.html: 49549 bytes into #root
+prerender writing.html: 23081 bytes into #root
+prerender post/week-48-the-receipts-arc/index.html: 27925 bytes into #root
+prerender post/week-47-the-decision-debt-arc/index.html: 27194 bytes into #root
+prerender post/week-46-the-empty-room-arc/index.html: 28725 bytes into #root
+prerender post/week-45-the-wall-we-named/index.html: 27031 bytes into #root
+prerender post/week-44-the-discipline-arc/index.html: 25290 bytes into #root
+prerender post/week-43-five-systems-five-days/index.html: 26676 bytes into #root
+prerender post/week-38-the-signals-were-everywhere/index.html: 27141 bytes into #root
+prerender post/week-37-the-calendar-was-full/index.html: 27507 bytes into #root
+prerender post/week-35-three-calls-one-friday/index.html: 27634 bytes into #root
+prerender post/week-34-the-side-door/index.html: 28157 bytes into #root
+prerender post/week-33-the-quarter-turns/index.html: 26727 bytes into #root
+prerender post/week-32-the-build-reflex/index.html: 28140 bytes into #root
+prerender post/week-31-the-proof-arc/index.html: 26789 bytes into #root
+prerender post/week-30-the-enterprise-arc/index.html: 26760 bytes into #root
+prerender post/week-29-the-reach-arc/index.html: 26480 bytes into #root
+prerender post/week-28-four-sales-teams/index.html: 25578 bytes into #root
+prerender post/week-27-data-is-not-a-product/index.html: 26266 bytes into #root
+prerender post/week-36-the-doctor-said-yes/index.html: 30504 bytes into #root
+prerender company/champions-accelerator/index.html: 16543 bytes into #root
+prerender company/champions-infometrics/index.html: 8216 bytes into #root
+prerender company/champions-club/index.html: 8990 bytes into #root
+prerender company/lake-b2b/index.html: 15314 bytes into #root
+prerender company/span-global-services/index.html: 8220 bytes into #root
+prerender company/ampliz/index.html: 8168 bytes into #root
+prerender company/ip-momentum/index.html: 8180 bytes into #root
+prerender company/cirralogix/index.html: 10173 bytes into #root
+prerender company/recruit-champ/index.html: 8389 bytes into #root
+prerender company/infratech/index.html: 9993 bytes into #root
+prerender company/champ-fit/index.html: 8164 bytes into #root
+prerender company/health-fit/index.html: 8173 bytes into #root
+prerender field-notes.html: 20196 bytes into #root
+
+prerender: 38/10 pages carry content without JavaScript.
+build-islands: home-islands.js 243844 bytes, 3 registry checks ok

@@ -23,3 +23,15 @@ redesign-*/
 .next/
 out/
 dist/
+
+# Toolkit server schema, operational notes and tests are not public assets.
+docs/
+migrations/
+scripts/
+tests/
+.env*
+.dev.vars*
+wrangler*.jsonc
+wrangler*.toml
+package.json
+.hermes-tmp*

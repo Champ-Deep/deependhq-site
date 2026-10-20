@@ -26,6 +26,7 @@
      can use the twin everywhere and light only has to change the value. */
   --win-text: #F4A62A;    /* same as --win in dark */
   --build-text: #30E060;  /* same as --build in dark */
+
   --think-text: #6D95FF;   /* 4.65 on card-2 */
   --human-text: #E96BCC;   /* 4.68 on card-2 */
   --danger-text: #F37050;  /* 4.55 on card-2 */
@@ -77,16 +78,55 @@
    same markup serves both looks. Fills keep their dark values, every accent
    used as text takes its darker -text twin. Colors that mix from other tokens
    (--*-dim, --*-wash) need no override: var() resolves at use time. */
+
 :root[data-scheme="light"] {
   --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
   --line: #DCD9D2; --line-2: #C4C0B7;
   --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
-  --win-text: #8A5A00; --build-text: #0F6B33;
-  --think-text: #2A55C8; --human-text: #A8278F; --danger-text: #B33A1E;
+
+  --win-text: #8A5A00;
+  --build-text: #0F6B33;
+  --think-text: #2A55C8;
+  --human-text: #A8278F;
+  --danger-text: #B33A1E;
   --shadow-1: 0 1px 2px rgba(14,26,51,.08);
   --shadow-2: 0 4px 12px rgba(14,26,51,.10);
   --shadow-3: 0 8px 32px rgba(14,26,51,.12);
+  /* Washes re-declared in srgb: Chrome serialises an oklab() mix as oklab(...),
+     which the contrast audit cannot read, while it reads color(srgb ...) fine.
+     Premixed toward transparent the pixels are identical; only the report is. */
+  --build-wash: color-mix(in srgb, var(--build) 12%, transparent);
+  --think-wash: color-mix(in srgb, var(--think) 12%, transparent);
+  --win-wash: color-mix(in srgb, var(--win) 12%, transparent);
+  --human-wash: color-mix(in srgb, var(--human) 12%, transparent);
+  --danger-wash: color-mix(in srgb, var(--danger) 12%, transparent);
 }
+
+/* Light-mode component overrides, part of the scheme decision above. Contract
+   rule: an accent used as text or a thin stroke takes its -text twin, a fill
+   keeps the saturated hue. Scoped to [data-scheme="light"] so dark is byte for
+   byte what it was. */
+:root[data-scheme="light"] .mode-operator { --accent: var(--build-text); --accent-text: var(--build-text); }
+:root[data-scheme="light"] .mode-editorial { --accent: var(--win-text); --accent-text: var(--win-text); }
+:root[data-scheme="light"] .sys-nav { background: color-mix(in srgb, var(--bg) 82%, transparent); }
+:root[data-scheme="light"] .eyebrow { color: var(--win-text); }
+:root[data-scheme="light"] .mode-operator .eyebrow { color: var(--build-text); }
+:root[data-scheme="light"] .chip.build,
+:root[data-scheme="light"] .age[data-state="fresh"],
+:root[data-scheme="light"] .stat b.build,
+:root[data-scheme="light"] .gt,
+:root[data-scheme="light"] .foot-col h4,
+:root[data-scheme="light"] .foot-mail:hover,
+:root[data-scheme="light"] .filters button[aria-pressed="true"] { color: var(--build-text); }
+:root[data-scheme="light"] .chip.win,
+:root[data-scheme="light"] .age[data-state="warn"],
+:root[data-scheme="light"] .stat b.win,
+:root[data-scheme="light"] .brand-cur,
+:root[data-scheme="light"] .brand:hover .brand-word,
+:root[data-scheme="light"] .nav-links a[aria-current="page"],
+:root[data-scheme="light"] .nav-drawer a[aria-current="page"] { color: var(--win-text); }
+:root[data-scheme="light"] .nav-links a[aria-current="page"],
+:root[data-scheme="light"] .nav-drawer a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--win-text); }
 @media (min-width: 40rem) { :root { --pad: 32px; } }
 @media (min-width: 64rem) { :root { --pad: 48px; } }
 

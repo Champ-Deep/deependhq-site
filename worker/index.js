@@ -23,6 +23,8 @@
 // Related: WORKERS.md documents the old /api/status shape, which no longer ships.
 
 const SCHEDULER = 'https://scheduler.zoom.us/sreedeep';
+import { handleToolkit } from './toolkit.js';
+
 const SITE = 'https://deependhq.com';
 const DECIDE_MODEL = 'typesafe/jev-1.13';
 const DECIDE_TIMEOUT_MS = 2000;
@@ -191,6 +193,27 @@ const CSP = [
   "base-uri 'self'",
   "form-action 'self'",
 ].join('; ');
+
+// Clerk hosts are deployment configuration, never visitor-supplied CSP sources.
+export function toolkitCsp(env) {
+  let clerk = '';
+  try {
+    const raw = env.CLERK_JS_URL || '';
+    const url = new URL(raw);
+    if (url.protocol === 'https:' && !url.username && !url.password && !/[\s;]/.test(raw)) clerk = url.origin;
+  } catch {}
+  return [
+    "default-src 'self'",
+    `script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com ${clerk} https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com`,
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' https://fonts.gstatic.com data:",
+    "img-src 'self' data: blob: https://img.clerk.com",
+    `connect-src 'self' ${clerk} https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com`,
+    "frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com",
+    "worker-src 'self' blob:",
+    "frame-ancestors 'none'", "base-uri 'self'", "form-action 'self'",
+  ].join('; ');
+}
 
 const SECURITY_HEADERS = {
   'content-security-policy': CSP,
@@ -528,8 +551,10 @@ export default {
       return new Response(null, { status: 301, headers: { location: fallback, 'cache-control': 'public, max-age=3600' } });
     }
 
+    if (url.pathname === '/api/toolkit' || url.pathname.startsWith('/api/toolkit/')) return handleToolkit(request, env);
     if (url.pathname === '/api/collect') return handleCollect(request, env, ctx);
-    if (url.pathname === '/api/decide') return handleDecide(request, env);
+    // Retire the unused, unmetered demo. Paid work must use the shared ledger.
+    if (url.pathname === '/api/decide') return json({error:'gone',message:'Use the signed-in toolkit at /lead-scorer.'},410);
     if (url.pathname === '/showcase') return handleShowcase(request, env, url);
 
     // Everything else: assets, or HTML with hints stamped on <html>.
@@ -579,6 +604,11 @@ export default {
     // want to be authoritative.
     const headers = new Headers(transformed.headers);
     for (const [k, v] of Object.entries(SECURITY_HEADERS)) headers.set(k, v);
+    if (/^\/(?:toolkit|lead-scorer|account)(?:\.html)?\/?$/.test(url.pathname)) {
+      headers.set('content-security-policy', toolkitCsp(env));
+      headers.set('cache-control', 'no-store');
+      headers.set('referrer-policy', 'no-referrer');
+    }
     return new Response(transformed.body, { status: transformed.status, headers });
   },
 };
