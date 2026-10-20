@@ -559,3 +559,61 @@ a.wx-door:hover{border-color:var(--line-2);background:var(--card)}
 /* phones: seven narrow day cells, the colour bar carries the kind */
 @media (max-width:40rem){.wx-w-week{padding:var(--s4) var(--s3)}.wx-w-touch a{min-height:44px}.wx-wk-row{gap:2px}.wx-wk{min-height:64px;padding:10px 0 6px;justify-items:center;text-align:center}.wx-wk b{font-size:.9rem;letter-spacing:-.03em}.wx-wk span{font-size:10px;letter-spacing:0}.wx-wk em{display:none}}
 @media (max-width:40rem){.wx-mail{display:inline-flex;align-items:center;min-height:44px}}
+
+/* P3: supplied widget grid port and source-derived metric rows. */
+.wg-recent{margin-top:var(--s10)}
+.wx-metric-log .wx-eyebrow-op,.wx-metric-log .wx-tlink{color:var(--build-text,var(--build))}
+.wx-metric-writing .wx-tlink,.wx-metric-writing .wx-latest,.wx-metric-writing .wx-wask-k{color:var(--win-text,var(--win))}
+.wx-metric-log :focus-visible,.wx-metric-writing :focus-visible{outline:2px solid var(--win-text,var(--win));outline-offset:2px}
+.wg-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:var(--s3);margin-bottom:var(--s5)}
+.wg-heading h3{font:800 var(--text-h2)/1.2 var(--font-ui);margin:0}
+.wg-heading p,.wg-tools p{font:400 var(--text-sm)/1.5 var(--font-ui);color:var(--muted);margin:0;max-width:65ch}
+.wg-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s3);min-height:44px;margin-bottom:var(--s4)}
+.wg-reset{min-height:44px;padding:var(--s2) var(--s4);background:var(--card);color:var(--text);border:1px solid var(--line-2);border-radius:var(--r-md);font:600 var(--text-sm) var(--font-ui);cursor:pointer}
+.wg-grid{display:grid;min-width:0}
+.wg-widget{position:relative;min-width:0;touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;border-radius:var(--r-lg)}
+.wg-held{cursor:grabbing;outline:2px solid var(--win-text)}
+.wg-card{display:flex;flex-direction:column;gap:var(--s2);height:100%;min-width:0;box-sizing:border-box;padding:var(--s4);border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--card);color:var(--text)}
+.wg-card p{margin:0}
+.wg-landed{outline:2px solid var(--win-text);outline-offset:-2px}
+.wg-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--s1) var(--s2)}
+.wg-top b{font:800 clamp(1.2rem,2.4vw,1.875rem)/1.1 var(--font-ui);color:var(--text)}
+.wg-widget[data-size=lg] .wg-top b{font-size:clamp(3rem,6vw,6rem)}
+.wg-widget[data-size=lg] .wg-excerpt{font-size:1.25rem}
+.wg-top span{font:600 var(--text-sm)/1.4 var(--font-ui);color:var(--muted)}
+.wg-date{font:400 var(--text-sm)/1.5 var(--font-ui);color:var(--dim)}
+.wg-excerpt{font:400 1rem/1.5 var(--font-ui);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;overflow-wrap:anywhere}
+.wg-arcs{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s2);list-style:none;padding:0;margin:0;font:500 .75rem/1.4 var(--font-ui);color:var(--muted)}
+.wg-arcs li{overflow-wrap:anywhere}
+.wg-arcs li+li::before{content:'· ';color:var(--dim)}
+.wg-card a.wg-entry-link,.wg-whole{display:inline-flex;align-items:center;min-height:44px;color:var(--win-text,var(--win));font:600 var(--text-sm)/1.5 var(--font-ui);text-decoration:underline;text-underline-offset:4px}
+.wg-entry-link{margin-top:auto}
+.wg-whole{margin-top:var(--s4)}
+.wg-fallback{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3);list-style:none;padding:0;margin:0}
+.wg-fallback>.wg-card{min-height:300px}
+.wg-fallback>.wg-card:nth-child(n+7){display:none}
+.wg-sr{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wg-mobile-list{list-style:none;padding:0;margin:0 0 var(--s5)}
+.wg-mobile-list a{display:grid;grid-template-columns:5rem 4rem minmax(0,1fr);gap:var(--s2);align-items:center;min-height:44px;border-bottom:1px solid var(--line);color:var(--text);font:500 var(--text-sm)/1.5 var(--font-ui)}
+.wg-mobile-list a span{color:var(--muted)}
+.wg-log-overview .wx-heat{display:none}
+.wx-metric-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3);margin:0 0 var(--s6)}
+.wx-metric-card{display:flex;flex-direction:column;gap:var(--s3);padding:var(--s5);border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card);color:var(--text)}
+.wx-metric-card dt{font:500 var(--text-sm)/1.5 var(--font-ui);color:var(--muted)}
+.wx-metric-card dd{margin:0;font:800 clamp(1.875rem,4vw,3rem)/1 var(--font-ui);font-variant-numeric:tabular-nums}
+.wx-metric-arcs{min-width:0}
+.wx-metric-arcs h3{font:700 var(--text-sm)/1.5 var(--font-ui);margin:0 0 var(--s2)}
+.wx-metric-arcs p{font:400 var(--text-sm)/1.5 var(--font-ui);color:var(--muted);margin:var(--s2) 0}
+.wx-metric-arcs ul{display:grid;gap:var(--s3);list-style:none;padding:0;margin:var(--s4) 0}
+.wx-metric-arcs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s1) var(--s3);font:500 var(--text-sm)/1.5 var(--font-ui);color:var(--text)}
+.wx-metric-track{display:block;grid-column:1/-1;height:6px;background:var(--line-2);border-radius:var(--r-sm);overflow:hidden}
+.wx-metric-track i{display:block;height:100%;background:var(--win-text,var(--win))}
+.wx-metric-week.wx-wk-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s2)}
+.wx-metric-week .wx-wk{height:100%;min-height:124px;padding:var(--s3);justify-items:start;text-align:left;gap:var(--s1);transition:none}
+.wx-metric-week .wx-wk::before{display:none}
+.wx-metric-week .wx-wk em{display:block;color:var(--muted);font:500 var(--text-sm)/1.3 var(--font-ui)}
+.wx-metric-week .wx-wk small{font:400 var(--text-sm)/1.4 var(--font-ui);color:var(--muted);overflow-wrap:anywhere}
+.wx-metric-week .wx-wk:hover{translate:none}
+@media(min-width:40rem){.wg-fallback{grid-template-columns:repeat(3,minmax(0,1fr))}.wg-fallback>.wg-card:nth-child(n+7){display:flex}.wx-metric-row{grid-template-columns:repeat(4,minmax(0,1fr))}.wg-mobile-list{display:none}.wx-metric-week.wx-wk-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:64rem){.wg-fallback{grid-template-columns:repeat(4,minmax(0,1fr))}.wg-log-overview .wx-heat{display:grid}}
+@media(prefers-reduced-motion:reduce){.wg-widget{cursor:default}.wg-card{transition:none}}
