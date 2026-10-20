@@ -13,7 +13,7 @@
 //      strips the C2PA <metadata> block (about 7.7 KB each) and keeps viewBox
 //      and <title>, which logos and accessible marks need.
 //   2. favicon.svg at the site root.
-//   3. brand/icons.svg: the eight icons as <symbol id="i-NAME"> in one sprite.
+//   3. brand/icons.svg: the icon set as <symbol id="i-NAME"> in one sprite.
 //      Fills are rewritten so one sprite works on both grounds: navy becomes
 //      currentColor, cream cutouts become var(--icon-cut), marigold becomes
 //      var(--icon-accent). Custom properties inherit into the <use> tree.
@@ -66,9 +66,10 @@ const COPY = [
   ['favicon.svg', 'favicon.svg'],
 ];
 // 'gi' replaced the belt knot on 7 Oct 2026 (it read as a bow). Its source is
-// in scripts/brand/icons/, beside any other icon drawn after the kit; the
-// vault masters are never edited.
-const ICONS = ['diya', 'moon', 'prompt', 'horseshoe', 'gi', 'crown', 'pot', 'book'];
+// in scripts/brand/icons/, beside the gamepad and music icons drawn for the
+// off the clock tiles; 'pot' left with the sambar tile. The vault masters are
+// never edited.
+const ICONS = ['diya', 'moon', 'prompt', 'horseshoe', 'gi', 'crown', 'book', 'gamepad', 'music'];
 const LOCAL_ICONS = join(here, 'icons');
 const iconSrc = (n) => (existsSync(join(LOCAL_ICONS, `icon-${n}.svg`)) ? join(LOCAL_ICONS, `icon-${n}.svg`) : join(A, `icon-${n}.svg`));
 

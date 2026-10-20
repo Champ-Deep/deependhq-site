@@ -341,6 +341,7 @@ const MERGED = new Set(['ChampUTM']);
 
 const Stack = () => {
   const S = DH.stack_now || { items: [], counts: {} };
+  const T = DH.things_to_try || [];
   const byName = new Map(S.items.map((i) => [i.name, i]));
   const featured = FEATURED;
   const pinned = new Set(FEATURED.map((f) => f.name));
@@ -370,11 +371,29 @@ const Stack = () => {
   return (
     <section className="wx-stack wx-sec mode-operator" id="stack" aria-labelledby="wx-stack-h">
       <header className="wx-sec-head wx-split">
-        <h2 className="wx-op-h wx-ink" id="wx-stack-h">What I build with.</h2>
-        <p className="wx-lead">{S.items.length} tools. A tool only earns a date once it shows up in a day's entry.</p>
-        <a className="wx-tlink" href="toolkit.html">the full stack →</a>
+        <h2 className="wx-op-h wx-ink" id="wx-stack-h">Things to try.</h2>
+        <p className="wx-lead">Three of mine you can put your hands on right now. Take one for a spin and tell me where it broke.</p>
+        <a className="wx-tlink" href="toolkit.html">open the toolkit →</a>
       </header>
-      <div className="wx-stack-grid">
+      <ul className="otc-try" aria-label="Things to try">
+        {T.map((t) => {
+          const ext = /^https?:/.test(t.href || '');
+          return (
+            <li key={t.name} className="otc-try-card">
+              <p className="otc-try-name">{t.name}{t.label && <span className="otc-try-tag">{t.label}</span>}</p>
+              <p className="otc-try-result">{t.result}</p>
+              <a className="otc-try-go" href={t.href} {...(ext ? EXT : {})} {...(t.open_launcher ? { 'data-otc-ask': '' } : {})}>{t.cta} →</a>
+            </li>
+          );
+        })}
+      </ul>
+      {/* The launcher opener lives here, not in home.js: this lane does not own
+          that file. Every one of these anchors keeps a real href, so with JS off
+          the card still goes somewhere honest instead of doing nothing. */}
+      <script dangerouslySetInnerHTML={{ __html: `(function(){document.addEventListener('click',function(e){var a=e.target.closest('[data-otc-ask],[data-otc-play]');if(!a)return;if(a.hasAttribute('data-otc-ask')){if(!window.deepAssistant)return;e.preventDefault();window.deepAssistant.open();return;}e.preventDefault();var li=a.parentNode,f=document.createElement('iframe');f.className='otc-sp-frame';f.title='Spotify playlist embed';f.loading='lazy';f.src='https://open.spotify.com/embed/playlist/'+a.getAttribute('data-otc-play')+'?theme=0';f.setAttribute('allow','encrypted-media');li.classList.add('is-playing');li.replaceChild(f,a);});})();` }} />
+      <details className="otc-fs">
+        <summary><b>the full stack</b><span>{S.items.length} tools. A tool only earns a date once it shows up in a day's entry.</span></summary>
+        <div className="wx-stack-grid">
         <div className="wx-index-wrap">
           <div className="wx-index">
             {rows.map((r) => {
@@ -398,7 +417,8 @@ const Stack = () => {
           <div><h3><span>trying</span><span>{S.counts.trying || 0}</span></h3><p className="wx-side-run">{list('trying')}</p></div>
           <div><h3><span>watching</span><span>{S.counts.watching || 0}</span></h3><p className="wx-side-run">{list('watching')}</p></div>
         </aside>
-      </div>
+        </div>
+      </details>
     </section>
   );
 };
@@ -527,13 +547,19 @@ const Writing = () => {
 
 // ---------------------------------------------------------------- 00:30 off the clock
 // Written from off_hours in content.json. Rewrite this line when those change.
-const HUMAN_LINE = 'Sundays at sunrise, the gray mare at Bangalore Turf Club. Jiu-jitsu two mornings a week, purple belt, still terrible at takedowns. One more turn of Civ at 2 AM. 47 attempts at the perfect sambar, 0 finals. Caro, Iyer and Naipaul for the long flights.';
-// One icon per thing in the line above, each with its own label.
-const HUMAN_ICONS = [
+const HUMAN_LINE = 'Sundays at sunrise, the gray mare at Bangalore Turf Club. Jiu-jitsu two mornings a week, purple belt, still terrible at takedowns. One more turn of Civ at 2 AM. Caro, Iyer and Naipaul for the long flights.';
+// Six tiles: one per thing in the line above, the listening card fed by
+// off_the_clock.spotify_playlist, and the current game slot. Both off_the_clock
+// keys are empty placeholders today, and an empty key renders the honest empty
+// state ("playlist coming", "current game: to be named") rather than a fake.
+const OTC = DH.off_the_clock || {};
+const plId = String(OTC.spotify_playlist || '').trim().replace(/^.*playlist\//, '').replace(/[?#].*$/, '').replace(/\/+$/, '').trim();
+const game = String(OTC.current_game || '').trim();
+const HUMAN_TILES = [
   { id: 'horseshoe', label: 'sunday rides' },
   { id: 'gi', label: 'jiu-jitsu' },
-  { id: 'crown', label: 'one more turn' },
-  { id: 'pot', label: 'sambar, attempt 47' },
+  { id: 'gamepad', label: 'civ and crusader kings', note: 'one more turn at 2 AM' },
+  { id: 'music', label: 'listening', spotify: true },
   { id: 'book', label: 'long-flight reading' },
 ];
 const Human = () => {
@@ -547,8 +573,30 @@ const Human = () => {
           <p className="wx-human-big" style={{ '--step': `${step}%` }}>
             {words.map((w, i) => <React.Fragment key={i}><span className="wx-w" style={{ '--i': i }}>{w}</span>{' '}</React.Fragment>)}
           </p>
-          <ul className="wx-human-ico" aria-label="Off the clock, in five objects">
-            {HUMAN_ICONS.map((h) => <li key={h.id}><Ico id={h.id} /><span>{h.label}</span></li>)}
+          <ul className="wx-human-ico otc-tiles" aria-label="Off the clock, in six objects">
+            {HUMAN_TILES.map((h) => (h.spotify
+              ? (
+                <li key={h.id} className="otc-tile otc-spotify">
+                  <span className="otc-sp-k">{h.label}</span>
+                  {plId
+                    ? <a className="otc-sp-cover" data-otc-play={plId} href={`https://open.spotify.com/playlist/${plId}`}>
+                        <Ico id={h.id} size={40} />
+                        <span className="otc-sp-go">tap to load the playlist</span>
+                      </a>
+                    : <span className="otc-sp-cover is-empty">
+                        <Ico id={h.id} size={40} />
+                        <span className="otc-sp-go">playlist coming</span>
+                      </span>}
+                </li>
+              )
+              : (
+                <li key={h.id} className="otc-tile">
+                  <Ico id={h.id} />
+                  <span>{h.label}</span>
+                  {h.note && <span className="otc-tile-note">{h.note}</span>}
+                </li>
+              )))}
+            <li className="otc-tile otc-tile-pending"><span>{game ? `current game: ${game}` : 'current game: to be named'}</span></li>
           </ul>
         </div>
         <div className="wx-human-side">

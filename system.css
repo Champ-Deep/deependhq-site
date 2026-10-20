@@ -937,3 +937,24 @@ a.rhythm-d.on:hover, a.rhythm-d.on:focus-visible { transform: scaleY(1.08); filt
 .v2 .lane h3 b { color: var(--text); font-variant-numeric: tabular-nums; }
 
 .doors:has(.door:only-child) .door { grid-column: 1 / -1; }
+
+/* ============================================================
+   Refresh contract 1: the light scheme. One block, every token a
+   component can read. Components never hard-code a hex, so this is
+   the only place a light value lives. Accent text uses the -text
+   twins: build green and Lamp both fail AA as small text on a light
+   ground, so fills keep the saturated hue and text takes the twin.
+   ============================================================ */
+:root[data-scheme="light"] {
+  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
+  --line: #DCD9D2; --line-2: #C4C0B7;
+  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
+  --win: #F4A62A; --win-text: #8A5A00;
+  --build: #30E060; --build-text: #0F6B33;
+  --think: #4A7BF7; --think-text: #2A55C8;
+  --human: #E052C0; --human-text: #A8278F;
+  --danger: #E05030; --danger-text: #B33A1E;
+  --shadow-1: 0 1px 2px rgba(14,26,51,.08);
+  --shadow-2: 0 4px 12px rgba(14,26,51,.10);
+  --shadow-3: 0 8px 32px rgba(14,26,51,.12);
+}
