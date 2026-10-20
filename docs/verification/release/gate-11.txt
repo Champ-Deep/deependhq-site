@@ -1,0 +1,48 @@
+ok 1 - migration creates 5 toolkit tables
+ok 2 - absent settings read as 0 (fail closed)
+ok 3 - no settings: reservation rejected
+ok 4 - diagnosis names disabled global cap
+ok 5 - reservation accepted within wallet
+ok 6 - run persisted with hold
+ok 7 - inconsistent ceil guard rejects
+ok 8 - wallet overdraw rejected
+ok 9 - diagnosis: insufficient_credits
+ok 10 - exact boundary accepted
+ok 11 - stale second reserve rejected atomically
+ok 12 - all 100 credits held, available is 0, nothing oversubscribed
+ok 13 - across two tool ids: exactly 2 succeed on 25 credits for 10-credit holds
+ok 14 - sum of holds <= granted
+ok 15 - cross-day hold counts against daily credit cap
+ok 16 - diagnosis: daily_credit_cap
+ok 17 - within daily cap accepted
+ok 18 - daily row cap rejects next row (2 today already)
+ok 19 - diagnosis: daily_row_cap
+ok 20 - override 5 rejects a 10-credit hold
+ok 21 - override 500 accepts
+ok 22 - disabled account rejected
+ok 23 - diagnosis: account_disabled
+ok 24 - global aggregate: 1000 today spent + 8000 cross-day held
+ok 25 - reserve exactly to global ceiling accepted
+ok 26 - one micro past global ceiling rejected
+ok 27 - diagnosis: global_cap
+ok 28 - global cap 0 disables all reservation
+ok 29 - app ceiling 250000 micro enforced in SQL
+ok 30 - 250000 micro accepted
+ok 31 - op reserved before result exists
+ok 32 - actual above per-call reserve kept unclamped
+ok 33 - call_id stored
+ok 34 - first settle applies
+ok 35 - second settle is a guarded no-op (status new only)
+ok 36 - post-settle wallet: 1000 - 61 used - 30 held
+ok 37 - first welcome grant applies
+ok 38 - duplicate welcome is a no-op
+ok 39 - trial pool 100 rejects second 60-credit grant
+ok 40 - raised pool lets the pending grant through
+ok 41 - aggregate welcome <= pool
+ok 42 - welcome 0 grants nothing
+ok 43 - paid grant applies once per period
+ok 44 - next paid period grants a fresh allowance
+ok 45 - total paid credits = 2 periods
+ok 46 - cross-day spend excluded from today aggregates
+
+toolkit-store-selftest: all 46 passed

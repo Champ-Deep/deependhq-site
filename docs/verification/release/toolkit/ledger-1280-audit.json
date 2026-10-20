@@ -1,0 +1,8 @@
+[
+  {
+    "severity": "INFO",
+    "rule": "three-card-row",
+    "message": "three structurally identical cards in a row: the default AI layout",
+    "where": "div.tiles \"MAXIMUM AUTHORIZED $0.0260 quoted ceiling fo\""
+  }
+]

@@ -80,7 +80,7 @@ if (indexHtml) {
   }
 
   const heroMatch = indexHtml.match(/data-dh-hero="hero_subline"[^>]*>([^<]+)</);
-  check('the hero element is present in the prerendered page', !!heroMatch, true);
+  check('the factual refresh hero is not editable', !!heroMatch, false);
   if (heroMatch) {
     check('hero control matches the real markup exactly',
       heroMatch[1].trim(), C.VARIANTS.hero_subline.control);
@@ -89,9 +89,9 @@ if (indexHtml) {
   // And the frozen notes must actually be frozen in the markup, not just
   // intended. The derived numbers are the thing most worth protecting.
   check('the day counter is frozen in the markup',
-    /class="wx-hx-note wx-hx-n2" data-dh-frozen/.test(indexHtml), true);
+    /data-day="\d+" data-dh-frozen/.test(indexHtml), true);
   check('the company count is frozen in the markup',
-    /class="wx-hx-note wx-hx-n4" data-dh-frozen/.test(indexHtml), true);
+    /class="wx-metric-row" data-dh-frozen/.test(indexHtml), true);
 
   // Every editable string must carry the SAME digits as its control, not zero
   // digits. The lede legitimately contains "2 AM", which is a fact about when
@@ -99,7 +99,7 @@ if (indexHtml) {
   // asserting is that the editable set introduces no NEW numbers, because that is
   // exactly how an optimizer would quietly change a count or a time.
   const editable = indexHtml.match(/data-dh-(hero|cta)="[a-z_]+"[^>]*>[^<]*</g) || [];
-  check('there are exactly two editable elements', editable.length, 2);
+  check('only the CTA remains editable after the refresh', editable.length, 1);
   for (const el of editable) {
     const text = el.replace(/^[^>]*>/, '').replace(/<$/, '');
     const field = el.match(/="([a-z_]+)"/)[1];

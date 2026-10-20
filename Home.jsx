@@ -73,7 +73,7 @@ const Hero = () => {
         <p className="wx-eyebrow-ed wx-hx-eye">group cmo, champions group</p>
         <h1 className="p4-hx-h" id="wx-hero-h">I lead B2B growth and build the systems behind it.</h1>
         <div className="p4-copy">
-          <p className="wx-hx-lede">Group CMO across twelve companies, CEO of Champions Accelerator. This site publishes itself every weekday from what actually happened.</p>
+          <p className="wx-hx-lede" data-dh-frozen="">Group CMO across twelve companies, CEO of Champions Accelerator. This site publishes itself every weekday from what actually happened.</p>
           <div className="p4-cta">
             {/* data-dh-cta: only the LABEL varies; the href is never rewritten. */}
             <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>Talk to Deep, 30 min</a>
@@ -94,7 +94,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="p4-foot">
-          <article className="wx-live wx-hx-live mode-operator" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day}>
+          <article className="wx-live wx-hx-live mode-operator" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day} data-dh-frozen="">
             <p className="wx-live-k">live from the log · <WxAge date={e.date} mode="log" /></p>
             <p className="wx-hx-live-t"><b>day {e.day}</b> <span>{fmtDate(e.date, true)}</span></p>
             <p className="wx-live-txt" data-compile="">{e.shipping_now}</p>
@@ -102,7 +102,7 @@ const Hero = () => {
           </article>
           {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
         </div>
-        <script src="home-islands.js" defer="" />
+
       </div>
       <div className="wx-hero-rule" aria-hidden="true" />
     </section>
@@ -254,7 +254,7 @@ const Log = () => {
         <p className="wx-lead">{st.entries} entries since {fmtDate(st.first_entry)}. {st.entries_30d} in the last 30 days. The gaps are real and they stay visible.</p>
         <a className="wx-tlink" href="journey.html">the whole log →</a>
       </header>
-      <dl className="wx-metric-row" aria-label={`Log metrics as of ${DH.built.slice(0, 10)}`}>
+      <dl className="wx-metric-row" data-dh-frozen="" aria-label={`Log metrics as of ${DH.built.slice(0, 10)}`}>
         {metrics.map(([label, value]) => <div className="wx-metric-card" key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
       </dl>
       <div className="wx-log-grid wg-log-overview">
@@ -386,10 +386,10 @@ const Stack = () => {
               );
               if (!r.url) return <div key={r.name} className="wx-ix">{inner}</div>;
               const ext = /^https?:/.test(r.url);
-              return <a key={r.name} className="wx-ix" href={r.url} {...(ext ? EXT : {})}>{inner}</a>;
+              return <a key={r.name} className="wx-ix" href={r.url} aria-label={r.name} {...(ext ? EXT : {})}>{inner}</a>;
             })}
           </div>
-          <a className="wx-tlink wx-ix-more" href="toolkit.html">{Math.max(0, builtTotal - shownBuilt)} more repos in the toolkit →</a>
+          <a className="wx-tlink wx-ix-more" href="toolkit.html" aria-label="More repos in the toolkit">{Math.max(0, builtTotal - shownBuilt)} more repos in the toolkit →</a>
         </div>
         <aside className="wx-side" aria-label="Tools in use">
           <div><h3><span>in daily use</span><span>{S.counts.using || using.length}</span></h3>

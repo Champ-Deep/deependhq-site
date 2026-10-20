@@ -1,0 +1,38 @@
+[
+  {
+    "width": 375,
+    "cards": 15,
+    "search": true,
+    "filters": true,
+    "disclosure": true,
+    "overflow": [],
+    "js_errors": []
+  },
+  {
+    "width": 768,
+    "cards": 15,
+    "search": true,
+    "filters": true,
+    "disclosure": true,
+    "overflow": [],
+    "js_errors": []
+  },
+  {
+    "width": 1280,
+    "cards": 15,
+    "search": true,
+    "filters": true,
+    "disclosure": true,
+    "overflow": [],
+    "js_errors": []
+  },
+  {
+    "width": 1600,
+    "cards": 15,
+    "search": true,
+    "filters": true,
+    "disclosure": true,
+    "overflow": [],
+    "js_errors": []
+  }
+]

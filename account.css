@@ -3,20 +3,12 @@
    here so the two tool pages stay independently loadable. */
 
 :root {
-  --bg: #0E1A33;
-  --surface: #15213A;
-  --card: #1C2841;
-  --card-2: #243048;
-  --line: #303C53;
-  --line-2: #434E64;
-  --text: #F4EBD9;
-  --muted: #A9ABA6;
-  --dim: #9098AA;
+
   --lamp: #F4A62A;
   --danger: #E05030;
   --danger-text: #F37050;
   /* text twin for the Lamp: as text or a thin stroke it darkens in light */
-  --win-text: var(--lamp);
+
   /* the Paper docket under the skip link and the primary button */
   --paper: #F4EBD9;
   --ink: #0E1A33;
@@ -46,9 +38,7 @@
    The Paper docket tokens above do not flip: cream stays cream and keeps ink,
    so only the page surfaces, text tiers and accent text twins change. */
 :root[data-scheme="light"] {
-  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
-  --line: #DCD9D2; --line-2: #C4C0B7;
-  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
+
   --win-text: #8A5A00;
   --danger-text: #B33A1E;
 }

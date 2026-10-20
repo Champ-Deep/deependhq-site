@@ -608,14 +608,13 @@ a.wx-door:hover{border-color:var(--line-2);background:var(--card)}
 .hwf-col h3{margin:0 0 var(--s2);font:600 var(--text-xs)/1.2 var(--font-mono);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--build-text)}
 @media (max-width:47.99rem){.hwf-col h3{font-size:9px;margin-bottom:var(--s1)}}
 .hwf-col ul{list-style:none;margin:0;padding:0;display:grid;gap:1px}
-.hwf-col li a{display:block;padding:3px 0;color:var(--muted);text-decoration:none;line-height:1.4;overflow-wrap:anywhere}
+.hwf-col li a{display:flex;align-items:center;min-height:44px;padding:3px 0;color:var(--muted);text-decoration:none;line-height:1.4;overflow-wrap:anywhere}
 .hwf-col li a:hover,.hwf-col li a:focus-visible{color:var(--text);text-decoration:underline;text-underline-offset:3px}
 /* the rule row sits over the wordmark, so it frosts the dots behind it */
 .hwf-rule{
   margin-top:auto;display:grid;gap:var(--s2);padding-top:var(--s3);
   border-top:1px solid var(--line-2);
-  background:color-mix(in oklab,var(--bg) 72%,transparent);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)
+  background:var(--bg)
 }
 @media (min-width:48rem){.hwf-rule{grid-template-columns:auto minmax(0,1fr);gap:var(--s4);align-items:start}}
 .hwf-rule-a{display:flex}
@@ -690,9 +689,9 @@ a.wx-door:hover{border-color:var(--line-2);background:var(--card)}
 .gfc-sheet--art .gfc-sheet-art[data-ready]{opacity:1}
 .gfc-sheet--art .gfc-sheet-head{
   position:absolute;left:0;right:0;bottom:0;border-top:0;color:var(--paper-2);
-  background:linear-gradient(to top,color-mix(in oklab,var(--ink) 88%,transparent),transparent)
+  background:var(--ink)
 }
-.gfc-sheet--art .gfc-sheet-meta{color:color-mix(in oklab,var(--paper-2) 75%,transparent)}
+.gfc-sheet--art .gfc-sheet-meta{color:var(--paper-2)}
 @media (prefers-reduced-motion:reduce){
   .gfc-root{opacity:1;transform:none;transition:none}
   .gfc-tilt,.gfc-front,.gfc-sheet-slot,.gfc-art,.gfc-sheet-art{transition:none}

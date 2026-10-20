@@ -5,7 +5,7 @@ import sys
 from playwright.sync_api import sync_playwright
 
 base=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:3174'
-out=pathlib.Path('/Users/deep/.hermes/cache/scratch/toolkit-user-ux')
+out=pathlib.Path(sys.argv[2] if len(sys.argv)>2 else '/Users/deep/.hermes/cache/scratch/toolkit-user-ux')
 out.mkdir(parents=True,exist_ok=True)
 reports=[]
 with sync_playwright() as p:
@@ -20,10 +20,10 @@ with sync_playwright() as p:
         assert section.get_by_role('link',name='Open Lead Scorer',exact=True).get_attribute('href')=='/lead-scorer'
         assert section.get_by_role('link',name='Explore Harbinger',exact=True).get_attribute('href')=='https://champharbinger.vercel.app'
         assert section.locator('.tk-home-feature').count()==2
-        section.locator('summary').click()
+        section.locator('.tk-home-scanner>summary').click()
         assert section.get_by_text('Internal Python scanner. Public release not verified.',exact=True).is_visible()
         assert section.get_by_text('Not a lead finder or a lead-scoring tool.',exact=True).is_visible()
-        section.locator('summary').click()
+        section.locator('.tk-home-scanner>summary').click()
         overflow=section.evaluate("""root=>[...root.querySelectorAll('*')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&(r.right>innerWidth+1||r.left<0)}).map(e=>e.className)""")
         assert not overflow,overflow
         if width in (375,1280):

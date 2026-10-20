@@ -53,9 +53,9 @@
     // number-agreement check treats the page as bespoke and declines to touch
     // it, which is the engine silently doing nothing.
     cta_label: {
-      control: 'book 30 minutes',
-      operator: 'book 30 minutes on your stack',
-      hot: 'book 30 minutes, pick a slot',
+      control: 'Talk to Deep, 30 min',
+      operator: 'Talk through your stack, 30 min',
+      hot: 'Pick a slot with Deep, 30 min',
     },
   };
 

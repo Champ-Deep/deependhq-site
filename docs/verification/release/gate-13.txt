@@ -1,0 +1,35 @@
+ok 1 - unsigned webhook -> 400
+ok 2 - bad signature -> 400, no grant
+ok 3 - wrong signing secret -> 400
+ok 4 - stale timestamp outside tolerance -> 400
+ok 5 - GET webhook -> 405
+ok 6 - missing signing secret config -> 503
+ok 7 - missing d1 binding -> 503 fail closed
+Attention: Clerk collects telemetry data from its SDKs when connected to development instances.
+The data collected is used to inform Clerk's product roadmap.
+To learn more, including how to opt-out from the telemetry program, visit: https://clerk.com/docs/telemetry.
+
+ok 8 - active paid subscription grants allowance
+ok 9 - grant is 500 credits for user_a
+ok 10 - receipt persisted with grant
+ok 11 - account row provisioned for the payer
+ok 12 - duplicate delivery acknowledged without double grant
+ok 13 - same period via new message id: no second grant
+ok 14 - next paid period grants once more
+ok 15 - past_due first: receipt, no grant
+ok 16 - active later grants once
+ok 17 - old out-of-order replay cannot change grants
+ok 18 - body active but read past_due -> no grant
+ok 19 - body pastDue but read active -> granted for that period
+ok 20 - no subscription on account -> receipt only
+ok 21 - incomplete checkout grants nothing
+ok 22 - failed payment attempt grants nothing
+ok 23 - free trial grants nothing
+ok 24 - non-configured plan grants nothing
+ok 25 - org payer: receipt only, no grant
+ok 26 - unsupported event ACKed with no grant and no rows
+ok 27 - paid allowance 0 -> billing_enabled false
+ok 28 - paid allowance 0 -> even an active paid sub grants nothing
+ok 29 - no unexpected network calls during billing selftest
+
+toolkit-billing-selftest: all 29 passed

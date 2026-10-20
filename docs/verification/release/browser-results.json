@@ -1,0 +1,4195 @@
+{
+  "base": "http://127.0.0.1:3277",
+  "states": [
+    {
+      "name": "375-light-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-/journey",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill.active \"ALL ARCS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS OPERATIONS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE B2B\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPOPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"THEDEEPENDHQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CELSUS OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP IQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"INFRATECH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CIRRALOGIX\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CONTENT STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PARTNERSHIPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS CLUB\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VENDOR OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LEAD GEN OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SOCIAL AUTOMATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS ACCELERATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPMAIL\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPGRAPH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP HARBINGER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"AI TOOLING ADVISORY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPLANTERN\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SYSTEMS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VOICE-AGENT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHIEF\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE SONAR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"EVENT SCOUT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPUTM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP SUITE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VAULT INFRA\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CLIENT OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"B2B PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPREPLY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPBEAM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CADENCE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"FIVE-LEVEL PERSONALIZER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPQUEST\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SEO STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "heading",
+          "message": "heading jumps h1 to h3, skipping a level",
+          "where": "h3.cs-title \"650 contributions in the last year\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"champions operations\" appears 8 times",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"lake b2b\" appears 7 times",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-/post/week-48-the-receipts-arc",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "blockquote.ep-pull \"a decided no beats an undecided yes every ti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-/company/lake-b2b",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 353 Oct 19, 2026 >_sat through a full de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 350 Oct 16, 2026 >_audited every case st\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 349 Oct 15, 2026 >_closed out a vendor r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 348 Oct 14, 2026 >_shipped a full onboar\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 347 Oct 13, 2026 >_Built a full creative\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 346 Oct 12, 2026 >_a 5:30pm slot booked \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-blue \"DAY 335 Oct 1, 2026 >_the enterprise it serv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 333 Sep 29, 2026 >_the enterprise IT ser\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 329 Sep 25, 2026 >_built and shipped a 1\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 328 Sep 24, 2026 >_ran the entity-resolu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 325 Sep 21, 2026 >_a discovery call that\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 322 Sep 18, 2026 >_Built a full digital \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-/toolkit",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.tk-products \"02 SEPARATE PRODUCT ChampBeam Smart links, Q\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-/lead-scorer",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "375-light-upload-mapped",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "375-light-/account",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-/journey",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill.active \"ALL ARCS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS OPERATIONS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE B2B\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPOPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"THEDEEPENDHQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CELSUS OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP IQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"INFRATECH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CIRRALOGIX\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CONTENT STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PARTNERSHIPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS CLUB\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VENDOR OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LEAD GEN OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SOCIAL AUTOMATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS ACCELERATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPMAIL\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPGRAPH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP HARBINGER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"AI TOOLING ADVISORY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPLANTERN\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SYSTEMS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VOICE-AGENT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHIEF\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE SONAR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"EVENT SCOUT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPUTM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP SUITE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VAULT INFRA\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CLIENT OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"B2B PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPREPLY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPBEAM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CADENCE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"FIVE-LEVEL PERSONALIZER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPQUEST\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SEO STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "heading",
+          "message": "heading jumps h1 to h3, skipping a level",
+          "where": "h3.cs-title \"650 contributions in the last year\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"champions operations\" appears 8 times",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"lake b2b\" appears 7 times",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-/post/week-48-the-receipts-arc",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "blockquote.ep-pull \"a decided no beats an undecided yes every ti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-/company/lake-b2b",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 353 Oct 19, 2026 >_sat through a full de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 350 Oct 16, 2026 >_audited every case st\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 349 Oct 15, 2026 >_closed out a vendor r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 348 Oct 14, 2026 >_shipped a full onboar\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 347 Oct 13, 2026 >_Built a full creative\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 346 Oct 12, 2026 >_a 5:30pm slot booked \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-blue \"DAY 335 Oct 1, 2026 >_the enterprise it serv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 333 Sep 29, 2026 >_the enterprise IT ser\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 329 Sep 25, 2026 >_built and shipped a 1\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 328 Sep 24, 2026 >_ran the entity-resolu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 325 Sep 21, 2026 >_a discovery call that\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 322 Sep 18, 2026 >_Built a full digital \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-/toolkit",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.tk-products \"02 SEPARATE PRODUCT ChampBeam Smart links, Q\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-/lead-scorer",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-upload-mapped",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-/account",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "768-light-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 95 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 94 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 94 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 94 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-/journey",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill.active \"ALL ARCS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS OPERATIONS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE B2B\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPOPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"THEDEEPENDHQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CELSUS OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP IQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"INFRATECH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CIRRALOGIX\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CONTENT STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PARTNERSHIPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS CLUB\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VENDOR OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LEAD GEN OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SOCIAL AUTOMATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS ACCELERATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPMAIL\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPGRAPH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP HARBINGER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"AI TOOLING ADVISORY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPLANTERN\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SYSTEMS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VOICE-AGENT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHIEF\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE SONAR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"EVENT SCOUT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPUTM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP SUITE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VAULT INFRA\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CLIENT OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"B2B PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPREPLY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPBEAM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CADENCE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"FIVE-LEVEL PERSONALIZER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPQUEST\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SEO STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "heading",
+          "message": "heading jumps h1 to h3, skipping a level",
+          "where": "h3.cs-title \"650 contributions in the last year\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"champions operations\" appears 8 times",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"lake b2b\" appears 7 times",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-/post/week-48-the-receipts-arc",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "blockquote.ep-pull \"a decided no beats an undecided yes every ti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-/company/lake-b2b",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 353 Oct 19, 2026 >_sat through a full de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 350 Oct 16, 2026 >_audited every case st\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 349 Oct 15, 2026 >_closed out a vendor r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 348 Oct 14, 2026 >_shipped a full onboar\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 347 Oct 13, 2026 >_Built a full creative\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 346 Oct 12, 2026 >_a 5:30pm slot booked \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-blue \"DAY 335 Oct 1, 2026 >_the enterprise it serv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 333 Sep 29, 2026 >_the enterprise IT ser\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 329 Sep 25, 2026 >_built and shipped a 1\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 328 Sep 24, 2026 >_ran the entity-resolu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 325 Sep 21, 2026 >_a discovery call that\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 322 Sep 18, 2026 >_Built a full digital \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-/toolkit",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.tk-products \"02 SEPARATE PRODUCT ChampBeam Smart links, Q\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-/lead-scorer",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 103 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-upload-mapped",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 103 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-/account",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 95 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 94 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 94 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 94 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-/journey",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill.active \"ALL ARCS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS OPERATIONS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE B2B\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPOPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"THEDEEPENDHQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CELSUS OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP IQ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"INFRATECH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CIRRALOGIX\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CONTENT STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PARTNERSHIPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS CLUB\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VENDOR OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LEAD GEN OS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SOCIAL AUTOMATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPIONS ACCELERATOR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPMAIL\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPGRAPH\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP HARBINGER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"AI TOOLING ADVISORY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPLANTERN\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SYSTEMS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LONGEVITY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VOICE-AGENT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHIEF\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"LAKE SONAR\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"EVENT SCOUT\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPUTM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMP SUITE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"VAULT INFRA\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CLIENT OPS\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"B2B PIPELINE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPREPLY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPBEAM\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CADENCE\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"FIVE-LEVEL PERSONALIZER\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"CHAMPQUEST\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "transition-all",
+          "message": "transition: all animates unknown properties; list them",
+          "where": "button.dh-filter-pill \"SEO STRATEGY\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "heading",
+          "message": "heading jumps h1 to h3, skipping a level",
+          "where": "h3.cs-title \"650 contributions in the last year\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"champions operations\" appears 8 times",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"lake b2b\" appears 7 times",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-/post/week-48-the-receipts-arc",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "blockquote.ep-pull \"a decided no beats an undecided yes every ti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-/company/lake-b2b",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 353 Oct 19, 2026 >_sat through a full de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 350 Oct 16, 2026 >_audited every case st\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 349 Oct 15, 2026 >_closed out a vendor r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 348 Oct 14, 2026 >_shipped a full onboar\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 347 Oct 13, 2026 >_Built a full creative\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 346 Oct 12, 2026 >_a 5:30pm slot booked \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-blue \"DAY 335 Oct 1, 2026 >_the enterprise it serv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 333 Sep 29, 2026 >_the enterprise IT ser\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 329 Sep 25, 2026 >_built and shipped a 1\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 328 Sep 24, 2026 >_ran the entity-resolu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 325 Sep 21, 2026 >_a discovery call that\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 322 Sep 18, 2026 >_Built a full digital \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-/toolkit",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.tk-products \"02 SEPARATE PRODUCT ChampBeam Smart links, Q\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-/lead-scorer",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 103 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-upload-mapped",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 103 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-/account",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "light-lane-1",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "light-lane-2",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "light-lane-3",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "light-lane-4",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "light-lane-5",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "light-lane-6",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "light-lane-7",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-/journey",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "heading",
+          "message": "heading jumps h1 to h3, skipping a level",
+          "where": "h3.cs-title \"650 contributions in the last year\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"champions operations\" appears 8 times",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"lake b2b\" appears 7 times",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-/post/week-48-the-receipts-arc",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "blockquote.ep-pull \"a decided no beats an undecided yes every ti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 91 characters; cap body text near 65",
+          "where": "li \"the same partner decision that was eight wee\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 91 characters; cap body text near 65",
+          "where": "li \"the recurring sunday call with that same par\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 91 characters; cap body text near 65",
+          "where": "li \"a venue launch call has sat at the top of th\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-/company/lake-b2b",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 353 Oct 19, 2026 >_sat through a full de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 350 Oct 16, 2026 >_audited every case st\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 349 Oct 15, 2026 >_closed out a vendor r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 348 Oct 14, 2026 >_shipped a full onboar\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 347 Oct 13, 2026 >_Built a full creative\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 346 Oct 12, 2026 >_a 5:30pm slot booked \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-blue \"DAY 335 Oct 1, 2026 >_the enterprise it serv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 333 Sep 29, 2026 >_the enterprise IT ser\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 329 Sep 25, 2026 >_built and shipped a 1\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 328 Sep 24, 2026 >_ran the entity-resolu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 325 Sep 21, 2026 >_a discovery call that\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 322 Sep 18, 2026 >_Built a full digital \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-/toolkit",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.tk-products \"02 SEPARATE PRODUCT ChampBeam Smart links, Q\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-/lead-scorer",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 169 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-upload-mapped",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 169 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-/account",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "dark-lane-1",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "dark-lane-2",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "dark-lane-3",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "dark-lane-4",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "dark-lane-5",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "dark-lane-6",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "dark-lane-7",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "emoji-as-icon",
+          "message": "emoji used in interface chrome; use one SVG icon family",
+          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋 Exploring what Deep is build\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-/journey",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "heading",
+          "message": "heading jumps h1 to h3, skipping a level",
+          "where": "h3.cs-title \"650 contributions in the last year\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"champions operations\" appears 8 times",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "cta-repetition",
+          "message": "\"lake b2b\" appears 7 times",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-/post/week-48-the-receipts-arc",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "blockquote.ep-pull \"a decided no beats an undecided yes every ti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 91 characters; cap body text near 65",
+          "where": "li \"the same partner decision that was eight wee\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 91 characters; cap body text near 65",
+          "where": "li \"the recurring sunday call with that same par\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 91 characters; cap body text near 65",
+          "where": "li \"a venue launch call has sat at the top of th\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-/company/lake-b2b",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 353 Oct 19, 2026 >_sat through a full de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 350 Oct 16, 2026 >_audited every case st\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 349 Oct 15, 2026 >_closed out a vendor r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 348 Oct 14, 2026 >_shipped a full onboar\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 347 Oct 13, 2026 >_Built a full creative\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 346 Oct 12, 2026 >_a 5:30pm slot booked \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-blue \"DAY 335 Oct 1, 2026 >_the enterprise it serv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 333 Sep 29, 2026 >_the enterprise IT ser\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 329 Sep 25, 2026 >_built and shipped a 1\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 328 Sep 24, 2026 >_ran the entity-resolu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-gold \"DAY 325 Sep 21, 2026 >_a discovery call that\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "side-stripe",
+          "message": "coloured side-border stripe: the most recognisable AI-dashboard tell",
+          "where": "article.dh-entry.dh-arc-green \"DAY 322 Sep 18, 2026 >_Built a full digital \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-/toolkit",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.tk-products \"02 SEPARATE PRODUCT ChampBeam Smart links, Q\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-/lead-scorer",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 169 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-upload-mapped",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 169 characters; cap body text near 65",
+          "where": "span#setup-text \"The toolkit backend is not configured on thi\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-/account",
+      "findings": [],
+      "overflow": []
+    },
+    {
+      "name": "1600-light-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 99 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 98 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-light-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 98 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-light-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 98 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-dark-/",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 99 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 98 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-dark-table-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 98 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-dark-folder-open",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 98 characters; cap body text near 65",
+          "where": "p.wx-live-txt \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "pointer-reordered",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "keyboard-reordered",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "storage-unavailable",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "reduced-motion",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    }
+  ],
+  "failedRequests": [
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/outreach/check",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/widget-config",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/outreach/check",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/widget-config",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/outreach/check",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/widget-config",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/outreach/check",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/widget-config",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "assertions": [
+    "System, persisted override, reload, reset and changed system preference",
+    "Pointer and keyboard reorder, persisted order and reset",
+    "Terrain keyboard reaches real expanded journey anchor",
+    "Blocked storage leaves the grid usable with an honest status",
+    "JS-off primary content, static island fallbacks and reduced-motion flat terrain"
+  ]
+}

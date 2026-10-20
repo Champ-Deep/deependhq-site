@@ -35,3 +35,4 @@ scripts/.shots/
 .dev.vars*
 __pycache__/
 *.pyc
+.release/

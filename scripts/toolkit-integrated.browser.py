@@ -1,14 +1,14 @@
 """Actual UI -> actual Clerk verification/API -> actual SQLite -> fixture providers.
 Requires fixture_server.py:3175, toolkit-browser-server.mjs:3176, Wrangler:3177.
 """
-import json,pathlib,urllib.request,importlib.util
+import json,pathlib,urllib.request,importlib.util,os
 from playwright.sync_api import sync_playwright
 _spec=importlib.util.spec_from_file_location('visual_audit',str(pathlib.Path.home()/'champ-skills/design/skills/visual-verify/scripts/audit.py'))
 assert _spec is not None and _spec.loader is not None
 _audit=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(_audit)
 BASE='http://127.0.0.1:3175'
 BRIDGE='http://127.0.0.1:3176'
-OUT=pathlib.Path.home()/'.hermes/cache/scratch/toolkit-integrated'
+OUT=pathlib.Path(os.environ.get('TOOLKIT_EVIDENCE', str(pathlib.Path.home()/'.hermes/cache/scratch/toolkit-integrated')))
 OUT.mkdir(parents=True,exist_ok=True)
 def get(path):
     return json.load(urllib.request.urlopen(BRIDGE+path))
@@ -83,7 +83,7 @@ with sync_playwright() as p:
     page.set_viewport_size({'width':1280,'height':1000})
     page.unroute('**/api/toolkit');page.unroute('**/fixture/clerk.js')
     for path in ('/lead-scorer','/account','/toolkit'):
-        response=page.goto('http://127.0.0.1:3177'+path,wait_until='networkidle')
+        response=page.goto(os.environ.get('WORKER_BASE','http://127.0.0.1:3177')+path,wait_until='networkidle')
         assert response.status==200
         assert 'content-security-policy' in response.headers
         assert response.headers.get('cache-control')=='no-store'

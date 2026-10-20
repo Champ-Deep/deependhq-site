@@ -257,7 +257,7 @@ const EPGraph = ({ post, hot, setHot }) => {
             onMouseEnter={() => setHot(n.name)} onMouseLeave={() => setHot(null)} onFocus={() => setHot(n.name)} onBlur={() => setHot(null)}
             aria-label={`${n.name}, ${n.kind}, in ${n.paras.length} paragraph${n.paras.length === 1 ? '' : 's'} of this essay`}>
             <title>{n.name}</title>
-            <rect className="ep-g-hit" x={n.x - 34} y={n.y - n.r - 6} width="68" height={Math.max(50, 2 * n.r + 26)} />
+            <rect className="ep-g-hit" x={n.x - 34} y={n.y - n.r - 6} width="68" height={Math.max(56, 2 * n.r + 26)} />
             <circle cx={n.x} cy={n.y} r={n.r} />
             <text x={n.lx} y={n.ly} textAnchor="middle">{n.label}</text>
           </a>

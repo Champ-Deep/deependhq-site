@@ -1,0 +1,22 @@
+[
+  {
+    "defect": "'/command': { to: '/journey#broken', code: 301 }",
+    "command": "node scripts/selftest-worker.mjs",
+    "exit": 1
+  },
+  {
+    "defect": "'/command.html': { to: '/journey#commits', code: 302 }",
+    "command": "node scripts/selftest-worker.mjs",
+    "exit": 1
+  },
+  {
+    "defect": "data-day=\"354\"",
+    "command": "node scripts/selftest-copy.mjs",
+    "exit": 1
+  },
+  {
+    "defect": "class=\"wx-metric-row\"",
+    "command": "node scripts/selftest-copy.mjs",
+    "exit": 1
+  }
+]

@@ -1,0 +1,759 @@
+{
+  "/": {
+    "styles": [
+      {
+        "sel": ".hwf-day",
+        "text": "day 354 of building in public \u00b7 built 21 Oct 2026 (today)",
+        "style": null,
+        "rect": {
+          "x": 215.8125,
+          "y": 14616.078125,
+          "width": 1016.1875,
+          "height": 15.390625,
+          "top": 14616.078125,
+          "right": 1232,
+          "bottom": 14631.46875,
+          "left": 215.8125
+        },
+        "chain": [
+          {
+            "cls": "hwf-day",
+            "c": "rgb(81, 91, 110)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "hwf-rule-b",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "hwf-rule",
+            "c": "rgb(14, 26, 51)",
+            "bg": "oklab(0.970076 -0.0000600815 0.00414008 / 0.72)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".hwf-rule",
+        "text": "back to top \u2191day 354 of building in public \u00b7 built 21 Oct 2026 (today)",
+        "style": null,
+        "rect": {
+          "x": 48,
+          "y": 14603.078125,
+          "width": 1184,
+          "height": 83.53125,
+          "top": 14603.078125,
+          "right": 1232,
+          "bottom": 14686.609375,
+          "left": 48
+        },
+        "chain": [
+          {
+            "cls": "hwf-rule",
+            "c": "rgb(14, 26, 51)",
+            "bg": "oklab(0.970076 -0.0000600815 0.00414008 / 0.72)",
+            "opacity": "1"
+          },
+          {
+            "cls": "hwf-root",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".gfc-sheet-name",
+        "text": "spent today locking the deependhq ",
+        "style": null,
+        "rect": {
+          "x": 79.88823699951172,
+          "y": 10052.1796875,
+          "width": 155.18685913085938,
+          "height": 12.13671875,
+          "top": 10052.1796875,
+          "right": 235.0750961303711,
+          "bottom": 10064.31640625,
+          "left": 79.88823699951172
+        },
+        "chain": [
+          {
+            "cls": "gfc-sheet-name",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "gfc-sheet-head",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "gfc-sheet",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".gfc-sheet",
+        "text": "spent today locking the deependhq day 354",
+        "style": null,
+        "rect": {
+          "x": 69.25881958007812,
+          "y": 9921.228515625,
+          "width": 222.39999389648438,
+          "height": 150.4462890625,
+          "top": 9921.228515625,
+          "right": 291.6588134765625,
+          "bottom": 10071.6748046875,
+          "left": 69.25881958007812
+        },
+        "chain": [
+          {
+            "cls": "gfc-sheet",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          },
+          {
+            "cls": "gfc-sheet-slot",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "0"
+          },
+          {
+            "cls": "gfc-files",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".brand",
+        "text": "deep_",
+        "style": null,
+        "rect": {
+          "x": 48,
+          "y": 8,
+          "width": 108.71875,
+          "height": 44,
+          "top": 8,
+          "right": 156.71875,
+          "bottom": 52,
+          "left": 48
+        },
+        "chain": [
+          {
+            "cls": "brand",
+            "c": "rgb(15, 107, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "wrap",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "sys-nav sys",
+            "c": "rgb(14, 26, 51)",
+            "bg": "color(srgb 0.964706 0.960784 0.94902 / 0.82)",
+            "opacity": "1"
+          }
+        ]
+      }
+    ],
+    "overflow": []
+  },
+  "/journey": {
+    "styles": [
+      {
+        "sel": ".hwf-day",
+        "text": "day 354 of building in public \u00b7 built 21 Oct 2026 (today)",
+        "style": null,
+        "rect": {
+          "x": 215.8125,
+          "y": 5013.9375,
+          "width": 428.984375,
+          "height": 15.390625,
+          "top": 5013.9375,
+          "right": 644.796875,
+          "bottom": 5029.328125,
+          "left": 215.8125
+        },
+        "chain": [
+          {
+            "cls": "hwf-day",
+            "c": "rgb(81, 91, 110)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "hwf-rule-b",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "hwf-rule",
+            "c": "rgb(14, 26, 51)",
+            "bg": "oklab(0.970076 -0.0000600815 0.00414008 / 0.72)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".hwf-rule",
+        "text": "back to top \u2191day 354 of building in public \u00b7 built 21 Oct 2026 (today)",
+        "style": null,
+        "rect": {
+          "x": 48,
+          "y": 5000.9375,
+          "width": 1184,
+          "height": 151.71875,
+          "top": 5000.9375,
+          "right": 1232,
+          "bottom": 5152.65625,
+          "left": 48
+        },
+        "chain": [
+          {
+            "cls": "hwf-rule",
+            "c": "rgb(14, 26, 51)",
+            "bg": "oklab(0.970076 -0.0000600815 0.00414008 / 0.72)",
+            "opacity": "1"
+          },
+          {
+            "cls": "hwf-root",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".brand",
+        "text": "deep_",
+        "style": null,
+        "rect": {
+          "x": 88,
+          "y": 8,
+          "width": 108.71875,
+          "height": 44,
+          "top": 8,
+          "right": 196.71875,
+          "bottom": 52,
+          "left": 88
+        },
+        "chain": [
+          {
+            "cls": "brand",
+            "c": "rgb(15, 107, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "wrap",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "sys-nav sys",
+            "c": "rgb(14, 26, 51)",
+            "bg": "color(srgb 0.964706 0.960784 0.94902 / 0.82)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".dh-pill-gold",
+        "text": "Lake B2B",
+        "style": null,
+        "rect": {
+          "x": 592.125,
+          "y": 2942.578125,
+          "width": 76.78125,
+          "height": 23.59375,
+          "top": 2942.578125,
+          "right": 668.90625,
+          "bottom": 2966.171875,
+          "left": 592.125
+        },
+        "chain": [
+          {
+            "cls": "dh-pill dh-pill-gold",
+            "c": "rgb(138, 90, 0)",
+            "bg": "oklab(0.78283 0.0464198 0.148698 / 0.1)",
+            "opacity": "1"
+          },
+          {
+            "cls": "dh-entry-v2-tags",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "dh-entry-v2-head",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          }
+        ]
+      }
+    ],
+    "overflow": []
+  },
+  "/account": {
+    "styles": [
+      {
+        "sel": ".brand",
+        "text": "\n    \n    deep_\n  ",
+        "style": null,
+        "rect": {
+          "x": 20,
+          "y": 10,
+          "width": 74.1875,
+          "height": 44,
+          "top": 10,
+          "right": 94.1875,
+          "bottom": 54,
+          "left": 20
+        },
+        "chain": [
+          {
+            "cls": "brand",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "topbar",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".topbar",
+        "text": "\n  \n    \n    deep_\n  \n  \n    Toolkit\n    Account\n    Lead Scorer\n  \n  ",
+        "style": null,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 185,
+          "top": 0,
+          "right": 375,
+          "bottom": 185,
+          "left": 0
+        },
+        "chain": [
+          {
+            "cls": "topbar",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".topnav",
+        "text": "\n    Toolkit\n    Account\n    Lead Scorer\n  ",
+        "style": null,
+        "rect": {
+          "x": 20,
+          "y": 70,
+          "width": 263,
+          "height": 44,
+          "top": 70,
+          "right": 283,
+          "bottom": 114,
+          "left": 20
+        },
+        "chain": [
+          {
+            "cls": "topnav",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "topbar",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          }
+        ]
+      }
+    ],
+    "overflow": [
+      {
+        "tag": "A",
+        "cls": "skip",
+        "rect": {
+          "x": -9999,
+          "y": 8,
+          "width": 122.453125,
+          "height": 44,
+          "top": 8,
+          "right": -9876.546875,
+          "bottom": 52,
+          "left": -9999
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TABLE",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 1978.28125,
+          "width": 422.34375,
+          "height": 36.390625,
+          "top": 1978.28125,
+          "right": 464.34375,
+          "bottom": 2014.671875,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "THEAD",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 1978.28125,
+          "width": 422.34375,
+          "height": 35.890625,
+          "top": 1978.28125,
+          "right": 464.34375,
+          "bottom": 2014.171875,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TR",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 1978.28125,
+          "width": 422.34375,
+          "height": 35.890625,
+          "top": 1978.28125,
+          "right": 464.34375,
+          "bottom": 2014.171875,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TH",
+        "cls": "",
+        "rect": {
+          "x": 326.578125,
+          "y": 1978.28125,
+          "width": 76.359375,
+          "height": 35.890625,
+          "top": 1978.28125,
+          "right": 402.9375,
+          "bottom": 2014.171875,
+          "left": 326.578125
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TH",
+        "cls": "",
+        "rect": {
+          "x": 402.9375,
+          "y": 1978.28125,
+          "width": 61.40625,
+          "height": 35.890625,
+          "top": 1978.28125,
+          "right": 464.34375,
+          "bottom": 2014.171875,
+          "left": 402.9375
+        },
+        "overflow": "visible"
+      }
+    ]
+  },
+  "/lead-scorer": {
+    "styles": [
+      {
+        "sel": ".brand",
+        "text": "\n    \n    deep_\n  ",
+        "style": null,
+        "rect": {
+          "x": 20,
+          "y": 10,
+          "width": 74.1875,
+          "height": 44,
+          "top": 10,
+          "right": 94.1875,
+          "bottom": 54,
+          "left": 20
+        },
+        "chain": [
+          {
+            "cls": "brand",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "topbar",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".topbar",
+        "text": "\n  \n    \n    deep_\n  \n  \n    Toolkit\n    Account\n  \n  \n  system\n  \n   ",
+        "style": null,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 125,
+          "top": 0,
+          "right": 375,
+          "bottom": 125,
+          "left": 0
+        },
+        "chain": [
+          {
+            "cls": "topbar",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "sel": ".topnav",
+        "text": "\n    Toolkit\n    Account\n  ",
+        "style": null,
+        "rect": {
+          "x": 110.1875,
+          "y": 10,
+          "width": 154.71875,
+          "height": 44,
+          "top": 10,
+          "right": 264.90625,
+          "bottom": 54,
+          "left": 110.1875
+        },
+        "chain": [
+          {
+            "cls": "topnav",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgba(0, 0, 0, 0)",
+            "opacity": "1"
+          },
+          {
+            "cls": "topbar",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(255, 255, 255)",
+            "opacity": "1"
+          },
+          {
+            "cls": "",
+            "c": "rgb(14, 26, 51)",
+            "bg": "rgb(246, 245, 242)",
+            "opacity": "1"
+          }
+        ]
+      }
+    ],
+    "overflow": [
+      {
+        "tag": "A",
+        "cls": "skip",
+        "rect": {
+          "x": -9999,
+          "y": 8,
+          "width": 122.453125,
+          "height": 44,
+          "top": 8,
+          "right": -9876.546875,
+          "bottom": 52,
+          "left": -9999
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TABLE",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 2165.578125,
+          "width": 431.421875,
+          "height": 100.265625,
+          "top": 2165.578125,
+          "right": 473.421875,
+          "bottom": 2265.84375,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "THEAD",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 2165.578125,
+          "width": 431.421875,
+          "height": 35.890625,
+          "top": 2165.578125,
+          "right": 473.421875,
+          "bottom": 2201.46875,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TR",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 2165.578125,
+          "width": 431.421875,
+          "height": 35.890625,
+          "top": 2165.578125,
+          "right": 473.421875,
+          "bottom": 2201.46875,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TH",
+        "cls": "",
+        "rect": {
+          "x": 363.609375,
+          "y": 2165.578125,
+          "width": 109.8125,
+          "height": 35.890625,
+          "top": 2165.578125,
+          "right": 473.421875,
+          "bottom": 2201.46875,
+          "left": 363.609375
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TBODY",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 2201.46875,
+          "width": 431.421875,
+          "height": 63.875,
+          "top": 2201.46875,
+          "right": 473.421875,
+          "bottom": 2265.34375,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TR",
+        "cls": "",
+        "rect": {
+          "x": 42,
+          "y": 2201.46875,
+          "width": 431.421875,
+          "height": 63.875,
+          "top": 2201.46875,
+          "right": 473.421875,
+          "bottom": 2265.34375,
+          "left": 42
+        },
+        "overflow": "visible"
+      },
+      {
+        "tag": "TD",
+        "cls": "",
+        "rect": {
+          "x": 363.609375,
+          "y": 2201.46875,
+          "width": 109.8125,
+          "height": 63.875,
+          "top": 2201.46875,
+          "right": 473.421875,
+          "bottom": 2265.34375,
+          "left": 363.609375
+        },
+        "overflow": "visible"
+      }
+    ]
+  }
+}

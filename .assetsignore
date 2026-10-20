@@ -35,3 +35,9 @@ wrangler*.jsonc
 wrangler*.toml
 package.json
 .hermes-tmp*
+islands/
+*.sqlite*
+*.db*
+*.log
+__pycache__/
+.release/

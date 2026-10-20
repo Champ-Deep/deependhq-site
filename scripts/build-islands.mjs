@@ -41,7 +41,7 @@ const result = await build({
 if (result.errors && result.errors.length) process.exit(1);
 
 const code = readFileSync(out, 'utf8');
-const required = ['halftone-footer', 'folder-cards', 'data-island'];
+const required = ['halftone-footer', 'folder-cards', 'widget-grid', 'terrain', 'data-island'];
 const missing = required.filter((m) => !code.includes(m));
 if (code.length < 5000 || missing.length) {
   console.error(

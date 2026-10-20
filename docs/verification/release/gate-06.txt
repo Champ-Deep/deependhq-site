@@ -1,0 +1,10 @@
+
+segment selftest
+
+classification
+intent scoring
+treatment, and the no-touch rule
+the one-question ask
+
+37 passed, 0 failed
+segment selftest: all assertions hold.

@@ -1,0 +1,13 @@
+
+digest selftest
+
+empty dataset
+control group missing
+thin samples
+treatment losing to control
+treatment beating control
+ask being dismissed
+every scenario
+
+26 passed, 0 failed
+digest selftest: every scenario reported honestly.

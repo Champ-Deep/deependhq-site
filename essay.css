@@ -200,7 +200,7 @@
 /* phones: every target at 44px or more. Seven day cells still fit at 390. */
 @media (max-width: 40rem) {
   .ep-card { padding-inline: var(--s3); }
-  .ep-week { gap: 2px; }
+  .ep-week { gap: 2px; grid-template-columns: repeat(4,minmax(0,1fr)); }
   .ep-wk { min-height: 60px; padding-inline: 4px; }
   .ep-wk-k { display: none; }
   .ep-pl-seek { height: 44px; font-size: 16px; }

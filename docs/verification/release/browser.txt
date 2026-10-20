@@ -1,0 +1,333 @@
+{
+  "states": 84,
+  "assertions": [
+    "System, persisted override, reload, reset and changed system preference",
+    "Pointer and keyboard reorder, persisted order and reset",
+    "Terrain keyboard reaches real expanded journey anchor",
+    "Blocked storage leaves the grid usable with an honest status",
+    "JS-off primary content, static island fallbacks and reduced-motion flat terrain"
+  ],
+  "errors": [],
+  "consoleErrors": [
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/journey",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/post/week-48-the-receipts-arc/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/company/lake-b2b/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:3277' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "http://127.0.0.1:3277/",
+      "error": "Failed to load resource: net::ERR_FAILED"
+    }
+  ]
+}

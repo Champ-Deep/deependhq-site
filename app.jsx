@@ -14,7 +14,7 @@ const App = () => {
       <Nav active="home" progress />
       <main id="main" className="wx-main">
         <H.Hero />
-        <H.Proof />
+
         <H.Day />
         <H.Boundary />
         <H.Log />

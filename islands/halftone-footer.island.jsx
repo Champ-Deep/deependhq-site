@@ -442,6 +442,7 @@ export default function HalftoneFooter(props) {
       </div>
       <div className="hwf-rule">
         <div className="hwf-rule-a">
+          <img src="/favicon.svg" width="32" height="32" alt="Deep's scouter mark" />
           {backToTop ? (
             <button type="button" className="hwf-up" onClick={toTop}>
               back to top ↑

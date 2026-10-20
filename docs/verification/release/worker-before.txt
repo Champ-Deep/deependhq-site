@@ -1,0 +1,13 @@
+
+worker selftest
+
+the 2026-10-02 outage: a property shadowed by a method
+structural guards against the same class of bug
+classification
+
+audio: Range requests get a 206 the browser can seek with
+
+29 passed, 1 failed
+  FAIL /command from direct is operator
+      got "explorer"
+      want "operator"

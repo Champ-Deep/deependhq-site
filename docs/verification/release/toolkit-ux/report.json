@@ -1,0 +1,38 @@
+[
+  {
+    "width": 375,
+    "home_tasks": true,
+    "harbinger": true,
+    "scanner_explained": true,
+    "search_by_job": true,
+    "overflow": [],
+    "js_errors": []
+  },
+  {
+    "width": 768,
+    "home_tasks": true,
+    "harbinger": true,
+    "scanner_explained": true,
+    "search_by_job": true,
+    "overflow": [],
+    "js_errors": []
+  },
+  {
+    "width": 1280,
+    "home_tasks": true,
+    "harbinger": true,
+    "scanner_explained": true,
+    "search_by_job": true,
+    "overflow": [],
+    "js_errors": []
+  },
+  {
+    "width": 1600,
+    "home_tasks": true,
+    "harbinger": true,
+    "scanner_explained": true,
+    "search_by_job": true,
+    "overflow": [],
+    "js_errors": []
+  }
+]

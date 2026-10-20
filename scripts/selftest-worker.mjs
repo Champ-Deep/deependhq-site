@@ -120,7 +120,8 @@ const cases = [
   ['/now', '', 'narrative'],
   ['/post/week-45-the-wall-we-named/', '', 'narrative'],
   ['/toolkit', '', 'operator'],
-  ['/command', '', 'operator'],
+  ['/command', '', 'explorer'],
+  ['/command.html', '', 'explorer'],
   ['/pillars', '', 'operator'],
   ['/privacy', '', 'explorer'],
   ['/anything', 'https://github.com/x', 'operator'],
@@ -139,6 +140,13 @@ check('a path that merely contains a segment word does not leak', cls('/api/post
 check('a deep path still classifies', cls('/post/a/b/c/', ''), 'narrative');
 
 // ------------------------------------------------ audio ranges
+const { default: worker } = await import('../worker/index.js');
+for (const alias of ['/command', '/command.html']) {
+  const response = await worker.fetch(new Request(`https://deependhq.com${alias}`), {}, { waitUntil() {} });
+  check(`${alias} is permanently retired`, response.status, 301);
+  check(`${alias} lands on existing commits section`, new URL(response.headers.get('location')).pathname + new URL(response.headers.get('location')).hash, '/journey#commits');
+}
+
 // The asset store answers a Range request with the whole file, so a browser
 // cannot seek in an essay reading. handleAudio slices it. Run it for real.
 console.log('\naudio: Range requests get a 206 the browser can seek with');

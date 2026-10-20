@@ -5,7 +5,7 @@
   "description": "deependhq.com. Static assets plus a Cloudflare Worker. Published by scripts/publish.sh.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-data.mjs && node scripts/prerender.mjs && node scripts/build-islands.mjs",
+    "build": "node scripts/prepare-shells.mjs && node scripts/build-data.mjs && node scripts/prerender.mjs && node scripts/build-islands.mjs",
     "build:data": "node scripts/build-data.mjs",
     "prerender": "node scripts/prerender.mjs",
     "islands": "node scripts/build-islands.mjs",

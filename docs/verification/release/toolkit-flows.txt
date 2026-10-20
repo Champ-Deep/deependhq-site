@@ -1,0 +1,65 @@
+flow: signed out upload and mapping
+  ok  wallet hidden while signed out
+  ok  six mapping selects render
+  ok  name column auto mapped
+  ok  12 rows loaded from the CSV fixture
+  ok  preview shows 5 mapped rows
+  ok  run disabled before any quote
+  ok  quote asks for sign in
+  shot docs/verification/release/toolkit-flows/lead-signed-out-1440.png
+flow: sign in and quote
+  ok  wallet visible after sign in
+  ok  one quote per batch of five, got 3
+  ok  every quote is at most 5 rows
+  ok  docket counts rows and batches
+  ok  docket total is the summed ceiling, got docket total line
+  ok  docket converts the ceiling to credits
+  ok  run button carries row count
+  shot docs/verification/release/toolkit-flows/lead-quote-1440.png
+flow: sequential batched run, results, export
+  ok  three run calls for 12 rows, got 3
+  ok  sequential batches of five, five, two
+  ok  fresh request id per batch
+  ok  actual spend tile sums settled microdollars
+  ok  max authorized tile shows the quoted ceiling
+  ok  provider ledger visible
+  ok  run status reports done
+  ok  run disabled after the session, re-quote required
+  shot docs/verification/release/toolkit-flows/lead-results-1440.png
+  ok  export header carries result columns
+  ok  formula cell exported with the safety prefix
+  ok  export keeps uploaded columns
+flow: results filter
+  ok  search narrows to one row
+  ok  email filter narrows the set, got 2
+flow: cancel between batches
+  ok  stop takes effect between batches, only one run sent, got 1
+  ok  the completed batch still renders its five rows
+  ok  run locked until a fresh quote
+  ok  cancel control retired after the stop
+  shot docs/verification/release/toolkit-flows/lead-cancel-1440.png
+flow: history and usage tabs
+  ok  history lists the three fixture runs
+  shot docs/verification/release/toolkit-flows/lead-history-1440.png
+  ok  run_detail opens in the call sheet
+  ok  provider chips render
+  ok  credit cap meter renders
+  shot docs/verification/release/toolkit-flows/lead-usage-1440.png
+flow: account balance, native mounts, admin caps
+  ok  PricingTable mounted
+  ok  PricingTable visible
+  ok  UserButton mounted
+  ok  admin panel visible for the fixture admin
+  ok  admin lists three fixture users
+  ok  user cap read back after save
+  ok  admin_update carried the new user cap
+  ok  admin_update carried the global welcome credits
+  shot docs/verification/release/toolkit-flows/account-1440.png
+  shot docs/verification/release/toolkit-flows/account-390.png
+flow: setup needed state
+  ok  sign in hidden when backend is not configured
+  shot docs/verification/release/toolkit-flows/lead-setup-1440.png
+flow: 390px workspace
+  shot docs/verification/release/toolkit-flows/lead-mobile-390.png
+
+ALL FLOWS PASSED. screenshots in docs/verification/release/toolkit-flows

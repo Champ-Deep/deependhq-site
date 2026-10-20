@@ -1,0 +1,7 @@
+claims the page used to make and must not make again
+claims the code has to back up
+the third-party claims
+there is a way to actually delete it
+
+33 passed, 0 failed
+privacy selftest: the page and the code agree.

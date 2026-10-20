@@ -1,0 +1,27 @@
+
+> deependhq-site@1.0.0 check
+> node scripts/guard.mjs && node scripts/brand-guard.mjs && node scripts/build-data.mjs && node scripts/link-check.mjs
+
+--- guard ---
+scanned 2422 published strings across 132 journey entries
+denylist: 0 names, 0 client patterns, 2 phrases
+naming denylist: clean
+sensitive disclosure: clean
+
+GUARD PASSED
+brand guard: clean. no retired colour values.
+--- guard ---
+scanned 2422 published strings across 132 journey entries
+denylist: 0 names, 0 client patterns, 2 phrases
+naming denylist: clean
+sensitive disclosure: clean
+
+GUARD PASSED
+cross-links: 5/12 companies have journey, 16 posts linked
+derived: stale=false (1 weekdays), stack 52 items, 4 active in 30d, streak 89
+feed.xml: 18 items · sitemap.xml: 38 urls
+llms.txt: 75 lines · llms-full.txt: 2096 lines
+built data.js: day 354, 132 journey entries, 18 posts
+
+link check: 90 pages scanned.
+all internal links resolve.

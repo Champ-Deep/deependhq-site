@@ -20,6 +20,9 @@ if [[ -f .git/index.lock ]] && ! pgrep -f "git.*$(basename "$REPO_DIR")" >/dev/n
   echo "$LOG_PREFIX removed stale .git/index.lock"
 fi
 
+npm ci
+NODE_ENV=production npm run build
+npm run check
 git add -A
 if git diff --cached --quiet; then
   echo "$LOG_PREFIX nothing to publish."

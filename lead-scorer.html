@@ -5,7 +5,49 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lead Scorer · deependhq</title>
 <meta name="theme-color" content="#0E1A33">
-<script>/* scheme before paint: a stored choice wins, else the system preference, else dark. */(function(d){var s=null;try{s=localStorage.getItem('dh_scheme')}catch(e){}var light=s?s==='light':!!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches);d.documentElement.setAttribute('data-scheme',light?'light':'dark');var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',light?'#F6F5F2':'#0E1A33');})(document);</script>
+<script>// Single pre-paint scheme controller, inlined into every page by the build.
+(function (d) {
+  var mode = 'system';
+  var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+  try { var saved = localStorage.getItem('dh_scheme'); if (saved === 'light' || saved === 'dark') mode = saved; } catch (_) {}
+  function label() {
+    d.querySelectorAll('[data-dh-scheme-label]').forEach(function (el) { el.textContent = mode; });
+    d.querySelectorAll('[data-dh-scheme]').forEach(function (el) { el.setAttribute('aria-label', 'Colour scheme: ' + mode + '. Change scheme'); });
+  }
+  function apply() {
+    var scheme = mode === 'system' ? (media && media.matches ? 'light' : 'dark') : mode;
+    d.documentElement.dataset.scheme = scheme;
+    var meta = d.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = scheme === 'light' ? '#F6F5F2' : '#0E1A33';
+    window.DH_SCHEME = { mode: mode, scheme: scheme };
+    label();
+    window.dispatchEvent(new CustomEvent('dh:scheme', { detail: window.DH_SCHEME }));
+  }
+  apply();
+  d.addEventListener('DOMContentLoaded', label);
+  if (media) media.addEventListener('change', apply);
+  d.addEventListener('click', function (e) {
+    if (!e.target.closest('[data-dh-scheme]')) return;
+    mode = mode === 'system' ? 'light' : mode === 'light' ? 'dark' : 'system';
+    try { if (mode === 'system') localStorage.removeItem('dh_scheme'); else localStorage.setItem('dh_scheme', mode); } catch (_) {}
+    apply();
+  });
+  new MutationObserver(function () {
+    var el = d.querySelector('[data-dh-scheme-label]');
+    if (el && el.textContent !== mode) label();
+  }).observe(d.documentElement, { childList: true, subtree: true });
+})(document);
+</script>
+
+
+
+
+
+
+
+
+
+
 <meta name="description" content="Upload a lead list, map the columns, approve the exact maximum cost, then score it five rows at a time with provider email checks, ICP fit and your own rubrics.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -13,6 +55,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="scheme-tokens.css">
 <link rel="stylesheet" href="lead-scorer.css">
 </head>
 <body>
@@ -28,6 +71,7 @@
     <a href="/account">Account</a>
   </nav>
   <span class="spacer"></span>
+  <button type="button" class="btn" data-dh-scheme><span data-dh-scheme-label>system</span></button>
   <div class="auth" id="auth">
     <span class="auth-hint" id="auth-hint">Checking session</span>
     <button type="button" class="btn" id="signin" hidden>Sign in</button>

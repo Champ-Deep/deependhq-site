@@ -1,0 +1,97 @@
+ok 1 - config unconfigured: configured false
+ok 2 - config unconfigured: no invented script url
+ok 3 - config: credits_per_usd 1000 + providers false + billing false
+ok 4 - config: no CORS header
+ok 5 - config: cache-control no-store
+ok 6 - config configured when keys + script url + d1 present
+ok 7 - config billing false without paid plan config
+ok 8 - config billing true once plan + allowance + secrets configured
+ok 9 - config without d1 binding: configured false (fail closed)
+ok 10 - POST config -> 405
+ok 11 - no bearer token -> 401
+Attention: Clerk collects telemetry data from its SDKs when connected to development instances.
+The data collected is used to inform Clerk's product roadmap.
+To learn more, including how to opt-out from the telemetry program, visit: https://clerk.com/docs/telemetry.
+
+ok 12 - garbage token -> 401
+ok 13 - wrong-audience token (azp) -> 401
+ok 14 - expired token -> 401
+ok 15 - cross-origin POST -> 403 forbidden_origin
+ok 16 - valid token -> 200 usage
+ok 17 - usage response carries no CORS header
+ok 18 - missing TOOLKIT_DB -> 503 fail closed
+ok 19 - missing clerk secret -> 503 clerk_not_configured
+ok 20 - malformed json -> 400
+ok 21 - unknown action -> 400
+ok 22 - GET /api/toolkit -> 405
+ok 23 - unknown toolkit path -> 404
+ok 24 - usage.user + usage.usage shape per contract
+ok 25 - usage.providers and runs array present
+ok 26 - welcome grant applied once on first usage
+ok 27 - second usage: welcome not double granted
+ok 28 - CLERK_ADMIN_IDS member flagged is_admin
+ok 29 - providers booleans reflect missing keys
+ok 30 - quote requires signin (throttling by attribution)
+ok 31 - quote shape
+ok 32 - quote never creates a run (no spending)
+ok 33 - quote validates input (max 5 rows) -> 400
+ok 34 - missing provider module -> 503 provider_unavailable
+ok 35 - run completes
+ok 36 - run settlement: spent 6000 micro -> 6 credits, hold released
+ok 37 - run ledger has both ops with actual cost + call_id
+ok 38 - executeLead received customerId + runId (X-Treg-Meta)
+ok 39 - run results stored
+ok 40 - wallet charged once after run
+ok 41 - usage history lists the run
+ok 42 - usage history row excludes results payload
+ok 43 - replay same UUID+payload returns same run
+ok 44 - replay does not double charge
+ok 45 - replay does not create a second run
+ok 46 - same UUID different payload -> 409
+ok 47 - concurrent same UUID: both answered, one run row, same id
+ok 48 - concurrent duplicate charged exactly once
+ok 49 - missing provider creds -> 503 before any reservation
+ok 50 - no run row written for the uncredentialed attempt
+ok 51 - unknown tool id -> 400
+ok 52 - non-uuid request_id -> 400
+ok 53 - max_credits below quote -> 400 (cannot under-reserve)
+ok 54 - input validation surfaces provider message -> 400
+ok 55 - still no run rows after all rejections
+ok 56 - daily credit cap rejects -> 429 daily_credit_cap
+ok 57 - insufficient wallet -> 403 insufficient_credits
+ok 58 - daily row cap rejects -> 429 daily_row_cap
+ok 59 - global cap 0 fails closed -> 429
+ok 60 - provider timeout -> status held with retained hold
+ok 61 - timeout op recorded as unknown in ledger
+ok 62 - hold reduces available (timeout never free)
+ok 63 - run_detail returns held run to owner
+ok 64 - cost above reserve: actual kept in ledger and charged
+ok 65 - overrun stops further dispatch (1 op only)
+ok 66 - provider throw: measured cost kept, hold released, error recorded
+ok 67 - throw before dispatch: hold fully released, failed
+ok 68 - nothing spent, wallet intact
+ok 69 - owner can read own run_detail
+ok 70 - other user cannot read run (404, no existence leak)
+ok 71 - admin cannot read another user either
+ok 72 - malformed run id -> 400
+ok 73 - usage history scoped to the caller
+ok 74 - non-admin blocked from admin_usage
+ok 75 - non-admin blocked from admin_update
+ok 76 - admin_usage global shape
+ok 77 - admin_usage users entry shape
+ok 78 - admin_update global readback after save
+ok 79 - negative rejected -> 400
+ok 80 - fractional rejected -> 400
+ok 81 - overflow rejected -> 400
+ok 82 - unknown field rejected -> 400
+ok 83 - admin_update with no fields -> 400
+ok 84 - admin_update user readback
+ok 85 - admin_update does not mint credits
+ok 86 - admin_update cannot touch admin status (unknown field)
+ok 87 - admin_update cannot grant credits (unknown field)
+ok 88 - user override cap 5 rejects 42-credit run -> 429
+ok 89 - disabled user cannot run -> 403
+ok 90 - usage reports disabled flag
+ok 91 - no unexpected network calls during api selftest
+
+toolkit-api-selftest: all 91 passed

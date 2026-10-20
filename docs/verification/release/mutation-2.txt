@@ -1,0 +1,14 @@
+
+copy engine selftest
+
+variants must match the markup they claim to edit
+the number guard, which is the rule that stops it lying
+regressions for bugs that produced no error
+variant resolution
+the evidence rule
+frozen content is untouchable
+
+41 passed, 1 failed
+  FAIL the day counter is frozen in the markup
+      got  false
+      want true

@@ -1,0 +1,41 @@
+
+> deependhq-site@1.0.0 contrast
+> node scripts/contrast.mjs
+
+
+dark  (bg/card/card-2)
+  fg                      bg        card      card-2   verdict
+  text                14.60       12.41       11.14   AA
+  muted                7.46        6.34        5.69   AA
+  dim                  5.98        5.08        4.56   AA
+  win-text             8.51        7.23        6.49   AA
+  build-text           9.85        8.37        7.51   AA
+  think-text           6.09        5.17        4.65   AA
+  human-text           6.13        5.21        4.68   AA
+  danger-text          5.97        5.07        4.55   AA
+
+light (bg/card/card-2)
+  fg                      bg        card      card-2   verdict
+  text                15.86       17.29       14.65   AA
+  muted                6.27        6.84        5.79   AA
+  dim                  5.46        5.95        5.04   AA
+  win-text             5.44        5.93        5.02   AA
+  build-text           6.07        6.62        5.61   AA
+  think-text           5.96        6.50        5.50   AA
+  human-text           5.75        6.27        5.31   AA
+  danger-text          5.44        5.93        5.02   AA
+
+dark  paper band
+  fg                   paper     paper-2   verdict
+  ink                 14.60       15.94   AA
+  paper-muted          5.02        5.48   AA
+  marigold-ink         5.00        5.46   AA
+
+light paper band
+  fg                   paper     paper-2   verdict
+  ink                 14.60       15.94   AA
+  paper-muted          5.02        5.48   AA
+  marigold-ink         5.00        5.46   AA
+
+60 pairs measured, 0 below 4.5.
+contrast: every pair clears 4.5:1 in both schemes.
