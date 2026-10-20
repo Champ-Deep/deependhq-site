@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-20T22:51:38.876Z
+// Built 2026-10-20T22:52:03.039Z
 
 window.DH_DATA = {
   "brand": {
@@ -4540,12 +4540,34 @@ window.DH_DATA = {
       "detail": "Civ, Crusader Kings, anything 4X. One more turn at 2 AM."
     },
     {
-      "what": "Cooking",
-      "detail": "hunting the perfect sambar. 47 attempts, 0 finals."
-    },
-    {
       "what": "Reading",
       "detail": "Caro, Iyer, Naipaul. Long books for long flights."
+    }
+  ],
+  "off_the_clock": {
+    "spotify_playlist": "",
+    "current_game": ""
+  },
+  "things_to_try": [
+    {
+      "name": "Lead Scorer",
+      "label": "Team tool",
+      "result": "Upload a lead list. Jev ranks who to call first and writes the first line.",
+      "href": "toolkit.html",
+      "cta": "try it in the toolkit"
+    },
+    {
+      "name": "Ask Deep",
+      "result": "Ask this site anything about the build. It answers from this site only and stores nothing in cookies.",
+      "href": "https://assistant.deependhq.com",
+      "cta": "ask it something",
+      "open_launcher": true
+    },
+    {
+      "name": "ChamPDF",
+      "result": "Free PDF tools that run in the browser: merge, split, compress, convert. No signup.",
+      "href": "https://champdf.com",
+      "cta": "open ChamPDF"
     }
   ],
   "rolodex": [
@@ -4566,8 +4588,8 @@ window.DH_DATA = {
       "how": "find me on a Sunday"
     },
     {
-      "who": "Anyone with a better sambar recipe",
-      "how": "come over for dinner"
+      "who": "Anyone running a CK3 multiplayer on a Sunday",
+      "how": "send me the lobby code"
     }
   ],
   "dispatch": {
@@ -9668,7 +9690,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-20T22:51:38.790Z",
+    "built": "2026-10-20T22:52:03.006Z",
     "built_date": "2026-10-21",
     "newest_entry": {
       "date": "2026-10-20",
@@ -11458,5 +11480,5 @@ window.DH_DATA = {
       "essays": 18
     }
   },
-  "built": "2026-10-20T22:51:38.876Z"
+  "built": "2026-10-20T22:52:03.039Z"
 };

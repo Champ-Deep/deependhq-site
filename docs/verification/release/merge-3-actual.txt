@@ -1,0 +1,96 @@
+Auto-merging Home.jsx
+Auto-merging agents.txt
+CONFLICT (content): Merge conflict in agents.txt
+Auto-merging company.html
+Auto-merging company/ampliz/index.html
+CONFLICT (content): Merge conflict in company/ampliz/index.html
+Auto-merging company/champ-fit/index.html
+CONFLICT (content): Merge conflict in company/champ-fit/index.html
+Auto-merging company/champions-accelerator/index.html
+CONFLICT (content): Merge conflict in company/champions-accelerator/index.html
+Auto-merging company/champions-club/index.html
+CONFLICT (content): Merge conflict in company/champions-club/index.html
+Auto-merging company/champions-infometrics/index.html
+CONFLICT (content): Merge conflict in company/champions-infometrics/index.html
+Auto-merging company/cirralogix/index.html
+CONFLICT (content): Merge conflict in company/cirralogix/index.html
+Auto-merging company/health-fit/index.html
+CONFLICT (content): Merge conflict in company/health-fit/index.html
+Auto-merging company/infratech/index.html
+CONFLICT (content): Merge conflict in company/infratech/index.html
+Auto-merging company/ip-momentum/index.html
+CONFLICT (content): Merge conflict in company/ip-momentum/index.html
+Auto-merging company/lake-b2b/index.html
+CONFLICT (content): Merge conflict in company/lake-b2b/index.html
+Auto-merging company/recruit-champ/index.html
+CONFLICT (content): Merge conflict in company/recruit-champ/index.html
+Auto-merging company/span-global-services/index.html
+CONFLICT (content): Merge conflict in company/span-global-services/index.html
+Auto-merging content.json
+Auto-merging data.js
+CONFLICT (content): Merge conflict in data.js
+Auto-merging feed.xml
+CONFLICT (content): Merge conflict in feed.xml
+Auto-merging field-notes.html
+CONFLICT (content): Merge conflict in field-notes.html
+Auto-merging home.css
+CONFLICT (content): Merge conflict in home.css
+Auto-merging humans.txt
+CONFLICT (content): Merge conflict in humans.txt
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Auto-merging journey.html
+CONFLICT (content): Merge conflict in journey.html
+Auto-merging llms-full.txt
+CONFLICT (content): Merge conflict in llms-full.txt
+Auto-merging llms.txt
+CONFLICT (content): Merge conflict in llms.txt
+Auto-merging now.html
+CONFLICT (content): Merge conflict in now.html
+Auto-merging pillars.html
+CONFLICT (content): Merge conflict in pillars.html
+Auto-merging post.html
+Auto-merging post/week-27-data-is-not-a-product/index.html
+CONFLICT (content): Merge conflict in post/week-27-data-is-not-a-product/index.html
+Auto-merging post/week-28-four-sales-teams/index.html
+CONFLICT (content): Merge conflict in post/week-28-four-sales-teams/index.html
+Auto-merging post/week-29-the-reach-arc/index.html
+CONFLICT (content): Merge conflict in post/week-29-the-reach-arc/index.html
+Auto-merging post/week-30-the-enterprise-arc/index.html
+CONFLICT (content): Merge conflict in post/week-30-the-enterprise-arc/index.html
+Auto-merging post/week-31-the-proof-arc/index.html
+CONFLICT (content): Merge conflict in post/week-31-the-proof-arc/index.html
+Auto-merging post/week-32-the-build-reflex/index.html
+CONFLICT (content): Merge conflict in post/week-32-the-build-reflex/index.html
+Auto-merging post/week-33-the-quarter-turns/index.html
+CONFLICT (content): Merge conflict in post/week-33-the-quarter-turns/index.html
+Auto-merging post/week-34-the-side-door/index.html
+CONFLICT (content): Merge conflict in post/week-34-the-side-door/index.html
+Auto-merging post/week-35-three-calls-one-friday/index.html
+CONFLICT (content): Merge conflict in post/week-35-three-calls-one-friday/index.html
+Auto-merging post/week-36-the-doctor-said-yes/index.html
+CONFLICT (content): Merge conflict in post/week-36-the-doctor-said-yes/index.html
+Auto-merging post/week-37-the-calendar-was-full/index.html
+CONFLICT (content): Merge conflict in post/week-37-the-calendar-was-full/index.html
+Auto-merging post/week-38-the-signals-were-everywhere/index.html
+CONFLICT (content): Merge conflict in post/week-38-the-signals-were-everywhere/index.html
+Auto-merging post/week-43-five-systems-five-days/index.html
+CONFLICT (content): Merge conflict in post/week-43-five-systems-five-days/index.html
+Auto-merging post/week-44-the-discipline-arc/index.html
+CONFLICT (content): Merge conflict in post/week-44-the-discipline-arc/index.html
+Auto-merging post/week-45-the-wall-we-named/index.html
+CONFLICT (content): Merge conflict in post/week-45-the-wall-we-named/index.html
+Auto-merging post/week-46-the-empty-room-arc/index.html
+CONFLICT (content): Merge conflict in post/week-46-the-empty-room-arc/index.html
+Auto-merging post/week-47-the-decision-debt-arc/index.html
+CONFLICT (content): Merge conflict in post/week-47-the-decision-debt-arc/index.html
+Auto-merging post/week-48-the-receipts-arc/index.html
+CONFLICT (content): Merge conflict in post/week-48-the-receipts-arc/index.html
+Auto-merging privacy.html
+CONFLICT (content): Merge conflict in privacy.html
+Auto-merging system.css
+Auto-merging toolkit.html
+CONFLICT (content): Merge conflict in toolkit.html
+Auto-merging writing.html
+CONFLICT (content): Merge conflict in writing.html
+Automatic merge failed; fix conflicts and then commit the result.
