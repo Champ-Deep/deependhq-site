@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-20T15:59:09.369Z
+// Built 2026-10-20T19:56:54.671Z
 
 window.DH_DATA = {
   "brand": {
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-18",
       "last_ship_day": 352,
-      "days_since": 2,
+      "days_since": 3,
       "entries_30d": 1,
       "recent": [
         {
@@ -619,7 +619,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 13,
+      "days_since": 14,
       "entries_30d": 1,
       "recent": [
         {
@@ -683,7 +683,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-19",
       "last_ship_day": 353,
-      "days_since": 1,
+      "days_since": 2,
       "entries_30d": 11,
       "recent": [
         {
@@ -753,7 +753,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 14,
+      "days_since": 15,
       "entries_30d": 2,
       "recent": [
         {
@@ -9651,28 +9651,28 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-20T15:59:09.338Z",
-    "built_date": "2026-10-20",
+    "built": "2026-10-20T19:56:54.641Z",
+    "built_date": "2026-10-21",
     "newest_entry": {
       "date": "2026-10-19",
       "day": 353
     },
-    "weekdays_stale": 1,
+    "weekdays_stale": 2,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 130,
+        "days_old": 131,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 118,
+        "days_old": 119,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 118,
+        "days_old": 119,
         "stale": true
       }
     }
@@ -10695,7 +10695,7 @@ window.DH_DATA = {
       },
       {
         "date": "2026-10-21",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -10738,7 +10738,7 @@ window.DH_DATA = {
   "stats": {
     "days_public": 353,
     "entries": 131,
-    "entries_30d": 30,
+    "entries_30d": 29,
     "entries_this_month": 19,
     "streak_weekdays": 88,
     "essays": 18,
@@ -10757,7 +10757,7 @@ window.DH_DATA = {
       },
       {
         "arc": "ChampOps",
-        "n": 8
+        "n": 7
       },
       {
         "arc": "Celsus OS",
@@ -10823,7 +10823,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 4,
-        "days_since": 8
+        "days_since": 9
       },
       {
         "name": "ChampOps",
@@ -10836,7 +10836,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 16,
-        "days_since": 8
+        "days_since": 9
       },
       {
         "name": "Obsidian + Celsus",
@@ -10846,7 +10846,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 9
+        "days_since": 10
       },
       {
         "name": "Claude + Cowork",
@@ -10856,7 +10856,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 10
+        "days_since": 11
       },
       {
         "name": "Event Scout",
@@ -10869,7 +10869,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 36
+        "days_since": 37
       },
       {
         "name": "ChampUTM",
@@ -10882,7 +10882,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 38
+        "days_since": 39
       },
       {
         "name": "Cloudflare",
@@ -10892,7 +10892,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 62
+        "days_since": 63
       },
       {
         "name": "LakeStream",
@@ -10905,7 +10905,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 77
+        "days_since": 78
       },
       {
         "name": "ChamPDF",
@@ -10918,7 +10918,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 77
+        "days_since": 78
       },
       {
         "name": "ChampMail",
@@ -10931,7 +10931,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 79
+        "days_since": 80
       },
       {
         "name": "Supabase",
@@ -10942,7 +10942,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 111
+        "days_since": 112
       },
       {
         "name": "ChampGraph",
@@ -10955,7 +10955,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 119
+        "days_since": 120
       },
       {
         "name": "ChampQuest",
@@ -10968,7 +10968,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 139
+        "days_since": 140
       },
       {
         "name": "Deep Scanner",
@@ -11454,5 +11454,5 @@ window.DH_DATA = {
       "essays": 18
     }
   },
-  "built": "2026-10-20T15:59:09.369Z"
+  "built": "2026-10-20T19:56:54.671Z"
 };

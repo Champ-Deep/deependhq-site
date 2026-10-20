@@ -21,6 +21,9 @@
   /* accents by meaning. marigold replaces gold as --win */
   --win: #F4A62A;    /* 8.51 on bg, 6.49 on card-2 */
   --build: #30E060; --think: #4A7BF7; --human: #E052C0; --danger: #E05030;
+  /* -text twins. On the dark ground the accent itself is the text colour, so
+     these alias it; the light block below swaps in the darker twins. */
+  --win-text: var(--win); --build-text: var(--build);
   --think-text: #6D95FF;   /* 4.65 on card-2 */
   --human-text: #E96BCC;   /* 4.68 on card-2 */
   --danger-text: #F37050;  /* 4.55 on card-2 */
