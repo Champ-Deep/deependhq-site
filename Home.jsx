@@ -330,80 +330,52 @@ const Log = () => {
 // Featured first, always: the two newest builds lead the index whether or not
 // content.json carries them yet, and they are skipped further down so they
 // never show twice. Deep Scanner has no public repo yet, so it has no link.
-const FEATURED = [
-  { name: 'Deep Scanner', url: null, tag: 'new', meta: 'in build, open source soon',
-    what: 'Checks any folder before it reaches a cloud agent. First run: 8,357 files, 6 blocked, 392 flagged.' },
-  { name: 'ChampBeam', url: 'https://champbeam.com/?utm_source=deependhq&utm_medium=stack', tag: 'live', meta: 'champbeam.com',
-    what: 'Smart links, QR codes and file tracking in one product. Send it, know they saw it.' },
-];
-// ChampUTM lives inside ChampBeam now, so it does not get its own row.
-const MERGED = new Set(['ChampUTM']);
-
 const Stack = () => {
-  const S = DH.stack_now || { items: [], counts: {} };
-  const byName = new Map(S.items.map((i) => [i.name, i]));
-  const featured = FEATURED;
-  const pinned = new Set(FEATURED.map((f) => f.name));
-  const scorer = byName.get('Lead Scorer');
-  // Projects in active development (toolkit `status`) come first. A public
-  // `site` wins over the repo link, so a live product opens as the product.
-  const building = (i) => (i.status === 'building' || i.status === 'internal' ? 0 : 1);
-  const rows = [
-    ...featured,
-    ...(scorer ? [{ name: 'Lead Scorer', url: 'lead-scorer.html', tag: 'live', meta: 'on this site', what: 'Upload a lead list. Jev ranks who to call first and writes the first line.' }] : []),
-    ...S.items
-      .filter((i) => i.kind === 'built' && (i.last_seen || i.status) && !MERGED.has(i.name) && !pinned.has(i.name))
-      .sort((a, b) => building(a) - building(b) || String(b.last_seen || '').localeCompare(String(a.last_seen || '')))
-      .slice(0, 5)
-      .map((i) => ({
-        name: i.name,
-        url: i.site || i.url,
-        tag: i.site ? 'live' : i.status === 'internal' ? 'internal' : '',
-        meta: i.last_seen ? `log · ${fmtDate(i.last_seen)}` : (i.status === 'internal' ? 'runs in-house' : ''),
-        what: i.what,
-      })),
-  ];
-  const builtTotal = S.counts.built || 0;
-  const shownBuilt = rows.filter((r) => byName.has(r.name) && byName.get(r.name).kind === 'built').length;
-  const using = ['ChampOps', 'Obsidian + Celsus', 'Claude + Cowork', 'Cloudflare', 'Supabase', 'Jules'].map((n) => byName.get(n)).filter(Boolean);
-  const list = (k) => S.items.filter((i) => i.kind === k).map((i) => i.name).join(', ') + '.';
+  const items = DH.toolkit || [];
+  const harbinger = items.find(t => t.title === 'ChampHarbinger');
+  const beam = items.find(t => t.title === 'ChampBeam');
+  const pdf = items.find(t => t.title === 'ChamPDF');
   return (
-    <section className="wx-stack wx-sec mode-operator" id="stack" aria-labelledby="wx-stack-h">
-      <header className="wx-sec-head wx-split">
-        <h2 className="wx-op-h wx-ink" id="wx-stack-h">What I build with.</h2>
-        <p className="wx-lead">{S.items.length} tools. A tool only earns a date once it shows up in a day's entry.</p>
-        <a className="wx-tlink" href="toolkit.html">the full stack →</a>
+    <section className="wx-sec mode-operator tk-home" id="stack" aria-labelledby="wx-stack-h">
+      <header className="tk-home-head">
+        <div><h2 id="wx-stack-h">Tools for the work<br/>in front of you.</h2><p>Start with the job, not the product name.</p></div>
+        <a className="tk-home-all" href="/toolkit">Explore the full toolkit <span aria-hidden="true">↗</span></a>
       </header>
-      <div className="wx-stack-grid">
-        <div className="wx-index-wrap">
-          <div className="wx-index">
-            {rows.map((r) => {
-              const inner = (
-                <React.Fragment>
-                  <span className="wx-ix-name">{r.name}</span>
-                  <span className="wx-ix-what">{r.what}</span>
-                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-tag-${r.tag}`}>{r.tag}</span>}{r.meta}</span>
-                </React.Fragment>
-              );
-              if (!r.url) return <div key={r.name} className="wx-ix">{inner}</div>;
-              const ext = /^https?:/.test(r.url);
-              return <a key={r.name} className="wx-ix" href={r.url} {...(ext ? EXT : {})}>{inner}</a>;
-            })}
-          </div>
-          <a className="wx-tlink wx-ix-more" href="toolkit.html">{Math.max(0, builtTotal - shownBuilt)} more repos in the toolkit →</a>
+      <div className="tk-home-features">
+        <article className="tk-home-feature">
+          <div className="tk-home-product"><span>Lead Scorer</span><span>On this site</span></div>
+          <h3>Which leads<br/>are worth a closer look?</h3>
+          <p>Bring your list. Enrich contacts, check email deliverability and judge fit against your criteria.</p>
+          <dl className="tk-home-io"><div><dt>You bring</dt><dd>A CSV or Excel list</dd></div><div><dt>You get</dt><dd>Fit, email status and evidence</dd></div></dl>
+          <div className="tk-home-flow" aria-label="Lead Scorer workflow"><span>Upload</span><span>Check</span><span>Score</span><span>Export</span></div>
+          <a className="tk-home-action tk-home-action-primary" href="/lead-scorer">Open Lead Scorer <span aria-hidden="true">↗</span></a>
+          <small>Sign-in and credits. Review the maximum cost before running.</small>
+        </article>
+        <article className="tk-home-feature">
+          <div className="tk-home-product"><span>Harbinger</span><span>Separate product</span></div>
+          <h3>Which accounts<br/>have a reason to buy now?</h3>
+          <p>Research buying signals, then investigate the companies and people behind them.</p>
+          <dl className="tk-home-io"><div><dt>You bring</dt><dd>An account or market to research</dd></div><div><dt>You get</dt><dd>Signals and account context</dd></div></dl>
+          <div className="tk-home-signals" aria-label="Harbinger signal types"><span>Hiring</span><span>Funding</span><span>Company news</span></div>
+          {harbinger?.site && <a className="tk-home-action" href={harbinger.site} {...EXT}>Explore Harbinger <span aria-hidden="true">↗</span></a>}
+          <small>Opens its own site. Shared toolkit credits are not connected.</small>
+        </article>
+      </div>
+      <div className="tk-home-secondary">
+        <div className="tk-home-utilities">
+          <a href={beam?.site} {...EXT}><div><h3>Share a link. See what happens.</h3><p>ChampBeam: smart links, QR codes and file tracking.</p></div><span>Open ChampBeam <span aria-hidden="true">↗</span></span><small>Separate product site and account.</small></a>
+          <a href={pdf?.site} {...EXT}><div><h3>Get a PDF job off your desk.</h3><p>ChamPDF: merge, split, compress and convert.</p></div><span>Open ChamPDF <span aria-hidden="true">↗</span></span><small>Free browser tools. No toolkit credits.</small></a>
         </div>
-        <aside className="wx-side" aria-label="Tools in use">
-          <div><h3><span>in daily use</span><span>{S.counts.using || using.length}</span></h3>
-            <ul>{using.map((t) => <li key={t.name}>{t.name}<span>{t.last_seen ? `log · ${fmtDate(t.last_seen)}` : ''}</span></li>)}</ul></div>
-          <div><h3><span>trying</span><span>{S.counts.trying || 0}</span></h3><p className="wx-side-run">{list('trying')}</p></div>
-          <div><h3><span>watching</span><span>{S.counts.watching || 0}</span></h3><p className="wx-side-run">{list('watching')}</p></div>
-        </aside>
+        <details className="tk-home-scanner">
+          <summary>And what is Deep Scanner?</summary>
+          <div><h3>File safety, not sales research.</h3><p>It scans local text files for secrets and sensitive information before cloud sync. Results are marked Block, Review or Pass.</p><p>Not a lead finder or a lead-scoring tool.</p><strong>Internal Python scanner. Public release not verified.</strong><p>Regex checks have limits. A Pass is not a guarantee that a file is safe to share.</p></div>
+        </details>
+        <p className="tk-home-footnote">Looking for the tools I use, experiments or source code? <a href="/toolkit#tk-stack">Open the build stack</a>.</p>
       </div>
     </section>
   );
 };
 
-// ---------------------------------------------------------------- 21:00 pillars
 const GO = { champ: 'open the product suite', 'infratech-lagoons': 'see the properties', lakeb2b: 'see the data companies', accelerator: 'meet the cohorts' };
 const Pillars = () => {
   const used = new Set();

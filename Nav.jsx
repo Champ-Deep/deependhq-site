@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { id: 'journey', label: 'Mission Log', href: 'journey.html' },
   { id: 'writing', label: 'Writing',     href: 'writing.html' },
   { id: 'pillars', label: 'Pillars',     href: 'pillars.html' },
-  { id: 'toolkit', label: 'Stack',       href: 'toolkit.html' },
+  { id: 'toolkit', label: 'Toolkit',     href: 'toolkit.html' },
   { id: 'now',     label: 'Now',         href: 'now.html' },
 ];
 

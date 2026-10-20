@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Account · deependhq</title>
+<meta name="theme-color" content="#0E1A33">
+<meta name="description" content="One shared credit balance across every toolkit tool: plan and billing through Clerk, live usage, and the operator controls for caps and limits.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="account.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="/" aria-label="deep, home">
+    <img src="/favicon.svg" width="24" height="24" alt="">
+    <span>deep<span class="cur" aria-hidden="true">_</span></span>
+  </a>
+  <nav class="topnav" aria-label="toolkit">
+    <a href="/toolkit">Toolkit</a>
+    <a href="/account" aria-current="page">Account</a>
+    <a href="/lead-scorer">Lead Scorer</a>
+  </nav>
+  <span class="spacer"></span>
+  <div class="auth" id="auth">
+    <span class="auth-hint" id="auth-hint">Checking session</span>
+    <button type="button" class="btn" id="signin" hidden>Sign in</button>
+    <div class="user-slot" id="user-slot"></div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="banner hide" id="setup-banner" role="status">
+    <span><b>Setup needed.</b> <span id="setup-text">The toolkit backend is not configured on this deployment yet, so balances, billing and admin controls are off.</span></span>
+  </div>
+
+  <header class="pagehead">
+    <div>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>account</p>
+      <h1>One balance. Every tool.</h1>
+      <p class="sub">Your credits live in one shared wallet: a run in any tool lowers the same balance every other tool reads. Identity and subscriptions are handled by Clerk, spending is enforced by this site's own ledger, and nothing on this page is visible to anyone else.</p>
+    </div>
+  </header>
+
+  <section class="card" aria-labelledby="balance-h">
+    <div class="card-head">
+      <h2 id="balance-h">Shared credit balance</h2>
+      <span class="meta" id="balance-day">sign in to see your balance</span>
+    </div>
+    <div class="banner bad hide" id="account-disabled" role="status"><span><b>Access paused.</b> This account is disabled for spending. History stays readable, new runs are refused by the server.</span></div>
+    <div class="tiles">
+      <div class="tile accent"><span class="t-label">Credits available</span><span class="t-value" id="b-available">sign in</span><span class="t-sub">usable right now, shared across tools</span></div>
+      <div class="tile"><span class="t-label">Credits held</span><span class="t-value" id="b-held">0</span><span class="t-sub" id="b-held-sub">reserved for unresolved operations</span></div>
+      <div class="tile"><span class="t-label">Credits used today</span><span class="t-value" id="b-used">0</span><span class="t-sub">settled, not quoted</span></div>
+      <div class="tile"><span class="t-label">Spend today</span><span class="t-value" id="b-spend">$0.00</span><span class="t-sub">settled USD microdollars</span></div>
+      <div class="tile"><span class="t-label">Rows today</span><span class="t-value" id="b-rows">0</span><span class="t-sub" id="b-rows-sub">against your row cap</span></div>
+    </div>
+    <div class="statgrid two">
+      <div>
+        <div class="meter-row"><span>Daily credit cap</span><b id="b-credit-cap">no cap set</b></div>
+        <div class="meter" id="b-credit-meter"><i></i></div>
+      </div>
+      <div>
+        <div class="meter-row"><span>Daily row cap</span><b id="b-row-cap">no cap set</b></div>
+        <div class="meter" id="b-row-meter"><i></i></div>
+      </div>
+    </div>
+    <div class="kv">
+      <div class="kv-row"><span>Providers configured</span><span class="provider-chips" id="b-providers"></span></div>
+      <div class="kv-row"><span>Held microdollars</span><b id="b-held-micro">0</b></div>
+    </div>
+    <p class="foot">One credit equals one thousandth of a dollar of provider budget allowance, an internal accounting unit. It is not a claim that your subscription price equals a vendor invoice.</p>
+  </section>
+
+  <section class="card" aria-labelledby="billing-h">
+    <div class="card-head">
+      <h2 id="billing-h">Plan and billing</h2>
+      <span class="meta">checkout, cards and subscription management run in Clerk</span>
+    </div>
+    <div class="banner hide" id="billing-off" role="status"><span><b>Billing not enabled.</b> Plans are not configured on this deployment yet. Your trial balance still works once the operator turns spending on.</span></div>
+    <div class="banner hide" id="billing-signin" role="status"><span><b>Sign in</b> to see the plans available to this account.</span></div>
+    <div class="mount" id="pricing" aria-label="Pricing table"></div>
+    <p class="foot">A paid plan grants its allowance to this same balance once per verified subscription period, handled server side and idempotently. Failed or incomplete checkouts grant nothing. Unused credits roll over, no invented expiry.</p>
+  </section>
+
+  <section class="card" aria-labelledby="usage-h">
+    <div class="card-head">
+      <h2 id="usage-h">Recent usage by tool</h2>
+      <span class="meta">your runs, newest first, owner only</span>
+    </div>
+    <div class="tbl"><table id="usage-table"><thead><tr><th>When</th><th>Tool</th><th>List</th><th>Status</th><th>Rows</th><th>Credits</th><th>Spend</th></tr></thead><tbody></tbody></table></div>
+    <p class="foot hide" id="usage-empty">No runs yet. Open a tool from the <a href="/toolkit">toolkit</a>, quote it, and the rows land here.</p>
+  </section>
+
+  <section class="card hide" id="admin" aria-labelledby="admin-h">
+    <div class="card-head">
+      <h2 id="admin-h">Operator controls</h2>
+      <span class="meta">admins only. no arbitrary credit grants through this form.</span>
+    </div>
+    <p class="err hide" id="admin-status" role="status"></p>
+
+    <div class="card-head"><h2 style="font-size:var(--text-md)">Global limits</h2><span class="meta">saved server side, then read back</span></div>
+    <div class="admin-form">
+      <div class="field">
+        <label for="g-cap">Global daily cap (USD microdollars)</label>
+        <input id="g-cap" type="number" min="0" step="1" inputmode="numeric">
+        <span class="counter" id="g-cap-usd"></span>
+      </div>
+      <div class="field">
+        <label for="g-welcome">Welcome credits</label>
+        <input id="g-welcome" type="number" min="0" step="1" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="g-pool">Trial pool credits</label>
+        <input id="g-pool" type="number" min="0" step="1" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="g-default-credits">Default daily credit cap</label>
+        <input id="g-default-credits" type="number" min="0" step="1" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="g-default-rows">Default daily row cap</label>
+        <input id="g-default-rows" type="number" min="0" step="1" inputmode="numeric">
+      </div>
+      <button type="button" class="btn" id="g-save">Save global limits</button>
+    </div>
+    <p class="foot">Global caps fail closed: when a limit is 0 the server refuses spend. Individual grants beyond the configured welcome and trial pool are deliberate operator SQL, not this form.</p>
+
+    <div class="card-head"><h2 style="font-size:var(--text-md)">Users</h2><span class="meta" id="users-meta"></span></div>
+    <div class="tbl"><table id="users-table"><thead><tr><th>User</th><th>Daily credit cap</th><th>Daily row cap</th><th>Disabled</th><th>Balance</th><th>Spend</th><th></th></tr></thead><tbody></tbody></table></div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>Balances are enforced server side on every run. Admin edits are integers, validated, and read back after save.</span>
+    <span><a href="/lead-scorer">Lead Scorer</a> · <a href="/toolkit">Toolkit</a></span>
+  </div>
+</footer>
+
+<script type="module" src="account.js"></script>
+</body>
+</html>
