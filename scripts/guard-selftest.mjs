@@ -39,7 +39,7 @@ function run(caseName, mutate, denylist, extraArgs = []) {
   const content = JSON.parse(JSON.stringify(BASE));
   mutate(content);
   writeFileSync(join(work, 'content.json'), JSON.stringify(content, null, 2), 'utf8');
-  writeFileSync(join(work, 'scripts', 'denylist.json'), JSON.stringify(denylist, { names: [], clients: [] }), 'utf8');
+  writeFileSync(join(work, 'scripts', 'denylist.json'), JSON.stringify({ names: [], clients: [], phrases: [], ...denylist }), 'utf8');
   let code = 0;
   let out = '';
   try {
@@ -68,6 +68,18 @@ const CASES = [
     name: 'a denylisted client name fails the build',
     denylist: { names: [], clients: ['Northwind'] },
     mutate: (c) => { c.journey[0].yesterday_thread = 'Northwind asked for a second scope'; },
+    expect: 1,
+  },
+  {
+    name: 'a denylisted phrase fails the build',
+    denylist: { names: [], clients: [], phrases: ['no consent system'] },
+    mutate: (c) => { c.journey[0].shipping_now = 'the audit came back and said no consent system in place'; },
+    expect: 1,
+  },
+  {
+    name: 'a denylisted phrase in the essay body fails the build',
+    denylist: { names: [], clients: [], phrases: ['no consent system'] },
+    mutate: (c) => { c.latest_narrative = { week: 1, title: 't', body: 'a demo turned into a claim of no consent system at the prospect' }; },
     expect: 1,
   },
   {

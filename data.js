@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-19T19:50:01.680Z
+// Built 2026-10-20T19:58:47.579Z
 
 window.DH_DATA = {
   "brand": {
@@ -69,7 +69,7 @@ window.DH_DATA = {
         {
           "day": 346,
           "date": "2026-10-12",
-          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200…",
+          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act.…",
           "arc_color": "gold"
         },
         {
@@ -264,7 +264,7 @@ window.DH_DATA = {
         {
           "day": 346,
           "date": "2026-10-12",
-          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200…",
+          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act.…",
           "arc_color": "gold"
         },
         {
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-18",
       "last_ship_day": 352,
-      "days_since": 2,
+      "days_since": 3,
       "entries_30d": 1,
       "recent": [
         {
@@ -619,7 +619,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 13,
+      "days_since": 14,
       "entries_30d": 1,
       "recent": [
         {
@@ -683,7 +683,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-19",
       "last_ship_day": 353,
-      "days_since": 1,
+      "days_since": 2,
       "entries_30d": 11,
       "recent": [
         {
@@ -753,7 +753,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 14,
+      "days_since": 15,
       "entries_30d": 2,
       "recent": [
         {
@@ -1021,7 +1021,7 @@ window.DH_DATA = {
       "date": "2026-10-12",
       "day": 346,
       "mood": "🔍",
-      "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.",
+      "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call.",
       "yesterday_thread": "also got champbeam unstuck. a pr thats been sitting has the whole railway to coolify cutover mapped out, ci green, just needs a merge.",
       "raw_thought": "not sure yet which is the bigger deal, the audit or the partnership angle it opened. meanwhile a gratuity reply thats now 11 days old got flagged by the automation again today and i still havent answered it.",
       "arcs": [
@@ -4400,7 +4400,7 @@ window.DH_DATA = {
   "latest_narrative": {
     "week": 48,
     "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
-    "body": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+    "body": "A routine demo turned into a compliance audit under India's DPDP act. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
     "day_range": "Oct 12 - Oct 18",
     "date": "2026-10-18",
     "read": "4 min",
@@ -4632,7 +4632,7 @@ window.DH_DATA = {
     },
     {
       "title": "Lead Scorer",
-      "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+      "description": "upload a lead list, jev ranks who to call first and writes the first line. team tool, passcode for the team.",
       "url": "/lead-scorer",
       "category": "tool",
       "featured": true
@@ -4936,7 +4936,7 @@ window.DH_DATA = {
       "week": 48,
       "eyebrow": ">_ week 48 - the receipts arc",
       "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
-      "deck": "A routine demo turned into a 200 million record compliance audit. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
+      "deck": "A routine demo turned into a compliance audit under India's DPDP act. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
       "date": "2026-10-18",
       "day_range": "Oct 12 - Oct 18",
       "read": "4 min",
@@ -4954,7 +4954,7 @@ window.DH_DATA = {
         },
         {
           "type": "p",
-          "text": "monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act, 200 million records, no consent system in place today. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in."
+          "text": "monday's calendar said routine demo. it was not. a slot booked as a standard product walkthrough turned into a partner auditing our own data operations against india's dpdp act. an 8 week fix was on the table with zero pii stored, and a channel partnership got floated in the same call. not what anyone expected walking in."
         },
         {
           "type": "p",
@@ -5172,7 +5172,7 @@ window.DH_DATA = {
             "href": "journey.html"
           }
         ],
-        "words": 674,
+        "words": 665,
         "entries": 7,
         "listen_min": 4
       }
@@ -9643,28 +9643,28 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-19T19:50:01.642Z",
-    "built_date": "2026-10-20",
+    "built": "2026-10-20T19:58:47.549Z",
+    "built_date": "2026-10-21",
     "newest_entry": {
       "date": "2026-10-19",
       "day": 353
     },
-    "weekdays_stale": 1,
+    "weekdays_stale": 2,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 130,
+        "days_old": 131,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 118,
+        "days_old": 119,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 118,
+        "days_old": 119,
         "stale": true
       }
     }
@@ -9756,7 +9756,7 @@ window.DH_DATA = {
         "Lake B2B",
         "ChampOps"
       ],
-      "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200 million indian records, no consent system in place today. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call."
+      "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call."
     },
     {
       "day": 345,
@@ -10687,7 +10687,7 @@ window.DH_DATA = {
       },
       {
         "date": "2026-10-21",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -10730,7 +10730,7 @@ window.DH_DATA = {
   "stats": {
     "days_public": 353,
     "entries": 131,
-    "entries_30d": 30,
+    "entries_30d": 29,
     "entries_this_month": 19,
     "streak_weekdays": 88,
     "essays": 18,
@@ -10749,7 +10749,7 @@ window.DH_DATA = {
       },
       {
         "arc": "ChampOps",
-        "n": 8
+        "n": 7
       },
       {
         "arc": "Celsus OS",
@@ -10815,7 +10815,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 4,
-        "days_since": 8
+        "days_since": 9
       },
       {
         "name": "ChampOps",
@@ -10828,7 +10828,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 16,
-        "days_since": 8
+        "days_since": 9
       },
       {
         "name": "Obsidian + Celsus",
@@ -10838,7 +10838,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 9
+        "days_since": 10
       },
       {
         "name": "Claude + Cowork",
@@ -10848,7 +10848,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 10
+        "days_since": 11
       },
       {
         "name": "Event Scout",
@@ -10861,7 +10861,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 36
+        "days_since": 37
       },
       {
         "name": "ChampUTM",
@@ -10874,7 +10874,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 38
+        "days_since": 39
       },
       {
         "name": "Cloudflare",
@@ -10884,7 +10884,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 62
+        "days_since": 63
       },
       {
         "name": "LakeStream",
@@ -10897,7 +10897,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 77
+        "days_since": 78
       },
       {
         "name": "ChamPDF",
@@ -10910,7 +10910,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 77
+        "days_since": 78
       },
       {
         "name": "ChampMail",
@@ -10923,7 +10923,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 79
+        "days_since": 80
       },
       {
         "name": "Supabase",
@@ -10934,7 +10934,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 111
+        "days_since": 112
       },
       {
         "name": "ChampGraph",
@@ -10947,7 +10947,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 119
+        "days_since": 120
       },
       {
         "name": "ChampQuest",
@@ -10960,7 +10960,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 139
+        "days_since": 140
       },
       {
         "name": "Deep Scanner",
@@ -11107,7 +11107,7 @@ window.DH_DATA = {
       },
       {
         "name": "Lead Scorer",
-        "what": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+        "what": "upload a lead list, jev ranks who to call first and writes the first line. team tool, passcode for the team.",
         "url": "/lead-scorer",
         "site": null,
         "status": null,
@@ -11433,5 +11433,5 @@ window.DH_DATA = {
       "essays": 18
     }
   },
-  "built": "2026-10-19T19:50:01.680Z"
+  "built": "2026-10-20T19:58:47.579Z"
 };

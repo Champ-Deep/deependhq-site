@@ -1,0 +1,32 @@
+{
+  "status": 200,
+  "scrollW": 1280,
+  "clientW": 1280,
+  "overflow": false,
+  "offenders": [
+    "ol.wx-rail",
+    "li.wx-rc",
+    "p.wx-rc-top",
+    "span.wx-rc-day",
+    "span.wx-rc-kind",
+    "p.wx-rc-date"
+  ],
+  "rootText": 11842,
+  "h1": "i’m\nDeep\nand\ni\nship\nevery\nweekday",
+  "title": "deep >_ Past the hype cycle. Into the infrastructure.",
+  "selText": null,
+  "errors": [
+    "Failed to load resource: the server responded with a status of 501 (Unsupported method ('POST'))",
+    "Failed to load resource: the server responded with a status of 501 (Unsupported method ('POST'))",
+    "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'http://127.0.0.1:8123' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "failedReq": [
+    "https://assistant.deependhq.com/static/deep-assistant.js net::ERR_FAILED"
+  ],
+  "external": [
+    "https://assistant.deependhq.com/static/widget.js",
+    "https://assistant.deependhq.com/static/deep-assistant.js",
+    "https://assistant.deependhq.com/outreach/check"
+  ]
+}

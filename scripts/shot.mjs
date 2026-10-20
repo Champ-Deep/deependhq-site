@@ -11,11 +11,15 @@
 
 import { mkdirSync, existsSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const OUT = join(here, '.shots');
+// OUT_DIR and SCHEME let a lane shoot into docs/shots/<lane>/ in either scheme
+// without a second script: SCHEME forces document.documentElement.dataset.scheme
+// after load, so the shot does not depend on the machine's own preference.
+const OUT = process.env.OUT_DIR ? resolve(process.env.OUT_DIR) : join(here, '.shots');
+const SCHEME = process.env.SCHEME || null;
 mkdirSync(OUT, { recursive: true });
 
 const require_ = createRequire(import.meta.url);
@@ -75,6 +79,10 @@ for (const spec of specs) {
   const resp = await page.goto(target, { waitUntil: 'load', timeout: 30000 }).catch((e) => ({ status: () => 'ERR ' + e.message }));
   const status = resp && resp.status ? resp.status() : 'n/a';
   await page.waitForTimeout(nojs ? 300 : 2200);
+  if (SCHEME) {
+    await page.evaluate((s) => { document.documentElement.setAttribute('data-scheme', s); }, SCHEME);
+    await page.waitForTimeout(120);
+  }
 
   // Measurements. With JS off, only the prerendered markup exists, which is
   // exactly what we want to measure.
@@ -102,7 +110,7 @@ for (const spec of specs) {
   if (sel) {
     console.log(`     selector "${sel}" text:\n${(m.selText || '(not found)').split('\n').map((l) => '       ' + l).join('\n')}`);
   }
-  const file = join(OUT, `${name}-${width}${nojs ? '-nojs' : ''}${sel ? '-sel' : ''}.png`);
+  const file = join(OUT, `${name}-${SCHEME ? SCHEME + '-' : ''}${width}${nojs ? '-nojs' : ''}${sel ? '-sel' : ''}.png`);
   // The homepage is over 9000px tall. A full-page shot at 2x device scale on
   // that height times out in Chromium, so full page is opt-in via FULL=1 and
   // the default is the viewport, which is what the 375 first-paint check needs.
@@ -128,7 +136,7 @@ for (const spec of specs) {
     if (clip) shotOpts.clip = clip;
     await page.screenshot(shotOpts).catch((e) => console.log(`     (shot failed: ${String(e.message).split('\n')[0]})`));
   }
-  writeFileSync(join(OUT, `${name}-${width}${nojs ? '-nojs' : ''}.json`),
+  writeFileSync(join(OUT, `${name}-${SCHEME ? SCHEME + '-' : ''}${width}${nojs ? '-nojs' : ''}.json`),
     JSON.stringify({ status, ...m, errors, failedReq, external: [...new Set(external)] }, null, 2));
 
   const flag = m.overflow || errors.length ? 'WARN' : 'ok  ';
