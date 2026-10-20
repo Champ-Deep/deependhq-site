@@ -1,0 +1,252 @@
+806ad02bbdb517c205e1835269d41c15bb9cf9d6
+100644 372ce72959f7d69cb879a5eae69769236a95c02f 1	Footer.jsx
+100644 e53168e1c42e3c9b9e24854876979fa1eb57ef23 2	Footer.jsx
+100644 934596cb074cb776a1ab4150400c0482dbc19fe0 3	Footer.jsx
+100644 167244383ea3e308616cccf4d5d87c021bf0bc9d 1	agents.txt
+100644 a3c51864b003791ccf5bb6edc48a8f110415007c 2	agents.txt
+100644 476440e19980b5cc0b1f619e8114d23aaf13e03d 3	agents.txt
+100644 a53e5421f8a57d83fff1b1bec432f7fee76c05c9 1	company/ampliz/index.html
+100644 de4df5a84acc28ffe82f5c23d6694ba429220c6d 2	company/ampliz/index.html
+100644 719438c6df57ac86aed066e4979ed2a8d8496c2b 3	company/ampliz/index.html
+100644 72ec9c34c249f42d3df006f0a874c9fc919bd2fc 1	company/champ-fit/index.html
+100644 3e7666227895638b8855f2503eb168fe6f5f4db0 2	company/champ-fit/index.html
+100644 c7575e105cca2cddb4697e27bf0edf68d072aaec 3	company/champ-fit/index.html
+100644 591c5e752565bf08262c0c25e991fcd0c2aad673 1	company/champions-accelerator/index.html
+100644 3627e97d48625bbdfbe6edd83af36a628e0c0e07 2	company/champions-accelerator/index.html
+100644 e0a71395285b9bbc9fdafdad47f8bb308583c2cb 3	company/champions-accelerator/index.html
+100644 32f3e78bd2f115776d1c7f187d63538710f53ead 1	company/champions-club/index.html
+100644 889274696604d0ee711c056909aa2d3a1e05cce6 2	company/champions-club/index.html
+100644 d0739d6c44d433dc33f4af90c01947bfad81d8e8 3	company/champions-club/index.html
+100644 63d01ade28dceb9eea2cf8d5d0b742bc04f680d3 1	company/champions-infometrics/index.html
+100644 eda37124da3f117612b2382f47dad37ca9b1a0b5 2	company/champions-infometrics/index.html
+100644 18e6d0c8f53438ae57211f7dfc44fcc75e888d84 3	company/champions-infometrics/index.html
+100644 0d39a2ea315865fb01bca5d980be0d4d2a85b792 1	company/cirralogix/index.html
+100644 697127d85b2dab78bc498a143d2503d23125b26e 2	company/cirralogix/index.html
+100644 76dd305c1020e210c429ad2778263d4189f9df88 3	company/cirralogix/index.html
+100644 d055c84ec9b2fc034b84bfb7affbe0e60fd4b5e7 1	company/health-fit/index.html
+100644 6936cad081e36886dc94c2bc9042f0ff8455d746 2	company/health-fit/index.html
+100644 91875a17eb2ca1dd01d7396d3230277c29425beb 3	company/health-fit/index.html
+100644 004c70c5463e9157aebe699ee3da97b6ac31cc42 1	company/infratech/index.html
+100644 7c77c922390617b42a5eb188b85c0177e1415475 2	company/infratech/index.html
+100644 0089978f414562e634d93eb85fcec3bcfc84b2fd 3	company/infratech/index.html
+100644 edde2e6c927da1dc502641913fc01b7b8a6a8039 1	company/ip-momentum/index.html
+100644 c2d9a489d9bdf9fed8a98755f9260c04ff8848d0 2	company/ip-momentum/index.html
+100644 416c93eaebcf0d6a10c0ae7c70c06e46940b0673 3	company/ip-momentum/index.html
+100644 bbcca518d1ab98215c70f74fe4d0123b42f302bf 1	company/lake-b2b/index.html
+100644 7433a0f4938ae07727ffa19023c0d7f5ad02556b 2	company/lake-b2b/index.html
+100644 70baed8c3a54d9fafe4dcb5d34eb736908180835 3	company/lake-b2b/index.html
+100644 56ca85fc9f0084df190a71162ef2e8f17e746446 1	company/recruit-champ/index.html
+100644 ee6c8e420d3d4e2eda23eda8b030a1c13895cc87 2	company/recruit-champ/index.html
+100644 4c310378310e5bd1288e85ddf6dce944aff65677 3	company/recruit-champ/index.html
+100644 d3a6a8381455fc7c1014048bec4f14f200aff63f 1	company/span-global-services/index.html
+100644 5d6eaa71b97722edba4deaf2fa14f67fc8d505f7 2	company/span-global-services/index.html
+100644 900e8c6c465e1744e8d0b2be0501f97ff1ed07e1 3	company/span-global-services/index.html
+100644 358b436e30a40703b34051e781aafcf0af92535d 1	data.js
+100644 df276313b1b5e291e9e01d2ee7a319ded28e724a 2	data.js
+100644 d33b48c44a3347a0998c0be7d227971b52d71a6f 3	data.js
+100644 dae775b03a33a2db5a1e03757a91bff55f08e606 1	feed.xml
+100644 c7b50f2902fba7d87ed15fc7b3b19e80a6bdced9 2	feed.xml
+100644 9b624117aea87ea1b32a073ccce4f1244e5813db 3	feed.xml
+100644 07167d6224767693512aaaed56700ebdf7c7feae 1	field-notes.html
+100644 3330c46e32713c5066d4b7f221319f6f6dd12e93 2	field-notes.html
+100644 64b09c0c865090eacf2743528bb0b1d9a96f2547 3	field-notes.html
+100644 7bc086e628d9e02c810dad3fa41337811f086c28 2	home-islands.js
+100644 a6aabe24129e8a57683cb9adca53891156ab31ff 3	home-islands.js
+100644 1edd3ded37666750aabc73b471f8dfb4e6182a11 1	humans.txt
+100644 c41122f4cd6e0a6f01c7f68f8d888b465e88d880 2	humans.txt
+100644 1d66dc0886db9a78a796fb7cf983cf993b5ba1cb 3	humans.txt
+100644 3716f601903f7c80b6c459d733fe126302d27178 1	index.html
+100644 194a4d3fd1483085075b30caa11a337f072cc031 2	index.html
+100644 7995fb0f41b121befb593b624e289ad84c6d56ee 3	index.html
+100644 777c2594808aab9b08dd66bdad82a25b2c9337bf 2	islands/index.jsx
+100644 7ef38edb6e4249c05a8a1ffd7d53d9c6dffc606a 3	islands/index.jsx
+100644 2d67422f4e1eab0282394efb60a62d4eb97c25c1 1	journey.html
+100644 fc79639a419153817b76a9b22db3b2da34be6c7c 2	journey.html
+100644 629291651a0035183d79087bf7496a8adb139302 3	journey.html
+100644 ed9021997b4f9a7aa390b0c5ccad54ba6b1f2d8b 1	llms-full.txt
+100644 26fe89f23e935b61b71ce3c2c810b06760524f27 2	llms-full.txt
+100644 797949da178b5e9d6a212a7a78ebc879e3bbd9a4 3	llms-full.txt
+100644 e897929d4ec8aee1dc08b316d36981940b6f8b16 1	llms.txt
+100644 c0b3bbb00a47ecb7c0a862794bf27fb9796a222e 2	llms.txt
+100644 b28ddd0ea4789e148affe3811707aff65978e051 3	llms.txt
+100644 9e87cb138ca487f455bffa1d1cc0cc74bd9399e0 1	now.html
+100644 52d0965e39927e864012659b2eb1c70f7991cf38 2	now.html
+100644 5488edfab9c8f910fba84e9fdd3bf753334b2a6a 3	now.html
+100644 066c335a9b60c26e3ac5a3d0ed01154d3a0e66f4 1	package-lock.json
+100644 9922afd6afd23567516d4c4516d3b1130db679ef 2	package-lock.json
+100644 f8793dd25419dad5647324b5e8f5b9d7cf50b0d7 3	package-lock.json
+100644 a45614ce69849e947fdf4cd74e868bb8fdc4058a 1	package.json
+100644 02e63f54aaca218376dd655842b82418314575b0 2	package.json
+100644 f449c345d5a70bf27d85dac21f8725d23a2b4e5a 3	package.json
+100644 67c4702b41e97262c4f3dfe184a3a7ea1a3ccde1 1	pillars.html
+100644 acf7945aa10a83db5d65b1e046147ef6571565c7 2	pillars.html
+100644 080e1decc1ab1da243ea59e1d81859d20a832fe5 3	pillars.html
+100644 41ce98cda81b34d613d5838520c550232294a54a 1	post/week-27-data-is-not-a-product/index.html
+100644 3852c763fca958349c22d629f9b6f91bfcea99e1 2	post/week-27-data-is-not-a-product/index.html
+100644 a58d64ee39b5f739af312f054839da4e076ce617 3	post/week-27-data-is-not-a-product/index.html
+100644 d9089bb8fe87db3f91bc24cdc317d171a2c96893 1	post/week-28-four-sales-teams/index.html
+100644 a888fa5e7e31f2eab24544550d5a05e99e9ebd82 2	post/week-28-four-sales-teams/index.html
+100644 b4a78abf0a28b51fceef49d02e4bc556671d43fc 3	post/week-28-four-sales-teams/index.html
+100644 0b8d66ab56eec4c289597d4b7c7e8e0243a59045 1	post/week-29-the-reach-arc/index.html
+100644 a2923c53a06821d0725e371a98b9de75c14ccc2d 2	post/week-29-the-reach-arc/index.html
+100644 68106cb4bcbe2bfaa0db52451d64681bd60a5cdb 3	post/week-29-the-reach-arc/index.html
+100644 fd080b7aaabb1f215eff156f73428f0673fcd0bf 1	post/week-30-the-enterprise-arc/index.html
+100644 1b980f8d1a6cffe1360cd4c4db07948401aba254 2	post/week-30-the-enterprise-arc/index.html
+100644 19d01775a1eaaa74cbde10a4156a9ca98f122e0c 3	post/week-30-the-enterprise-arc/index.html
+100644 fb92e8a3de1c77725dfdfca12a470f3bc516b65e 1	post/week-31-the-proof-arc/index.html
+100644 9164ae256f5538218bffdb62edda08d71029b423 2	post/week-31-the-proof-arc/index.html
+100644 858f53547113098ff0f3867d5f8894fcfb8483da 3	post/week-31-the-proof-arc/index.html
+100644 f7dd1f36edc030c5089cfed509679b2df3ceb3d6 1	post/week-32-the-build-reflex/index.html
+100644 07db35592d9f572a219684c2e62b4676141dcd3d 2	post/week-32-the-build-reflex/index.html
+100644 1b157d18bc9b04646414f83250050faf4a64ce21 3	post/week-32-the-build-reflex/index.html
+100644 622680a4e9d6fa490b7010bf8e18a7155d148988 1	post/week-33-the-quarter-turns/index.html
+100644 30f824aa94fb92725a56e882100bc40c0eb85d65 2	post/week-33-the-quarter-turns/index.html
+100644 5bd8a3e7a71ce3bf041012e44a900b706faa780b 3	post/week-33-the-quarter-turns/index.html
+100644 d3a3323cbab83763d71de03dd22f08a45419dda6 1	post/week-34-the-side-door/index.html
+100644 b8c6a70ecdb89bf91c5673f1d99685bdb161a24b 2	post/week-34-the-side-door/index.html
+100644 b573b1d66b734d110cb73115160fc8a8c4fd8c1d 3	post/week-34-the-side-door/index.html
+100644 bf4c9624d442879f2a864e85997c3c5b4f34dc65 1	post/week-35-three-calls-one-friday/index.html
+100644 687d76dc950497514d01cf3ee16e074057363796 2	post/week-35-three-calls-one-friday/index.html
+100644 d3a40e4d3d8a4c3124bd6f5b4e4ae182fb12cb02 3	post/week-35-three-calls-one-friday/index.html
+100644 d36f6eccaef75eae0599f71d870690f89e537e63 1	post/week-36-the-doctor-said-yes/index.html
+100644 9dfaa5f1f5c3293e08da33a65264c91c199f09be 2	post/week-36-the-doctor-said-yes/index.html
+100644 d578cc34047813fb62c15ef7999b5ec2ed7f71d9 3	post/week-36-the-doctor-said-yes/index.html
+100644 cad61992dc1710757f3fe16014ef0ca3d68c98f2 1	post/week-37-the-calendar-was-full/index.html
+100644 07b86060a9c4c487e2adf0b998582ba38fac1a9e 2	post/week-37-the-calendar-was-full/index.html
+100644 2177e4da9c666844d5a05383bb87fc753a228327 3	post/week-37-the-calendar-was-full/index.html
+100644 4fccdba76c2e417b72898c3d7638a49c03ffd7d6 1	post/week-38-the-signals-were-everywhere/index.html
+100644 f72d645c4e241e8126a48cb88c5eceada290b526 2	post/week-38-the-signals-were-everywhere/index.html
+100644 07c0a44200824705f582f44e10df3151ffdfef26 3	post/week-38-the-signals-were-everywhere/index.html
+100644 49117a8a8f0a7765cc1307bc4359dc49f9b20344 1	post/week-43-five-systems-five-days/index.html
+100644 216ee32313bb90f962d037cc2c71693a09b98ae6 2	post/week-43-five-systems-five-days/index.html
+100644 8fc90179d8142ec3fb0fa7f62c7bc44512ae92e7 3	post/week-43-five-systems-five-days/index.html
+100644 1a675946f2cb2b90e2510f168deb0e4c0c8f40bc 1	post/week-44-the-discipline-arc/index.html
+100644 a3503446c3d93ff3cf59e38a6c9638c54db69527 2	post/week-44-the-discipline-arc/index.html
+100644 636fa5735bc879bf825fc4dcb7efeaef07826104 3	post/week-44-the-discipline-arc/index.html
+100644 9a6c2dc985013e52c7249d754024e442c044ccd8 1	post/week-45-the-wall-we-named/index.html
+100644 8845ba441aedb972eeacac74540cc0a2d7e7800d 2	post/week-45-the-wall-we-named/index.html
+100644 701312c03ca7db615ce5f2e91bd9c0cb6b2da06a 3	post/week-45-the-wall-we-named/index.html
+100644 2f3e490ab851ffc32ac0cbc1ee3505c3ab9dcbd3 1	post/week-46-the-empty-room-arc/index.html
+100644 9235fb50052a3ba2ad025fb65dcee36383646f8d 2	post/week-46-the-empty-room-arc/index.html
+100644 121c3f44c7fc4b29d1165f7ee01caa71d27ec43e 3	post/week-46-the-empty-room-arc/index.html
+100644 991958a3b0ae35ec1817b3751a3263e7bc156ef7 1	post/week-47-the-decision-debt-arc/index.html
+100644 3bcd422f68b49e607eef8bb81c58d74582cc9628 2	post/week-47-the-decision-debt-arc/index.html
+100644 9a877320664479381e536d1d267e17fd52c4f12c 3	post/week-47-the-decision-debt-arc/index.html
+100644 0fa4aa2a6275857aa16cc69dfade477ed56d8b5e 1	post/week-48-the-receipts-arc/index.html
+100644 3f1d00085a3aa5550a71988aebaa3ad6dcf7f7d1 2	post/week-48-the-receipts-arc/index.html
+100644 cd593e5258e48ec7cb8275d5661f4a6eb4cbde3e 3	post/week-48-the-receipts-arc/index.html
+100644 01d59eb06644f0f897af38167354ec62220a13a6 1	privacy.html
+100644 ce71ff743dd6b5f7b145e51d8fd4e2f2b71c104c 2	privacy.html
+100644 1f282a622e874d365f6dab61b7ea066fa6b36f00 3	privacy.html
+100644 3fb0a2e0733756ac3e9cb75d731b4ad73ccba348 2	scripts/build-islands.mjs
+100644 d9296a6960ba4168fc03487f726f93ce816bfce9 3	scripts/build-islands.mjs
+100644 b0c7ec8237a29ff1adaf6662346290eeaa7434d2 1	toolkit.html
+100644 4c6c1ca14516ccc3a2e3e163459168031f5d9b5f 2	toolkit.html
+100644 216baf7d898f4341542cae36224a0c2dd9e58541 3	toolkit.html
+100644 83909d96a6eb50b45f164f997d7625a29d6fa5b0 1	writing.html
+100644 2a6ffd15e53f899ea1a756a3c90412a41e51de6d 2	writing.html
+100644 c6a08704a4750e6a5fc2da783718896c55120653 3	writing.html
+
+Auto-merging Footer.jsx
+CONFLICT (content): Merge conflict in Footer.jsx
+Auto-merging Home.jsx
+Auto-merging agents.txt
+CONFLICT (content): Merge conflict in agents.txt
+Auto-merging company/ampliz/index.html
+CONFLICT (content): Merge conflict in company/ampliz/index.html
+Auto-merging company/champ-fit/index.html
+CONFLICT (content): Merge conflict in company/champ-fit/index.html
+Auto-merging company/champions-accelerator/index.html
+CONFLICT (content): Merge conflict in company/champions-accelerator/index.html
+Auto-merging company/champions-club/index.html
+CONFLICT (content): Merge conflict in company/champions-club/index.html
+Auto-merging company/champions-infometrics/index.html
+CONFLICT (content): Merge conflict in company/champions-infometrics/index.html
+Auto-merging company/cirralogix/index.html
+CONFLICT (content): Merge conflict in company/cirralogix/index.html
+Auto-merging company/health-fit/index.html
+CONFLICT (content): Merge conflict in company/health-fit/index.html
+Auto-merging company/infratech/index.html
+CONFLICT (content): Merge conflict in company/infratech/index.html
+Auto-merging company/ip-momentum/index.html
+CONFLICT (content): Merge conflict in company/ip-momentum/index.html
+Auto-merging company/lake-b2b/index.html
+CONFLICT (content): Merge conflict in company/lake-b2b/index.html
+Auto-merging company/recruit-champ/index.html
+CONFLICT (content): Merge conflict in company/recruit-champ/index.html
+Auto-merging company/span-global-services/index.html
+CONFLICT (content): Merge conflict in company/span-global-services/index.html
+Auto-merging data.js
+CONFLICT (content): Merge conflict in data.js
+Auto-merging feed.xml
+CONFLICT (content): Merge conflict in feed.xml
+Auto-merging field-notes.html
+CONFLICT (content): Merge conflict in field-notes.html
+Auto-merging home-islands.js
+CONFLICT (add/add): Merge conflict in home-islands.js
+Auto-merging home.css
+Auto-merging humans.txt
+CONFLICT (content): Merge conflict in humans.txt
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Auto-merging islands/index.jsx
+CONFLICT (add/add): Merge conflict in islands/index.jsx
+Auto-merging journey.html
+CONFLICT (content): Merge conflict in journey.html
+Auto-merging llms-full.txt
+CONFLICT (content): Merge conflict in llms-full.txt
+Auto-merging llms.txt
+CONFLICT (content): Merge conflict in llms.txt
+Auto-merging now.html
+CONFLICT (content): Merge conflict in now.html
+Auto-merging package-lock.json
+CONFLICT (content): Merge conflict in package-lock.json
+Auto-merging package.json
+CONFLICT (content): Merge conflict in package.json
+Auto-merging pillars.html
+CONFLICT (content): Merge conflict in pillars.html
+Auto-merging post/week-27-data-is-not-a-product/index.html
+CONFLICT (content): Merge conflict in post/week-27-data-is-not-a-product/index.html
+Auto-merging post/week-28-four-sales-teams/index.html
+CONFLICT (content): Merge conflict in post/week-28-four-sales-teams/index.html
+Auto-merging post/week-29-the-reach-arc/index.html
+CONFLICT (content): Merge conflict in post/week-29-the-reach-arc/index.html
+Auto-merging post/week-30-the-enterprise-arc/index.html
+CONFLICT (content): Merge conflict in post/week-30-the-enterprise-arc/index.html
+Auto-merging post/week-31-the-proof-arc/index.html
+CONFLICT (content): Merge conflict in post/week-31-the-proof-arc/index.html
+Auto-merging post/week-32-the-build-reflex/index.html
+CONFLICT (content): Merge conflict in post/week-32-the-build-reflex/index.html
+Auto-merging post/week-33-the-quarter-turns/index.html
+CONFLICT (content): Merge conflict in post/week-33-the-quarter-turns/index.html
+Auto-merging post/week-34-the-side-door/index.html
+CONFLICT (content): Merge conflict in post/week-34-the-side-door/index.html
+Auto-merging post/week-35-three-calls-one-friday/index.html
+CONFLICT (content): Merge conflict in post/week-35-three-calls-one-friday/index.html
+Auto-merging post/week-36-the-doctor-said-yes/index.html
+CONFLICT (content): Merge conflict in post/week-36-the-doctor-said-yes/index.html
+Auto-merging post/week-37-the-calendar-was-full/index.html
+CONFLICT (content): Merge conflict in post/week-37-the-calendar-was-full/index.html
+Auto-merging post/week-38-the-signals-were-everywhere/index.html
+CONFLICT (content): Merge conflict in post/week-38-the-signals-were-everywhere/index.html
+Auto-merging post/week-43-five-systems-five-days/index.html
+CONFLICT (content): Merge conflict in post/week-43-five-systems-five-days/index.html
+Auto-merging post/week-44-the-discipline-arc/index.html
+CONFLICT (content): Merge conflict in post/week-44-the-discipline-arc/index.html
+Auto-merging post/week-45-the-wall-we-named/index.html
+CONFLICT (content): Merge conflict in post/week-45-the-wall-we-named/index.html
+Auto-merging post/week-46-the-empty-room-arc/index.html
+CONFLICT (content): Merge conflict in post/week-46-the-empty-room-arc/index.html
+Auto-merging post/week-47-the-decision-debt-arc/index.html
+CONFLICT (content): Merge conflict in post/week-47-the-decision-debt-arc/index.html
+Auto-merging post/week-48-the-receipts-arc/index.html
+CONFLICT (content): Merge conflict in post/week-48-the-receipts-arc/index.html
+Auto-merging privacy.html
+CONFLICT (content): Merge conflict in privacy.html
+Auto-merging scripts/build-islands.mjs
+CONFLICT (add/add): Merge conflict in scripts/build-islands.mjs
+Auto-merging system.css
+Auto-merging toolkit.html
+CONFLICT (content): Merge conflict in toolkit.html
+Auto-merging writing.html
+CONFLICT (content): Merge conflict in writing.html

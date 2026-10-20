@@ -1,38 +1,53 @@
-// islands/index.jsx : the registry and the mount loop, bundled by
-// scripts/build-islands.mjs into home-islands.js at the repo root.
+// islands/index.jsx : the registry and the mount pass for the homepage
+// islands (contract section 2).
 //
-// Contract: source is islands/<name>.island.jsx with a default export, listed
-// here under the name the prerendered markup uses in data-island. The bundle
-// loads defer, so the DOM already exists: each [data-island] has its
-// server-rendered fallback cleared, then createRoot renders into the same
-// element. A page with no islands does nothing.
-//
-// React pages render after this bundle (Babel standalone runs on
-// DOMContentLoaded), so a late island has to be mounted as it appears. The
-// mounted flag keeps the observer from reacting to our own renders.
+// Every island lives in a prerendered <div data-island="..." data-props="...">
+// that already carries a complete static fallback. This file parses the props,
+// clears the fallback and renders the component into that same div. Pages with
+// no mounts do nothing, and a page with JS off keeps the fallback forever.
 // No em dashes.
 
+import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import SchemeBadge from './scheme-badge.island.jsx';
+import HalftoneFooter from './halftone-footer.island.jsx';
+import FolderCards from './folder-cards.island.jsx';
 
 const REGISTRY = {
-  'scheme-badge': SchemeBadge,
+  'halftone-footer': HalftoneFooter,
+  'folder-cards': FolderCards,
 };
 
-function mount(el) {
-  if (el.dataset.islandMounted) return;
-  const Comp = REGISTRY[el.dataset.island];
-  if (!Comp) return;
-  let props = {};
-  try { props = JSON.parse(el.dataset.props || '{}'); } catch (e) { /* bad props: mount with none */ }
-  el.dataset.islandMounted = '1';
-  el.textContent = ''; // the static fallback has done its job
-  createRoot(el).render(<Comp {...props} />);
+export function mountIslands(root) {
+  const scope = root || document;
+  const nodes = scope.querySelectorAll ? scope.querySelectorAll('[data-island]') : [];
+  let mounted = 0;
+  nodes.forEach((el) => {
+    if (el.getAttribute('data-mounted')) return;
+    const Comp = REGISTRY[el.getAttribute('data-island')];
+    if (!Comp) return;
+    let props = {};
+    const raw = el.getAttribute('data-props');
+    if (raw) {
+      try {
+        props = JSON.parse(raw);
+      } catch (err) {
+        // Bad JSON leaves the fallback in place: the page reads, only the
+        // motion is missing.
+        return;
+      }
+    }
+    el.setAttribute('data-mounted', '1');
+    el.textContent = '';
+    createRoot(el).render(React.createElement(Comp, props));
+    mounted += 1;
+  });
+  return mounted;
 }
 
-function sweep() {
-  document.querySelectorAll('[data-island]').forEach(mount);
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => mountIslands(document));
+  } else {
+    mountIslands(document);
+  }
 }
-
-sweep();
-new MutationObserver(sweep).observe(document.documentElement, { childList: true, subtree: true });

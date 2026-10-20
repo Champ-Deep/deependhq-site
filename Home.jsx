@@ -405,36 +405,65 @@ const Stack = () => {
 
 // ---------------------------------------------------------------- 21:00 pillars
 const GO = { champ: 'open the product suite', 'infratech-lagoons': 'see the properties', lakeb2b: 'see the data companies', accelerator: 'meet the cohorts' };
+// What the folder island reads, derived from content.json through data.js at
+// build time and trimmed to the fields the island touches, so data-props in
+// the prerendered HTML stays small (plan section 8).
+const folderProps = () => {
+  const byPillar = Object.fromEntries((DH.pillars || []).map((p) => [p.slug, p]));
+  return (DH.companies || []).map((c) => {
+    const p = byPillar[c.pillar] || {};
+    const urls = {};
+    (p.products || []).forEach((x) => { if (x.url) urls[x.name] = x.url; });
+    return {
+      slug: c.slug,
+      name: c.name,
+      tag: c.tag,
+      accent: p.accent || 'win',
+      entries: (c.related_journey || []).slice(0, 2).map((e) => ({
+        day: e.day,
+        date: e.date,
+        text: String(e.shipping_now || '').slice(0, 60),
+      })),
+      // a product links to its own site when it has one, else to the company page
+      products: (c.products || []).map((n) => ({ name: n, href: urls[n] || `company/${c.slug}` })),
+    };
+  });
+};
+
 const Pillars = () => {
   const used = new Set();
   return (
     <section className="wx-pillars wx-sec mode-editorial" id="ecosystem" aria-labelledby="wx-eco-h">
       <header className="wx-sec-head wx-split">
-        <h2 className="wx-ed-h wx-ink" id="wx-eco-h">12 companies, 1 operator.</h2>
+        <h2 className="wx-ed-h wx-ink" id="wx-eco-h">Group CMO across twelve companies</h2>
         <p className="wx-lead">Four doors into Champions Group. Each one shows the last day it made the public log.</p>
         <a className="wx-tlink" href="pillars.html">all four pillars →</a>
       </header>
-      <div className="wx-pl-row">
-        {(DH.pillars || []).map((p) => {
-          // No two doors end on the same line: skip a recent entry another door already used.
-          const rec = (p.recent || []).find((r) => !used.has(r.day)) || (p.recent || [])[0];
-          if (rec) used.add(rec.day);
-          const cos = (p.companies || []).length > 1 ? p.companies : (p.products || []).slice(0, 5).map((x) => x.name);
-          return (
-            <a key={p.slug} className="wx-pl" data-acc={p.accent} href={`pillars.html#${p.slug}`}>
-              <h3 className="wx-pl-name">{p.name}</h3>
-              <p className="wx-pl-blurb">{p.blurb}</p>
-              <ul className="wx-pl-cos">{cos.map((c) => <li key={c}>{c}</li>)}</ul>
-              <div className="wx-pl-foot">
-                {p.last_ship
-                  ? <p className="wx-pl-last"><span>last in the log</span><span><b>day {p.last_ship_day}</b> · <WxAge date={p.last_ship} mode={21} /></span></p>
-                  : <p className="wx-pl-last"><span>{(p.counts || {}).products || 0} products</span></p>}
-                {rec && <div className="wx-pl-more"><p><span>day {rec.day}: {rec.ship}</span></p></div>}
-                <span className="wx-pl-go">{GO[p.slug] || 'open'} →</span>
-              </div>
-            </a>
-          );
-        })}
+      {/* the island swaps this whole row for twelve glass folders; the markup
+          inside is the reading, so JS off keeps the four doors */}
+      <div data-island="folder-cards" data-props={JSON.stringify({ companies: folderProps() })}>
+        <div className="wx-pl-row">
+          {(DH.pillars || []).map((p) => {
+            // No two doors end on the same line: skip a recent entry another door already used.
+            const rec = (p.recent || []).find((r) => !used.has(r.day)) || (p.recent || [])[0];
+            if (rec) used.add(rec.day);
+            const cos = (p.companies || []).length > 1 ? p.companies : (p.products || []).slice(0, 5).map((x) => x.name);
+            return (
+              <a key={p.slug} className="wx-pl" data-acc={p.accent} href={`pillars.html#${p.slug}`}>
+                <h3 className="wx-pl-name">{p.name}</h3>
+                <p className="wx-pl-blurb">{p.blurb}</p>
+                <ul className="wx-pl-cos">{cos.map((c) => <li key={c}>{c}</li>)}</ul>
+                <div className="wx-pl-foot">
+                  {p.last_ship
+                    ? <p className="wx-pl-last"><span>last in the log</span><span><b>day {p.last_ship_day}</b> · <WxAge date={p.last_ship} mode={21} /></span></p>
+                    : <p className="wx-pl-last"><span>{(p.counts || {}).products || 0} products</span></p>}
+                  {rec && <div className="wx-pl-more"><p><span>day {rec.day}: {rec.ship}</span></p></div>}
+                  <span className="wx-pl-go">{GO[p.slug] || 'open'} →</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

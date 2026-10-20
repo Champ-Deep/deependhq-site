@@ -29,6 +29,8 @@
   --think-text: #6D95FF;   /* 4.65 on card-2 */
   --human-text: #E96BCC;   /* 4.68 on card-2 */
   --danger-text: #F37050;  /* 4.55 on card-2 */
+  --win-text: var(--win);      /* accent as text: the light scheme swaps both */
+  --build-text: var(--build);
   /* paper band */
   --paper-2: #FBF5EA;          /* card on paper */
   --ink: #0E1A33;              /* 14.60 on paper, 15.94 on paper-2 */
@@ -43,6 +45,7 @@
   --build-dim: color-mix(in oklab, var(--build) 45%, var(--card));
   --think-dim: color-mix(in oklab, var(--think) 45%, var(--card));
   --win-dim: color-mix(in oklab, var(--win) 45%, var(--card));
+  --human-dim: color-mix(in oklab, var(--human) 45%, var(--card));
   --build-glow: 0 0 20px color-mix(in oklab, var(--build) 18%, transparent);
   --win-glow: 0 0 20px color-mix(in oklab, var(--win) 18%, transparent);
   /* type */
@@ -67,6 +70,22 @@
   --color-text-primary: var(--text); --color-text-secondary: var(--muted);
   --color-border: var(--line); --color-border-hover: var(--line-2);
   --fg: var(--text); --fg-muted: var(--muted); --bg-card: var(--card); --bg-hover: var(--card-2); --border: var(--line);
+}
+
+/* Light scheme (refresh contract section 1). The inline script in index.html
+   sets data-scheme="light" before paint; components read tokens only, so the
+   same markup serves both looks. Fills keep their dark values, every accent
+   used as text takes its darker -text twin. Colors that mix from other tokens
+   (--*-dim, --*-wash) need no override: var() resolves at use time. */
+:root[data-scheme="light"] {
+  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
+  --line: #DCD9D2; --line-2: #C4C0B7;
+  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
+  --win-text: #8A5A00; --build-text: #0F6B33;
+  --think-text: #2A55C8; --human-text: #A8278F; --danger-text: #B33A1E;
+  --shadow-1: 0 1px 2px rgba(14,26,51,.08);
+  --shadow-2: 0 4px 12px rgba(14,26,51,.10);
+  --shadow-3: 0 8px 32px rgba(14,26,51,.12);
 }
 @media (min-width: 40rem) { :root { --pad: 32px; } }
 @media (min-width: 64rem) { :root { --pad: 48px; } }

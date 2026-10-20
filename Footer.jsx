@@ -1,60 +1,147 @@
-// Footer.jsx : compact operator footer. Every number here is derived at build
-// time (data.built, journey) or is real personal content (off hours, rolodex).
-// The old footer carried a hand-typed version pill, a build number and a
-// "47 days online" that never changed. None of that survives.
+// Footer.jsx : the halftone wordmark footer mount plus its static fallback.
+// Refresh plan section 10: Site / Elsewhere / the twelve (a link plus the
+// three most recently shipped companies), the privacy sentence and the
+// build-day line in the rule row with a live age.
+//
+// The <div data-island> below carries the complete reading in plain markup.
+// islands/halftone-footer.island.jsx replaces it only when the bundle loads,
+// so JS off, a failed bundle and every inner page all keep the same links and
+// the same sentences. Every number is derived from data.js at build time.
+// compact is accepted because app.jsx still passes it; the footer now has one
+// shape on every page. No em dashes.
 
-// compact: the homepage shows off-the-clock and DMs in their own section, so
-// the footer drops those two columns there.
-const Footer = ({ compact = false }) => {
+const SITE_LINKS = [
+  { label: 'Home', href: 'index.html' },
+  { label: 'Mission Log', href: 'journey.html' },
+  { label: 'Writing', href: 'writing.html' },
+  { label: 'Pillars', href: 'pillars.html' },
+  { label: 'Stack', href: 'toolkit.html' },
+  { label: 'Now', href: 'now.html' },
+  { label: 'RSS', href: 'feed.xml' },
+];
+
+const ELSEWHERE_LINKS = [
+  { label: 'github / Champ-Deep', href: 'https://github.com/Champ-Deep', external: true },
+  { label: 'linkedin', href: 'https://www.linkedin.com/in/sreedeep-surapaneni', external: true },
+  { label: 'bluesky', href: 'https://bsky.app/profile/sreedeep-sura.bsky.social', external: true },
+  { label: 'book 30 minutes', href: 'https://scheduler.zoom.us/sreedeep', external: true },
+  { label: 'deep@championsmail.com', href: 'mailto:deep@championsmail.com' },
+];
+
+// One sentence, split only where a link sits inside it, so the island can
+// rebuild exactly what the fallback prints.
+const PRIVACY = [
+  {
+    t: '© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (',
+  },
+  { t: 'details', href: '/privacy' },
+  {
+    t: ') · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on ',
+  },
+  { t: '/privacy', href: '/privacy' },
+];
+
+// Build age: derived from the build stamp, never typed, and recomputed in the
+// visitor's browser by the island. Past 21 days the page is stale and says so.
+const ago = (iso) => {
+  const t = Date.parse(iso || '');
+  if (Number.isNaN(t)) return '';
+  const d = Math.max(0, Math.floor((Date.now() - t) / 86400000));
+  if (d <= 0) return 'today';
+  if (d === 1) return 'yesterday';
+  return `${d} days ago`;
+};
+
+const isStale = (iso) => {
+  const t = Date.parse(iso || '');
+  return !Number.isNaN(t) && Date.now() - t > 21 * 86400000;
+};
+
+const ext = (l) => (l.external ? { target: '_blank', rel: 'noreferrer' } : {});
+
+const Footer = () => {
   const D = window.DH_DATA;
-  const S = window.Sys;
   const newest = D.journey && D.journey[0];
-  const built = D.built ? new Date(D.built) : null;
-  const builtLabel = built ? built.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' }) : null;
+  const builtIso = D.built || null;
+  const builtLabel = builtIso
+    ? new Date(builtIso).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        timeZone: 'Asia/Kolkata',
+      })
+    : '';
+  const day = newest ? newest.day : null;
+  const stale = isStale(builtIso);
+
+  // the twelve: one link to the doors, plus the three companies whose newest
+  // log entry is the freshest. Derived from related_journey, never typed.
+  const shipped = (D.companies || [])
+    .map((c) => ({ label: c.label || c.name, href: `company/${c.slug}`, day: (c.related_journey || [])[0]?.day || 0 }))
+    .filter((c) => c.day)
+    .sort((a, b) => b.day - a.day)
+    .slice(0, 3);
+
+  const twelve = [
+    { label: 'the twelve →', href: 'pillars.html#ecosystem' },
+    ...shipped.map((c) => ({ label: c.label, href: c.href })),
+  ];
+
+  const columns = [
+    { title: 'Site', links: SITE_LINKS },
+    { title: 'Elsewhere', links: ELSEWHERE_LINKS },
+    { title: 'The twelve', links: twelve },
+  ];
+
+  const dayLine = `${day ? `day ${day} of building in public · ` : ''}built ${builtLabel}${
+    builtLabel ? ` (${ago(builtIso)})` : ''
+  }`;
+
+  const islandProps = {
+    wordmark: 'deep_',
+    label: 'Sreedeep Surapaneni',
+    meta: 'Champions Group · Bangalore',
+    columns,
+    privacy: PRIVACY,
+    day,
+    builtLabel,
+    builtIso,
+    grain: 0.35,
+  };
+
   return (
     <footer className="sys-footer sys mode-operator" aria-label="footer">
-      <div className="wrap">
-        <div className="foot-grid">
-          <div className="foot-col">
-            <h4>site</h4>
-            <a href="index.html">Home</a>
-            <a href="journey.html">Mission Log</a>
-            <a href="writing.html">Writing</a>
-            <a href="pillars.html">Pillars</a>
-            <a href="toolkit.html">Stack</a>
-            <a href="now.html">Now</a>
-            <a href="feed.xml">RSS</a>
-            <a href="llms.txt">llms.txt</a>
+      <div data-island="halftone-footer" data-props={JSON.stringify(islandProps)}>
+        <div className="wrap">
+          <div className="foot-grid">
+            {columns.map((col) => (
+              <div className="foot-col" key={col.title}>
+                <h4>{col.title}</h4>
+                {col.links.map((l) => (
+                  <a key={l.label} href={l.href} {...ext(l)}>
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            ))}
           </div>
-          <div className="foot-col">
-            <h4>elsewhere</h4>
-            <a href="https://github.com/Champ-Deep" target="_blank" rel="noreferrer">github / Champ-Deep ↗</a>
-            <a href="https://www.linkedin.com/in/sreedeep-surapaneni" target="_blank" rel="noreferrer">linkedin ↗</a>
-            <a href="https://bsky.app/profile/sreedeep-sura.bsky.social" target="_blank" rel="noreferrer">bluesky ↗</a>
-            <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer">book 30 minutes ↗</a>
-            <a className="foot-mail" href="mailto:deep@championsmail.com">deep@championsmail.com</a>
+          <div className="foot-bottom">
+            <span className="foot-id">
+              {PRIVACY.map((s, i) =>
+                s.href ? (
+                  <a className="foot-inline" key={i} href={s.href}>
+                    {s.t}
+                  </a>
+                ) : (
+                  <React.Fragment key={i}>{s.t}</React.Fragment>
+                )
+              )}
+            </span>
+            <span className="foot-day" data-state={stale ? 'stale' : 'fresh'}>
+              {dayLine}
+            </span>
           </div>
-          {!compact && <div className="foot-col">
-            <h4>off the clock</h4>
-            {(D.off_hours || []).map((o) => <span key={o.what} className="i"><b>{o.what}.</b> {o.detail}</span>)}
-          </div>}
-          {!compact && <div className="foot-col">
-            <h4>DMs I answer</h4>
-            {(D.rolodex || []).map((r) => <span key={r.who} className="i"><b>{r.who}</b> · {r.how}</span>)}
-          </div>}
-          <div className="foot-col">
-            <h4>the twelve</h4>
-            {(D.companies || []).map((c) => <a key={c.slug} href={`company/${c.slug}`}>{c.name}</a>)}
-          </div>
-        </div>
-        <div className="foot-bottom">
-          <span className="foot-id"><img src="favicon.svg" width="24" height="24" alt="" />© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (<a className="foot-inline" href="/privacy">details</a>) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on <a className="foot-inline" href="/privacy">/privacy</a></span>
-          <span>{newest ? `day ${newest.day} of building in public` : ''}{builtLabel ? ` · built ${builtLabel}` : ''}</span>
-          <span>no-build React · Cloudflare Workers · publishes itself nightly · press ⌘K</span>
-          <span className="schb" data-island="scheme-badge" data-props="{}">
-            <span className="schb-t schb-dark">scheme: dark</span>
-            <span className="schb-t schb-light">scheme: light</span>
-          </span>
+
         </div>
       </div>
     </footer>
