@@ -2,7 +2,9 @@
 /* ============================================================
    Legacy token sheet. Every value now points at the system tokens in
    system.css (identity kit v1, Oct 2026), which every page loads after this.
-   Mode: dark only. No light mode. This site lives at night.
+   Mode: follows the scheme, because every alias resolves to a system token at
+   use time, and :root[data-scheme="light"] in system.css overrides the three
+   accent aliases where one alias drives both text and fills.
    ============================================================ */
 
 :root {

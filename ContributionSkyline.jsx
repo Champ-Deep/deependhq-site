@@ -804,9 +804,9 @@ const ContributionSkyline = ({
     const ro = new ResizeObserver(() => { if (Math.round(stage.clientWidth) !== W) relayout(); });
     ro.observe(stage);
 
-    // Theme switches (the navy / classic toggle) retheme the canvas instead of flipping it.
+    // The scheme toggle rethemes the canvas instead of flipping it.
     const mo = new MutationObserver(retheme);
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style', 'data-theme'] });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style', 'data-scheme'] });
     const onReduce = () => { reduced = reduceMq.matches; kick(); };
     reduceMq.addEventListener('change', onReduce);
     darkMq.addEventListener('change', retheme);
@@ -1034,9 +1034,9 @@ const GitHubSkyline = () => {
     return () => { alive = false; ctrl.abort(); clearTimeout(t); };
   }, []);
   useEffectS(() => {
-    // Rebuild the ramp when the navy / classic toggle flips data-theme on <html>.
+    // Rebuild the ramp when the scheme toggle flips data-scheme on <html>.
     const mo = new MutationObserver(() => setPal(csSitePalette()));
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-scheme', 'class'] });
     return () => mo.disconnect();
   }, []);
   if (days !== null && !days.length) return null; // graceful hide on failure

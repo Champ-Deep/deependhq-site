@@ -667,7 +667,11 @@ a.dh-art:hover { color: var(--build-text); }
 
 /* ---------- the shell inside the command palette ---------- */
 .dhk-term { padding: 6px; }
-.dhk-term-body { padding: var(--s3) var(--s4); font: 400 .8125rem/1.7 var(--font-mono); min-height: 220px; max-height: 46vh; overflow-y: auto; color: var(--text); background: color-mix(in oklab, var(--navy) 80%, black); border: 1px solid var(--line); border-radius: var(--r-md); }
+/* The terminal ground never changes with the scheme, so it re-scopes the text
+   tier to the tokens that do not change with it either (same trick as
+   .band-paper): paper, mare and the identity fills stay night-readable in
+   light, where --text and the -text twins would go ink on black. */
+.dhk-term-body { --text: var(--paper); --muted: var(--mare); --dim: var(--mare); --build-text: var(--build); --win-text: var(--win); --think-text: var(--think); padding: var(--s3) var(--s4); font: 400 .8125rem/1.7 var(--font-mono); min-height: 220px; max-height: 46vh; overflow-y: auto; color: var(--text); background: color-mix(in oklab, var(--navy) 80%, black); border: 1px solid var(--line); border-radius: var(--r-md); }
 .dhk-term-line { white-space: pre-wrap; word-break: break-word; }
 .dhk-term-line .p { color: var(--build-text); }
 .dhk-term-line.out { color: var(--muted); }

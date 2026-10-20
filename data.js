@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-20T19:58:47.579Z
+// Built 2026-10-20T20:36:11.267Z
 
 window.DH_DATA = {
   "brand": {
@@ -9643,7 +9643,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-20T19:58:47.549Z",
+    "built": "2026-10-20T20:36:11.226Z",
     "built_date": "2026-10-21",
     "newest_entry": {
       "date": "2026-10-19",
@@ -11433,5 +11433,5 @@ window.DH_DATA = {
       "essays": 18
     }
   },
-  "built": "2026-10-20T19:58:47.579Z"
+  "built": "2026-10-20T20:36:11.267Z"
 };

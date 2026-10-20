@@ -382,7 +382,7 @@ const Stack = () => {
                 <React.Fragment>
                   <span className="wx-ix-name">{r.name}</span>
                   <span className="wx-ix-what">{r.what}</span>
-                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-tag-${r.tag}`}>{r.tag}</span>}{r.meta}</span>
+                  <span className="wx-ix-meta">{r.tag && <span className={`wx-tag wx-tag-${r.tag.split(' ')[0]}`}>{r.tag}</span>}{r.meta}</span>
                 </React.Fragment>
               );
               if (!r.url) return <div key={r.name} className="wx-ix">{inner}</div>;
