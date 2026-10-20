@@ -30,3 +30,8 @@ Deliverables.html
 scripts/.prerender-cache/
 scripts/.shots/
 .wrangler/
+.env*
+!.env.example
+.dev.vars*
+__pycache__/
+*.pyc

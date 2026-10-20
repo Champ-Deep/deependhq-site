@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "deependhq-toolkit-local",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-05-23",
+  "compatibility_flags": ["nodejs_compat"],
+  // LOCAL ONLY. Never deploy. Production needs a real D1 database id and secure environment configuration.
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/", "/api/*", "/lead-scorer", "/lead-scorer.html", "/account", "/account.html", "/toolkit", "/toolkit.html"]
+  },
+  "d1_databases": [{
+    "database_name": "toolkit-local",
+    "database_id": "local-toolkit-only",
+    "binding": "TOOLKIT_DB",
+    "migrations_dir": "migrations"
+  }]
+}
