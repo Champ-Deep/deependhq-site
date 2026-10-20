@@ -157,26 +157,28 @@ export async function api(action, body) {
   return data;
 }
 
-// Shared appearance so native Clerk components sit on Night Ink instead of
-// arriving as a white rectangle. Only documented variables are set.
-const APPEARANCE = {
-  colorScheme: 'dark',
+// Shared appearance so native Clerk components sit on the page tokens instead
+// of arriving as a white rectangle. Only documented variables are set, read
+// from CSS at mount time so the modal follows the active scheme.
+const tok = (name, fallback) => (getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback);
+const APPEARANCE = () => ({
+  colorScheme: document.documentElement.getAttribute('data-scheme') === 'light' ? 'light' : 'dark',
   variables: {
-    colorBackground: '#15213A',
-    colorText: '#F4EBD9',
-    colorPrimary: '#F4A62A',
-    colorDanger: '#E05030',
-    colorInputBackground: '#0E1A33',
-    colorInputText: '#F4EBD9',
+    colorBackground: tok('--surface', '#15213A'),
+    colorText: tok('--text', '#F4EBD9'),
+    colorPrimary: tok('--win', '#F4A62A'),
+    colorDanger: tok('--danger', '#E05030'),
+    colorInputBackground: tok('--bg', '#0E1A33'),
+    colorInputText: tok('--text', '#F4EBD9'),
     borderRadius: '6px',
   },
-};
+});
 
 export function openSignIn() {
   if (!window.Clerk || typeof window.Clerk.openSignIn !== 'function') {
     return Promise.reject(new Error('Sign in is not available yet.'));
   }
-  return window.Clerk.openSignIn({ appearance: APPEARANCE });
+  return window.Clerk.openSignIn({ appearance: APPEARANCE() });
 }
 
 export async function signOut() {
@@ -188,7 +190,7 @@ export async function signOut() {
 
 export function mountUserButton(node) {
   if (window.Clerk && typeof window.Clerk.mountUserButton === 'function') {
-    window.Clerk.mountUserButton(node, { appearance: APPEARANCE, afterSignOutUrl: location.pathname });
+    window.Clerk.mountUserButton(node, { appearance: APPEARANCE(), afterSignOutUrl: location.pathname });
     return true;
   }
   return false;
@@ -196,7 +198,7 @@ export function mountUserButton(node) {
 
 export function mountPricingTable(node) {
   if (window.Clerk && typeof window.Clerk.mountPricingTable === 'function') {
-    window.Clerk.mountPricingTable(node, { appearance: APPEARANCE });
+    window.Clerk.mountPricingTable(node, { appearance: APPEARANCE() });
     return true;
   }
   return false;

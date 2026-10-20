@@ -19,6 +19,11 @@
   --lamp: #F4A62A;
   --danger: #E05030;
   --danger-text: #F37050;
+  /* text twin for the Lamp: as text or a thin stroke it darkens in light */
+  --win-text: var(--lamp);
+  /* failure text on the Paper docket. The docket is cream in both schemes,
+     so this one value never flips; it is a paper token, not a page token. */
+  --danger-ink: #8A2A12;
   --lamp-wash: color-mix(in oklab, var(--lamp) 12%, transparent);
   --danger-wash: color-mix(in oklab, var(--danger) 12%, transparent);
   --lamp-dim: color-mix(in oklab, var(--lamp) 45%, var(--card));
@@ -49,6 +54,17 @@
 @media (min-width: 40rem) { :root { --pad: 24px; } }
 @media (min-width: 64rem) { :root { --pad: 32px; } }
 
+/* Light scheme, from the refresh contract (docs/refresh-contract.md section 1).
+   The Paper docket tokens above do not flip: cream stays cream and keeps ink,
+   so only the page surfaces, text tiers and accent text twins change. */
+:root[data-scheme="light"] {
+  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
+  --line: #DCD9D2; --line-2: #C4C0B7;
+  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
+  --win-text: #8A5A00;
+  --danger-text: #B33A1E;
+}
+
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--text); }
 html { -webkit-text-size-adjust: 100%; }
@@ -59,8 +75,8 @@ body {
 }
 img { max-width: 100%; }
 a { color: var(--text); text-underline-offset: 3px; }
-a:hover { color: var(--lamp); }
-:focus-visible { outline: 2px solid var(--lamp); outline-offset: 2px; }
+a:hover { color: var(--win-text); }
+:focus-visible { outline: 2px solid var(--win-text); outline-offset: 2px; }
 ::selection { background: var(--lamp); color: var(--ink); }
 
 .skip {
@@ -85,7 +101,7 @@ a:hover { color: var(--lamp); }
   color: var(--text); text-decoration: none;
 }
 .brand img { width: 24px; height: 24px; }
-.brand .cur { color: var(--lamp); }
+.brand .cur { color: var(--win-text); }
 .brand:hover { color: var(--text); }
 .topnav { display: flex; gap: 2px; }
 .topnav a {
@@ -95,7 +111,7 @@ a:hover { color: var(--lamp); }
   border-radius: var(--r-md);
 }
 .topnav a:hover { color: var(--text); background: var(--card); }
-.topnav a[aria-current] { color: var(--text); box-shadow: inset 0 -2px 0 var(--lamp); }
+.topnav a[aria-current] { color: var(--text); box-shadow: inset 0 -2px 0 var(--win-text); }
 .topbar .spacer { flex: 1 1 auto; }
 
 /* auth slot: loading, signed out and signed in states */
@@ -123,7 +139,7 @@ main {
 .eyebrow {
   display: flex; align-items: center; gap: 8px; margin: 0 0 6px;
   font: 600 var(--text-xs)/1 var(--font-mono); letter-spacing: var(--track-caps);
-  text-transform: uppercase; color: var(--lamp);
+  text-transform: uppercase; color: var(--win-text);
 }
 .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lamp); }
 h1 {
@@ -168,7 +184,7 @@ h1 {
   border-bottom: 2px solid transparent; margin-bottom: -1px;
 }
 .tabs button:hover { color: var(--text); }
-.tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--lamp); }
+.tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--win-text); }
 .tabs button:disabled { color: var(--dim); cursor: default; }
 
 /* ---------------------------------------------------------------- cards */
@@ -253,7 +269,7 @@ input:disabled, textarea:disabled, select:disabled {
 }
 
 .err { color: var(--danger-text); font-size: var(--text-sm); }
-.ok { color: var(--lamp); }
+.ok { color: var(--win-text); }
 .muted { color: var(--muted); }
 .dimtext { color: var(--dim); }
 .hide { display: none !important; }
@@ -273,7 +289,7 @@ input:disabled, textarea:disabled, select:disabled {
   font-size: var(--text-sm); color: var(--text);
 }
 .banner.bad { border-color: var(--danger); background: var(--danger-wash); color: var(--text); }
-.banner b { color: var(--lamp); }
+.banner b { color: var(--win-text); }
 .banner.bad b { color: var(--danger-text); }
 
 .pill {
@@ -292,7 +308,7 @@ input:disabled, textarea:disabled, select:disabled {
   border: 1px solid var(--line-2); color: var(--muted);
   background: var(--bg);
 }
-.chip-ok { color: var(--lamp); border-color: var(--lamp); background: var(--lamp-wash); }
+.chip-ok { color: var(--win-text); border-color: var(--win-text); background: var(--lamp-wash); }
 .chip-bad { color: var(--danger-text); border-color: var(--danger); background: var(--danger-wash); }
 .chip-idle { color: var(--dim); border-color: var(--line); }
 .chip-live { color: var(--ink); background: var(--lamp); border-color: var(--lamp); }
@@ -335,7 +351,7 @@ input:disabled, textarea:disabled, select:disabled {
   overflow-wrap: anywhere;
 }
 .tile .t-sub { display: block; font-size: var(--text-xs); color: var(--muted); margin-top: 2px; }
-.tile.accent .t-value { color: var(--lamp); }
+.tile.accent .t-value { color: var(--win-text); }
 .tile.bad .t-value { color: var(--danger-text); }
 
 /* ---------------------------------------------------------------- dropzone */
@@ -347,9 +363,9 @@ input:disabled, textarea:disabled, select:disabled {
   background: var(--surface);
   transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out);
 }
-.drop:hover, .drop.over { border-color: var(--lamp); background: var(--lamp-wash); }
+.drop:hover, .drop.over { border-color: var(--win-text); background: var(--lamp-wash); }
 .drop svg {
-  width: 40px; height: 40px; fill: none; stroke: var(--lamp);
+  width: 40px; height: 40px; fill: none; stroke: var(--win-text);
   stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
 }
 .drop b { font: 700 var(--text-lg) var(--font-ui); color: var(--text); }
@@ -364,7 +380,7 @@ input:disabled, textarea:disabled, select:disabled {
 .linkbtn {
   appearance: none; background: none; border: 0; cursor: pointer;
   min-height: 44px; padding: 0 4px;
-  font: 600 var(--text-sm) var(--font-ui); color: var(--lamp);
+  font: 600 var(--text-sm) var(--font-ui); color: var(--win-text);
   text-decoration: underline; text-underline-offset: 3px;
 }
 .linkbtn:hover { color: var(--text); }
@@ -388,7 +404,7 @@ input:disabled, textarea:disabled, select:disabled {
 .rubric-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .rubric-head .r-id {
   font: 600 var(--text-xs)/1 var(--font-mono); letter-spacing: var(--track-caps);
-  text-transform: uppercase; color: var(--lamp);
+  text-transform: uppercase; color: var(--win-text);
 }
 .rubric-grid { display: grid; gap: var(--s2); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 40rem) { .rubric-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
@@ -431,7 +447,7 @@ td .num { font-variant-numeric: tabular-nums; }
 tbody tr:hover td { background: var(--surface); }
 .empty-row td { color: var(--dim); text-align: center; padding: 24px; }
 
-.fit-strong { color: var(--lamp); font-weight: 700; }
+.fit-strong { color: var(--win-text); font-weight: 700; }
 .fit-possible { color: var(--text); font-weight: 600; }
 .fit-weak, .fit-none { color: var(--muted); }
 .fit-unjudged { color: var(--dim); }
@@ -486,10 +502,10 @@ tbody tr:hover td { background: var(--surface); }
 }
 .approve .btn.sec:hover { background: color-mix(in oklab, var(--ink) 8%, transparent); }
 .approve :focus-visible { outline-color: var(--ink); }
-.approve .err { color: #8A2A12; }
-.approve .warns { display: flex; flex-direction: column; gap: 4px; font-size: var(--text-xs); color: #8A2A12; }
+.approve .err { color: var(--danger-ink); }
+.approve .warns { display: flex; flex-direction: column; gap: 4px; font-size: var(--text-xs); color: var(--danger-ink); }
 .warn-line { display: flex; gap: 8px; align-items: flex-start; }
-.warn-line::before { content: '!'; font-weight: 800; color: #8A2A12; }
+.warn-line::before { content: '!'; font-weight: 800; color: var(--danger-ink); }
 
 /* ---------------------------------------------------------------- console */
 .console { gap: var(--s3); }

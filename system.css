@@ -66,6 +66,24 @@
   --color-border: var(--line); --color-border-hover: var(--line-2);
   --fg: var(--text); --fg-muted: var(--muted); --bg-card: var(--card); --bg-hover: var(--card-2); --border: var(--line);
 }
+
+/* Light scheme, from the refresh contract (docs/refresh-contract.md section 1).
+   Values are the ones decided there, derived from the mark: ink on warm white
+   with Lamp as the single accent. Saturated accents keep their hue for fills
+   and swap to their -text twin wherever they are text or a thin stroke. */
+:root[data-scheme="light"] {
+  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
+  --line: #DCD9D2; --line-2: #C4C0B7;
+  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
+  --win-text: #8A5A00;
+  --build-text: #0F6B33;
+  --think-text: #2A55C8;
+  --human-text: #A8278F;
+  --danger-text: #B33A1E;
+  --shadow-1: 0 1px 2px rgba(14,26,51,.08);
+  --shadow-2: 0 4px 12px rgba(14,26,51,.10);
+  --shadow-3: 0 8px 32px rgba(14,26,51,.12);
+}
 @media (min-width: 40rem) { :root { --pad: 32px; } }
 @media (min-width: 64rem) { :root { --pad: 48px; } }
 
