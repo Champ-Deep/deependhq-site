@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-19T19:50:01.680Z
+// Built 2026-10-20T15:59:09.369Z
 
 window.DH_DATA = {
   "brand": {
@@ -4623,16 +4623,24 @@ window.DH_DATA = {
     },
     {
       "title": "Deep Scanner",
-      "description": "Checks any folder before it reaches a cloud agent. Blocks live secrets and ID documents, flags what a human should decide. First run: 8,357 files, 6 blocked, 392 flagged.",
+      "description": "Internal local-file safety scanner. Flags secrets and sensitive text before cloud sync; not a prospecting or lead-scoring tool. Public release not verified.",
       "url": "#",
       "category": "repo",
       "featured": true,
-      "status": "building",
+      "status": "internal",
       "kind": "built"
     },
     {
+      "title": "ChampHarbinger",
+      "description": "Find buying signals in hiring, funding and company news. Research accounts, enrich contacts and draft outreach in a separate workspace.",
+      "url": "https://github.com/Champ-Deep/ChampHarbinger",
+      "site": "https://champharbinger.vercel.app",
+      "category": "tool",
+      "featured": true
+    },
+    {
       "title": "Lead Scorer",
-      "description": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+      "description": "Enrich a CSV or Excel list, check email deliverability, and judge ICP fit or custom categories. Shared toolkit credits, private results.",
       "url": "/lead-scorer",
       "category": "tool",
       "featured": true
@@ -9643,7 +9651,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-19T19:50:01.642Z",
+    "built": "2026-10-20T15:59:09.338Z",
     "built_date": "2026-10-20",
     "newest_entry": {
       "date": "2026-10-19",
@@ -10964,12 +10972,25 @@ window.DH_DATA = {
       },
       {
         "name": "Deep Scanner",
-        "what": "Checks any folder before it reaches a cloud agent. Blocks live secrets and ID documents, flags what a human should decide. First run: 8,357 files, 6 blocked, 392 flagged.",
+        "what": "Internal local-file safety scanner. Flags secrets and sensitive text before cloud sync; not a prospecting or lead-scoring tool. Public release not verified.",
         "url": null,
         "site": null,
-        "status": "building",
+        "status": "internal",
         "kind": "built",
         "category": "repo",
+        "featured": true,
+        "last_seen": null,
+        "mentions_90d": 0,
+        "days_since": null
+      },
+      {
+        "name": "ChampHarbinger",
+        "what": "Find buying signals in hiring, funding and company news. Research accounts, enrich contacts and draft outreach in a separate workspace.",
+        "url": "https://github.com/Champ-Deep/ChampHarbinger",
+        "site": "https://champharbinger.vercel.app",
+        "status": null,
+        "kind": "built",
+        "category": "tool",
         "featured": true,
         "last_seen": null,
         "mentions_90d": 0,
@@ -11107,7 +11128,7 @@ window.DH_DATA = {
       },
       {
         "name": "Lead Scorer",
-        "what": "upload a lead list, jev ranks who to call first and writes the first line. live, passcode for the team.",
+        "what": "Enrich a CSV or Excel list, check email deliverability, and judge ICP fit or custom categories. Shared toolkit credits, private results.",
         "url": "/lead-scorer",
         "site": null,
         "status": null,
@@ -11421,7 +11442,7 @@ window.DH_DATA = {
       }
     ],
     "counts": {
-      "built": 19,
+      "built": 20,
       "using": 15,
       "trying": 4,
       "watching": 5,
@@ -11433,5 +11454,5 @@ window.DH_DATA = {
       "essays": 18
     }
   },
-  "built": "2026-10-19T19:50:01.680Z"
+  "built": "2026-10-20T15:59:09.369Z"
 };
