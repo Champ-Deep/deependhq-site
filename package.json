@@ -20,7 +20,10 @@
   },
   "//dependencies": "esbuild is a BUILD dependency, not a dev one. Cloudflare builds can install with NODE_ENV=production, which skips devDependencies and leaves prerender with no bundler, so the pages would publish with an empty #root. playwright-core and wrangler stay dev: they are only used by hand.",
   "dependencies": {
-    "esbuild": "0.24.0"
+    "esbuild": "0.24.0",
+    "motion": "^14.4.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "playwright-core": "1.49.1",
