@@ -94,7 +94,7 @@ const Footer = () => {
   ];
 
   const dayLine = `${day ? `day ${day} of building in public · ` : ''}built ${builtLabel}${
-    stale || true ? ` (${ago(builtIso)})` : ''
+    builtLabel ? ` (${ago(builtIso)})` : ''
   }`;
 
   const islandProps = {

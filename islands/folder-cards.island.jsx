@@ -530,7 +530,10 @@ function GlassFolder({ label, meta, metaState, art, brand, seed, files = [], wid
               const jitter = rng(hashString(file.name));
               const inner = (
                 <>
-                  {file.recipe ? (
+                  {/* product art paints on open, not while the folder sits
+                      closed: twelve folders times four sheets is the whole
+                      queue budget for nothing anyone can see */}
+                  {file.recipe && open ? (
                     <ArtCanvas
                       className="gfc-sheet-art"
                       recipe={file.recipe}
@@ -555,18 +558,25 @@ function GlassFolder({ label, meta, metaState, art, brand, seed, files = [], wid
                   </span>
                 </>
               );
+              // the fan custom properties belong on the slot: the CSS reads
+              // them from .gfc-sheet-slot, and custom properties do not
+              // inherit upward from the anchor
               return (
-                <div key={start + v} role="listitem" className="gfc-sheet-slot">
+                <div
+                  key={start + v}
+                  role="listitem"
+                  className="gfc-sheet-slot"
+                  style={{
+                    '--gfc-slot': slot,
+                    '--gfc-depth': visible.length - 1 - v,
+                    '--gfc-jx': `${((jitter() - 0.5) * 10).toFixed(2)}px`,
+                    '--gfc-jr': `${((jitter() - 0.5) * 3.2).toFixed(2)}deg`,
+                    zIndex: v + 1,
+                  }}
+                >
                   <a
                     className={'gfc-sheet' + (file.recipe ? ' gfc-sheet--art' : '')}
                     href={file.href}
-                    style={{
-                      '--gfc-slot': slot,
-                      '--gfc-depth': visible.length - 1 - v,
-                      '--gfc-jx': `${((jitter() - 0.5) * 10).toFixed(2)}px`,
-                      '--gfc-jr': `${((jitter() - 0.5) * 3.2).toFixed(2)}deg`,
-                      zIndex: v + 1,
-                    }}
                   >
                     {inner}
                   </a>
@@ -595,9 +605,25 @@ export default function FolderCards({ companies = [] }) {
   const [scheme, setScheme] = React.useState(() =>
     typeof document === 'undefined' ? 'dark' : document.documentElement.getAttribute('data-scheme') || 'dark'
   );
-  const [width, setWidth] = React.useState(300);
-  const [narrow, setNarrow] = React.useState(() => typeof window !== 'undefined' && window.innerWidth < 640);
   const [now, setNow] = React.useState(() => Date.now());
+
+  // 4 x 3 at 1280, 2 x 6 at 768, one column of 300 at 375. Under 768 there is
+  // no art at all: the back panel stays the flat brand colour, which is the
+  // density law's phone answer (plan section 8).
+  const measure = () => {
+    const w = window.innerWidth;
+    const cols = w >= 1120 ? 4 : w >= 640 ? 2 : 1;
+    const grid = gridRef.current;
+    const pad = w >= 1024 ? 48 : w >= 640 ? 32 : 20;
+    const avail = grid && grid.clientWidth ? grid.clientWidth : w - 2 * pad;
+    const cw = Math.floor((avail - 24 * (cols - 1)) / cols);
+    return {
+      cols,
+      narrow: w < 768,
+      width: Math.max(200, Math.min(360, cols === 1 ? Math.min(300, cw) : cw)),
+    };
+  };
+  const [fit, setFit] = React.useState(() => (typeof window === 'undefined' ? { cols: 4, narrow: false, width: 300 } : measure()));
 
   React.useEffect(() => {
     setNow(Date.now());
@@ -607,22 +633,12 @@ export default function FolderCards({ companies = [] }) {
     return () => mo.disconnect();
   }, []);
 
-  // 4 x 3 at 1280, 2 x 6 at 768, one column of 300 at 375 (plan section 8).
   React.useEffect(() => {
-    const calc = () => {
-      const w = window.innerWidth;
-      const cols = w >= 1120 ? 4 : w >= 640 ? 2 : 1;
-      const gap = 24;
-      const grid = gridRef.current;
-      const avail = grid && grid.clientWidth ? grid.clientWidth : Math.min(w, 1200) - 40;
-      let cw = Math.floor((avail - gap * (cols - 1)) / cols);
-      if (cols === 1) cw = Math.min(300, cw);
-      setNarrow(w < 640);
-      setWidth(Math.max(200, Math.min(360, cw)));
-    };
+    const calc = () => setFit(measure());
     calc();
     window.addEventListener('resize', calc);
     return () => window.removeEventListener('resize', calc);
+    // measure only reads the window and the grid ref
   }, []);
 
   const recipes = React.useMemo(() => {
@@ -651,7 +667,7 @@ export default function FolderCards({ companies = [] }) {
   const tone = scheme === 'light' ? 'light' : 'dark';
 
   return (
-    <div className="gfc-grid" ref={gridRef} data-tone={tone} data-narrow={narrow || undefined}>
+    <div className="gfc-grid" ref={gridRef} data-tone={tone} data-narrow={fit.narrow || undefined} style={{ '--gfc-cols': fit.cols }}>
       {companies.map((c, i) => {
         const last = (c.entries || [])[0];
         const days = last ? daysSince(last.date, now) : null;
@@ -672,7 +688,7 @@ export default function FolderCards({ companies = [] }) {
           });
         }
         for (const p of (c.products || []).slice(0, 4)) {
-          sheets.push({ name: p.name, meta: 'product', href: p.href, recipe: narrow ? null : recipes[c.slug] });
+          sheets.push({ name: p.name, meta: 'product', href: p.href, recipe: fit.narrow ? null : recipes[c.slug] });
         }
         // density law: a company with no entry and no product still shows one
         // sheet, the tag, opening the company page.
@@ -689,9 +705,9 @@ export default function FolderCards({ companies = [] }) {
             tone={tone}
             brand={c.accent ? `--${c.accent}` : null}
             seed={hashString(c.slug) % 997}
-            art={narrow ? null : recipes[c.slug]}
+            art={fit.narrow ? null : recipes[c.slug]}
             files={sheets.slice(0, MAX_VISIBLE)}
-            width={width}
+            width={fit.width}
             appearDelay={i * 60}
           />
         );
