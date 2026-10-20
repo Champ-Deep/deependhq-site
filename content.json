@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 353,
-    "today_date": "2026-10-19",
+    "today_day": 354,
+    "today_date": "2026-10-20",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-20",
+      "day": 354,
+      "mood": "🔨",
+      "shipping_now": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static site stays fast and only the interactive pieces (footer, folder cards, widget grid) load react at all. new logo marks landed too. build starts tomorrow.",
+      "yesterday_thread": "still sitting on a client call that needed a real answer tonight and didnt get one. twice now.",
+      "raw_thought": "an internal tooling decision ive been sitting on for two weeks straight is still sitting. i know what the answer probably is. just havent said it out loud yet.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "ChampOps"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-19",
       "day": 353,
@@ -2121,6 +2134,10 @@
     ],
     "recently": [
       {
+        "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
+        "tag": "shipped d354"
+      },
+      {
         "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
         "tag": "shipped d353"
       },
@@ -2131,10 +2148,6 @@
       {
         "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
         "tag": "shipped d351"
-      },
-      {
-        "text": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with...",
-        "tag": "shipped d350"
       }
     ],
     "soon": [

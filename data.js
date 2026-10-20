@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-19T19:50:01.680Z
+// Built 2026-10-20T19:45:56.178Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 353,
-    "today_date": "2026-10-19",
+    "today_day": 354,
+    "today_date": "2026-10-20",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 354,
+          "date": "2026-10-20",
+          "shipping_now": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static…",
+          "arc_color": "green"
+        },
         {
           "day": 353,
           "date": "2026-10-19",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-10-08",
           "shipping_now": "closed out a departing engineers handover today. his replacement confirmed the AI model key swap works clean, one day before the…",
           "arc_color": "blue"
-        },
-        {
-          "day": 340,
-          "date": "2026-10-06",
-          "shipping_now": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-18",
       "last_ship_day": 352,
-      "days_since": 2,
+      "days_since": 3,
       "entries_30d": 1,
       "recent": [
         {
@@ -619,7 +619,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 13,
+      "days_since": 14,
       "entries_30d": 1,
       "recent": [
         {
@@ -683,7 +683,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-19",
       "last_ship_day": 353,
-      "days_since": 1,
+      "days_since": 2,
       "entries_30d": 11,
       "recent": [
         {
@@ -753,7 +753,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 14,
+      "days_since": 15,
       "entries_30d": 2,
       "recent": [
         {
@@ -824,6 +824,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-20",
+      "day": 354,
+      "mood": "🔨",
+      "shipping_now": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static site stays fast and only the interactive pieces (footer, folder cards, widget grid) load react at all. new logo marks landed too. build starts tomorrow.",
+      "yesterday_thread": "still sitting on a client call that needed a real answer tonight and didnt get one. twice now.",
+      "raw_thought": "an internal tooling decision ive been sitting on for two weeks straight is still sitting. i know what the answer probably is. just havent said it out loud yet.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "ChampOps"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-19",
       "day": 353,
@@ -4408,7 +4433,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 353 · Oct 19",
+    "last_ship": "day 354 · Oct 20",
     "state": "shipping"
   },
   "status_board": {
@@ -4432,6 +4457,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
+        "tag": "shipped d354"
+      },
+      {
         "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
         "tag": "shipped d353"
       },
@@ -4442,10 +4471,6 @@ window.DH_DATA = {
       {
         "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
         "tag": "shipped d351"
-      },
-      {
-        "text": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with...",
-        "tag": "shipped d350"
       }
     ],
     "soon": [
@@ -9643,33 +9668,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-19T19:50:01.642Z",
-    "built_date": "2026-10-20",
+    "built": "2026-10-20T19:45:56.140Z",
+    "built_date": "2026-10-21",
     "newest_entry": {
-      "date": "2026-10-19",
-      "day": 353
+      "date": "2026-10-20",
+      "day": 354
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 130,
+        "days_old": 131,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 118,
+        "days_old": 119,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 118,
+        "days_old": 119,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 354,
+      "date": "2026-10-20",
+      "mood": "🔨",
+      "arc_color": "green",
+      "arcs": [
+        "TheDeepEndHQ",
+        "ChampOps"
+      ],
+      "ship": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static site stays fast and only the interactive pieces (footer, folder cards, widget grid) load react at all. new logo marks landed too. build starts tomorrow."
+    },
     {
       "day": 353,
       "date": "2026-10-19",
@@ -9811,17 +9847,6 @@ window.DH_DATA = {
         "Champions Club"
       ],
       "ship": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests green. prospects can now book straight into a rep calendar instead of waiting on an email back and forth."
-    },
-    {
-      "day": 340,
-      "date": "2026-10-06",
-      "mood": "🧭",
-      "arc_color": "gold",
-      "arcs": [
-        "Longevity",
-        "Champions Operations"
-      ],
-      "ship": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named advisors, and the pivot to corporate clients over consumers, all locked in one call. thursday's soft launch just became real."
     }
   ],
   "heatmap": {
@@ -10681,13 +10706,13 @@ window.DH_DATA = {
         "date": "2026-10-20",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 354,
+        "arc_color": "green",
+        "ship": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands in"
       },
       {
         "date": "2026-10-21",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -10728,11 +10753,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 353,
-    "entries": 131,
+    "days_public": 354,
+    "entries": 132,
     "entries_30d": 30,
-    "entries_this_month": 19,
-    "streak_weekdays": 88,
+    "entries_this_month": 20,
+    "streak_weekdays": 89,
     "essays": 18,
     "companies": 12,
     "companies_active_90d": 5,
@@ -10757,7 +10782,7 @@ window.DH_DATA = {
       },
       {
         "arc": "TheDeepEndHQ",
-        "n": 3
+        "n": 4
       },
       {
         "arc": "Champ Harbinger",
@@ -10805,6 +10830,19 @@ window.DH_DATA = {
   "stack_now": {
     "items": [
       {
+        "name": "ChampOps",
+        "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
+        "url": null,
+        "site": null,
+        "status": null,
+        "kind": "using",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-10-20",
+        "mentions_90d": 17,
+        "days_since": 1
+      },
+      {
         "name": "ChampBeam",
         "what": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
         "url": "https://github.com/Champ-Deep/ChampBeam",
@@ -10815,20 +10853,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 4,
-        "days_since": 8
-      },
-      {
-        "name": "ChampOps",
-        "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
-        "url": null,
-        "site": null,
-        "status": null,
-        "kind": "using",
-        "category": "tool",
-        "featured": true,
-        "last_seen": "2026-10-12",
-        "mentions_90d": 16,
-        "days_since": 8
+        "days_since": 9
       },
       {
         "name": "Obsidian + Celsus",
@@ -10838,7 +10863,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 9
+        "days_since": 10
       },
       {
         "name": "Claude + Cowork",
@@ -10848,7 +10873,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 10
+        "days_since": 11
       },
       {
         "name": "Event Scout",
@@ -10861,7 +10886,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 36
+        "days_since": 37
       },
       {
         "name": "ChampUTM",
@@ -10874,7 +10899,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 38
+        "days_since": 39
       },
       {
         "name": "Cloudflare",
@@ -10884,7 +10909,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 62
+        "days_since": 63
       },
       {
         "name": "LakeStream",
@@ -10897,7 +10922,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 77
+        "days_since": 78
       },
       {
         "name": "ChamPDF",
@@ -10910,7 +10935,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 77
+        "days_since": 78
       },
       {
         "name": "ChampMail",
@@ -10923,7 +10948,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 79
+        "days_since": 80
       },
       {
         "name": "Supabase",
@@ -10934,7 +10959,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 111
+        "days_since": 112
       },
       {
         "name": "ChampGraph",
@@ -10947,7 +10972,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 119
+        "days_since": 120
       },
       {
         "name": "ChampQuest",
@@ -10960,7 +10985,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 139
+        "days_since": 140
       },
       {
         "name": "Deep Scanner",
@@ -11421,17 +11446,17 @@ window.DH_DATA = {
       }
     ],
     "counts": {
-      "built": 19,
       "using": 15,
+      "built": 19,
       "trying": 4,
       "watching": 5,
       "skill": 8
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 131,
+      "entries": 132,
       "essays": 18
     }
   },
-  "built": "2026-10-19T19:50:01.680Z"
+  "built": "2026-10-20T19:45:56.178Z"
 };

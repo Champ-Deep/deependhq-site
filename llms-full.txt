@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (131) and every weekly essay (18), newest first. Rebuilt 2026-10-19. Cite the day number and date when quoting, for example "day 353, 2026-10-19".
+> Every public journey entry (132) and every weekly essay (18), newest first. Rebuilt 2026-10-20. Cite the day number and date when quoting, for example "day 354, 2026-10-20".
 
 ## Journey
+
+### Day 354, 2026-10-20 (building)
+
+spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static site stays fast and only the interactive pieces (footer, folder cards, widget grid) load react at all. new logo marks landed too. build starts tomorrow.
+
+Thread: still sitting on a client call that needed a real answer tonight and didnt get one. twice now.
+
+Raw thought: an internal tooling decision ive been sitting on for two weeks straight is still sitting. i know what the answer probably is. just havent said it out loud yet.
+
+Arcs: TheDeepEndHQ, ChampOps
+
+Link: https://deependhq.com/journey.html#day-354
 
 ### Day 353, 2026-10-19 (building)
 

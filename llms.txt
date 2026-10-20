@@ -1,6 +1,6 @@
 # deep >_ (deependhq.com)
 
-> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 353, 131 entries since 2026-05-04.
+> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 354, 132 entries since 2026-05-04.
 
 ```
      █████                                ███
@@ -16,7 +16,7 @@
                             ░░░░░
 ```
 
-Rebuilt 2026-10-19 19:50 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
+Rebuilt 2026-10-20 19:45 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
 
 ## Read
 - [Home](https://deependhq.com/): the working window, 3 PM to 2 AM IST, and how a day becomes an entry
@@ -27,13 +27,13 @@ Rebuilt 2026-10-19 19:50 UTC. Every number on the site is derived from one sourc
 - [Now](https://deependhq.com/now.html): what has attention right now
 
 ## Latest entries
+- [Day 354, 2026-10-20](https://deependhq.com/journey.html#day-354): spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static site stays fast and only the...
 - [Day 353, 2026-10-19](https://deependhq.com/journey.html#day-353): sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the running for something far smaller...
 - [Day 352, 2026-10-18](https://deependhq.com/journey.html#day-352): built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed, every test green including a...
 - [Day 351, 2026-10-17](https://deependhq.com/journey.html#day-351): four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday, without anyone pushing it....
 - [Day 350, 2026-10-16](https://deependhq.com/journey.html#day-350): audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built four replacement pages that show where every...
 - [Day 349, 2026-10-15](https://deependhq.com/journey.html#day-349): closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut it, i had been sitting on the call. decided...
 - [Day 348, 2026-10-14](https://deependhq.com/journey.html#day-348): shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live account, the works. one of those...
-- [Day 347, 2026-10-13](https://deependhq.com/journey.html#day-347): Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle hero pieces. So tonight...
 
 ## Essays
 - [This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.](https://deependhq.com/post.html?slug=week-48-the-receipts-arc): 2026-10-18, 4 min
@@ -71,4 +71,4 @@ Rebuilt 2026-10-19 19:50 UTC. Every number on the site is derived from one sourc
 
 ## Optional
 - [humans.txt](https://deependhq.com/humans.txt): who made this, and a gray mare
-- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 353, 2026-10-19.
+- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 354, 2026-10-20.
