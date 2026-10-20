@@ -5,11 +5,12 @@
   "description": "deependhq.com. Static assets plus a Cloudflare Worker. Published by scripts/publish.sh.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-data.mjs && node scripts/prerender.mjs",
+    "build": "node scripts/build-data.mjs && node scripts/prerender.mjs && node scripts/build-p4-island.mjs",
     "build:data": "node scripts/build-data.mjs",
     "prerender": "node scripts/prerender.mjs",
     "check": "node scripts/guard.mjs && node scripts/brand-guard.mjs && node scripts/build-data.mjs && node scripts/link-check.mjs",
-    "test": "node scripts/guard-selftest.mjs && node scripts/ingest-selftest.mjs",
+    "test": "node scripts/guard-selftest.mjs && node scripts/ingest-selftest.mjs && node scripts/p4-selftest.mjs",
+    "test:p4:browser": "node scripts/p4-browser.mjs",
     "links": "node scripts/link-check.mjs",
     "gaps": "node scripts/check-gaps.mjs",
     "publish": "bash scripts/publish.sh",
@@ -20,7 +21,9 @@
   },
   "//dependencies": "esbuild is a BUILD dependency, not a dev one. Cloudflare builds can install with NODE_ENV=production, which skips devDependencies and leaves prerender with no bundler, so the pages would publish with an empty #root. playwright-core and wrangler stay dev: they are only used by hand.",
   "dependencies": {
-    "esbuild": "0.24.0"
+    "esbuild": "0.24.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "playwright-core": "1.49.1",

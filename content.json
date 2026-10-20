@@ -3974,20 +3974,23 @@
       "label": "write",
       "clock": "23:00",
       "snippet": [
-        ["cmd", "tail -3 Calendar/Daily Notes/<today>.md"]
+        ["cmd",          "tail -3 Calendar/Daily\\ Notes/<today>.md"]
       ]
     },
     {
       "label": "compile",
       "clock": "01:03",
-      "snippet": null
+      "snippet": [
+        ["cmd", "node scripts/build-data.mjs"],
+        ["out", "content.json -> data.js -> prerendered pages"]
+      ]
     },
     {
       "label": "ship",
       "clock": "02:00",
       "snippet": [
         ["cmd", "bash scripts/publish.sh"],
-        ["ok", "deploy ok · deependhq.com"],
+        ["ok",          "illustrative publish step, not a deployment receipt"],
         ["out", "next window opens 15:00 IST"]
       ]
     }

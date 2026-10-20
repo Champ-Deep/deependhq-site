@@ -59,8 +59,8 @@ const Hero = () => {
   // the log recorded it, else 1 for an entry, 0 for a gap. kinds[] runs
   // parallel to data and colours the column by that entry's arc, rows carries
   // the day and first line the readout and click need.
-  const startISO = DH.journey[DH.journey.length - 1].date;
-  const endISO = DH.brand.today_date;
+  const startISO = DH.journey.map((x) => x.date).sort()[0];
+  const endISO = DH.brand.today_date || e.date;
   const byDate = new Map(DH.journey.map((x) => [x.date, x]));
   const data = [], kinds = [], rows = [];
   for (let t = Date.parse(startISO); t <= Date.parse(endISO); t += 864e5) {
@@ -71,7 +71,7 @@ const Hero = () => {
     rows.push(en ? [en.day, String(en.shipping_now || en.raw_thought || '').slice(0, 140)] : null);
   }
   const peak = `day ${e.day}, ${ageOf(e.date, 'log').label}`;
-  const isle = JSON.stringify({ d: data, k: kinds, end: endISO, peak, rows });
+  const isle = JSON.stringify({ d: data, k: kinds, start: startISO, end: endISO, peak, rows });
   return (
     <section className="wx-hero mode-editorial" id="top" aria-labelledby="wx-hero-h">
       <div className="wx-hx p4-hx">
@@ -84,7 +84,7 @@ const Hero = () => {
             <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>Talk to Deep, 30 min</a>
             <a className="wx-hx-paren" href="#stack">See what I build</a>
           </div>
-          {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
+
         </div>
         <div className="p4-terr" data-island="terrain" data-props={isle}>
           {/* server-rendered fallback: the same days as a plain heat strip */}
@@ -93,8 +93,9 @@ const Hero = () => {
             <div className="trn-fb-strip" aria-hidden="true">
               {data.map((h, i) => <i key={i} className={kinds[i] ? `trn-fb-k-${kinds[i]}` : (h ? 'trn-fb-k-log' : 'trn-fb-k-gap')} />)}
             </div>
-            <p className="trn-fb-note">green building · blue thinking · gold a real outcome · flat means no entry</p>
-            <a className="wx-tlink" href="/journey">the whole log →</a>
+            <p className="trn-fb-note">green building · blue thinking · gold a real outcome · gaps have zero height</p>
+            <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} →</a>
+            <a className="wx-tlink" href="journey.html">the whole log →</a>
           </div>
         </div>
         <div className="p4-foot">
@@ -104,6 +105,7 @@ const Hero = () => {
             <p className="wx-live-txt" data-compile="">{e.shipping_now}</p>
             <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} in full →</a>
           </article>
+          {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
         </div>
         <script src="home-islands.js" defer="" />
       </div>
@@ -145,40 +147,7 @@ const Proof = () => {
 // The "last <lane> lane: day N" line and the field-backed output lines are
 // derived from the log at build time and omitted when the log has nothing.
 // No em dashes.
-const LANE_TEXT = (e) => `${e.shipping_now || ''} ${e.raw_thought || ''} ${e.yesterday_thread || ''}`.toLowerCase();
-const LANE_HIT = {
-  calls: (e) => e.meetings != null || /\b(call|calls|demo|meeting|meetings)\b/.test(LANE_TEXT(e)),
-  outreach: (e) => /\b(outreach|prospects?|sequence|targets|lead list|campaign)\b/.test(LANE_TEXT(e)),
-  research: (e) => /\b(research|competitor|vendors?|evaluat\w*|shortlist|studied|audit\w*)\b/.test(LANE_TEXT(e)),
-  build: (e) => e.github_commits != null || /\b(built|shipped|commits?|pushed|tests green)\b/.test(LANE_TEXT(e)),
-  write: (e) => !!e.raw_thought,
-  compile: (e) => !!e.shipping_now,
-  ship: (e) => !!e.shipping_now,
-};
-// Journey is newest-first, so the first match is the last real day it happened.
-const lastLane = (label) => {
-  const hit = LANE_HIT[label];
-  if (!hit) return null;
-  const e = DH.journey.find(hit);
-  return e ? e.day : null;
-};
-// Output lines only where the log itself can prove them: a recorded field,
-// dated. No field, no output line.
-const laneOut = (label) => {
-  if (label === 'calls') {
-    const e = DH.journey.find((x) => x.meetings != null);
-    return e ? [['out', `${e.date} · ${e.meetings.count} meetings, ${e.meetings.external || 0} external`]] : [];
-  }
-  if (label === 'build') {
-    const e = DH.journey.find((x) => x.github_commits != null);
-    return e ? [['out', `${e.date} · ${e.github_commits} commits`]] : [];
-  }
-  if (label === 'write') {
-    const e = DH.journey[0];
-    return [['out', `${e.date} · shipping_now · yesterday_thread · raw_thought`]];
-  }
-  return [];
-};
+
 // Stage boundaries as fractions of the pinned range. They only have to be
 // monotonic: the JS clock in home.js prints data-hour per active stage, and
 // the old winclock CSS keyframes (five stages) are no longer opted into.
@@ -186,18 +155,7 @@ const BOUNDS = [0, 0.13, 0.26, 0.38, 0.55, 0.75, 0.88, 1];
 const TRACK = 420; // svh, keep in step with .wx-anat-track height in home.css
 
 const Day = () => {
-  const st = DH.stats || {};
-  const stages = (DH.lanes || []).map((s) => {
-    const last = lastLane(s.label);
-    const lines = s.snippet
-      ? [...s.snippet, ...laneOut(s.label)]
-      : [
-        ['cmd', 'node scripts/build-data.mjs'],
-        ['out', `day <b>${st.days_public}</b> · <b>${st.entries}</b> entries · <b>${st.essays}</b> essays · <b>${st.companies}</b> companies`],
-        ['ok', `data.js written · built ${istClock(DH.built)} IST`],
-      ];
-    return { ...s, last, lines };
-  });
+  const stages = DH.lanes || [];
   const sent = stages.map((_, i) => {
     const top = i === 0 ? 0 : BOUNDS[i] * (TRACK - 100) + 50;
     const end = i === stages.length - 1 ? TRACK : BOUNDS[i + 1] * (TRACK - 100) + 50;
@@ -208,7 +166,7 @@ const Day = () => {
       <header className="wx-sec-head">
         <p className="wx-eyebrow-op">how this site runs</p>
         <h2 className="wx-op-h wx-ink" id="wx-day-h">How a day becomes an entry.</h2>
-        <p className="wx-lead">The window runs 3 PM to 2 AM IST. At 2 AM the site publishes itself.</p>
+        <p className="wx-lead">The window runs 3 PM to 2 AM IST. Seven lanes, then a new entry. Commands below are illustrative, not live terminal output.</p>
       </header>
       <div className="wx-anat-track">
         <div className="wx-anat-stick">
@@ -220,25 +178,25 @@ const Day = () => {
             </div>
             <ol className="wx-stages">
               {stages.map((s) => (
-                <li key={s.hour} className="wx-stage" data-hour={s.hour}>
-                  <p className="wx-stage-clock">{s.hour}</p>
-                  <h3 className="wx-stage-t">{s.icon && <Ico id={s.icon} size={40} />}{s.title}</h3>
-                  <p className="wx-stage-c">{s.body}</p>
-                  <div className="wx-term" role="img" aria-label={`Terminal, ${s.title}`}>
+                <li key={s.clock} className="wx-stage" data-hour={s.clock}>
+                  <p className="wx-stage-clock">{s.clock}</p>
+                  <h3 className="wx-stage-t">{s.label}</h3>
+                  <p className="p4-example">Illustrative command, not live output</p>
+                  <div className="wx-term" aria-label={`Illustrative ${s.label} commands`}>
                     <div className="wx-term-body">
-                      {s.lines.map(([k, t], i) => <p key={i} className={`wx-tl wx-${k}`} data-compile="" dangerouslySetInnerHTML={{ __html: t }} />)}
+                      {s.snippet.map(([k, t], i) => <p key={i} className={`wx-tl wx-${k}`} data-compile="">{t}</p>)}
                     </div>
                   </div>
                 </li>
               ))}
             </ol>
-            <ol className="wx-anat-rail" aria-label="The five stages">
-              {stages.map((s) => <li key={s.hour}><b>{s.hour}</b>{s.short}</li>)}
+            <ol className="wx-anat-rail" aria-label="The seven lanes">
+              {stages.map((s) => <li key={s.clock}><b>{s.clock}</b>{s.label}</li>)}
             </ol>
           </div>
           <div className="wx-anat-right" aria-hidden="true">
             <div className="wx-term">
-              <div className="wx-term-bar"><span className="wx-term-dots"><i /><i /><i /></span><span className="wx-term-title">reconstructed from days 333 and 334 · recordings replace this</span></div>
+              <div className="wx-term-bar"><span className="wx-term-title">Illustrative commands · not a live terminal</span></div>
               <div className="wx-anat-meter"><span>15:00</span><i /><span>02:00</span></div>
               <div className="wx-term-body" />
             </div>

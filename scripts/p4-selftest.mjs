@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+const content = JSON.parse(readFileSync('content.json', 'utf8'));
+const html = readFileSync('index.html', 'utf8');
+const mount = html.match(/data-island="terrain" data-props="([^"]+)"/);
+assert(mount, 'Terrain server mount exists');
+const props = JSON.parse(mount[1].replaceAll('&quot;', '"').replaceAll('&amp;', '&').replaceAll('&#x27;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>'));
+const byDate = new Map(content.journey.map(e => [e.date,e]));
+assert.equal(props.start, '2026-05-04');
+assert.equal(props.end, content.brand.today_date);
+assert.equal(props.d.length, (Date.parse(props.end)-Date.parse(props.start))/864e5+1);
+for (let i=0;i<props.d.length;i++) {
+  const date = new Date(Date.parse(props.start)+i*864e5).toISOString().slice(0,10);
+  const entry = byDate.get(date);
+  assert.equal(props.d[i], entry ? entry.github_commits ?? 1 : 0);
+  assert.equal(props.rows[i]?.[0] ?? null, entry?.day ?? null);
+  assert.equal(props.k[i], entry?.arc_color ?? '');
+  if (entry) assert(Number.isInteger(entry.day), 'Every destination comes from an actual entry');
+}
+const clocks = ['15:00','16:30','18:00','19:00','23:00','01:03','02:00'];
+assert.deepEqual(content.lanes.map(s=>s.clock),clocks);
+assert.deepEqual([...html.matchAll(/class="wx-stage" data-hour="([^"]+)"/g)].map(m=>m[1]),clocks);
+assert.equal((html.match(/Illustrative command, not live output/g)||[]).length,7);
+assert(!html.includes('last outreach lane:'));
+assert(html.includes('I lead B2B growth and build the systems behind it.'));
+assert(html.includes('href="#stack"'));
+assert(!html.includes('deploy ok'));
+const journey = readFileSync('JourneyPage.jsx','utf8');
+assert(journey.includes('id={`day-${entry.day}`}'));
+assert(journey.includes("const m = /^#day-(\\d+)$/.exec(location.hash || '');"), 'Journey expands deep-linked entries beyond the first static batch');
+console.log(`P4: ${props.d.length} calendar days, ${byDate.size} real entries, seven exact clocks, existing journey anchors and honest snippets verified.`);
