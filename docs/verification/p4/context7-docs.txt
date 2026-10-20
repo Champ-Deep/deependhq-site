@@ -1,0 +1,199 @@
+### Listen to a global browser event with useEffect (pointermove)
+
+Source: https://react.dev/reference/react/useEffect
+
+The App component uses useEffect to listen to the global window object's pointermove event, updating a red dot's position. The cleanup removes the event listener to prevent memory leaks.
+
+```js
+import { useState, useEffect } from 'react';
+
+export default function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    function handleMove(e) {
+      setPosition({ x: e.clientX, y: e.clientY });
+    }
+    window.addEventListener('pointermove', handleMove);
+    return () => {
+      window.removeEventListener('pointermove', handleMove);
+    };
+  }, []);
+
+  return (
+    <div style={{
+      position: 'absolute',
+      backgroundColor: 'pink',
+      borderRadius: '50%',
+      opacity: 0.6,
+      transform: `translate(${position.x}px, ${position.y}px)`,
+      pointerEvents: 'none',
+      left: -20,
+      top: -20,
+      width: 40,
+      height: 40,
+    }} />
+  );
+}
+```
+
+```css
+body {
+  min-height: 300px;
+}
+```
+
+--------------------------------
+
+### Subscribing to events with cleanup
+
+Source: https://react.dev/learn/synchronizing-with-effects
+
+This Effect subscribes to the scroll event and returns a cleanup function that removes the listener. In development, the Effect calls addEventListener, then removeEventListener, then addEventListener again, but only one active subscription exists at a time, matching production behavior.
+
+```jsx
+useEffect(() => {
+  function handleScroll(e) {
+    console.log(window.scrollX, window.scrollY);
+  }
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+```
+
+--------------------------------
+
+### Custom useWindowListener Hook with pointer tracking
+
+Source: https://react.dev/reference/react/useEffect
+
+Extracts window event listening into a custom useWindowListener Hook. The App component uses this Hook to track pointer position and render a pink dot. The Hook adds an event listener on mount and removes it on unmount, with dependencies on the event type and listener.
+
+```jsx
+import { useState } from 'react';
+import { useWindowListener } from './useWindowListener.js';
+
+export default function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useWindowListener('pointermove', (e) => {
+    setPosition({ x: e.clientX, y: e.clientY });
+  });
+
+  return (
+    <div style={{
+      position: 'absolute',
+      backgroundColor: 'pink',
+      borderRadius: '50%',
+      opacity: 0.6,
+      transform: `translate(${position.x}px, ${position.y}px)`,
+      pointerEvents: 'none',
+      left: -20,
+      top: -20,
+      width: 40,
+      height: 40,
+    }} />
+  );
+}
+```
+
+```js
+import { useState, useEffect } from 'react';
+
+export function useWindowListener(eventType, listener) {
+  useEffect(() => {
+    window.addEventListener(eventType, listener);
+    return () => {
+      window.removeEventListener(eventType, listener);
+    };
+  }, [eventType, listener]);
+}
+```
+
+--------------------------------
+
+### Using useEffectEvent to avoid stale values
+
+Source: https://react.dev/learn/separating-events-from-effects
+
+This example shows how to use useEffectEvent to create an event handler that reads the latest state without needing to add it to the dependency array. This avoids the need to suppress the linter and prevents stale values.
+
+```jsx
+import { useState, useEffect } from 'react';
+import { useEffectEvent } from 'react';
+
+export default function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [canMove, setCanMove] = useState(true);
+
+  const onMove = useEffectEvent(e => {
+    if (canMove) {
+      setPosition({ x: e.clientX, y: e.clientY });
+    }
+  });
+
+  useEffect(() => {
+    window.addEventListener('pointermove', onMove);
+    return () => window.removeEventListener('pointermove', onMove);
+  }, []);
+
+  return (
+    <>
+      <label>
+        <input type="checkbox"
+          checked={canMove}
+          onChange={e => setCanMove(e.target.checked)}
+        />
+        The dot is allowed to move
+      </label>
+      <hr />
+      <div style={{
+        position: 'absolute',
+        backgroundColor: 'pink',
+        borderRadius: '50%',
+        opacity: 0.6,
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        pointerEvents: 'none',
+        left: -20,
+        top: -20,
+        width: 40,
+        height: 40,
+      }} />
+    </>
+  );
+}
+```
+
+--------------------------------
+
+### Subscribe to browser API with useSyncExternalStore
+
+Source: https://react.dev/reference/react/useSyncExternalStore
+
+Shows how to use useSyncExternalStore to read a browser API value (navigator.onLine) and subscribe to its changes. The getSnapshot function reads the current value, and subscribe adds event listeners for online/offline events, returning a cleanup function.
+
+```js
+import { useSyncExternalStore } from 'react';
+
+function ChatIndicator() {
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
+  // ...
+}
+```
+
+```js
+function getSnapshot() {
+  return navigator.onLine;
+}
+```
+
+```js
+function subscribe(callback) {
+  window.addEventListener('online', callback);
+  window.addEventListener('offline', callback);
+  return () => {
+    window.removeEventListener('online', callback);
+    window.removeEventListener('offline', callback);
+  };
+}
+```

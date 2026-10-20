@@ -38,11 +38,6 @@ const Ico = ({ id, size = 48 }) => (
   <svg className="ico" width={size} height={size} aria-hidden="true" focusable="false"><use href={`brand/icons.svg#i-${id}`} /></svg>
 );
 
-const istClock = (iso) => {
-  try {
-    return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(iso)).replace(',', '');
-  } catch (e) { return ''; }
-};
 
 // ---------------------------------------------------------------- 15:00 hero
 // Server-rendered copy beside the terrain island (H3, plan section 3). The
@@ -144,8 +139,7 @@ const Proof = () => {
 // switches stages as sentinels cross the viewport middle and prints
 // data-hour, so it gains nothing and needs no lane index of its own. Mobile
 // keeps the list and drops the pin (the existing 64rem gate does that).
-// The "last <lane> lane: day N" line and the field-backed output lines are
-// derived from the log at build time and omitted when the log has nothing.
+// Last-lane dates are omitted: a keyword match cannot prove a lane occurred.
 // No em dashes.
 
 // Stage boundaries as fractions of the pinned range. They only have to be

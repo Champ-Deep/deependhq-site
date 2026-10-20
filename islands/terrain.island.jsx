@@ -229,13 +229,13 @@ export default function Terrain({ d, k, rows, start, end, peak }) {
     <p className="trn-range">{start} to {end}. One tower per day.</p>
     {!forced && <button className="trn-view" type="button" aria-pressed={flat} onClick={() => engine.current?.view(!flat)}>{flat ? 'Show terrain' : 'Show flat view'}</button>}
     <canvas ref={canvasRef} className="trn-canvas" tabIndex={0} role="img" aria-label="Activity terrain. Arrow keys select a day. Enter opens its log entry. Or choose a day below." />
-    <p className="trn-legend">Building · thinking · a real outcome. Height: recorded commits, otherwise 1 per entry. Gaps: 0.</p>
+    <p className="trn-legend"><span className="trn-kind trn-kind-build">Building</span> · <span className="trn-kind trn-kind-think">thinking</span> · <span className="trn-kind trn-kind-win">a real outcome</span>. Height: recorded commits, otherwise 1 per entry. Gaps: 0.</p>
     <label className="trn-label" htmlFor="trn-day">Explore a day</label>
     <select id="trn-day" className="trn-select" value={selected} onChange={e => choose(Number(e.target.value))} onFocus={() => engine.current?.select(selected)}>
       {d.map((_, i) => <option key={i} value={i}>{dateAt(start, i)} · {rows[i] ? `day ${rows[i][0]}, ${KIND[k[i]] || 'logged'}` : 'no entry'}</option>)}
     </select>
     <div className="trn-readout" aria-live="polite"><p><b>{dateAt(start, selected)} · {active ? `day ${active[0]} · ${KIND[k[selected]] || 'logged'}` : 'no entry'}</b></p><p>{active ? active[1] : 'No activity has been invented for this gap.'}</p></div>
     {active ? <a className="trn-open" href={`journey.html#day-${active[0]}`}>Open day {active[0]} →</a> : <a className="trn-open" href="journey.html">Browse the whole log →</a>}
-    <details className="trn-data"><summary>Activity data table</summary><div className="trn-table-wrap"><table><caption>Actual log activity. Zero commits can still have an entry.</caption><thead><tr><th scope="col">Date</th><th scope="col">Height</th><th scope="col">Kind and entry</th></tr></thead><tbody>{d.map((n,i) => <tr key={i}><th scope="row">{dateAt(start,i)}</th><td>{n}</td><td>{rows[i] ? <a href={`journey.html#day-${rows[i][0]}`}>day {rows[i][0]} · {KIND[k[i]] || 'logged'}</a> : 'no entry'}</td></tr>)}</tbody></table></div></details>
+    <details className="trn-data"><summary>Activity data table</summary><div className="trn-table-wrap"><table><caption>Actual log activity. Zero commits can still have an entry.</caption><thead><tr><th scope="col">Date</th><th scope="col">Height</th><th scope="col">Kind and entry</th></tr></thead><tbody>{d.map((n,i) => <tr key={i}><th scope="row">{dateAt(start,i)}</th><td>{n}</td><td>{rows[i] ? <><a aria-label={`Open day ${rows[i][0]}, ${KIND[k[i]] || 'logged'}`} href={`journey.html#day-${rows[i][0]}`}>day {rows[i][0]} · {KIND[k[i]] || 'logged'}</a><p>{rows[i][1]}</p></> : 'no entry'}</td></tr>)}</tbody></table></div></details>
   </figure>;
 }

@@ -1,0 +1,8 @@
+
+> deependhq-site@1.0.0 test:p4:browser
+> node scripts/p4-browser.mjs
+
+Server ready and exact P4 mount verified http://127.0.0.1:62956
+Audit failures []
+Browser and owned HTTP listener closed.
+P4 browser gates passed.
