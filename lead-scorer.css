@@ -24,8 +24,8 @@
   /* failure text on the Paper docket. The docket is cream in both schemes,
      so this one value never flips; it is a paper token, not a page token. */
   --danger-ink: #8A2A12;
-  --lamp-wash: color-mix(in oklab, var(--lamp) 12%, transparent);
-  --danger-wash: color-mix(in oklab, var(--danger) 12%, transparent);
+  --lamp-wash: color-mix(in srgb, var(--lamp) 12%, transparent);
+  --danger-wash: color-mix(in srgb, var(--danger) 12%, transparent);
   --lamp-dim: color-mix(in oklab, var(--lamp) 45%, var(--card));
   /* paper docket */
   --paper: #F4EBD9;
