@@ -558,7 +558,7 @@ const game = String(OTC.current_game || '').trim();
 const HUMAN_TILES = [
   { id: 'horseshoe', label: 'sunday rides' },
   { id: 'gi', label: 'jiu-jitsu' },
-  { id: 'gamepad', label: 'civ and crusader kings', note: 'one more turn at 2 AM' },
+  { id: 'gamepad', label: 'civilization and crusader kings', note: 'one more turn at 2 AM' },
   { id: 'music', label: 'listening', spotify: true },
   { id: 'book', label: 'long-flight reading' },
 ];
@@ -596,7 +596,7 @@ const Human = () => {
                   {h.note && <span className="otc-tile-note">{h.note}</span>}
                 </li>
               )))}
-            <li className="otc-tile otc-tile-pending"><span>{game ? `current game: ${game}` : 'current game: to be named'}</span></li>
+            <li className="otc-tile otc-tile-pending"><Ico id="crown" /><span>{game ? `current game: ${game}` : 'current game: to be named'}</span></li>
           </ul>
         </div>
         <div className="wx-human-side">
