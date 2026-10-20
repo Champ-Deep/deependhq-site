@@ -232,7 +232,7 @@ a.chip:hover { text-decoration: none; border-color: var(--line-2); }
 .nav-drawer[data-open="true"] { display: block; }
 .nav-drawer a { display: flex; align-items: center; min-height: 48px; padding: 0 var(--pad); font: 500 var(--text-lg) var(--font-ui); color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); }
 .nav-drawer a[aria-current="page"] { color: var(--win-text); }
-@media (min-width: 48rem) { .nav-links { display: flex; } .nav-burger, .nav-drawer { display: none !important; } }
+@media (min-width: 64rem) { .nav-links { display: flex; } .nav-burger, .nav-drawer { display: none !important; } }
 
 /* ---------- stale banner (in Deep's voice) ---------- */
 .sys-banner { background: var(--danger-wash); border-bottom: 1px solid color-mix(in oklab, var(--danger) 40%, var(--line)); color: var(--text); font: 500 var(--text-sm) var(--font-mono); }
@@ -778,7 +778,7 @@ a.dh-art:hover { color: var(--build-text); }
 .cs-stage:has(:focus-visible) { outline: 2px solid var(--text); }
 .cs-canvas { position: absolute; top: 0; left: 0; display: block; max-width: none; outline: none; }
 
-.cs-corner { position: absolute; display: flex; flex-direction: column; gap: 20px; pointer-events: none; transition-property: opacity, transform; }
+.cs-corner { position: absolute; display: flex; flex-direction: column; gap: 20px; padding: 8px; background: var(--card); border-radius: var(--r-sm); pointer-events: none; transition-property: opacity, transform; }
 .cs-corner-tr { top: 4px; right: 4px; align-items: flex-end; }
 .cs-corner-bl { bottom: 4px; left: 4px; align-items: flex-start; }
 

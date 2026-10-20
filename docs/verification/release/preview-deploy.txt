@@ -1,0 +1,123 @@
+
+ ⛅️ wrangler 4.125.0 (update available 4.151.3)
+───────────────────────────────────────────────
+🌀 Building list of assets...
+✨ Read 197 files from the assets directory /Users/deep/repos/deependhq-refresh/.release/public
+🌀 Starting asset upload...
+🌀 Found 158 new or modified static assets to upload. Proceeding with upload...
++ /brand/flame.svg
++ /manifest.webmanifest
++ /audio/week-45-the-wall-we-named.json
++ /audio/week-46-the-empty-room-arc.json
++ /app.jsx
++ /icon-192.png
++ /SignOff.jsx
++ /page.jsx
++ /Pipeline.jsx
++ /Dispatch.jsx
++ /icon-512.png
++ /WritingPage.jsx
++ /Ticker.jsx
++ /CompanyPage.jsx
++ /favicon.svg
++ /Footer.jsx
++ /toolkit-home.css
++ /brand/tagline.svg
++ /llms.txt
++ /feed.xml
++ /islands.css
++ /NowPage.jsx
++ /company.html
++ /brand/mare.svg
++ /account.js
++ /company/champ-fit/index.html
++ /company/span-global-services/index.html
++ /analytics.js
++ /styles-x.css
++ /company/cirralogix/index.html
++ /lead-scorer.html
++ /privacy.html
++ /company/champions-accelerator/index.html
++ /lead-scorer.css
++ /writing.html
++ /now.html
++ /post.html
++ /post/week-29-the-reach-arc/index.html
++ /post/week-33-the-quarter-turns/index.html
++ /post/week-38-the-signals-were-everywhere/index.html
++ /post/week-35-three-calls-one-friday/index.html
++ /post/week-32-the-build-reflex/index.html
++ /styles.css
++ /lead-scorer.js
++ /fonts/inter-latin.woff2
++ /fonts/fraunces-italic-latin-ext-v2.woff2
++ /og/field-notes.png
++ /og/company.png
++ /og/writing.png
++ /og/default.png
++ /index.html
++ /data.js
++ /audio/week-47-the-decision-debt-arc.mp3
++ /copy-rules.json
++ /command.html
++ /audio/week-44-the-discipline-arc.json
++ /toolkit-catalog.js
++ /Ecosystem.jsx
++ /favicon.ico
++ /scheme.js
++ /SecondCTA.jsx
++ /icon-mask.png
++ /sitemap.xml
++ /fonts.css
++ /Nav.jsx
++ /404.html
++ /scheme-tokens.css
++ /segment.js
++ /visitor-id.js
++ /humans.txt
++ /colors_and_type.css
++ /FieldNotesPage.jsx
++ /rail.css
++ /brand/icons.svg
++ /toolkit-gallery.css
++ /PrivacyPage.jsx
++ /fonts/jetbrains-mono-latin-ext.woff2
++ /account.css
++ /company/health-fit/index.html
++ /company/champions-infometrics/index.html
++ /company/champions-club/index.html
++ /Palette.jsx
++ /ToolkitPage.jsx
++ /brand/mare-sticker.svg
++ /company/lake-b2b/index.html
++ /PostPage.jsx
++ /home.js
++ /journey.html
++ /post/week-44-the-discipline-arc/index.html
++ /pillars.html
++ /post/week-43-five-systems-five-days/index.html
++ /post/week-31-the-proof-arc/index.html
++ /post/week-47-the-decision-debt-arc/index.html
++ /post/week-48-the-receipts-arc/index.html
++ /post/week-46-the-empty-room-arc/index.html
++ /brand/mare-hero.svg
++ /fonts/fraunces-latin-ext-v2.woff2
++ /fonts/fraunces-latin-v2.woff2
++ /fonts/fraunces-italic-latin-v2.woff2
++ /og/now.png
+   (truncating changed assets log, set `WRANGLER_LOG=debug` environment variable to see full diff)
+Uploaded 52 of 158 assets
+Uploaded 105 of 158 assets
+Uploaded 158 of 158 assets
+✨ Success! Uploaded 158 files (2 already uploaded) (6.00 sec)
+
+Total Upload: 450.70 KiB / gzip: 95.91 KiB
+Worker Startup Time: 4 ms
+Your Worker has access to the following bindings:
+Binding            Resource      
+env.ASSETS         Assets        
+
+Uploaded deependhq-refresh-v2-preview-20261021 (13.76 sec)
+Deployed deependhq-refresh-v2-preview-20261021 triggers (3.24 sec)
+  https://deependhq-refresh-v2-preview-20261021.deep-ae0.workers.dev
+Current Version ID: d789011e-133b-4d1c-ab22-a5dd9d74656a

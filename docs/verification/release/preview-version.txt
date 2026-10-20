@@ -1,0 +1,24 @@
+
+ ⛅️ wrangler 4.125.0 (update available 4.151.3)
+───────────────────────────────────────────────
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProcessing wrangler.jsonc configuration:[0m
+
+    - Unexpected fields found in assets field: "//binding","//run_worker_first","//audio","//entity_patterns"
+    - Unexpected fields found in top-level field: "//main"
+
+
+There is a newer version of Wrangler available (current: 4.125.0, latest: 4.151.3). Try upgrading, as it might support this configuration option.
+Version ID:  d789011e-133b-4d1c-ab22-a5dd9d74656a
+Created:     2026-10-20T23:29:55.560Z
+Author:      deep@championsmail.com
+Source:      Upload
+Tag:         -
+Message:     -
+
+Handlers:             fetch
+Compatibility Date:   2026-05-23
+Compatibility Flags:  nodejs_compat
+Your Worker has access to the following bindings:
+Binding            Resource      
+env.ASSETS         Assets        
+

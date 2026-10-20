@@ -1,250 +1,250 @@
 {
-  "base": "http://127.0.0.1:3277",
+  "base": "https://deependhq-refresh-v2-preview-20261021.deep-ae0.workers.dev",
   "assets": 161,
   "routes": 7,
   "results": [
     {
       "path": "404.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "e308323f24896e6542862dd966d49f7922a78d6be9272e8dd92bce64ebe0f62f"
     },
     {
       "path": "CompanyPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "47b07bfae36dd81e5b8a6bcee6317f8286632d9e76aae2b5f63ecf1a0f51a876"
     },
     {
       "path": "ContributionSkyline.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "3c3c2669c0b75f5c5144a97dea6c9b3886397ac5f4cd32e436284e67bcb2e114"
     },
     {
       "path": "Dispatch.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "9d02a3560e904a43b747bc89a1e42b5e9456a9574722d3644032352d5ea06972"
     },
     {
       "path": "Ecosystem.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "34dcae0bb148328fd1d04e4c58b3725c6211ac0025aed4914d3ae9ff41127f98"
     },
     {
       "path": "FieldNotesPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "105ce362a3c5eb8b8b1a3807834c4a5447f09c64865bf7004c278114fb264fe6"
     },
     {
       "path": "Footer.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "8266838511ddfbfd7eec0779a232232311cd54610b1f0607425999bdb6de00fe"
     },
     {
       "path": "Fx.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "d49a50d936c97424875049a39a371204b9a920bb71a807dad16cd69fbebb0170"
     },
     {
       "path": "Hero.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "9371aa86158f8efadf42d0698b53b368b16ae1e95fd0b0a1889acbb09ade8f73"
     },
     {
       "path": "Home.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "5cf7459df7d1609037b3d1b6e41e8b193b6360be3f2794822a8c07ae2f39f88d"
     },
     {
       "path": "HowIThink.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "2d14da728551aa2263e6c3ed69fc02220b8ae781abb6e9b84c984a80216cf71e"
     },
     {
       "path": "JourneyPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "c8cc9b8863afacdd6472b2a9dbdd92dba93ab706173e6ec536785a41d6f903a8"
     },
     {
       "path": "Nav.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "c2e2f5c9feddca87ec3939f887ed3186b28844b1e84974d7a81f80492eabc80a"
     },
     {
       "path": "NowPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "915195a7bb9eab324806b2c9306a72dfb7e6834d9e11ceb8df5567c421732c9c"
     },
     {
       "path": "Palette.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "0c238e57ba5792e7ab319a68243249bbb43c4a91bfbff974b5b6b5f6a3879c45"
     },
     {
       "path": "PillarsPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "6e15d26bedd08df45c9065b432d15e307764e5d651d623221644eb7c1704156d"
     },
     {
       "path": "Pipeline.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "cb5e0eaeb9800cbc4c2327bfd1d8ae1dfdbe2a1850d9db6096ba8ec7d3e83f07"
     },
     {
       "path": "PostPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "c25a36aaedbde4a14270a6e666ce5e9faa284418fd4a5e921756f2a7efbef820"
     },
     {
       "path": "PrivacyPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "b14428ecf488280287a63fd550cdaa498e5ee0522c9ddabd9686f086035682e2"
     },
     {
       "path": "Proof.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "1578b36b73ba1a1d594a6c1c43f5937b4bd35186749ab947a16e3acf2763645a"
     },
     {
       "path": "Rail.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "5ad58ebcb0d44fc7628dbdad981eb368ac822310ff6cc199fcb70e5ffc1c3d0c"
     },
     {
       "path": "SecondCTA.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "6bdd87cb55755b0852deb91737e2d251c79b0ed7d01103fd6046ee2f7b37d19e"
     },
     {
       "path": "ShippingNow.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "632a9cf5e271b6611f529e0e9b051220f0bbca455e379e83a6c64cd5b9a5a424"
     },
     {
       "path": "SignOff.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "d4a1ae13dc8770a5803f2eaeee710df83ef17ae9d850df270a6a92f4f2d10937"
     },
     {
       "path": "StatusBoard.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "ed034499e432dc8d1aad00d2944d35da183909a15a7bf3aa448201e2ce73266f"
     },
     {
       "path": "Sys.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "21b03d36a25165a635abbfda526fa88d9e96901e18fe8d5f5a8e30f16ae85918"
     },
     {
       "path": "TheStack.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "a84ed9af63df99a3cdef9f2841c8c11f228ff9eea5177e4f333eddb77083a633"
     },
     {
       "path": "Ticker.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "ceccf429e29cd0de6336327a6e32cc14ab4f20f9e21487700c6490680748c966"
     },
     {
       "path": "ToolkitPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "4fe4d860bc85287810d622fa80b1e4ce5ae679fb792dbc6669e4921c796c90a3"
     },
     {
       "path": "Workshop.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "7d44378f77143f32f0f0ec5274b092ae3a313525fe9a52685a4363170d340a87"
     },
     {
       "path": "WritingPage.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "df653c2e98f3d9d7a7775bc3dd8ae401a4d2f4613026475a9913dc989a86cf04"
     },
     {
       "path": "_headers",
       "status": 404,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": null,
       "hash": "e7880aba383dc6da031e53afb3c4d787011ecf02df5ee9c5ea2e1d09903a9b4f"
     },
     {
       "path": "account.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "c234c3dcc9439aefeb679146be8dd8ba97450afbef3fb4cf8b7aa408cb16f7f9"
     },
     {
       "path": "account.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "259d170e0a9ba272b540da6261d37850dcbc6453f43d09d9e0d5aef0e7698424"
     },
     {
       "path": "account.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "7f3aae091354c831033b4884587c8fd6ae84aa61c78bc25bb5f078ba9d37b89e"
     },
@@ -258,14 +258,14 @@
     {
       "path": "analytics.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "d8221be7bf04c473d5f1fcf864616f1253cb71c6ec5780a7bf607360b5059ec7"
     },
     {
       "path": "app.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "f33f9a636382047495cfe7366fa8666cf69c0031e1d4a04b1ffd8183138ff9f5"
     },
@@ -279,7 +279,7 @@
     {
       "path": "ask.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "09b5e202f4d4f98583a33577f9e3267b519e100bd77d939e839a10f23daddf4d"
     },
@@ -426,105 +426,105 @@
     {
       "path": "colors_and_type.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "983bd1bbd304860e25c2689737fc264808ca3b62489b0994b4efdcb6912ae772"
     },
     {
       "path": "command.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "8eb654ae4d9546f3a9306c00f865962ee092d7e3f805f1abde83c114b0e4742b"
     },
     {
       "path": "company.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "165003f49eb9460b1c5c96760296f109781790b428d7c4e95c0799d3d6342abe"
     },
     {
       "path": "company/ampliz/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "2370fd2f766c57c3ce0e78dc90555802b1f90ce37f4c5d8c0909f74e402fb05e"
     },
     {
       "path": "company/champ-fit/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "abf4afd74b13a4eefa5b068ce65290afbfdfbf2637bb693ab2284639c117e681"
     },
     {
       "path": "company/champions-accelerator/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "fd541d34a67e5494780dd3da7ae707fb47c9f7c41e24efdd073637722507dd48"
     },
     {
       "path": "company/champions-club/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "4b5f5146c1674665abe03004e02dc6e17c472fc5826c18574afa01bfe231a4ab"
     },
     {
       "path": "company/champions-infometrics/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "2fe17e98aef586dc1fa7caff4c86d23c3f71eb3bb9a9371b4e09487e8e51f180"
     },
     {
       "path": "company/cirralogix/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "b76ee88a40d5431fa2028d8d4562fc3e0f6ebcf8d21e5cc5756a7bb17eb35ef8"
     },
     {
       "path": "company/health-fit/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "87a67e81c9fea53c9a45048c9ac3a65d33c94ebe06c1b6cfb2ae6380564b357f"
     },
     {
       "path": "company/infratech/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "0ee657985d674576e63a0ea83e45b649110cacda8447887147dade449145ed84"
     },
     {
       "path": "company/ip-momentum/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "6ec7931ce16901c743fc0c1cd57c93f79eee75cde3a06b360df0bd40ceb6e5a5"
     },
     {
       "path": "company/lake-b2b/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "b736e20b973e2c73291df429b3ca2d065e5e02f45d8b35029467c431f1a2c218"
     },
     {
       "path": "company/recruit-champ/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "96550173d57d9fefe84c1eb2ed1e8d6e38a6b3816c588924c6d410199a8ef8e1"
     },
     {
       "path": "company/span-global-services/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "13be0533f66ee5ff18f5764760cc2876241461274c778702fab9679258bda915"
     },
@@ -538,7 +538,7 @@
     {
       "path": "copy-engine.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "a1fb80f5fc3d9557259a6cc9d5b1acc21caf6d193bff04c0520f74fac1fd819b"
     },
@@ -552,14 +552,14 @@
     {
       "path": "data.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "8ad79bb01f572d7ff91a4fd0a9e5692c76bbd221db1bff950fc90fc6f10a0956"
     },
     {
       "path": "essay.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "ec44a483d7fe308dee055c1f067de2b8b5aaaba244c6bd925ce58b025f415249"
     },
@@ -587,14 +587,14 @@
     {
       "path": "field-notes.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "8eb654ae4d9546f3a9306c00f865962ee092d7e3f805f1abde83c114b0e4742b"
     },
     {
       "path": "fonts.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "510c884554ce337a962e1a01eface2b708904798de6dc21871bba64cf4123a7d"
     },
@@ -657,21 +657,21 @@
     {
       "path": "home-islands.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "13e2cb1bba77882201feb2d9f0e102d2503844a8bf54603d5e84f3fb2a306c1d"
     },
     {
       "path": "home.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "fd7ad72f72405a526a6b0e064efe8eada05eeb4a0280b7d16540796dc4a86cf0"
     },
     {
       "path": "home.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "962b3de74ef50857aaaca4851b5c2b3819138660a1c7d016f09f35f0253655cc"
     },
@@ -706,42 +706,42 @@
     {
       "path": "index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "3ca17111f9fa3ce9f4a8bcea96c782a702eded5f0e36c150e07e8e17d8842b0d"
     },
     {
       "path": "islands.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "5acaba48fb93c5b237f4756e6d92f2260fbbe51168ffe9f1c96932c67893ce5f"
     },
     {
       "path": "journey.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "8eb654ae4d9546f3a9306c00f865962ee092d7e3f805f1abde83c114b0e4742b"
     },
     {
       "path": "lead-scorer.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "54bd03475329567a791b7c9a4c09ce0d87da65388293714fb12b578d2efca4df"
     },
     {
       "path": "lead-scorer.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "74168bd4684b3332787dd78c8a8822f5c7a3c458c747b98a17a7c016187286f8"
     },
     {
       "path": "lead-scorer.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "00daf05288b3d6403e69615a792297ee286a9386b8b0bc183ce655b217fa86b7"
     },
@@ -776,14 +776,14 @@
     {
       "path": "now.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "c9b9ebadec39c8e8a140cddfa244be377fab357181325285b5ca3827ee4ac6c8"
     },
     {
       "path": "og.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "fc17139f8d472025e29d1b08989bff2c97f2f8fb16845842b2e65d524b69413d"
     },
@@ -853,168 +853,168 @@
     {
       "path": "page.jsx",
       "status": 200,
-      "content_type": "text/jsx; charset=utf-8",
+      "content_type": "text/jsx",
       "csp": null,
       "hash": "ba408da65b4b4d28d53cf0067115baa66400bba3b8c13f434e1b7785ee7ddb82"
     },
     {
       "path": "pages.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "e492b8b9ee9203626690bea32a58b892829e96e176166da4d69ccab3ae033e14"
     },
     {
       "path": "pillars.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "165003f49eb9460b1c5c96760296f109781790b428d7c4e95c0799d3d6342abe"
     },
     {
       "path": "post.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "a60bbefe0592a4b08935f76e0b9b7d3d4ab728e76c05ee5afc2404466d024f18"
     },
     {
       "path": "post/week-27-data-is-not-a-product/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "5d6a370742ed368d7d59a743b747702436017ed91c7d760c2865d9210165469c"
     },
     {
       "path": "post/week-28-four-sales-teams/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "9101e277bb97d75daca178c36514ec5d57df20c9322bdb65099d4383d613321e"
     },
     {
       "path": "post/week-29-the-reach-arc/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "05ac2e57aa04e21c920070faab8bd0b1fb7f69f31e48dac3f03e394e1b82aa78"
     },
     {
       "path": "post/week-30-the-enterprise-arc/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "5ce52085640c0e827a8a296aa53080096ebcccd536f61381d2692764e8eab79e"
     },
     {
       "path": "post/week-31-the-proof-arc/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "75c98f04321a3ab466cbad7f7fbb28a0639ac0c04a5b9baa4bcd54ef57e8ca2c"
     },
     {
       "path": "post/week-32-the-build-reflex/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "9c9700d431d9b99467160375c651026ce43df245e08a0fcf6a7dc69350a129f2"
     },
     {
       "path": "post/week-33-the-quarter-turns/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "6f54b826a8ca7b5042834c015bde493c0695174ae2f7d57f4358648ec314db2a"
     },
     {
       "path": "post/week-34-the-side-door/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "8751940fd52d31151f336908dccfd719f146e13ca32c1b71f7c946d958b6e912"
     },
     {
       "path": "post/week-35-three-calls-one-friday/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "edd442226dbc8d1b62b8ec6294378aeb4c31bce8a0f2ca51baa12ef00cd01749"
     },
     {
       "path": "post/week-36-the-doctor-said-yes/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "42c1d5b301bdf9a597734ec3a68b65dae7727716a17062a4fe16c4b259f35b29"
     },
     {
       "path": "post/week-37-the-calendar-was-full/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "30a403b2aa14bfa13eb27b0b01e1ffb872c653cd38cb3384f884f56f41b1275d"
     },
     {
       "path": "post/week-38-the-signals-were-everywhere/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "5379b2fc467f950f1c21d7f44d7ceeb970412354ec65a2c7b0259efb7ddfc235"
     },
     {
       "path": "post/week-43-five-systems-five-days/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "2e6cce3cc07bebe4dd79d91151ae515ddbb5a3d3a6ebf541a064f85a023851e9"
     },
     {
       "path": "post/week-44-the-discipline-arc/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "0143f12a67d49247a540af981ae63ee3d43ea102f69a73c5543d5d63a4b2c327"
     },
     {
       "path": "post/week-45-the-wall-we-named/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "3c7915227eb2c2ba075c4c3f8a12d4a1775bf92defd21b18db98796baf355116"
     },
     {
       "path": "post/week-46-the-empty-room-arc/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "0fb4a518368cecd4711d1eace8c63b3d4435ca28bea28925434e9f5d86dc3217"
     },
     {
       "path": "post/week-47-the-decision-debt-arc/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "c2bf0e29101bbf783f76a5b79d8b9c08ea49ece948451a49caafc45a5372b240"
     },
     {
       "path": "post/week-48-the-receipts-arc/index.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "86d86ab8e145b1bc081e7a9ddfd55f1675876d47e1278b1fbadabe09c2294d96"
     },
     {
       "path": "privacy.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "48aa7689cbcd7a993b4bd84e7f1b5b14ec076c942e830d63c0bd1cf9fb5a9728"
     },
     {
       "path": "rail.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "586c9df736f33e595d359b0f7db67a04444521f0180f20b868e391c9193412cf"
     },
@@ -1028,21 +1028,21 @@
     {
       "path": "scheme-tokens.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "1c4509bf44c4270f6f9b52fc8aad7ffff636b2d1ff520d78090abd3ee71b2f1d"
     },
     {
       "path": "scheme.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "954a8d7bf9bbccba22cd896e3911d6a2b0f6ed2f5a7d75113e58ef2ce0fdd5a1"
     },
     {
       "path": "segment.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "9efdc5539da15825f8689726e890b5ab1e01a88467d597944c77e1aca7bdbe78"
     },
@@ -1056,126 +1056,126 @@
     {
       "path": "styles-x.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "f5f08e7a20d01a7dbe4174b999cff9377cd8c6c67cb5a82383885ac941f13948"
     },
     {
       "path": "styles.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "513ec74ca8f11bb115131214cf3a8013edd5dab521bdf27fdef04685ceef5409"
     },
     {
       "path": "system.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "cc1af69ad61ff11e60a2ab4aaf1edfbbd0dda21ec4c45a06dbdbaee4b410f5e8"
     },
     {
       "path": "toolkit-catalog.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "a040b96af5d231b265d4d5007599ba3656ecefcd160f8e9b3faf6ae95c96a651"
     },
     {
       "path": "toolkit-gallery.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "7fc20103e1f1f8ff5d6328be34690d7521df79cbeed287b9d003a19536f3acf8"
     },
     {
       "path": "toolkit-home.css",
       "status": 200,
-      "content_type": "text/css; charset=utf-8",
+      "content_type": "text/css",
       "csp": null,
       "hash": "5041973b1093cf10966a58a99fe872a5a0f727edf9ffd593ec39813c16b27c48"
     },
     {
       "path": "toolkit-lib.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "62299a4f0d89722b7a3b27d11468e6d25e3ea2ce06b669716316be1e89f8f088"
     },
     {
       "path": "toolkit-session.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "a03bdee62d5a0f295624f6500eddb5502c958cba1d863a49f9bb52a0b2a8b055"
     },
     {
       "path": "toolkit.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "5bb8cc0609bbefe27d2b63c7cc13bf47ba364b752482fed05b852f0f98c14a58"
     },
     {
       "path": "visitor-id.js",
       "status": 200,
-      "content_type": "text/javascript; charset=utf-8",
+      "content_type": "text/javascript",
       "csp": null,
       "hash": "b97acc5196c59ef24779577c7e262107c4274b5ad5ce08939eafd4e79984ee9e"
     },
     {
       "path": "writing.html",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "a60bbefe0592a4b08935f76e0b9b7d3d4ab728e76c05ee5afc2404466d024f18"
     },
     {
       "path": "/",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "3ca17111f9fa3ce9f4a8bcea96c782a702eded5f0e36c150e07e8e17d8842b0d"
     },
     {
       "path": "/journey",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "8eb654ae4d9546f3a9306c00f865962ee092d7e3f805f1abde83c114b0e4742b"
     },
     {
       "path": "/post/week-48-the-receipts-arc",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "86d86ab8e145b1bc081e7a9ddfd55f1675876d47e1278b1fbadabe09c2294d96"
     },
     {
       "path": "/company/lake-b2b",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "b736e20b973e2c73291df429b3ca2d065e5e02f45d8b35029467c431f1a2c218"
     },
     {
       "path": "/toolkit",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "5bb8cc0609bbefe27d2b63c7cc13bf47ba364b752482fed05b852f0f98c14a58"
     },
     {
       "path": "/lead-scorer",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "74168bd4684b3332787dd78c8a8822f5c7a3c458c747b98a17a7c016187286f8"
     },
     {
       "path": "/account",
       "status": 200,
-      "content_type": "text/html; charset=utf-8",
+      "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       "hash": "259d170e0a9ba272b540da6261d37850dcbc6453f43d09d9e0d5aef0e7698424"
     }

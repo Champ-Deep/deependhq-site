@@ -1,0 +1,906 @@
+{
+  "folders-light": {
+    "before": [
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 9782,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 10093.640625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 10405.28125,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 10716.921875,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11028.5625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11340.203125,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11651.84375,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11963.484375,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 12275.125,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 12586.765625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 12898.40625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 13210.046875,
+        "height": 287.640625
+      }
+    ],
+    "after": [
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -2832,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -2520.359375,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -2208.71875,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -1897.078125,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -1585.4375,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -1273.796875,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -962.15625,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -650.515625,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -338.875,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -27.234375,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": 284.40625,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": 596.046875,
+        "height": 287.640625
+      }
+    ],
+    "count": 12,
+    "all_readable_after_real_scroll": true
+  },
+  "nav-light": [
+    {
+      "text": "Mission Log",
+      "rect": {
+        "x": 151.734375,
+        "y": 8,
+        "width": 79.5,
+        "height": 44,
+        "top": 8,
+        "right": 231.234375,
+        "bottom": 52,
+        "left": 151.734375
+      },
+      "scrollWidth": 80,
+      "clientWidth": 80,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Writing",
+      "rect": {
+        "x": 235.234375,
+        "y": 8,
+        "width": 75.421875,
+        "height": 44,
+        "top": 8,
+        "right": 310.65625,
+        "bottom": 52,
+        "left": 235.234375
+      },
+      "scrollWidth": 75,
+      "clientWidth": 75,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Pillars",
+      "rect": {
+        "x": 314.65625,
+        "y": 8,
+        "width": 67.375,
+        "height": 44,
+        "top": 8,
+        "right": 382.03125,
+        "bottom": 52,
+        "left": 314.65625
+      },
+      "scrollWidth": 67,
+      "clientWidth": 67,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Toolkit",
+      "rect": {
+        "x": 386.03125,
+        "y": 8,
+        "width": 71.796875,
+        "height": 44,
+        "top": 8,
+        "right": 457.828125,
+        "bottom": 52,
+        "left": 386.03125
+      },
+      "scrollWidth": 72,
+      "clientWidth": 72,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Now",
+      "rect": {
+        "x": 461.828125,
+        "y": 8,
+        "width": 56.59375,
+        "height": 44,
+        "top": 8,
+        "right": 518.421875,
+        "bottom": 52,
+        "left": 461.828125
+      },
+      "scrollWidth": 57,
+      "clientWidth": 57,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "scheme: system",
+      "rect": {
+        "x": 534.421875,
+        "y": 8,
+        "width": 82.03125,
+        "height": 44,
+        "top": 8,
+        "right": 616.453125,
+        "bottom": 52,
+        "left": 534.421875
+      },
+      "scrollWidth": 88,
+      "clientWidth": 80,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "system",
+      "rect": {
+        "x": 581.421875,
+        "y": 23,
+        "width": 42.25,
+        "height": 14,
+        "top": 23,
+        "right": 623.671875,
+        "bottom": 37,
+        "left": 581.421875
+      },
+      "scrollWidth": 0,
+      "clientWidth": 0,
+      "whiteSpace": "nowrap"
+    }
+  ],
+  "terrain-light": {
+    "width": 690,
+    "height": 280,
+    "canvasWidth": 690,
+    "canvasHeight": 280,
+    "progress": 1,
+    "faces": 434,
+    "bounds": {
+      "minX": 76.06575393706555,
+      "maxX": 611.5275857867211,
+      "minY": 82.1523044995491,
+      "maxY": 253.76021850551376
+    }
+  },
+  "chart-light": [
+    {
+      "text": "Champions Operations17",
+      "track": 373.34375,
+      "bar": 211.546875,
+      "declared": "56.6667%"
+    },
+    {
+      "text": "Lake B2B11",
+      "track": 373.34375,
+      "bar": 136.890625,
+      "declared": "36.6667%"
+    },
+    {
+      "text": "ChampOps8",
+      "track": 373.34375,
+      "bar": 99.546875,
+      "declared": "26.6667%"
+    },
+    {
+      "text": "Celsus OS5",
+      "track": 373.34375,
+      "bar": 62.21875,
+      "declared": "16.6667%"
+    },
+    {
+      "text": "TheDeepEndHQ4",
+      "track": 373.34375,
+      "bar": 49.765625,
+      "declared": "13.3333%"
+    },
+    {
+      "text": "Champ Harbinger1",
+      "track": 373.34375,
+      "bar": 12.4375,
+      "declared": "3.33333%"
+    },
+    {
+      "text": "Champions Operations594 words",
+      "track": 432.671875,
+      "bar": 386.46875,
+      "declared": "89.3233%"
+    },
+    {
+      "text": "Lake B2B345 words",
+      "track": 432.671875,
+      "bar": 224.46875,
+      "declared": "51.8797%"
+    },
+    {
+      "text": "ChampOps57 words",
+      "track": 432.671875,
+      "bar": 37.078125,
+      "declared": "8.57143%"
+    },
+    {
+      "text": "Content Strategy45 words",
+      "track": 432.671875,
+      "bar": 29.265625,
+      "declared": "6.76692%"
+    }
+  ],
+  "footer-light": [
+    {
+      "text": "Site",
+      "top": 14213.015625,
+      "scrollWidth": 265,
+      "clientWidth": 265,
+      "color": "rgb(15, 107, 51)"
+    },
+    {
+      "text": "Elsewhere",
+      "top": 14213.015625,
+      "scrollWidth": 265,
+      "clientWidth": 265,
+      "color": "rgb(15, 107, 51)"
+    },
+    {
+      "text": "The twelve",
+      "top": 14213.015625,
+      "scrollWidth": 265,
+      "clientWidth": 265,
+      "color": "rgb(15, 107, 51)"
+    },
+    {
+      "text": "day 354 of building in public \u00b7 built 21 Oct 2026 ",
+      "top": 14627.203125,
+      "scrollWidth": 1016,
+      "clientWidth": 1016,
+      "color": "rgb(81, 91, 110)"
+    },
+    {
+      "text": "\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group \u00b7 the",
+      "top": 14646.59375,
+      "scrollWidth": 1016,
+      "clientWidth": 1016,
+      "color": "rgb(90, 100, 120)"
+    }
+  ],
+  "journey-light": [
+    {
+      "cls": "cs-canvas",
+      "text": "",
+      "rect": {
+        "x": 147,
+        "y": 567.34375,
+        "width": 674,
+        "height": 397,
+        "top": 567.34375,
+        "right": 821,
+        "bottom": 964.34375,
+        "left": 147
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "650contributions",
+      "rect": {
+        "x": 147,
+        "y": 714.984375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 714.984375,
+        "right": 303.5,
+        "bottom": 745.078125,
+        "left": 147
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "25contributions",
+      "rect": {
+        "x": 319.5,
+        "y": 714.984375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 714.984375,
+        "right": 476,
+        "bottom": 745.078125,
+        "left": 319.5
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "23days",
+      "rect": {
+        "x": 492,
+        "y": 714.984375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 714.984375,
+        "right": 648.5,
+        "bottom": 745.078125,
+        "left": 492
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "23days",
+      "rect": {
+        "x": 664.5,
+        "y": 714.984375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 714.984375,
+        "right": 821,
+        "bottom": 745.078125,
+        "left": 664.5
+      }
+    }
+  ],
+  "account-light": "Shared credit balance\nsign in to see your balance\nCREDITS AVAILABLE\nsign in\nusable right now, shared across tools\nCREDITS HELD\n0\nreserved for unresolved operations\nCREDITS USED TODAY\n0\nsettled, not quoted\nSPEND TODAY\n$0.00\nsettled USD microdollars\nROWS TODAY\n0\nagainst your row cap\nDaily credit cap\nno cap set\nDaily row cap\nno cap set\nProviders configured\nHeld microdollars\n0\n\nOne credit equals one thousandth of a dollar of provider budget allowance, an internal accounting unit. It is not a claim that your subscription price equals a vendor invoice.",
+  "folders-dark": {
+    "before": [
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 9782,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 10093.640625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 10405.28125,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 10716.921875,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11028.5625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11340.203125,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11651.84375,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 11963.484375,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 12275.125,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 12586.765625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 12898.40625,
+        "height": 287.640625
+      },
+      {
+        "entered": false,
+        "opacity": "0",
+        "top": 13210.046875,
+        "height": 287.640625
+      }
+    ],
+    "after": [
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -2832,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -2520.359375,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -2208.71875,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -1897.078125,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -1585.4375,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -1273.796875,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -962.15625,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -650.515625,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -338.875,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": -27.234375,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": 284.40625,
+        "height": 287.640625
+      },
+      {
+        "entered": true,
+        "opacity": "1",
+        "top": 596.046875,
+        "height": 287.640625
+      }
+    ],
+    "count": 12,
+    "all_readable_after_real_scroll": true
+  },
+  "nav-dark": [
+    {
+      "text": "Mission Log",
+      "rect": {
+        "x": 151.734375,
+        "y": 8,
+        "width": 79.5,
+        "height": 44,
+        "top": 8,
+        "right": 231.234375,
+        "bottom": 52,
+        "left": 151.734375
+      },
+      "scrollWidth": 80,
+      "clientWidth": 80,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Writing",
+      "rect": {
+        "x": 235.234375,
+        "y": 8,
+        "width": 75.421875,
+        "height": 44,
+        "top": 8,
+        "right": 310.65625,
+        "bottom": 52,
+        "left": 235.234375
+      },
+      "scrollWidth": 75,
+      "clientWidth": 75,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Pillars",
+      "rect": {
+        "x": 314.65625,
+        "y": 8,
+        "width": 67.375,
+        "height": 44,
+        "top": 8,
+        "right": 382.03125,
+        "bottom": 52,
+        "left": 314.65625
+      },
+      "scrollWidth": 67,
+      "clientWidth": 67,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Toolkit",
+      "rect": {
+        "x": 386.03125,
+        "y": 8,
+        "width": 71.796875,
+        "height": 44,
+        "top": 8,
+        "right": 457.828125,
+        "bottom": 52,
+        "left": 386.03125
+      },
+      "scrollWidth": 72,
+      "clientWidth": 72,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Now",
+      "rect": {
+        "x": 461.828125,
+        "y": 8,
+        "width": 56.59375,
+        "height": 44,
+        "top": 8,
+        "right": 518.421875,
+        "bottom": 52,
+        "left": 461.828125
+      },
+      "scrollWidth": 57,
+      "clientWidth": 57,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "scheme: system",
+      "rect": {
+        "x": 534.421875,
+        "y": 8,
+        "width": 82.03125,
+        "height": 44,
+        "top": 8,
+        "right": 616.453125,
+        "bottom": 52,
+        "left": 534.421875
+      },
+      "scrollWidth": 88,
+      "clientWidth": 80,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "system",
+      "rect": {
+        "x": 581.421875,
+        "y": 23,
+        "width": 42.25,
+        "height": 14,
+        "top": 23,
+        "right": 623.671875,
+        "bottom": 37,
+        "left": 581.421875
+      },
+      "scrollWidth": 0,
+      "clientWidth": 0,
+      "whiteSpace": "nowrap"
+    }
+  ],
+  "terrain-dark": {
+    "width": 690,
+    "height": 280,
+    "canvasWidth": 690,
+    "canvasHeight": 280,
+    "progress": 1,
+    "faces": 434,
+    "bounds": {
+      "minX": 76.06575393706555,
+      "maxX": 611.5275857867211,
+      "minY": 82.1523044995491,
+      "maxY": 253.76021850551376
+    }
+  },
+  "chart-dark": [
+    {
+      "text": "Champions Operations17",
+      "track": 373.34375,
+      "bar": 211.546875,
+      "declared": "56.6667%"
+    },
+    {
+      "text": "Lake B2B11",
+      "track": 373.34375,
+      "bar": 136.890625,
+      "declared": "36.6667%"
+    },
+    {
+      "text": "ChampOps8",
+      "track": 373.34375,
+      "bar": 99.546875,
+      "declared": "26.6667%"
+    },
+    {
+      "text": "Celsus OS5",
+      "track": 373.34375,
+      "bar": 62.21875,
+      "declared": "16.6667%"
+    },
+    {
+      "text": "TheDeepEndHQ4",
+      "track": 373.34375,
+      "bar": 49.765625,
+      "declared": "13.3333%"
+    },
+    {
+      "text": "Champ Harbinger1",
+      "track": 373.34375,
+      "bar": 12.4375,
+      "declared": "3.33333%"
+    },
+    {
+      "text": "Champions Operations594 words",
+      "track": 432.671875,
+      "bar": 386.46875,
+      "declared": "89.3233%"
+    },
+    {
+      "text": "Lake B2B345 words",
+      "track": 432.671875,
+      "bar": 224.46875,
+      "declared": "51.8797%"
+    },
+    {
+      "text": "ChampOps57 words",
+      "track": 432.671875,
+      "bar": 37.078125,
+      "declared": "8.57143%"
+    },
+    {
+      "text": "Content Strategy45 words",
+      "track": 432.671875,
+      "bar": 29.265625,
+      "declared": "6.76692%"
+    }
+  ],
+  "footer-dark": [
+    {
+      "text": "Site",
+      "top": 14213.015625,
+      "scrollWidth": 265,
+      "clientWidth": 265,
+      "color": "rgb(48, 224, 96)"
+    },
+    {
+      "text": "Elsewhere",
+      "top": 14213.015625,
+      "scrollWidth": 265,
+      "clientWidth": 265,
+      "color": "rgb(48, 224, 96)"
+    },
+    {
+      "text": "The twelve",
+      "top": 14213.015625,
+      "scrollWidth": 265,
+      "clientWidth": 265,
+      "color": "rgb(48, 224, 96)"
+    },
+    {
+      "text": "day 354 of building in public \u00b7 built 21 Oct 2026 ",
+      "top": 14627.203125,
+      "scrollWidth": 1016,
+      "clientWidth": 1016,
+      "color": "rgb(169, 171, 166)"
+    },
+    {
+      "text": "\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group \u00b7 the",
+      "top": 14646.59375,
+      "scrollWidth": 1016,
+      "clientWidth": 1016,
+      "color": "rgb(144, 152, 170)"
+    }
+  ],
+  "journey-dark": [
+    {
+      "cls": "cs-canvas",
+      "text": "",
+      "rect": {
+        "x": 147,
+        "y": 567.34375,
+        "width": 674,
+        "height": 397,
+        "top": 567.34375,
+        "right": 821,
+        "bottom": 964.34375,
+        "left": 147
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "650contributions",
+      "rect": {
+        "x": 147,
+        "y": 712.59375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 712.59375,
+        "right": 303.5,
+        "bottom": 742.6875,
+        "left": 147
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "25contributions",
+      "rect": {
+        "x": 319.5,
+        "y": 712.59375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 712.59375,
+        "right": 476,
+        "bottom": 742.6875,
+        "left": 319.5
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "23days",
+      "rect": {
+        "x": 492,
+        "y": 712.59375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 712.59375,
+        "right": 648.5,
+        "bottom": 742.6875,
+        "left": 492
+      }
+    },
+    {
+      "cls": "cs-stat-row",
+      "text": "23days",
+      "rect": {
+        "x": 664.5,
+        "y": 712.59375,
+        "width": 156.5,
+        "height": 30.09375,
+        "top": 712.59375,
+        "right": 821,
+        "bottom": 742.6875,
+        "left": 664.5
+      }
+    }
+  ],
+  "account-dark": "Shared credit balance\nsign in to see your balance\nCREDITS AVAILABLE\nsign in\nusable right now, shared across tools\nCREDITS HELD\n0\nreserved for unresolved operations\nCREDITS USED TODAY\n0\nsettled, not quoted\nSPEND TODAY\n$0.00\nsettled USD microdollars\nROWS TODAY\n0\nagainst your row cap\nDaily credit cap\nno cap set\nDaily row cap\nno cap set\nProviders configured\nHeld microdollars\n0\n\nOne credit equals one thousandth of a dollar of provider budget allowance, an internal accounting unit. It is not a claim that your subscription price equals a vendor invoice."
+}

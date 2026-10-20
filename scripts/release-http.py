@@ -12,7 +12,7 @@ assets=json.loads((root/'docs/verification/release/assets.json').read_text())
 routes=['/','/journey','/post/week-48-the-receipts-arc','/company/lake-b2b','/toolkit','/lead-scorer','/account']
 def fetch(path):
     try:
-        response=urllib.request.urlopen(base+'/'+path.lstrip('/'),timeout=30)
+        response=urllib.request.urlopen(urllib.request.Request(base+'/'+path.lstrip('/'),headers={'User-Agent':'DeepEndHQ-release-verifier/1.0'}),timeout=30)
     except urllib.error.HTTPError as error:
         response=error
     with response as r:

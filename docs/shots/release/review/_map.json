@@ -1,0 +1,324 @@
+{
+ "375-dark-day-list.png": {
+  "stitched": "375-dark-day-list.stitched.png",
+  "bands": [
+   [
+    0,
+    1069
+   ],
+   [
+    1069,
+    2137
+   ]
+  ]
+ },
+ "375-dark-folder-open.png": {
+  "stitched": "375-dark-folder-open.stitched.png",
+  "bands": [
+   [
+    0,
+    1369
+   ],
+   [
+    1369,
+    2738
+   ],
+   [
+    2738,
+    4107
+   ]
+  ]
+ },
+ "375-dark-section-ecosystem.png": {
+  "stitched": "375-dark-section-ecosystem.stitched.png",
+  "bands": [
+   [
+    0,
+    1369
+   ],
+   [
+    1369,
+    2738
+   ],
+   [
+    2738,
+    4107
+   ]
+  ]
+ },
+ "375-dark-section-log.png": {
+  "stitched": "375-dark-section-log.stitched.png",
+  "bands": [
+   [
+    0,
+    1384
+   ],
+   [
+    1384,
+    2768
+   ]
+  ]
+ },
+ "375-dark-section-stack.png": {
+  "stitched": "375-dark-section-stack.stitched.png",
+  "bands": [
+   [
+    0,
+    1466
+   ],
+   [
+    1466,
+    2931
+   ]
+  ]
+ },
+ "375-dark-section-top.png": {
+  "stitched": "375-dark-section-top.stitched.png",
+  "bands": [
+   [
+    0,
+    772
+   ],
+   [
+    772,
+    1544
+   ]
+  ]
+ },
+ "375-dark-section-writing.png": {
+  "stitched": "375-dark-section-writing.stitched.png",
+  "bands": [
+   [
+    0,
+    1306
+   ],
+   [
+    1306,
+    2612
+   ]
+  ]
+ },
+ "375-light-day-list.png": {
+  "stitched": "375-light-day-list.stitched.png",
+  "bands": [
+   [
+    0,
+    1069
+   ],
+   [
+    1069,
+    2137
+   ]
+  ]
+ },
+ "375-light-folder-open.png": {
+  "stitched": "375-light-folder-open.stitched.png",
+  "bands": [
+   [
+    0,
+    1369
+   ],
+   [
+    1369,
+    2738
+   ],
+   [
+    2738,
+    4107
+   ]
+  ]
+ },
+ "375-light-section-ecosystem.png": {
+  "stitched": "375-light-section-ecosystem.stitched.png",
+  "bands": [
+   [
+    0,
+    1369
+   ],
+   [
+    1369,
+    2738
+   ],
+   [
+    2738,
+    4107
+   ]
+  ]
+ },
+ "375-light-section-log.png": {
+  "stitched": "375-light-section-log.stitched.png",
+  "bands": [
+   [
+    0,
+    1384
+   ],
+   [
+    1384,
+    2768
+   ]
+  ]
+ },
+ "375-light-section-stack.png": {
+  "stitched": "375-light-section-stack.stitched.png",
+  "bands": [
+   [
+    0,
+    1466
+   ],
+   [
+    1466,
+    2931
+   ]
+  ]
+ },
+ "375-light-section-top.png": {
+  "stitched": "375-light-section-top.stitched.png",
+  "bands": [
+   [
+    0,
+    772
+   ],
+   [
+    772,
+    1544
+   ]
+  ]
+ },
+ "375-light-section-writing.png": {
+  "stitched": "375-light-section-writing.stitched.png",
+  "bands": [
+   [
+    0,
+    1306
+   ],
+   [
+    1306,
+    2612
+   ]
+  ]
+ },
+ "1280-dark-section-log.png": {
+  "bands_files": [
+   "1280-dark-section-log.band0.png",
+   "1280-dark-section-log.band1.png"
+  ],
+  "bands": [
+   [
+    0,
+    1384
+   ],
+   [
+    1384,
+    2767
+   ]
+  ]
+ },
+ "1280-dark-section-stack.png": {
+  "bands_files": [
+   "1280-dark-section-stack.band0.png",
+   "1280-dark-section-stack.band1.png"
+  ],
+  "bands": [
+   [
+    0,
+    839
+   ],
+   [
+    839,
+    1677
+   ]
+  ]
+ },
+ "1280-light-section-log.png": {
+  "bands_files": [
+   "1280-light-section-log.band0.png",
+   "1280-light-section-log.band1.png"
+  ],
+  "bands": [
+   [
+    0,
+    1384
+   ],
+   [
+    1384,
+    2767
+   ]
+  ]
+ },
+ "1280-light-section-stack.png": {
+  "bands_files": [
+   "1280-light-section-stack.band0.png",
+   "1280-light-section-stack.band1.png"
+  ],
+  "bands": [
+   [
+    0,
+    839
+   ],
+   [
+    839,
+    1677
+   ]
+  ]
+ },
+ "375-dark-account.png": {
+  "panel": "panel-375-dark-account.png"
+ },
+ "375-dark-home.png": {
+  "panel": "panel-375-dark-account.png"
+ },
+ "375-dark-journey.png": {
+  "panel": "panel-375-dark-account.png"
+ },
+ "375-dark-lake-b2b.png": {
+  "panel": "panel-375-dark-browse.png"
+ },
+ "375-dark-lead-scorer.png": {
+  "panel": "panel-375-dark-browse.png"
+ },
+ "375-dark-toolkit.png": {
+  "panel": "panel-375-dark-browse.png"
+ },
+ "375-dark-week-48-the-receipts-arc.png": {
+  "panel": "panel-375-dark-closer.png"
+ },
+ "375-dark-section-footer.png": {
+  "panel": "panel-375-dark-closer.png"
+ },
+ "375-dark-section-human.png": {
+  "panel": "panel-375-dark-closer.png"
+ },
+ "375-light-account.png": {
+  "panel": "panel-375-light-account.png"
+ },
+ "375-light-home.png": {
+  "panel": "panel-375-light-account.png"
+ },
+ "375-light-journey.png": {
+  "panel": "panel-375-light-account.png"
+ },
+ "375-light-lake-b2b.png": {
+  "panel": "panel-375-light-browse.png"
+ },
+ "375-light-lead-scorer.png": {
+  "panel": "panel-375-light-browse.png"
+ },
+ "375-light-toolkit.png": {
+  "panel": "panel-375-light-browse.png"
+ },
+ "375-light-week-48-the-receipts-arc.png": {
+  "panel": "panel-375-light-closer.png"
+ },
+ "375-light-section-footer.png": {
+  "panel": "panel-375-light-closer.png"
+ },
+ "375-light-section-human.png": {
+  "panel": "panel-375-light-closer.png"
+ },
+ "375-no-js.png": {
+  "panel": "panel-375-nojs-reducedmotion.png"
+ },
+ "375-reduced-motion.png": {
+  "panel": "panel-375-nojs-reducedmotion.png"
+ }
+}

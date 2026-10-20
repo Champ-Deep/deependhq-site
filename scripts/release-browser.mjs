@@ -62,6 +62,11 @@ try {
         assert(await page.locator('.trn-canvas').evaluate(c=>c.getContext('2d').getImageData(0,0,c.width,c.height).data.some((v,i)=>i%4===3&&v>0)),'terrain actually paints pixels');
         if(width===375||width===1280) {
           for(const section of ['#top','#log','#stack','#ecosystem','#writing','#human','footer']) {
+            if(section==='#ecosystem') {
+              for(const folder of await page.locator('.gfc-root').all()) {await folder.scrollIntoViewIfNeeded();await page.waitForTimeout(150);}
+              await page.waitForTimeout(1500);
+              assert.equal(await page.locator('.gfc-root[data-entered]').count(),12);
+            }
             await page.locator(section).scrollIntoViewIfNeeded();await page.waitForTimeout(500);
             await page.locator(section).screenshot({path:`${shots}/${width}-${scheme}-section-${section.replace('#','')}.png`});
           }
