@@ -1,0 +1,95 @@
+
+> deependhq-site@1.0.0 test:p3:browser
+> node scripts/p3-browser.mjs
+
+HTTP readiness confirmed: http://127.0.0.1:58335, PID 4965, P3 mount present.
+{
+  "passed": true,
+  "scenarios": [
+    "six viewport/scheme renders",
+    "four source-derived metrics",
+    "seven differentiated week tiles",
+    "element-rect overflow",
+    "pointer reorder",
+    "persistence",
+    "reset",
+    "Alt+arrow and focus",
+    "ordinary link activation",
+    "invalid storage",
+    "JS-off fallback",
+    "reduced motion",
+    "whole-page mobile overflow",
+    "audit.py CLI"
+  ],
+  "audits": [
+    {
+      "state": "375-light",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "375-dark",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "768-light",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "768-dark",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "1280-light",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "1280-dark",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "reordered-reset-visible",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "touch",
+      "scrollAndLongPressReorder": true
+    },
+    {
+      "state": "storage-unavailable",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    },
+    {
+      "state": "reduced-motion",
+      "audit": {
+        "INFO": 2,
+        "WARN": 1
+      }
+    }
+  ],
+  "consoleErrors": []
+}
+Browser and HTTP server closed.

@@ -13,7 +13,7 @@ Preserve brand faces: Inter for UI and operator headings, JetBrains Mono for log
 Port the supplied 21st.dev Draggable Widget Grid, not its simulated dashboard demo. Building is small, thinking wide, outcome large. Solid surfaces and quiet borders, visible focus outlines. Full-entry links remain normal anchors. Reset is a 44px control. Arc and word-share bars carry textual counts and denominators.
 
 ## 5. Layout Principles
-Use existing spacing tokens and a 12px grid gap. Desktop four columns, tablet three, mobile two. Ten desktop entries, first six canonical entries on mobile plus whole-log link. Exact tiler with supplied packing fallback. Static fallback is an ordered list. Heatmap stays desktop-only. Mobile has a plain dated list.
+Use existing spacing tokens and a 12px grid gap, 8px internal card gaps and readable 300px rows. Desktop four columns, tablet three, mobile two. Ten desktop entries, first six canonical entries on mobile plus whole-log link. Phone outcomes use 2x1, desktop/tablet outcomes use 2x2. Exact tiler widens small cards to complete a fractional row; the full-band fallback closes every remaining gap. Static fallback is an ordered list. Heatmap stays desktop-only. Mobile has a plain dated list.
 
 ## 6. Depth & Elevation
 Existing token shadows only. Drag lift uses transform and a focus-like outline, no glow or glass. No new elevation system.
