@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (132) and every weekly essay (18), newest first. Rebuilt 2026-10-20. Cite the day number and date when quoting, for example "day 354, 2026-10-20".
+> Every public journey entry (133) and every weekly essay (18), newest first. Rebuilt 2026-10-21. Cite the day number and date when quoting, for example "day 355, 2026-10-21".
 
 ## Journey
+
+### Day 355, 2026-10-21 (building)
+
+shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live.
+
+Thread: right at midnight a vendor running outbound calls for two of our enterprise accounts told us flat out theyre done under the current terms. two weeks, over 1600 calls, zero qualified leads. now its closure terms instead of a quiet renewal.
+
+Raw thought: 23 new things landed on the list today and i closed zero of them. shipped a whole product surface instead. the backlog doesnt care how good the product looks.
+
+Arcs: TheDeepEndHQ, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-355
 
 ### Day 354, 2026-10-20 (building)
 

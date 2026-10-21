@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 354,
-    "today_date": "2026-10-20",
+    "today_day": 355,
+    "today_date": "2026-10-21",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,37 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-21",
+      "day": 355,
+      "mood": "🔨",
+      "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live.",
+      "yesterday_thread": "right at midnight a vendor running outbound calls for two of our enterprise accounts told us flat out theyre done under the current terms. two weeks, over 1600 calls, zero qualified leads. now its closure terms instead of a quiet renewal.",
+      "raw_thought": "23 new things landed on the list today and i closed zero of them. shipped a whole product surface instead. the backlog doesnt care how good the product looks.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "metrics": [
+        {
+          "k": "factory cards shipped",
+          "v": 3
+        },
+        {
+          "k": "qualified leads, two week vendor run",
+          "v": 0
+        },
+        {
+          "k": "new backlog items today",
+          "v": 23
+        }
+      ],
+      "signals": [
+        "shipped",
+        "blocked"
+      ]
+    },
     {
       "date": "2026-10-20",
       "day": 354,
@@ -2134,6 +2165,10 @@
     ],
     "recently": [
       {
+        "text": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its se...",
+        "tag": "shipped d355"
+      },
+      {
         "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
         "tag": "shipped d354"
       },
@@ -2144,10 +2179,6 @@
       {
         "text": "built a full deleteme clone from scratch tonight. white label, brand switching wired in...",
         "tag": "shipped d352"
-      },
-      {
-        "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
-        "tag": "shipped d351"
       }
     ],
     "soon": [

@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-20T19:45:56.178Z
+// Built 2026-10-21T19:46:00.537Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 354,
-    "today_date": "2026-10-20",
+    "today_day": 355,
+    "today_date": "2026-10-21",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 355,
+          "date": "2026-10-21",
+          "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six…",
+          "arc_color": "green"
+        },
         {
           "day": 354,
           "date": "2026-10-20",
@@ -88,12 +94,6 @@ window.DH_DATA = {
           "day": 343,
           "date": "2026-10-09",
           "shipping_now": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on it, and a booked client call left no…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 342,
-          "date": "2026-10-08",
-          "shipping_now": "closed out a departing engineers handover today. his replacement confirmed the AI model key swap works clean, one day before the…",
           "arc_color": "blue"
         }
       ],
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-18",
       "last_ship_day": 352,
-      "days_since": 3,
+      "days_since": 4,
       "entries_30d": 1,
       "recent": [
         {
@@ -619,7 +619,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 14,
+      "days_since": 15,
       "entries_30d": 1,
       "recent": [
         {
@@ -683,8 +683,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-19",
       "last_ship_day": 353,
-      "days_since": 2,
-      "entries_30d": 11,
+      "days_since": 3,
+      "entries_30d": 10,
       "recent": [
         {
           "day": 353,
@@ -753,7 +753,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 15,
+      "days_since": 16,
       "entries_30d": 2,
       "recent": [
         {
@@ -824,6 +824,49 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-21",
+      "day": 355,
+      "mood": "🔨",
+      "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live.",
+      "yesterday_thread": "right at midnight a vendor running outbound calls for two of our enterprise accounts told us flat out theyre done under the current terms. two weeks, over 1600 calls, zero qualified leads. now its closure terms instead of a quiet renewal.",
+      "raw_thought": "23 new things landed on the list today and i closed zero of them. shipped a whole product surface instead. the backlog doesnt care how good the product looks.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "metrics": [
+        {
+          "k": "factory cards shipped",
+          "v": 3
+        },
+        {
+          "k": "qualified leads, two week vendor run",
+          "v": 0
+        },
+        {
+          "k": "new backlog items today",
+          "v": 23
+        }
+      ],
+      "signals": [
+        "shipped",
+        "blocked"
+      ],
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-20",
       "day": 354,
@@ -4433,7 +4476,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 354 · Oct 20",
+    "last_ship": "day 355 · Oct 21",
     "state": "shipping"
   },
   "status_board": {
@@ -4457,6 +4500,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its se...",
+        "tag": "shipped d355"
+      },
+      {
         "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
         "tag": "shipped d354"
       },
@@ -4467,10 +4514,6 @@ window.DH_DATA = {
       {
         "text": "built a full deleteme clone from scratch tonight. white label, brand switching wired in...",
         "tag": "shipped d352"
-      },
-      {
-        "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
-        "tag": "shipped d351"
       }
     ],
     "soon": [
@@ -9668,33 +9711,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-20T19:45:56.140Z",
-    "built_date": "2026-10-21",
+    "built": "2026-10-21T19:46:00.492Z",
+    "built_date": "2026-10-22",
     "newest_entry": {
-      "date": "2026-10-20",
-      "day": 354
+      "date": "2026-10-21",
+      "day": 355
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 131,
+        "days_old": 132,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 119,
+        "days_old": 120,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 119,
+        "days_old": 120,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 355,
+      "date": "2026-10-21",
+      "mood": "🔨",
+      "arc_color": "green",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "ship": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live."
+    },
     {
       "day": 354,
       "date": "2026-10-20",
@@ -9836,17 +9890,6 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "closed out a departing engineers handover today. his replacement confirmed the AI model key swap works clean, one day before the deadline. small thing, but its the difference between a clean exit and a scramble."
-    },
-    {
-      "day": 341,
-      "date": "2026-10-07",
-      "mood": "🔧",
-      "arc_color": "green",
-      "arcs": [
-        "ChampLantern",
-        "Champions Club"
-      ],
-      "ship": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests green. prospects can now book straight into a rep calendar instead of waiting on an email back and forth."
     }
   ],
   "heatmap": {
@@ -10714,13 +10757,13 @@ window.DH_DATA = {
         "date": "2026-10-21",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 355,
+        "arc_color": "green",
+        "ship": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation,"
       },
       {
         "date": "2026-10-22",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -10753,11 +10796,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 354,
-    "entries": 132,
+    "days_public": 355,
+    "entries": 133,
     "entries_30d": 30,
-    "entries_this_month": 20,
-    "streak_weekdays": 89,
+    "entries_this_month": 21,
+    "streak_weekdays": 90,
     "essays": 18,
     "companies": 12,
     "companies_active_90d": 5,
@@ -10766,23 +10809,23 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 17
+        "n": 18
       },
       {
         "arc": "Lake B2B",
-        "n": 11
+        "n": 10
       },
       {
         "arc": "ChampOps",
-        "n": 8
+        "n": 7
+      },
+      {
+        "arc": "TheDeepEndHQ",
+        "n": 5
       },
       {
         "arc": "Celsus OS",
         "n": 5
-      },
-      {
-        "arc": "TheDeepEndHQ",
-        "n": 4
       },
       {
         "arc": "Champ Harbinger",
@@ -10840,7 +10883,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-20",
         "mentions_90d": 17,
-        "days_since": 1
+        "days_since": 2
       },
       {
         "name": "ChampBeam",
@@ -10852,8 +10895,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-10-12",
-        "mentions_90d": 4,
-        "days_since": 9
+        "mentions_90d": 3,
+        "days_since": 10
       },
       {
         "name": "Obsidian + Celsus",
@@ -10863,7 +10906,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 10
+        "days_since": 11
       },
       {
         "name": "Claude + Cowork",
@@ -10873,7 +10916,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 11
+        "days_since": 12
       },
       {
         "name": "Event Scout",
@@ -10886,7 +10929,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 37
+        "days_since": 38
       },
       {
         "name": "ChampUTM",
@@ -10899,7 +10942,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 39
+        "days_since": 40
       },
       {
         "name": "Cloudflare",
@@ -10909,7 +10952,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-08-19",
         "mentions_90d": 1,
-        "days_since": 63
+        "days_since": 64
       },
       {
         "name": "LakeStream",
@@ -10922,7 +10965,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 78
+        "days_since": 79
       },
       {
         "name": "ChamPDF",
@@ -10935,7 +10978,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 78
+        "days_since": 79
       },
       {
         "name": "ChampMail",
@@ -10948,7 +10991,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 80
+        "days_since": 81
       },
       {
         "name": "Supabase",
@@ -10959,7 +11002,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 112
+        "days_since": 113
       },
       {
         "name": "ChampGraph",
@@ -10972,7 +11015,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 120
+        "days_since": 121
       },
       {
         "name": "ChampQuest",
@@ -10985,7 +11028,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 140
+        "days_since": 141
       },
       {
         "name": "Deep Scanner",
@@ -11454,9 +11497,9 @@ window.DH_DATA = {
     },
     "active_30d": 4,
     "mined_from": {
-      "entries": 132,
+      "entries": 133,
       "essays": 18
     }
   },
-  "built": "2026-10-20T19:45:56.178Z"
+  "built": "2026-10-21T19:46:00.537Z"
 };
