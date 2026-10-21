@@ -2,7 +2,7 @@
 
 ## Result and handles
 
-Integrated runtime source: `54ad2d94e188a6e625bbaa18cf6549823f13b6d7` on `release/deependhq-refresh-v2-20261021`. Later commits contain evidence and excluded verification scripts only. Draft PR: https://github.com/Champ-Deep/deependhq-site/pull/5. Its actual head/state are read back in `.release/pr-state.json` and the task handoff; there are no reported checks, not a green CI claim.
+Integrated runtime source: `54ad2d94e188a6e625bbaa18cf6549823f13b6d7` on `release/deependhq-refresh-v2-20261021`. Later commits contain evidence and excluded verification scripts only. Draft PR: https://github.com/Champ-Deep/deependhq-site/pull/5. Its actual head/state are read back in `.release/pr-state.json` and the task handoff. The first read had no checks; Cloudflare's managed Workers Builds check appeared later and is reported separately from the local gates.
 
 Preview: https://deependhq-refresh-v2-preview-20261021.deep-ae0.workers.dev
 
@@ -44,7 +44,7 @@ RELEASE_BASE=https://deependhq-refresh-v2-preview-20261021.deep-ae0.workers.dev 
 | Identity | SVG 52x52 viewBox; ICO 16/32/48; PNG 192/512, mask 512, Apple 180. Favicon equals approved source and both brandmarks | assets-proof.json |
 | Publication scripts | Both publisher paths now run complete build including canonical island bundle; shell syntax passes | gate-14.txt, scripts/publish*.sh |
 
-There is no .github workflow directory and no CI run to claim. Main has branch protection but no required status checks in the readback. Do not infer CI from manual green gates.
+There is no .github workflow directory or GitHub Actions test suite. The Cloudflare integration does attach a managed `Workers Builds: deependhq` check, which succeeded on the initial PR head and ran again after the evidence-only push. Its final exact-head state is read back in the handoff, never inferred from manual gates. Main has branch protection but no required status checks in the readback.
 
 ## Browser scope
 

@@ -40,7 +40,7 @@ Full report: docs/verification/release/VERIFICATION.md. Runnable commands: scrip
 | Identity | Unchanged approved52x52 source SVG; ICO16/32/48, PNG192/512, mask512, Apple180 |
 | LOOK | 71 combined captures opened; final targeted revisions and DOM resolutions recorded |
 
-No .github workflows exist and there is no CI conclusion to claim. Repository main protection has no required status checks in the API readback. Manual green is not CI green.
+No .github workflows or GitHub Actions test suite exist. Cloudflare attaches a managed Workers Builds check after pushes; its exact-head conclusion is read back separately. Repository main protection has no required status checks in the API readback. Manual green is not provider CI green.
 
 The old /command test is reconciled to its real retired redirect: both aliases execute against the Worker and target /journey#commits. Mutation tests prove wrong destination/status fail. The old copy assertions now test the factual frozen hero/metrics and the single aligned CTA, retaining numeric, evidence, privacy, outage and audio guards.
 
