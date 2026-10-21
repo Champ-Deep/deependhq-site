@@ -5,39 +5,34 @@
    values; if a value is missing, the design is wrong.
    ============================================================ */
 
-/* Identity kit v1, 1 Oct 2026: navy night, lamp marigold, paper cream, mare gray.
-   Surfaces keep the old lightness steps on the navy hue. Every contrast number
-   below was computed with the WCAG 2 relative-luminance formula. */
+/* Editorial v3 visual proposal only. Ratios live in the verification report. */
 :root {
   color-scheme: dark;
   /* brand */
-  --navy: #0E1A33; --marigold: #F4A62A; --paper: #F4EBD9; --mare: #A9ABA6;
-  /* surfaces (navy night) */
-  --bg: #0E1A33; --surface: #15213A; --card: #1C2841; --card-2: #243048;
-  --line: #303C53; --line-2: #434E64;
+  --navy: #141413; --marigold: #D8B65C; --paper: #F7EDCE; --mare: #AAA696;
+  /* Neutral black and charcoal, no navy tint. */
+  --bg: #141413; --surface: #1C1C19; --card: #24241F; --card-2: #2C2C25;
+  --line: #3A3A31; --line-2: #696957;
   /* text, three tiers, all AA on bg, card and card-2 */
-  --text: #F4EBD9;   /* 14.60 on bg, 12.41 on card, 11.14 on card-2 */
-  --muted: #A9ABA6;  /*  7.46 on bg,  6.34 on card,  5.69 on card-2 */
-  --dim: #9098AA;    /*  5.98 on bg,  5.08 on card,  4.56 on card-2 */
-  /* accents by meaning. marigold replaces gold as --win */
-  --win: #F4A62A;    /* 8.51 on bg, 6.49 on card-2 */
-  --build: #30E060; --think: #4A7BF7; --human: #E052C0; --danger: #E05030;
+  --text: #F5EEDC;
+  --muted: #C4BFAF;
+  --dim: #AAA696;
+  /* Arc meaning remains in text labels, not a decorative rainbow. */
+  --win: #D8B65C;
+  --build: #7FC58C; --think: #C4BFAF; --human: #D8B65C; --danger: #E05030;
   /* accent text twins. In dark the twin is the bright accent itself, so text
      can use the twin everywhere and light only has to change the value. */
-  --win-text: #F4A62A;    /* same as --win in dark */
-  --build-text: #30E060;  /* same as --build in dark */
-
-  --think-text: #6D95FF;   /* 4.65 on card-2 */
-  --human-text: #E96BCC;   /* 4.68 on card-2 */
-  --danger-text: #F37050;  /* 4.55 on card-2 */
-  --win-text: var(--win);      /* accent as text: the light scheme swaps both */
-  --build-text: var(--build);
+  --win-text: #D8B65C;
+  --build-text: #7FC58C;
+  --think-text: #C4BFAF;
+  --human-text: #D8B65C;
+  --danger-text: #F39079;
   /* paper band */
-  --paper-2: #FBF5EA;          /* card on paper */
-  --ink: #0E1A33;              /* 14.60 on paper, 15.94 on paper-2 */
-  --paper-muted: #5A6478;      /* 5.02 on paper */
-  --marigold-ink: #8A5A00;     /* accent text on paper, 5.00 */
-  --paper-line: #D2C3A5;       /* hairlines only */
+  --paper-2: #FFF6DE;
+  --ink: #30291F;
+  --paper-muted: #62543E;
+  --marigold-ink: #795515;
+  --paper-line: #CDBD8E;
   --build-wash: color-mix(in oklab, var(--build) 12%, transparent);
   --think-wash: color-mix(in oklab, var(--think) 12%, transparent);
   --win-wash: color-mix(in oklab, var(--win) 12%, transparent);
@@ -80,18 +75,19 @@
    (--*-dim, --*-wash) need no override: var() resolves at use time. */
 
 :root[data-scheme="light"] {
-  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
-  --line: #DCD9D2; --line-2: #C4C0B7;
-  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
-
-  --win-text: #8A5A00;
-  --build-text: #0F6B33;
-  --think-text: #2A55C8;
-  --human-text: #A8278F;
-  --danger-text: #B33A1E;
-  --shadow-1: 0 1px 2px rgba(14,26,51,.08);
-  --shadow-2: 0 4px 12px rgba(14,26,51,.10);
-  --shadow-3: 0 8px 32px rgba(14,26,51,.12);
+  color-scheme: light;
+  --bg: #F7EDCE; --surface: #FFF6DE; --card: #F0E3B9; --card-2: #E9D9A8;
+  --line: #D0BE8B; --line-2: #8B7953;
+  --text: #30291F; --muted: #62543E; --dim: #6B5C43;
+  --win: #D8B65C; --build: #48612B; --think: #62543E; --human: #795515;
+  --win-text: #795515;
+  --build-text: #48612B;
+  --think-text: #62543E;
+  --human-text: #795515;
+  --danger-text: #9F3520;
+  --shadow-1: 0 1px 2px rgba(48,41,31,.08);
+  --shadow-2: 0 4px 12px rgba(48,41,31,.10);
+  --shadow-3: 0 8px 32px rgba(48,41,31,.12);
   /* Washes re-declared in srgb: Chrome serialises an oklab() mix as oklab(...),
      which the contrast audit cannot read, while it reads color(srgb ...) fine.
      Premixed toward transparent the pixels are identical; only the report is. */
@@ -597,35 +593,11 @@ a.dh-art:hover { color: var(--build-text); }
    without a special case. The old navy/classic easter egg, its dh_theme key
    and its data-theme rules are retired with it.
 
-   Contract light palette (decided 2026-10-21, ink / warm white / Lamp):
-   fills keep the identity values, so any accent used as text or a thin icon
-   uses its -text twin. Every pair below is measured by scripts/contrast.mjs
-   and the final ratios are recorded as comments, same as the dark ones.
+   Preview palette is canonical at the top of this file. Legacy consumers
+   inherit those same tokens rather than overriding the rendered palette.
 --------------------------------------------------------------------------- */
 :root[data-scheme="light"] {
-  color-scheme: light;
-  /* surfaces (warm white) */
-  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
-  --line: #DCD9D2; --line-2: #C4C0B7;
-  /* text, three tiers. Measured by scripts/contrast.mjs, WCAG 2 luminance. */
-  --text: #0E1A33;    /* 15.86 on bg, 17.29 on card, 14.65 on card-2 */
-  --muted: #515B6E;   /*  6.27 on bg,  6.84 on card,  5.79 on card-2 */
-  --dim: #5A6478;     /*  5.46 on bg,  5.95 on card,  5.04 on card-2 */
-  /* accent text twins. --win and --build stay the identity fills; these are
-     what text, focus rings and thin icons use in light. */
-  --win-text: #8A5A00;    /* 5.44 on bg, 5.93 on card, 5.02 on card-2 */
-  --build-text: #0F6B33;  /* 6.07 on bg, 6.62 on card, 5.61 on card-2 */
-  --think-text: #2A55C8;  /* 5.96 on bg, 6.50 on card, 5.50 on card-2 */
-  --human-text: #A8278F;  /* 5.75 on bg, 6.27 on card, 5.31 on card-2 */
-  --danger-text: #B33A1E; /* 5.44 on bg, 5.93 on card, 5.02 on card-2 */
-  /* paper band: the field-notes ground, so the band still reads as a band
-     against --bg and the mare and wordmark keep their cream. */
-  --paper: #EFEBE3; --paper-2: #FFFFFF; --paper-muted: #515B6E; --paper-line: #D2C3A5;
-  /* band pairs: ink 14.55 on paper, paper-muted 5.75, marigold-ink 4.99 */
-  /* shadows lift off warm white instead of disappearing into it */
-  --shadow-1: 0 1px 2px rgba(14,26,51,.08); --shadow-2: 0 4px 12px rgba(14,26,51,.10); --shadow-3: 0 8px 32px rgba(14,26,51,.12);
-  /* the legacy sheet spells the same three shadows with its own names */
-  --shadow-sm: 0 1px 2px rgba(14,26,51,.08); --shadow-md: 0 4px 12px rgba(14,26,51,.10); --shadow-lg: 0 8px 32px rgba(14,26,51,.12);
+  --shadow-sm: var(--shadow-1); --shadow-md: var(--shadow-2); --shadow-lg: var(--shadow-3);
   /* The legacy sheet drives text AND fills from one accent alias, and styles.css,
      pages.css, rail.css and styles-x.css all read it. In light the text reading
      wins: the dots, rules and borders those aliases also drive pick up the dark
@@ -1026,29 +998,11 @@ a.rhythm-d.on:hover, a.rhythm-d.on:focus-visible { transform: scaleY(1.08); filt
 
 .doors:has(.door:only-child) .door { grid-column: 1 / -1; }
 
-/* ============================================================
-   Refresh contract 1: the light scheme. One block, every token a
-   component can read. Components never hard-code a hex, so this is
-   the only place a light value lives. Accent text uses the -text
-   twins: build green and Lamp both fail AA as small text on a light
-   ground, so fills keep the saturated hue and text takes the twin.
-   ============================================================ */
-:root[data-scheme="light"] {
-  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
-  --line: #DCD9D2; --line-2: #C4C0B7;
-  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
-  --win: #F4A62A; --win-text: #8A5A00;
-  --build: #30E060; --build-text: #0F6B33;
-  --think: #4A7BF7; --think-text: #2A55C8;
-  --human: #E052C0; --human-text: #A8278F;
-  --danger: #E05030; --danger-text: #B33A1E;
-  --shadow-1: 0 1px 2px rgba(14,26,51,.08);
-  --shadow-2: 0 4px 12px rgba(14,26,51,.10);
-  --shadow-3: 0 8px 32px rgba(14,26,51,.12);
-}
 
 /* Combined release: legacy controls share the same measured target floor. */
 .sys-nav a.brand{min-width:44px}
+/* Suppress unsolicited greetings, not chat; !important beats the widget's later injected display:flex. */
+.dh-pro{display:none!important}
 button.dh-filter-pill,button.cs-toggle-btn,button.cs-swatch,a.dh-pill,a.dh-link,a.bp-back,button.dh-pro-x,button.dh-pro-reply{min-width:44px;min-height:44px}
 a.dh-link,a.bp-back{display:inline-flex;align-items:center}
 :root[data-scheme="light"] .dh-pill-gold{background:var(--card);color:var(--win-text)}

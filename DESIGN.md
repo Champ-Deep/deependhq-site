@@ -1,28 +1,28 @@
-# DeepEndHQ combined refresh design contract
+# DeepEndHQ editorial v3 preview
 
 ## 1. Visual Theme and Atmosphere
-Editorial shell, terminal core. Deep's public operating record, not a generic agency portfolio. Preserve the approved scouter mark, mare and actual log-derived terrain. Hero/Day: P4. Log/Writing: P3. Pillars/Footer: P2. Stack/Human: P5. Public toolkit chooser/backend: P6.
+A personal publication cover: Deep first, marketer first, builder by instinct. Identity and compact dated shipping evidence share one editorial composition. The actual terrain moves intact into the public log. This is an isolated visual proposal, not an approved sitewide palette or production release. All six integrated lanes remain.
 
 ## 2. Color Palette and Roles
-system.css owns both schemes. Dark ground #0E1A33, text #F4EBD9, Lamp #F4A62A. Light ground #F6F5F2, cards #FFFFFF/#EEECE7, text #0E1A33, muted #515B6E. Accent text twins: #8A5A00, #0F6B33, #2A55C8, #A8278F, #B33A1E. Toolkit scheme-tokens.css is generated from this canonical source. Local aliases do not redefine global surfaces.
+Preview dark: black #141413 ground, charcoal #1C1C19 surface, #24241F card, #2C2C25 raised card. Cream #F5EEDC text, #C4BFAF muted, #AAA696 dim. Gold #D8B65C is the editorial/action accent; green #7FC58C is live/building. Preview light is independently composed: buttery #F7EDCE ground, #FFF6DE surface, #F0E3B9 card, #E9D9A8 raised card, espresso #30291F text, #62543E muted, #6B5C43 dim. Antique gold #795515 and olive #48612B are readable accent text; gold fills retain dark ink. Thinking/outcome/human meaning stays in labels rather than a decorative rainbow. Necessary error red retains a readable text twin. Exact measured ratios are recorded in docs/shots/editorial-v3/VERIFICATION.md. system.css is canonical; scheme-tokens.css remains generated. Existing tool-specific literals are deferred for approval, not silently reskinned.
 
 ## 3. Typography Rules
-Brand override: Fraunces for editorial display, Inter for UI, JetBrains Mono for operator data. Existing fluid scales and local font files remain. No unrelated font migration.
+Fraunces variable display for the personal name and statement, Inter for editorial body/UI, JetBrains Mono for log data. The name anchors the cover without consuming the whole screen. Display uses optical size, weight, soft and wonk axes; text below 32px resets soft/wonk. Existing self-hosted font files and scales remain.
 
 ## 4. Component Stylings
-One pre-paint scheme controller and one toggle per page. Canonical deferred React registry mounts terrain, widget grid, folder cards and halftone footer. All retain static fallbacks. Existing 21st folder/footer and supplied widget-grid ports, plus actual Kokonut terrain, are mounted rather than reimplemented. Focus stays visible; mobile actions measure at least 44px.
+A solid gold primary booking CTA with a stable label and restrained arrow, a quieter tools link, and a ruled shipping-proof column. The installed 21st.dev/nextjsshop Arrow Dots Button supplies the actual four five-dot chevrons in the prerendered CTA. The source label swap and decorative layers are omitted. Existing Kokonut Activity Terrain, widget grid, 21st folder cards and halftone footer remain mounted with static fallbacks. No Tailwind migration or new runtime dependency. One scheme toggle, visible focus, 44px mobile targets. User-approved .dh-pro suppression removes unsolicited greetings at all widths, not the launcher or user-opened chat.
 
 ## 5. Layout Principles
-Existing 4px spacing scale and 1200px content width. Metrics live once in the Log, not duplicated under the hero. P5 Things to try precedes P6's job-oriented chooser and collapsed full stack. Mobile nav prioritizes the scouter mark, scheme, booking and menu. Seven essay day links wrap into four columns on phones.
+Cover has a masthead-like identity row, introduction and related latest-shipped evidence. No dashboard charts or controls in the hero, no disconnected mare accessory, no duplicate metrics/heatmaps. 1200px content width and the existing 4px spacing scale. At narrow widths the sequence is name, statement, roles, actions, dated shipping evidence. Public log follows the cover so the terrain is discoverable without competing with identity.
 
 ## 6. Depth and Elevation
-Use existing surface ramps. Folder visuals preserve the approved interaction. Text on image sheets has opaque Ink captions. Footer privacy text has a solid scheme ground, not static decorative glass.
+Flat neutral grounds and hairline rules, not glow or floating dashboard cards. Gold is action/editorial, green is live/building. The approved scouter SVG and orange eye stay byte-identical. Existing folder visuals and opaque captions remain.
 
 ## 7. Do's and Don'ts
-Never invent log observations, calendar activity, company metrics, auth success or provider results. Latest production day 354 and 132 entries survive. No sensitive names or disclosures. One geometry for SVG and raster identity. No generated replacement imagery. No em or en dashes in public output.
+No invented log facts, counts, observations or terminal results. No public real team names. No generated imagery. No navy surfaces, rainbow semantic decoration, giant words alone or empty hero half. No em or en dashes in newly authored copy. No main merge, production deployment, production routes, production secrets or billing/D1 preview bindings.
 
 ## 8. Responsive Behavior
-Device class: pointer and touch web surface. Test 375, 768, 1280, plus 1600 homepage in both schemes. Terrain is flat below tablet and in reduced motion. Grids preserve readable mobile content; wide tables scroll only inside their own boxes. Motion budget: existing composited transitions, offscreen canvas RAF sleeps, no new expressive tier. Plain document navigation avoids aborted transition errors through canonical redirects.
+Device class: pointer and touch web. Verify 375, 768, 1280, 1600 in dark and light, capturing nav and hero together. Cover proof stacks under the actions on mobile. Terrain stays flat below tablet and under reduced motion with its full table, controls and links. Motion budget: existing composited interactions only, offscreen canvas RAF sleeps, no expressive tier. Primary copy and all links render with JS off. Scheme follows system plus the existing persisted override, with matching pre-paint theme-color.
 
 ## 9. Agent Prompt Guide
-Compose approved lanes, do not redesign them. Use system.css tokens, preserve actual data and static reading, and measure the served Worker artifact. Keep fixture-provider results distinct from live external services. Publish only the reviewed exact head through the downstream release card.
+Personal editorial cover, not consultancy landing page or operator dashboard. Use real roles and the latest actual log entry. Keep terrain below in the public log, preserve all six lanes. Measure contrast, targets, overflow and state changes. Deliver isolated screenshots and preview URL for visual approval only. Remaining token consumers: command, account, lead scorer, toolkit local literals, OG assets and legacy component styles require a separate approved rollout.

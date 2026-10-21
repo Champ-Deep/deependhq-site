@@ -2,33 +2,30 @@
 :root {
   color-scheme: dark;
   /* brand */
-  --navy: #0E1A33; --marigold: #F4A62A; --paper: #F4EBD9; --mare: #A9ABA6;
-  /* surfaces (navy night) */
-  --bg: #0E1A33; --surface: #15213A; --card: #1C2841; --card-2: #243048;
-  --line: #303C53; --line-2: #434E64;
+  --navy: #141413; --marigold: #D8B65C; --paper: #F7EDCE; --mare: #AAA696;
+  /* Neutral black and charcoal, no navy tint. */
+  --bg: #141413; --surface: #1C1C19; --card: #24241F; --card-2: #2C2C25;
+  --line: #3A3A31; --line-2: #696957;
   /* text, three tiers, all AA on bg, card and card-2 */
-  --text: #F4EBD9;   /* 14.60 on bg, 12.41 on card, 11.14 on card-2 */
-  --muted: #A9ABA6;  /*  7.46 on bg,  6.34 on card,  5.69 on card-2 */
-  --dim: #9098AA;    /*  5.98 on bg,  5.08 on card,  4.56 on card-2 */
-  /* accents by meaning. marigold replaces gold as --win */
-  --win: #F4A62A;    /* 8.51 on bg, 6.49 on card-2 */
-  --build: #30E060; --think: #4A7BF7; --human: #E052C0; --danger: #E05030;
+  --text: #F5EEDC;
+  --muted: #C4BFAF;
+  --dim: #AAA696;
+  /* Arc meaning remains in text labels, not a decorative rainbow. */
+  --win: #D8B65C;
+  --build: #7FC58C; --think: #C4BFAF; --human: #D8B65C; --danger: #E05030;
   /* accent text twins. In dark the twin is the bright accent itself, so text
      can use the twin everywhere and light only has to change the value. */
-  --win-text: #F4A62A;    /* same as --win in dark */
-  --build-text: #30E060;  /* same as --build in dark */
-
-  --think-text: #6D95FF;   /* 4.65 on card-2 */
-  --human-text: #E96BCC;   /* 4.68 on card-2 */
-  --danger-text: #F37050;  /* 4.55 on card-2 */
-  --win-text: var(--win);      /* accent as text: the light scheme swaps both */
-  --build-text: var(--build);
+  --win-text: #D8B65C;
+  --build-text: #7FC58C;
+  --think-text: #C4BFAF;
+  --human-text: #D8B65C;
+  --danger-text: #F39079;
   /* paper band */
-  --paper-2: #FBF5EA;          /* card on paper */
-  --ink: #0E1A33;              /* 14.60 on paper, 15.94 on paper-2 */
-  --paper-muted: #5A6478;      /* 5.02 on paper */
-  --marigold-ink: #8A5A00;     /* accent text on paper, 5.00 */
-  --paper-line: #D2C3A5;       /* hairlines only */
+  --paper-2: #FFF6DE;
+  --ink: #30291F;
+  --paper-muted: #62543E;
+  --marigold-ink: #795515;
+  --paper-line: #CDBD8E;
   --build-wash: color-mix(in oklab, var(--build) 12%, transparent);
   --think-wash: color-mix(in oklab, var(--think) 12%, transparent);
   --win-wash: color-mix(in oklab, var(--win) 12%, transparent);
@@ -64,18 +61,19 @@
   --fg: var(--text); --fg-muted: var(--muted); --bg-card: var(--card); --bg-hover: var(--card-2); --border: var(--line);
 }
 :root[data-scheme="light"] {
-  --bg: #F6F5F2; --surface: #FFFFFF; --card: #FFFFFF; --card-2: #EEECE7;
-  --line: #DCD9D2; --line-2: #C4C0B7;
-  --text: #0E1A33; --muted: #515B6E; --dim: #5A6478;
-
-  --win-text: #8A5A00;
-  --build-text: #0F6B33;
-  --think-text: #2A55C8;
-  --human-text: #A8278F;
-  --danger-text: #B33A1E;
-  --shadow-1: 0 1px 2px rgba(14,26,51,.08);
-  --shadow-2: 0 4px 12px rgba(14,26,51,.10);
-  --shadow-3: 0 8px 32px rgba(14,26,51,.12);
+  color-scheme: light;
+  --bg: #F7EDCE; --surface: #FFF6DE; --card: #F0E3B9; --card-2: #E9D9A8;
+  --line: #D0BE8B; --line-2: #8B7953;
+  --text: #30291F; --muted: #62543E; --dim: #6B5C43;
+  --win: #D8B65C; --build: #48612B; --think: #62543E; --human: #795515;
+  --win-text: #795515;
+  --build-text: #48612B;
+  --think-text: #62543E;
+  --human-text: #795515;
+  --danger-text: #9F3520;
+  --shadow-1: 0 1px 2px rgba(48,41,31,.08);
+  --shadow-2: 0 4px 12px rgba(48,41,31,.10);
+  --shadow-3: 0 8px 32px rgba(48,41,31,.12);
   /* Washes re-declared in srgb: Chrome serialises an oklab() mix as oklab(...),
      which the contrast audit cannot read, while it reads color(srgb ...) fine.
      Premixed toward transparent the pixels are identical; only the report is. */

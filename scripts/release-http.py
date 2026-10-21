@@ -26,7 +26,7 @@ for row in results:
     if row['path'] in ['favicon.svg','favicon.ico','home-islands.js','islands.css','scheme-tokens.css','brand/icons.svg']:
         assert row['hash']==hashlib.sha256((root/row['path']).read_bytes()).hexdigest(),row['path']
     if row['path']=='/':
-        assert b'I lead B2B growth and build the systems behind it.' in row['body']
+        assert b'Marketer first.<br/>Builder by instinct.' in row['body']
         assert b'data-day="354"' in row['body']
         assert row['body'].count(b'data-island=')==4
     del row['body']

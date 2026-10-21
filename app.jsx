@@ -15,9 +15,9 @@ const App = () => {
       <main id="main" className="wx-main">
         <H.Hero />
 
+        <H.Log />
         <H.Day />
         <H.Boundary />
-        <H.Log />
         <H.Stack />
         <H.Boundary />
         <H.Pillars />

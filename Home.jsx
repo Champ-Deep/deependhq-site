@@ -39,17 +39,39 @@ const Ico = ({ id, size = 48 }) => (
 );
 
 
-// ---------------------------------------------------------------- 15:00 hero
-// Server-rendered copy beside the terrain island (H3, plan section 3). The
-// headline, sub and both CTAs are static text: motion never carries the
-// message. The terrain mounts on the right and its server-rendered fallback
-// sits inside the mount, so the page reads with JS off. The four stat tiles
-// moved out of the hero (lane P3 puts them in the log section), and the old
-// word-grid headline, margin notes and the ChampBeam cell go with them.
-// No em dashes.
+// Personal cover first. The same real-log terrain now lives in the log.
 const Hero = () => {
   const e = DH.journey[0];
-  const MARE = window.DH_MARE_SVG || '';
+  return (
+    <section className="wx-hero mode-editorial ev3-cover" id="top" aria-labelledby="wx-hero-h">
+      <div className="ev3-cover-inner">
+        <div className="ev3-masthead"><p className="wx-eyebrow-ed">The Deep End</p><p>A working life, in public.</p></div>
+        <h1 id="wx-hero-h" className="ev3-name">Deep<span className="ev3-period">.</span><span className="ev3-fullname">Sreedeep Surapaneni</span></h1>
+        <div className="ev3-intro">
+          <div className="ev3-story">
+            <h2>Marketer first.<br />Builder by instinct.</h2>
+            <p className="ev3-roles" data-dh-frozen="">Group CMO, Champions Group.<br />CEO, Champions Accelerator.</p>
+            <p className="ev3-lede">I work across twelve companies. Here, I keep a public record of the work: the builds, the decisions, and what actually shipped.</p>
+            <div className="ev3-actions"><a className="ev3-book" href={BOOK} {...EXT}><span data-dh-cta="cta_label">Talk to Deep</span>
+              {/* 21st.dev/nextjsshop Arrow Dots Button: source dot geometry, static label. */}
+              <span className="ev3-arrow" aria-hidden="true">{[3, 2, 1, 0].map(parent => <span className="ev3-arrow-icon" key={parent} style={{ '--i': parent }}>{[2, 1, 0, 1, 2].map((value, i) => <i key={i} style={{ '--dot': value }} />)}</span>)}</span>
+              <small data-dh-frozen="">30 minutes</small></a><a className="ev3-tools" href="#stack">Explore the tools <span aria-hidden="true">→</span></a></div>
+          </div>
+          <article className="ev3-proof" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day} data-dh-frozen="">
+            <p className="ev3-proof-k">From the workbench</p>
+            <p className="ev3-proof-day">Day {e.day}<span><time dateTime={e.date}>{fmtDate(e.date, true)}</time> · <WxAge date={e.date} mode="log" /></span></p>
+            <p className="ev3-proof-kind">{KIND[e.arc_color] || 'logged'} / public log</p>
+            <p className="ev3-proof-text">{e.shipping_now}</p>
+            <a className="ev3-proof-link" href={`journey.html#day-${e.day}`}>Read the entry <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Terrain = () => {
+  const e = DH.journey[0];
   // One column per day since the first entry: height is github_commits where
   // the log recorded it, else 1 for an entry, 0 for a gap. kinds[] runs
   // parallel to data and colours the column by that entry's arc, rows carries
@@ -68,44 +90,19 @@ const Hero = () => {
   const peak = `day ${e.day}, ${ageOf(e.date, 'log').label}`;
   const isle = JSON.stringify({ d: data, k: kinds, start: startISO, end: endISO, peak, rows });
   return (
-    <section className="wx-hero mode-editorial" id="top" aria-labelledby="wx-hero-h">
-      <div className="wx-hx p4-hx">
-        <p className="wx-eyebrow-ed wx-hx-eye">group cmo, champions group</p>
-        <h1 className="p4-hx-h" id="wx-hero-h">I lead B2B growth and build the systems behind it.</h1>
-        <div className="p4-copy">
-          <p className="wx-hx-lede" data-dh-frozen="">Group CMO across twelve companies, CEO of Champions Accelerator. This site publishes itself every weekday from what actually happened.</p>
-          <div className="p4-cta">
-            {/* data-dh-cta: only the LABEL varies; the href is never rewritten. */}
-            <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>Talk to Deep, 30 min</a>
-            <a className="wx-hx-paren" href="#stack">See what I build</a>
-          </div>
-
-        </div>
-        <div className="p4-terr" data-island="terrain" data-props={isle}>
+        <div className="ev3-terrain" data-island="terrain" data-props={isle}>
           {/* server-rendered fallback: the same days as a plain heat strip */}
           <div className="trn-fb">
             <p className="trn-fb-k">{data.length} days, one column a day, since {fmtDate(startISO)} · newest <b>{peak}</b></p>
             <div className="trn-fb-strip" aria-hidden="true">
               {data.map((h, i) => <i key={i} className={kinds[i] ? `trn-fb-k-${kinds[i]}` : (h ? 'trn-fb-k-log' : 'trn-fb-k-gap')} />)}
             </div>
-            <p className="trn-fb-note">green building · blue thinking · gold a real outcome · gaps have zero height</p>
+            <p className="trn-fb-note">building · thinking · a real outcome · gaps have zero height</p>
             <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} →</a>
             <a className="wx-tlink" href="journey.html">the whole log →</a>
           </div>
         </div>
-        <div className="p4-foot">
-          <article className="wx-live wx-hx-live mode-operator" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day} data-dh-frozen="">
-            <p className="wx-live-k">live from the log · <WxAge date={e.date} mode="log" /></p>
-            <p className="wx-hx-live-t"><b>day {e.day}</b> <span>{fmtDate(e.date, true)}</span></p>
-            <p className="wx-live-txt" data-compile="">{e.shipping_now}</p>
-            <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} in full →</a>
-          </article>
-          {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
-        </div>
 
-      </div>
-      <div className="wx-hero-rule" aria-hidden="true" />
-    </section>
   );
 };
 
@@ -257,20 +254,8 @@ const Log = () => {
       <dl className="wx-metric-row" data-dh-frozen="" aria-label={`Log metrics as of ${DH.built.slice(0, 10)}`}>
         {metrics.map(([label, value]) => <div className="wx-metric-card" key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
       </dl>
-      <div className="wx-log-grid wg-log-overview">
-        <figure className="wx-heat">
-          <div className="wx-legend" aria-hidden="true">
-            <span><i style={{ '--c': 'var(--build)' }} />building</span>
-            <span><i style={{ '--c': 'var(--think)' }} />thinking</span>
-            <span><i style={{ '--c': 'var(--win)' }} />a real outcome</span>
-            <span><i style={{ '--c': 'transparent', boxShadow: 'inset 0 0 0 1px var(--line-2)' }} />no entry</span>
-          </div>
-          <div className="wx-heat-scroll"><Heat /></div>
-          <figcaption className="wx-readout" aria-live="polite">
-            <span><b>day {e.day}</b> · {fmtDate(e.date)} · {KIND[e.arc_color] || 'logged'}</span>
-            <span>Hover, focus or tap any day. Every gap is a weekday I missed.</span>
-          </figcaption>
-        </figure>
+      <div className="wx-log-grid wg-log-overview ev3-log-grid">
+        <Terrain />
         <aside className="wx-log-meta" aria-label="Log statistics">
           <div className="wx-metric-arcs">
             <h3>what the last 30 days were about</h3>

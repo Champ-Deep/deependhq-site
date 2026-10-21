@@ -100,6 +100,8 @@ if (indexHtml) {
   // exactly how an optimizer would quietly change a count or a time.
   const editable = indexHtml.match(/data-dh-(hero|cta)="[a-z_]+"[^>]*>[^<]*</g) || [];
   check('only the CTA remains editable after the refresh', editable.length, 1);
+  check('booking duration is a separate frozen fact', /<small data-dh-frozen="">30 minutes<\/small>/.test(indexHtml), true);
+  check('CTA decoration is outside the editable label', (indexHtml.match(/class="ev3-arrow-icon"/g) || []).length, 4);
   for (const el of editable) {
     const text = el.replace(/^[^>]*>/, '').replace(/<$/, '');
     const field = el.match(/="([a-z_]+)"/)[1];

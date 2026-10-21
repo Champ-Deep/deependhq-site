@@ -5,8 +5,7 @@ import { resolve, extname } from 'node:path';
 import assert from 'node:assert/strict';
 const ROOT = process.cwd(), OUT = 'docs/verification/p4', SHOTS = 'docs/shots/p4';
 mkdirSync(SHOTS,{recursive:true});
-const p1 = readFileSync('/Users/deep/repos/dh-p1-scaffold/system.css','utf8');
-writeFileSync(`${OUT}/p1-system.css`,p1);
+
 const auditSource = readFileSync('/Users/deep/champ-skills/design/skills/visual-verify/scripts/audit.py','utf8').split('PROBE = r"""')[1].split('"""')[0].replace('out.push({ severity:', "out.push({ owner: el ? (el.closest('#top,#day')?.id || 'other') : 'document', severity:");
 const server = createServer((req,res) => {
   const path = resolve(ROOT, '.' + decodeURIComponent(new URL(req.url,'http://local').pathname === '/' ? '/index.html' : new URL(req.url,'http://local').pathname));
@@ -19,11 +18,11 @@ const base = `http://127.0.0.1:${server.address().port}`;
 const response = await fetch(base); assert.equal(response.status,200); assert((await response.text()).includes('data-island="terrain"'));
 console.log('Server ready and exact P4 mount verified',base);
 const browser = await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
-const results = {serverReady:true, fixture:'Actual homepage with P1 system.css supplied by route interception. No P1 merge. External assistant script excluded; section captures hide global sticky nav.', cases:[],audits:[],screenshots:[],errors:[]};
+const results = {serverReady:true, fixture:'Canonical editorial preview styles. External assistant script excluded in this focused terrain test; editorial-browser.mjs covers real assistant. Section captures hide sticky nav.', cases:[],audits:[],screenshots:[],errors:[]};
 async function context(width,scheme,more={}) {
   const c = await browser.newContext({viewport:{width,height:900},colorScheme:scheme,isMobile:width<700,hasTouch:width<700,...more});
   await c.addInitScript(s => {localStorage.setItem('dh_scheme',s);document.addEventListener('DOMContentLoaded',()=>document.documentElement.setAttribute('data-scheme',s),{once:true});},scheme);
-  await c.route('**/system.css',route=>route.fulfill({contentType:'text/css',body:p1}));
+
   await c.route('https://assistant.deependhq.com/static/widget.js',route=>route.fulfill({contentType:'application/javascript',body:''}));
   return c;
 }
@@ -50,7 +49,9 @@ try {
     const ctx=await context(width,scheme),page=await ctx.newPage();
     page.on('pageerror',e=>results.errors.push(String(e)));
     await loaded(page);
-    assert.equal(await page.locator('h1').textContent(),'I lead B2B growth and build the systems behind it.');
+    assert.equal(await page.locator('h1').textContent(),'Deep.Sreedeep Surapaneni');
+    assert.equal(await page.locator('#top [data-island="terrain"]').count(),0);
+    assert.equal(await page.locator('#log [data-island="terrain"]').count(),1);
     const pixelCount=await page.locator('.trn-canvas').evaluate(c=>{let n=0;for(let i=3,d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;i<d.length;i+=4)if(d[i])n++;return n;});assert(pixelCount>1000);
     const state=await page.locator('.trn-canvas').evaluate(c=>c.terrainState());assert.equal(state.flat,width<768);
     await shot(page,'#top',`${width}-${scheme}-hero`);
@@ -86,7 +87,7 @@ try {
     assert((await page.locator('.trn-readout').textContent()).includes('day 184'));
     assert.equal(await page.locator('.trn-open').getAttribute('href'),'journey.html#day-184');
     await page.locator('.trn-data summary').click();
-    assert.equal(await page.locator('.trn-data tbody tr').count(),169);
+    assert.equal(await page.locator('.trn-data tbody tr').count(),170);
     assert.equal(await page.locator('.trn-data').getAttribute('open'),'');
     await audit(page,`${width}-${scheme}-table`);
     if(width===375) await shot(page,'.trn-root',`${width}-${scheme}-table`);
@@ -94,7 +95,7 @@ try {
     await page.locator('#trn-day').selectOption(String(gap));
     assert((await page.locator('.trn-readout').textContent()).includes('no entry'));
     assert.equal(await page.locator('.trn-open').getAttribute('href'),'journey.html');
-    results.cases.push({name:`${width} ${scheme}`,pixelCount,flat:state.flat,ownedOverflow:over.length,pageWidth,disabled:disabled.length,dayOptions:169});
+    results.cases.push({name:`${width} ${scheme}`,pixelCount,flat:state.flat,ownedOverflow:over.length,pageWidth,disabled:disabled.length,dayOptions:170});
     await ctx.close();
   }
   // Actual pointer navigation targets the projected face under the pointer.
@@ -108,7 +109,7 @@ try {
   await page.locator('#day-184').waitFor({timeout:20000});
   results.cases.push({name:'Projected pointer tower reaches actual oldest journey anchor',url:page.url()});
   await loaded(page);await page.locator('.trn-canvas').focus();await page.keyboard.press('ArrowUp');
-  const selected=await page.locator('.trn-canvas').evaluate(c=>c.terrainState().selected);assert.equal(selected,167);
+  const selected=await page.locator('.trn-canvas').evaluate(c=>c.terrainState().selected);assert.equal(selected,168);
   await page.locator('#trn-day').selectOption('0');await page.locator('.trn-open').focus();
   await Promise.all([page.waitForURL('**/journey.html#day-184'),page.keyboard.press('Enter')]);
   results.cases.push({name:'Canvas arrow selection and ordinary keyboard link navigation'});
@@ -121,12 +122,11 @@ try {
   results.cases.push({name:'Desktop pointer drag changes actual projection without navigating'});
   await page.locator('.trn-view').click();assert.equal(await page.locator('.trn-view').getAttribute('aria-pressed'),'true');
   await page.locator('.trn-view').click();await page.waitForFunction(()=>document.querySelector('.trn-canvas').terrainState().progress===1);
-  await page.evaluate(()=>{window.__p4Mare=0;window.addEventListener('dh:mare',()=>window.__p4Mare++);});
-  await page.locator('.wx-hx-mare').click();assert.equal(await page.evaluate(()=>window.__p4Mare),1);
+  assert.equal(await page.locator('#top .wx-hx-mare').count(),0,'No disconnected mare accessory in the editorial cover');
   const dark=await page.locator('.trn-canvas').screenshot();
   await page.evaluate(()=>document.documentElement.dataset.scheme='light');await page.waitForTimeout(100);
   const light=await page.locator('.trn-canvas').screenshot();assert(!dark.equals(light));
-  assert.equal(await page.locator('.trn-canvas').evaluate(c=>c.terrainState().palette.text),'#0E1A33');
+  assert.equal(await page.locator('.trn-canvas').evaluate(c=>c.terrainState().palette.text),'#30291F');
   await page.setViewportSize({width:375,height:900});await page.waitForFunction(()=>document.querySelector('.trn-canvas').terrainState().flat);
   await page.setViewportSize({width:1280,height:900});await page.waitForFunction(()=>!document.querySelector('.trn-canvas').terrainState().flat);
   await page.locator('#ways').scrollIntoViewIfNeeded();await page.waitForTimeout(100);
@@ -139,7 +139,7 @@ try {
   assert.equal(await rp.locator('#day .wx-stage:visible').count(),7);
   await shot(rp,'#top','1280-dark-reduced');await audit(rp,'reduced-motion');await rm.close();
   const no=await context(375,'dark',{javaScriptEnabled:false}),np=await no.newPage();await np.goto(base);
-  assert.equal(await np.locator('h1').textContent(),'I lead B2B growth and build the systems behind it.');
+  assert.equal(await np.locator('h1').textContent(),'Deep.Sreedeep Surapaneni');
   assert.equal(await np.locator('.trn-fb').count(),1);assert.equal(await np.locator('#day .wx-stage:visible').count(),7);
   await shot(np,'#top','375-dark-no-js');await no.close();results.cases.push({name:'Reduced-motion flat and complete list; JavaScript-off headline, fallback and seven lanes'});
   assert.deepEqual(results.errors,[]);

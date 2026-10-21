@@ -57,7 +57,9 @@ try {
       if(path==='/') {
         assert.equal(await page.locator('.wx-stage').count(),7);
         assert.equal(await page.locator('#trn-day option').count(),170);
-        assert.equal(await page.locator('.wx-hx-live[data-day="354"]').count(),1);
+        assert.equal(await page.locator('.ev3-proof[data-day="354"]').count(),1);
+        assert.equal(await page.locator('#top [data-island="terrain"]').count(),0);
+        assert.equal(await page.locator('#log [data-island="terrain"]').count(),1);
         assert.equal(await page.locator('#proof').count(),0,'metrics appear only in the log');
         assert(await page.locator('.trn-canvas').evaluate(c=>c.getContext('2d').getImageData(0,0,c.width,c.height).data.some((v,i)=>i%4===3&&v>0)),'terrain actually paints pixels');
         if(width===375||width===1280) {
@@ -138,7 +140,7 @@ try {
   for(const js of [false,true]) {
     const ctx=await browser.newContext({viewport:{width:375,height:900},javaScriptEnabled:js,reducedMotion:'reduce'});
     const page=await ctx.newPage();observe(page);await page.goto(base,{waitUntil:'networkidle'});
-    assert((await page.locator('h1').textContent()).includes('I lead B2B growth'));
+    assert((await page.locator('h1').textContent()).includes('Deep.Sreedeep Surapaneni'));
     assert.equal(await page.locator('.wx-stage').count(),7);
     if(js){await page.locator('.wg-island[data-ready]').waitFor();assert.equal(await page.locator('.trn-canvas').getAttribute('data-view'),'flat');await audit(page,'reduced-motion');}
     else {assert.equal(await page.locator('.trn-fb').count(),1);assert.equal(await page.locator('.wg-fallback').count(),1);assert((await page.locator('footer').textContent()).includes('Site'));}
