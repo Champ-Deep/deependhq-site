@@ -1,0 +1,497 @@
+{
+  "origin": "https://deependhq.com (host-mapped to local editorial-preview Worker)",
+  "states": [
+    {
+      "width": 375,
+      "scheme": "light",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 12,
+            "y": 508.84375,
+            "width": 343,
+            "height": 301.15625,
+            "top": 508.84375,
+            "right": 355,
+            "bottom": 810,
+            "left": 12
+          },
+          "blocked": [
+            {
+              "text": "Talk to Deep30 minutes",
+              "href": "https://scheduler.zoom.us/sreedeep"
+            },
+            {
+              "text": "Explore the tools →",
+              "href": "#stack"
+            }
+          ]
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 12,
+            "y": 508.84375,
+            "width": 343,
+            "height": 301.15625,
+            "top": 508.84375,
+            "right": 355,
+            "bottom": 810,
+            "left": 12
+          },
+          "blocked": [
+            {
+              "text": "day 243 · thinking",
+              "href": "journey.html#day-243"
+            },
+            {
+              "text": "LakeStreamTemplate-based web scraper for",
+              "href": "https://github.com/Champ-Deep/LakeStream"
+            },
+            {
+              "text": "ChamPDFFree PDF tools that run in the br",
+              "href": "https://champdf.com"
+            },
+            {
+              "text": "ChampMailemail outreach automation. huma",
+              "href": "https://github.com/Champ-Deep/ChampMail"
+            },
+            {
+              "text": "",
+              "href": null
+            },
+            {
+              "text": "spent today locking the deependhq day 35",
+              "href": "journey.html#day-354"
+            },
+            {
+              "text": "sat through a full demo of a complday 35",
+              "href": "journey.html#day-353"
+            },
+            {
+              "text": "Champ IQproduct",
+              "href": "company/champions-accelerator"
+            },
+            {
+              "text": "ChampGraphproduct",
+              "href": "company/champions-accelerator"
+            }
+          ]
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 12,
+            "y": 508.84375,
+            "width": 343,
+            "height": 301.15625,
+            "top": 508.84375,
+            "right": 355,
+            "bottom": 810,
+            "left": 12
+          },
+          "blocked": [
+            {
+              "text": "day 291 · building",
+              "href": "journey.html#day-291"
+            },
+            {
+              "text": "Now",
+              "href": "now.html"
+            },
+            {
+              "text": "RSS",
+              "href": "feed.xml"
+            },
+            {
+              "text": "back to top ↑",
+              "href": null
+            },
+            {
+              "text": "details",
+              "href": "/privacy"
+            },
+            {
+              "text": "/privacy",
+              "href": "/privacy"
+            }
+          ]
+        }
+      ],
+      "error": "AssertionError [ERR_ASSERTION]: Delayed greeting must be hidden and block no controls",
+      "pass": false
+    },
+    {
+      "width": 375,
+      "scheme": "dark",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 12,
+            "y": 508.84375,
+            "width": 343,
+            "height": 301.15625,
+            "top": 508.84375,
+            "right": 355,
+            "bottom": 810,
+            "left": 12
+          },
+          "blocked": [
+            {
+              "text": "Talk to Deep30 minutes",
+              "href": "https://scheduler.zoom.us/sreedeep"
+            },
+            {
+              "text": "Explore the tools →",
+              "href": "#stack"
+            }
+          ]
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 12,
+            "y": 508.84375,
+            "width": 343,
+            "height": 301.15625,
+            "top": 508.84375,
+            "right": 355,
+            "bottom": 810,
+            "left": 12
+          },
+          "blocked": [
+            {
+              "text": "day 243 · thinking",
+              "href": "journey.html#day-243"
+            },
+            {
+              "text": "LakeStreamTemplate-based web scraper for",
+              "href": "https://github.com/Champ-Deep/LakeStream"
+            },
+            {
+              "text": "ChamPDFFree PDF tools that run in the br",
+              "href": "https://champdf.com"
+            },
+            {
+              "text": "ChampMailemail outreach automation. huma",
+              "href": "https://github.com/Champ-Deep/ChampMail"
+            },
+            {
+              "text": "",
+              "href": null
+            },
+            {
+              "text": "spent today locking the deependhq day 35",
+              "href": "journey.html#day-354"
+            },
+            {
+              "text": "sat through a full demo of a complday 35",
+              "href": "journey.html#day-353"
+            },
+            {
+              "text": "Champ IQproduct",
+              "href": "company/champions-accelerator"
+            },
+            {
+              "text": "ChampGraphproduct",
+              "href": "company/champions-accelerator"
+            }
+          ]
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 12,
+            "y": 508.84375,
+            "width": 343,
+            "height": 301.15625,
+            "top": 508.84375,
+            "right": 355,
+            "bottom": 810,
+            "left": 12
+          },
+          "blocked": [
+            {
+              "text": "day 291 · building",
+              "href": "journey.html#day-291"
+            },
+            {
+              "text": "Now",
+              "href": "now.html"
+            },
+            {
+              "text": "RSS",
+              "href": "feed.xml"
+            },
+            {
+              "text": "back to top ↑",
+              "href": null
+            },
+            {
+              "text": "details",
+              "href": "/privacy"
+            },
+            {
+              "text": "/privacy",
+              "href": "/privacy"
+            }
+          ]
+        }
+      ],
+      "error": "AssertionError [ERR_ASSERTION]: Delayed greeting must be hidden and block no controls",
+      "pass": false
+    },
+    {
+      "width": 1280,
+      "scheme": "light",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 930,
+            "y": 484.546875,
+            "width": 330,
+            "height": 325.453125,
+            "top": 484.546875,
+            "right": 1260,
+            "bottom": 810,
+            "left": 930
+          },
+          "blocked": []
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 930,
+            "y": 484.546875,
+            "width": 330,
+            "height": 325.453125,
+            "top": 484.546875,
+            "right": 1260,
+            "bottom": 810,
+            "left": 930
+          },
+          "blocked": []
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 930,
+            "y": 484.546875,
+            "width": 330,
+            "height": 325.453125,
+            "top": 484.546875,
+            "right": 1260,
+            "bottom": 810,
+            "left": 930
+          },
+          "blocked": [
+            {
+              "text": "Champions Club",
+              "href": "company/champions-club"
+            },
+            {
+              "text": "/privacy",
+              "href": "/privacy"
+            }
+          ]
+        }
+      ],
+      "error": "AssertionError [ERR_ASSERTION]: Delayed greeting must be hidden and block no controls",
+      "pass": false
+    },
+    {
+      "width": 1280,
+      "scheme": "dark",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 930,
+            "y": 484.546875,
+            "width": 330,
+            "height": 325.453125,
+            "top": 484.546875,
+            "right": 1260,
+            "bottom": 810,
+            "left": 930
+          },
+          "blocked": []
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 930,
+            "y": 484.546875,
+            "width": 330,
+            "height": 325.453125,
+            "top": 484.546875,
+            "right": 1260,
+            "bottom": 810,
+            "left": 930
+          },
+          "blocked": []
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "flex",
+          "greetingRect": {
+            "x": 930,
+            "y": 484.546875,
+            "width": 330,
+            "height": 325.453125,
+            "top": 484.546875,
+            "right": 1260,
+            "bottom": 810,
+            "left": 930
+          },
+          "blocked": [
+            {
+              "text": "Champions Club",
+              "href": "company/champions-club"
+            },
+            {
+              "text": "/privacy",
+              "href": "/privacy"
+            }
+          ]
+        }
+      ],
+      "error": "AssertionError [ERR_ASSERTION]: Delayed greeting must be hidden and block no controls",
+      "pass": false
+    }
+  ]
+}

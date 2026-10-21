@@ -1,0 +1,77 @@
+[
+  {
+    "command": "NODE_ENV=production npm run build",
+    "exit": 0,
+    "log": "gate-00.txt"
+  },
+  {
+    "command": "npm test",
+    "exit": 0,
+    "log": "gate-01.txt"
+  },
+  {
+    "command": "npm run check",
+    "exit": 0,
+    "log": "gate-02.txt"
+  },
+  {
+    "command": "npm run brand-guard",
+    "exit": 0,
+    "log": "gate-03.txt"
+  },
+  {
+    "command": "npm run contrast",
+    "exit": 0,
+    "log": "gate-04.txt"
+  },
+  {
+    "command": "node scripts/selftest-worker.mjs",
+    "exit": 0,
+    "log": "gate-05.txt"
+  },
+  {
+    "command": "node scripts/selftest-segment.mjs",
+    "exit": 0,
+    "log": "gate-06.txt"
+  },
+  {
+    "command": "node scripts/selftest-copy.mjs",
+    "exit": 0,
+    "log": "gate-07.txt"
+  },
+  {
+    "command": "node scripts/selftest-digest.mjs",
+    "exit": 0,
+    "log": "gate-08.txt"
+  },
+  {
+    "command": "node scripts/selftest-privacy.mjs",
+    "exit": 0,
+    "log": "gate-09.txt"
+  },
+  {
+    "command": "node --test scripts/lead-scorer.test.mjs scripts/toolkit-catalog.test.mjs scripts/toolkit-routing.test.mjs scripts/toolkit-session.test.mjs scripts/toolkit-integration.test.mjs tests/toolkit-lib.test.js",
+    "exit": 0,
+    "log": "gate-10.txt"
+  },
+  {
+    "command": "node scripts/toolkit-store-selftest.mjs",
+    "exit": 0,
+    "log": "gate-11.txt"
+  },
+  {
+    "command": "node scripts/toolkit-api-selftest.mjs",
+    "exit": 0,
+    "log": "gate-12.txt"
+  },
+  {
+    "command": "node scripts/toolkit-billing-selftest.mjs",
+    "exit": 0,
+    "log": "gate-13.txt"
+  },
+  {
+    "command": "bash -n scripts/publish.sh scripts/publish-native.sh",
+    "exit": 0,
+    "log": "gate-14.txt"
+  }
+]

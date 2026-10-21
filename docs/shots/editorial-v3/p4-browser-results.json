@@ -1,0 +1,1201 @@
+{
+  "serverReady": true,
+  "fixture": "Canonical editorial preview styles. External assistant script excluded in this focused terrain test; editorial-browser.mjs covers real assistant. Section captures hide sticky nav.",
+  "cases": [
+    {
+      "name": "375 dark",
+      "pixelCount": 18611,
+      "flat": true,
+      "ownedOverflow": 0,
+      "pageWidth": 375,
+      "disabled": 0,
+      "dayOptions": 170
+    },
+    {
+      "name": "375 light",
+      "pixelCount": 18611,
+      "flat": true,
+      "ownedOverflow": 0,
+      "pageWidth": 375,
+      "disabled": 0,
+      "dayOptions": 170
+    },
+    {
+      "name": "768 dark",
+      "pixelCount": 22535,
+      "flat": false,
+      "ownedOverflow": 0,
+      "pageWidth": 768,
+      "disabled": 0,
+      "dayOptions": 170
+    },
+    {
+      "name": "768 light",
+      "pixelCount": 22535,
+      "flat": false,
+      "ownedOverflow": 0,
+      "pageWidth": 768,
+      "disabled": 0,
+      "dayOptions": 170
+    },
+    {
+      "name": "dark seven scroll clocks",
+      "clocks": [
+        "15:00",
+        "16:30",
+        "18:00",
+        "19:00",
+        "23:00",
+        "01:03",
+        "02:00"
+      ]
+    },
+    {
+      "name": "1280 dark",
+      "pixelCount": 13186,
+      "flat": false,
+      "ownedOverflow": 0,
+      "pageWidth": 1280,
+      "disabled": 0,
+      "dayOptions": 170
+    },
+    {
+      "name": "light seven scroll clocks",
+      "clocks": [
+        "15:00",
+        "16:30",
+        "18:00",
+        "19:00",
+        "23:00",
+        "01:03",
+        "02:00"
+      ]
+    },
+    {
+      "name": "1280 light",
+      "pixelCount": 13186,
+      "flat": false,
+      "ownedOverflow": 0,
+      "pageWidth": 1280,
+      "disabled": 0,
+      "dayOptions": 170
+    },
+    {
+      "name": "Projected pointer tower reaches actual oldest journey anchor",
+      "url": "http://127.0.0.1:63809/journey.html#day-184"
+    },
+    {
+      "name": "Canvas arrow selection and ordinary keyboard link navigation"
+    },
+    {
+      "name": "Desktop pointer drag changes actual projection without navigating"
+    },
+    {
+      "name": "Theme repaint byte differs, resize switches flat, offscreen RAF sleeps"
+    },
+    {
+      "name": "Reduced-motion flat and complete list; JavaScript-off headline, fallback and seven lanes"
+    }
+  ],
+  "audits": [
+    {
+      "name": "375-dark-hero",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ]
+    },
+    {
+      "name": "375-dark-table",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ]
+    },
+    {
+      "name": "375-light-hero",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ]
+    },
+    {
+      "name": "375-light-table",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ]
+    },
+    {
+      "name": "768-dark-hero",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "768-dark-table",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "768-light-hero",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "768-light-table",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "1280-dark-hero",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "dark-lane-1",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "dark-lane-2",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "dark-lane-3",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "dark-lane-4",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "dark-lane-5",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "dark-lane-6",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "dark-lane-7",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "1280-dark-table",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "1280-light-hero",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "light-lane-1",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "light-lane-2",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "light-lane-3",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "light-lane-4",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "light-lane-5",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "light-lane-6",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "light-lane-7",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "1280-light-table",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    },
+    {
+      "name": "reduced-motion",
+      "findings": [
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "owner": "document",
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        }
+      ],
+      "unowned": [
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "tap-target",
+          "message": "198x20px, minimum is 24px",
+          "where": "a.wx-mail \"deep@championsmail.com\""
+        },
+        {
+          "owner": "other",
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "owner": "other",
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"\u00a9 2026 Sreedeep Surapaneni \u00b7 Champions Group\""
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "docs/shots/p4/375-dark-hero.png",
+    "docs/shots/p4/375-dark-day-list.png",
+    "docs/shots/p4/375-dark-table.png",
+    "docs/shots/p4/375-light-hero.png",
+    "docs/shots/p4/375-light-day-list.png",
+    "docs/shots/p4/375-light-table.png",
+    "docs/shots/p4/768-dark-hero.png",
+    "docs/shots/p4/768-dark-day-list.png",
+    "docs/shots/p4/768-light-hero.png",
+    "docs/shots/p4/768-light-day-list.png",
+    "docs/shots/p4/1280-dark-hero.png",
+    "docs/shots/p4/1280-dark-day-ship.png",
+    "docs/shots/p4/1280-light-hero.png",
+    "docs/shots/p4/1280-light-day-ship.png",
+    "docs/shots/p4/1280-dark-reduced.png",
+    "docs/shots/p4/375-dark-no-js.png"
+  ],
+  "errors": [],
+  "screenshots_retained": false,
+  "capture_note": "Sixteen captures were opened during the focused run. Historical paths were restored afterward; final retained hosted-preview screenshots are in docs/shots/editorial-v3."
+}

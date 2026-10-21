@@ -8,5 +8,5 @@ variant resolution
 the evidence rule
 frozen content is untouchable
 
-42 passed, 0 failed
+44 passed, 0 failed
 copy engine selftest: all assertions hold.

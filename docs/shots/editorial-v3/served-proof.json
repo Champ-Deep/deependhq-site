@@ -1,0 +1,26 @@
+[
+  {
+    "path": "system.css",
+    "sha256": "04fc74ded436e3a2139a504a9c3134e51b71fc78a8492b1ebe6477ad4fc5c0ae",
+    "exact_local_bytes": true,
+    "expected_source_marker": true
+  },
+  {
+    "path": "home.css",
+    "sha256": "938887632eeaec10b717a31baa614a3057b9517028bc05a5efa02cfe25f5b6aa",
+    "exact_local_bytes": true,
+    "expected_source_marker": true
+  },
+  {
+    "path": "index.html",
+    "sha256": "c06558389e1c480d639effe734ef3414a2cc243b1c71fb1b754f74e062589b17",
+    "exact_local_bytes": false,
+    "expected_source_marker": true
+  },
+  {
+    "path": "copy-engine.js",
+    "sha256": "6138a650506fdff3f64488222f10cfa2a6d2b62d7f96233c3ade26203ffcfc3a",
+    "exact_local_bytes": true,
+    "expected_source_marker": true
+  }
+]

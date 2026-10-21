@@ -11,16 +11,16 @@ sensitive disclosure: clean
 
 GUARD PASSED
 cross-links: 5/12 companies have journey, 16 posts linked
-derived: stale=false (1 weekdays), stack 52 items, 4 active in 30d, streak 89
+derived: stale=false (2 weekdays), stack 52 items, 4 active in 30d, streak 89
 feed.xml: 18 items · sitemap.xml: 38 urls
 llms.txt: 75 lines · llms-full.txt: 2096 lines
 built data.js: day 354, 132 journey entries, 18 posts
-prerender index.html: 177336 bytes into #root
-prerender pillars.html: 26965 bytes into #root
-prerender now.html: 26224 bytes into #root
+prerender index.html: 98251 bytes into #root
+prerender pillars.html: 26958 bytes into #root
+prerender now.html: 26220 bytes into #root
 prerender privacy.html: 14786 bytes into #root
-prerender journey.html: 25074 bytes into #root
-prerender toolkit.html: 49627 bytes into #root
+prerender journey.html: 25071 bytes into #root
+prerender toolkit.html: 49626 bytes into #root
 prerender writing.html: 23159 bytes into #root
 prerender post/week-48-the-receipts-arc/index.html: 28003 bytes into #root
 prerender post/week-47-the-decision-debt-arc/index.html: 27272 bytes into #root

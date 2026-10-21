@@ -1,0 +1,4345 @@
+{
+  "base": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev",
+  "states": [
+    {
+      "name": "375-dark",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-menu",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-dark-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-menu",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "375-light-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-dark-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "768-light-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 97 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 104 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-dark-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 104 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1280-light-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-dark",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 134 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-dark-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"locked longevity design system v1. 50% clini\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Shipped /now and /writing for deependhq.com,\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"cleared five threads in one sprint. a fifa w\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent the day clearing P0 inbox debt before \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full pitch kit for a cold 9pm call w\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"week 24 opened with a first call into one of\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"took a one-off enrichment win and turned it \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full deep-prep dossier for a chairma\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the first call with the gulf carrier group r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"completed the q2 kra review wave. five writt\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a fifteen-slide pitch guide for a meet\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"minted per-repo ssh deploy keys for the thre\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the a/b toggle for the prospect-research eng\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"today was a proof-or-nothing call with a dry\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"locked the architecture for a new resume-int\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the day was booked for phone calls and gate-\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the site grew a command center today. a /com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a noon meeting with a boutique wealth-manage\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"filed the GTM brief for an investor-matching\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Pitched intent-signal-driven webinar promoti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"q2 closed. authorized the quarter-end wire, \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"q3 day one. led a strategic growth discussio\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"all nine independence day video clips are do\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"july 4th campaign distributed to all 22 reps\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wired gmail and outlook oauth into the email\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"three meetings back-to-back from 4 to 10 PM:\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"heavy meetings day. locked a maritime data s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"proposed a 3-tier barter partnership with a \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"hni partnership confirmed today on a revenue\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"evaluating salesforce org migration for cirr\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"longevity sync ran 50 minutes, 20 over the c\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a call with a vc portfolio director opened t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"heavy external day: two meetings, two new th\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran 3 discovery calls in one afternoon. the \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"gtm weekly check-in landed with a real numbe\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"lake b2b website audit ran 33 minutes and la\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"email infrastructure vendor opened a shared \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full client profile and commercial c\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"first direct call with a US oncology AI comp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"aligned on splitting lakeb2b.com into two na\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"champbeam is live on deepify. found a fun on\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Weekly scoreboard filed: 6 external meetings\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"took bucket 3 on a live strategy call with a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sunday filing day: processed the full strate\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Monday in W31 opened with two hard clocks: a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Founders 2.0 Singapore bronze sponsorship cl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a 7-year cirralogix client just renewed thei\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"lake b2b category pivot confirmed. moving aw\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"three hours of architecture calls. ruled out\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"saturday. the systems ran so i did not have \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"w32 brief locked. theme: execute the backlog\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"hosted the champions group hr + payroll port\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"full backend audit of the marketing platform\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a new relationship walked in from the india \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"pitched a legacy luxury travel brand's consu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sat across a nuclear infrastructure firm ton\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"saturday. automated systems ran the day -- s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sunday closed with two strategy calls back t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"five back-to-back sessions from 8:40 to 10 p\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"biggest demo of the week is done. pitched AW\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"biggest strategy session of the month. twelv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"scaffolded a full lead generation operating \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran a 2.5-hour seo and backlink strategy ses\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"locked a second design language for internal\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"day one for a new front-end intern, owning o\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"audited the team vault agent against live cl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"planned the handover of seven apac lead-gen \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"settled the database number: 800m+ contacts,\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wrote the first kra for the longevity develo\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran a sensitivity scan before any vault file\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"thin day on record. an inbound discovery cal\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a data-partnership call with one of the big \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wrote the one page every new vault note foll\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"turned an eleven-day-old voice note into a f\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a live handover board for nine apac cl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"rewrote all 66 custom skills to one standard\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"day two of the apac daily loop. the automati\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"day three. nine of nine tracker rows blank, \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ChampReply v1 built and verified. Email repl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Opened a credible infra investor thread on t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"restructured the vault from a monolith into \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"One of our enterprise data accounts went fro\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Shipped ChampLantern v0 today, an internal a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Built the reference version of the new UTM t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Ran a Show and Sell strategy reset with Chie\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Locked working style and tooling for a new L\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Restarted a delivery-partner account that ha\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"A ten-day-old outreach thread finally conver\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Built a full digital audit and all twelve gr\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Spent a full Saturday, 8:30am to 8:30pm, on \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Fixed a dumb one today. Our meeting-notes au\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a discovery call that looked dead came back \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the birthday voice agent actually called chi\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the one lead a summit sponsorship actually p\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran the entity-resolution model against my w\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built and shipped a 10-slide intent-signal c\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent saturday writing the plan instead of s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sunday had three external calls and I came o\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Two Sunday calls, an infrastructure SPV stra\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the enterprise IT services client call happe\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped the middleman layer for the vendor-t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the enterprise it services client hit day th\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran the first live shadow test of celsus os'\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the saturday client dispatch run caught its \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wrote next week's plan before monday hits: t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped october plans for every person on th\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the longevity build got its biggest single s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped the booking handoff for a client int\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"closed out a departing engineers handover to\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"two meetings today just werent there. a sche\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent saturday pointing a client at the righ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"closed out a 5-day retry loop clean today. a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a 5:30pm slot booked as a routine lakeb2b de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Built a full creative kit in a day for an en\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped a full onboarding kit for a new apac\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"closed out a vendor relationship that had be\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"audited every case study on lakeb2b.com: 156\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"four days straight now, the thought leadersh\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full deleteme clone from scratch ton\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sat through a full demo of a compliance plat\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-light",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 134 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p"
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "1600-light-terrain-table",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"locked longevity design system v1. 50% clini\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Shipped /now and /writing for deependhq.com,\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"cleared five threads in one sprint. a fifa w\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent the day clearing P0 inbox debt before \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full pitch kit for a cold 9pm call w\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"week 24 opened with a first call into one of\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"took a one-off enrichment win and turned it \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full deep-prep dossier for a chairma\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the first call with the gulf carrier group r\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"completed the q2 kra review wave. five writt\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a fifteen-slide pitch guide for a meet\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"minted per-repo ssh deploy keys for the thre\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the a/b toggle for the prospect-research eng\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"today was a proof-or-nothing call with a dry\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"locked the architecture for a new resume-int\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the day was booked for phone calls and gate-\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the site grew a command center today. a /com\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a noon meeting with a boutique wealth-manage\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"filed the GTM brief for an investor-matching\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Pitched intent-signal-driven webinar promoti\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"q2 closed. authorized the quarter-end wire, \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"q3 day one. led a strategic growth discussio\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"all nine independence day video clips are do\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"july 4th campaign distributed to all 22 reps\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wired gmail and outlook oauth into the email\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"three meetings back-to-back from 4 to 10 PM:\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"heavy meetings day. locked a maritime data s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"proposed a 3-tier barter partnership with a \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"hni partnership confirmed today on a revenue\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"evaluating salesforce org migration for cirr\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"longevity sync ran 50 minutes, 20 over the c\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a call with a vc portfolio director opened t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"heavy external day: two meetings, two new th\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran 3 discovery calls in one afternoon. the \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"gtm weekly check-in landed with a real numbe\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"lake b2b website audit ran 33 minutes and la\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"email infrastructure vendor opened a shared \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full client profile and commercial c\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"first direct call with a US oncology AI comp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"aligned on splitting lakeb2b.com into two na\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"champbeam is live on deepify. found a fun on\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Weekly scoreboard filed: 6 external meetings\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"took bucket 3 on a live strategy call with a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sunday filing day: processed the full strate\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Monday in W31 opened with two hard clocks: a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Founders 2.0 Singapore bronze sponsorship cl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a 7-year cirralogix client just renewed thei\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"lake b2b category pivot confirmed. moving aw\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"three hours of architecture calls. ruled out\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"saturday. the systems ran so i did not have \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"w32 brief locked. theme: execute the backlog\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"hosted the champions group hr + payroll port\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"full backend audit of the marketing platform\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a new relationship walked in from the india \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"pitched a legacy luxury travel brand's consu\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sat across a nuclear infrastructure firm ton\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"saturday. automated systems ran the day -- s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sunday closed with two strategy calls back t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"five back-to-back sessions from 8:40 to 10 p\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"biggest demo of the week is done. pitched AW\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"biggest strategy session of the month. twelv\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"scaffolded a full lead generation operating \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran a 2.5-hour seo and backlink strategy ses\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"locked a second design language for internal\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"day one for a new front-end intern, owning o\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"audited the team vault agent against live cl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"planned the handover of seven apac lead-gen \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"settled the database number: 800m+ contacts,\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wrote the first kra for the longevity develo\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran a sensitivity scan before any vault file\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"thin day on record. an inbound discovery cal\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a data-partnership call with one of the big \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wrote the one page every new vault note foll\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"turned an eleven-day-old voice note into a f\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a live handover board for nine apac cl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"rewrote all 66 custom skills to one standard\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"day two of the apac daily loop. the automati\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"day three. nine of nine tracker rows blank, \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ChampReply v1 built and verified. Email repl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Opened a credible infra investor thread on t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"restructured the vault from a monolith into \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"One of our enterprise data accounts went fro\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Shipped ChampLantern v0 today, an internal a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Built the reference version of the new UTM t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Ran a Show and Sell strategy reset with Chie\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Locked working style and tooling for a new L\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Restarted a delivery-partner account that ha\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"A ten-day-old outreach thread finally conver\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Built a full digital audit and all twelve gr\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Spent a full Saturday, 8:30am to 8:30pm, on \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Fixed a dumb one today. Our meeting-notes au\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a discovery call that looked dead came back \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the birthday voice agent actually called chi\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the one lead a summit sponsorship actually p\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran the entity-resolution model against my w\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built and shipped a 10-slide intent-signal c\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent saturday writing the plan instead of s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sunday had three external calls and I came o\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Two Sunday calls, an infrastructure SPV stra\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the enterprise IT services client call happe\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped the middleman layer for the vendor-t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the enterprise it services client hit day th\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"ran the first live shadow test of celsus os'\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the saturday client dispatch run caught its \""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"wrote next week's plan before monday hits: t\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped october plans for every person on th\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"the longevity build got its biggest single s\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped the booking handoff for a client int\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"closed out a departing engineers handover to\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"two meetings today just werent there. a sche\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent saturday pointing a client at the righ\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"closed out a 5-day retry loop clean today. a\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"a 5:30pm slot booked as a routine lakeb2b de\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"Built a full creative kit in a day for an en\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"shipped a full onboarding kit for a new apac\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"closed out a vendor relationship that had be\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"audited every case study on lakeb2b.com: 156\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"four days straight now, the thought leadersh\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"built a full deleteme clone from scratch ton\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"sat through a full demo of a compliance plat\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 110 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 243 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "reduced-dark",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 104 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    },
+    {
+      "name": "reduced-light",
+      "findings": [
+        {
+          "severity": "WARN",
+          "rule": "glass-count",
+          "message": "13 blurred surfaces; cap at two per screen",
+          "where": ""
+        },
+        {
+          "severity": "WARN",
+          "rule": "default-font",
+          "message": "body font is \"inter\", an AI default; choose deliberately",
+          "where": ""
+        },
+        {
+          "severity": "INFO",
+          "rule": "three-card-row",
+          "message": "three structurally identical cards in a row: the default AI layout",
+          "where": "div.wx-w-more \"week 47 Oct 11 listen 4:15 This week I shipp\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 104 characters; cap body text near 65",
+          "where": "p \"spent today locking the deependhq refresh pl\""
+        },
+        {
+          "severity": "WARN",
+          "rule": "measure",
+          "message": "line length about 185 characters; cap body text near 65",
+          "where": "p.hwf-priv \"© 2026 Sreedeep Surapaneni · Champions Group\""
+        }
+      ],
+      "overflow": []
+    }
+  ],
+  "screenshots": [
+    "docs/shots/editorial-v3/375-dark.png",
+    "docs/shots/editorial-v3/375-dark-terrain.png",
+    "docs/shots/editorial-v3/375-light.png",
+    "docs/shots/editorial-v3/375-light-terrain.png",
+    "docs/shots/editorial-v3/768-dark.png",
+    "docs/shots/editorial-v3/768-light.png",
+    "docs/shots/editorial-v3/1280-dark.png",
+    "docs/shots/editorial-v3/1280-dark-terrain.png",
+    "docs/shots/editorial-v3/1280-light.png",
+    "docs/shots/editorial-v3/1280-light-terrain.png",
+    "docs/shots/editorial-v3/1600-dark.png",
+    "docs/shots/editorial-v3/1600-light.png"
+  ],
+  "errors": [],
+  "consoleErrors": [
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/#stack",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v3-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    },
+    {
+      "url": "https://deependhq-editorial-v3-preview.deep-ae0.workers.dev/",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    }
+  ],
+  "checks": [
+    {
+      "name": "375-dark",
+      "palette": {
+        "bg": "#141413",
+        "text": "#F5EEDC",
+        "build-text": "#7FC58C",
+        "win-text": "#D8B65C"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": true,
+        "rows": 170,
+        "pixels": true
+      }
+    },
+    {
+      "name": "375-light",
+      "palette": {
+        "bg": "#F7EDCE",
+        "text": "#30291F",
+        "build-text": "#48612B",
+        "win-text": "#795515"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": true,
+        "rows": 170,
+        "pixels": true
+      }
+    },
+    {
+      "name": "768-dark",
+      "palette": {
+        "bg": "#141413",
+        "text": "#F5EEDC",
+        "build-text": "#7FC58C",
+        "win-text": "#D8B65C"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 108.71875,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 102.25,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": false,
+        "rows": 434,
+        "pixels": true
+      }
+    },
+    {
+      "name": "768-light",
+      "palette": {
+        "bg": "#F7EDCE",
+        "text": "#30291F",
+        "build-text": "#48612B",
+        "win-text": "#795515"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 108.71875,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 102.25,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": false,
+        "rows": 434,
+        "pixels": true
+      }
+    },
+    {
+      "name": "1280-dark",
+      "palette": {
+        "bg": "#141413",
+        "text": "#F5EEDC",
+        "build-text": "#7FC58C",
+        "win-text": "#D8B65C"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 108.71875,
+          "height": 44
+        },
+        {
+          "text": "Mission Log",
+          "width": 110.328125,
+          "height": 44
+        },
+        {
+          "text": "Writing",
+          "width": 75.421875,
+          "height": 44
+        },
+        {
+          "text": "Pillars",
+          "width": 67.375,
+          "height": 44
+        },
+        {
+          "text": "Toolkit",
+          "width": 71.796875,
+          "height": 44
+        },
+        {
+          "text": "Now",
+          "width": 56.59375,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 102.25,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": false,
+        "rows": 434,
+        "pixels": true
+      }
+    },
+    {
+      "name": "1280-light",
+      "palette": {
+        "bg": "#F7EDCE",
+        "text": "#30291F",
+        "build-text": "#48612B",
+        "win-text": "#795515"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 108.71875,
+          "height": 44
+        },
+        {
+          "text": "Mission Log",
+          "width": 110.328125,
+          "height": 44
+        },
+        {
+          "text": "Writing",
+          "width": 75.421875,
+          "height": 44
+        },
+        {
+          "text": "Pillars",
+          "width": 67.375,
+          "height": 44
+        },
+        {
+          "text": "Toolkit",
+          "width": 71.796875,
+          "height": 44
+        },
+        {
+          "text": "Now",
+          "width": 56.59375,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 102.25,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": false,
+        "rows": 434,
+        "pixels": true
+      }
+    },
+    {
+      "name": "1600-dark",
+      "palette": {
+        "bg": "#141413",
+        "text": "#F5EEDC",
+        "build-text": "#7FC58C",
+        "win-text": "#D8B65C"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 108.71875,
+          "height": 44
+        },
+        {
+          "text": "Mission Log",
+          "width": 110.328125,
+          "height": 44
+        },
+        {
+          "text": "Writing",
+          "width": 75.421875,
+          "height": 44
+        },
+        {
+          "text": "Pillars",
+          "width": 67.375,
+          "height": 44
+        },
+        {
+          "text": "Toolkit",
+          "width": 71.796875,
+          "height": 44
+        },
+        {
+          "text": "Now",
+          "width": 56.59375,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 102.25,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": false,
+        "rows": 434,
+        "pixels": true
+      }
+    },
+    {
+      "name": "1600-light",
+      "palette": {
+        "bg": "#F7EDCE",
+        "text": "#30291F",
+        "build-text": "#48612B",
+        "win-text": "#795515"
+      },
+      "geometry": [
+        {
+          "text": "deep_",
+          "width": 108.71875,
+          "height": 44
+        },
+        {
+          "text": "Mission Log",
+          "width": 110.328125,
+          "height": 44
+        },
+        {
+          "text": "Writing",
+          "width": 75.421875,
+          "height": 44
+        },
+        {
+          "text": "Pillars",
+          "width": 67.375,
+          "height": 44
+        },
+        {
+          "text": "Toolkit",
+          "width": 71.796875,
+          "height": 44
+        },
+        {
+          "text": "Now",
+          "width": 56.59375,
+          "height": 44
+        },
+        {
+          "text": "scheme: system",
+          "width": 102.25,
+          "height": 44
+        },
+        {
+          "text": "Book 30 minutes",
+          "width": 139.515625,
+          "height": 46
+        },
+        {
+          "text": "Talk to Deep30 minutes",
+          "width": 177.65625,
+          "height": 66
+        },
+        {
+          "text": "Explore the tools →",
+          "width": 154.78125,
+          "height": 44
+        },
+        {
+          "text": "Read the entry ↗",
+          "width": 137.46875,
+          "height": 44
+        }
+      ],
+      "focus": {
+        "width": "2px",
+        "style": "solid"
+      },
+      "blocked": [
+        {
+          "text": "Talk to Deep30 minutes",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Explore the tools →",
+          "inView": true,
+          "clear": true
+        },
+        {
+          "text": "Read the entry ↗",
+          "inView": true,
+          "clear": true
+        }
+      ],
+      "terrain": {
+        "flat": false,
+        "rows": 434,
+        "pixels": true
+      }
+    },
+    {
+      "name": "no-js-dark",
+      "primaryContent": true
+    },
+    {
+      "name": "reduced-dark",
+      "flat": true
+    },
+    {
+      "name": "no-js-light",
+      "primaryContent": true
+    },
+    {
+      "name": "reduced-light",
+      "flat": true
+    }
+  ],
+  "failures": []
+}

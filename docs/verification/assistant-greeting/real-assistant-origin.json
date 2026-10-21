@@ -1,0 +1,687 @@
+{
+  "origin": "https://deependhq.com (host-mapped to local editorial-preview Worker)",
+  "states": [
+    {
+      "width": 375,
+      "scheme": "light",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/me",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/track",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        }
+      ],
+      "links": [
+        {
+          "selector": ".ev3-tools",
+          "href": "#stack",
+          "clickable": true
+        },
+        {
+          "selector": ".ev3-proof-link",
+          "href": "journey.html#day-354",
+          "clickable": true
+        },
+        {
+          "selector": "#log a[href*=\"journey\"]",
+          "href": "journey.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"now.html\"]",
+          "href": "now.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"feed.xml\"]",
+          "href": "feed.xml",
+          "clickable": true
+        },
+        {
+          "selector": "footer button.hwf-up",
+          "href": null,
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"/privacy\"]",
+          "href": "/privacy",
+          "clickable": true
+        }
+      ],
+      "usable": true,
+      "closed": true,
+      "reopened": true,
+      "privacyNavigated": true,
+      "pass": true
+    },
+    {
+      "width": 375,
+      "scheme": "dark",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/track",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/me",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        }
+      ],
+      "links": [
+        {
+          "selector": ".ev3-tools",
+          "href": "#stack",
+          "clickable": true
+        },
+        {
+          "selector": ".ev3-proof-link",
+          "href": "journey.html#day-354",
+          "clickable": true
+        },
+        {
+          "selector": "#log a[href*=\"journey\"]",
+          "href": "journey.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"now.html\"]",
+          "href": "now.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"feed.xml\"]",
+          "href": "feed.xml",
+          "clickable": true
+        },
+        {
+          "selector": "footer button.hwf-up",
+          "href": null,
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"/privacy\"]",
+          "href": "/privacy",
+          "clickable": true
+        }
+      ],
+      "usable": true,
+      "closed": true,
+      "reopened": true,
+      "privacyNavigated": true,
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "scheme": "light",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/track",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/me",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        }
+      ],
+      "links": [
+        {
+          "selector": ".ev3-tools",
+          "href": "#stack",
+          "clickable": true
+        },
+        {
+          "selector": ".ev3-proof-link",
+          "href": "journey.html#day-354",
+          "clickable": true
+        },
+        {
+          "selector": "#log a[href*=\"journey\"]",
+          "href": "journey.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"now.html\"]",
+          "href": "now.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"feed.xml\"]",
+          "href": "feed.xml",
+          "clickable": true
+        },
+        {
+          "selector": "footer button.hwf-up",
+          "href": null,
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"/privacy\"]",
+          "href": "/privacy",
+          "clickable": true
+        }
+      ],
+      "usable": true,
+      "closed": true,
+      "reopened": true,
+      "privacyNavigated": true,
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "scheme": "dark",
+      "console": [],
+      "failed": [],
+      "assistantResponses": [
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/deep-assistant.js",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/outreach/check",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/widget-config",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/track",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/me",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/healthz",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/conversations",
+          "status": 200,
+          "acao": "https://deependhq.com"
+        },
+        {
+          "url": "https://assistant.deependhq.com/static/widget.js",
+          "status": 200,
+          "acao": null
+        }
+      ],
+      "pageErrors": [],
+      "status": 200,
+      "origin": "https://deependhq.com",
+      "overlay": [
+        {
+          "frac": 0,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 0.5,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        },
+        {
+          "frac": 1,
+          "greetingPresent": true,
+          "display": "none",
+          "greetingRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "blocked": []
+        }
+      ],
+      "links": [
+        {
+          "selector": ".ev3-tools",
+          "href": "#stack",
+          "clickable": true
+        },
+        {
+          "selector": ".ev3-proof-link",
+          "href": "journey.html#day-354",
+          "clickable": true
+        },
+        {
+          "selector": "#log a[href*=\"journey\"]",
+          "href": "journey.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"now.html\"]",
+          "href": "now.html",
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"feed.xml\"]",
+          "href": "feed.xml",
+          "clickable": true
+        },
+        {
+          "selector": "footer button.hwf-up",
+          "href": null,
+          "clickable": true
+        },
+        {
+          "selector": "footer a[href=\"/privacy\"]",
+          "href": "/privacy",
+          "clickable": true
+        }
+      ],
+      "usable": true,
+      "closed": true,
+      "reopened": true,
+      "privacyNavigated": true,
+      "pass": true
+    }
+  ]
+}

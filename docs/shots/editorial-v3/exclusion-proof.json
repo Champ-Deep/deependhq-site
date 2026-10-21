@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/worker/index.js",
+    "status": "404"
+  },
+  {
+    "path": "/scripts/stage-release.py",
+    "status": "404"
+  },
+  {
+    "path": "/docs/shots/editorial-v3/SOURCES.md",
+    "status": "404"
+  },
+  {
+    "path": "/tests/toolkit-lib.test.js",
+    "status": "404"
+  },
+  {
+    "path": "/.env",
+    "status": "404"
+  },
+  {
+    "path": "/migrations/0001.sql",
+    "status": "404"
+  }
+]
