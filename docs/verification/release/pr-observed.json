@@ -1,0 +1,10 @@
+{
+  "baseRefName": "main",
+  "headRefName": "release/deependhq-refresh-v2-20261021",
+  "headRefOid": "5d9143f1876a02ddcac4348668ba41ec4df7ba5c",
+  "isDraft": true,
+  "mergeable": "MERGEABLE",
+  "state": "OPEN",
+  "statusCheckRollup": [],
+  "url": "https://github.com/Champ-Deep/deependhq-site/pull/5"
+}

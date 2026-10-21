@@ -2,7 +2,7 @@
 
 ## Result and handles
 
-Integrated runtime source: `54ad2d94e188a6e625bbaa18cf6549823f13b6d7` on `release/deependhq-refresh-v2-20261021`. Later commits contain evidence and excluded verification scripts only. The final PR head is read back in `pr-state.json`.
+Integrated runtime source: `54ad2d94e188a6e625bbaa18cf6549823f13b6d7` on `release/deependhq-refresh-v2-20261021`. Later commits contain evidence and excluded verification scripts only. Draft PR: https://github.com/Champ-Deep/deependhq-site/pull/5. Its actual head/state are read back in `.release/pr-state.json` and the task handoff; there are no reported checks, not a green CI claim.
 
 Preview: https://deependhq-refresh-v2-preview-20261021.deep-ae0.workers.dev
 
