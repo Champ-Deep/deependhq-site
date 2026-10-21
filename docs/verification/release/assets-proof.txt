@@ -1,7 +1,7 @@
 {
   "day": 354,
   "entries": 132,
-  "latest_entry_byte_equivalent": true,
+  "latest_entry_equal": true,
   "public_assets": 161,
   "hashes": {
     "favicon.svg": "4231a3848d92a8988285320561a76b65633260f1686c89706c3ab64e3bbac201",

@@ -41,6 +41,6 @@ assert not re.search('[\u2013\u2014]',html)
 for name in ['lead-scorer.html','account.html','toolkit.html','post.html','company.html','journey.html']:
     text=(root/name).read_text();assert text.count('Single pre-paint scheme controller')==1,name
     assert 'dh_theme' not in text and 'data-theme' not in text,name
-result={'day':354,'entries':132,'latest_entry_byte_equivalent':True,'public_assets':len(assets),'hashes':hashes,'dimensions':sizes,'source_favicon_unchanged':True,'source_svg_viewbox':re.search(r'viewBox="([^"]+)"',(root/'favicon.svg').read_text()).group(1),'dash_count_html':0,'private_key_patterns':0}
+result={'day':354,'entries':132,'latest_entry_equal':True,'public_assets':len(assets),'hashes':hashes,'dimensions':sizes,'source_favicon_unchanged':True,'source_svg_viewbox':re.search(r'viewBox="([^"]+)"',(root/'favicon.svg').read_text()).group(1),'dash_count_html':0,'private_key_patterns':0}
 (root/'docs/verification/release/assets-proof.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))

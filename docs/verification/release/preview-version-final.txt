@@ -1,0 +1,17 @@
+
+ ⛅️ wrangler 4.125.0 (update available 4.151.3)
+───────────────────────────────────────────────
+Version ID:  a72b6eed-ce27-4663-a069-a4ff454d74e4
+Created:     2026-10-20T23:53:47.419Z
+Author:      deep@championsmail.com
+Source:      Unknown (version_upload)
+Tag:         -
+Message:     -
+
+Handlers:             fetch
+Compatibility Date:   2026-05-23
+Compatibility Flags:  nodejs_compat
+Your Worker has access to the following bindings:
+Binding            Resource      
+env.ASSETS         Assets        
+

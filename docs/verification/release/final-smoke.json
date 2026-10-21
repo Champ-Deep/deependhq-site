@@ -1,0 +1,20 @@
+[
+  {
+    "scheme": "light",
+    "tablet_toggle_and_menu": true,
+    "opaque_graph_stat_panels": [
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)"
+    ],
+    "honest_provider_placeholder": true
+  },
+  {
+    "scheme": "dark",
+    "tablet_toggle_and_menu": true,
+    "opaque_graph_stat_panels": [
+      "rgb(28, 40, 65)",
+      "rgb(28, 40, 65)"
+    ],
+    "honest_provider_placeholder": true
+  }
+]
