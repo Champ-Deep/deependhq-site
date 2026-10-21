@@ -1,0 +1,434 @@
+{
+  "hero": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Editorial Hero  [id: 19075]\nby felipemenezes098\nAn editorial hero section with a left tagline, right-aligned headline and copy, optional CTAs, and a full-width image below.\npreview: https://cdn.21st.dev/felipemenezes098/hero-05/default/preview.1783678944308.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-05?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 19075 })\n\n### [component] Editorial Collage Hero  [id: 19074]\nby felipemenezes098\nA two-column hero section with a serif headline, description, call-to-action buttons, and a layered collage of two overlapping images over a soft background wash.\npreview: https://cdn.21st.dev/user_felipemenezes098/hero-04/default/preview.1786538402894.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-04?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 19074 })\n\n### [component] Editorial Image Hero  [id: 19077]\nby felipemenezes098\nA hero section with a full-width landscape image above and a top-aligned tagline paired with a right-aligned serif headline, description, and call-to-action buttons below.\npreview: https://cdn.21st.dev/user_felipemenezes098/hero-07/default/preview.1787581609067.webp\ninstall: npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-07?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 19077 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 19075,
+          "name": "Editorial Hero",
+          "description": "An editorial hero section with a left tagline, right-aligned headline and copy, optional CTAs, and a full-width image below.",
+          "previewUrl": "https://cdn.21st.dev/felipemenezes098/hero-05/default/preview.1783678944308.png",
+          "videoUrl": "https://cdn.21st.dev/felipemenezes098/hero-05/default/video.1783678944308.mp4",
+          "author": "felipemenezes098",
+          "authorImage": "https://www.google.com/s2/favicons?domain=ui.flexnative.com&sz=128",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-05?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@felipemenezes098/components/hero-05"
+        },
+        {
+          "type": "component",
+          "id": 19074,
+          "name": "Editorial Collage Hero",
+          "description": "A two-column hero section with a serif headline, description, call-to-action buttons, and a layered collage of two overlapping images over a soft background wash.",
+          "previewUrl": "https://cdn.21st.dev/user_felipemenezes098/hero-04/default/preview.1786538402894.png",
+          "videoUrl": null,
+          "author": "felipemenezes098",
+          "authorImage": "https://www.google.com/s2/favicons?domain=ui.flexnative.com&sz=128",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-04?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@felipemenezes098/components/hero-04"
+        },
+        {
+          "type": "component",
+          "id": 19077,
+          "name": "Editorial Image Hero",
+          "description": "A hero section with a full-width landscape image above and a top-aligned tagline paired with a right-aligned serif headline, description, and call-to-action buttons below.",
+          "previewUrl": "https://cdn.21st.dev/user_felipemenezes098/hero-07/default/preview.1787581609067.webp",
+          "videoUrl": "https://cdn.21st.dev/user_felipemenezes098/hero-07/default/video.1787581613983.mp4",
+          "author": "felipemenezes098",
+          "authorImage": "https://www.google.com/s2/favicons?domain=ui.flexnative.com&sz=128",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-07?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@felipemenezes098/components/hero-07"
+        }
+      ]
+    }
+  },
+  "tools": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Feature List Showcase  [id: 27506]\nby felipemenezes098\nAn interactive feature list where selecting an item reveals its description and crossfades a matching image, useful for product feature sections on landing pages.\npreview: https://cdn.21st.dev/user_felipemenezes098/feature-01/default/preview.1790722299053.webp\ninstall: npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/feature-01?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 27506 })\n\n### [component] Feature with advantages  [id: 1017]\nby tommyjepsen\nFeature section with list of advantages\npreview: https://cdn.21st.dev/user_tommyjepsen/feature-with-advantages/1017/preview.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/tommyjepsen/feature-with-advantages?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 1017 })\n\n### [component] FeaturesDetail  [id: 5131]\nby ruixen.ui\nThis FeaturesDetail component showcases product features through an animated, auto-sliding dashboard carousel with smooth GSAP transitions.\nIt combines scroll-triggered effects and interactive tab navigation for a visually engaging feature preview.\npreview: https://cdn.21st.dev/ruixen.ui/features-detail/default/preview.1788795795457-1b753519-5ff6-4141-9d7f-05b6d3015982.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/ruixen.ui/features-detail?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 5131 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 27506,
+          "name": "Feature List Showcase",
+          "description": "An interactive feature list where selecting an item reveals its description and crossfades a matching image, useful for product feature sections on landing pages.",
+          "previewUrl": "https://cdn.21st.dev/user_felipemenezes098/feature-01/default/preview.1790722299053.webp",
+          "videoUrl": "https://cdn.21st.dev/user_felipemenezes098/feature-01/default/video.1790722292515.mp4",
+          "author": "felipemenezes098",
+          "authorImage": "https://www.google.com/s2/favicons?domain=ui.flexnative.com&sz=128",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/feature-01?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@felipemenezes098/components/feature-01"
+        },
+        {
+          "type": "component",
+          "id": 1017,
+          "name": "Feature with advantages",
+          "description": "Feature section with list of advantages",
+          "previewUrl": "https://cdn.21st.dev/user_tommyjepsen/feature-with-advantages/1017/preview.png",
+          "videoUrl": null,
+          "author": "tommyjepsen",
+          "authorImage": "https://avatars.githubusercontent.com/u/5646646?v=4",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/tommyjepsen/feature-with-advantages?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@tommyjepsen/components/feature-with-advantages"
+        },
+        {
+          "type": "component",
+          "id": 5131,
+          "name": "FeaturesDetail",
+          "description": "This FeaturesDetail component showcases product features through an animated, auto-sliding dashboard carousel with smooth GSAP transitions.\nIt combines scroll-triggered effects and interactive tab navigation for a visually engaging feature preview.",
+          "previewUrl": "https://cdn.21st.dev/ruixen.ui/features-detail/default/preview.1788795795457-1b753519-5ff6-4141-9d7f-05b6d3015982.png",
+          "videoUrl": "https://cdn.21st.dev/ruixen.ui/features-detail/default/video.1754834170022.mp4",
+          "author": "ruixen.ui",
+          "authorImage": "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_2y5Wd5l713ZIFYjX19aZXSyXd6b/avatar.svg+xml",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ruixen.ui/features-detail?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@ruixen.ui/components/features-detail"
+        }
+      ]
+    }
+  },
+  "log": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Timeline  [id: 35051]\nby kuratlielia\nA vertical activity feed grouped by day, with expandable rows, an animated drawing connector line, and smooth insert animations for new updates \u2014 used for project history, audit logs, and deploy streams.\npreview: https://cdn.21st.dev/user_registry_kuratlielia_1790903117010/timeline/default/preview.1790977806085.webp\ninstall: npx shadcn@latest add \"https://21st.dev/r/kuratlielia/timeline?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 35051 })\n\n### [component] Activity Feed  [id: 29394]\nby felipemenezes098\nA vertical timeline of activity events with an icon, title, description, and relative timestamp for each row, useful for showing commits, deploys, and workspace updates.\npreview: https://cdn.21st.dev/felipemenezes098/item-19/default/preview.1790072854725-2c9f1800-eac0-48d4-b0c6-11fb285f0a8a.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/item-19?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 29394 })\n\n### [component] Activity Timeline  [id: 28340]\nby olewandowski1\nA vertical timeline that groups a team's recent activity by day, showing each actor's avatar, action, target, and relative timestamp connected by a rail.\npreview: https://cdn.21st.dev/user_registry_7ovr_1782691739820/timeline-3/default/preview.1789994227656.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/olewandowski1/timeline-3?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 28340 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 35051,
+          "name": "Timeline",
+          "description": "A vertical activity feed grouped by day, with expandable rows, an animated drawing connector line, and smooth insert animations for new updates \u2014 used for project history, audit logs, and deploy streams.",
+          "previewUrl": "https://cdn.21st.dev/user_registry_kuratlielia_1790903117010/timeline/default/preview.1790977806085.webp",
+          "videoUrl": "https://cdn.21st.dev/user_registry_kuratlielia_1790903117010/timeline/default/video.1790977802337.mp4",
+          "author": "kuratlielia",
+          "authorImage": "https://avatars.githubusercontent.com/u/82137127?v=4",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/kuratlielia/timeline?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@kuratlielia/components/timeline"
+        },
+        {
+          "type": "component",
+          "id": 29394,
+          "name": "Activity Feed",
+          "description": "A vertical timeline of activity events with an icon, title, description, and relative timestamp for each row, useful for showing commits, deploys, and workspace updates.",
+          "previewUrl": "https://cdn.21st.dev/felipemenezes098/item-19/default/preview.1790072854725-2c9f1800-eac0-48d4-b0c6-11fb285f0a8a.png",
+          "videoUrl": null,
+          "author": "felipemenezes098",
+          "authorImage": "https://www.google.com/s2/favicons?domain=ui.flexnative.com&sz=128",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/item-19?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@felipemenezes098/components/item-19"
+        },
+        {
+          "type": "component",
+          "id": 28340,
+          "name": "Activity Timeline",
+          "description": "A vertical timeline that groups a team's recent activity by day, showing each actor's avatar, action, target, and relative timestamp connected by a rail.",
+          "previewUrl": "https://cdn.21st.dev/user_registry_7ovr_1782691739820/timeline-3/default/preview.1789994227656.png",
+          "videoUrl": null,
+          "author": "olewandowski1",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18zSXV3Vm5MVGx6UjZ5SG1oNXZnYWh1R0Mza28ifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/olewandowski1/timeline-3?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@olewandowski1/components/timeline-3"
+        }
+      ]
+    }
+  },
+  "day": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Process Timeline  [id: 28381]\nby shadcnui-blocks\nA vertical timeline component that lists sequential process steps with a check icon marking completed stages and numbered circles for pending ones.\npreview: https://cdn.21st.dev/shadcnui-blocks/timeline-05/default/preview.1789972934699-4d7c5529-cf3f-4dbc-8164-ccdd84b0c9dc.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/shadcnui-blocks/timeline-05?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 28381 })\n\n### [component] Timeline  [id: 28298]\nby slide-cn\nA horizontal or vertical timeline for displaying ordered events, process steps, milestones, or roadmaps, with optional custom markers and alternating layout.\npreview: https://cdn.21st.dev/slide-cn/timeline/default/preview.1789960564301-88a04004-296e-44ca-a688-c1b292e04ad3.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/slide-cn/timeline?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 28298 })\n\n### [component] Onboarding Timeline  [id: 29486]\nby ephraimduncan\nA vertical timeline component that shows deployment/onboarding steps with done, in-progress, and upcoming states.\npreview: https://cdn.21st.dev/user_2vZexZytBe3Vo4fbfmzWgvCugbB/onboarding-06/default/preview.1790088891048.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/ephraimduncan/onboarding-06?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 29486 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 28381,
+          "name": "Process Timeline",
+          "description": "A vertical timeline component that lists sequential process steps with a check icon marking completed stages and numbered circles for pending ones.",
+          "previewUrl": "https://cdn.21st.dev/shadcnui-blocks/timeline-05/default/preview.1789972934699-4d7c5529-cf3f-4dbc-8164-ccdd84b0c9dc.png",
+          "videoUrl": null,
+          "author": "shadcnui-blocks",
+          "authorImage": "https://www.google.com/s2/favicons?domain=shadcnui-blocks.com&sz=128",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/shadcnui-blocks/timeline-05?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@shadcnui-blocks/components/timeline-05"
+        },
+        {
+          "type": "component",
+          "id": 28298,
+          "name": "Timeline",
+          "description": "A horizontal or vertical timeline for displaying ordered events, process steps, milestones, or roadmaps, with optional custom markers and alternating layout.",
+          "previewUrl": "https://cdn.21st.dev/slide-cn/timeline/default/preview.1789960564301-88a04004-296e-44ca-a688-c1b292e04ad3.png",
+          "videoUrl": null,
+          "author": "slide-cn",
+          "authorImage": "https://github.com/prithvi-rajan-222.png",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/slide-cn/timeline?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@slide-cn/components/timeline"
+        },
+        {
+          "type": "component",
+          "id": 29486,
+          "name": "Onboarding Timeline",
+          "description": "A vertical timeline component that shows deployment/onboarding steps with done, in-progress, and upcoming states.",
+          "previewUrl": "https://cdn.21st.dev/user_2vZexZytBe3Vo4fbfmzWgvCugbB/onboarding-06/default/preview.1790088891048.png",
+          "videoUrl": null,
+          "author": "ephraimduncan",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18ydlpleGRQN3BiSlVlSnp3R3FmbzdZbTJMT04ifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ephraimduncan/onboarding-06?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@ephraimduncan/components/onboarding-06"
+        }
+      ]
+    }
+  },
+  "companies": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Accordion  [id: 23530]\nby ddoemonn\nAn accessible, spring-animated accordion with single or multiple open panels, keyboard navigation, and auto-measured content height.\npreview: https://cdn.21st.dev/ddoemonn/accordion/default/preview.1785472426900-c597a8dc-43a8-4b6c-a3c0-b3b6170cd61d.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/ddoemonn/accordion?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 23530 })\n\n### [component] Accessible Accordion  [id: 34660]\nby a11ypros\nA keyboard-accessible accordion built on native HTML5 details/summary elements, with single- or multi-expand coordination, focus-visible outlines and reduced-motion support \u2014 ported to React from A11YPros' a11y-ui web component (credit: Ryan Mack / a11ypros.com).\npreview: https://cdn.21st.dev/user_registry_a11ypros_1790790185577/a11y-accordion/single-item/preview.1790889718629.webp\ninstall: npx shadcn@latest add \"https://21st.dev/r/a11ypros/a11y-accordion?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 34660 })\n\n### [component] Accordion Multiple  [id: 29251]\nby uiable\nA vertically stacked accordion where several sections can be expanded open at the same time, useful for FAQ lists or collapsible content groups.\npreview: https://cdn.21st.dev/user_registry_uiable_1783486969177/accordion-multiple/default/preview.1790097813127.webp\ninstall: npx shadcn@latest add \"https://21st.dev/r/uiable/accordion-multiple?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 29251 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 23530,
+          "name": "Accordion",
+          "description": "An accessible, spring-animated accordion with single or multiple open panels, keyboard navigation, and auto-measured content height.",
+          "previewUrl": "https://cdn.21st.dev/ddoemonn/accordion/default/preview.1785472426900-c597a8dc-43a8-4b6c-a3c0-b3b6170cd61d.png",
+          "videoUrl": "https://cdn.21st.dev/ddoemonn/accordion/default/video.1785472426900-c597a8dc-43a8-4b6c-a3c0-b3b6170cd61d.mp4",
+          "author": "ddoemonn",
+          "authorImage": "https://github.com/ddoemonn.png",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ddoemonn/accordion?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@ddoemonn/components/accordion"
+        },
+        {
+          "type": "component",
+          "id": 34660,
+          "name": "Accessible Accordion",
+          "description": "A keyboard-accessible accordion built on native HTML5 details/summary elements, with single- or multi-expand coordination, focus-visible outlines and reduced-motion support \u2014 ported to React from A11YPros' a11y-ui web component (credit: Ryan Mack / a11ypros.com).",
+          "previewUrl": "https://cdn.21st.dev/user_registry_a11ypros_1790790185577/a11y-accordion/single-item/preview.1790889718629.webp",
+          "videoUrl": "https://cdn.21st.dev/user_registry_a11ypros_1790790185577/a11y-accordion/single-item/video.1790889704545.mp4",
+          "author": "a11ypros",
+          "authorImage": "https://avatars.githubusercontent.com/u/292842487?v=4",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/a11ypros/a11y-accordion?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@a11ypros/components/a11y-accordion"
+        },
+        {
+          "type": "component",
+          "id": 29251,
+          "name": "Accordion Multiple",
+          "description": "A vertically stacked accordion where several sections can be expanded open at the same time, useful for FAQ lists or collapsible content groups.",
+          "previewUrl": "https://cdn.21st.dev/user_registry_uiable_1783486969177/accordion-multiple/default/preview.1790097813127.webp",
+          "videoUrl": "https://cdn.21st.dev/user_registry_uiable_1783486969177/accordion-multiple/default/video.1790097807707.mp4",
+          "author": "uiable",
+          "authorImage": "https://cdn.21st.dev/user-avatars/uiable.png",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/uiable/accordion-multiple?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@uiable/components/accordion-multiple"
+        }
+      ]
+    }
+  },
+  "writing": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Article With Author Sidebar  [id: 29471]\nby olewandowski1\nA blog article layout with a two-column grid: the post content on the left and a sticky sidebar on the right holding an author bio card, related-post links, and an inline newsletter signup form.\npreview: https://cdn.21st.dev/7ovr/article-5/default/preview.1790080894256-22d2650a-ce68-4836-98e3-2393c6649a6f.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/olewandowski1/article-5?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 29471 })\n\n### [component] Editorial Hero  [id: 19075]\nby felipemenezes098\nAn editorial hero section with a left tagline, right-aligned headline and copy, optional CTAs, and a full-width image below.\npreview: https://cdn.21st.dev/felipemenezes098/hero-05/default/preview.1783678944308.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-05?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 19075 })\n\n### [component] Editorial Testimonial  [id: 9637]\nby jatin-yadav05\nAn editorial-style testimonial with a bold typographic.\npreview: https://cdn.21st.dev/jatin-yadav05/editorial-testimonial/default/preview.1765306115293.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/jatin-yadav05/editorial-testimonial?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 9637 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 29471,
+          "name": "Article With Author Sidebar",
+          "description": "A blog article layout with a two-column grid: the post content on the left and a sticky sidebar on the right holding an author bio card, related-post links, and an inline newsletter signup form.",
+          "previewUrl": "https://cdn.21st.dev/7ovr/article-5/default/preview.1790080894256-22d2650a-ce68-4836-98e3-2393c6649a6f.png",
+          "videoUrl": "https://cdn.21st.dev/7ovr/article-5/default/video.1790080894256-22d2650a-ce68-4836-98e3-2393c6649a6f.mp4",
+          "author": "olewandowski1",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18zSXV3Vm5MVGx6UjZ5SG1oNXZnYWh1R0Mza28ifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/olewandowski1/article-5?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@olewandowski1/components/article-5"
+        },
+        {
+          "type": "component",
+          "id": 19075,
+          "name": "Editorial Hero",
+          "description": "An editorial hero section with a left tagline, right-aligned headline and copy, optional CTAs, and a full-width image below.",
+          "previewUrl": "https://cdn.21st.dev/felipemenezes098/hero-05/default/preview.1783678944308.png",
+          "videoUrl": "https://cdn.21st.dev/felipemenezes098/hero-05/default/video.1783678944308.mp4",
+          "author": "felipemenezes098",
+          "authorImage": "https://www.google.com/s2/favicons?domain=ui.flexnative.com&sz=128",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/felipemenezes098/hero-05?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@felipemenezes098/components/hero-05"
+        },
+        {
+          "type": "component",
+          "id": 9637,
+          "name": "Editorial Testimonial",
+          "description": "An editorial-style testimonial with a bold typographic.",
+          "previewUrl": "https://cdn.21st.dev/jatin-yadav05/editorial-testimonial/default/preview.1765306115293.png",
+          "videoUrl": "https://cdn.21st.dev/jatin-yadav05/editorial-testimonial/default/video.1765306115294.mp4",
+          "author": "jatin-yadav05",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18ycmE4MHZyMW5wMVhERXR4SlBpNFJXQmJCMDkifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/jatin-yadav05/editorial-testimonial?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@jatin-yadav05/components/editorial-testimonial"
+        }
+      ]
+    }
+  },
+  "listening": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Spotify Card  [id: 1897]\nby jatin-yadav05\nA modern, interactive Spotify-like music player component with premium UI features, playback controls, and animated visualizations.\npreview: https://cdn.21st.dev/user_2ra80vx0iKMyQWJ5AESmNfFbCHD/spotify-card/spotify-card/preview.png?v=1\ninstall: npx shadcn@latest add \"https://21st.dev/r/jatin-yadav05/spotify-card?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 1897 })\n\n### [component] Music Player  [id: 6271]\nby ravikatiyar162\nMinimal Music Player\nA clean, modern music player with album art focus, intuitive controls, and smooth playback experience. Ideal for streaming platforms, playlists, or showcasing audio content with style.\npreview: https://cdn.21st.dev/ravikatiyar162/music-player/default/preview.1756287229047.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/ravikatiyar162/music-player?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 6271 })\n\n### [component] Music Player Widget  [id: 12709]\nby smammar\nA sleek modern music player with an audio-reactive dot-grid visualizer, spinning disc, smooth cover/track crossfades, and a Web Audio API beat-sync oscillator. Zero external animation dependencies, pure CSS keyframes and requestAnimationFrame.\npreview: https://cdn.21st.dev/user_2xRjS2rL8c12AIzdnylhcQoZwi4/music-player-widget/default/preview.1787322949263.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/smammar/music-player-widget?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 12709 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 1897,
+          "name": "Spotify Card",
+          "description": "A modern, interactive Spotify-like music player component with premium UI features, playback controls, and animated visualizations.",
+          "previewUrl": "https://cdn.21st.dev/user_2ra80vx0iKMyQWJ5AESmNfFbCHD/spotify-card/spotify-card/preview.png?v=1",
+          "videoUrl": "https://cdn.21st.dev/user_2ra80vx0iKMyQWJ5AESmNfFbCHD/spotify-card/spotify-card/video.mp4?v=1",
+          "author": "jatin-yadav05",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18ycmE4MHZyMW5wMVhERXR4SlBpNFJXQmJCMDkifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/jatin-yadav05/spotify-card?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@jatin-yadav05/components/spotify-card"
+        },
+        {
+          "type": "component",
+          "id": 6271,
+          "name": "Music Player",
+          "description": "Minimal Music Player\nA clean, modern music player with album art focus, intuitive controls, and smooth playback experience. Ideal for streaming platforms, playlists, or showcasing audio content with style.",
+          "previewUrl": "https://cdn.21st.dev/ravikatiyar162/music-player/default/preview.1756287229047.png",
+          "videoUrl": "https://cdn.21st.dev/ravikatiyar162/music-player/default/video.1756287229047.mp4",
+          "author": "ravikatiyar162",
+          "authorImage": "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_2zMtrqo9RMaaIn4f8F2z3oeY497/avatar.png",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ravikatiyar162/music-player?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@ravikatiyar162/components/music-player"
+        },
+        {
+          "type": "component",
+          "id": 12709,
+          "name": "Music Player Widget",
+          "description": "A sleek modern music player with an audio-reactive dot-grid visualizer, spinning disc, smooth cover/track crossfades, and a Web Audio API beat-sync oscillator. Zero external animation dependencies, pure CSS keyframes and requestAnimationFrame.",
+          "previewUrl": "https://cdn.21st.dev/user_2xRjS2rL8c12AIzdnylhcQoZwi4/music-player-widget/default/preview.1787322949263.png",
+          "videoUrl": "https://cdn.21st.dev/user_2xRjS2rL8c12AIzdnylhcQoZwi4/music-player-widget/default/video.1787322986404.mp4",
+          "author": "smammar",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18yeFJqUzdCeTdvZjlqRUdnTTVJSjBIajc2RGQifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/smammar/music-player-widget?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@smammar/components/music-player-widget"
+        }
+      ]
+    }
+  },
+  "game": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Flip Card  [id: 26139]\nby skyleen77\nA 3D profile card that flips on hover or tap to reveal a bio, stats, and social links.\npreview: https://cdn.21st.dev/user_2vJfh2NfFGAPdS5oQXlSpccjJvB/flip-card/default/preview.1788527617844.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/skyleen77/flip-card?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 26139 })\n\n### [component] Profile Card  [id: 9890]\nby daiwiikharihar\nA compact, hover-to-expand profile microcard with elastic motion, glowing avatar, and GitHub link support, designed for clean light/dark interfaces.\npreview: https://cdn.21st.dev/daiwiikharihar/profile-card/default/preview.1787916129232-5f16bfa1-8904-4e99-89de-fc76485b0e30.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/daiwiikharihar/profile-card?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 9890 })\n\n### [component] ProfileCard  [id: 8563]\nby dhileepkumargm\nAn interactive, 3D-tilt profile card component featuring an animated status cycle, tier-based glow effects, a sliding glass panel, and a customizable action button.\npreview: https://cdn.21st.dev/dhileepkumargm/profile-card/default/preview.1759832360385.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/dhileepkumargm/profile-card?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 8563 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 26139,
+          "name": "Flip Card",
+          "description": "A 3D profile card that flips on hover or tap to reveal a bio, stats, and social links.",
+          "previewUrl": "https://cdn.21st.dev/user_2vJfh2NfFGAPdS5oQXlSpccjJvB/flip-card/default/preview.1788527617844.png",
+          "videoUrl": "https://cdn.21st.dev/user_2vJfh2NfFGAPdS5oQXlSpccjJvB/flip-card/default/video.1788527635356.mp4",
+          "author": "skyleen77",
+          "authorImage": "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_2vJfh2NfFGAPdS5oQXlSpccjJvB/avatar.png",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/skyleen77/flip-card?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@skyleen77/components/flip-card"
+        },
+        {
+          "type": "component",
+          "id": 9890,
+          "name": "Profile Card",
+          "description": "A compact, hover-to-expand profile microcard with elastic motion, glowing avatar, and GitHub link support, designed for clean light/dark interfaces.",
+          "previewUrl": "https://cdn.21st.dev/daiwiikharihar/profile-card/default/preview.1787916129232-5f16bfa1-8904-4e99-89de-fc76485b0e30.png",
+          "videoUrl": "https://cdn.21st.dev/daiwiikharihar/profile-card/default/video.1787916129232-5f16bfa1-8904-4e99-89de-fc76485b0e30.mp4",
+          "author": "daiwiikharihar",
+          "authorImage": "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_332oxzW8MyPod4IDIdKq9rbPYuk/avatar.jpeg",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/daiwiikharihar/profile-card?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@daiwiikharihar/components/profile-card"
+        },
+        {
+          "type": "component",
+          "id": 8563,
+          "name": "ProfileCard",
+          "description": "An interactive, 3D-tilt profile card component featuring an animated status cycle, tier-based glow effects, a sliding glass panel, and a customizable action button.",
+          "previewUrl": "https://cdn.21st.dev/dhileepkumargm/profile-card/default/preview.1759832360385.png",
+          "videoUrl": "https://cdn.21st.dev/dhileepkumargm/profile-card/default/video.1759832360385.mp4",
+          "author": "dhileepkumargm",
+          "authorImage": "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_2xffZsPH7trHq0L2RAacpvdoyXT/avatar.png",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/dhileepkumargm/profile-card?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@dhileepkumargm/components/profile-card"
+        }
+      ]
+    }
+  },
+  "footer": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 result(s) across 21st.dev (metadata only).\n\n### [component] Minimal Two-Column Footer  [id: 26908]\nby ln-dev7\nA simple site footer with a brand mark and tagline on the left and a compact vertical navigation list on the right, plus a copyright line.\npreview: https://cdn.21st.dev/ln-dev7/footer-17/default/preview.1788991572948-a215dfe7-1375-461b-8406-0ca12d832f8d.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/ln-dev7/footer-17?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 26908 })\n\n### [component] Footer  [id: 1614]\nby designali-in\nFooter\npreview: https://cdn.21st.dev/user_2rO0IUQINTfBex4xN8Ghho5dpr4/footer/footer/preview.1789741644994.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/designali-in/footer?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 1614 })\n\n### [component] Dithered Footer  [id: 33290]\nby otatechie\nFooter whose brand name is cut out of a drifting field of dithered dots that brighten under the cursor. One accent colour, light and dark mode, newsletter signup and social links. Pure CSS masks, no images.\npreview: https://cdn.21st.dev/otatechie/dithered-footer/default/preview.1790529231801-3f09a696-4eb6-474d-900c-1c5173ac6647.png\ninstall: npx shadcn@latest add \"https://21st.dev/r/otatechie/dithered-footer?api_key=$API_KEY_21ST\"\n\u2192 get the code: get_component({ id: 33290 })\n\nMetadata is free. get_component (the code) is the PAID step - on the free tier it uses your daily retrieval quota (see get_usage)."
+      }
+    ],
+    "structuredContent": {
+      "results": [
+        {
+          "type": "component",
+          "id": 26908,
+          "name": "Minimal Two-Column Footer",
+          "description": "A simple site footer with a brand mark and tagline on the left and a compact vertical navigation list on the right, plus a copyright line.",
+          "previewUrl": "https://cdn.21st.dev/ln-dev7/footer-17/default/preview.1788991572948-a215dfe7-1375-461b-8406-0ca12d832f8d.png",
+          "videoUrl": "https://cdn.21st.dev/ln-dev7/footer-17/default/video.1788991572948-a215dfe7-1375-461b-8406-0ca12d832f8d.mp4",
+          "author": "ln-dev7",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18ycm1QZE9TdDV6aWZkeGswZVlUOG9QdUxDSjEifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ln-dev7/footer-17?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@ln-dev7/components/footer-17"
+        },
+        {
+          "type": "component",
+          "id": 1614,
+          "name": "Footer",
+          "description": "Footer",
+          "previewUrl": "https://cdn.21st.dev/user_2rO0IUQINTfBex4xN8Ghho5dpr4/footer/footer/preview.1789741644994.png",
+          "videoUrl": "",
+          "author": "designali-in",
+          "authorImage": "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_2rO0IUQINTfBex4xN8Ghho5dpr4/avatar.jpeg",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/designali-in/footer?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@designali-in/components/footer"
+        },
+        {
+          "type": "component",
+          "id": 33290,
+          "name": "Dithered Footer",
+          "description": "Footer whose brand name is cut out of a drifting field of dithered dots that brighten under the cursor. One accent colour, light and dark mode, newsletter signup and social links. Pure CSS masks, no images.",
+          "previewUrl": "https://cdn.21st.dev/otatechie/dithered-footer/default/preview.1790529231801-3f09a696-4eb6-474d-900c-1c5173ac6647.png",
+          "videoUrl": "https://cdn.21st.dev/otatechie/dithered-footer/default/video.1790529231801-3f09a696-4eb6-474d-900c-1c5173ac6647.mp4",
+          "author": "otatechie",
+          "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ2l0aHViL2ltZ18zR0hqMk94cm40NXFmOXQ0UThTb0NlNzBZS0wifQ",
+          "installCommand": "npx shadcn@latest add \"https://21st.dev/r/otatechie/dithered-footer?api_key=$API_KEY_21ST\"",
+          "url": "https://21st.dev/@otatechie/components/dithered-footer"
+        }
+      ]
+    }
+  }
+}

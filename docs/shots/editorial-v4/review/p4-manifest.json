@@ -1,0 +1,102 @@
+[
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-0-0.png",
+    "source": "docs/shots/p4/375-dark-hero.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-1-0.png",
+    "source": "docs/shots/p4/375-light-hero.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-2-0.png",
+    "source": "docs/shots/p4/768-dark-hero.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-3-0.png",
+    "source": "docs/shots/p4/768-light-hero.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-4-0.png",
+    "source": "docs/shots/p4/1280-dark-hero.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-5-0.png",
+    "source": "docs/shots/p4/1280-light-hero.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-6-0.png",
+    "source": "docs/shots/p4/1280-dark-reduced.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-hero-7-0.png",
+    "source": "docs/shots/p4/375-dark-no-js.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-0-0.png",
+    "source": "docs/shots/p4/375-dark-day-list.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-0-1.png",
+    "source": "docs/shots/p4/375-dark-day-list.png",
+    "y": 1500
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-1-0.png",
+    "source": "docs/shots/p4/375-light-day-list.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-1-1.png",
+    "source": "docs/shots/p4/375-light-day-list.png",
+    "y": 1500
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-2-0.png",
+    "source": "docs/shots/p4/768-dark-day-list.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-2-1.png",
+    "source": "docs/shots/p4/768-dark-day-list.png",
+    "y": 1500
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-3-0.png",
+    "source": "docs/shots/p4/768-light-day-list.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-3-1.png",
+    "source": "docs/shots/p4/768-light-day-list.png",
+    "y": 1500
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-4-0.png",
+    "source": "docs/shots/p4/1280-dark-day-ship.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-day-5-0.png",
+    "source": "docs/shots/p4/1280-light-day-ship.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-table-0-0.png",
+    "source": "docs/shots/p4/375-dark-table.png",
+    "y": 0
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/p4-table-1-0.png",
+    "source": "docs/shots/p4/375-light-table.png",
+    "y": 0
+  }
+]

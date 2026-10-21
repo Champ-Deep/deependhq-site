@@ -1,0 +1,1955 @@
+{
+  "base": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev",
+  "results": [
+    {
+      "width": 375,
+      "colorScheme": "dark",
+      "logo": {
+        "x": 20,
+        "y": 8,
+        "width": 44,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 335,
+          "scrollWidth": 335,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 335,
+          "scrollWidth": 335,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 335,
+          "scrollWidth": 335,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 404,
+        "scrollHeight": 404
+      },
+      "greeting": null,
+      "dayPickerBoundaries": true
+    },
+    {
+      "width": 375,
+      "colorScheme": "light",
+      "logo": {
+        "x": 20,
+        "y": 8,
+        "width": 44,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 335,
+          "scrollWidth": 335,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 335,
+          "scrollWidth": 335,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 335,
+          "scrollWidth": 335,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 404,
+        "scrollHeight": 404
+      },
+      "greeting": [
+        {
+          "display": "none",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "dayPickerBoundaries": true
+    },
+    {
+      "width": 768,
+      "colorScheme": "dark",
+      "logo": {
+        "x": 32,
+        "y": 8,
+        "width": 108.71875,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 191,
+          "scrollWidth": 191,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 191,
+          "scrollWidth": 191,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 191,
+          "scrollWidth": 191,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 243,
+        "scrollHeight": 243
+      },
+      "greeting": null,
+      "dayPickerBoundaries": true
+    },
+    {
+      "width": 768,
+      "colorScheme": "light",
+      "logo": {
+        "x": 32,
+        "y": 8,
+        "width": 108.71875,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 191,
+          "scrollWidth": 191,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 191,
+          "scrollWidth": 191,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 191,
+          "scrollWidth": 191,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 243,
+        "scrollHeight": 243
+      },
+      "greeting": null,
+      "dayPickerBoundaries": true
+    },
+    {
+      "width": 1280,
+      "colorScheme": "dark",
+      "logo": {
+        "x": 48,
+        "y": 8,
+        "width": 108.71875,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 351,
+          "scrollWidth": 351,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 351,
+          "scrollWidth": 351,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 351,
+          "scrollWidth": 351,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 243,
+        "scrollHeight": 243
+      },
+      "greeting": null,
+      "dayPickerBoundaries": true
+    },
+    {
+      "width": 1280,
+      "colorScheme": "light",
+      "logo": {
+        "x": 48,
+        "y": 8,
+        "width": 108.71875,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 351,
+          "scrollWidth": 351,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 351,
+          "scrollWidth": 351,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 351,
+          "scrollWidth": 351,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 243,
+        "scrollHeight": 243
+      },
+      "greeting": null,
+      "dayPickerBoundaries": true
+    },
+    {
+      "width": 1600,
+      "colorScheme": "dark",
+      "logo": {
+        "x": 48,
+        "y": 8,
+        "width": 108.71875,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 457,
+          "scrollWidth": 457,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 457,
+          "scrollWidth": 457,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 457,
+          "scrollWidth": 457,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 243,
+        "scrollHeight": 243
+      },
+      "greeting": null,
+      "dayPickerBoundaries": true
+    },
+    {
+      "width": 1600,
+      "colorScheme": "light",
+      "logo": {
+        "x": 48,
+        "y": 8,
+        "width": 108.71875,
+        "height": 44
+      },
+      "previous": [
+        {
+          "text": "Day 353Oct 19↗",
+          "width": 457,
+          "scrollWidth": 457,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "width": 457,
+          "scrollWidth": 457,
+          "height": 43,
+          "scrollHeight": 43
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "width": 457,
+          "scrollWidth": 457,
+          "height": 43,
+          "scrollHeight": 43
+        }
+      ],
+      "controls": [
+        {
+          "text": "Check your list →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Research buying signals →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Open the PDF tools →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Explore smart links →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Ask the site →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "01Champions AcceleratorAccelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "02Champions InfometricsData",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "03Champions ClubCommunity",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "04Lake B2BData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "05SPAN Global ServicesData & Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "06AmplizHealthcare Data",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "07IP MomentumIP Services",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "08CirralogixCloud & DevOps",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "09Recruit ChampAI & Recruitment",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "10InfraTechPropTech",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "11Champ.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "12Health.fitHealth & Wellness",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 353Oct 19↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 352Oct 18↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Day 351Oct 17↗",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Discuss this essay with AI",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the full stack52 tools. A tool only earns a date once it shows up in a",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Home",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Mission Log",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Writing",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Pillars",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Stack",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Now",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "RSS",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "github / Champ-Deep",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "linkedin",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "bluesky",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "book 30 minutes",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "deep@championsmail.com",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "the twelve →",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Accelerator",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Lake B2B",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "Champions Club",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "details",
+          "clear": true,
+          "disabled": false
+        },
+        {
+          "text": "/privacy",
+          "clear": true,
+          "disabled": false
+        }
+      ],
+      "footer": {
+        "position": "static",
+        "text": "© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (details) · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on /privacyday 354 of building in public · built 22 Oct 2026 (today)",
+        "height": 243,
+        "scrollHeight": 243
+      },
+      "greeting": null,
+      "dayPickerBoundaries": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "changed": [
+    "docs/shots/editorial-v4/375-dark-writing.png",
+    "docs/shots/editorial-v4/375-light-writing.png",
+    "docs/shots/editorial-v4/375-light-terrain.png",
+    "docs/shots/editorial-v4/768-dark-writing.png",
+    "docs/shots/editorial-v4/768-light.png",
+    "docs/shots/editorial-v4/768-light-writing.png",
+    "docs/shots/editorial-v4/1280-dark-writing.png",
+    "docs/shots/editorial-v4/1280-dark-terrain.png",
+    "docs/shots/editorial-v4/1280-light-writing.png",
+    "docs/shots/editorial-v4/1280-light-terrain.png",
+    "docs/shots/editorial-v4/1600-dark-writing.png",
+    "docs/shots/editorial-v4/1600-light-writing.png"
+  ],
+  "unchanged": 48
+}

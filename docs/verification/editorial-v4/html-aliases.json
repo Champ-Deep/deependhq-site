@@ -1,0 +1,227 @@
+[
+  {
+    "requested": "404.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/404",
+    "matches": "404.html"
+  },
+  {
+    "requested": "account.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/account",
+    "matches": "account.html"
+  },
+  {
+    "requested": "command.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/journey#commits",
+    "matches": "journey.html"
+  },
+  {
+    "requested": "company.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/pillars",
+    "matches": "pillars.html"
+  },
+  {
+    "requested": "company/ampliz/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/ampliz/",
+    "matches": "company/ampliz/index.html"
+  },
+  {
+    "requested": "company/champ-fit/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champ-fit/",
+    "matches": "company/champ-fit/index.html"
+  },
+  {
+    "requested": "company/champions-accelerator/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champions-accelerator/",
+    "matches": "company/champions-accelerator/index.html"
+  },
+  {
+    "requested": "company/champions-club/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champions-club/",
+    "matches": "company/champions-club/index.html"
+  },
+  {
+    "requested": "company/champions-infometrics/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champions-infometrics/",
+    "matches": "company/champions-infometrics/index.html"
+  },
+  {
+    "requested": "company/cirralogix/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/cirralogix/",
+    "matches": "company/cirralogix/index.html"
+  },
+  {
+    "requested": "company/health-fit/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/health-fit/",
+    "matches": "company/health-fit/index.html"
+  },
+  {
+    "requested": "company/infratech/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/infratech/",
+    "matches": "company/infratech/index.html"
+  },
+  {
+    "requested": "company/ip-momentum/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/ip-momentum/",
+    "matches": "company/ip-momentum/index.html"
+  },
+  {
+    "requested": "company/lake-b2b/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/lake-b2b/",
+    "matches": "company/lake-b2b/index.html"
+  },
+  {
+    "requested": "company/recruit-champ/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/recruit-champ/",
+    "matches": "company/recruit-champ/index.html"
+  },
+  {
+    "requested": "company/span-global-services/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/span-global-services/",
+    "matches": "company/span-global-services/index.html"
+  },
+  {
+    "requested": "field-notes.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/journey",
+    "matches": "journey.html"
+  },
+  {
+    "requested": "index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/",
+    "matches": "index.html"
+  },
+  {
+    "requested": "journey.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/journey",
+    "matches": "journey.html"
+  },
+  {
+    "requested": "lead-scorer.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/lead-scorer",
+    "matches": "lead-scorer.html"
+  },
+  {
+    "requested": "now.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/now",
+    "matches": "now.html"
+  },
+  {
+    "requested": "og.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og",
+    "matches": "og.html"
+  },
+  {
+    "requested": "pillars.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/pillars",
+    "matches": "pillars.html"
+  },
+  {
+    "requested": "post.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/writing",
+    "matches": "writing.html"
+  },
+  {
+    "requested": "post/week-27-data-is-not-a-product/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-27-data-is-not-a-product/",
+    "matches": "post/week-27-data-is-not-a-product/index.html"
+  },
+  {
+    "requested": "post/week-28-four-sales-teams/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-28-four-sales-teams/",
+    "matches": "post/week-28-four-sales-teams/index.html"
+  },
+  {
+    "requested": "post/week-29-the-reach-arc/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-29-the-reach-arc/",
+    "matches": "post/week-29-the-reach-arc/index.html"
+  },
+  {
+    "requested": "post/week-30-the-enterprise-arc/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-30-the-enterprise-arc/",
+    "matches": "post/week-30-the-enterprise-arc/index.html"
+  },
+  {
+    "requested": "post/week-31-the-proof-arc/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-31-the-proof-arc/",
+    "matches": "post/week-31-the-proof-arc/index.html"
+  },
+  {
+    "requested": "post/week-32-the-build-reflex/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-32-the-build-reflex/",
+    "matches": "post/week-32-the-build-reflex/index.html"
+  },
+  {
+    "requested": "post/week-33-the-quarter-turns/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-33-the-quarter-turns/",
+    "matches": "post/week-33-the-quarter-turns/index.html"
+  },
+  {
+    "requested": "post/week-34-the-side-door/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-34-the-side-door/",
+    "matches": "post/week-34-the-side-door/index.html"
+  },
+  {
+    "requested": "post/week-35-three-calls-one-friday/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-35-three-calls-one-friday/",
+    "matches": "post/week-35-three-calls-one-friday/index.html"
+  },
+  {
+    "requested": "post/week-36-the-doctor-said-yes/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-36-the-doctor-said-yes/",
+    "matches": "post/week-36-the-doctor-said-yes/index.html"
+  },
+  {
+    "requested": "post/week-37-the-calendar-was-full/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-37-the-calendar-was-full/",
+    "matches": "post/week-37-the-calendar-was-full/index.html"
+  },
+  {
+    "requested": "post/week-38-the-signals-were-everywhere/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-38-the-signals-were-everywhere/",
+    "matches": "post/week-38-the-signals-were-everywhere/index.html"
+  },
+  {
+    "requested": "post/week-43-five-systems-five-days/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-43-five-systems-five-days/",
+    "matches": "post/week-43-five-systems-five-days/index.html"
+  },
+  {
+    "requested": "post/week-44-the-discipline-arc/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-44-the-discipline-arc/",
+    "matches": "post/week-44-the-discipline-arc/index.html"
+  },
+  {
+    "requested": "post/week-45-the-wall-we-named/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-45-the-wall-we-named/",
+    "matches": "post/week-45-the-wall-we-named/index.html"
+  },
+  {
+    "requested": "post/week-46-the-empty-room-arc/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-46-the-empty-room-arc/",
+    "matches": "post/week-46-the-empty-room-arc/index.html"
+  },
+  {
+    "requested": "post/week-47-the-decision-debt-arc/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-47-the-decision-debt-arc/",
+    "matches": "post/week-47-the-decision-debt-arc/index.html"
+  },
+  {
+    "requested": "post/week-48-the-receipts-arc/index.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-48-the-receipts-arc/",
+    "matches": "post/week-48-the-receipts-arc/index.html"
+  },
+  {
+    "requested": "privacy.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/privacy",
+    "matches": "privacy.html"
+  },
+  {
+    "requested": "toolkit.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit",
+    "matches": "toolkit.html"
+  },
+  {
+    "requested": "writing.html",
+    "final": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/writing",
+    "matches": "writing.html"
+  }
+]

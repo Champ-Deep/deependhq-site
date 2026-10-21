@@ -1,0 +1,149 @@
+[
+  {
+    "sheet": "docs/shots/editorial-v4/review/touch-stack.png",
+    "sources": [
+      "docs/shots/editorial-v4/375-dark-stack.png",
+      "docs/shots/editorial-v4/375-light-stack.png",
+      "docs/shots/editorial-v4/768-dark-stack.png",
+      "docs/shots/editorial-v4/768-light-stack.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/desktop-stack.png",
+    "sources": [
+      "docs/shots/editorial-v4/1280-dark-stack.png",
+      "docs/shots/editorial-v4/1280-light-stack.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/wide-stack.png",
+    "sources": [
+      "docs/shots/editorial-v4/1600-dark-stack.png",
+      "docs/shots/editorial-v4/1600-light-stack.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/touch-log.png",
+    "sources": [
+      "docs/shots/editorial-v4/375-dark-log.png",
+      "docs/shots/editorial-v4/375-light-log.png",
+      "docs/shots/editorial-v4/768-dark-log.png",
+      "docs/shots/editorial-v4/768-light-log.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/desktop-log.png",
+    "sources": [
+      "docs/shots/editorial-v4/1280-dark-log.png",
+      "docs/shots/editorial-v4/1280-light-log.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/wide-log.png",
+    "sources": [
+      "docs/shots/editorial-v4/1600-dark-log.png",
+      "docs/shots/editorial-v4/1600-light-log.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/touch-writing.png",
+    "sources": [
+      "docs/shots/editorial-v4/375-dark-writing.png",
+      "docs/shots/editorial-v4/375-light-writing.png",
+      "docs/shots/editorial-v4/768-dark-writing.png",
+      "docs/shots/editorial-v4/768-light-writing.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/desktop-writing.png",
+    "sources": [
+      "docs/shots/editorial-v4/1280-dark-writing.png",
+      "docs/shots/editorial-v4/1280-light-writing.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/wide-writing.png",
+    "sources": [
+      "docs/shots/editorial-v4/1600-dark-writing.png",
+      "docs/shots/editorial-v4/1600-light-writing.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/touch-ecosystem.png",
+    "sources": [
+      "docs/shots/editorial-v4/375-dark-ecosystem.png",
+      "docs/shots/editorial-v4/375-light-ecosystem.png",
+      "docs/shots/editorial-v4/768-dark-ecosystem.png",
+      "docs/shots/editorial-v4/768-light-ecosystem.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/desktop-ecosystem.png",
+    "sources": [
+      "docs/shots/editorial-v4/1280-dark-ecosystem.png",
+      "docs/shots/editorial-v4/1280-light-ecosystem.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/wide-ecosystem.png",
+    "sources": [
+      "docs/shots/editorial-v4/1600-dark-ecosystem.png",
+      "docs/shots/editorial-v4/1600-light-ecosystem.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/touch-human.png",
+    "sources": [
+      "docs/shots/editorial-v4/375-dark-human.png",
+      "docs/shots/editorial-v4/375-light-human.png",
+      "docs/shots/editorial-v4/768-dark-human.png",
+      "docs/shots/editorial-v4/768-light-human.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/desktop-human.png",
+    "sources": [
+      "docs/shots/editorial-v4/1280-dark-human.png",
+      "docs/shots/editorial-v4/1280-light-human.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/wide-human.png",
+    "sources": [
+      "docs/shots/editorial-v4/1600-dark-human.png",
+      "docs/shots/editorial-v4/1600-light-human.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/touch-footer.png",
+    "sources": [
+      "docs/shots/editorial-v4/375-dark-footer.png",
+      "docs/shots/editorial-v4/375-light-footer.png",
+      "docs/shots/editorial-v4/768-dark-footer.png",
+      "docs/shots/editorial-v4/768-light-footer.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/desktop-footer.png",
+    "sources": [
+      "docs/shots/editorial-v4/1280-dark-footer.png",
+      "docs/shots/editorial-v4/1280-light-footer.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/wide-footer.png",
+    "sources": [
+      "docs/shots/editorial-v4/1600-dark-footer.png",
+      "docs/shots/editorial-v4/1600-light-footer.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v4/review/terrain.png",
+    "sources": [
+      "docs/shots/editorial-v4/375-dark-terrain.png",
+      "docs/shots/editorial-v4/375-light-terrain.png",
+      "docs/shots/editorial-v4/1280-dark-terrain.png",
+      "docs/shots/editorial-v4/1280-light-terrain.png"
+    ]
+  }
+]

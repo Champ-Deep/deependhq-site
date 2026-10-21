@@ -1,0 +1,18 @@
+Now using node v24.21.0 (npm v11.19.0)
+- Checking registry.
+✔ Checking registry.
+- Installing dependencies.
+- Installing dependencies.
+
+
+Something went wrong. Please check the error below for more details.
+If the problem persists, please open an issue on GitHub.
+
+Command failed with exit code 1: npm install -- lucide-react
+
+npm error code EALLOWSCRIPTS
+npm error --allow-scripts is not allowed in project-scoped installs. Add the entries to the "allowScripts" field in package.json, or to .npmrc, instead.
+npm error A complete log of this run can be found in: /Users/deep/.npm/_logs/2026-10-21T20_19_12_155Z-debug-0.log
+
+You can also try a previous version to see if that works:
+npx shadcn@4.20.0 add @21st/jatin-yadav05/spotify-card --yes --overwrite

@@ -1,0 +1,67 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "3 project-aware inspiration result(s) for \"AI-first marketer editorial field guide, solid terminal green and gold, native disclosures instead of glass folders\". Component code was not retrieved.\n\n1. [component] Glassmorphism Folder Cards (54%)\n   Matches and, glass, folders\n   https://21st.dev/@kedhareswer/components/glass-folder-cards\n\n2. [component] AI Feature Showcase Section (51%)\n   Matches and\n   https://21st.dev/@shadcnspace/components/feature-24\n\n3. [component] Gradient Blinds CTA Banner (51%)\n   Matches editorial, and\n   https://21st.dev/@dev.brijosh/components/final-cta-banner"
+    }
+  ],
+  "structuredContent": {
+    "query": "AI-first marketer editorial field guide, solid terminal green and gold, native disclosures instead of glass folders",
+    "contextApplied": false,
+    "feedbackId": "7edd5aad-56aa-44d3-8e44-4e35ed05514c",
+    "results": [
+      {
+        "type": "component",
+        "id": 37625,
+        "name": "Glassmorphism Folder Cards",
+        "description": "Glassmorphism folder cards: frosted-glass folders that assemble on scroll, lean toward the pointer, open to fan out their files as clickable items, and take new files with a drop-in animation. Keyboard and menu support built in. React only, no images or fonts to ship.",
+        "previewUrl": "https://cdn.21st.dev/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/glass-folder-cards/default/preview.1791804149484.webp",
+        "videoUrl": "https://cdn.21st.dev/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/glass-folder-cards/default/video.1791804092547.mp4",
+        "author": "kedhareswer",
+        "authorImage": "https://vucvdpamtrjkzmubwlts.supabase.co/storage/v1/object/public/users/user_30fkm37UoBFJx1GiK2Q4Sy8lSrO/avatar.jpeg",
+        "installCommand": "npx shadcn@latest add \"https://21st.dev/r/kedhareswer/glass-folder-cards?api_key=$API_KEY_21ST\"",
+        "url": "https://21st.dev/@kedhareswer/components/glass-folder-cards",
+        "source": "catalog",
+        "confidence": 0.54,
+        "rationale": [
+          "Matches and, glass, folders"
+        ]
+      },
+      {
+        "type": "component",
+        "id": 29577,
+        "name": "AI Feature Showcase Section",
+        "description": "A two-row feature section that pairs images with animated marquee tag pills and an AI chat mockup to highlight product capabilities for different teams.",
+        "previewUrl": "https://cdn.21st.dev/shadcnspace/feature-24/default/preview.1790090951888-63b11293-3d62-43a4-928a-fc887095eb2e.png",
+        "videoUrl": "https://cdn.21st.dev/shadcnspace/feature-24/default/video.1790090951888-63b11293-3d62-43a4-928a-fc887095eb2e.mp4",
+        "author": "shadcnspace",
+        "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zOHFBT3VLQWpSb3c5SjlUdGttSGhYZnBiZ28ifQ",
+        "installCommand": "npx shadcn@latest add \"https://21st.dev/r/shadcnspace/feature-24?api_key=$API_KEY_21ST\"",
+        "url": "https://21st.dev/@shadcnspace/components/feature-24",
+        "source": "catalog",
+        "confidence": 0.51,
+        "rationale": [
+          "Matches and"
+        ]
+      },
+      {
+        "type": "component",
+        "id": 40234,
+        "name": "Gradient Blinds CTA Banner",
+        "description": "Editorial final-call banner with WebGL gradient blinds; type and spacing scale with the card size",
+        "previewUrl": "https://cdn.21st.dev/user_37iQcHYatXUIHX5kmoXLqqjewck/final-cta-banner/default/preview.1792579525229.webp",
+        "videoUrl": "https://cdn.21st.dev/user_37iQcHYatXUIHX5kmoXLqqjewck/final-cta-banner/default/video.1792579518828.mp4",
+        "author": "dev.brijosh",
+        "authorImage": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zN2lRY0xKcndXMWJrWno4VnNzUXBCcnk2c1kifQ",
+        "installCommand": "npx shadcn@latest add \"https://21st.dev/r/dev.brijosh/final-cta-banner?api_key=$API_KEY_21ST\"",
+        "url": "https://21st.dev/@dev.brijosh/components/final-cta-banner",
+        "source": "catalog",
+        "confidence": 0.51,
+        "rationale": [
+          "Matches editorial, and"
+        ]
+      }
+    ],
+    "feedbackAvailable": true
+  }
+}

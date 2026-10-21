@@ -1,0 +1,70 @@
+
+ ⛅️ wrangler 4.125.0 (update available 4.151.3)
+───────────────────────────────────────────────
+🌀 Building list of assets...
+✨ Read 197 files from the assets directory /Users/deep/repos/deependhq-editorial-preview/.release/public
+🌀 Starting asset upload...
+🌀 Found 48 new or modified static assets to upload. Proceeding with upload...
++ /404.html
++ /llms.txt
++ /company/ampliz/index.html
++ /company/ip-momentum/index.html
++ /company/recruit-champ/index.html
++ /company/infratech/index.html
++ /company/lake-b2b/index.html
++ /field-notes.html
++ /now.html
++ /pillars.html
++ /post/week-43-five-systems-five-days/index.html
++ /post/week-31-the-proof-arc/index.html
++ /post/week-47-the-decision-debt-arc/index.html
++ /post/week-48-the-receipts-arc/index.html
++ /post.html
++ /toolkit.html
++ /agents.txt
++ /feed.xml
++ /company/champ-fit/index.html
++ /company/span-global-services/index.html
++ /company.html
++ /company/cirralogix/index.html
++ /lead-scorer.html
++ /writing.html
++ /post/week-44-the-discipline-arc/index.html
++ /post/week-27-data-is-not-a-product/index.html
++ /post/week-30-the-enterprise-arc/index.html
++ /post/week-45-the-wall-we-named/index.html
++ /post/week-37-the-calendar-was-full/index.html
++ /post/week-34-the-side-door/index.html
++ /post/week-46-the-empty-room-arc/index.html
++ /index.html
++ /og.html
++ /account.html
++ /company/health-fit/index.html
++ /company/champions-infometrics/index.html
++ /company/champions-club/index.html
++ /privacy.html
++ /company/champions-accelerator/index.html
++ /journey.html
++ /post/week-28-four-sales-teams/index.html
++ /post/week-29-the-reach-arc/index.html
++ /post/week-33-the-quarter-turns/index.html
++ /post/week-38-the-signals-were-everywhere/index.html
++ /post/week-35-three-calls-one-friday/index.html
++ /post/week-32-the-build-reflex/index.html
++ /post/week-36-the-doctor-said-yes/index.html
++ /data.js
+Uploaded 16 of 48 assets
+Uploaded 32 of 48 assets
+Uploaded 48 of 48 assets
+✨ Success! Uploaded 48 files (112 already uploaded) (2.74 sec)
+
+Total Upload: 450.70 KiB / gzip: 96.21 KiB
+Worker Startup Time: 4 ms
+Your Worker has access to the following bindings:
+Binding            Resource
+env.ASSETS         Assets
+
+Uploaded deependhq-editorial-v4-preview (13.16 sec)
+Deployed deependhq-editorial-v4-preview triggers (3.28 sec)
+  https://deependhq-editorial-v4-preview.deep-ae0.workers.dev
+Current Version ID: 7df1b822-913c-4204-a429-b4a5217dfc80
