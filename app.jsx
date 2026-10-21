@@ -15,18 +15,18 @@ const App = () => {
       <main id="main" className="wx-main">
         <H.Hero />
 
-        <H.Log />
-        <H.Day />
-        <H.Boundary />
         <H.Stack />
         <H.Boundary />
-        <H.Pillars />
+        <H.Log />
         <H.Writing />
+        <H.Pillars />
+        <H.Day />
+        <H.Machine />
         <H.Human />
         <H.Doors />
       </main>
       <H.Signoff />
-      {window.SignOff && <window.SignOff />}
+
       <Footer compact />
       {window.CommandPalette && React.createElement(window.CommandPalette)}
     </div>

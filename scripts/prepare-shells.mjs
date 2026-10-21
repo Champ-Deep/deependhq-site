@@ -9,7 +9,7 @@ for (const name of readdirSync('.').filter(name => name.endsWith('.html'))) {
   let html = readFileSync(name, 'utf8');
   if (/id="root"/.test(html) && !/href="\/islands.css"/.test(html)) html = html.replace('</head>', '<link rel="stylesheet" href="/islands.css">\n</head>');
   html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, script => /dh_scheme|dh_theme/.test(script) ? '' : script);
-  html = html.replace(/<meta name="theme-color"[^>]*>/, `<meta name="theme-color" content="#141413">\n<script>${controller}</script>`);
+  html = html.replace(/<meta name="theme-color"[^>]*>/, `<meta name="theme-color" content="#09140D">\n<script>${controller}</script>`);
   html = html.replace(/\s*<script[^>]+src="(?:home-p[34]-island|p[34]-islands)\.js"[^>]*><\/script>/g, '');
   if (/id="root"/.test(html) && !/src="\/?home-islands.js"/.test(html)) html = html.replace('</body>', '<script src="/home-islands.js" defer></script>\n</body>');
   assert(!/dh_theme|data-theme/.test(html), `${name}: old theme remains`);

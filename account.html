@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Account · deependhq</title>
-<meta name="theme-color" content="#141413">
+<meta name="theme-color" content="#09140D">
 <script>// Single pre-paint scheme controller, inlined into every page by the build.
 (function (d) {
   var mode = 'system';
@@ -18,7 +18,7 @@
     var scheme = mode === 'system' ? (media && media.matches ? 'light' : 'dark') : mode;
     d.documentElement.dataset.scheme = scheme;
     var meta = d.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = scheme === 'light' ? '#F7EDCE' : '#141413';
+    if (meta) meta.content = scheme === 'light' ? '#F7EDCE' : '#09140D';
     window.DH_SCHEME = { mode: mode, scheme: scheme };
     label();
     window.dispatchEvent(new CustomEvent('dh:scheme', { detail: window.DH_SCHEME }));
@@ -38,6 +38,10 @@
   }).observe(d.documentElement, { childList: true, subtree: true });
 })(document);
 </script>
+
+
+
+
 
 
 

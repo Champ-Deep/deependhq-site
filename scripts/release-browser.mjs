@@ -22,9 +22,8 @@ async function load(page,path='/') {
   await page.evaluate(()=>document.fonts.ready);
   await page.addStyleTag({content:'html{scroll-behavior:auto!important}'});
   if(path==='/') {
-    await page.locator('.wg-island[data-ready="true"]').waitFor();
     await page.locator('canvas.trn-canvas[data-loaded="true"]').waitFor();
-    assert.equal(await page.locator('[data-island][data-mounted="1"]').count(),4,'all four canonical islands');
+    assert.equal(await page.locator('[data-island][data-mounted="1"]').count(),1,'Only terrain is interactive after the v4 simplification');
   }
   return response;
 }
@@ -56,35 +55,33 @@ try {
       if(width!==768||path==='/')await page.screenshot({path:`${shots}/${width}-${scheme}-${path==='/'?'home':path.split('/').at(-1)}.png`});
       if(path==='/') {
         assert.equal(await page.locator('.wx-stage').count(),7);
-        assert.equal(await page.locator('#trn-day option').count(),170);
-        assert.equal(await page.locator('.ev3-proof[data-day="354"]').count(),1);
+        assert.equal(await page.locator('#trn-day').getAttribute('type'),'date');
+        assert.equal(await page.locator('.v4-latest[data-day="354"]').count(),1);
         assert.equal(await page.locator('#top [data-island="terrain"]').count(),0);
-        assert.equal(await page.locator('#log [data-island="terrain"]').count(),1);
+        assert.equal(await page.locator('#machine [data-island="terrain"]').count(),1);
         assert.equal(await page.locator('#proof').count(),0,'metrics appear only in the log');
         assert(await page.locator('.trn-canvas').evaluate(c=>c.getContext('2d').getImageData(0,0,c.width,c.height).data.some((v,i)=>i%4===3&&v>0)),'terrain actually paints pixels');
         if(width===375||width===1280) {
           for(const section of ['#top','#log','#stack','#ecosystem','#writing','#human','footer']) {
             if(section==='#ecosystem') {
-              for(const folder of await page.locator('.gfc-root').all()) {await folder.scrollIntoViewIfNeeded();await page.waitForTimeout(150);}
-              await page.waitForTimeout(1500);
-              assert.equal(await page.locator('.gfc-root[data-entered]').count(),12);
+              assert.equal(await page.locator('.v4-company').count(),12);
             }
             await page.locator(section).scrollIntoViewIfNeeded();await page.waitForTimeout(500);
             await page.locator(section).screenshot({path:`${shots}/${width}-${scheme}-section-${section.replace('#','')}.png`});
           }
         }
-        await page.locator('#trn-day').selectOption('0');
+        await page.locator('#trn-day').fill('2026-05-04');
         assert.equal(await page.locator('.trn-open').getAttribute('href'),'journey.html#day-184');
         await page.locator('.trn-data summary').click();
         assert.equal(await page.locator('.trn-data tbody tr').count(),170);
         await audit(page,`${width}-${scheme}-table-open`);
         await page.locator('.trn-data summary').click();
-        await page.locator('.gfc-hit').first().click();
-        await page.waitForFunction(()=>document.querySelector('.gfc-hit').getAttribute('aria-expanded')==='true');
+        await page.locator('.v4-company summary').first().click();
+        await page.waitForFunction(()=>document.querySelector('.v4-company').open);
         await page.waitForTimeout(450);
         await audit(page,`${width}-${scheme}-folder-open`);
         if(width===375||width===1280)await page.locator('#ecosystem').screenshot({path:`${shots}/${width}-${scheme}-folder-open.png`});
-        await page.locator('.gfc-hit').first().click();
+        await page.locator('.v4-company summary').first().click();
         if(width===1280) {
           const clocks=[];
           for(let i=1;i<=7;i++) {
@@ -114,19 +111,11 @@ try {
   await page.locator('[data-dh-scheme]').click();assert.equal(await page.evaluate(()=>localStorage.getItem('dh_scheme')),null);
   await page.emulateMedia({colorScheme:'light'});await page.locator('html[data-scheme="light"]').waitFor();
   result.assertions.push('System, persisted override, reload, reset and changed system preference');
-  await load(page);const before=await order(page);
-  const first=page.locator(`[data-widget-id="${before[0]}"]`),second=page.locator(`[data-widget-id="${before[1]}"]`);
-  await first.evaluate(el=>el.scrollIntoView({block:'center'}));const a=await first.boundingBox(),b=await second.boundingBox();
-  await page.mouse.move(a.x+a.width/2,a.y+20);await page.mouse.down();await page.mouse.move(b.x+b.width/2,b.y+20,{steps:20});await page.locator('.wg-held').waitFor();
-  await page.screenshot({path:`${shots}/pointer-mid-drag.png`});await page.mouse.up();
-  await until(page,()=>!!localStorage.getItem('dh_log_order_v1'));await page.waitForTimeout(400);
-  const dragged=await order(page);assert.notDeepEqual(dragged,before);await audit(page,'pointer-reordered');
-  await page.reload();await page.locator('.wg-island[data-ready]').waitFor();assert.deepEqual(await order(page),dragged);
-  await page.locator('.wg-reset').click();await page.waitForTimeout(400);assert.deepEqual(await order(page),before);
-  await page.locator(`[data-widget-id="${before[0]}"]`).focus();await page.keyboard.press('Alt+ArrowRight');
-  await until(page,()=>!!localStorage.getItem('dh_log_order_v1'));await page.waitForTimeout(400);assert.notDeepEqual(await order(page),before);
-  await audit(page,'keyboard-reordered');await page.locator('.wg-reset').click();
-  result.assertions.push('Pointer and keyboard reorder, persisted order and reset');
+  await load(page);
+  assert.equal(await page.locator('[data-widget-id]').count(),0,'Rejected draggable bento removed');
+  await page.locator('.v4-company summary').first().focus();await page.keyboard.press('Enter');
+  assert(await page.locator('.v4-company').first().evaluate(e=>e.open));
+  result.assertions.push('Native company disclosure opens with Enter without a JS island');
   await load(page);await page.locator('.trn-canvas').focus();await page.keyboard.press('ArrowUp');
   await page.keyboard.press('Enter');await page.waitForURL(url=>/\/journey(?:\.html)?$/.test(url.pathname)&&/^#day-\d+$/.test(url.hash));
   await page.locator(new URL(page.url()).hash).waitFor();result.assertions.push('Terrain keyboard reaches real expanded journey anchor');
@@ -134,16 +123,17 @@ try {
   const blockedCtx=await browser.newContext({viewport:{width:1280,height:900}});
   await blockedCtx.addInitScript(()=>{for(const key of ['getItem','setItem','removeItem'])Storage.prototype[key]=()=>{throw new DOMException('Storage blocked','SecurityError')};});
   const blocked=await blockedCtx.newPage();observe(blocked);await load(blocked);
-  await blocked.locator('[data-widget-id]').first().focus();await blocked.keyboard.press('Alt+ArrowRight');
-  await blocked.getByRole('status').filter({hasText:'Browser storage is unavailable'}).waitFor();await audit(blocked,'storage-unavailable');await blockedCtx.close();
-  result.assertions.push('Blocked storage leaves the grid usable with an honest status');
+  await blocked.locator('.v4-company summary').first().click();
+  assert(await blocked.locator('.v4-company').first().evaluate(e=>e.open));
+  await audit(blocked,'storage-unavailable');await blockedCtx.close();
+  result.assertions.push('Blocked storage leaves native directory usable');
   for(const js of [false,true]) {
     const ctx=await browser.newContext({viewport:{width:375,height:900},javaScriptEnabled:js,reducedMotion:'reduce'});
     const page=await ctx.newPage();observe(page);await page.goto(base,{waitUntil:'networkidle'});
     assert((await page.locator('h1').textContent()).includes('Deep.Sreedeep Surapaneni'));
     assert.equal(await page.locator('.wx-stage').count(),7);
-    if(js){await page.locator('.wg-island[data-ready]').waitFor();assert.equal(await page.locator('.trn-canvas').getAttribute('data-view'),'flat');await audit(page,'reduced-motion');}
-    else {assert.equal(await page.locator('.trn-fb').count(),1);assert.equal(await page.locator('.wg-fallback').count(),1);assert((await page.locator('footer').textContent()).includes('Site'));}
+    if(js){await page.locator('.trn-canvas[data-loaded]').waitFor();assert.equal(await page.locator('.trn-canvas').getAttribute('data-view'),'flat');await audit(page,'reduced-motion');}
+    else {assert.equal(await page.locator('.trn-fb').count(),1);assert.equal(await page.locator('.v4-company').count(),12);assert((await page.locator('footer').textContent()).includes('Site'));}
     await page.screenshot({path:`${shots}/375-${js?'reduced-motion':'no-js'}.png`});await ctx.close();
   }
   result.assertions.push('JS-off primary content, static island fallbacks and reduced-motion flat terrain');

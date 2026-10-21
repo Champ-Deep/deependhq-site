@@ -57,13 +57,13 @@ const Hero = () => {
               <span className="ev3-arrow" aria-hidden="true">{[3, 2, 1, 0].map(parent => <span className="ev3-arrow-icon" key={parent} style={{ '--i': parent }}>{[2, 1, 0, 1, 2].map((value, i) => <i key={i} style={{ '--dot': value }} />)}</span>)}</span>
               <small data-dh-frozen="">30 minutes</small></a><a className="ev3-tools" href="#stack">Explore the tools <span aria-hidden="true">→</span></a></div>
           </div>
-          <article className="ev3-proof" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day} data-dh-frozen="">
-            <p className="ev3-proof-k">From the workbench</p>
-            <p className="ev3-proof-day">Day {e.day}<span><time dateTime={e.date}>{fmtDate(e.date, true)}</time> · <WxAge date={e.date} mode="log" /></span></p>
-            <p className="ev3-proof-kind">{KIND[e.arc_color] || 'logged'} / public log</p>
-            <p className="ev3-proof-text">{e.shipping_now}</p>
-            <a className="ev3-proof-link" href={`journey.html#day-${e.day}`}>Read the entry <span aria-hidden="true">↗</span></a>
-          </article>
+          <nav className="v4-index" aria-label="Inside this field guide">
+            <p className="wx-eyebrow-op">AI in the operating system.<br />Judgment still human.</p>
+            <a href="#stack"><span>01</span> Put a tool to work <b>↗</b></a>
+            <a href="#log"><span>02</span> Read the latest dispatch <b>↗</b></a>
+            <a href="#day"><span>03</span> Look under the hood <b>↗</b></a>
+            <p>Built with agents. Tested in the work.</p>
+          </nav>
         </div>
       </div>
     </section>
@@ -234,7 +234,7 @@ const Heat = () => {
   );
 };
 
-const Log = () => {
+const Machine = () => {
   const st = DH.stats || {};
   const e = DH.journey[0];
   const arcs = (st.arcs_30d || []).slice(0, 6);
@@ -244,10 +244,10 @@ const Log = () => {
     ['log entries', st.entries], ['companies, 1 operator', st.companies],
   ];
   return (
-    <section className="wx-log wx-metric-log wx-sec mode-operator" id="log" aria-labelledby="wx-log-h">
+    <section className="wx-log wx-metric-log wx-sec mode-operator" id="machine" aria-labelledby="wx-machine-h">
       <header className="wx-sec-head wx-split">
-        <p className="wx-eyebrow-op">the public log</p>
-        <h2 className="wx-op-h wx-ink" id="wx-log-h">Every weekday, one entry. No skipping.</h2>
+        <p className="wx-eyebrow-op">under the hood</p>
+        <h2 className="wx-op-h wx-ink" id="wx-machine-h">The machine logs.</h2>
         <p className="wx-lead">{st.entries} entries since {fmtDate(st.first_entry)}. {st.entries_30d} in the last 30 days. The gaps are real and they stay visible.</p>
         <a className="wx-tlink" href="journey.html">the whole log →</a>
       </header>
@@ -265,31 +265,24 @@ const Log = () => {
         </aside>
       </div>
 
-      <div className="wg-recent">
-          <div className="wg-heading">
-            <h3 className="wx-ink">The last ten entries.</h3>
-            <p>Real days, not a highlight reel.</p>
-          </div>
-          <ol className="wg-mobile-list" aria-label="Recent log dates">
-            {rail.slice(0, 6).map((d) => <li key={d.day}><a href={`journey.html#day-${d.day}`}>day {d.day}<time dateTime={d.date}>{fmtDate(d.date)}</time><span>{KIND[d.arc_color] || 'logged'}</span></a></li>)}
-          </ol>
-          <div data-island="widget-grid" data-props={JSON.stringify({ entries: rail })}>
-          <ol className="wg-fallback" aria-label="The last ten entries">
-            {rail.map((d) => (
-              <li key={d.day} className="wg-card" data-kind={d.arc_color}>
-                <p className="wg-top"><b>day {d.day}</b><span>{KIND[d.arc_color] || 'logged'}</span></p>
-                <p className="wg-date">{d.dateLabel}<br /><WxAge date={d.date} mode="plain" /></p>
-                <p className="wg-excerpt">{d.shipping_now}</p>
-                <ul className="wg-arcs">{(d.arcs || []).slice(0, 2).map((a) => <li key={a}>{a}</li>)}</ul>
-                <a className="wg-entry-link" href={`journey.html#day-${d.day}`}>day {d.day} in full →</a>
-              </li>
-            ))}
-          </ol>
-          </div>
-          <a className="wg-whole" href="journey.html">all {st.entries} entries in the whole log →</a>
-      </div>
     </section>
   );
+};
+
+const Log = () => {
+  const e = DH.journey[0];
+  return <section className="wx-sec mode-editorial v4-dispatch" id="log" aria-labelledby="wx-log-h">
+    <header className="wx-sec-head wx-split">
+      <p className="wx-eyebrow-ed">the public log / latest dispatch</p>
+      <h2 className="wx-ed-h" id="wx-log-h">The work, not the highlight reel.</h2>
+      <a className="wx-tlink" href="journey.html">The whole log →</a>
+    </header>
+    <article className="v4-latest wx-live" data-newest={e.date} data-day={e.day} data-dh-frozen="">
+      <div className="v4-day"><span>DAY</span><b>{e.day}</b><time dateTime={e.date}>{fmtDate(e.date, true)}</time><WxAge date={e.date} mode="log" /></div>
+      <div className="v4-dispatch-copy"><p className="wx-eyebrow-op">{KIND[e.arc_color] || 'logged'}</p><h3>{e.shipping_now}</h3><a className="wx-tlink" href={`journey.html#day-${e.day}`}>Read day {e.day} in full →</a></div>
+    </article>
+    <nav className="v4-previous" aria-label="Three previous dispatches"><span>Previously</span>{DH.journey.slice(1, 4).map(d => <a key={d.day} href={`journey.html#day-${d.day}`}><b>Day {d.day}</b><time dateTime={d.date}>{fmtDate(d.date)}</time><span>↗</span></a>)}</nav>
+  </section>;
 };
 
 // ---------------------------------------------------------------- 19:00 stack
@@ -336,16 +329,22 @@ const Stack = () => {
     <section className="wx-stack wx-sec mode-operator" id="stack" aria-labelledby="wx-stack-h">
       <header className="wx-sec-head wx-split">
         <h2 className="wx-op-h wx-ink" id="wx-stack-h">Things to try.</h2>
-        <p className="wx-lead">Three of mine you can put your hands on right now. Take one for a spin and tell me where it broke.</p>
+        <p className="wx-lead">Tools for the work in front of you. Start with a job, leave with something useful.</p>
         <a className="wx-tlink" href="toolkit.html">open the toolkit →</a>
       </header>
-      <ul className="otc-try" aria-label="Things to try">
-        {T.map((t) => {
+      <ul className="otc-try v4-tools" aria-label="Things to try">
+        {[
+          { name: 'Lead Scorer', result: 'Which leads deserve a closer look?', href: '/lead-scorer', cta: 'Check your list', label: 'Sign-in + credits' },
+          { name: 'Harbinger', result: 'Which accounts have a reason to buy now?', href: (DH.toolkit || []).find(t => t.title === 'ChampHarbinger')?.site, cta: 'Research buying signals', label: 'Separate product' },
+          { name: 'ChamPDF', result: 'Get a PDF job off your desk.', href: 'https://champdf.com', cta: 'Open the PDF tools', label: 'Free browser tools' },
+          { name: 'ChampBeam', result: 'Share a link. See what happens.', href: (DH.toolkit || []).find(t => t.title === 'ChampBeam')?.site, cta: 'Explore smart links', label: 'Separate product' },
+          { name: 'Ask Deep', result: 'Ask a question about the work on this site.', href: 'https://assistant.deependhq.com', cta: 'Ask the site', label: 'Site-grounded assistant', open_launcher: true },
+        ].filter(t => t.href).map((t, i) => {
           const ext = /^https?:/.test(t.href || '');
           return (
             <li key={t.name} className="otc-try-card">
-              <p className="otc-try-name">{t.name}{t.label && <span className="otc-try-tag">{t.label}</span>}</p>
-              <p className="otc-try-result">{t.result}</p>
+              <span className="v4-tool-no" aria-hidden="true">0{i + 1}</span>
+              <div><h3 className="otc-try-name">{t.name}</h3><p className="otc-try-result">{t.result}</p><small>{t.label}</small></div>
               <a className="otc-try-go" href={t.href} {...(ext ? EXT : {})} {...(t.open_launcher ? { 'data-otc-ask': '' } : {})}>{t.cta} →</a>
             </li>
           );
@@ -355,7 +354,7 @@ const Stack = () => {
           that file. Every one of these anchors keeps a real href, so with JS off
           the card still goes somewhere honest instead of doing nothing. */}
       <script dangerouslySetInnerHTML={{ __html: `(function(){document.addEventListener('click',function(e){var a=e.target.closest('[data-otc-ask],[data-otc-play]');if(!a)return;if(a.hasAttribute('data-otc-ask')){if(!window.deepAssistant)return;e.preventDefault();window.deepAssistant.open();return;}e.preventDefault();var li=a.parentNode,f=document.createElement('iframe');f.className='otc-sp-frame';f.title='Spotify playlist embed';f.loading='lazy';f.src='https://open.spotify.com/embed/playlist/'+a.getAttribute('data-otc-play')+'?theme=0';f.setAttribute('allow','encrypted-media');li.classList.add('is-playing');li.replaceChild(f,a);});})();` }} />
-      <ToolkitChooser />
+
       <details className="otc-fs">
         <summary><b>the full stack</b><span>{S.items.length} tools. A tool only earns a date once it shows up in a day's entry.</span></summary>
         <div className="wx-stack-grid">
@@ -466,34 +465,15 @@ const Pillars = () => {
     <section className="wx-pillars wx-sec mode-editorial" id="ecosystem" aria-labelledby="wx-eco-h">
       <header className="wx-sec-head wx-split">
         <h2 className="wx-ed-h wx-ink" id="wx-eco-h">Group CMO across twelve companies</h2>
-        <p className="wx-lead">Four doors into Champions Group. Each one shows the last day it made the public log.</p>
+        <p className="wx-lead">One operator, twelve businesses. Open a company for its products and the work behind them.</p>
         <a className="wx-tlink" href="pillars.html">all four pillars →</a>
       </header>
-      {/* the island swaps this whole row for twelve glass folders; the markup
-          inside is the reading, so JS off keeps the four doors */}
-      <div data-island="folder-cards" data-props={JSON.stringify({ companies: folderProps() })}>
-        <div className="wx-pl-row">
-          {(DH.pillars || []).map((p) => {
-            // No two doors end on the same line: skip a recent entry another door already used.
-            const rec = (p.recent || []).find((r) => !used.has(r.day)) || (p.recent || [])[0];
-            if (rec) used.add(rec.day);
-            const cos = (p.companies || []).length > 1 ? p.companies : (p.products || []).slice(0, 5).map((x) => x.name);
-            return (
-              <a key={p.slug} className="wx-pl" data-acc={p.accent} href={`pillars.html#${p.slug}`}>
-                <h3 className="wx-pl-name">{p.name}</h3>
-                <p className="wx-pl-blurb">{p.blurb}</p>
-                <ul className="wx-pl-cos">{cos.map((c) => <li key={c}>{c}</li>)}</ul>
-                <div className="wx-pl-foot">
-                  {p.last_ship
-                    ? <p className="wx-pl-last"><span>last in the log</span><span><b>day {p.last_ship_day}</b> · <WxAge date={p.last_ship} mode={21} /></span></p>
-                    : <p className="wx-pl-last"><span>{(p.counts || {}).products || 0} products</span></p>}
-                  {rec && <div className="wx-pl-more"><p><span>day {rec.day}: {rec.ship}</span></p></div>}
-                  <span className="wx-pl-go">{GO[p.slug] || 'open'} →</span>
-                </div>
-              </a>
-            );
-          })}
-        </div>
+      {/* 21st.dev/a11ypros Accessible Accordion: native reading survives JS off. */}
+      <div className="v4-directory">
+        {folderProps().map((c, i) => <details className="v4-company accordion-item" id={`company-${c.slug}`} key={c.slug}>
+          <summary className="accordion-item__summary"><span className="v4-company-no">{String(i + 1).padStart(2, '0')}</span><span><b>{c.name}</b><small>{c.tag || 'Champions Group'}</small></span><svg className="accordion-item__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7.5L10 12.5L15 7.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg></summary>
+          <div className="accordion-item__content"><a aria-label={`Explore ${c.name}`} href={`company/${c.slug}`}>Explore {c.name} ↗</a>{c.products.map(p => <a key={p.name} aria-label={`${p.name}, ${c.name}`} href={p.href}>{p.name} ↗</a>)}{c.entries.slice(0, 1).map(d => <a key={d.day} aria-label={`Read day ${d.day}, ${c.name}`} href={`journey.html#day-${d.day}`}>Last in the log: day {d.day} · <WxAge date={d.date} mode="plain" /></a>)}</div>
+        </details>)}
       </div>
     </section>
   );
@@ -538,11 +518,12 @@ const Writing = () => {
   return (
     <section className="wx-writing wx-metric-writing wx-sec mode-editorial" id="writing" aria-labelledby="wx-w-h">
       <header className="wx-sec-head wx-split">
-        <h2 className="wx-ed-h wx-ink" id="wx-w-h">The weekly narratives.</h2>
-        <p className="wx-lead">One essay a week, written from the log, not from a content calendar. {posts.length} so far, each one with the week behind it and a listen button.</p>
+        <h2 className="wx-ed-h wx-ink" id="wx-w-h">A week, distilled.</h2>
+        <p className="wx-lead">The decisions underneath the daily log. {posts.length} weekly essays, with the source days attached.</p>
         <a className="wx-tlink" href="writing.html">all essays →</a>
       </header>
-      <div className="wx-w-grid">
+      <div className="wx-w-grid v4-edition">
+        <div className="v4-edition-stamp"><span>THE WEEKLY</span><b>{lead.week}</b><span>{range}</span><span>{lead.read} read</span></div>
         <div className="wx-w-feat">
           <p className="wx-w-meta"><span className="wx-latest">latest</span>{lead.week && <span>week {lead.week}</span>}{range && <span>{range}</span>}<span>{lead.read} read</span>{lead.arc && <span>{lead.arc}</span>}</p>
           <h3 className="wx-w-title wx-ink"><a href={`post/${lead.slug}`}>{lead.title}</a></h3>
@@ -556,7 +537,7 @@ const Writing = () => {
               <span className="wx-wplay-bar" aria-hidden="true"><i /></span>
             </span>
           </div>
-          <div className="wx-wask"><span className="wx-wask-k">ask AI about it</span>{askLinks(lead.slug).map(([n, h]) => <a key={n} href={h} target="_blank" rel="noopener noreferrer">{n} ↗</a>)}</div>
+          <details className="v4-ai"><summary>Discuss this essay with AI</summary><div className="wx-wask">{askLinks(lead.slug).map(([n, h]) => <a key={n} aria-label={`Discuss this essay with ${n}`} href={h} target="_blank" rel="noopener noreferrer">{n} ↗</a>)}</div></details>
           <a className="wx-tlink" href={`post/${lead.slug}`}>read week {lead.week} →</a>
         </div>
         <aside className="wx-w-week" aria-label={`The week behind week ${lead.week}`}>
@@ -568,19 +549,14 @@ const Writing = () => {
                 : <span className="wx-wk is-empty"><span>{d.dow}</span><b>&nbsp;</b><em>no entry</em></span>}</li>
             ))}
           </ol>
-          <div className="wx-w-spend wx-metric-arcs">
-            <p>where the essay spends its words</p>
-            <ul>{arcWords.map((n) => <li key={n.name}><span>{n.name}</span><b>{n.words} words</b><span className="wx-metric-track" aria-hidden="true"><i style={{ width: `${100 * n.words / Math.max(1, v.words)}%` }} /></span></li>)}</ul>
-            <p>Share of {v.words} essay words in paragraphs linked to each arc. Arcs overlap, so shares do not add to 100%.</p>
-            <p className="wx-w-stats"><span><b>{v.words}</b> words</span><span><b>{(v.para_days || []).filter((d) => d.length).length}</b> paragraphs tied to a day</span><span><b>{A ? wClock(A.duration) : `${v.listen_min} min`}</b> to listen</span></p>
-          </div>
+
         </aside>
         <div className="wx-w-more">
           {rest.slice(0, 3).map((p) => (
             <a key={p.slug} className="wx-w-card" href={`post/${p.slug}`}>
               <p className="wx-w-meta">{p.week && <span>week {p.week}</span>}<span>{fmtDate(p.date)}</span><span>{p.audio ? `listen ${wClock(p.audio.duration)}` : `listen, ${p.viz ? p.viz.listen_min : 1} min`}</span></p>
               <h3>{p.title}</h3>
-              <MiniStrip p={p} />
+
             </a>
           ))}
         </div>
@@ -606,51 +582,14 @@ const HUMAN_TILES = [
   { id: 'music', label: 'listening', spotify: true },
   { id: 'book', label: 'long-flight reading' },
 ];
-const Human = () => {
-  const words = HUMAN_LINE.split(' ');
-  const step = +(52 / words.length).toFixed(3);
-  return (
-    <section className="wx-human wx-sec mode-editorial" id="human" aria-labelledby="wx-human-k">
-      <div className="wx-human-grid">
-        <div className="wx-human-main">
-          <p className="wx-eyebrow-ed" id="wx-human-k" style={{ marginBottom: 'var(--s5)' }}>off the clock</p>
-          <p className="wx-human-big" style={{ '--step': `${step}%` }}>
-            {words.map((w, i) => <React.Fragment key={i}><span className="wx-w" style={{ '--i': i }}>{w}</span>{' '}</React.Fragment>)}
-          </p>
-          <ul className="wx-human-ico otc-tiles" aria-label="Off the clock, in six objects">
-            {HUMAN_TILES.map((h) => (h.spotify
-              ? (
-                <li key={h.id} className="otc-tile otc-spotify">
-                  <span className="otc-sp-k">{h.label}</span>
-                  {plId
-                    ? <a className="otc-sp-cover" data-otc-play={plId} href={`https://open.spotify.com/playlist/${plId}`}>
-                        <Ico id={h.id} size={40} />
-                        <span className="otc-sp-go">tap to load the playlist</span>
-                      </a>
-                    : <span className="otc-sp-cover is-empty">
-                        <Ico id={h.id} size={40} />
-                        <span className="otc-sp-go">playlist coming</span>
-                      </span>}
-                </li>
-              )
-              : (
-                <li key={h.id} className="otc-tile">
-                  <Ico id={h.id} />
-                  <span>{h.label}</span>
-                  {h.note && <span className="otc-tile-note">{h.note}</span>}
-                </li>
-              )))}
-            <li className="otc-tile otc-tile-pending"><Ico id="crown" /><span>{game ? `current game: ${game}` : 'current game: to be named'}</span></li>
-          </ul>
-        </div>
-        <div className="wx-human-side">
-          <h3>dms I answer</h3>
-          <ul>{(DH.rolodex || []).map((r) => <li key={r.who}><b>{r.who}</b><span>{r.how}</span></li>)}</ul>
-        </div>
-      </div>
-    </section>
-  );
-};
+const Human = () => <section className="wx-human wx-sec mode-editorial" id="human" aria-labelledby="wx-human-k">
+  <header className="wx-sec-head"><p className="wx-eyebrow-ed">off the clock</p><h2 className="wx-ed-h" id="wx-human-k">Not everything needs to scale.</h2></header>
+  <div className="v4-offhours">
+    <article className="v4-listening"><Ico id="music" size={56} /><div><p className="v4-service">LISTENING / SPOTIFY</p><h3>{plId ? 'The rotation.' : 'Between tracks.'}</h3><p>{plId ? 'An on-demand playlist. Nothing loads until you press play.' : 'No public playlist connected. No invented now-playing status.'}</p>{plId && <a data-otc-play={plId} href={`https://open.spotify.com/playlist/${plId}`} className="otc-sp-cover">Load the playlist ↗</a>}</div></article>
+    <article className="v4-playing"><Ico id="gamepad" size={56} /><div><p className="v4-service">CURRENT GAME / AFTER HOURS</p><h3>{game || 'One more turn.'}</h3><p>{game ? 'From the off-hours note, not a live presence feed.' : 'Civilization. Crusader Kings. Anything 4X.'}</p><small>No PlayStation account connected.</small></div></article>
+  </div>
+  <ul className="v4-human-notes">{(DH.off_hours || []).filter(h => h.what !== 'Gaming').map((h, i) => <li key={h.what}><Ico id={['horseshoe', 'gi', 'book'][i]} size={40} /><div><h3>{h.what}</h3><p>{h.detail}</p></div></li>)}</ul>
+</section>;
 
 // ---------------------------------------------------------------- 01:30 three doors
 // The hero's pair in reverse: the command compiles first, then the headline inks.
@@ -692,5 +631,5 @@ const Signoff = () => (
 
 const Boundary = () => <div className="wx-boundary" aria-hidden="true" />;
 
-window.HomeSections = { Hero, Proof, Day, Log, Stack, Pillars, Writing, Human, Doors, Signoff, Boundary };
+window.HomeSections = { Hero, Proof, Day, Log, Machine, Stack, Pillars, Writing, Human, Doors, Signoff, Boundary };
 })();

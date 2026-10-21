@@ -2,23 +2,23 @@
 :root {
   color-scheme: dark;
   /* brand */
-  --navy: #141413; --marigold: #D8B65C; --paper: #F7EDCE; --mare: #AAA696;
+  --navy: #09140D; --marigold: #E6BD60; --paper: #F7EDCE; --mare: #ACBEA2;
   /* Neutral black and charcoal, no navy tint. */
-  --bg: #141413; --surface: #1C1C19; --card: #24241F; --card-2: #2C2C25;
-  --line: #3A3A31; --line-2: #696957;
+  --bg: #09140D; --surface: #102117; --card: #172D1E; --card-2: #203925;
+  --line: #35533B; --line-2: #708468;
   /* text, three tiers, all AA on bg, card and card-2 */
-  --text: #F5EEDC;
-  --muted: #C4BFAF;
-  --dim: #AAA696;
+  --text: #EDF5DC;
+  --muted: #BED2B5;
+  --dim: #ACBEA2;
   /* Arc meaning remains in text labels, not a decorative rainbow. */
-  --win: #D8B65C;
-  --build: #7FC58C; --think: #C4BFAF; --human: #D8B65C; --danger: #E05030;
+  --win: #E6BD60;
+  --build: #71F394; --think: #BED2B5; --human: #E6BD60; --danger: #E05030;
   /* accent text twins. In dark the twin is the bright accent itself, so text
      can use the twin everywhere and light only has to change the value. */
-  --win-text: #D8B65C;
-  --build-text: #7FC58C;
-  --think-text: #C4BFAF;
-  --human-text: #D8B65C;
+  --win-text: #E6BD60;
+  --build-text: #71F394;
+  --think-text: #BED2B5;
+  --human-text: #E6BD60;
   --danger-text: #F39079;
   /* paper band */
   --paper-2: #FFF6DE;

@@ -35,7 +35,7 @@ assert all(f'id="i-{icon}"' in (root/'brand/icons.svg').read_text() for icon in 
 html=(root/'index.html').read_text()
 assert html.count('src="home-islands.js"')==1
 assert html.count('Single pre-paint scheme controller')==1
-assert html.count('data-island=')==4
+assert html.count('data-island=')==1, 'Only terrain remains an island in v4'
 assert 'src="favicon.svg"' in html
 assert not re.search('[\u2013\u2014]',html)
 for name in ['lead-scorer.html','account.html','toolkit.html','post.html','company.html','journey.html']:

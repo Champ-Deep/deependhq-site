@@ -15,44 +15,44 @@ derived: stale=false (2 weekdays), stack 52 items, 4 active in 30d, streak 89
 feed.xml: 18 items · sitemap.xml: 38 urls
 llms.txt: 75 lines · llms-full.txt: 2096 lines
 built data.js: day 354, 132 journey entries, 18 posts
-prerender index.html: 98251 bytes into #root
-prerender pillars.html: 26958 bytes into #root
-prerender now.html: 26220 bytes into #root
-prerender privacy.html: 14786 bytes into #root
-prerender journey.html: 25071 bytes into #root
-prerender toolkit.html: 49626 bytes into #root
-prerender writing.html: 23159 bytes into #root
-prerender post/week-48-the-receipts-arc/index.html: 28003 bytes into #root
-prerender post/week-47-the-decision-debt-arc/index.html: 27272 bytes into #root
-prerender post/week-46-the-empty-room-arc/index.html: 28803 bytes into #root
-prerender post/week-45-the-wall-we-named/index.html: 27109 bytes into #root
-prerender post/week-44-the-discipline-arc/index.html: 25366 bytes into #root
-prerender post/week-43-five-systems-five-days/index.html: 26754 bytes into #root
-prerender post/week-38-the-signals-were-everywhere/index.html: 27219 bytes into #root
-prerender post/week-37-the-calendar-was-full/index.html: 27585 bytes into #root
-prerender post/week-35-three-calls-one-friday/index.html: 27710 bytes into #root
-prerender post/week-34-the-side-door/index.html: 28220 bytes into #root
-prerender post/week-33-the-quarter-turns/index.html: 26790 bytes into #root
-prerender post/week-32-the-build-reflex/index.html: 28187 bytes into #root
-prerender post/week-31-the-proof-arc/index.html: 26864 bytes into #root
-prerender post/week-30-the-enterprise-arc/index.html: 26836 bytes into #root
-prerender post/week-29-the-reach-arc/index.html: 26555 bytes into #root
-prerender post/week-28-four-sales-teams/index.html: 25656 bytes into #root
-prerender post/week-27-data-is-not-a-product/index.html: 26344 bytes into #root
-prerender post/week-36-the-doctor-said-yes/index.html: 30578 bytes into #root
-prerender company/champions-accelerator/index.html: 16621 bytes into #root
-prerender company/champions-infometrics/index.html: 8294 bytes into #root
-prerender company/champions-club/index.html: 9068 bytes into #root
-prerender company/lake-b2b/index.html: 15392 bytes into #root
-prerender company/span-global-services/index.html: 8298 bytes into #root
-prerender company/ampliz/index.html: 8246 bytes into #root
-prerender company/ip-momentum/index.html: 8258 bytes into #root
-prerender company/cirralogix/index.html: 10251 bytes into #root
-prerender company/recruit-champ/index.html: 8467 bytes into #root
-prerender company/infratech/index.html: 10071 bytes into #root
-prerender company/champ-fit/index.html: 8242 bytes into #root
-prerender company/health-fit/index.html: 8251 bytes into #root
-prerender field-notes.html: 20274 bytes into #root
+prerender index.html: 68681 bytes into #root
+prerender pillars.html: 24148 bytes into #root
+prerender now.html: 23410 bytes into #root
+prerender privacy.html: 11976 bytes into #root
+prerender journey.html: 22261 bytes into #root
+prerender toolkit.html: 46816 bytes into #root
+prerender writing.html: 20349 bytes into #root
+prerender post/week-48-the-receipts-arc/index.html: 25193 bytes into #root
+prerender post/week-47-the-decision-debt-arc/index.html: 24462 bytes into #root
+prerender post/week-46-the-empty-room-arc/index.html: 25993 bytes into #root
+prerender post/week-45-the-wall-we-named/index.html: 24299 bytes into #root
+prerender post/week-44-the-discipline-arc/index.html: 22556 bytes into #root
+prerender post/week-43-five-systems-five-days/index.html: 23944 bytes into #root
+prerender post/week-38-the-signals-were-everywhere/index.html: 24409 bytes into #root
+prerender post/week-37-the-calendar-was-full/index.html: 24775 bytes into #root
+prerender post/week-35-three-calls-one-friday/index.html: 24900 bytes into #root
+prerender post/week-34-the-side-door/index.html: 25410 bytes into #root
+prerender post/week-33-the-quarter-turns/index.html: 23980 bytes into #root
+prerender post/week-32-the-build-reflex/index.html: 25377 bytes into #root
+prerender post/week-31-the-proof-arc/index.html: 24054 bytes into #root
+prerender post/week-30-the-enterprise-arc/index.html: 24026 bytes into #root
+prerender post/week-29-the-reach-arc/index.html: 23745 bytes into #root
+prerender post/week-28-four-sales-teams/index.html: 22846 bytes into #root
+prerender post/week-27-data-is-not-a-product/index.html: 23534 bytes into #root
+prerender post/week-36-the-doctor-said-yes/index.html: 27768 bytes into #root
+prerender company/champions-accelerator/index.html: 13811 bytes into #root
+prerender company/champions-infometrics/index.html: 5484 bytes into #root
+prerender company/champions-club/index.html: 6258 bytes into #root
+prerender company/lake-b2b/index.html: 12582 bytes into #root
+prerender company/span-global-services/index.html: 5488 bytes into #root
+prerender company/ampliz/index.html: 5436 bytes into #root
+prerender company/ip-momentum/index.html: 5448 bytes into #root
+prerender company/cirralogix/index.html: 7441 bytes into #root
+prerender company/recruit-champ/index.html: 5657 bytes into #root
+prerender company/infratech/index.html: 7261 bytes into #root
+prerender company/champ-fit/index.html: 5432 bytes into #root
+prerender company/health-fit/index.html: 5441 bytes into #root
+prerender field-notes.html: 17464 bytes into #root
 
 prerender: 38/10 pages carry content without JavaScript.
-build-islands: home-islands.js 407036 bytes, 5 registry checks ok
+build-islands: home-islands.js 407237 bytes, 5 registry checks ok

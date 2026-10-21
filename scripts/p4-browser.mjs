@@ -51,7 +51,7 @@ try {
     await loaded(page);
     assert.equal(await page.locator('h1').textContent(),'Deep.Sreedeep Surapaneni');
     assert.equal(await page.locator('#top [data-island="terrain"]').count(),0);
-    assert.equal(await page.locator('#log [data-island="terrain"]').count(),1);
+    assert.equal(await page.locator('#machine [data-island="terrain"]').count(),1);
     const pixelCount=await page.locator('.trn-canvas').evaluate(c=>{let n=0;for(let i=3,d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;i<d.length;i+=4)if(d[i])n++;return n;});assert(pixelCount>1000);
     const state=await page.locator('.trn-canvas').evaluate(c=>c.terrainState());assert.equal(state.flat,width<768);
     await shot(page,'#top',`${width}-${scheme}-hero`);
@@ -82,7 +82,7 @@ try {
       await shot(page,'.wx-anat-stick',`${width}-${scheme}-day-ship`);
     }
     // Native day selection is the keyboard/touch alternative to tiny towers.
-    await page.locator('#trn-day').selectOption('0');
+    await page.locator('#trn-day').fill('2026-05-04');
     await page.locator('#trn-day').focus();
     assert((await page.locator('.trn-readout').textContent()).includes('day 184'));
     assert.equal(await page.locator('.trn-open').getAttribute('href'),'journey.html#day-184');
@@ -92,7 +92,7 @@ try {
     await audit(page,`${width}-${scheme}-table`);
     if(width===375) await shot(page,'.trn-root',`${width}-${scheme}-table`);
     const gap=await page.locator('[data-island="terrain"]').evaluate(el=>JSON.parse(el.dataset.props).rows.findIndex(r=>!r));
-    await page.locator('#trn-day').selectOption(String(gap));
+    await page.locator('#trn-day').fill(new Date(Date.parse('2026-05-04') + gap * 864e5).toISOString().slice(0,10));
     assert((await page.locator('.trn-readout').textContent()).includes('no entry'));
     assert.equal(await page.locator('.trn-open').getAttribute('href'),'journey.html');
     results.cases.push({name:`${width} ${scheme}`,pixelCount,flat:state.flat,ownedOverflow:over.length,pageWidth,disabled:disabled.length,dayOptions:170});
@@ -110,7 +110,7 @@ try {
   results.cases.push({name:'Projected pointer tower reaches actual oldest journey anchor',url:page.url()});
   await loaded(page);await page.locator('.trn-canvas').focus();await page.keyboard.press('ArrowUp');
   const selected=await page.locator('.trn-canvas').evaluate(c=>c.terrainState().selected);assert.equal(selected,168);
-  await page.locator('#trn-day').selectOption('0');await page.locator('.trn-open').focus();
+  await page.locator('#trn-day').fill('2026-05-04');await page.locator('.trn-open').focus();
   await Promise.all([page.waitForURL('**/journey.html#day-184'),page.keyboard.press('Enter')]);
   results.cases.push({name:'Canvas arrow selection and ordinary keyboard link navigation'});
   await loaded(page);

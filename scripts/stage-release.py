@@ -29,6 +29,6 @@ for name in sorted(set(files)):
     manifest.append(name)
 assert 'home-islands.js' in manifest and 'scheme.js' in manifest
 (root / 'docs/verification/release/assets.json').write_text(json.dumps(manifest, indent=2) + '\n')
-config = {'name': 'deependhq-editorial-v3-preview', 'main': str(root / 'worker/index.js'), 'compatibility_date': '2026-05-23', 'compatibility_flags': ['nodejs_compat'], 'workers_dev': True, 'routes': [], 'assets': {'directory': str(public), 'binding': 'ASSETS', 'not_found_handling': '404-page', 'run_worker_first': ['/*']}}
+config = {'name': 'deependhq-editorial-v4-preview', 'main': str(root / 'worker/index.js'), 'compatibility_date': '2026-05-23', 'compatibility_flags': ['nodejs_compat'], 'workers_dev': True, 'routes': [], 'assets': {'directory': str(public), 'binding': 'ASSETS', 'not_found_handling': '404-page', 'run_worker_first': ['/*']}}
 (out / 'wrangler.jsonc').write_text(json.dumps(config, indent=2) + '\n')
 print(f'Staged {len(manifest)} public assets; preview has no routes, D1, secrets or production bindings.')

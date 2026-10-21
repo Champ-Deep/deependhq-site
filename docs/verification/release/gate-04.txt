@@ -5,14 +5,14 @@
 
 dark  (bg/card/card-2)
   fg                      bg        card      card-2   verdict
-  text                15.93       13.47       12.15   AA
-  muted               10.02        8.48        7.64   AA
-  dim                  7.55        6.39        5.76   AA
-  win-text             9.45        7.99        7.21   AA
-  build-text           9.01        7.62        6.87   AA
-  think-text          10.02        8.48        7.64   AA
-  human-text           9.45        7.99        7.21   AA
-  danger-text          7.97        6.74        6.07   AA
+  text                16.73       13.07       11.17   AA
+  muted               11.70        9.14        7.81   AA
+  dim                  9.52        7.44        6.36   AA
+  win-text            10.57        8.26        7.06   AA
+  build-text          13.38       10.45        8.93   AA
+  think-text          11.70        9.14        7.81   AA
+  human-text          10.57        8.26        7.06   AA
+  danger-text          8.12        6.34        5.42   AA
 
 light (bg/card/card-2)
   fg                      bg        card      card-2   verdict

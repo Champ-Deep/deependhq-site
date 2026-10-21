@@ -111,7 +111,8 @@ const Footer = () => {
 
   return (
     <footer className="sys-footer sys mode-operator" aria-label="footer">
-      <div data-island="halftone-footer" data-props={JSON.stringify(islandProps)}>
+      {/* 21st.dev/ln-dev7 Footer17: compact navigation above an in-flow legal row. */}
+      <div className="v4-footer">
         <div className="wrap">
           <div className="foot-grid">
             {columns.map((col) => (
