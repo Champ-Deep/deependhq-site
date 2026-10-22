@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 355,
-    "today_date": "2026-10-21",
+    "today_day": 356,
+    "today_date": "2026-10-22",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-22",
+      "day": 356,
+      "mood": "🧹",
+      "shipping_now": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one rule: every section should feel like the one part people actually liked. 104 agent cards shipped today, zero blocked, zero stuck.",
+      "yesterday_thread": "also closed the books on a client account that had been bleeding for weeks, and pulled two domains back from the edge of getting deleted by cloudflare. unglamorous but real debt paid down.",
+      "raw_thought": "said three times today i would rotate the keys that got exposed in mondays breach. didnt do it once. that is exactly the kind of thing that turns into a 2am problem.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-21",
       "day": 355,
@@ -2165,6 +2178,10 @@
     ],
     "recently": [
       {
+        "text": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of t...",
+        "tag": "shipped d356"
+      },
+      {
         "text": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its se...",
         "tag": "shipped d355"
       },
@@ -2175,10 +2192,6 @@
       {
         "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
         "tag": "shipped d353"
-      },
-      {
-        "text": "built a full deleteme clone from scratch tonight. white label, brand switching wired in...",
-        "tag": "shipped d352"
       }
     ],
     "soon": [

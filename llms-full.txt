@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (133) and every weekly essay (18), newest first. Rebuilt 2026-10-21. Cite the day number and date when quoting, for example "day 355, 2026-10-21".
+> Every public journey entry (134) and every weekly essay (18), newest first. Rebuilt 2026-10-22. Cite the day number and date when quoting, for example "day 356, 2026-10-22".
 
 ## Journey
+
+### Day 356, 2026-10-22 (building)
+
+unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one rule: every section should feel like the one part people actually liked. 104 agent cards shipped today, zero blocked, zero stuck.
+
+Thread: also closed the books on a client account that had been bleeding for weeks, and pulled two domains back from the edge of getting deleted by cloudflare. unglamorous but real debt paid down.
+
+Raw thought: said three times today i would rotate the keys that got exposed in mondays breach. didnt do it once. that is exactly the kind of thing that turns into a 2am problem.
+
+Arcs: TheDeepEndHQ, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-356
 
 ### Day 355, 2026-10-21 (building)
 
