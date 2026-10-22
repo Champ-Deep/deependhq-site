@@ -85,7 +85,7 @@ const ALL_PAGES = [
 ];
 
 const PAGES = [
-  { html: 'index.html', kind: 'app', modules: ['Sys.jsx', 'Nav.jsx', 'Home.jsx', 'SignOff.jsx', 'Footer.jsx', 'Palette.jsx', 'app.jsx'] },
+  { html: 'index.html', kind: 'app', modules: ['Sys.jsx', 'Nav.jsx', 'V5Components.jsx', 'Home.jsx', 'SignOff.jsx', 'Footer.jsx', 'Palette.jsx', 'app.jsx'] },
   { html: 'pillars.html', kind: 'page', id: 'pillars', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'now.html', kind: 'page', id: 'now', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },
   { html: 'privacy.html', kind: 'page', id: 'privacy', modules: [...SHARED, ...ALL_PAGES, 'page.jsx'] },

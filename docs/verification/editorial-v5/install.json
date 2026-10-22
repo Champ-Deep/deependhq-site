@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "@21st/felipemenezes098/hero-05",
+    "exit": 1,
+    "output": "Now using node v24.21.0 (npm v11.19.0)\n- Checking registry.\n\n\nSomething went wrong. Please check the error below for more details.\nIf the problem persists, please open an issue on GitHub.\n\nMessage:\nThe item at https://ui.shadcn.com/r/styles/new-york-v4/shadcn/button.json was not found. It may not exist at the registry.\n\nSuggestion:\nCheck if the item name is correct and the registry URL is accessible.\n\nYou can also try a previous version to see if that works:\nnpx shadcn@4.21.0 add @21st/felipemenezes098/hero-05 --yes --overwrite\n\n"
+  },
+  {
+    "slug": "@21st/ln-dev7/footer-17",
+    "exit": 0,
+    "output": "Now using node v24.21.0 (npm v11.19.0)\n- Checking registry.\n\u2714 Checking registry.\n- Updating files.\n\u2714 Created 1 file:\n  - components/ui/footer-17.tsx\n"
+  },
+  {
+    "slug": "@kokonutui/bento-grid",
+    "exit": 1,
+    "output": "Now using node v24.21.0 (npm v11.19.0)\n- Checking registry.\n\u2714 Checking registry.\n- Installing dependencies.\n- Installing dependencies.\n\n\nSomething went wrong. Please check the error below for more details.\nIf the problem persists, please open an issue on GitHub.\n\nCommand failed with exit code 1: npm install --no-audit --no-fund -- lucide-react motion\n\nnpm error code EALLOWSCRIPTS\nnpm error --allow-scripts is not allowed in project-scoped installs. Add the entries to the \"allowScripts\" field in package.json, or to .npmrc, instead.\nnpm error A complete log of this run can be found in: /Users/deep/.npm/_logs/2026-10-22T12_45_55_698Z-debug-0.log\n\nYou can also try a previous version to see if that works:\nnpx shadcn@4.21.0 add @kokonutui/bento-grid --yes --overwrite\n\n"
+  }
+]

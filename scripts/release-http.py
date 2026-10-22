@@ -33,7 +33,7 @@ for row in results:
     if row['path'] in ['favicon.svg','favicon.ico','home-islands.js','islands.css','scheme-tokens.css','brand/icons.svg']:
         assert row['hash']==hashlib.sha256((root/row['path']).read_bytes()).hexdigest(),row['path']
     if row['path']=='/':
-        assert b'Marketer first.<br/>Builder by instinct.' in row['body']
+        assert b'Marketer first.<br/><span>Builder by <em>instinct.</em></span>' in row['body']
         assert b'data-day="354"' in row['body']
         assert row['body'].count(b'data-island=')==1, 'Only terrain remains an island in v4'
     del row['body']

@@ -24,7 +24,7 @@ const ELSEWHERE_LINKS = [
   { label: 'github / Champ-Deep', href: 'https://github.com/Champ-Deep', external: true },
   { label: 'linkedin', href: 'https://www.linkedin.com/in/sreedeep-surapaneni', external: true },
   { label: 'bluesky', href: 'https://bsky.app/profile/sreedeep-sura.bsky.social', external: true },
-  { label: 'book 30 minutes', href: 'https://scheduler.zoom.us/sreedeep', external: true },
+  { label: 'free automation call', href: 'https://scheduler.zoom.us/sreedeep', external: true },
   { label: 'deep@championsmail.com', href: 'mailto:deep@championsmail.com' },
 ];
 
@@ -117,7 +117,7 @@ const Footer = () => {
           <div className="foot-grid">
             {columns.map((col) => (
               <div className="foot-col" key={col.title}>
-                <h4>{col.title}</h4>
+                <h2 className="v5-footer-heading">{col.title}</h2>
                 {col.links.map((l) => (
                   <a key={l.label} href={l.href} {...ext(l)}>
                     {l.label}

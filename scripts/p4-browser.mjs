@@ -49,7 +49,7 @@ try {
     const ctx=await context(width,scheme),page=await ctx.newPage();
     page.on('pageerror',e=>results.errors.push(String(e)));
     await loaded(page);
-    assert.equal(await page.locator('h1').textContent(),'Deep.Sreedeep Surapaneni');
+    assert.equal(await page.locator('h1').textContent(),'Marketer first.Builder by instinct.');
     assert.equal(await page.locator('#top [data-island="terrain"]').count(),0);
     assert.equal(await page.locator('#machine [data-island="terrain"]').count(),1);
     const pixelCount=await page.locator('.trn-canvas').evaluate(c=>{let n=0;for(let i=3,d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;i<d.length;i+=4)if(d[i])n++;return n;});assert(pixelCount>1000);

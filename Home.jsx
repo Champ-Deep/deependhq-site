@@ -39,36 +39,22 @@ const Ico = ({ id, size = 48 }) => (
 );
 
 
-// Personal cover first. The same real-log terrain now lives in the log.
-const Hero = () => {
-  const e = DH.journey[0];
-  return (
-    <section className="wx-hero mode-editorial ev3-cover" id="top" aria-labelledby="wx-hero-h">
-      <div className="ev3-cover-inner">
-        <div className="ev3-masthead"><p className="wx-eyebrow-ed">The Deep End</p><p>A working life, in public.</p></div>
-        <h1 id="wx-hero-h" className="ev3-name">Deep<span className="ev3-period">.</span><span className="ev3-fullname">Sreedeep Surapaneni</span></h1>
-        <div className="ev3-intro">
-          <div className="ev3-story">
-            <h2>Marketer first.<br />Builder by instinct.</h2>
-            <p className="ev3-roles" data-dh-frozen="">Group CMO, Champions Group.<br />CEO, Champions Accelerator.</p>
-            <p className="ev3-lede">I work across twelve companies. Here, I keep a public record of the work: the builds, the decisions, and what actually shipped.</p>
-            <div className="ev3-actions"><a className="ev3-book" href={BOOK} {...EXT}><span data-dh-cta="cta_label">Talk to Deep</span>
-              {/* 21st.dev/nextjsshop Arrow Dots Button: source dot geometry, static label. */}
-              <span className="ev3-arrow" aria-hidden="true">{[3, 2, 1, 0].map(parent => <span className="ev3-arrow-icon" key={parent} style={{ '--i': parent }}>{[2, 1, 0, 1, 2].map((value, i) => <i key={i} style={{ '--dot': value }} />)}</span>)}</span>
-              <small data-dh-frozen="">30 minutes</small></a><a className="ev3-tools" href="#stack">Explore the tools <span aria-hidden="true">→</span></a></div>
-          </div>
-          <nav className="v4-index" aria-label="Inside this field guide">
-            <p className="wx-eyebrow-op">AI in the operating system.<br />Judgment still human.</p>
-            <a href="#stack"><span>01</span> Put a tool to work <b>↗</b></a>
-            <a href="#log"><span>02</span> Read the latest dispatch <b>↗</b></a>
-            <a href="#day"><span>03</span> Look under the hood <b>↗</b></a>
-            <p>Built with agents. Tested in the work.</p>
-          </nav>
-        </div>
-      </div>
-    </section>
-  );
-};
+const Booking = ({ location = 'hero' }) => <div className="v5-booking" data-booking={location}>
+  <span className="v5-draft">DRAFT OFFER FOR DEEP</span>
+  <a className="ev3-book v5-book" href={BOOK} {...EXT}><span {...(location === 'hero' ? { 'data-dh-cta': 'cta_label', 'data-dh-frozen': '' } : {})}>Book a free automation call</span>
+    {/* 21st.dev/nextjsshop Arrow Dots Button. Labels never change on hover. */}
+    <svg className="v5-book-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  </a>
+  <p data-dh-frozen="">30 minutes on where agents fit in your work.</p>
+</div>;
+
+const Hero = () => <window.V5Components.Hero05
+  tagline={<><span className="v5-status">THE DEEP END</span><span>Marketing. Agents. The actual work.</span></>}
+  title={<>Marketer first.<br /><span>Builder by <em>instinct.</em></span></>}
+  description={<div className="v5-identity"><img src="favicon.svg" width="64" height="64" alt="" /><div><p className="v5-name">I'm Deep. Sreedeep Surapaneni.</p><p data-dh-frozen="">Group CMO, Champions Group.<br />CEO, Champions Accelerator.</p><p>I work across twelve companies. I build with agents.<br className="v5-wide-break" /> And I keep the receipts here.</p></div></div>}
+  actions={<Booking />}
+  media={<div className="v5-hero-rail"><a href="#stack">Try the tools <span>↓</span></a><span>Built with agents. Judgment still human.</span><a href="#log">Read the work <span>↗</span></a></div>}
+/>;
 
 const Terrain = () => {
   const e = DH.journey[0];
@@ -332,21 +318,21 @@ const Stack = () => {
         <p className="wx-lead">Tools for the work in front of you. Start with a job, leave with something useful.</p>
         <a className="wx-tlink" href="toolkit.html">open the toolkit →</a>
       </header>
-      <ul className="otc-try v4-tools" aria-label="Things to try">
+      <ul className="otc-try v4-tools v5-widgets" aria-label="Things to try">
         {[
-          { name: 'Lead Scorer', result: 'Which leads deserve a closer look?', href: '/lead-scorer', cta: 'Check your list', label: 'Sign-in + credits' },
-          { name: 'Harbinger', result: 'Which accounts have a reason to buy now?', href: (DH.toolkit || []).find(t => t.title === 'ChampHarbinger')?.site, cta: 'Research buying signals', label: 'Separate product' },
           { name: 'ChamPDF', result: 'Get a PDF job off your desk.', href: 'https://champdf.com', cta: 'Open the PDF tools', label: 'Free browser tools' },
+          { name: 'Harbinger', result: 'Which accounts have a reason to buy now?', href: (DH.toolkit || []).find(t => t.title === 'ChampHarbinger')?.site, cta: 'Research buying signals', label: 'Separate product' },
+          { name: 'Lead Scorer', result: 'Which leads deserve a closer look?', href: '/lead-scorer', cta: 'Check your list', label: 'Sign-in + credits' },
           { name: 'ChampBeam', result: 'Share a link. See what happens.', href: (DH.toolkit || []).find(t => t.title === 'ChampBeam')?.site, cta: 'Explore smart links', label: 'Separate product' },
           { name: 'Ask Deep', result: 'Ask a question about the work on this site.', href: 'https://assistant.deependhq.com', cta: 'Ask the site', label: 'Site-grounded assistant', open_launcher: true },
         ].filter(t => t.href).map((t, i) => {
           const ext = /^https?:/.test(t.href || '');
           return (
-            <li key={t.name} className="otc-try-card">
-              <span className="v4-tool-no" aria-hidden="true">0{i + 1}</span>
-              <div><h3 className="otc-try-name">{t.name}</h3><p className="otc-try-result">{t.result}</p><small>{t.label}</small></div>
-              <a className="otc-try-go" href={t.href} {...(ext ? EXT : {})} {...(t.open_launcher ? { 'data-otc-ask': '' } : {})}>{t.cta} →</a>
-            </li>
+            <window.V5Components.WidgetCard key={t.name} index={i} item={{ title: t.name, render: () => <>
+              {i < 2 && <a className="v5-product-shot" aria-label={`See ${t.name}`} href={t.href} {...(ext ? EXT : {})}><img src={`images/v5-${i === 0 ? 'pdf' : 'harbinger'}.webp`} width="1000" height="600" alt={`${t.name}, captured from its public product page.`} loading="lazy" /></a>}
+              <h3 className="otc-try-name">{t.result}</h3><small>{t.label}</small>
+              <a className="otc-try-go" href={t.href} {...(ext ? EXT : {})} {...(t.open_launcher ? { 'data-otc-ask': '' } : {})}>{t.cta} <span aria-hidden="true">→</span></a>
+            </> }} />
           );
         })}
       </ul>
@@ -525,9 +511,10 @@ const Writing = () => {
       <div className="wx-w-grid v4-edition">
         <div className="v4-edition-stamp"><span>THE WEEKLY</span><b>{lead.week}</b><span>{range}</span><span>{lead.read} read</span></div>
         <div className="wx-w-feat">
-          <p className="wx-w-meta"><span className="wx-latest">latest</span>{lead.week && <span>week {lead.week}</span>}{range && <span>{range}</span>}<span>{lead.read} read</span>{lead.arc && <span>{lead.arc}</span>}</p>
+          <p className="wx-w-meta"><span className="wx-latest">latest</span>{lead.arc && <span>{lead.arc}</span>}</p>
           <h3 className="wx-w-title wx-ink"><a href={`post/${lead.slug}`}>{lead.title}</a></h3>
-          {lead.deck && <p className="wx-w-deck">{lead.deck}</p>}
+          {lead.deck && <p className="wx-w-deck">{lead.deck.split(/(?<=\.)\s+/)[0]}</p>}
+          <a className="wx-tlink" href={`post/${lead.slug}`}>Read week {lead.week} →</a>
           <div className={`wx-wplay${A ? '' : ' is-link'}`} data-src={A ? A.src : undefined} data-dur={A ? A.duration : undefined}>
             {A
               ? <button type="button" className="wx-wplay-btn" aria-label={`Play week ${lead.week}, ${wClock(A.duration)}`}><svg className="i-play" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2v12l10-6z" fill="currentColor" /></svg><svg className="i-pause" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor" /></svg></button>
@@ -538,7 +525,7 @@ const Writing = () => {
             </span>
           </div>
           <details className="v4-ai"><summary>Discuss this essay with AI</summary><div className="wx-wask">{askLinks(lead.slug).map(([n, h]) => <a key={n} aria-label={`Discuss this essay with ${n}`} href={h} target="_blank" rel="noopener noreferrer">{n} ↗</a>)}</div></details>
-          <a className="wx-tlink" href={`post/${lead.slug}`}>read week {lead.week} →</a>
+
         </div>
         <aside className="wx-w-week" aria-label={`The week behind week ${lead.week}`}>
           <p className="wx-w-week-k">the week behind it<span>{v.entries} log entries</span></p>
@@ -594,30 +581,14 @@ const Human = () => <section className="wx-human wx-sec mode-editorial" id="huma
 // ---------------------------------------------------------------- 01:30 three doors
 // The hero's pair in reverse: the command compiles first, then the headline inks.
 const Doors = () => (
-  <section className="wx-doors wx-sec mode-editorial" id="ways" aria-labelledby="wx-doors-h">
-    <p className="wx-cmd-line" data-compile="">book --30min --no-deck</p>
-    <h2 className="wx-doors-h wx-ink" id="wx-doors-h">Three doors. Same person behind each one.</h2>
-    <div className="wx-doors-grid">
-      <a className="wx-door wx-door-main" href={BOOK} {...EXT}>
-        <span className="wx-door-k">founders</span>
-        <span className="wx-door-t">Thirty minutes, no deck. Bring the thing you are stuck on, leave with a next move.</span>
-        <span className="btn btn-gold">Book 30 minutes</span>
-      </a>
-      <div className="wx-door-side">
-        <a className="wx-door" href="https://github.com/Champ-Deep" {...EXT}>
-          <span className="wx-door-k">operators and builders</span>
-          <span className="wx-door-t">Everything I ship is in the open. Read the log, fork the repos, tell me where I am wrong.</span>
-          <span className="wx-door-go">github / Champ-Deep ↗</span>
-        </a>
-        <div className="wx-door">
-          <span className="wx-door-k">recruiters, press, everyone else</span>
-          <span className="wx-door-t">One inbox. Plain text wins. I answer the ones that read like a human wrote them.</span>
-          <span className="wx-mailrow"><a className="wx-mail" href="mailto:deep@championsmail.com">deep@championsmail.com</a><button className="wx-copy" type="button" data-copy="deep@championsmail.com">copy</button></span>
-        </div>
-      </div>
-    </div>
+  <section className="v5-close wx-sec mode-editorial" id="ways" aria-labelledby="wx-doors-h">
+    <div><h2 id="wx-doors-h">Book a free <br /><em>automation call</em></h2><p>Bring the workflow you keep doing by hand.</p></div>
+    <Booking location="footer" />
+    <div className="v5-contact"><a href="https://github.com/Champ-Deep" {...EXT}>Read the code ↗</a><a className="wx-mail" href="mailto:deep@championsmail.com">deep@championsmail.com</a><button className="wx-copy" type="button" data-copy="deep@championsmail.com">Copy email</button></div>
   </section>
 );
+
+const Call = () => <section className="v5-call wx-sec mode-editorial" aria-labelledby="v5-call-h"><div><h2 id="v5-call-h">Where does the agent<br />fit in <em>your</em> work?</h2><p>Start with the work, not the tool.</p></div><Booking location="middle" /></section>;
 
 // ---------------------------------------------------------------- 02:00 sign-off
 // The compile line closes the night. The marks come right after it, in the
@@ -631,5 +602,5 @@ const Signoff = () => (
 
 const Boundary = () => <div className="wx-boundary" aria-hidden="true" />;
 
-window.HomeSections = { Hero, Proof, Day, Log, Machine, Stack, Pillars, Writing, Human, Doors, Signoff, Boundary };
+window.HomeSections = { Hero, Proof, Day, Log, Machine, Stack, Pillars, Writing, Human, Doors, Call, Signoff, Boundary };
 })();

@@ -1,0 +1,128 @@
+[
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-stack.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-stack.png",
+      "docs/shots/editorial-v5/local/375-light-stack.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-stack.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-stack.png",
+      "docs/shots/editorial-v5/local/1280-light-stack.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-ecosystem.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-ecosystem.png",
+      "docs/shots/editorial-v5/local/375-light-ecosystem.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-ecosystem.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-ecosystem.png",
+      "docs/shots/editorial-v5/local/1280-light-ecosystem.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-v5-call.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-v5-call.png",
+      "docs/shots/editorial-v5/local/375-light-v5-call.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-v5-call.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-v5-call.png",
+      "docs/shots/editorial-v5/local/1280-light-v5-call.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-log.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-log.png",
+      "docs/shots/editorial-v5/local/375-light-log.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-log.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-log.png",
+      "docs/shots/editorial-v5/local/1280-light-log.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-writing.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-writing.png",
+      "docs/shots/editorial-v5/local/375-light-writing.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-writing.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-writing.png",
+      "docs/shots/editorial-v5/local/1280-light-writing.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-human.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-human.png",
+      "docs/shots/editorial-v5/local/375-light-human.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-human.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-human.png",
+      "docs/shots/editorial-v5/local/1280-light-human.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-machine.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-machine.png",
+      "docs/shots/editorial-v5/local/375-light-machine.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-machine.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-machine.png",
+      "docs/shots/editorial-v5/local/1280-light-machine.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-ways.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-ways.png",
+      "docs/shots/editorial-v5/local/375-light-ways.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-ways.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-ways.png",
+      "docs/shots/editorial-v5/local/1280-light-ways.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/375-footer.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/375-dark-footer.png",
+      "docs/shots/editorial-v5/local/375-light-footer.png"
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/local/review/1280-footer.png",
+    "sources": [
+      "docs/shots/editorial-v5/local/1280-dark-footer.png",
+      "docs/shots/editorial-v5/local/1280-light-footer.png"
+    ]
+  }
+]

@@ -53,7 +53,9 @@ function walk(dir) {
     lines.forEach((line, i) => {
       if (/brand-guard:classic/.test(line)) { hits.push(`${rel}:${i + 1}  retired brand-guard:classic marker`); return; }
       const h = line.match(new RegExp(`#${hexRe.source}`, 'i'));
-      if (h) hits.push(`${rel}:${i + 1}  ${h[0]}`);
+      // V5 explicitly restores kintsugi gold in canonical tokens, never literals in components.
+      const canonicalGold = h?.[0].toUpperCase() === '#C9A84C' && ['system.css', 'scheme-tokens.css'].includes(rel);
+      if (h && !canonicalGold) hits.push(`${rel}:${i + 1}  ${h[0]}`);
       const r = line.match(rgbRe);
       if (r) hits.push(`${rel}:${i + 1}  rgb(${r[1]})`);
     });

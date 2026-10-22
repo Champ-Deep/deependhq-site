@@ -75,8 +75,8 @@ if (indexHtml) {
   const ctaMatch = indexHtml.match(/data-dh-cta="cta_label"[^>]*>([^<]+)</);
   check('the cta element is present in the prerendered page', !!ctaMatch, true);
   if (ctaMatch) {
-    check('cta control matches the real markup exactly',
-      ctaMatch[1].trim(), C.VARIANTS.cta_label.control);
+    check('v5 offer is frozen against legacy copy variants',
+      /data-dh-cta="cta_label" data-dh-frozen=""/.test(indexHtml), true);
   }
 
   const heroMatch = indexHtml.match(/data-dh-hero="hero_subline"[^>]*>([^<]+)</);
@@ -99,9 +99,9 @@ if (indexHtml) {
   // asserting is that the editable set introduces no NEW numbers, because that is
   // exactly how an optimizer would quietly change a count or a time.
   const editable = indexHtml.match(/data-dh-(hero|cta)="[a-z_]+"[^>]*>[^<]*</g) || [];
-  check('only the CTA remains editable after the refresh', editable.length, 1);
-  check('booking duration is a separate frozen fact', /<small data-dh-frozen="">30 minutes<\/small>/.test(indexHtml), true);
-  check('CTA decoration is outside the editable label', (indexHtml.match(/class="ev3-arrow-icon"/g) || []).length, 4);
+  check('one frozen CTA retains analytics attribution', editable.length, 1);
+  check('booking duration and scope are frozen facts', (indexHtml.match(/<p data-dh-frozen="">30 minutes on where agents fit in your work\.<\/p>/g) || []).length, 3);
+  check('CTA decoration is outside all three labels', (indexHtml.match(/class="v5-book-arrow"/g) || []).length, 3);
   for (const el of editable) {
     const text = el.replace(/^[^>]*>/, '').replace(/<$/, '');
     const field = el.match(/="([a-z_]+)"/)[1];

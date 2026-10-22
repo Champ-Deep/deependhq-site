@@ -47,7 +47,7 @@ const Nav = ({ active = 'home', progress = false }) => {
               <span className="sw" aria-hidden="true"><i /><i /><i /></span>
               <span className="lbl"><span className="sr">scheme: </span><span data-dh-scheme-label>{(window.DH_SCHEME && window.DH_SCHEME.mode) || 'system'}</span></span>
             </button>
-            <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ minHeight: 44, padding: '0 16px', fontSize: 'var(--text-sm)' }}>Book 30 minutes</a>
+            <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ minHeight: 44, padding: '0 16px', fontSize: 'var(--text-sm)' }}>Free automation call <span aria-hidden="true">↗</span></a>
             <button className="nav-burger" aria-label={open ? 'close menu' : 'open menu'} aria-expanded={open} aria-controls="nav-drawer" onClick={() => setOpen(!open)}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                 {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round"/> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round"/>}

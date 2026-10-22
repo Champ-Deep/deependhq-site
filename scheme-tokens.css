@@ -2,30 +2,30 @@
 :root {
   color-scheme: dark;
   /* brand */
-  --navy: #09140D; --marigold: #E6BD60; --paper: #F7EDCE; --mare: #ACBEA2;
+  --navy: #080808; --marigold: #C9A84C; --paper: #F5F7F6; --mare: #A1B3A7;
   /* Neutral black and charcoal, no navy tint. */
-  --bg: #09140D; --surface: #102117; --card: #172D1E; --card-2: #203925;
-  --line: #35533B; --line-2: #708468;
+  --bg: #080808; --surface: #111111; --card: #171717; --card-2: #202020;
+  --line: #333333; --line-2: #718579;
   /* text, three tiers, all AA on bg, card and card-2 */
-  --text: #EDF5DC;
-  --muted: #BED2B5;
-  --dim: #ACBEA2;
+  --text: #F2F6F3;
+  --muted: #BBC9C0;
+  --dim: #A1B3A7;
   /* Arc meaning remains in text labels, not a decorative rainbow. */
-  --win: #E6BD60;
-  --build: #71F394; --think: #BED2B5; --human: #E6BD60; --danger: #E05030;
+  --win: #C9A84C;
+  --build: #30E060; --think: #BBC9C0; --human: #BBC9C0; --danger: #E05030;
   /* accent text twins. In dark the twin is the bright accent itself, so text
      can use the twin everywhere and light only has to change the value. */
-  --win-text: #E6BD60;
-  --build-text: #71F394;
-  --think-text: #BED2B5;
-  --human-text: #E6BD60;
+  --win-text: #C9A84C;
+  --build-text: #30E060;
+  --think-text: #BBC9C0;
+  --human-text: #BBC9C0;
   --danger-text: #F39079;
   /* paper band */
-  --paper-2: #FFF6DE;
-  --ink: #30291F;
-  --paper-muted: #62543E;
-  --marigold-ink: #795515;
-  --paper-line: #CDBD8E;
+  --paper-2: #FFFFFF;
+  --ink: #102219;
+  --paper-muted: #40594A;
+  --marigold-ink: #725500;
+  --paper-line: #C4D2C9;
   --build-wash: color-mix(in oklab, var(--build) 12%, transparent);
   --think-wash: color-mix(in oklab, var(--think) 12%, transparent);
   --win-wash: color-mix(in oklab, var(--win) 12%, transparent);
@@ -62,14 +62,14 @@
 }
 :root[data-scheme="light"] {
   color-scheme: light;
-  --bg: #F7EDCE; --surface: #FFF6DE; --card: #F0E3B9; --card-2: #E9D9A8;
-  --line: #D0BE8B; --line-2: #8B7953;
-  --text: #30291F; --muted: #62543E; --dim: #6B5C43;
-  --win: #D8B65C; --build: #48612B; --think: #62543E; --human: #795515;
-  --win-text: #795515;
-  --build-text: #48612B;
-  --think-text: #62543E;
-  --human-text: #795515;
+  --bg: #F5F7F6; --surface: #FFFFFF; --card: #EDF2EF; --card-2: #E4ECE7;
+  --line: #C4D2C9; --line-2: #718579;
+  --text: #102219; --muted: #40594A; --dim: #4A6052;
+  --win: #C9A84C; --build: #0F6B33; --think: #40594A; --human: #40594A;
+  --win-text: #725500;
+  --build-text: #0F6B33;
+  --think-text: #40594A;
+  --human-text: #40594A;
   --danger-text: #9F3520;
   --shadow-1: 0 1px 2px rgba(48,41,31,.08);
   --shadow-2: 0 4px 12px rgba(48,41,31,.10);

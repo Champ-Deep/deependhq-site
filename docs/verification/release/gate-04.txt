@@ -5,37 +5,37 @@
 
 dark  (bg/card/card-2)
   fg                      bg        card      card-2   verdict
-  text                16.73       13.07       11.17   AA
-  muted               11.70        9.14        7.81   AA
-  dim                  9.52        7.44        6.36   AA
-  win-text            10.57        8.26        7.06   AA
-  build-text          13.38       10.45        8.93   AA
-  think-text          11.70        9.14        7.81   AA
-  human-text          10.57        8.26        7.06   AA
-  danger-text          8.12        6.34        5.42   AA
+  text                18.36       16.44       14.94   AA
+  muted               11.66       10.44        9.49   AA
+  dim                  9.08        8.13        7.39   AA
+  win-text             8.76        7.84        7.13   AA
+  build-text          11.40       10.21        9.28   AA
+  think-text          11.66       10.44        9.49   AA
+  human-text          11.66       10.44        9.49   AA
+  danger-text          8.66        7.75        7.04   AA
 
 light (bg/card/card-2)
   fg                      bg        card      card-2   verdict
-  text                12.28       11.21       10.22   AA
-  muted                6.29        5.74        5.23   AA
-  dim                  5.55        5.06        4.62   AA
-  win-text             5.75        5.25        4.79   AA
-  build-text           5.95        5.43        4.95   AA
-  think-text           6.29        5.74        5.23   AA
-  human-text           5.75        5.25        4.79   AA
-  danger-text          5.98        5.46        4.98   AA
+  text                15.43       14.66       13.80   AA
+  muted                7.11        6.76        6.36   AA
+  dim                  6.32        6.01        5.65   AA
+  win-text             6.47        6.15        5.79   AA
+  build-text           6.15        5.85        5.50   AA
+  think-text           7.11        6.76        6.36   AA
+  human-text           7.11        6.76        6.36   AA
+  danger-text          6.50        6.17        5.81   AA
 
 dark  paper band
   fg                   paper     paper-2   verdict
-  ink                 12.28       13.32   AA
-  paper-muted          6.29        6.82   AA
-  marigold-ink         5.75        6.24   AA
+  ink                 15.43       16.60   AA
+  paper-muted          7.11        7.65   AA
+  marigold-ink         6.47        6.97   AA
 
 light paper band
   fg                   paper     paper-2   verdict
-  ink                 12.28       13.32   AA
-  paper-muted          6.29        6.82   AA
-  marigold-ink         5.75        6.24   AA
+  ink                 15.43       16.60   AA
+  paper-muted          7.11        7.65   AA
+  marigold-ink         6.47        6.97   AA
 
 60 pairs measured, 0 below 4.5.
 contrast: every pair clears 4.5:1 in both schemes.

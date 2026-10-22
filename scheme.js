@@ -11,7 +11,7 @@
     var scheme = mode === 'system' ? (media && media.matches ? 'light' : 'dark') : mode;
     d.documentElement.dataset.scheme = scheme;
     var meta = d.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = scheme === 'light' ? '#F7EDCE' : '#09140D';
+    if (meta) meta.content = scheme === 'light' ? '#F5F7F6' : '#080808';
     window.DH_SCHEME = { mode: mode, scheme: scheme };
     label();
     window.dispatchEvent(new CustomEvent('dh:scheme', { detail: window.DH_SCHEME }));

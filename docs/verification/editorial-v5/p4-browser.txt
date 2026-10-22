@@ -1,0 +1,22 @@
+Server ready and exact P4 mount verified http://127.0.0.1:61827
+Browser and owned HTTP listener closed.
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'Marketer first.Builder by instinct.'
+- 'Deep.Sreedeep Surapaneni'
+
+    at file:///Users/deep/repos/deependhq-editorial-preview/scripts/p4-browser.mjs:52:12 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'Marketer first.Builder by instinct.',
+  expected: 'Deep.Sreedeep Surapaneni',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0

@@ -10,19 +10,19 @@
 const App = () => {
   const H = window.HomeSections;
   return (
-    <div className="dh-app home-wx">
+    <div className="dh-app home-wx v5-home">
       <Nav active="home" progress />
       <main id="main" className="wx-main">
         <H.Hero />
 
         <H.Stack />
-        <H.Boundary />
+        <H.Pillars />
+        <H.Call />
         <H.Log />
         <H.Writing />
-        <H.Pillars />
+        <H.Human />
         <H.Day />
         <H.Machine />
-        <H.Human />
         <H.Doors />
       </main>
       <H.Signoff />

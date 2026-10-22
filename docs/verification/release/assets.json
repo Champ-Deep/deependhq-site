@@ -28,6 +28,7 @@
   "TheStack.jsx",
   "Ticker.jsx",
   "ToolkitPage.jsx",
+  "V5Components.jsx",
   "Workshop.jsx",
   "WritingPage.jsx",
   "_headers",
@@ -99,6 +100,8 @@
   "icon-192.png",
   "icon-512.png",
   "icon-mask.png",
+  "images/v5-harbinger.webp",
+  "images/v5-scorer.webp",
   "index.html",
   "islands.css",
   "journey.html",
@@ -158,6 +161,7 @@
   "toolkit-lib.js",
   "toolkit-session.js",
   "toolkit.html",
+  "v5.css",
   "visitor-id.js",
   "writing.html"
 ]
