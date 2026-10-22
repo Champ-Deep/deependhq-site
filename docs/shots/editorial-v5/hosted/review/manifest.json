@@ -4,13 +4,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-stack.png",
       "docs/shots/editorial-v5/hosted/375-light-stack.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-stack.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-stack.png",
-      "docs/shots/editorial-v5/hosted/1280-light-stack.png"
+    ],
+    "size": [
+      750,
+      2106
     ]
   },
   {
@@ -18,13 +15,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-ecosystem.png",
       "docs/shots/editorial-v5/hosted/375-light-ecosystem.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-ecosystem.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-ecosystem.png",
-      "docs/shots/editorial-v5/hosted/1280-light-ecosystem.png"
+    ],
+    "size": [
+      750,
+      1511
     ]
   },
   {
@@ -32,13 +26,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-v5-call.png",
       "docs/shots/editorial-v5/hosted/375-light-v5-call.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-v5-call.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-v5-call.png",
-      "docs/shots/editorial-v5/hosted/1280-light-v5-call.png"
+    ],
+    "size": [
+      750,
+      475
     ]
   },
   {
@@ -46,13 +37,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-log.png",
       "docs/shots/editorial-v5/hosted/375-light-log.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-log.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-log.png",
-      "docs/shots/editorial-v5/hosted/1280-light-log.png"
+    ],
+    "size": [
+      750,
+      941
     ]
   },
   {
@@ -60,13 +48,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-writing.png",
       "docs/shots/editorial-v5/hosted/375-light-writing.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-writing.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-writing.png",
-      "docs/shots/editorial-v5/hosted/1280-light-writing.png"
+    ],
+    "size": [
+      750,
+      1737
     ]
   },
   {
@@ -74,13 +59,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-human.png",
       "docs/shots/editorial-v5/hosted/375-light-human.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-human.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-human.png",
-      "docs/shots/editorial-v5/hosted/1280-light-human.png"
+    ],
+    "size": [
+      750,
+      953
     ]
   },
   {
@@ -88,13 +70,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-machine.png",
       "docs/shots/editorial-v5/hosted/375-light-machine.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-machine.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-machine.png",
-      "docs/shots/editorial-v5/hosted/1280-light-machine.png"
+    ],
+    "size": [
+      750,
+      1629
     ]
   },
   {
@@ -102,13 +81,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-ways.png",
       "docs/shots/editorial-v5/hosted/375-light-ways.png"
-    ]
-  },
-  {
-    "sheet": "docs/shots/editorial-v5/hosted/review/1280-ways.png",
-    "sources": [
-      "docs/shots/editorial-v5/hosted/1280-dark-ways.png",
-      "docs/shots/editorial-v5/hosted/1280-light-ways.png"
+    ],
+    "size": [
+      750,
+      585
     ]
   },
   {
@@ -116,6 +92,98 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/375-dark-footer.png",
       "docs/shots/editorial-v5/hosted/375-light-footer.png"
+    ],
+    "size": [
+      750,
+      1736
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-stack.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-stack.png",
+      "docs/shots/editorial-v5/hosted/1280-light-stack.png"
+    ],
+    "size": [
+      2560,
+      1224
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-ecosystem.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-ecosystem.png",
+      "docs/shots/editorial-v5/hosted/1280-light-ecosystem.png"
+    ],
+    "size": [
+      2560,
+      848
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-v5-call.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-v5-call.png",
+      "docs/shots/editorial-v5/hosted/1280-light-v5-call.png"
+    ],
+    "size": [
+      2560,
+      366
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-log.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-log.png",
+      "docs/shots/editorial-v5/hosted/1280-light-log.png"
+    ],
+    "size": [
+      2560,
+      825
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-writing.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-writing.png",
+      "docs/shots/editorial-v5/hosted/1280-light-writing.png"
+    ],
+    "size": [
+      2560,
+      1062
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-human.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-human.png",
+      "docs/shots/editorial-v5/hosted/1280-light-human.png"
+    ],
+    "size": [
+      2560,
+      666
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-machine.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-machine.png",
+      "docs/shots/editorial-v5/hosted/1280-light-machine.png"
+    ],
+    "size": [
+      2560,
+      1269
+    ]
+  },
+  {
+    "sheet": "docs/shots/editorial-v5/hosted/review/1280-ways.png",
+    "sources": [
+      "docs/shots/editorial-v5/hosted/1280-dark-ways.png",
+      "docs/shots/editorial-v5/hosted/1280-light-ways.png"
+    ],
+    "size": [
+      2560,
+      483
     ]
   },
   {
@@ -123,6 +191,10 @@
     "sources": [
       "docs/shots/editorial-v5/hosted/1280-dark-footer.png",
       "docs/shots/editorial-v5/hosted/1280-light-footer.png"
+    ],
+    "size": [
+      2560,
+      979
     ]
   }
 ]

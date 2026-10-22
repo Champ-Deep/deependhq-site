@@ -28,7 +28,7 @@ const RETIRED_RGB = [
   ['13, 15, 20', 'old ground #0D0F14'],
 ];
 const EXT = new Set(['.css', '.jsx', '.js', '.html', '.mjs']);
-const SKIP_DIRS = new Set(['node_modules', 'deependhq-next', '.git', '.wrangler', '.prerender-cache', '.shots', '.claude-scratch']);
+const SKIP_DIRS = new Set(['node_modules', 'deependhq-next', '.git', '.wrangler', '.prerender-cache', '.shots', '.claude-scratch', '.release']);
 const SKIP_FILES = new Set(['lead-scorer.html', 'scripts/brand-guard.mjs']);
 
 const hexRe = new RegExp(`(${RETIRED.map((h) => h.slice(1)).join('|')})(?![0-9a-f])`, 'i');

@@ -1,19 +1,19 @@
 {
-  "base": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev",
-  "assets": 161,
+  "base": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev",
+  "assets": 166,
   "routes": 7,
   "results": [
     {
       "path": "404.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/404",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/404",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "6a22532d2d97035f9cd7236bc2c196cc6bdaa3c75bbd5d8f453c9dab37370d45"
+      "hash": "4fdb9ab8d5c669ef4dcd03f65098358f10c3d02fc80f0e71a366e07f03d5588b"
     },
     {
       "path": "CompanyPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/CompanyPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/CompanyPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -21,7 +21,7 @@
     },
     {
       "path": "ContributionSkyline.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/ContributionSkyline.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/ContributionSkyline.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -29,7 +29,7 @@
     },
     {
       "path": "Dispatch.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Dispatch.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Dispatch.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -37,7 +37,7 @@
     },
     {
       "path": "Ecosystem.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Ecosystem.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Ecosystem.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -45,7 +45,7 @@
     },
     {
       "path": "FieldNotesPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/FieldNotesPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/FieldNotesPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -53,15 +53,15 @@
     },
     {
       "path": "Footer.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Footer.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Footer.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
-      "hash": "f4c3c57f99e3a2fbb041659d40aea0ec1d59584875f15663f6c8055d08c50fa4"
+      "hash": "2bdae1ce218acd6b57ee2c7789ee8379f75fc51ace0e4f30dbb2c671fe2caa67"
     },
     {
       "path": "Fx.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Fx.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Fx.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -69,7 +69,7 @@
     },
     {
       "path": "Hero.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Hero.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Hero.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -77,15 +77,15 @@
     },
     {
       "path": "Home.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Home.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Home.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
-      "hash": "ca802d12e1366fd31098408a0b160c030401d7550aca0fc542991b596ed5102b"
+      "hash": "453a296b9b8e752b47870db7ae20a27c05d561056f25b2268abfb4114eacbbdf"
     },
     {
       "path": "HowIThink.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/HowIThink.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/HowIThink.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -93,7 +93,7 @@
     },
     {
       "path": "JourneyPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/JourneyPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/JourneyPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -101,15 +101,15 @@
     },
     {
       "path": "Nav.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Nav.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Nav.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
-      "hash": "c2e2f5c9feddca87ec3939f887ed3186b28844b1e84974d7a81f80492eabc80a"
+      "hash": "3186cc0376692ddd803ff3f1da1d3de463c0744340598429b1aea50a5c31063b"
     },
     {
       "path": "NowPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/NowPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/NowPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -117,7 +117,7 @@
     },
     {
       "path": "Palette.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Palette.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Palette.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -125,7 +125,7 @@
     },
     {
       "path": "PillarsPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/PillarsPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/PillarsPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -133,7 +133,7 @@
     },
     {
       "path": "Pipeline.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Pipeline.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Pipeline.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -141,7 +141,7 @@
     },
     {
       "path": "PostPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/PostPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/PostPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -149,7 +149,7 @@
     },
     {
       "path": "PrivacyPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/PrivacyPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/PrivacyPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -157,7 +157,7 @@
     },
     {
       "path": "Proof.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Proof.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Proof.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -165,7 +165,7 @@
     },
     {
       "path": "Rail.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Rail.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Rail.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -173,7 +173,7 @@
     },
     {
       "path": "SecondCTA.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/SecondCTA.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/SecondCTA.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -181,7 +181,7 @@
     },
     {
       "path": "ShippingNow.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/ShippingNow.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/ShippingNow.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -189,7 +189,7 @@
     },
     {
       "path": "SignOff.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/SignOff.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/SignOff.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -197,7 +197,7 @@
     },
     {
       "path": "StatusBoard.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/StatusBoard.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/StatusBoard.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -205,7 +205,7 @@
     },
     {
       "path": "Sys.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Sys.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Sys.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -213,7 +213,7 @@
     },
     {
       "path": "TheStack.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/TheStack.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/TheStack.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -221,7 +221,7 @@
     },
     {
       "path": "Ticker.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Ticker.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Ticker.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -229,15 +229,23 @@
     },
     {
       "path": "ToolkitPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/ToolkitPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/ToolkitPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
       "hash": "4fe4d860bc85287810d622fa80b1e4ce5ae679fb792dbc6669e4921c796c90a3"
     },
     {
+      "path": "V5Components.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/V5Components.jsx",
+      "status": 200,
+      "content_type": "text/jsx",
+      "csp": null,
+      "hash": "5a4b2ce929c99ac7db8ccb3094281d7a70f89ee29849833861d47dcdf0ecb269"
+    },
+    {
       "path": "Workshop.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/Workshop.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/Workshop.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -245,7 +253,7 @@
     },
     {
       "path": "WritingPage.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/WritingPage.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/WritingPage.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -253,15 +261,15 @@
     },
     {
       "path": "_headers",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/_headers",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/_headers",
       "status": 404,
       "content_type": "text/html",
       "csp": null,
-      "hash": "182fb516aff88f6ca6c4abe14843b174172081dfc080f9d7f4fe852241800eeb"
+      "hash": "aa896968f517cad182e0234b07f63a56ee445a1b20ec1f8c17b59d7003f05305"
     },
     {
       "path": "account.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/account.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/account.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -269,15 +277,15 @@
     },
     {
       "path": "account.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/account",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/account",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "4dcb92c04669ecd3a19714739af6d7cb7fceb8e243a4df1fda4ccc0ba944fddd"
+      "hash": "4eca4bdb5568f82cca0963425aa13d4e22d049014b6388011968396e25095f5f"
     },
     {
       "path": "account.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/account.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/account.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -285,15 +293,15 @@
     },
     {
       "path": "agents.txt",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/agents.txt",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/agents.txt",
       "status": 200,
       "content_type": "text/plain; charset=utf-8",
       "csp": null,
-      "hash": "08e238828c523a246979e42229c220607c67bcaf864841fee22eb03f0bf64ca4"
+      "hash": "59f1c3ff3eac6a823b1acaefbe873b0ec2b03c79f6c1631fee9f664be1dca95b"
     },
     {
       "path": "analytics.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/analytics.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/analytics.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -301,15 +309,15 @@
     },
     {
       "path": "app.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/app.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/app.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
-      "hash": "9f39d34ab0aaffe74e5b09f9068200a3c210f4440e00ea5540cc17d66a74bd84"
+      "hash": "252282e81eaedba383d61fcf697296d358385712c51102ec5f88b528aea6f925"
     },
     {
       "path": "apple-touch-icon.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/apple-touch-icon.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/apple-touch-icon.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -317,7 +325,7 @@
     },
     {
       "path": "ask.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/ask.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/ask.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -325,7 +333,7 @@
     },
     {
       "path": "audio/voice.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/voice.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/voice.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -333,7 +341,7 @@
     },
     {
       "path": "audio/week-44-the-discipline-arc.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-44-the-discipline-arc.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-44-the-discipline-arc.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -341,7 +349,7 @@
     },
     {
       "path": "audio/week-44-the-discipline-arc.mp3",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-44-the-discipline-arc.mp3",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-44-the-discipline-arc.mp3",
       "status": 200,
       "content_type": "audio/mpeg",
       "csp": null,
@@ -349,7 +357,7 @@
     },
     {
       "path": "audio/week-45-the-wall-we-named.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-45-the-wall-we-named.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-45-the-wall-we-named.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -357,7 +365,7 @@
     },
     {
       "path": "audio/week-45-the-wall-we-named.mp3",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-45-the-wall-we-named.mp3",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-45-the-wall-we-named.mp3",
       "status": 200,
       "content_type": "audio/mpeg",
       "csp": null,
@@ -365,7 +373,7 @@
     },
     {
       "path": "audio/week-46-the-empty-room-arc.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-46-the-empty-room-arc.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-46-the-empty-room-arc.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -373,7 +381,7 @@
     },
     {
       "path": "audio/week-46-the-empty-room-arc.mp3",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-46-the-empty-room-arc.mp3",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-46-the-empty-room-arc.mp3",
       "status": 200,
       "content_type": "audio/mpeg",
       "csp": null,
@@ -381,7 +389,7 @@
     },
     {
       "path": "audio/week-47-the-decision-debt-arc.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-47-the-decision-debt-arc.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-47-the-decision-debt-arc.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -389,7 +397,7 @@
     },
     {
       "path": "audio/week-47-the-decision-debt-arc.mp3",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/audio/week-47-the-decision-debt-arc.mp3",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/audio/week-47-the-decision-debt-arc.mp3",
       "status": 200,
       "content_type": "audio/mpeg",
       "csp": null,
@@ -397,7 +405,7 @@
     },
     {
       "path": "brand/brandmark-reverse.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/brandmark-reverse.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/brandmark-reverse.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -405,7 +413,7 @@
     },
     {
       "path": "brand/brandmark.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/brandmark.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/brandmark.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -413,7 +421,7 @@
     },
     {
       "path": "brand/flame.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/flame.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/flame.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -421,7 +429,7 @@
     },
     {
       "path": "brand/icons.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/icons.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/icons.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -429,7 +437,7 @@
     },
     {
       "path": "brand/mare-hero.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/mare-hero.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/mare-hero.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -437,7 +445,7 @@
     },
     {
       "path": "brand/mare-night.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/mare-night.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/mare-night.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -445,7 +453,7 @@
     },
     {
       "path": "brand/mare-sticker.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/mare-sticker.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/mare-sticker.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -453,7 +461,7 @@
     },
     {
       "path": "brand/mare.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/mare.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/mare.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -461,7 +469,7 @@
     },
     {
       "path": "brand/tagline-on-navy.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/tagline-on-navy.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/tagline-on-navy.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -469,7 +477,7 @@
     },
     {
       "path": "brand/tagline.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/tagline.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/tagline.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -477,7 +485,7 @@
     },
     {
       "path": "brand/wordmark.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/brand/wordmark.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/brand/wordmark.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -485,7 +493,7 @@
     },
     {
       "path": "colors_and_type.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/colors_and_type.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/colors_and_type.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -493,119 +501,119 @@
     },
     {
       "path": "command.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/journey#commits",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/journey#commits",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "c13934c8b8179c0504e2593c481939ed73974d9022d77d9274b3d8eeef16c588"
+      "hash": "ce978916db77b4d7d3923332105dc21d1f6cb25aee2c4cd957233b0cbdc35757"
     },
     {
       "path": "company.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/pillars",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/pillars",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "10cb62f4dc0a6648bd6a9c8c1eee71dc8a0bc33da71fb7452e74b222cbe52fb2"
+      "hash": "a9783b64b85bdea5a5c8944a82a82b4bf826f6c542d87751c37428644df2f266"
     },
     {
       "path": "company/ampliz/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/ampliz/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/ampliz/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "42ddd2a6fa84fd2a7da2547aa4ecc1b0d4ec37759f6c6d589589a440653d6736"
+      "hash": "aa1ab5df8e9e317e932b182e3569c920305b6a13b2c8ed7cf691a3787491b2bf"
     },
     {
       "path": "company/champ-fit/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champ-fit/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/champ-fit/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "9b4811f3fd44cf4f167d93ade95f121905aac113f68ef108f724408f6f466561"
+      "hash": "ccc5c7957a028b968c959e316c97108bcc5adccb8f7ba0e342dd890bb2163e21"
     },
     {
       "path": "company/champions-accelerator/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champions-accelerator/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/champions-accelerator/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "071f1f1a5c42b95d794fa2467011be9452c4ff1528c370365f7c4eede91b9172"
+      "hash": "72fd77e8af3f4ac6960b6edf00fe617f0ef85233326d75cac7ff9a1a2212b826"
     },
     {
       "path": "company/champions-club/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champions-club/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/champions-club/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "971582b729e19274865df225a82c6372e1e1bdad0cd6fc66b0937e62273dccbd"
+      "hash": "bd6210d5b9334bb18d3d6252816b41402d46401f9dfb2af52303f2c2e7c04998"
     },
     {
       "path": "company/champions-infometrics/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/champions-infometrics/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/champions-infometrics/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "1595dfaf084cfc4a8c7e7a8b6ac8659a55b5fc621f3d9eaef6321217e9b6c18d"
+      "hash": "65fecd47756b367fcac198a0d5b8932e6fd40f157fc8d6331fc92974e7e70b1d"
     },
     {
       "path": "company/cirralogix/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/cirralogix/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/cirralogix/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "c83fb56dbedd7251866b9b38c9521f34263ac5ba70b2748ca066aecedbea2fdf"
+      "hash": "320be65e75b5b1ad65f0af7e3434c2d6a00cdf4886e6442cc756a0ac94b9607a"
     },
     {
       "path": "company/health-fit/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/health-fit/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/health-fit/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "92ebb170a868d2c74006ad6762f2f8ab3bea18838042b0ceeee401aaec7d4a48"
+      "hash": "32011c548fa9485ca9d65dd052585668466e71182d03edff4c82f114383fb7ba"
     },
     {
       "path": "company/infratech/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/infratech/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/infratech/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "bb5b10d781aaa2661f42edc7c2ca4c7698f9d70d937ffd053c6745d34f7d8ce6"
+      "hash": "9a0c0b1d9df08cf8ce40f1d3725c0a00ffb27d06fa46ab40867f929c08a7a1d2"
     },
     {
       "path": "company/ip-momentum/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/ip-momentum/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/ip-momentum/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "a243dc118872efe6f53b17fa4548135530c07cadb0a3098610e11280beb694b7"
+      "hash": "6727565582adb8e036e070ca9786d4fb8824797a24e7d92ec8aa57de96f91366"
     },
     {
       "path": "company/lake-b2b/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/lake-b2b/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/lake-b2b/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "6d0bbe4237d5fa122285fd55ded09358ecd0102fed8b3a7bd6382d8b5e42db79"
+      "hash": "259fb88607a69dc9f02433c533113c0eac46fd03073360c263c8d3cc9862ab87"
     },
     {
       "path": "company/recruit-champ/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/recruit-champ/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/recruit-champ/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "52f82921306cbfb2f52ac6dd427fbf71d2dab1b38ee27ed6e2294d4b16e0aa5e"
+      "hash": "ce22bc69db18908d8bdc36df972f83d3a43dfce8bf5fd5d1f3ceaac125ac497f"
     },
     {
       "path": "company/span-global-services/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/span-global-services/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/span-global-services/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "52314a7c2ee7d888b2c74e6d92e082f470b8740afeeed9416c674398b99a523a"
+      "hash": "79c5ed499ece1e9e43e038c7a17f93148f0b9655b03748d6ca3c7e9c0583d62a"
     },
     {
       "path": "content.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/content.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/content.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -613,7 +621,7 @@
     },
     {
       "path": "copy-engine.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/copy-engine.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/copy-engine.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -621,7 +629,7 @@
     },
     {
       "path": "copy-rules.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/copy-rules.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/copy-rules.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -629,15 +637,15 @@
     },
     {
       "path": "data.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/data.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/data.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
-      "hash": "45b2b7ec806abdc6eb1b312482b36b32dbef75f989f690d3025c07eca8ba1d76"
+      "hash": "36a532a6862320b403fac5a24fdcd0d974063af54272e95bfbb646686fd8e573"
     },
     {
       "path": "essay.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/essay.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/essay.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -645,7 +653,7 @@
     },
     {
       "path": "favicon.ico",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/favicon.ico",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/favicon.ico",
       "status": 200,
       "content_type": "image/vnd.microsoft.icon",
       "csp": null,
@@ -653,7 +661,7 @@
     },
     {
       "path": "favicon.svg",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/favicon.svg",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/favicon.svg",
       "status": 200,
       "content_type": "image/svg+xml",
       "csp": null,
@@ -661,23 +669,23 @@
     },
     {
       "path": "feed.xml",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/feed.xml",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/feed.xml",
       "status": 200,
       "content_type": "application/xml",
       "csp": null,
-      "hash": "885e4120612446dcdc4d44c1206d94058a2def5e6bdea04998239f15b6bbe432"
+      "hash": "4245ed4b20e043e85089b1757aa4cbd8b62a58a857f736812faecfde85a76ff6"
     },
     {
       "path": "field-notes.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/journey",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/journey",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "c13934c8b8179c0504e2593c481939ed73974d9022d77d9274b3d8eeef16c588"
+      "hash": "ce978916db77b4d7d3923332105dc21d1f6cb25aee2c4cd957233b0cbdc35757"
     },
     {
       "path": "fonts.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -685,7 +693,7 @@
     },
     {
       "path": "fonts/fraunces-italic-latin-ext-v2.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/fraunces-italic-latin-ext-v2.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/fraunces-italic-latin-ext-v2.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -693,7 +701,7 @@
     },
     {
       "path": "fonts/fraunces-italic-latin-v2.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/fraunces-italic-latin-v2.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/fraunces-italic-latin-v2.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -701,7 +709,7 @@
     },
     {
       "path": "fonts/fraunces-latin-ext-v2.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/fraunces-latin-ext-v2.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/fraunces-latin-ext-v2.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -709,7 +717,7 @@
     },
     {
       "path": "fonts/fraunces-latin-v2.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/fraunces-latin-v2.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/fraunces-latin-v2.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -717,7 +725,7 @@
     },
     {
       "path": "fonts/inter-latin-ext.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/inter-latin-ext.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/inter-latin-ext.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -725,7 +733,7 @@
     },
     {
       "path": "fonts/inter-latin.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/inter-latin.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/inter-latin.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -733,7 +741,7 @@
     },
     {
       "path": "fonts/jetbrains-mono-latin-ext.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/jetbrains-mono-latin-ext.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/jetbrains-mono-latin-ext.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -741,7 +749,7 @@
     },
     {
       "path": "fonts/jetbrains-mono-latin.woff2",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/fonts/jetbrains-mono-latin.woff2",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/fonts/jetbrains-mono-latin.woff2",
       "status": 200,
       "content_type": "font/woff2",
       "csp": null,
@@ -749,7 +757,7 @@
     },
     {
       "path": "home-islands.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/home-islands.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/home-islands.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -757,15 +765,15 @@
     },
     {
       "path": "home.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/home.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/home.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
-      "hash": "7cb070e441fcc7fa6dd4fddd95dab3ada37f0945cce22542f3f32a16e5bbcead"
+      "hash": "234d9393e6a586cc09ae3dc4127c9fb6637d9efab7dd52c3e5c9c24f242b8575"
     },
     {
       "path": "home.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/home.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/home.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -773,15 +781,15 @@
     },
     {
       "path": "humans.txt",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/humans.txt",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/humans.txt",
       "status": 200,
       "content_type": "text/plain; charset=utf-8",
       "csp": null,
-      "hash": "81cddcdc5dc143241513ed8bc4f62cd56b80ca9192f80dfdec5392eb8df9fa36"
+      "hash": "230b544f6d14edb214a86cd7cb16a0445ad13f9db8feebf0793eec67e1394098"
     },
     {
       "path": "icon-192.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/icon-192.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/icon-192.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -789,7 +797,7 @@
     },
     {
       "path": "icon-512.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/icon-512.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/icon-512.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -797,23 +805,47 @@
     },
     {
       "path": "icon-mask.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/icon-mask.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/icon-mask.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
       "hash": "9775dffdec10c6c99d312c4ad8017adae9efeeb9647610a605411cddbf13e1d4"
     },
     {
+      "path": "images/v5-harbinger.webp",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-harbinger.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "csp": null,
+      "hash": "9c6f2cd4fa0cbc7a4443c3c8aaa9702057140e33d1ae9583ee9ec36b02ec0ecf"
+    },
+    {
+      "path": "images/v5-pdf.webp",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "csp": null,
+      "hash": "dd61abaa5e011a5cafe8acd35db138b58b2d28af52ba0eb278e45f66f573ca3f"
+    },
+    {
+      "path": "images/v5-scorer.webp",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "csp": null,
+      "hash": "056230d5e94f1f74f96024d53875e065ada06010919f1d8bf83fa40b1ac836a9"
+    },
+    {
       "path": "index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "b9bc005ce07a7a3dd146cb44b7e4cca60d0e40f4b704a382c081e00c83494135"
+      "hash": "aad7b2dfbc0c7fbf4070819e017b6aeb9114e39c5f0c930b023170065b2b6659"
     },
     {
       "path": "islands.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/islands.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/islands.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -821,15 +853,15 @@
     },
     {
       "path": "journey.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/journey",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/journey",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "c13934c8b8179c0504e2593c481939ed73974d9022d77d9274b3d8eeef16c588"
+      "hash": "ce978916db77b4d7d3923332105dc21d1f6cb25aee2c4cd957233b0cbdc35757"
     },
     {
       "path": "lead-scorer.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/lead-scorer.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/lead-scorer.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -837,15 +869,15 @@
     },
     {
       "path": "lead-scorer.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/lead-scorer",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/lead-scorer",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "b127d959af2177b3df5f294c502c9ae836918cd63869be65fbbade3a3cd90bc9"
+      "hash": "468a116a3702426d32ae17877024029b04a77d2c12b32decdf29aa0395bf7a27"
     },
     {
       "path": "lead-scorer.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/lead-scorer.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/lead-scorer.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -853,23 +885,23 @@
     },
     {
       "path": "llms-full.txt",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/llms-full.txt",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/llms-full.txt",
       "status": 200,
       "content_type": "text/plain; charset=utf-8",
       "csp": null,
-      "hash": "a2fd376c60154c5b211b4dab8414f9922602245bb6710479b0f230ff0e08e5c6"
+      "hash": "bd5a2d8d2c6d67982f65b4a66adcf0e75366d86b0310c25d7f816847de465720"
     },
     {
       "path": "llms.txt",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/llms.txt",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/llms.txt",
       "status": 200,
       "content_type": "text/plain; charset=utf-8",
       "csp": null,
-      "hash": "e5a5cf11dd29543ff498a5d0e1c0e3858f9e9aad4f2ac2951739cb21bef4a658"
+      "hash": "bc4b0d52704e60ae2294cf3e1aa19618f30bb863c0cc4b9a9bfb414131460674"
     },
     {
       "path": "manifest.webmanifest",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/manifest.webmanifest",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/manifest.webmanifest",
       "status": 200,
       "content_type": "application/manifest+json",
       "csp": null,
@@ -877,7 +909,7 @@
     },
     {
       "path": "mare.json",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/mare.json",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/mare.json",
       "status": 200,
       "content_type": "application/json",
       "csp": null,
@@ -885,23 +917,23 @@
     },
     {
       "path": "now.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/now",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/now",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "081966db00c014b5443ebb5c84ef82005fbd71bf3d7d5064a45cbe181f8ee38a"
+      "hash": "821f68750d0b5b298d44bd79783ea0b43f2cdc27f7273a0ccbc097ba72cb4e30"
     },
     {
       "path": "og.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "706dbc11944b1225bfa697431fe0502288fee24c2a3f26f50bd600feccc7ae55"
+      "hash": "c516ca69e93be6f89fbec8fcd6a35a6c0f81fa44fd30c9a5ee86fc6cd8a3205c"
     },
     {
       "path": "og/company.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/company.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/company.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -909,7 +941,7 @@
     },
     {
       "path": "og/default.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/default.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/default.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -917,7 +949,7 @@
     },
     {
       "path": "og/field-notes.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/field-notes.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/field-notes.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -925,7 +957,7 @@
     },
     {
       "path": "og/home.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/home.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/home.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -933,7 +965,7 @@
     },
     {
       "path": "og/journey.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/journey.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/journey.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -941,7 +973,7 @@
     },
     {
       "path": "og/now.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/now.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/now.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -949,7 +981,7 @@
     },
     {
       "path": "og/pillars.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/pillars.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/pillars.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -957,7 +989,7 @@
     },
     {
       "path": "og/toolkit.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/toolkit.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/toolkit.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -965,7 +997,7 @@
     },
     {
       "path": "og/writing.png",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/og/writing.png",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/og/writing.png",
       "status": 200,
       "content_type": "image/png",
       "csp": null,
@@ -973,7 +1005,7 @@
     },
     {
       "path": "page.jsx",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/page.jsx",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/page.jsx",
       "status": 200,
       "content_type": "text/jsx",
       "csp": null,
@@ -981,7 +1013,7 @@
     },
     {
       "path": "pages.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/pages.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/pages.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -989,175 +1021,175 @@
     },
     {
       "path": "pillars.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/pillars",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/pillars",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "10cb62f4dc0a6648bd6a9c8c1eee71dc8a0bc33da71fb7452e74b222cbe52fb2"
+      "hash": "a9783b64b85bdea5a5c8944a82a82b4bf826f6c542d87751c37428644df2f266"
     },
     {
       "path": "post.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/writing",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/writing",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "e8e541393fb52834912b795cad9e2710f79509789a4ebfc4338aefdbecca630f"
+      "hash": "9f198819829a601b789d38dcdd391641725031105e544638868866a455209003"
     },
     {
       "path": "post/week-27-data-is-not-a-product/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-27-data-is-not-a-product/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-27-data-is-not-a-product/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "d43def532c3148722632fee5ac07b1eae8f44f6ddf2e421eb2836c9ecc337d5c"
+      "hash": "89b31e3e31e91044470b10fab5ad03fce79331b8026a6cac8affc64bd258b5a9"
     },
     {
       "path": "post/week-28-four-sales-teams/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-28-four-sales-teams/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-28-four-sales-teams/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "4eacf7a7a2d69cc5f8d6b17c36022e6e48b7bd441858b15a0e8522d438e32845"
+      "hash": "54a617dc43634ec04bb4f14eb915799252e6e8c62d1032560ffe56227bc2c68d"
     },
     {
       "path": "post/week-29-the-reach-arc/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-29-the-reach-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-29-the-reach-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "610c3a6f1c19c479895903cad5b42f3251d7dd0e96d5c822f7fe5badfae5f87b"
+      "hash": "c2efff911ab78615cd4b69ec261a4d1526e14c447580a3a1f6a8861e18c6936a"
     },
     {
       "path": "post/week-30-the-enterprise-arc/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-30-the-enterprise-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-30-the-enterprise-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "e3b291126d43088834e3853690c05796edc5d0e000f25caaa53d2bda9d4301f4"
+      "hash": "0df10e50e0b93a0b6e09710394b399ea393ac7ddec66b78f339964d2e02edd6a"
     },
     {
       "path": "post/week-31-the-proof-arc/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-31-the-proof-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-31-the-proof-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "203f84dc4ba2016e880d42eb25b6b40cd5374738bd88eb6ec47a559b8507f77e"
+      "hash": "ae1c44f4222d02f7ac54c6d8eb0732cd8666a491fda5f8ff32f3723d670c1fbe"
     },
     {
       "path": "post/week-32-the-build-reflex/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-32-the-build-reflex/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-32-the-build-reflex/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "3c5b32268a9dacdb79e241bb0ad88e53167df5bdb5d1cc42ea69d6a1f13b0f7a"
+      "hash": "3d1d1e134d60634b56523317530475ac1e8b0b1008f75e82bf802a8c5e714ca7"
     },
     {
       "path": "post/week-33-the-quarter-turns/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-33-the-quarter-turns/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-33-the-quarter-turns/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "b7f0b8f43b66fe4be0df0f2b671d102dc1de6149cfb1d752b479d86208809f5d"
+      "hash": "4d8524d063ddd4461b37f685799a4d40afe9a55b0473c0c718433e54c45b6bfb"
     },
     {
       "path": "post/week-34-the-side-door/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-34-the-side-door/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-34-the-side-door/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "ab22e246c8d342151360094301a697c31416cccb423e335f38dae2ea47d08948"
+      "hash": "9a135dfd5c46dba42954d0ee9aa4698019760abc9e1e64383eb3c6fe977bbb7f"
     },
     {
       "path": "post/week-35-three-calls-one-friday/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-35-three-calls-one-friday/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-35-three-calls-one-friday/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "a72edaf47baf58c5a5479880c35f1cdf7d147f9ceed80aac723af40fe722f461"
+      "hash": "abeb2192d260cb29f557257874ad74683a08a2abeaff9df9b021c3e8ac1e34d8"
     },
     {
       "path": "post/week-36-the-doctor-said-yes/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-36-the-doctor-said-yes/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-36-the-doctor-said-yes/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "088868b40927cf4b6ae548f883dae8e5a07c6743dabdff34454639252d4e07a0"
+      "hash": "b4a057270efb376d8d2129cafad55893688362581d693ba266227c4ced203ea5"
     },
     {
       "path": "post/week-37-the-calendar-was-full/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-37-the-calendar-was-full/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-37-the-calendar-was-full/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "5f3e34d6c55ae4e2648831cd825d758397ee8a22e6d6290a4e7e030bf9b49212"
+      "hash": "c8d49b4b9c73988554717bb49906f847fa6d81ddc6412c2df1cdc7f0f086c709"
     },
     {
       "path": "post/week-38-the-signals-were-everywhere/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-38-the-signals-were-everywhere/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-38-the-signals-were-everywhere/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "d867341ba427e44bc8c6bb11172c47017f57aafa1c98c635980a16b6c0c0e57d"
+      "hash": "502c2663ae836edf43ca4e07c67ebc06dd7f887b9aad11e744c1d4174769856b"
     },
     {
       "path": "post/week-43-five-systems-five-days/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-43-five-systems-five-days/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-43-five-systems-five-days/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "eafc950ee3b367ae01cea089e8d54de8388408e0321865baee3fca8714a55fc5"
+      "hash": "6ee21723c7d6e53dbd70be9732ae2a08444bfbbc818676944ff291d4d0656ff7"
     },
     {
       "path": "post/week-44-the-discipline-arc/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-44-the-discipline-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-44-the-discipline-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "cf8b7c605f6daaee797a6d6198a2edfb4697b05b999483758f65d5582cd11814"
+      "hash": "17eb05d0502c965856b02c23774b5fa5f153013ee12603cdb0e71a938df6982a"
     },
     {
       "path": "post/week-45-the-wall-we-named/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-45-the-wall-we-named/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-45-the-wall-we-named/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "1b7c254dd5777bf6b16b639d538dbd636ef43d32b137d8d4b1df9e9f7c0921ee"
+      "hash": "87fa9e4e01e6ac9cbe9d54fc21aef24f63a49db15f2fc549df1b39d905db00ca"
     },
     {
       "path": "post/week-46-the-empty-room-arc/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-46-the-empty-room-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-46-the-empty-room-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "74a3fbd5220f36b3e26defac790b780017861dce010558bed3e28a28483e255a"
+      "hash": "cafcdf2331d49c2d5c8c63a119c9afed0f92fa250545d5e30ca25cd1abc24f30"
     },
     {
       "path": "post/week-47-the-decision-debt-arc/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-47-the-decision-debt-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-47-the-decision-debt-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "5fe73b4e241f63ae39fe803d88a0b4086655101de068cc1152541be8a94148ef"
+      "hash": "ae87a25777e8e5de177725724500afe56129e067bee615f922779763b1aff1e7"
     },
     {
       "path": "post/week-48-the-receipts-arc/index.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-48-the-receipts-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-48-the-receipts-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "5bbe0cfabfe6fa105ede9330e5897fd3800f9ed603fe2f4f576934598af95a5b"
+      "hash": "398d9a0b6fdf4b0a0c8b6633e17b4c04ea2c92d09da4a8a52f6c84c4a2868cb7"
     },
     {
       "path": "privacy.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/privacy",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/privacy",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "308c4f6111fe4049fa634161e890fe3fb217c26ffa32bfffe95ab9f2a9ac872e"
+      "hash": "24a73ca203284f42270f7c97a96f78c3100200e675e86ee84a8d56c276bbff97"
     },
     {
       "path": "rail.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/rail.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/rail.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -1165,7 +1197,7 @@
     },
     {
       "path": "robots.txt",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/robots.txt",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/robots.txt",
       "status": 200,
       "content_type": "text/plain; charset=utf-8",
       "csp": null,
@@ -1173,23 +1205,23 @@
     },
     {
       "path": "scheme-tokens.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/scheme-tokens.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/scheme-tokens.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
-      "hash": "d604ae9eacf9d6f168f635ec890be376c67fc049b944cb1ff817627001fb5866"
+      "hash": "09faee1d3113aefa1fedbb9cd6d6b6469d2575f22f4a6e9f0019e758c29a23c7"
     },
     {
       "path": "scheme.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/scheme.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/scheme.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
-      "hash": "2212dc6e37d1af2fb48585e2e570ec4f6d99cf3b237802f46d8930364cf56e8b"
+      "hash": "d7591cc0775fc2635ab46cd938294483f6faa9b9a5404f2999c502f14585824a"
     },
     {
       "path": "segment.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/segment.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/segment.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -1197,7 +1229,7 @@
     },
     {
       "path": "sitemap.xml",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/sitemap.xml",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/sitemap.xml",
       "status": 200,
       "content_type": "application/xml",
       "csp": null,
@@ -1205,7 +1237,7 @@
     },
     {
       "path": "styles-x.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/styles-x.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/styles-x.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -1213,7 +1245,7 @@
     },
     {
       "path": "styles.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/styles.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/styles.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -1221,15 +1253,15 @@
     },
     {
       "path": "system.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/system.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/system.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
-      "hash": "9ad819d840e433df1a9e255f2fbc1c0c703864fc103903e8506d31c0ce76c83a"
+      "hash": "78477bdf29ad4c68e2a3451d92ef99e0f667893460e6605187739d37f2ac0b6b"
     },
     {
       "path": "toolkit-catalog.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit-catalog.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/toolkit-catalog.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -1237,7 +1269,7 @@
     },
     {
       "path": "toolkit-gallery.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit-gallery.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/toolkit-gallery.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -1245,7 +1277,7 @@
     },
     {
       "path": "toolkit-home.css",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit-home.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/toolkit-home.css",
       "status": 200,
       "content_type": "text/css",
       "csp": null,
@@ -1253,7 +1285,7 @@
     },
     {
       "path": "toolkit-lib.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit-lib.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/toolkit-lib.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -1261,7 +1293,7 @@
     },
     {
       "path": "toolkit-session.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit-session.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/toolkit-session.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -1269,15 +1301,23 @@
     },
     {
       "path": "toolkit.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/toolkit",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "903fcc91344b636a55cf0462a86b06d6d766d0bce5ec6c6228d76f4756263db3"
+      "hash": "48b62f52b71e7a8a91af8d957f668ce10d307c0935e55cef80535d633bc5b8f6"
+    },
+    {
+      "path": "v5.css",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/v5.css",
+      "status": 200,
+      "content_type": "text/css",
+      "csp": null,
+      "hash": "61f2fbd5b666e8ae37fd7a913b33bc2ab2208c44ea64883422e86206d9d93cb0"
     },
     {
       "path": "visitor-id.js",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/visitor-id.js",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/visitor-id.js",
       "status": 200,
       "content_type": "text/javascript",
       "csp": null,
@@ -1285,67 +1325,67 @@
     },
     {
       "path": "writing.html",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/writing",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/writing",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "e8e541393fb52834912b795cad9e2710f79509789a4ebfc4338aefdbecca630f"
+      "hash": "9f198819829a601b789d38dcdd391641725031105e544638868866a455209003"
     },
     {
       "path": "/",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "b9bc005ce07a7a3dd146cb44b7e4cca60d0e40f4b704a382c081e00c83494135"
+      "hash": "aad7b2dfbc0c7fbf4070819e017b6aeb9114e39c5f0c930b023170065b2b6659"
     },
     {
       "path": "/journey",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/journey",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/journey",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "c13934c8b8179c0504e2593c481939ed73974d9022d77d9274b3d8eeef16c588"
+      "hash": "ce978916db77b4d7d3923332105dc21d1f6cb25aee2c4cd957233b0cbdc35757"
     },
     {
       "path": "/post/week-48-the-receipts-arc",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/post/week-48-the-receipts-arc/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/post/week-48-the-receipts-arc/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "5bbe0cfabfe6fa105ede9330e5897fd3800f9ed603fe2f4f576934598af95a5b"
+      "hash": "398d9a0b6fdf4b0a0c8b6633e17b4c04ea2c92d09da4a8a52f6c84c4a2868cb7"
     },
     {
       "path": "/company/lake-b2b",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/company/lake-b2b/",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/company/lake-b2b/",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "6d0bbe4237d5fa122285fd55ded09358ecd0102fed8b3a7bd6382d8b5e42db79"
+      "hash": "259fb88607a69dc9f02433c533113c0eac46fd03073360c263c8d3cc9862ab87"
     },
     {
       "path": "/toolkit",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/toolkit",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/toolkit",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "903fcc91344b636a55cf0462a86b06d6d766d0bce5ec6c6228d76f4756263db3"
+      "hash": "48b62f52b71e7a8a91af8d957f668ce10d307c0935e55cef80535d633bc5b8f6"
     },
     {
       "path": "/lead-scorer",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/lead-scorer",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/lead-scorer",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "b127d959af2177b3df5f294c502c9ae836918cd63869be65fbbade3a3cd90bc9"
+      "hash": "468a116a3702426d32ae17877024029b04a77d2c12b32decdf29aa0395bf7a27"
     },
     {
       "path": "/account",
-      "final_url": "https://deependhq-editorial-v4-preview.deep-ae0.workers.dev/account",
+      "final_url": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/account",
       "status": 200,
       "content_type": "text/html",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com  https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://img.clerk.com; connect-src 'self'  https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com; frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
-      "hash": "4dcb92c04669ecd3a19714739af6d7cb7fceb8e243a4df1fda4ccc0ba944fddd"
+      "hash": "4eca4bdb5568f82cca0963425aa13d4e22d049014b6388011968396e25095f5f"
     }
   ]
 }

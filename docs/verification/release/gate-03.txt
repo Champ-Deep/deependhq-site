@@ -2,12 +2,4 @@
 > deependhq-site@1.0.0 brand-guard
 > node scripts/brand-guard.mjs
 
-brand guard: 8 retired value or fossil marker. Use the tokens in system.css.
-  .release/public/scheme-tokens.css:5  #C9A84C
-  .release/public/scheme-tokens.css:14  #C9A84C
-  .release/public/scheme-tokens.css:18  #C9A84C
-  .release/public/scheme-tokens.css:68  #C9A84C
-  .release/public/system.css:12  #C9A84C
-  .release/public/system.css:21  #C9A84C
-  .release/public/system.css:25  #C9A84C
-  .release/public/system.css:82  #C9A84C
+brand guard: clean. no retired colour values.

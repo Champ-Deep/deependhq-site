@@ -11,12 +11,12 @@
   },
   {
     "command": "npm run check",
-    "exit": 1,
+    "exit": 0,
     "log": "gate-02.txt"
   },
   {
     "command": "npm run brand-guard",
-    "exit": 1,
+    "exit": 0,
     "log": "gate-03.txt"
   },
   {

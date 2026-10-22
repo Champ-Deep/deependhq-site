@@ -462,12 +462,6 @@
       "findings": [
         {
           "severity": "WARN",
-          "rule": "emoji-as-icon",
-          "message": "emoji used in interface chrome; use one SVG icon family",
-          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋Exploring what Deep is buildi\""
-        },
-        {
-          "severity": "WARN",
           "rule": "default-font",
           "message": "body font is \"inter\", an AI default; choose deliberately",
           "where": ""
@@ -528,12 +522,6 @@
       "findings": [
         {
           "severity": "WARN",
-          "rule": "emoji-as-icon",
-          "message": "emoji used in interface chrome; use one SVG icon family",
-          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋Exploring what Deep is buildi\""
-        },
-        {
-          "severity": "WARN",
           "rule": "default-font",
           "message": "body font is \"inter\", an AI default; choose deliberately",
           "where": ""
@@ -562,12 +550,6 @@
     {
       "name": "768-light-stack-open",
       "findings": [
-        {
-          "severity": "WARN",
-          "rule": "emoji-as-icon",
-          "message": "emoji used in interface chrome; use one SVG icon family",
-          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋Exploring what Deep is buildi\""
-        },
         {
           "severity": "WARN",
           "rule": "default-font",
@@ -600,12 +582,6 @@
       "findings": [
         {
           "severity": "WARN",
-          "rule": "emoji-as-icon",
-          "message": "emoji used in interface chrome; use one SVG icon family",
-          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋Exploring what Deep is buildi\""
-        },
-        {
-          "severity": "WARN",
           "rule": "default-font",
           "message": "body font is \"inter\", an AI default; choose deliberately",
           "where": ""
@@ -636,12 +612,6 @@
       "findings": [
         {
           "severity": "WARN",
-          "rule": "emoji-as-icon",
-          "message": "emoji used in interface chrome; use one SVG icon family",
-          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋Exploring what Deep is buildi\""
-        },
-        {
-          "severity": "WARN",
           "rule": "default-font",
           "message": "body font is \"inter\", an AI default; choose deliberately",
           "where": ""
@@ -670,12 +640,6 @@
     {
       "name": "1280-dark",
       "findings": [
-        {
-          "severity": "WARN",
-          "rule": "emoji-as-icon",
-          "message": "emoji used in interface chrome; use one SVG icon family",
-          "where": "div.dh-pro-bubble.dh-pro-in \"Hi! I'm Deep 👋Exploring what Deep is buildi\""
-        },
         {
           "severity": "WARN",
           "rule": "default-font",
@@ -8820,7 +8784,11 @@
     "Failed to load resource: net::ERR_FAILED",
     "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
     "Failed to load resource: net::ERR_FAILED",
-    "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+    "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
     "Failed to load resource: net::ERR_FAILED",
     "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
     "Failed to load resource: net::ERR_FAILED",
@@ -8843,16 +8811,6 @@
     "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
     "Failed to load resource: net::ERR_FAILED",
     "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
-    "Failed to load resource: net::ERR_FAILED",
-    "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
-    "Failed to load resource: net::ERR_FAILED",
-    "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
-    "Failed to load resource: net::ERR_FAILED",
-    "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
-    "Failed to load resource: net::ERR_FAILED",
-    "Access to fetch at 'https://assistant.deependhq.com/outreach/check' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
-    "Failed to load resource: net::ERR_FAILED",
-    "Access to fetch at 'https://assistant.deependhq.com/widget-config' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
     "Failed to load resource: net::ERR_FAILED",
     "Access to script at 'https://assistant.deependhq.com/static/deep-assistant.js' from origin 'https://deependhq-editorial-v5-preview.deep-ae0.workers.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
     "Failed to load resource: net::ERR_FAILED",
@@ -8919,7 +8877,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
@@ -8980,7 +8938,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
@@ -9041,7 +8999,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
@@ -9102,7 +9060,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
@@ -9183,7 +9141,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
@@ -9264,7 +9222,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
@@ -9345,7 +9303,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
@@ -9426,7 +9384,7 @@
       ],
       "images": [
         {
-          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-scorer.webp",
+          "src": "https://deependhq-editorial-v5-preview.deep-ae0.workers.dev/images/v5-pdf.webp",
           "loaded": true
         },
         {
