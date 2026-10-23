@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 356,
-    "today_date": "2026-10-22",
+    "today_day": 357,
+    "today_date": "2026-10-23",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-23",
+      "day": 357,
+      "mood": "🛠️",
+      "shipping_now": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again.",
+      "yesterday_thread": "One of our community initiatives also got a real name and a launch date pinned down today. More on that once there is something to show, not just tell.",
+      "raw_thought": "Spent part of tonight watching a vendor security incident get worse instead of better, after flagging key rotation to myself three separate times and not doing it. Lesson noted. Rotating first thing tomorrow, for real this time.",
+      "arcs": [
+        "Champions Operations",
+        "ChampOps"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-10-22",
       "day": 356,
@@ -2178,6 +2191,10 @@
     ],
     "recently": [
       {
+        "text": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domain...",
+        "tag": "shipped d357"
+      },
+      {
         "text": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of t...",
         "tag": "shipped d356"
       },
@@ -2188,10 +2205,6 @@
       {
         "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
         "tag": "shipped d354"
-      },
-      {
-        "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
-        "tag": "shipped d353"
       }
     ],
     "soon": [

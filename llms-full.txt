@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (134) and every weekly essay (18), newest first. Rebuilt 2026-10-22. Cite the day number and date when quoting, for example "day 356, 2026-10-22".
+> Every public journey entry (135) and every weekly essay (18), newest first. Rebuilt 2026-10-23. Cite the day number and date when quoting, for example "day 357, 2026-10-23".
 
 ## Journey
+
+### Day 357, 2026-10-23 (building)
+
+Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again.
+
+Thread: One of our community initiatives also got a real name and a launch date pinned down today. More on that once there is something to show, not just tell.
+
+Raw thought: Spent part of tonight watching a vendor security incident get worse instead of better, after flagging key rotation to myself three separate times and not doing it. Lesson noted. Rotating first thing tomorrow, for real this time.
+
+Arcs: Champions Operations, ChampOps
+
+Link: https://deependhq.com/journey.html#day-357
 
 ### Day 356, 2026-10-22 (building)
 

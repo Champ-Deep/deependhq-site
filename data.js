@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-22T19:51:23.670Z
+// Built 2026-10-23T20:39:05.275Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 356,
-    "today_date": "2026-10-22",
+    "today_day": 357,
+    "today_date": "2026-10-23",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 357,
+          "date": "2026-10-23",
+          "shipping_now": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on…",
+          "arc_color": "green"
+        },
         {
           "day": 356,
           "date": "2026-10-22",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-10-12",
           "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. 200…",
           "arc_color": "gold"
-        },
-        {
-          "day": 344,
-          "date": "2026-10-10",
-          "shipping_now": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
@@ -560,7 +560,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-18",
       "last_ship_day": 352,
-      "days_since": 5,
+      "days_since": 6,
       "entries_30d": 1,
       "recent": [
         {
@@ -619,7 +619,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 16,
+      "days_since": 17,
       "entries_30d": 1,
       "recent": [
         {
@@ -683,7 +683,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-19",
       "last_ship_day": 353,
-      "days_since": 4,
+      "days_since": 5,
       "entries_30d": 10,
       "recent": [
         {
@@ -753,18 +753,13 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 17,
-      "entries_30d": 2,
+      "days_since": 18,
+      "entries_30d": 1,
       "recent": [
         {
           "day": 340,
           "date": "2026-10-06",
           "ship": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named"
-        },
-        {
-          "day": 327,
-          "date": "2026-09-23",
-          "ship": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it "
         }
       ],
       "company_slugs": [
@@ -824,6 +819,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-23",
+      "day": 357,
+      "mood": "🛠️",
+      "shipping_now": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again.",
+      "yesterday_thread": "One of our community initiatives also got a real name and a launch date pinned down today. More on that once there is something to show, not just tell.",
+      "raw_thought": "Spent part of tonight watching a vendor security incident get worse instead of better, after flagging key rotation to myself three separate times and not doing it. Lesson noted. Rotating first thing tomorrow, for real this time.",
+      "arcs": [
+        "Champions Operations",
+        "ChampOps"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-22",
       "day": 356,
@@ -4501,7 +4521,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 356 · Oct 22",
+    "last_ship": "day 357 · Oct 23",
     "state": "shipping"
   },
   "status_board": {
@@ -4525,6 +4545,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domain...",
+        "tag": "shipped d357"
+      },
+      {
         "text": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of t...",
         "tag": "shipped d356"
       },
@@ -4535,10 +4559,6 @@ window.DH_DATA = {
       {
         "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
         "tag": "shipped d354"
-      },
-      {
-        "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
-        "tag": "shipped d353"
       }
     ],
     "soon": [
@@ -9736,33 +9756,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-22T19:51:23.633Z",
-    "built_date": "2026-10-23",
+    "built": "2026-10-23T20:39:05.237Z",
+    "built_date": "2026-10-24",
     "newest_entry": {
-      "date": "2026-10-22",
-      "day": 356
+      "date": "2026-10-23",
+      "day": 357
     },
-    "weekdays_stale": 1,
+    "weekdays_stale": 0,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 133,
+        "days_old": 134,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 121,
+        "days_old": 122,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 121,
+        "days_old": 122,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 357,
+      "date": "2026-10-23",
+      "mood": "🛠️",
+      "arc_color": "green",
+      "arcs": [
+        "Champions Operations",
+        "ChampOps"
+      ],
+      "ship": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again."
+    },
     {
       "day": 356,
       "date": "2026-10-22",
@@ -9904,17 +9935,6 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second usage tier, split cowork vs claude code by task weight, and put notion in the middle so any agent can pick up the context. wrote the whole thing up as a plain whatsapp message instead of a deck, because that is what actually gets read."
-    },
-    {
-      "day": 343,
-      "date": "2026-10-09",
-      "mood": "🫥",
-      "arc_color": "blue",
-      "arcs": [
-        "Celsus OS",
-        "ChampOps"
-      ],
-      "ship": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on it, and a booked client call left no record at all, not even a log of the call happening. meanwhile the ops desk pulled 13 real action items out of two calls that did happen, two of them decided on their own from past calls."
     }
   ],
   "heatmap": {
@@ -10798,13 +10818,13 @@ window.DH_DATA = {
         "date": "2026-10-23",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 357,
+        "arc_color": "green",
+        "ship": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passe"
       },
       {
         "date": "2026-10-24",
-        "future": true,
+        "future": false,
         "weekend": true,
         "day": null,
         "arc_color": null,
@@ -10821,11 +10841,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 356,
-    "entries": 134,
+    "days_public": 357,
+    "entries": 135,
     "entries_30d": 30,
-    "entries_this_month": 22,
-    "streak_weekdays": 91,
+    "entries_this_month": 23,
+    "streak_weekdays": 92,
     "essays": 18,
     "companies": 12,
     "companies_active_90d": 5,
@@ -10834,7 +10854,7 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 19
+        "n": 20
       },
       {
         "arc": "Lake B2B",
@@ -10842,7 +10862,7 @@ window.DH_DATA = {
       },
       {
         "arc": "ChampOps",
-        "n": 7
+        "n": 8
       },
       {
         "arc": "TheDeepEndHQ",
@@ -10898,16 +10918,6 @@ window.DH_DATA = {
   "stack_now": {
     "items": [
       {
-        "name": "Cloudflare",
-        "what": "Pages, Workers, D1, R2, KV. The edge this whole site runs on.",
-        "url": null,
-        "kind": "using",
-        "category": "infra",
-        "last_seen": "2026-10-22",
-        "mentions_90d": 2,
-        "days_since": 1
-      },
-      {
         "name": "ChampOps",
         "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
         "url": null,
@@ -10916,9 +10926,19 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-10-20",
-        "mentions_90d": 17,
-        "days_since": 3
+        "last_seen": "2026-10-23",
+        "mentions_90d": 18,
+        "days_since": 1
+      },
+      {
+        "name": "Cloudflare",
+        "what": "Pages, Workers, D1, R2, KV. The edge this whole site runs on.",
+        "url": null,
+        "kind": "using",
+        "category": "infra",
+        "last_seen": "2026-10-22",
+        "mentions_90d": 2,
+        "days_since": 2
       },
       {
         "name": "ChampBeam",
@@ -10930,8 +10950,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-10-12",
-        "mentions_90d": 3,
-        "days_since": 11
+        "mentions_90d": 2,
+        "days_since": 12
       },
       {
         "name": "Obsidian + Celsus",
@@ -10941,7 +10961,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 12
+        "days_since": 13
       },
       {
         "name": "Claude + Cowork",
@@ -10951,7 +10971,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 13
+        "days_since": 14
       },
       {
         "name": "Event Scout",
@@ -10964,7 +10984,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 39
+        "days_since": 40
       },
       {
         "name": "ChampUTM",
@@ -10977,7 +10997,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 41
+        "days_since": 42
       },
       {
         "name": "LakeStream",
@@ -10990,7 +11010,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 80
+        "days_since": 81
       },
       {
         "name": "ChamPDF",
@@ -11003,7 +11023,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 80
+        "days_since": 81
       },
       {
         "name": "ChampMail",
@@ -11016,7 +11036,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 82
+        "days_since": 83
       },
       {
         "name": "Supabase",
@@ -11027,7 +11047,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 114
+        "days_since": 115
       },
       {
         "name": "ChampGraph",
@@ -11040,7 +11060,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 122
+        "days_since": 123
       },
       {
         "name": "ChampQuest",
@@ -11053,7 +11073,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 142
+        "days_since": 143
       },
       {
         "name": "Deep Scanner",
@@ -11522,9 +11542,9 @@ window.DH_DATA = {
     },
     "active_30d": 5,
     "mined_from": {
-      "entries": 134,
+      "entries": 135,
       "essays": 18
     }
   },
-  "built": "2026-10-22T19:51:23.670Z"
+  "built": "2026-10-23T20:39:05.275Z"
 };
