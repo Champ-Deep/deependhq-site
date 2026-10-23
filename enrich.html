@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email Enrich</title>
+<meta name="theme-color" content="#0E1A33">
+<meta name="robots" content="noindex">
+<meta name="description" content="Upload a contact list, get likely work emails back with a domain mail check.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/colors_and_type.css">
+<style>
+:root{--bg:#0E1A33;--surface:#15213A;--card:#1C2841;--line:#303C53;--line-2:#434E64;--text:#F4EBD9;--muted:#A9ABA6;--win:#F4A62A;--build:#30E060;--danger-text:#F37050}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.55 'Inter',system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:32px 20px 64px;display:flex;flex-direction:column;gap:16px}
+.eyebrow{font:600 .6875rem/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--win)}
+h1{font:800 clamp(1.5rem,3vw,2rem)/1.15 'Inter',system-ui,sans-serif;letter-spacing:-.03em;margin:6px 0 0}
+p{margin:0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:12px}
+label{font-size:.8125rem;color:var(--muted)}
+textarea{width:100%;min-height:140px;background:var(--bg);color:var(--text);border:1px solid var(--line-2);border-radius:6px;padding:10px;font:13px/1.5 'JetBrains Mono',ui-monospace,monospace;resize:vertical}
+input[type=file]{color:var(--muted);font-size:.8125rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{min-height:44px;padding:8px 18px;border-radius:6px;border:1px solid var(--line-2);background:var(--card);color:var(--text);font:700 .875rem 'Inter',system-ui,sans-serif;cursor:pointer}
+button.go{background:var(--win);border-color:var(--win);color:#0E1A33}
+button:disabled{opacity:.5;cursor:default}
+textarea:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--win);outline-offset:2px}
+#msg{font-size:.8125rem;color:var(--muted);min-height:1.4em}
+#msg.err{color:var(--danger-text)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.8125rem}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--muted);font-weight:600}
+.s-verified_domain{color:var(--build)}.s-no_mx,.s-bad_syntax{color:var(--danger-text)}.s-lookup_failed,.s-missing_input{color:var(--win)}
+.note{font-size:.8125rem;color:var(--muted);border-left:2px solid var(--win);padding-left:10px}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Standalone tool</div>
+    <h1>Email Enrich</h1>
+    <p>Paste or upload a contact list. Get a likely work email per contact, plus a mail check on the domain.</p>
+  </header>
+
+  <section class="card">
+    <label for="in">CSV or tab-separated, with a header row. Needs a first name and last name (or a full name) and a company domain or website. If a row already has an email, it is kept and checked.</label>
+    <textarea id="in" spellcheck="false" placeholder="First Name,Last Name,Website&#10;Ada,Lovelace,example.com"></textarea>
+    <div class="row">
+      <input id="file" type="file" accept=".csv,.tsv,.txt" aria-label="Upload a CSV file">
+      <button id="run" class="go" type="button">Enrich</button>
+      <button id="dl" type="button" disabled>Download CSV</button>
+    </div>
+    <div id="msg" role="status" aria-live="polite"></div>
+  </section>
+
+  <p class="note">Emails are guesses from common name patterns (first.last, flast, first and so on), ranked best first, with two alternates. The check only confirms the domain can receive mail. It does not confirm the mailbox exists, so verify before a send. Rows run in your browser; names and domains are not stored, and only domains are sent to Cloudflare DNS.</p>
+
+  <section class="card" id="out" hidden>
+    <div class="scroll"><table id="tbl"></table></div>
+  </section>
+</main>
+
+<script type="module">
+import { parseCSV, enrichRows, toCSV, OUT_COLS } from '/enrich-core.js';
+const $ = (id) => document.getElementById(id);
+let result = null, cols = [];
+const say = (t, err) => { $('msg').textContent = t; $('msg').className = err ? 'err' : ''; };
+
+$('file').addEventListener('change', async (e) => {
+  const f = e.target.files[0];
+  if (f) $('in').value = await f.text();
+});
+
+$('run').addEventListener('click', async () => {
+  const rows = parseCSV($('in').value);
+  if (!rows.length) return say('Add a header row and at least one contact.', true);
+  $('run').disabled = true; $('dl').disabled = true;
+  try {
+    result = await enrichRows(rows, { onProgress: (d, n) => say(`${d} of ${n}`) });
+    cols = [...Object.keys(rows[0]), ...OUT_COLS.filter((c) => !(c in rows[0]))];
+    const ok = result.filter((r) => r.status === 'verified_domain').length;
+    say(`${result.length} rows. ${ok} on a domain that accepts mail.`);
+    render();
+    $('dl').disabled = false;
+  } catch (err) {
+    say(`Failed: ${err.message}`, true);
+  } finally { $('run').disabled = false; }
+});
+
+$('dl').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([toCSV(result, cols)], { type: 'text/csv' }));
+  a.download = 'enriched.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+function render() {
+  const t = $('tbl'); t.textContent = '';
+  const head = t.insertRow();
+  const view = [...new Set([cols[0], ...OUT_COLS])]; // preview: first column + results; the CSV has everything
+  view.forEach((c) => { const th = document.createElement('th'); th.textContent = c; head.appendChild(th); });
+  // Preview only: 200 rows keeps the DOM light on a 2000 row list. The download has all of them.
+  result.slice(0, 200).forEach((r) => {
+    const tr = t.insertRow();
+    view.forEach((c) => { const td = tr.insertCell(); td.textContent = r[c] ?? ''; if (c === 'status') td.className = 's-' + r[c]; });
+  });
+  $('out').hidden = false;
+}
+</script>
+</body>
+</html>
