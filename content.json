@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 357,
-    "today_date": "2026-10-23",
+    "today_day": 358,
+    "today_date": "2026-10-24",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-24",
+      "day": 358,
+      "mood": "🤝",
+      "shipping_now": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their list, we dedupe it, then we price it. simple is the point. factory also shipped 58 cards in 24 hours, including two versions of the 100x longevity site.",
+      "yesterday_thread": "opened a weird second door on the same call: they do facility management, we run a building. might end up buying from them instead of selling to them.",
+      "raw_thought": "said for the third time today i would rotate the leaked keys. still have not. that is not persistence, that is procrastination with better branding.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-10-23",
       "day": 357,
@@ -2191,6 +2204,10 @@
     ],
     "recently": [
       {
+        "text": "closed our first call with a facility management prospect today and walked away with an...",
+        "tag": "shipped d358"
+      },
+      {
         "text": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domain...",
         "tag": "shipped d357"
       },
@@ -2201,10 +2218,6 @@
       {
         "text": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its se...",
         "tag": "shipped d355"
-      },
-      {
-        "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
-        "tag": "shipped d354"
       }
     ],
     "soon": [
