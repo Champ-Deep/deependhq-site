@@ -12,6 +12,39 @@
   will-change: opacity, filter;
 }
 
+/* ---------- full-screen sky layer (halftone nebula) ------------ */
+.neb-sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  will-change: opacity, filter;
+}
+
+/* The statement tile stays transparent glass, but the lamp can wander
+   under the headline. A soft radial scrim keeps the copy above 4.5:1
+   while the sky stays visible around the text. */
+.dh5-hero-statement {
+  background: radial-gradient(
+    120% 110% at 22% 24%,
+    rgba(5, 7, 15, 0.62) 0%,
+    rgba(5, 7, 15, 0.3) 38%,
+    rgba(5, 7, 15, 0) 72%
+  );
+}
+
+/* Same lamp-drift guard for the rail stat numbers, which sit on the
+   transparent sticky rail over the sky. */
+.dh6-rail .dh5-rail-num {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 7, 15, 0.72) 0%,
+    rgba(5, 7, 15, 0.42) 60%,
+    rgba(5, 7, 15, 0) 100%
+  );
+  padding: var(--s2);
+  border-radius: var(--r-md);
+}
+
 /* ---------- enhanced rails: layered onto .dh5-rail ------------ */
 /* dh5-rail gives grid placement + hide under 1180px; dh6 spreads it
    across the viewport and adds the live layer. Loads after pages5,

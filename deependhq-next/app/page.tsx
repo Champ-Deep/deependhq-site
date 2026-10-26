@@ -4,7 +4,7 @@
 
 import type { ComponentProps } from "react";
 import { DH } from "@/lib/data";
-import { HeroSpatial } from "@/components/client/r6/HeroSpatial";
+import HalftoneNebula from "@/components/client/r6/HalftoneNebula";
 import { RevealsManager, About6 } from "@/components/client/r6/Effects";
 import { Hero6 } from "@/components/client/r6/Hero6";
 import { Ticker5 } from "@/components/client/r6/Ticker5";
@@ -23,26 +23,6 @@ const WAYPOINTS = [
   { id: "signals", label: "./signals" },
   { id: "ways", label: "./ways-in" },
 ];
-
-// "What I'm up to" labels for the spatial shell: build lane names first,
-// then arcs from the freshest journey entries. Short strings only.
-function spatialLabels(): string[] {
-  const lanes = DH.build_lanes as unknown as Record<string, unknown>;
-  const names: string[] = [];
-  for (const key of ["building", "live", "next"]) {
-    const arr = lanes?.[key];
-    if (Array.isArray(arr)) {
-      for (const item of arr) {
-        const o = item as Record<string, unknown>;
-        const name = o.name ?? o.title ?? o.label;
-        if (typeof name === "string" && name.length < 26) names.push(name);
-      }
-    }
-  }
-  const arcs = DH.journey.slice(0, 10).flatMap((e) => e.arcs || []);
-  const uniq = [...new Set([...names, ...arcs])].filter((s) => s.length < 26);
-  return uniq.length ? uniq.slice(0, 9) : ["shipping nightly"];
-}
 
 type Repo5 = ComponentProps<typeof RepoCards5>["repos"][number];
 // The component's props carry a default value (`= {}`), so ComponentProps<typeof
@@ -137,7 +117,11 @@ export default async function Home() {
 
   return (
     <>
-      <HeroSpatial labels={spatialLabels()} />
+      <HalftoneNebula
+        preset="deependhq"
+        params={{ planetX: 0.74, planetY: 0.2, lens: 0.32, lensPush: 0.22 }}
+        className="neb-sky"
+      />
       <RevealsManager />
       <StatStrip
         days={DH.brand.today_day}
