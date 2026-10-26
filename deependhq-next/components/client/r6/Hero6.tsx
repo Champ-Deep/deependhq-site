@@ -97,6 +97,8 @@ export interface Hero6Props {
   /** props for the embedded guest terminal */
   terminal: GuestTerminalProps;
   kinetic?: boolean;
+  /** false hides the statement tile: the hero-opening loader already carries it. */
+  statement?: boolean;
 }
 
 const moodLabel: Record<string, string> = {
@@ -112,34 +114,36 @@ const moodLabel: Record<string, string> = {
   "🏔️": "climbing",
 };
 
-export function Hero6({ day, entry, vaultCommits, post, terminal, kinetic = true }: Hero6Props) {
+export function Hero6({ day, entry, vaultCommits, post, terminal, kinetic = true, statement = true }: Hero6Props) {
   const t = entry;
 
   return (
     <section className="dh5-hero" data-screen-label="hero" aria-label="hero">
       <div className="dh-bento">
-        <div className="dh-tile dh5-hero-statement b7">
-          <KineticH1 enabled={kinetic} />
-          <p className="dh5-hero-fact">
-            I run marketing and product across 12 companies. And I ship something every day.
-          </p>
-          <p className="dh5-hero-id">
-            group cmo · 12 companies · bangalore · <b>operator hours 3pm to 2am ist</b>
-          </p>
-          <span className="dh5-day">
-            day <b>{day}</b> of building in public
-          </span>
-          <div className="dh5-cta-row">
-            <Magnetic>
-              <a className="dh5-cta" href="/cta?from=hero">
-                work with me
-              </a>
-            </Magnetic>
-            <span className="dh5-cta-alt">
-              or <Link href="/journey">watch me build</Link>
+        {statement ? (
+          <div className="dh-tile dh5-hero-statement b7">
+            <KineticH1 enabled={kinetic} />
+            <p className="dh5-hero-fact">
+              I run marketing and product across 12 companies. And I ship something every day.
+            </p>
+            <p className="dh5-hero-id">
+              group cmo · 12 companies · bangalore · <b>operator hours 3pm to 2am ist</b>
+            </p>
+            <span className="dh5-day">
+              day <b>{day}</b> of building in public
             </span>
+            <div className="dh5-cta-row">
+              <Magnetic>
+                <a className="dh5-cta" href="/cta?from=hero">
+                  work with me
+                </a>
+              </Magnetic>
+              <span className="dh5-cta-alt">
+                or <Link href="/journey">watch me build</Link>
+              </span>
+            </div>
           </div>
-        </div>
+        ) : null}
 
         <div className="dh-tile b5" data-win={t.arc_color === "gold" ? "true" : undefined}>
           <span className="dh-tile-key">shipping today · day {t.day}</span>

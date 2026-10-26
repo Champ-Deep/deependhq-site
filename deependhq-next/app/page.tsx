@@ -5,6 +5,7 @@
 import type { ComponentProps } from "react";
 import { DH } from "@/lib/data";
 import HalftoneNebula from "@/components/client/r6/HalftoneNebula";
+import HeroLoader from "@/components/client/r6/HeroLoader";
 import { RevealsManager, About6 } from "@/components/client/r6/Effects";
 import { Hero6 } from "@/components/client/r6/Hero6";
 import { Ticker5 } from "@/components/client/r6/Ticker5";
@@ -134,6 +135,7 @@ export default async function Home() {
         <RailLeft day={DH.brand.today_day} ships={ships} waypoints={WAYPOINTS} />
         <main className="dh5-main" id="main">
           <div id="hero">
+            <HeroLoader />
             <Hero6
               day={DH.brand.today_day}
               entry={entry as unknown as ComponentProps<typeof Hero6>["entry"]}
@@ -150,6 +152,7 @@ export default async function Home() {
                   : null
               }
               terminal={terminal}
+              statement={false}
             />
           </div>
           <Ticker5
