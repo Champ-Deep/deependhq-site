@@ -17,9 +17,10 @@
   "d1_databases": [
     { "binding": "TOOLKIT_DB", "database_name": "toolkit-db", "database_id": "78b99395-186d-44f5-854d-94aa85530f04", "migrations_dir": "migrations" }
   ],
-  "//vars": "Plain, non-secret configuration. An admin is a Clerk user with a VERIFIED address in CLERK_ADMIN_EMAILS (checked server-side), or a uid in the CLERK_ADMIN_IDS secret.",
+  "//vars": "Plain, non-secret configuration. An admin is a Clerk user with a VERIFIED address in CLERK_ADMIN_EMAILS (checked server-side), or a uid in the CLERK_ADMIN_IDS secret. CLERK_JS_URL pins clerk-js v5 from our own Clerk Frontend API (ToolKit app, production instance on deependhq.com); v6 splits the UI into @clerk/ui, so bump deliberately and retest sign-in. CLERK_PUBLISHABLE_KEY and CLERK_SECRET_KEY are Worker secrets.",
   "vars": {
-    "CLERK_ADMIN_EMAILS": "deep1499@gmail.com"
+    "CLERK_ADMIN_EMAILS": "deep1499@gmail.com",
+    "CLERK_JS_URL": "https://clerk.deependhq.com/npm/@clerk/clerk-js@5.128.1/dist/clerk.browser.js"
   },
   "assets": {
     "//binding": "MUST be declared. Local wrangler does not auto-inject the ASSETS binding, so env.ASSETS was undefined and every page 500'd. Declaring it explicitly is correct on deployed Workers too.",
