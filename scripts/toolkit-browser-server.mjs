@@ -1,19 +1,22 @@
 // TEST-ONLY bridge: real toolkit API, real SQLite, real JWT verification.
 // Browser Clerk and provider answers are explicit fixtures. No paid/network dispatch.
 import http from 'node:http';
-import {makeD1,setSetting,seedGrant,sessionToken,PK,SK,JWT_PUBLIC_PEM} from './toolkit-testkit.mjs';
+import {makeD1,setSetting,seedGrant,sessionToken,userJson,PK,SK,JWT_PUBLIC_PEM} from './toolkit-testkit.mjs';
 const origin='http://127.0.0.1:3175';
 const db=makeD1();
 setSetting(db,'global_daily_cap_micro',1000000);
 setSetting(db,'default_daily_credit_cap',1000);
 setSetting(db,'default_daily_row_cap',1000);
 seedGrant(db,'user_a',1000);
-const env={TOOLKIT_DB:db,CLERK_PUBLISHABLE_KEY:PK,CLERK_SECRET_KEY:SK,CLERK_JWT_KEY:JWT_PUBLIC_PEM,CLERK_ADMIN_IDS:'user_a',TREG_API_KEY:'fixture',JEV_API_KEY:'fixture'};
+const env={TOOLKIT_DB:db,CLERK_PUBLISHABLE_KEY:PK,CLERK_SECRET_KEY:SK,CLERK_JWT_KEY:JWT_PUBLIC_PEM,CLERK_ADMIN_IDS:'user_a',TREG_API_KEY:'fixture',JEV_API_KEY:'fixture',OPENROUTER_API_KEY:'fixture'};
 let mode='ok';
 const providerCalls=[];
 globalThis.fetch=async(url,init)=>{
   url=typeof url==='string'?url:url.url;
   if(url.includes('api.clerk.com') && url.includes('/users/user_a')) return Response.json({object:'user',id:'user_a',email_addresses:[]});
+  // Clerk getUserList calls the list and the count endpoints; one verified fixture operator.
+  if(url.includes('api.clerk.com/v1/users/count')) return Response.json({object:'total_count',total_count:1});
+  if(url.includes('api.clerk.com/v1/users?')) return Response.json([userJson('user_a','fixture.operator@example.com')]);
   providerCalls.push(url);
   if(url.includes('treg.people.enrich')) return Response.json({output:{title:'Director',company:'Example'}},{headers:{'X-Treg-Cost-Micro':'1000'}});
   if(url.includes('treg.people.email.verify')) {
@@ -22,7 +25,11 @@ globalThis.fetch=async(url,init)=>{
   }
   if(url.includes('alpha/decisions')) {
     const {questions}=JSON.parse(init.body);
-    return Response.json({answers:Object.fromEntries(Object.keys(questions).map(k=>[k,{type:'choice',choice:k.endsWith('_icp')?'strong':'k1'}])),usage:{cost:0.0005}});
+    return Response.json({answers:Object.fromEntries(Object.entries(questions).map(([k,q])=>[k,k.startsWith('q')?(q.type==='noul'?{type:'noul',noul:.95}:{type:'choice',choice:Object.keys(q.criteria)[0],confidence:.95}):{type:'choice',choice:k.endsWith('_icp')?'strong':'k1'}])),usage:{cost:0.0005}});
+  }
+  if(url.includes('/chat/completions')) {
+    const body=JSON.parse(init.body),data=JSON.parse(body.messages[1].content);
+    return Response.json({choices:[{message:{content:JSON.stringify({results:data.items.map(({i})=>({i,confidence:.95,...(data.categories?{label:data.categories[0].name}:{p_true:.95})}))})}}],usage:{cost:0.00001}});
   }
   throw new Error('Forbidden unexpected network call: '+url);
 };
@@ -31,10 +38,12 @@ http.createServer(async(req,res)=>{
   try {
     if(req.url==='/fixture/reset' && req.method==='POST') {
       for(const table of ['toolkit_ops','toolkit_runs','toolkit_events','toolkit_accounts']) db.query('DELETE FROM '+table);
-      seedGrant(db,'user_a',1000);mode='ok';providerCalls.length=0;res.end('ok');return;
+      seedGrant(db,'user_a',1000);mode='ok';providerCalls.length=0;setSetting(db,'default_daily_credit_cap',1000);setSetting(db,'default_daily_row_cap',1000);env.TREG_API_KEY='fixture';env.JEV_API_KEY='fixture';res.end('ok');return;
     }
     if(req.url==='/fixture/token') {res.setHeader('content-type','application/json');res.end(JSON.stringify({token:sessionToken({azp:origin})}));return;}
     if(req.url==='/fixture/timeout') {mode='timeout';res.end('ok');return;}
+    if(req.url==='/fixture/cap') {setSetting(db,'default_daily_credit_cap',0);res.end('ok');return;}
+    if(req.url==='/fixture/no-provider') {delete env.TREG_API_KEY;delete env.JEV_API_KEY;res.end('ok');return;}
     if(req.url==='/fixture/state') {res.setHeader('content-type','application/json');res.end(JSON.stringify({provider_calls:providerCalls,runs:db.query('SELECT * FROM toolkit_runs').results}));return;}
     if(req.url!=='/api/toolkit') {res.writeHead(404);res.end();return;}
     const parts=[];for await(const chunk of req) parts.push(chunk);

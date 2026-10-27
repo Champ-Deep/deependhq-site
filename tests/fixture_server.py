@@ -423,8 +423,23 @@ FIXTURE_CLERK = r"""
       emit();
       return Promise.resolve();
     },
+    mountSignIn: function (node, options) {
+      node.dataset.fixture = 'signin';
+      node.dataset.routing = options.routing;
+      node.replaceChildren();
+      var note = document.createElement('p');
+      note.textContent = 'Fixture identity controls. Not a live Clerk form.';
+      node.appendChild(note);
+      ['Google', 'Email'].forEach(function (provider) {
+        var button = document.createElement('button');
+        button.textContent = 'Continue with ' + provider + ' (fixture)';
+        button.onclick = function () { window.Clerk.openSignIn(); };
+        node.appendChild(button);
+      });
+    },
     signOut: function () {
       signedIn = false;
+      sessionStorage.setItem(SIGNED_OUT_KEY, '1');
       this.session = null;
       this.user = null;
       emit();
