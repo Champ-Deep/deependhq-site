@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (138) and every weekly essay (19), newest first. Rebuilt 2026-10-27. Cite the day number and date when quoting, for example "day 360, 2026-10-26".
+> Every public journey entry (139) and every weekly essay (19), newest first. Rebuilt 2026-10-27. Cite the day number and date when quoting, for example "day 361, 2026-10-27".
 
 ## Journey
+
+### Day 361, 2026-10-27 (building)
+
+ran a live security, sample and ux review on the data-product agent we have been building all month. clean pass, zero deployment risk taken. handed the whole thing over to two engineers on the team today, first standup wednesday, first demo friday.
+
+Thread: separately the data team needed a way to check incoming columns before they hit production. one engineer took it from idea session to built and polished, same day, no backlog carry.
+
+Raw thought: second time this week someone on the team emailed a live credential in plain text instead of rotating it first. caught both times in review, fixed neither fast enough. tonight: actually rotate them before anything else touches this handoff.
+
+Arcs: ChampOps, Data Products
+
+Link: https://deependhq.com/journey.html#day-361
 
 ### Day 360, 2026-10-26 (building)
 
