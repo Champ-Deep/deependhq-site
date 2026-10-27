@@ -29,5 +29,20 @@ assert.deepEqual(hits.map(h => h.line), [2, 2, 3]);
 assert.ok(!JSON.stringify(hits).includes('abcdefghijklmnop'), 'findings never carry the matched value');
 assert.deepEqual(scanText('nothing here'), []);
 
-assert.equal(money(1000000), '$1.00');
+// Micro dollars. Costs and quotes round up to the cent, balances round down, never more than 2 decimals.
+for (const [micro, up, down] of [
+  [0, '$0.00', '$0.00'],
+  [999, 'under $0.01', 'under $0.01'],
+  [1000, 'under $0.01', 'under $0.01'],
+  [9999, 'under $0.01', 'under $0.01'],
+  [10000, '$0.01', '$0.01'],
+  [10001, '$0.02', '$0.01'],
+  [999000, '$1.00', '$0.99'],
+  [1000000, '$1.00', '$1.00'],
+  [1234567890, '$1,234.57', '$1,234.56'],
+]) {
+  assert.equal(money(micro), up, `cost ${micro}`);
+  assert.equal(money(micro, 'down'), down, `balance ${micro}`);
+  assert.ok(!/\.\d{3}/.test(money(micro)) && !/\.\d{3}/.test(money(micro, 'down')), `${micro} shows at most 2 decimals`);
+}
 console.log('PASS toolkit-workbench-lib selftest');

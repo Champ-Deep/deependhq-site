@@ -1,5 +1,10 @@
-import { formatUsd } from './toolkit-lib.js';
-export const money = micro => micro && Math.abs(micro) < 100 ? '$' + (micro / 1e6).toFixed(6) : formatUsd(micro);
+// Users never see more than 2 decimals. Costs and quotes round up to the cent; pass 'down' for balances and remaining allowance.
+export function money(micro, round = 'up') {
+  const n = Number(micro) || 0, abs = Math.abs(n);
+  if (abs > 0 && abs < 10000) return n < 0 ? '-under $0.01' : 'under $0.01';
+  const cents = (round === 'down' ? Math.floor : Math.ceil)(abs / 10000);
+  return (n < 0 ? '-' : '') + (cents / 100).toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+}
 export function validateFileTable(table) {
   if (!table.rows.length) throw new Error('This file has no data rows. Add a header and at least one row.');
   if (table.rows.length > 1000) throw new Error('Use up to 1,000 rows per file. Split the file and try again.');

@@ -16,6 +16,33 @@ assert spec is not None and spec.loader is not None
 audit = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(audit)
 reports = []
+contrast_rows = {}
+# Every green (--build-text) text node measured against the ground it actually sits on. Translucent layers are
+# composited outward to the first opaque ancestor; text that reaches the body also sits on the matrix wallpaper,
+# so it is measured against a worst case of 10% green over the page (glyph layer .09 opacity plus the glow).
+GREEN_CONTRAST = """() => {
+  const parse = c => { let m = c.match(/^rgba?\\(([^)]+)\\)/); if (m) { const p = m[1].split(/[ ,\\/]+/).filter(Boolean).map(Number); return [p[0], p[1], p[2], p[3] ?? 1]; }
+    m = c.match(/^color\\(srgb ([^)]+)\\)/); if (m) { const p = m[1].split(/[ \\/]+/).filter(Boolean).map(Number); return [p[0]*255, p[1]*255, p[2]*255, p[3] ?? 1]; } return null; };
+  const over = (top, bottom) => [0, 1, 2].map(i => top[i]*top[3] + bottom[i]*(1-top[3])).concat(1);
+  const lum = c => { const [r, g, b] = c.slice(0, 3).map(v => { v /= 255; return v <= .03928 ? v/12.92 : ((v+.055)/1.055) ** 2.4; }); return .2126*r + .7152*g + .0722*b; };
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const hex = c => '#' + c.slice(0, 3).map(v => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase();
+  const green = parse(getComputedStyle(document.body).getPropertyValue('--build-text').trim().replace(/^#(..)(..)(..)$/, (_, r, g, b) => `rgb(${parseInt(r,16)}, ${parseInt(g,16)}, ${parseInt(b,16)})`));
+  const body = parse(getComputedStyle(document.body).backgroundColor);
+  const rows = [];
+  for (const el of document.querySelectorAll('body *')) {
+    if (!el.getClientRects().length || el.closest('[hidden]') || !el.checkVisibility()) continue;
+    if (![...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
+    const cs = getComputedStyle(el), fg = parse(cs.color);
+    if (!fg || fg.slice(0, 3).some((v, i) => Math.abs(v - green[i]) > 1)) continue;
+    const layers = []; let ground = null;
+    for (let n = el; n && n !== document.body; n = n.parentElement) { const c = parse(getComputedStyle(n).backgroundColor); if (c && c[3] > 0) { if (c[3] >= 1) { ground = c; break; } layers.push(c); } }
+    const grounds = ground ? [ground] : [body, over([...green.slice(0, 3), .10], body)];
+    const measured = grounds.map(g => { let bg = g; for (const l of layers.slice().reverse()) bg = over(l, bg); return [ratio(fg, bg), hex(bg)]; }).sort((a, b) => a[0] - b[0])[0];
+    rows.push({text: el.textContent.trim().slice(0, 40), tag: el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.split(' ')[0] : ''), size: cs.fontSize, fg: hex(fg), bg: measured[1], ratio: Math.round(measured[0] * 100) / 100});
+  }
+  return rows;
+}"""
 
 def reset():
     urllib.request.urlopen(urllib.request.Request(BRIDGE+'/fixture/reset', data=b'{}', method='POST')).read()
@@ -28,6 +55,13 @@ def capture(page, name):
     (OUT/(name+'-audit.json')).write_text(json.dumps(findings, indent=2))
     failures = [f for f in findings if f['severity']=='FAIL']
     assert not failures, (name, failures)
+    green = page.evaluate(GREEN_CONTRAST)
+    low = [g for g in green if g['ratio'] < 4.5]
+    assert not low, (name, low)
+    for g in green:
+        contrast_rows.setdefault((g['tag'], g['text'], g['bg']), {**g, 'captures': []})['captures'].append(name)
+    assert page.evaluate("document.documentElement.dataset.scheme") == 'dark', name
+    assert not page.evaluate("/\\$\\d[\\d,]*\\.\\d{3}/.test(document.body.innerText)"), (name, 'money shows more than 2 decimals')
     assert page.evaluate("!/[\u2013\u2014]/.test(document.body.innerText)")
     overflow = page.evaluate("""() => [...document.querySelectorAll('body *')].filter(e=>{
       if(e.closest('.table-scroll')||e.closest('[hidden]')||!e.getClientRects().length)return false;
@@ -61,8 +95,10 @@ def verify():
     token=json.load(urllib.request.urlopen(BRIDGE+'/fixture/token'))['token']
     with sync_playwright() as p:
         browser=p.chromium.launch()
-        for theme in ('dark','light'):
-            context=browser.new_context(viewport={'width':1440,'height':1000},color_scheme=theme,reduced_motion='reduce')
+        # The toolkit is dark only: the OS asks for light and a stale site preference says light, the pages stay dark.
+        for theme in ('dark',):
+            context=browser.new_context(viewport={'width':1440,'height':1000},color_scheme='light',reduced_motion='reduce')
+            context.add_init_script("try{localStorage.setItem('dh_scheme','light')}catch(_){}")
             page=context.new_page()
             errors=[]
             page.on('pageerror',lambda e:errors.append(str(e)))
@@ -81,6 +117,20 @@ def verify():
                 page.route(host,lambda r:r.fulfill(content_type='text/html',body='<p>External app fixture. Live session not tested.</p>'))
             page.goto(BASE+'/')
             page.wait_for_function("document.querySelector('#daily').textContent.includes('$')")
+            assert page.locator('[data-dh-scheme]').count()==0
+            page.locator('#recent-runs').get_by_text('No runs yet',exact=True).wait_for()
+            # Desktop icons: one click selects without opening, double click opens, Enter opens.
+            icon=page.locator('[data-desktop="account"]')
+            icon.click()
+            assert icon.get_attribute('data-selected')=='true' and page.locator('[data-app="account"]').count()==0
+            icon.dblclick()
+            page.locator('[data-app="account"]').wait_for()
+            close_app(page,'Account')
+            page.locator('[data-desktop="pdf"]').focus()
+            page.keyboard.press('Enter')
+            page.locator('[data-app="pdf"]').wait_for()
+            close_app(page,'ChamPDF')
+            assert page.locator('[data-desktop="admin"]').is_visible()==page.locator('[data-launch="admin"]').is_visible()
             for width in (375,390,768,1280,1440,1600):
                 page.set_viewport_size({'width':width,'height':1000})
                 capture(page,f'desktop-{theme}-{width}')
@@ -115,7 +165,10 @@ def verify():
                 capture(page,f'operations-{theme}-{width}')
                 page.get_by_role('button',name='Get dollar quote',exact=True).click()
                 page.wait_for_selector('#wb-run:not([disabled])')
-                assert not state()['provider_calls'] or theme=='light' or width==1440
+                assert not state()['provider_calls'] or width==1440
+                quote=w.inner_text()
+                assert 'Unique values' in quote and 'Blank or unusable rows (not billed)' in quote and 'Distinct' not in quote
+                assert 'Jev: calibrated judge (default)' in quote and '1 batch of up to 100 rows.' in quote and 'batch(es)' not in quote
                 page.locator('#wb-run').scroll_into_view_if_needed()
                 capture(page,f'quote-{theme}-{width}')
                 page.locator('#wb-run').click()
@@ -142,9 +195,11 @@ def verify():
             w=configure(page,101)
             page.get_by_role('button',name='Get dollar quote',exact=True).click()
             page.wait_for_selector('#wb-run:not([disabled])')
+            assert '2 batches, run one after another, up to 100 rows each.' in w.inner_text()
             page.locator('#wb-run').click()
             w.get_by_role('button',name='Export CSV',exact=True).wait_for()
             assert len(state()['runs'])==2
+            assert page.locator('#recent-runs li').count()>=1 and 'No runs yet' not in page.locator('#recent-runs').inner_text()
             assert sum(r['row_count'] for r in state()['runs'])==101
             close_app(page,'Data Workbench')
             # All provider operation types, then cap and held failure paths.
@@ -156,7 +211,9 @@ def verify():
                 op.get_by_label('Source column',exact=True).select_option('Email')
                 op.get_by_label('Operation',exact=True).select_option(operation)
                 if operation=='verify':
-                    op.get_by_label('Engine',exact=True).select_option('deepseek')
+                    engine=op.get_by_label('Engine',exact=True)
+                    assert engine.locator('option').all_inner_texts()==['Jev: calibrated judge (default)','DeepSeek Flash: cheaper, for simple calls']
+                    engine.select_option('deepseek')
                     op.get_by_label('Yes/no question',exact=True).fill('Is this an email address?')
             page.get_by_role('button',name='Get dollar quote',exact=True).click()
             page.wait_for_selector('#wb-run:not([disabled])')
@@ -204,6 +261,9 @@ def verify():
             context.close()
         browser.close()
     (OUT/'report.json').write_text(json.dumps(reports,indent=2))
+    table=sorted(contrast_rows.values(),key=lambda r:r['ratio'])
+    (OUT/'contrast.json').write_text(json.dumps(table,indent=2))
+    print(f'Green text contrast: {len(table)} distinct label/ground pairs, minimum {table[0]["ratio"]}:1 ({table[0]["text"]!r} on {table[0]["bg"]}).')
     print(f'PASS: V3 fixture browser flows; {len(reports)} audited screenshots; zero JS errors. Live Clerk and embedded sessions not tested.')
 
 if __name__=='__main__':
