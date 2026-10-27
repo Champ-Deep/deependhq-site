@@ -1,65 +1,33 @@
-// Nav.jsx : sticky top bar, shared by every page. Sep 2026 system.
-// Order is the reading order of the site: the log first, then what it is
-// built with, then the essays, then the operator view.
-
-// Five items, one line at 1024. "Pillars" points at the homepage ecosystem
-// section until /pillars ships in sprint 2, then it becomes pillars.html.
+// Floating Dock, adapted from 21st.dev/manuarora700, demo 18014.
+// Native disclosure keeps navigation usable before hydration and without JS.
 const NAV_LINKS = [
-  { id: 'journey', label: 'Mission Log', href: 'journey.html' },
-  { id: 'writing', label: 'Writing',     href: 'writing.html' },
-  { id: 'pillars', label: 'Pillars',     href: 'pillars.html' },
-  { id: 'toolkit', label: 'Toolkit',     href: 'toolkit.html' },
-  { id: 'now',     label: 'Now',         href: 'now.html' },
+  { id: 'journey', label: 'Mission Log', href: 'journey.html', icon: 'horseshoe' },
+  { id: 'writing', label: 'Writing',     href: 'writing.html', icon: 'book' },
+  { id: 'pillars', label: 'Pillars',     href: 'pillars.html', icon: 'crown' },
+  { id: 'toolkit', label: 'Toolkit',     href: 'toolkit.html', icon: 'prompt' },
+  { id: 'now',     label: 'Now',         href: 'now.html', icon: 'diya' },
 ];
 
-// progress: the homepage draws a marigold-to-green scroll progress line under the bar.
-// The brand is the favicon cut of the D under water plus the word in Fraunces
-// and a marigold cursor (identity kit v1, Oct 2026).
-const Nav = ({ active = 'home', progress = false }) => {
-  const [open, setOpen] = React.useState(false);
-  React.useEffect(() => {
-    if (!open) return;
-    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [open]);
+const Nav = ({ active = 'home' }) => {
   const cur = (id) => (active === id ? 'page' : undefined);
   return (
     <React.Fragment>
       <a className="skip" href="#main">skip to content</a>
-      <nav className="sys-nav sys" aria-label="primary">
-        <div className="wrap">
-          <a className="brand" href="index.html" aria-current={cur('home')} aria-label="deep, home">
-            <span className="only-navy" style={{ display: 'contents' }}>
-              <img src="favicon.svg" width="32" height="32" alt="" />
-              <span className="brand-word">deep</span><span className="brand-cur" aria-hidden="true">_</span>
-            </span>
-          </a>
-          <div className="nav-links">
-            {NAV_LINKS.map((l) => <a key={l.id} href={l.href} aria-current={cur(l.id)}>{l.label}</a>)}
-          </div>
-          <div className="nav-right">
-            {/* One button, three states: system, light, dark. The inline script
-                in each page head owns the state (window.DH_SCHEME), the click
-                and the label text, so this works on the static homepage too;
-                React paints the first label and never owns the rest. */}
-            <button type="button" className="theme-switch" data-dh-scheme="" title="Colour scheme: cycles system, light, dark">
-              <span className="sw" aria-hidden="true"><i /><i /><i /></span>
-              <span className="lbl"><span className="sr">scheme: </span><span data-dh-scheme-label>{(window.DH_SCHEME && window.DH_SCHEME.mode) || 'system'}</span></span>
-            </button>
-            <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ minHeight: 44, padding: '0 16px', fontSize: 'var(--text-sm)' }}>Book 30 minutes</a>
-            <button className="nav-burger" aria-label={open ? 'close menu' : 'open menu'} aria-expanded={open} aria-controls="nav-drawer" onClick={() => setOpen(!open)}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round"/> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round"/>}
-              </svg>
-            </button>
-          </div>
+      <nav className="v3-dock" aria-label="Primary">
+        <a className="v3-dock-home" href="index.html" aria-current={cur('home')} aria-label="Deep, home">deep<span aria-hidden="true">&gt;_</span></a>
+        <div className="v3-dock-links">
+          {NAV_LINKS.map((l) => <a key={l.id} href={l.href} aria-current={cur(l.id)}><svg className="ico v3-dock-symbol" width="28" height="28" aria-hidden="true" focusable="false"><use href={`brand/icons.svg#i-${l.icon}`} /></svg><span>{l.label}</span></a>)}
         </div>
-        <div id="nav-drawer" className="nav-drawer" data-open={open}>
-          <a href="index.html" aria-current={cur('home')}>Home</a>
-          {NAV_LINKS.map((l) => <a key={l.id} href={l.href} aria-current={cur(l.id)}>{l.label}</a>)}
+        <details className="v3-dock-mobile" onKeyDown={(e) => { if (e.key === 'Escape') { e.currentTarget.open = false; e.currentTarget.querySelector('summary').focus(); } }}>
+          <summary>Explore <span aria-hidden="true">↑</span></summary>
+          <div className="v3-dock-menu">
+            {NAV_LINKS.map((l) => <a key={l.id} href={l.href} aria-label={l.label} aria-current={cur(l.id)}>{l.label}</a>)}
+          </div>
+        </details>
+        <div className="v3-dock-actions">
+          <a href="https://toolkit.deependhq.com/sign-in" className="btn btn-outline">Login</a>
+          <a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Book a Call</a>
         </div>
-        {progress && <div className="wx-nav-progress" aria-hidden="true" />}
       </nav>
       {window.Sys && <window.Sys.StaleBanner />}
     </React.Fragment>

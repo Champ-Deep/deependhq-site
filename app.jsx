@@ -11,7 +11,7 @@ const App = () => {
   const H = window.HomeSections;
   return (
     <div className="dh-app home-wx">
-      <Nav active="home" progress />
+      <Nav active="home" />
       <main id="main" className="wx-main">
         <H.Hero />
 

@@ -13,7 +13,12 @@
 // retired on 2026-10-21 when the scheme tokens replaced it, so the old
 // brand-guard:classic exemption is gone with it: a retired value now fails on
 // every line, and a leftover exemption marker fails on sight instead of
-// silently exempting whatever sits under it. No em dashes.
+// silently exempting whatever sits under it. On 2026-10-28 Deep made classic
+// the public site's only look again. Its values are canonical but still may
+// not be hard-coded: they live once in site-v3.css (tokens) and once in
+// site-classic.js (the theme-color meta, which cannot read a token before
+// paint), so those two homes and the inlined theme-color line are the only
+// exemptions. No em dashes.
 
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -29,7 +34,8 @@ const RETIRED_RGB = [
 ];
 const EXT = new Set(['.css', '.jsx', '.js', '.html', '.mjs']);
 const SKIP_DIRS = new Set(['node_modules', 'deependhq-next', '.git', '.wrangler', '.prerender-cache', '.shots', '.claude-scratch']);
-const SKIP_FILES = new Set(['lead-scorer.html', 'scripts/brand-guard.mjs']);
+const SKIP_FILES = new Set(['lead-scorer.html', 'scripts/brand-guard.mjs', 'site-v3.css', 'site-classic.js']);
+const CLASSIC_THEME_COLOR = /^\s*if \(meta\) meta\.content = '#0D0F14';$/;
 
 const hexRe = new RegExp(`(${RETIRED.map((h) => h.slice(1)).join('|')})(?![0-9a-f])`, 'i');
 const rgbRe = new RegExp(`rgba?\\(\\s*(${RETIRED_RGB.map(([t]) => t.replace(/,\s*/g, ',\\s*')).join('|')})`, 'i');
@@ -52,6 +58,7 @@ function walk(dir) {
     // so the marker is a fossil: report it rather than honour it.
     lines.forEach((line, i) => {
       if (/brand-guard:classic/.test(line)) { hits.push(`${rel}:${i + 1}  retired brand-guard:classic marker`); return; }
+      if (CLASSIC_THEME_COLOR.test(line)) return;
       const h = line.match(new RegExp(`#${hexRe.source}`, 'i'));
       if (h) hits.push(`${rel}:${i + 1}  ${h[0]}`);
       const r = line.match(rgbRe);

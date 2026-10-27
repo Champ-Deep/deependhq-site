@@ -39,72 +39,47 @@ const Ico = ({ id, size = 48 }) => (
 );
 
 
-// ---------------------------------------------------------------- 15:00 hero
-// Server-rendered copy beside the terrain island (H3, plan section 3). The
-// headline, sub and both CTAs are static text: motion never carries the
-// message. The terrain mounts on the right and its server-rendered fallback
-// sits inside the mount, so the page reads with JS off. The four stat tiles
-// moved out of the hero (lane P3 puts them in the log section), and the old
-// word-grid headline, margin notes and the ChampBeam cell go with them.
-// No em dashes.
+// 21st.dev ports: split-flap 18574, squiggly 18566, encrypted text 18575.
+// The headline is complete before JS. Enhancement never gates the content.
 const Hero = () => {
   const e = DH.journey[0];
-  const MARE = window.DH_MARE_SVG || '';
-  // One column per day since the first entry: height is github_commits where
-  // the log recorded it, else 1 for an entry, 0 for a gap. kinds[] runs
-  // parallel to data and colours the column by that entry's arc, rows carries
-  // the day and first line the readout and click need.
-  const startISO = DH.journey.map((x) => x.date).sort()[0];
-  const endISO = DH.brand.today_date || e.date;
-  const byDate = new Map(DH.journey.map((x) => [x.date, x]));
-  const data = [], kinds = [], rows = [];
-  for (let t = Date.parse(startISO); t <= Date.parse(endISO); t += 864e5) {
-    const iso = new Date(t).toISOString().slice(0, 10);
-    const en = byDate.get(iso);
-    data.push(en ? (en.github_commits != null ? en.github_commits : 1) : 0);
-    kinds.push(en ? en.arc_color : '');
-    rows.push(en ? [en.day, String(en.shipping_now || en.raw_thought || '').slice(0, 140)] : null);
-  }
-  const peak = `day ${e.day}, ${ageOf(e.date, 'log').label}`;
-  const isle = JSON.stringify({ d: data, k: kinds, start: startISO, end: endISO, peak, rows });
+  const words = ['GO DEEP.', 'BUILD IT.'];
   return (
-    <section className="wx-hero mode-editorial" id="top" aria-labelledby="wx-hero-h">
-      <div className="wx-hx p4-hx">
-        <p className="wx-eyebrow-ed wx-hx-eye">group cmo, champions group</p>
-        <h1 className="p4-hx-h" id="wx-hero-h">I lead B2B growth and build the systems behind it.</h1>
-        <div className="p4-copy">
-          <p className="wx-hx-lede" data-dh-frozen="">Group CMO across twelve companies, CEO of Champions Accelerator. This site publishes itself every weekday from what actually happened.</p>
-          <div className="p4-cta">
-            {/* data-dh-cta: only the LABEL varies; the href is never rewritten. */}
-            <a className="wx-hx-paren wx-hx-book" data-dh-cta="cta_label" href={BOOK} {...EXT}>Talk to Deep, 30 min</a>
-            <a className="wx-hx-paren" href="#stack">See what I build</a>
-          </div>
-
-        </div>
-        <div className="p4-terr" data-island="terrain" data-props={isle}>
-          {/* server-rendered fallback: the same days as a plain heat strip */}
-          <div className="trn-fb">
-            <p className="trn-fb-k">{data.length} days, one column a day, since {fmtDate(startISO)} · newest <b>{peak}</b></p>
-            <div className="trn-fb-strip" aria-hidden="true">
-              {data.map((h, i) => <i key={i} className={kinds[i] ? `trn-fb-k-${kinds[i]}` : (h ? 'trn-fb-k-log' : 'trn-fb-k-gap')} />)}
-            </div>
-            <p className="trn-fb-note">green building · blue thinking · gold a real outcome · gaps have zero height</p>
-            <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} →</a>
-            <a className="wx-tlink" href="journey.html">the whole log →</a>
-          </div>
-        </div>
-        <div className="p4-foot">
-          <article className="wx-live wx-hx-live mode-operator" aria-label="Latest entry from the log" data-newest={e.date} data-day={e.day} data-dh-frozen="">
-            <p className="wx-live-k">live from the log · <WxAge date={e.date} mode="log" /></p>
-            <p className="wx-hx-live-t"><b>day {e.day}</b> <span>{fmtDate(e.date, true)}</span></p>
-            <p className="wx-live-txt" data-compile="">{e.shipping_now}</p>
-            <a className="wx-tlink" href={`journey.html#day-${e.day}`}>read day {e.day} in full →</a>
-          </article>
-          {MARE && <button type="button" className="wx-hx-mare" aria-label="Send the mare galloping" dangerouslySetInnerHTML={{ __html: MARE }} />}
-        </div>
-
+    <section className="v3-hero mode-operator" id="top" aria-labelledby="wx-hero-h">
+      <div className="v3-hero-head">
+        <a href="index.html" className="v3-wordmark">the deep end<span aria-hidden="true">&gt;_</span></a>
+        <p>Bengaluru · independent signal</p>
       </div>
-      <div className="wx-hero-rule" aria-hidden="true" />
+      <div className="v3-hero-grid">
+        <div className="v3-copy">
+          <p className="v3-kicker">Sreedeep Surapaneni / Group CMO</p>
+          <h1 id="wx-hero-h" className="v3-board"><span className="sr">Go deep. Build it.</span><span aria-hidden="true">{words.map((word, r) => <span className="v3-board-row" key={word}>{word.padEnd(9, ' ').split('').map((c, i) => <span className="v3-flap" key={i} style={{ '--i': r * 9 + i }}><span>{c === ' ' ? ' ' : c}</span><i aria-hidden="true" /></span>)}</span>)}</span></h1>
+          <p className="v3-lede">I lead B2B growth. Then I build the systems behind it.</p>
+          <p className="v3-sub">Twelve companies. Code between meetings. A public record of what actually ships.</p>
+          <div className="v3-hero-actions">
+            <a className="btn btn-green" href="#stack">Explore the builds <span aria-hidden="true">↗</span></a>
+            <a className="v3-log-link" href={BOOK} {...EXT}><span data-dh-cta="cta_label">Talk to Deep, 30 min</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <p className="v3-transmission"><span aria-hidden="true">&gt; </span><span className="sr">Less theatre. More shipped.</span><span data-v3-encrypted="" aria-hidden="true">Less theatre. More shipped.</span></p>
+        </div>
+        <figure className="v3-portrait">
+          <div className="v3-portrait-meta"><span>OPERATOR_01</span><span>NOT A STOCK PHOTO</span></div>
+          <a className="v3-art" href="now.html" aria-label="Meet Deep. Read what I am working on now.">
+            <img src="brand/brandmark.svg" width="512" height="512" alt="Deep's pixel portrait: bald, bearded, with an orange scouter" fetchPriority="high" />
+            <canvas className="v3-dither" width="64" height="64" aria-hidden="true" />
+          </a>
+          <figcaption>
+            <span className="v3-fun">serious work.<br/><span className="v3-squiggle">fun guy.</span></span>
+            <button className="v3-replay" type="button" hidden>Replay the intro <span aria-hidden="true">↻</span></button>
+          </figcaption>
+          <svg className="v3-filter" width="0" height="0" aria-hidden="true"><defs>{[0, 1, 2].map((n) => <filter id={`v3-squiggle-${n}`} key={n}><feTurbulence baseFrequency="0.02" numOctaves="3" seed={n} result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="3"/></filter>)}</defs></svg>
+        </figure>
+      </div>
+      <article className="v3-latest" data-newest={e.date} data-day={e.day} data-dh-frozen="">
+        <p className="v3-latest-label">FROM THE LOG <span>DAY {e.day}</span><WxAge date={e.date} mode="log" /></p>
+        <p>{e.shipping_now}</p>
+        <a href={`journey.html#day-${e.day}`}>Open entry <span aria-hidden="true">↗</span></a>
+      </article>
     </section>
   );
 };
