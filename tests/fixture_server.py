@@ -426,6 +426,7 @@ FIXTURE_CLERK = r"""
     mountSignIn: function (node, options) {
       node.dataset.fixture = 'signin';
       node.dataset.routing = options.routing;
+      node.dataset.appearance = JSON.stringify((options.appearance || {}).variables || {});
       node.replaceChildren();
       var note = document.createElement('p');
       note.textContent = 'Fixture identity controls. Not a live Clerk form.';

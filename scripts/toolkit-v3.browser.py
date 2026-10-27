@@ -17,10 +17,11 @@ audit = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(audit)
 reports = []
 contrast_rows = {}
-# Every green (--build-text) text node measured against the ground it actually sits on. Translucent layers are
+# Every visible text node, in every colour, measured against the ground it actually sits on. Translucent layers are
 # composited outward to the first opaque ancestor; text that reaches the body also sits on the matrix wallpaper,
 # so it is measured against a worst case of 10% green over the page (glyph layer .09 opacity plus the glow).
-GREEN_CONTRAST = """() => {
+# Threshold is 4.5:1, or 3:1 for large text (24px and up, or 18.66px bold).
+TEXT_CONTRAST = """() => {
   const parse = c => { let m = c.match(/^rgba?\\(([^)]+)\\)/); if (m) { const p = m[1].split(/[ ,\\/]+/).filter(Boolean).map(Number); return [p[0], p[1], p[2], p[3] ?? 1]; }
     m = c.match(/^color\\(srgb ([^)]+)\\)/); if (m) { const p = m[1].split(/[ \\/]+/).filter(Boolean).map(Number); return [p[0]*255, p[1]*255, p[2]*255, p[3] ?? 1]; } return null; };
   const over = (top, bottom) => [0, 1, 2].map(i => top[i]*top[3] + bottom[i]*(1-top[3])).concat(1);
@@ -34,12 +35,13 @@ GREEN_CONTRAST = """() => {
     if (!el.getClientRects().length || el.closest('[hidden]') || !el.checkVisibility()) continue;
     if (![...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
     const cs = getComputedStyle(el), fg = parse(cs.color);
-    if (!fg || fg.slice(0, 3).some((v, i) => Math.abs(v - green[i]) > 1)) continue;
+    if (!fg || fg[3] === 0) continue;
+    const px = parseFloat(cs.fontSize), large = px >= 24 || (px >= 18.66 && Number(cs.fontWeight) >= 700);
     const layers = []; let ground = null;
     for (let n = el; n && n !== document.body; n = n.parentElement) { const c = parse(getComputedStyle(n).backgroundColor); if (c && c[3] > 0) { if (c[3] >= 1) { ground = c; break; } layers.push(c); } }
     const grounds = ground ? [ground] : [body, over([...green.slice(0, 3), .10], body)];
     const measured = grounds.map(g => { let bg = g; for (const l of layers.slice().reverse()) bg = over(l, bg); return [ratio(fg, bg), hex(bg)]; }).sort((a, b) => a[0] - b[0])[0];
-    rows.push({text: el.textContent.trim().slice(0, 40), tag: el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.split(' ')[0] : ''), size: cs.fontSize, fg: hex(fg), bg: measured[1], ratio: Math.round(measured[0] * 100) / 100});
+    rows.push({text: el.textContent.trim().slice(0, 40), tag: el.tagName.toLowerCase() + (el.className && typeof el.className === 'string' ? '.' + el.className.split(' ')[0] : ''), size: cs.fontSize, fg: hex(fg), bg: measured[1], ratio: Math.round(measured[0] * 100) / 100, min: large ? 3 : 4.5});
   }
   return rows;
 }"""
@@ -55,8 +57,9 @@ def capture(page, name):
     (OUT/(name+'-audit.json')).write_text(json.dumps(findings, indent=2))
     failures = [f for f in findings if f['severity']=='FAIL']
     assert not failures, (name, failures)
-    green = page.evaluate(GREEN_CONTRAST)
-    low = [g for g in green if g['ratio'] < 4.5]
+    green = page.evaluate(TEXT_CONTRAST)
+    assert green, (name, 'no text measured')
+    low = [g for g in green if g['ratio'] < g['min']]
     assert not low, (name, low)
     for g in green:
         contrast_rows.setdefault((g['tag'], g['text'], g['bg']), {**g, 'captures': []})['captures'].append(name)
@@ -89,6 +92,78 @@ def configure(page, rows=1, operation='classify'):
         op.get_by_label('Instructions for this column').fill('Classify the company industry from the supplied name.')
         op.get_by_label('Categories, separated by commas').fill('Technology, Other')
     return w
+
+def drag(page, box, dx, dy, at=(20, 20)):
+    x, y = box['x']+at[0], box['y']+at[1]
+    page.mouse.move(x, y); page.mouse.down(); page.mouse.move(x+dx, y+dy, steps=6); page.mouse.up()
+
+DROP = """([selector, name, body, types]) => { const dt = new DataTransfer(); dt.items.add(new File([body], name, {type: 'text/csv'}));
+  const t = document.querySelector(selector); for (const type of types) t.dispatchEvent(new DragEvent(type, {bubbles: true, cancelable: true, dataTransfer: dt})); }"""
+
+def drag_checks(page):
+    """Windows drag by the title bar inside the viewport, icons drag and persist per user, files drop onto the desktop."""
+    vw, vh = page.viewport_size['width'], page.viewport_size['height']
+    w = open_app(page, 'account')
+    before = w.bounding_box()
+    dock = page.locator('#app-launcher').bounding_box()
+    assert before['y']+before['height'] <= dock['y'], ('window runs under the dock', before, dock)
+    drag(page, w.locator('.window-title').bounding_box(), -150, 60)
+    after = w.bounding_box()
+    assert abs(after['x']-(before['x']-150)) < 2 and abs(after['y']-(before['y']+60)) < 2, ('window drag', before, after)
+    drag(page, w.locator('.window-title').bounding_box(), vw, vh)
+    b = w.bounding_box()
+    assert b['x'] >= 0 and b['y'] >= 64 and b['x']+b['width'] <= vw+1 and b['y']+b['height'] <= vh+1, ('window clamp', b)
+    drag(page, w.locator('.window-title').bounding_box(), -vw, -vh)
+    b = w.bounding_box()
+    assert b['x'] >= 0 and b['y'] >= 64, ('window clamp top left', b)
+    pdf = open_app(page, 'pdf')
+    z = lambda loc: int(loc.evaluate('n => getComputedStyle(n).zIndex'))
+    assert z(pdf) > z(w)
+    w.locator('.window-title').click()
+    assert z(w) > z(pdf) and w.get_attribute('data-focused') == 'true', 'focus raises the window'
+    close_app(page, 'ChamPDF'); close_app(page, 'Account')
+    # Icons: drag does not open, the spot survives a reload under this user's key, arrows walk the icons.
+    icon = page.locator('[data-desktop="pdf"]')
+    start = icon.bounding_box()
+    drag(page, start, 300, 120, at=(start['width']/2, start['height']/2))
+    moved = icon.bounding_box()
+    assert abs(moved['x']-start['x']-300) < 2 and abs(moved['y']-start['y']-120) < 2, ('icon drag', start, moved)
+    assert page.locator('[data-app="pdf"]').count() == 0
+    saved = page.evaluate("localStorage.getItem('dh_toolkit_icons:user_FIXTURE0001')")
+    assert saved and json.loads(saved)['pdf'] == [300, 120], saved
+    page.reload()
+    page.wait_for_function("document.querySelector('#daily').textContent.includes('$')")
+    again = page.locator('[data-desktop="pdf"]').bounding_box()
+    assert abs(again['x']-moved['x']) < 2 and abs(again['y']-moved['y']) < 2, ('icon persisted', moved, again)
+    page.screenshot(path=str(OUT/'drag-icon-moved-1440.png'))
+    page.evaluate("localStorage.removeItem('dh_toolkit_icons:user_FIXTURE0001')")
+    page.reload()
+    page.wait_for_function("document.querySelector('#daily').textContent.includes('$')")
+    page.locator('[data-desktop="account"]').focus()
+    page.keyboard.press('ArrowDown')
+    assert page.evaluate("document.activeElement.dataset.desktop") == 'scanner'
+    # Desktop drop: the desktop lights up during the drag, a CSV opens Data Workbench with its rows.
+    page.evaluate(DROP, ['.desktop-intro h1', 'dropped.csv', 'Name,Email\nAda,ada@example.com\nBo,bo@example.com\n', ['dragenter', 'dragover']])
+    assert page.locator('main#main').get_attribute('data-drop') == 'true'
+    page.evaluate(DROP, ['.desktop-intro h1', 'dropped.csv', 'Name,Email\nAda,ada@example.com\nBo,bo@example.com\n', ['drop']])
+    assert page.locator('main#main').get_attribute('data-drop') is None
+    wb = page.locator('[data-app="workbench"]')
+    wb.get_by_text('2 rows read locally', exact=False).wait_for()
+    assert wb.locator('.table-scroll tbody tr').count() == 2 and 'ada@example.com' in wb.inner_text()
+    page.evaluate(DROP, ['[data-app="workbench"] .dropzone', 'x.csv', 'a', ['dragover']])
+    zone = wb.locator('.dropzone')
+    assert zone.get_attribute('data-over') == 'true' and zone.evaluate("n => getComputedStyle(n).borderTopStyle") == 'solid'
+    zone.screenshot(path=str(OUT/'drop-hover-workbench.png'))
+    page.evaluate(DROP, ['[data-app="workbench"] .dropzone', 'x.csv', 'a', ['dragleave']])
+    assert zone.get_attribute('data-over') == 'false'
+    close_app(page, 'Data Workbench')
+    sc = open_app(page, 'scanner')
+    page.evaluate(DROP, ['[data-app="scanner"] .dropzone', 'notes.txt', 'confidential', ['dragover']])
+    assert sc.locator('.dropzone').get_attribute('data-over') == 'true'
+    page.evaluate(DROP, ['[data-app="scanner"] .dropzone', 'notes.txt', 'confidential', ['drop']])
+    sc.get_by_role('heading', name='notes.txt').wait_for()
+    assert page.locator('[data-app="workbench"]').count() == 0, 'a scanner drop stays in the scanner'
+    close_app(page, 'Deep Scanner')
 
 def verify():
     reset()
@@ -131,6 +206,7 @@ def verify():
             page.locator('[data-app="pdf"]').wait_for()
             close_app(page,'ChamPDF')
             assert page.locator('[data-desktop="admin"]').is_visible()==page.locator('[data-launch="admin"]').is_visible()
+            drag_checks(page)
             for width in (375,390,768,1280,1440,1600):
                 page.set_viewport_size({'width':width,'height':1000})
                 capture(page,f'desktop-{theme}-{width}')
@@ -139,6 +215,9 @@ def verify():
                 page.get_by_role('button',name='Sign out',exact=True).click()
                 page.get_by_role('link',name='Sign in',exact=True).click()
                 page.wait_for_selector('[data-fixture="signin"]')
+                look=json.loads(page.locator('#toolkit-signin-root').get_attribute('data-appearance'))
+                assert {k:look.get(k) for k in ('colorPrimary','colorPrimaryForeground','colorBackground','colorText','colorInputBackground','colorInputText','borderRadius')}=={'colorPrimary':'#00FF41','colorPrimaryForeground':'#000000','colorBackground':'#050505','colorText':'#00FF41','colorInputBackground':'#000000','colorInputText':'#00FF41','borderRadius':'0px'},look
+                assert 'JetBrains Mono' in look.get('fontFamily',''),look
                 capture(page,f'signin-{theme}-{width}')
                 page.get_by_role('button',name='Continue with Google (fixture)').click()
                 page.wait_for_selector('[data-launch="admin"]:visible')
@@ -162,6 +241,10 @@ def verify():
                     assert w.is_visible()
                     close_app(page,name)
                 w=configure(page)
+                if width<=768:
+                    fixed=w.bounding_box()
+                    drag(page,w.locator('.window-title').bounding_box(),120,80)
+                    assert w.bounding_box()==fixed and fixed['x']==0 and fixed['y']==0,('phone windows do not drag',fixed)
                 capture(page,f'operations-{theme}-{width}')
                 page.get_by_role('button',name='Get dollar quote',exact=True).click()
                 page.wait_for_selector('#wb-run:not([disabled])')
@@ -263,7 +346,13 @@ def verify():
     (OUT/'report.json').write_text(json.dumps(reports,indent=2))
     table=sorted(contrast_rows.values(),key=lambda r:r['ratio'])
     (OUT/'contrast.json').write_text(json.dumps(table,indent=2))
-    print(f'Green text contrast: {len(table)} distinct label/ground pairs, minimum {table[0]["ratio"]}:1 ({table[0]["text"]!r} on {table[0]["bg"]}).')
+    pairs={}
+    for r in table:
+        k=(r['fg'],r['bg'])
+        if k not in pairs or r['ratio']<pairs[k]['ratio']:pairs[k]=r
+    print(f'Text contrast: {len(table)} distinct text/ground nodes, {len(pairs)} colour pairs, every one at or above its threshold.')
+    for (fg,bg),r in sorted(pairs.items(),key=lambda kv:kv[1]['ratio']):
+        print(f'  {fg} on {bg}: {r["ratio"]}:1 (min {r["min"]}, e.g. {r["tag"]} {r["text"][:24]!r} at {r["size"]})')
     print(f'PASS: V3 fixture browser flows; {len(reports)} audited screenshots; zero JS errors. Live Clerk and embedded sessions not tested.')
 
 if __name__=='__main__':

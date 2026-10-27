@@ -17,7 +17,8 @@ const windows=new Map();
 const launchers=new Map();
 function icon(path){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 32 32');svg.setAttribute('aria-hidden','true');const p=document.createElementNS(svg.namespaceURI,'path');p.setAttribute('d',path);p.setAttribute('fill','none');p.setAttribute('stroke','currentColor');p.setAttribute('stroke-width','1.5');p.setAttribute('stroke-linejoin','round');svg.append(p);return svg;}
 function setActive(id){active=id;for(const [key,w] of windows){w.node.dataset.focused=String(key===id);w.node.inert=innerWidth<=768&&key!==id;}if(id){const w=windows.get(id);w.node.hidden=false;w.node.style.zIndex=String(++top);w.node.dataset.focused='true';}for(const n of document.querySelectorAll('.menubar,.desktop-intro,#app-launcher'))n.inert=innerWidth<=768&&!!id;}
-addEventListener('resize',()=>setActive(active));
+const clamp=(v,lo,hi)=>Math.max(lo,Math.min(Math.max(lo,hi),v));
+addEventListener('resize',()=>{setActive(active);if(innerWidth>768)for(const w of windows.values())if(w.node.style.left){const r=w.node.getBoundingClientRect();w.position(r.x,r.y);}});
 function closeWindow(id){const w=windows.get(id);w?.cleanup?.();w?.node.remove();windows.delete(id);launchers.get(id).dataset.open='false';setActive([...windows].reverse().find(([,v])=>!v.node.hidden)?.[0]||null);launchers.get(id).focus();}
 function openApp(id){
   if((id==='admin'||id==='scanner')&&!usage?.user.is_admin)return;
@@ -25,12 +26,12 @@ function openApp(id){
   const app=apps.find(a=>a[0]===id),node=el('section',undefined,'window');node.dataset.app=id;node.setAttribute('aria-label',app[1]);
   const header=el('div',undefined,'window-header'),title=el('h2',app[1],'window-title');header.append(title);
   const move=button('Move',()=>{move.focus();notice(body,'Use arrow keys on Move to reposition this window.');});move.setAttribute('aria-label','Move '+app[1]+' with arrow keys');
-  function position(x,y){node.style.left=Math.max(0,Math.min(innerWidth-node.offsetWidth,x))+'px';node.style.top=Math.max(64,Math.min(innerHeight-100,y))+'px';}
+  function position(x,y){node.style.left=clamp(x,0,innerWidth-node.offsetWidth)+'px';node.style.top=clamp(y,64,innerHeight-node.offsetHeight)+'px';}
   move.addEventListener('keydown',e=>{const delta={ArrowLeft:[-20,0],ArrowRight:[20,0],ArrowUp:[0,-20],ArrowDown:[0,20]}[e.key];if(delta&&innerWidth>768){e.preventDefault();const r=node.getBoundingClientRect();position(r.x+delta[0],r.y+delta[1]);}});
   header.append(move,button('−',()=>{node.hidden=true;setActive([...windows].reverse().find(([,v])=>!v.node.hidden)?.[0]||null);launchers.get(id).focus();}),button('×',()=>closeWindow(id)));
   header.children[2].setAttribute('aria-label','Minimize '+app[1]);header.children[3].setAttribute('aria-label','Close '+app[1]);
   const body=el('div',undefined,'window-body');node.append(header,body);$('#windows').append(node);
-  const w={node,body};windows.set(id,w);setActive(id);launchers.get(id).dataset.open='true';
+  const w={node,body,position};windows.set(id,w);setActive(id);launchers.get(id).dataset.open='true';
   node.addEventListener('pointerdown',()=>setActive(id));node.addEventListener('focusin',()=>setActive(id));
   let drag=null;header.addEventListener('pointerdown',e=>{if(e.target.closest('button')||innerWidth<=768)return;const r=node.getBoundingClientRect();drag=[e.clientX-r.x,e.clientY-r.y];header.setPointerCapture(e.pointerId);});header.addEventListener('pointermove',e=>{if(drag)position(e.clientX-drag[0],e.clientY-drag[1]);});header.addEventListener('pointerup',()=>drag=null);header.addEventListener('pointercancel',()=>drag=null);
   if(id==='workbench')workbench(w);
@@ -42,7 +43,23 @@ function openApp(id){
 }
 const desktopIcons=new Map();
 for(const [id,name,path] of apps){const b=button('',()=>openApp(id));b.dataset.launch=id;b.dataset.open='false';const sym=el('span',undefined,'app-icon');sym.append(icon(path));b.append(sym,el('span',name));if(id==='admin'||id==='scanner')b.hidden=true;$('#app-launcher').append(b);launchers.set(id,b);
- const d=button('',()=>{for(const x of desktopIcons.values())x.dataset.selected=String(x===d);});d.dataset.desktop=id;d.dataset.selected='false';d.setAttribute('aria-label',name+'. Double click or press Enter to open');const ds=el('span',undefined,'app-icon');ds.append(icon(path));d.append(ds,el('span',name));d.hidden=b.hidden;d.addEventListener('dblclick',()=>openApp(id));d.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();openApp(id);}});$('#desktop-icons').append(d);desktopIcons.set(id,d);}
+ const d=button('',()=>{for(const x of desktopIcons.values())x.dataset.selected=String(x===d);});d.dataset.desktop=id;d.dataset.selected='false';d.setAttribute('aria-label',name+'. Double click or press Enter to open');const ds=el('span',undefined,'app-icon');ds.append(icon(path));d.append(ds,el('span',name));d.hidden=b.hidden;d.addEventListener('dblclick',()=>openApp(id));d.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();openApp(id);}const step={ArrowUp:-1,ArrowLeft:-1,ArrowDown:1,ArrowRight:1}[e.key];if(step){e.preventDefault();const list=[...desktopIcons.values()].filter(x=>!x.hidden);list[(list.indexOf(d)+step+list.length)%list.length].focus();}});dragIcon(d);$('#desktop-icons').append(d);desktopIcons.set(id,d);}
+// Icon positions are offsets from the icon's slot in the column, saved per signed-in user.
+function iconKey(){return 'dh_toolkit_icons:'+(session.authState().userId||'guest');}
+function loadIcons(){let saved={};try{saved=JSON.parse(localStorage.getItem(iconKey())||'{}');}catch{}for(const [id,d] of desktopIcons){const p=saved[id];d.style.translate=Array.isArray(p)?p[0]+'px '+p[1]+'px':'';}}
+function saveIcons(){const out={};for(const [id,d] of desktopIcons){const [x=0,y=0]=d.style.translate.split(' ').map(v=>parseFloat(v)||0);if(x||y)out[id]=[x,y];}try{localStorage.setItem(iconKey(),JSON.stringify(out));}catch{}}
+function dragIcon(d){let drag=null;
+ d.addEventListener('pointerdown',e=>{if(innerWidth<=768||e.button!==0)return;const [tx=0,ty=0]=d.style.translate.split(' ').map(v=>parseFloat(v)||0),r=d.getBoundingClientRect();drag={sx:e.clientX,sy:e.clientY,tx,ty,left:r.left-tx,top:r.top-ty,w:r.width,h:r.height,moved:false};d.setPointerCapture(e.pointerId);});
+ d.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.sx,dy=e.clientY-drag.sy;if(!drag.moved&&Math.hypot(dx,dy)<4)return;drag.moved=true;d.dataset.dragging='true';d.style.translate=clamp(drag.tx+dx,-drag.left,innerWidth-drag.w-drag.left)+'px '+clamp(drag.ty+dy,64-drag.top,innerHeight-drag.h-drag.top)+'px';});
+ const end=()=>{if(drag?.moved)saveIcons();drag=null;delete d.dataset.dragging;};d.addEventListener('pointerup',end);d.addEventListener('pointercancel',end);
+}
+loadIcons();
+// Drop zones light up under a file drag and keep the drop to themselves.
+function dropTarget(zone,onFiles){zone.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();delete $('#main').dataset.drop;zone.dataset.over='true';});zone.addEventListener('dragleave',e=>{if(!zone.contains(e.relatedTarget))zone.dataset.over='false';});zone.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();zone.dataset.over='false';onFiles(e.dataTransfer.files);});}
+// A CSV or XLSX dropped anywhere else on the desktop opens Data Workbench with it loaded.
+addEventListener('dragover',e=>{if(!e.dataTransfer?.types.includes('Files'))return;e.preventDefault();$('#main').dataset.drop='true';});
+addEventListener('dragleave',e=>{if(!e.relatedTarget)delete $('#main').dataset.drop;});
+addEventListener('drop',e=>{e.preventDefault();delete $('#main').dataset.drop;const f=e.dataTransfer?.files[0];if(!f)return;if(!/\.(csv|xlsx)$/i.test(f.name)){$('#session-status').textContent=f.name+' was not opened. Drop a CSV or XLSX to load it in Data Workbench.';return;}openApp('workbench');windows.get('workbench').upload(f);});
 // 21st.dev 2572 cosine magnification, native buttons and no perpetual RAF loop.
 $('#app-launcher').addEventListener('pointermove',e=>{if(innerWidth<=768||matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(const b of launchers.values()){const r=b.getBoundingClientRect();const distance=Math.abs(e.clientX-r.x-r.width/2);b.style.setProperty('--scale',String(distance<120?1+.15*(1+Math.cos(distance/120*Math.PI)):1));}});
 $('#app-launcher').addEventListener('pointerleave',()=>launchers.forEach(b=>b.style.removeProperty('--scale')));
@@ -64,7 +81,7 @@ async function connect(){
 }
 async function authChanged(s){
  const epoch=++authEpoch;$('#signin-link').hidden=s.signedIn;$('#signout').hidden=!s.signedIn;
- if(!s.signedIn){usage=null;for(const id of [...windows.keys()])closeWindow(id);paintUsage();$('#session-status').textContent='Signed out. Sign in to access private runs and quotes.';$('#session-status').className='';return;}
+ loadIcons();if(!s.signedIn){usage=null;for(const id of [...windows.keys()])closeWindow(id);paintUsage();$('#session-status').textContent='Signed out. Sign in to access private runs and quotes.';$('#session-status').className='';return;}
  try{await refreshUsage();if(epoch!==authEpoch)return;$('#session-status').textContent=usage.usage.disabled?'Account disabled. Contact an administrator.':!usage.providers.treg&&!usage.providers.jev?'Setup needed. Providers are not configured yet.':usage.usage.daily_credit_cap===0?'No daily allowance enabled. Ask an administrator to set your limits.':'Workspace connected. Choose an app below.';}
  catch(e){$('#session-status').textContent=errorText(e);}
  $('#session-status').className='';
@@ -78,7 +95,7 @@ function scanner(w){
  const b=w.body;b.append(el('h3','Check before you share'),el('p','Browser-local scan of text files for possible secrets and sensitive text. Nothing is uploaded. Matching values are never displayed.'));
  const drop=el('div',undefined,'dropzone'),file=input('','file');file.multiple=true;file.accept='.txt,.md,.csv,.json,.yaml,.yml,.env,.js,.ts,.log';drop.append(field('Choose text files, or drop them here',file));b.append(drop);const output=el('div');b.append(output);
  async function scan(files){output.replaceChildren();for(const f of files){if(f.size>MAX_FILE_BYTES){notice(output,f.name+': exceeds 5 MiB.',true);continue;}const text=await f.text();if(text.includes('\u0000')){notice(output,f.name+': binary files are not supported.',true);continue;}const hits=scanText(text);output.append(el('h3',f.name));if(hits.length)output.append(table(['Line','Finding'],hits.map(x=>[x.line,x.type])));else notice(output,'No matching patterns found. This does not prove the file is safe. Review it before sharing.');} }
- file.addEventListener('change',()=>scan(file.files).catch(e=>notice(output,e.message,true)));drop.addEventListener('dragover',e=>e.preventDefault());drop.addEventListener('drop',e=>{e.preventDefault();scan(e.dataTransfer.files).catch(err=>notice(output,err.message,true));});
+ file.addEventListener('change',()=>scan(file.files).catch(e=>notice(output,e.message,true)));dropTarget(drop,files=>scan(files).catch(err=>notice(output,err.message,true)));
 }
 function metrics(values){const n=el('div',undefined,'metrics');for(const [label,value] of values){const d=el('div',label);d.append(el('strong',value,'money'));n.append(d);}return n;}
 function age(iso){const ms=Date.now()-Date.parse(iso);if(!Number.isFinite(ms))return 'Date unavailable';return Math.max(0,Math.floor(ms/86400000))+' days ago';}
@@ -107,7 +124,7 @@ function workbench(w){
   try{if(!/\.(csv|xlsx)$/i.test(f.name))throw new Error('Choose a CSV or XLSX file. No file was uploaded.');if(f.size>MAX_FILE_BYTES)throw new Error('This file exceeds 5 MiB. Split it and try again.');const parsed=/\.xlsx$/i.test(f.name)?await parseXlsx(await f.arrayBuffer()):parseCsv(await f.text());source=validateFileTable(parsed);filename=f.name;message(source.rows.length+' rows read locally. Confirm the column mapping before continuing.');stage(1);renderMapping();}
   catch(e){message(e.message,true);stage(0);}
  }
- file.addEventListener('change',()=>upload(file.files[0]));drop.addEventListener('dragover',e=>e.preventDefault());drop.addEventListener('drop',e=>{e.preventDefault();upload(e.dataTransfer.files[0]);});
+ file.addEventListener('change',()=>upload(file.files[0]));dropTarget(drop,files=>upload(files[0]));w.upload=upload;
  function renderMapping(){
   const guessed=guessMapping(source.headers);mapping.append(el('h3','Confirm your columns'),el('p','Original column names are preserved. Map identity fields for enrichment; choose any column for classification.'));
   const grid=el('div',undefined,'form-grid');const maps={};for(const [key,label] of [['name','Person name'],['domain','Company domain']]){maps[key]=select([['','Not mapped'],...source.headers.map(h=>[h,h])],guessed[key]||'');grid.append(field(label,maps[key]));}mapping.append(grid,table(source.headers,source.rows.slice(0,3).map(r=>source.headers.map(h=>r[h]))));

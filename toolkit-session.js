@@ -170,7 +170,9 @@ const APPEARANCE = () => ({
     colorDanger: tok('--danger', '#E05030'),
     colorInputBackground: tok('--bg', '#0E1A33'),
     colorInputText: tok('--text', '#F4EBD9'),
-    borderRadius: '6px',
+    // Only the toolkit shells set these two (Matrix Green: square corners, mono face).
+    borderRadius: tok('--clerk-radius', '6px'),
+    ...(tok('--clerk-font', '') ? { fontFamily: tok('--clerk-font', '') } : {}),
   },
 });
 
