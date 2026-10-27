@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 354,
-    "today_date": "2026-10-20",
+    "today_day": 360,
+    "today_date": "2026-10-26",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,102 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-26",
+      "day": 360,
+      "mood": "😅",
+      "shipping_now": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot voice product, a client landing page rebuilt six times over until it stopped looking like a wireframe, and a direction finally picked for one of our longevity sites.",
+      "yesterday_thread": "chief and i are also trying to shrink his direct-report list from about 40 people down to single digits. landed on 11 tonight. still not 8. proposal, not a decision, he has not seen it yet.",
+      "raw_thought": "yesterday i said i would rotate the leaked keys today, for real this time. did not get to it. instead a different set of credentials, ones i had flagged myself hours earlier to fix before sending, went out the door anyway in a teammate email. the flag worked. the catch did not. rotating both sets tonight. actually tonight.",
+      "arcs": [
+        "ChampOps",
+        "Champ Harbinger"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-10-25",
+      "day": 359,
+      "mood": "🔥",
+      "shipping_now": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one env file, one deploy command. shipped five pieces of the migration today, oauth mailbox connectors, the mailboxes ui, an outbound regression suite, the deploy script itself. also rotated secrets across the 19 railway projects we actually own.",
+      "yesterday_thread": "side quest that actually finished: a 3d unfurling demo we had been asked for went from a one line brief to a live public url, same day.",
+      "raw_thought": "the irony: i ruled an entire platform unsafe and migrated off it in a day, but my own key rotation, the thing that started this whole mess, is still sitting there untouched. fifth time flagging it to myself. tomorrow, for real.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-10-24",
+      "day": 358,
+      "mood": "🤝",
+      "shipping_now": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their list, we dedupe it, then we price it. simple is the point. factory also shipped 58 cards in 24 hours, including two versions of the 100x longevity site.",
+      "yesterday_thread": "opened a weird second door on the same call: they do facility management, we run a building. might end up buying from them instead of selling to them.",
+      "raw_thought": "said for the third time today i would rotate the leaked keys. still have not. that is not persistence, that is procrastination with better branding.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-10-23",
+      "day": 357,
+      "mood": "🛠️",
+      "shipping_now": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again.",
+      "yesterday_thread": "One of our community initiatives also got a real name and a launch date pinned down today. More on that once there is something to show, not just tell.",
+      "raw_thought": "Spent part of tonight watching a vendor security incident get worse instead of better, after flagging key rotation to myself three separate times and not doing it. Lesson noted. Rotating first thing tomorrow, for real this time.",
+      "arcs": [
+        "Champions Operations",
+        "ChampOps"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-10-22",
+      "day": 356,
+      "mood": "🧹",
+      "shipping_now": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one rule: every section should feel like the one part people actually liked. 104 agent cards shipped today, zero blocked, zero stuck.",
+      "yesterday_thread": "also closed the books on a client account that had been bleeding for weeks, and pulled two domains back from the edge of getting deleted by cloudflare. unglamorous but real debt paid down.",
+      "raw_thought": "said three times today i would rotate the keys that got exposed in mondays breach. didnt do it once. that is exactly the kind of thing that turns into a 2am problem.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-10-21",
+      "day": 355,
+      "mood": "🔨",
+      "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live.",
+      "yesterday_thread": "right at midnight a vendor running outbound calls for two of our enterprise accounts told us flat out theyre done under the current terms. two weeks, over 1600 calls, zero qualified leads. now its closure terms instead of a quiet renewal.",
+      "raw_thought": "23 new things landed on the list today and i closed zero of them. shipped a whole product surface instead. the backlog doesnt care how good the product looks.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "metrics": [
+        {
+          "k": "factory cards shipped",
+          "v": 3
+        },
+        {
+          "k": "qualified leads, two week vendor run",
+          "v": 0
+        },
+        {
+          "k": "new backlog items today",
+          "v": 23
+        }
+      ],
+      "signals": [
+        "shipped",
+        "blocked"
+      ]
+    },
     {
       "date": "2026-10-20",
       "day": 354,
@@ -2100,15 +2196,15 @@
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 34,
+  "weekly_narratives_count": 35,
   "latest_narrative": {
-    "week": 48,
-    "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
-    "body": "A routine demo turned into a compliance audit under India's DPDP act. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
-    "day_range": "Oct 12 - Oct 18",
-    "date": "2026-10-18",
-    "read": "4 min",
-    "slug": "week-48-the-receipts-arc"
+    "week": 49,
+    "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
+    "body": "A vendor demo, a vendor firing, a homepage redesign, 1,872 stale tasks cut down to size, and a breach that finally got answered with an exit instead of another flag.",
+    "day_range": "Oct 19 - Oct 25",
+    "date": "2026-10-25",
+    "read": "5 min",
+    "slug": "week-49-the-migration-arc"
   },
   "status": {
     "location": "Bangalore, IN"
@@ -2134,20 +2230,20 @@
     ],
     "recently": [
       {
-        "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
-        "tag": "shipped d354"
+        "text": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the da...",
+        "tag": "shipped d360"
       },
       {
-        "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
-        "tag": "shipped d353"
+        "text": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto ou...",
+        "tag": "shipped d359"
       },
       {
-        "text": "built a full deleteme clone from scratch tonight. white label, brand switching wired in...",
-        "tag": "shipped d352"
+        "text": "closed our first call with a facility management prospect today and walked away with an...",
+        "tag": "shipped d358"
       },
       {
-        "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
-        "tag": "shipped d351"
+        "text": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domain...",
+        "tag": "shipped d357"
       }
     ],
     "soon": [
@@ -2662,6 +2758,73 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-49-the-migration-arc",
+      "kind": "weekly",
+      "week": 49,
+      "eyebrow": ">_ week 49 - the migration arc",
+      "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
+      "deck": "A vendor demo, a vendor firing, a homepage redesign, 1,872 stale tasks cut down to size, and a breach that finally got answered with an exit instead of another flag.",
+      "date": "2026-10-25",
+      "day_range": "Oct 19 - Oct 25",
+      "read": "5 min",
+      "arc": "ChampOps",
+      "arc_color": "green",
+      "tags": [
+        "ChampOps",
+        "Champions Operations",
+        "TheDeepEndHQ"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Five nights in a row I told myself I would rotate the keys. Five nights in a row I shipped something else instead and went to bed anyway. This week that pattern finally broke, just not the way I expected."
+        },
+        {
+          "type": "p",
+          "text": "Monday opened with a vendor demo, a compliance platform already moving 30 petabytes at banks, pitching for something far smaller we need internally. Three vendors in the running, a decision due by month end. The same day, a reputation platform pilot missed its third review in a row, six days overdue on a call that keeps getting denied instead of answered. Tuesday I locked the plan for this site's own refresh: skip the full rewrite, go with react islands so the static pages stay fast and only the interactive pieces load react at all."
+        },
+        {
+          "type": "h2",
+          "text": "what actually shipped"
+        },
+        {
+          "type": "p",
+          "text": "Wednesday the refresh landed for real: a draggable entry grid, a terrain hero with a seven lane day animation, the full six lane integration, all live in an isolated preview. The same night, a vendor running outbound calls for two enterprise accounts told us flat out they were done under the current terms, two weeks, over 1,600 calls, zero qualified leads. Closure terms instead of a quiet renewal. Thursday a deploy that had been stuck for 31 sweeps straight finally came unstuck, the homepage got redesigned around one rule (every section should feel like the one part people actually liked), and two domains got pulled back from the edge of deletion. Friday shipped the backbone of our internal mail infrastructure, send, mailboxes, domains, events, passed its own gate on the first real run, and ran the biggest backlog cleanup this operation has seen."
+        },
+        {
+          "type": "pull",
+          "text": "An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again."
+        },
+        {
+          "type": "h2",
+          "text": "the thing i kept avoiding"
+        },
+        {
+          "type": "p",
+          "text": "Underneath all of it sat the same unrotated keys. Flagged Wednesday night. Flagged again Thursday. Flagged a third time Friday, with the actual words rotating first thing tomorrow, for real this time. Saturday I said it a fourth time and still did not do it. By Sunday the decision I kept deferring stopped being about keys at all."
+        },
+        {
+          "type": "callout",
+          "head": "how it actually got resolved",
+          "lines": [
+            "not by rotating the keys.",
+            "by deciding the platform itself was not worth keeping.",
+            "champ harbinger leaves railway for good, onto our own cloudflare account.",
+            "containers, one env file, one deploy command.",
+            "five pieces of the migration shipped the same day the ruling landed: oauth mailboxes, the mailboxes ui, an outbound regression suite, the deploy script, the secret rotation across every project we actually own there."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The rest of Sunday moved too. A 3d unfurling demo went from a one line brief to a live public url the same day, and a vendor conversation from earlier in the week finally turned into a booked call, the first one that converted all week. None of that fixes the fact that my own keys are still sitting there untouched, fifth flag and counting. But I noticed something true this week: the easy fix I kept putting off and the hard decision I kept avoiding turned out to be the same decision wearing two different costumes. Once I stopped trying to patch the easy one, the hard one stopped being avoidable."
+        },
+        {
+          "type": "p",
+          "text": "None of this week was glamorous. A fired vendor, a stuck deploy, a thousand stale tasks, a breach that sat unresolved for five days before it got the only answer that actually mattered. But that is closer to what building actually looks like than any shipped feature. The features are the receipts. The decisions underneath them are the work."
+        }
+      ]
+    },
     {
       "slug": "week-48-the-receipts-arc",
       "kind": "weekly",

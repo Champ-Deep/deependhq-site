@@ -1,8 +1,80 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (132) and every weekly essay (18), newest first. Rebuilt 2026-10-20. Cite the day number and date when quoting, for example "day 354, 2026-10-20".
+> Every public journey entry (138) and every weekly essay (19), newest first. Rebuilt 2026-10-27. Cite the day number and date when quoting, for example "day 360, 2026-10-26".
 
 ## Journey
+
+### Day 360, 2026-10-26 (building)
+
+best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot voice product, a client landing page rebuilt six times over until it stopped looking like a wireframe, and a direction finally picked for one of our longevity sites.
+
+Thread: chief and i are also trying to shrink his direct-report list from about 40 people down to single digits. landed on 11 tonight. still not 8. proposal, not a decision, he has not seen it yet.
+
+Raw thought: yesterday i said i would rotate the leaked keys today, for real this time. did not get to it. instead a different set of credentials, ones i had flagged myself hours earlier to fix before sending, went out the door anyway in a teammate email. the flag worked. the catch did not. rotating both sets tonight. actually tonight.
+
+Arcs: ChampOps, Champ Harbinger
+
+Link: https://deependhq.com/journey.html#day-360
+
+### Day 359, 2026-10-25 (building)
+
+finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one env file, one deploy command. shipped five pieces of the migration today, oauth mailbox connectors, the mailboxes ui, an outbound regression suite, the deploy script itself. also rotated secrets across the 19 railway projects we actually own.
+
+Thread: side quest that actually finished: a 3d unfurling demo we had been asked for went from a one line brief to a live public url, same day.
+
+Raw thought: the irony: i ruled an entire platform unsafe and migrated off it in a day, but my own key rotation, the thing that started this whole mess, is still sitting there untouched. fifth time flagging it to myself. tomorrow, for real.
+
+Arcs: ChampOps, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-359
+
+### Day 358, 2026-10-24 (a real outcome)
+
+closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their list, we dedupe it, then we price it. simple is the point. factory also shipped 58 cards in 24 hours, including two versions of the 100x longevity site.
+
+Thread: opened a weird second door on the same call: they do facility management, we run a building. might end up buying from them instead of selling to them.
+
+Raw thought: said for the third time today i would rotate the leaked keys. still have not. that is not persistence, that is procrastination with better branding.
+
+Arcs: Lake B2B, ChampOps
+
+Link: https://deependhq.com/journey.html#day-358
+
+### Day 357, 2026-10-23 (building)
+
+Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again.
+
+Thread: One of our community initiatives also got a real name and a launch date pinned down today. More on that once there is something to show, not just tell.
+
+Raw thought: Spent part of tonight watching a vendor security incident get worse instead of better, after flagging key rotation to myself three separate times and not doing it. Lesson noted. Rotating first thing tomorrow, for real this time.
+
+Arcs: Champions Operations, ChampOps
+
+Link: https://deependhq.com/journey.html#day-357
+
+### Day 356, 2026-10-22 (building)
+
+unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one rule: every section should feel like the one part people actually liked. 104 agent cards shipped today, zero blocked, zero stuck.
+
+Thread: also closed the books on a client account that had been bleeding for weeks, and pulled two domains back from the edge of getting deleted by cloudflare. unglamorous but real debt paid down.
+
+Raw thought: said three times today i would rotate the keys that got exposed in mondays breach. didnt do it once. that is exactly the kind of thing that turns into a 2am problem.
+
+Arcs: TheDeepEndHQ, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-356
+
+### Day 355, 2026-10-21 (building)
+
+shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live.
+
+Thread: right at midnight a vendor running outbound calls for two of our enterprise accounts told us flat out theyre done under the current terms. two weeks, over 1600 calls, zero qualified leads. now its closure terms instead of a quiet renewal.
+
+Raw thought: 23 new things landed on the list today and i closed zero of them. shipped a whole product surface instead. the backlog doesnt care how good the product looks.
+
+Arcs: TheDeepEndHQ, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-355
 
 ### Day 354, 2026-10-20 (building)
 
@@ -1571,6 +1643,30 @@ Arcs: InfraTech, Champions Operations
 Link: https://deependhq.com/journey.html#day-184
 
 ## Essays
+
+### I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.
+
+2026-10-25, 5 min, ChampOps. https://deependhq.com/post.html?slug=week-49-the-migration-arc
+
+A vendor demo, a vendor firing, a homepage redesign, 1,872 stale tasks cut down to size, and a breach that finally got answered with an exit instead of another flag.
+
+Five nights in a row I told myself I would rotate the keys. Five nights in a row I shipped something else instead and went to bed anyway. This week that pattern finally broke, just not the way I expected.
+
+Monday opened with a vendor demo, a compliance platform already moving 30 petabytes at banks, pitching for something far smaller we need internally. Three vendors in the running, a decision due by month end. The same day, a reputation platform pilot missed its third review in a row, six days overdue on a call that keeps getting denied instead of answered. Tuesday I locked the plan for this site's own refresh: skip the full rewrite, go with react islands so the static pages stay fast and only the interactive pieces load react at all.
+
+what actually shipped
+
+Wednesday the refresh landed for real: a draggable entry grid, a terrain hero with a seven lane day animation, the full six lane integration, all live in an isolated preview. The same night, a vendor running outbound calls for two enterprise accounts told us flat out they were done under the current terms, two weeks, over 1,600 calls, zero qualified leads. Closure terms instead of a quiet renewal. Thursday a deploy that had been stuck for 31 sweeps straight finally came unstuck, the homepage got redesigned around one rule (every section should feel like the one part people actually liked), and two domains got pulled back from the edge of deletion. Friday shipped the backbone of our internal mail infrastructure, send, mailboxes, domains, events, passed its own gate on the first real run, and ran the biggest backlog cleanup this operation has seen.
+
+An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again.
+
+the thing i kept avoiding
+
+Underneath all of it sat the same unrotated keys. Flagged Wednesday night. Flagged again Thursday. Flagged a third time Friday, with the actual words rotating first thing tomorrow, for real this time. Saturday I said it a fourth time and still did not do it. By Sunday the decision I kept deferring stopped being about keys at all.
+
+The rest of Sunday moved too. A 3d unfurling demo went from a one line brief to a live public url the same day, and a vendor conversation from earlier in the week finally turned into a booked call, the first one that converted all week. None of that fixes the fact that my own keys are still sitting there untouched, fifth flag and counting. But I noticed something true this week: the easy fix I kept putting off and the hard decision I kept avoiding turned out to be the same decision wearing two different costumes. Once I stopped trying to patch the easy one, the hard one stopped being avoidable.
+
+None of this week was glamorous. A fired vendor, a stuck deploy, a thousand stale tasks, a breach that sat unresolved for five days before it got the only answer that actually mattered. But that is closer to what building actually looks like than any shipped feature. The features are the receipts. The decisions underneath them are the work.
 
 ### This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.
 

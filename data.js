@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-20T23:52:44.945Z
+// Built 2026-10-27T19:20:40.054Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 354,
-    "today_date": "2026-10-20",
+    "today_day": 360,
+    "today_date": "2026-10-26",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,42 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 360,
+          "date": "2026-10-26",
+          "shipping_now": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot…",
+          "arc_color": "green"
+        },
+        {
+          "day": 359,
+          "date": "2026-10-25",
+          "shipping_now": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one…",
+          "arc_color": "green"
+        },
+        {
+          "day": 358,
+          "date": "2026-10-24",
+          "shipping_now": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their…",
+          "arc_color": "gold"
+        },
+        {
+          "day": 357,
+          "date": "2026-10-23",
+          "shipping_now": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on…",
+          "arc_color": "green"
+        },
+        {
+          "day": 356,
+          "date": "2026-10-22",
+          "shipping_now": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage…",
+          "arc_color": "green"
+        },
+        {
+          "day": 355,
+          "date": "2026-10-21",
+          "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six…",
+          "arc_color": "green"
+        },
         {
           "day": 354,
           "date": "2026-10-20",
@@ -59,45 +95,15 @@ window.DH_DATA = {
           "date": "2026-10-15",
           "shipping_now": "closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut it, i had been…",
           "arc_color": "gold"
-        },
-        {
-          "day": 348,
-          "date": "2026-10-14",
-          "shipping_now": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live…",
-          "arc_color": "green"
-        },
-        {
-          "day": 347,
-          "date": "2026-10-13",
-          "shipping_now": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle…",
-          "arc_color": "green"
-        },
-        {
-          "day": 346,
-          "date": "2026-10-12",
-          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act.…",
-          "arc_color": "gold"
-        },
-        {
-          "day": 344,
-          "date": "2026-10-10",
-          "shipping_now": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 343,
-          "date": "2026-10-09",
-          "shipping_now": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on it, and a booked client call left no…",
-          "arc_color": "blue"
-        },
-        {
-          "day": 342,
-          "date": "2026-10-08",
-          "shipping_now": "closed out a departing engineers handover today. his replacement confirmed the AI model key swap works clean, one day before the…",
-          "arc_color": "blue"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-49-the-migration-arc",
+          "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
+          "date": "2026-10-25",
+          "read": "5 min"
+        },
         {
           "slug": "week-46-the-empty-room-arc",
           "title": "This week the system caught everything except the empty rooms.",
@@ -232,6 +238,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 358,
+          "date": "2026-10-24",
+          "shipping_now": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their…",
+          "arc_color": "gold"
+        },
+        {
           "day": 353,
           "date": "2026-10-19",
           "shipping_now": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the…",
@@ -296,12 +308,6 @@ window.DH_DATA = {
           "date": "2026-09-21",
           "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold…",
           "arc_color": "gold"
-        },
-        {
-          "day": 322,
-          "date": "2026-09-18",
-          "shipping_now": "Built a full digital audit and all twelve growth visuals for a real-estate developer prospect with real budget: organic traffic…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -558,11 +564,16 @@ window.DH_DATA = {
         "ChamPDF",
         "ChampSets"
       ],
-      "last_ship": "2026-10-18",
-      "last_ship_day": 352,
-      "days_since": 3,
-      "entries_30d": 1,
+      "last_ship": "2026-10-26",
+      "last_ship_day": 360,
+      "days_since": 2,
+      "entries_30d": 2,
       "recent": [
+        {
+          "day": 360,
+          "date": "2026-10-26",
+          "ship": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security ga"
+        },
         {
           "day": 352,
           "date": "2026-10-18",
@@ -619,7 +630,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 14,
+      "days_since": 21,
       "entries_30d": 1,
       "recent": [
         {
@@ -681,11 +692,16 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-10-19",
-      "last_ship_day": 353,
-      "days_since": 2,
-      "entries_30d": 11,
+      "last_ship": "2026-10-24",
+      "last_ship_day": 358,
+      "days_since": 4,
+      "entries_30d": 9,
       "recent": [
+        {
+          "day": 358,
+          "date": "2026-10-24",
+          "ship": "closed our first call with a facility management prospect today and walked away with an actual plan, not a may"
+        },
         {
           "day": 353,
           "date": "2026-10-19",
@@ -700,11 +716,6 @@ window.DH_DATA = {
           "day": 349,
           "date": "2026-10-15",
           "ship": "closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut "
-        },
-        {
-          "day": 348,
-          "date": "2026-10-14",
-          "ship": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for"
         }
       ],
       "company_slugs": [
@@ -753,18 +764,13 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 15,
-      "entries_30d": 2,
+      "days_since": 22,
+      "entries_30d": 1,
       "recent": [
         {
           "day": 340,
           "date": "2026-10-06",
           "ship": "the longevity build got its biggest single session in months tonight. app redesign, clinic layout, three named"
-        },
-        {
-          "day": 327,
-          "date": "2026-09-23",
-          "ship": "the one lead a summit sponsorship actually produced got a 71-second call today. not the sales conversation it "
         }
       ],
       "company_slugs": [
@@ -824,6 +830,180 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-26",
+      "day": 360,
+      "mood": "😅",
+      "shipping_now": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot voice product, a client landing page rebuilt six times over until it stopped looking like a wireframe, and a direction finally picked for one of our longevity sites.",
+      "yesterday_thread": "chief and i are also trying to shrink his direct-report list from about 40 people down to single digits. landed on 11 tonight. still not 8. proposal, not a decision, he has not seen it yet.",
+      "raw_thought": "yesterday i said i would rotate the leaked keys today, for real this time. did not get to it. instead a different set of credentials, ones i had flagged myself hours earlier to fix before sending, went out the door anyway in a teammate email. the flag worked. the catch did not. rotating both sets tonight. actually tonight.",
+      "arcs": [
+        "ChampOps",
+        "Champ Harbinger"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champ Harbinger",
+          "company_name": null,
+          "slug": null
+        }
+      ],
+      "pillars": [
+        "champ"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "day": 359,
+      "mood": "🔥",
+      "shipping_now": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one env file, one deploy command. shipped five pieces of the migration today, oauth mailbox connectors, the mailboxes ui, an outbound regression suite, the deploy script itself. also rotated secrets across the 19 railway projects we actually own.",
+      "yesterday_thread": "side quest that actually finished: a 3d unfurling demo we had been asked for went from a one line brief to a live public url, same day.",
+      "raw_thought": "the irony: i ruled an entire platform unsafe and migrated off it in a day, but my own key rotation, the thing that started this whole mess, is still sitting there untouched. fifth time flagging it to myself. tomorrow, for real.",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "day": 358,
+      "mood": "🤝",
+      "shipping_now": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their list, we dedupe it, then we price it. simple is the point. factory also shipped 58 cards in 24 hours, including two versions of the 100x longevity site.",
+      "yesterday_thread": "opened a weird second door on the same call: they do facility management, we run a building. might end up buying from them instead of selling to them.",
+      "raw_thought": "said for the third time today i would rotate the leaked keys. still have not. that is not persistence, that is procrastination with better branding.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "day": 357,
+      "mood": "🛠️",
+      "shipping_now": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again.",
+      "yesterday_thread": "One of our community initiatives also got a real name and a launch date pinned down today. More on that once there is something to show, not just tell.",
+      "raw_thought": "Spent part of tonight watching a vendor security incident get worse instead of better, after flagging key rotation to myself three separate times and not doing it. Lesson noted. Rotating first thing tomorrow, for real this time.",
+      "arcs": [
+        "Champions Operations",
+        "ChampOps"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "day": 356,
+      "mood": "🧹",
+      "shipping_now": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one rule: every section should feel like the one part people actually liked. 104 agent cards shipped today, zero blocked, zero stuck.",
+      "yesterday_thread": "also closed the books on a client account that had been bleeding for weeks, and pulled two domains back from the edge of getting deleted by cloudflare. unglamorous but real debt paid down.",
+      "raw_thought": "said three times today i would rotate the keys that got exposed in mondays breach. didnt do it once. that is exactly the kind of thing that turns into a 2am problem.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "day": 355,
+      "mood": "🔨",
+      "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live.",
+      "yesterday_thread": "right at midnight a vendor running outbound calls for two of our enterprise accounts told us flat out theyre done under the current terms. two weeks, over 1600 calls, zero qualified leads. now its closure terms instead of a quiet renewal.",
+      "raw_thought": "23 new things landed on the list today and i closed zero of them. shipped a whole product surface instead. the backlog doesnt care how good the product looks.",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "metrics": [
+        {
+          "k": "factory cards shipped",
+          "v": 3
+        },
+        {
+          "k": "qualified leads, two week vendor run",
+          "v": 0
+        },
+        {
+          "k": "new backlog items today",
+          "v": 23
+        }
+      ],
+      "signals": [
+        "shipped",
+        "blocked"
+      ],
+      "company_links": [
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-20",
       "day": 354,
@@ -4421,19 +4601,19 @@ window.DH_DATA = {
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 34,
+  "weekly_narratives_count": 35,
   "latest_narrative": {
-    "week": 48,
-    "title": "This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.",
-    "body": "A routine demo turned into a compliance audit under India's DPDP act. A dead vendor relationship finally got a no. A case study page full of unproven numbers got rebuilt with receipts. And a two month old decision that nothing seemed to move got harder to avoid, not easier, once the real tool showed exactly what was waiting on it.",
-    "day_range": "Oct 12 - Oct 18",
-    "date": "2026-10-18",
-    "read": "4 min",
-    "slug": "week-48-the-receipts-arc"
+    "week": 49,
+    "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
+    "body": "A vendor demo, a vendor firing, a homepage redesign, 1,872 stale tasks cut down to size, and a breach that finally got answered with an exit instead of another flag.",
+    "day_range": "Oct 19 - Oct 25",
+    "date": "2026-10-25",
+    "read": "5 min",
+    "slug": "week-49-the-migration-arc"
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 354 · Oct 20",
+    "last_ship": "day 360 · Oct 26",
     "state": "shipping"
   },
   "status_board": {
@@ -4457,20 +4637,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
-        "text": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, goin...",
-        "tag": "shipped d354"
+        "text": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the da...",
+        "tag": "shipped d360"
       },
       {
-        "text": "sat through a full demo of a compliance platform already running at banks moving 30 pet...",
-        "tag": "shipped d353"
+        "text": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto ou...",
+        "tag": "shipped d359"
       },
       {
-        "text": "built a full deleteme clone from scratch tonight. white label, brand switching wired in...",
-        "tag": "shipped d352"
+        "text": "closed our first call with a facility management prospect today and walked away with an...",
+        "tag": "shipped d358"
       },
       {
-        "text": "four days straight now, the thought leadership engine wrote and shipped a genuinely dif...",
-        "tag": "shipped d351"
+        "text": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domain...",
+        "tag": "shipped d357"
       }
     ],
     "soon": [
@@ -4985,6 +5165,265 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-49-the-migration-arc",
+      "kind": "weekly",
+      "week": 49,
+      "eyebrow": ">_ week 49 - the migration arc",
+      "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
+      "deck": "A vendor demo, a vendor firing, a homepage redesign, 1,872 stale tasks cut down to size, and a breach that finally got answered with an exit instead of another flag.",
+      "date": "2026-10-25",
+      "day_range": "Oct 19 - Oct 25",
+      "read": "5 min",
+      "arc": "ChampOps",
+      "arc_color": "green",
+      "tags": [
+        "ChampOps",
+        "Champions Operations",
+        "TheDeepEndHQ"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Five nights in a row I told myself I would rotate the keys. Five nights in a row I shipped something else instead and went to bed anyway. This week that pattern finally broke, just not the way I expected."
+        },
+        {
+          "type": "p",
+          "text": "Monday opened with a vendor demo, a compliance platform already moving 30 petabytes at banks, pitching for something far smaller we need internally. Three vendors in the running, a decision due by month end. The same day, a reputation platform pilot missed its third review in a row, six days overdue on a call that keeps getting denied instead of answered. Tuesday I locked the plan for this site's own refresh: skip the full rewrite, go with react islands so the static pages stay fast and only the interactive pieces load react at all."
+        },
+        {
+          "type": "h2",
+          "text": "what actually shipped"
+        },
+        {
+          "type": "p",
+          "text": "Wednesday the refresh landed for real: a draggable entry grid, a terrain hero with a seven lane day animation, the full six lane integration, all live in an isolated preview. The same night, a vendor running outbound calls for two enterprise accounts told us flat out they were done under the current terms, two weeks, over 1,600 calls, zero qualified leads. Closure terms instead of a quiet renewal. Thursday a deploy that had been stuck for 31 sweeps straight finally came unstuck, the homepage got redesigned around one rule (every section should feel like the one part people actually liked), and two domains got pulled back from the edge of deletion. Friday shipped the backbone of our internal mail infrastructure, send, mailboxes, domains, events, passed its own gate on the first real run, and ran the biggest backlog cleanup this operation has seen."
+        },
+        {
+          "type": "pull",
+          "text": "An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again."
+        },
+        {
+          "type": "h2",
+          "text": "the thing i kept avoiding"
+        },
+        {
+          "type": "p",
+          "text": "Underneath all of it sat the same unrotated keys. Flagged Wednesday night. Flagged again Thursday. Flagged a third time Friday, with the actual words rotating first thing tomorrow, for real this time. Saturday I said it a fourth time and still did not do it. By Sunday the decision I kept deferring stopped being about keys at all."
+        },
+        {
+          "type": "callout",
+          "head": "how it actually got resolved",
+          "lines": [
+            "not by rotating the keys.",
+            "by deciding the platform itself was not worth keeping.",
+            "champ harbinger leaves railway for good, onto our own cloudflare account.",
+            "containers, one env file, one deploy command.",
+            "five pieces of the migration shipped the same day the ruling landed: oauth mailboxes, the mailboxes ui, an outbound regression suite, the deploy script, the secret rotation across every project we actually own there."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The rest of Sunday moved too. A 3d unfurling demo went from a one line brief to a live public url the same day, and a vendor conversation from earlier in the week finally turned into a booked call, the first one that converted all week. None of that fixes the fact that my own keys are still sitting there untouched, fifth flag and counting. But I noticed something true this week: the easy fix I kept putting off and the hard decision I kept avoiding turned out to be the same decision wearing two different costumes. Once I stopped trying to patch the easy one, the hard one stopped being avoidable."
+        },
+        {
+          "type": "p",
+          "text": "None of this week was glamorous. A fired vendor, a stuck deploy, a thousand stale tasks, a breach that sat unresolved for five days before it got the only answer that actually mattered. But that is closer to what building actually looks like than any shipped feature. The features are the receipts. The decisions underneath them are the work."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-10-19",
+          "end": "2026-10-25"
+        },
+        "days": [
+          {
+            "date": "2026-10-19",
+            "dow": "mon",
+            "day": 353,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations",
+              "Lake B2B"
+            ],
+            "ship": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data."
+          },
+          {
+            "date": "2026-10-20",
+            "dow": "tue",
+            "day": 354,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "ChampOps"
+            ],
+            "ship": "spent today locking the deependhq refresh plan."
+          },
+          {
+            "date": "2026-10-21",
+            "dow": "wed",
+            "day": 355,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "Champions Operations"
+            ],
+            "ship": "shipped the deependhq refresh today."
+          },
+          {
+            "date": "2026-10-22",
+            "dow": "thu",
+            "day": 356,
+            "arc_color": "green",
+            "arcs": [
+              "TheDeepEndHQ",
+              "Champions Operations"
+            ],
+            "ship": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one ru"
+          },
+          {
+            "date": "2026-10-23",
+            "dow": "fri",
+            "day": 357,
+            "arc_color": "green",
+            "arcs": [
+              "Champions Operations",
+              "ChampOps"
+            ],
+            "ship": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first re"
+          },
+          {
+            "date": "2026-10-24",
+            "dow": "sat",
+            "day": 358,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "ChampOps"
+            ],
+            "ship": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe."
+          },
+          {
+            "date": "2026-10-25",
+            "dow": "sun",
+            "day": 359,
+            "arc_color": "green",
+            "arcs": [
+              "ChampOps",
+              "Champions Operations"
+            ],
+            "ship": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-10-25"
+          ],
+          [
+            "2026-10-19",
+            "2026-10-20"
+          ],
+          [],
+          [
+            "2026-10-21",
+            "2026-10-23"
+          ],
+          [
+            "2026-10-23"
+          ],
+          [],
+          [
+            "2026-10-25",
+            "2026-10-22",
+            "2026-10-23",
+            "2026-10-24"
+          ],
+          [
+            "2026-10-25"
+          ],
+          [
+            "2026-10-25"
+          ],
+          [
+            "2026-10-23"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 5,
+            "paras": [
+              0,
+              1,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 4,
+            "paras": [
+              0,
+              1,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "TheDeepEndHQ",
+            "n": 3,
+            "paras": [
+              1,
+              3,
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 2,
+            "paras": [
+              1,
+              6
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "tool",
+            "name": "Cloudflare",
+            "n": 1,
+            "paras": [
+              7
+            ],
+            "href": "toolkit.html"
+          }
+        ],
+        "words": 616,
+        "entries": 7,
+        "listen_min": 4
+      }
+    },
     {
       "slug": "week-48-the-receipts-arc",
       "kind": "weekly",
@@ -9782,33 +10221,99 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-20T23:52:44.917Z",
-    "built_date": "2026-10-21",
+    "built": "2026-10-27T19:20:40.022Z",
+    "built_date": "2026-10-28",
     "newest_entry": {
-      "date": "2026-10-20",
-      "day": 354
+      "date": "2026-10-26",
+      "day": 360
     },
-    "weekdays_stale": 1,
+    "weekdays_stale": 2,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 131,
+        "days_old": 138,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 119,
+        "days_old": 126,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 119,
+        "days_old": 126,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 360,
+      "date": "2026-10-26",
+      "mood": "😅",
+      "arc_color": "green",
+      "arcs": [
+        "ChampOps",
+        "Champ Harbinger"
+      ],
+      "ship": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot voice product, a client landing page rebuilt six times over until it stopped looking like a wireframe, and a direction finally picked for one of our longevity sites."
+    },
+    {
+      "day": 359,
+      "date": "2026-10-25",
+      "mood": "🔥",
+      "arc_color": "green",
+      "arcs": [
+        "ChampOps",
+        "Champions Operations"
+      ],
+      "ship": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one env file, one deploy command. shipped five pieces of the migration today, oauth mailbox connectors, the mailboxes ui, an outbound regression suite, the deploy script itself. also rotated secrets across the 19 railway projects we actually own."
+    },
+    {
+      "day": 358,
+      "date": "2026-10-24",
+      "mood": "🤝",
+      "arc_color": "gold",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "ship": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their list, we dedupe it, then we price it. simple is the point. factory also shipped 58 cards in 24 hours, including two versions of the 100x longevity site."
+    },
+    {
+      "day": 357,
+      "date": "2026-10-23",
+      "mood": "🛠️",
+      "arc_color": "green",
+      "arcs": [
+        "Champions Operations",
+        "ChampOps"
+      ],
+      "ship": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran the biggest backlog cleanup this operation has seen. An agent classified all 1,872 open tasks in our tracker into buckets and archived over a thousand that were just sitting there stale. The board finally looks like a board again."
+    },
+    {
+      "day": 356,
+      "date": "2026-10-22",
+      "mood": "🧹",
+      "arc_color": "green",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "ship": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one rule: every section should feel like the one part people actually liked. 104 agent cards shipped today, zero blocked, zero stuck."
+    },
+    {
+      "day": 355,
+      "date": "2026-10-21",
+      "mood": "🔨",
+      "arc_color": "green",
+      "arcs": [
+        "TheDeepEndHQ",
+        "Champions Operations"
+      ],
+      "ship": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live."
+    },
     {
       "day": 354,
       "date": "2026-10-20",
@@ -9896,134 +10401,13 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle hero pieces. So tonight internal review had something real to react to instead of a deck of ideas."
-    },
-    {
-      "day": 346,
-      "date": "2026-10-12",
-      "mood": "🔍",
-      "arc_color": "gold",
-      "arcs": [
-        "Lake B2B",
-        "ChampOps"
-      ],
-      "ship": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act. they're proposing an 8 week fix with zero pii stored, and deep floated a channel partnership on the same call."
-    },
-    {
-      "day": 345,
-      "date": "2026-10-11",
-      "mood": "🌫️",
-      "arc_color": "blue",
-      "arcs": [
-        "Celsus OS"
-      ],
-      "ship": "closed out a 5-day retry loop clean today. a meeting summary that never showed up finally got marked dead instead of nagging me forever, after 10 attempts."
-    },
-    {
-      "day": 344,
-      "date": "2026-10-10",
-      "mood": "🫠",
-      "arc_color": "blue",
-      "arcs": [
-        "AI Tooling Advisory",
-        "ChampOps"
-      ],
-      "ship": "spent saturday pointing a client at the right ai stack instead of shipping my own stuff. told them to stop paying for a second usage tier, split cowork vs claude code by task weight, and put notion in the middle so any agent can pick up the context. wrote the whole thing up as a plain whatsapp message instead of a deck, because that is what actually gets read."
-    },
-    {
-      "day": 343,
-      "date": "2026-10-09",
-      "mood": "🫥",
-      "arc_color": "blue",
-      "arcs": [
-        "Celsus OS",
-        "ChampOps"
-      ],
-      "ship": "two meetings today just werent there. a scheduled demo ran four minutes with nobody on it, and a booked client call left no record at all, not even a log of the call happening. meanwhile the ops desk pulled 13 real action items out of two calls that did happen, two of them decided on their own from past calls."
-    },
-    {
-      "day": 342,
-      "date": "2026-10-08",
-      "mood": "🔧",
-      "arc_color": "blue",
-      "arcs": [
-        "Celsus OS",
-        "ChampOps"
-      ],
-      "ship": "closed out a departing engineers handover today. his replacement confirmed the AI model key swap works clean, one day before the deadline. small thing, but its the difference between a clean exit and a scramble."
-    },
-    {
-      "day": 341,
-      "date": "2026-10-07",
-      "mood": "🔧",
-      "arc_color": "green",
-      "arcs": [
-        "ChampLantern",
-        "Champions Club"
-      ],
-      "ship": "shipped the booking handoff for a client integration tonight. 7 commits, 630 tests green. prospects can now book straight into a rep calendar instead of waiting on an email back and forth."
     }
   ],
   "heatmap": {
-    "start": "2026-07-06",
-    "end": "2026-10-25",
+    "start": "2026-07-13",
+    "end": "2026-11-01",
     "weeks": 16,
     "cells": [
-      {
-        "date": "2026-07-06",
-        "future": false,
-        "weekend": false,
-        "day": 248,
-        "arc_color": "green",
-        "ship": "wired gmail and outlook oauth into the email personalizer. added instantly two-way sync with an inbound webhoo"
-      },
-      {
-        "date": "2026-07-07",
-        "future": false,
-        "weekend": false,
-        "day": 249,
-        "arc_color": "blue",
-        "ship": "three meetings back-to-back from 4 to 10 PM: IT audit deep-dive with the team, weekly data sync in-person at t"
-      },
-      {
-        "date": "2026-07-08",
-        "future": false,
-        "weekend": false,
-        "day": 250,
-        "arc_color": "blue",
-        "ship": "heavy meetings day. locked a maritime data strategy with a new shipping-sector client: 6 data segments, tanker"
-      },
-      {
-        "date": "2026-07-09",
-        "future": false,
-        "weekend": false,
-        "day": 251,
-        "arc_color": "green",
-        "ship": "proposed a 3-tier barter partnership with a Middle East HR outsourcing firm whose entire buyer list maps to ou"
-      },
-      {
-        "date": "2026-07-10",
-        "future": false,
-        "weekend": false,
-        "day": 252,
-        "arc_color": "green",
-        "ship": "hni partnership confirmed today on a revenue-share model. crypto exchange, zero-retainer structure, 750M+ data"
-      },
-      {
-        "date": "2026-07-11",
-        "future": false,
-        "weekend": true,
-        "day": 253,
-        "arc_color": "blue",
-        "ship": "evaluating salesforce org migration for cirralogix. two vendors pitched in parallel, 3.48M tasks and 549K reco"
-      },
-      {
-        "date": "2026-07-12",
-        "future": false,
-        "weekend": true,
-        "day": 254,
-        "arc_color": "blue",
-        "ship": "longevity sync ran 50 minutes, 20 over the calendar slot. full team plus chief. milestone review, but the dens"
-      },
       {
         "date": "2026-07-13",
         "future": false,
@@ -10828,20 +11212,68 @@ window.DH_DATA = {
         "date": "2026-10-21",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 355,
+        "arc_color": "green",
+        "ship": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation,"
       },
       {
         "date": "2026-10-22",
-        "future": true,
+        "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 356,
+        "arc_color": "green",
+        "ship": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning th"
       },
       {
         "date": "2026-10-23",
+        "future": false,
+        "weekend": false,
+        "day": 357,
+        "arc_color": "green",
+        "ship": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passe"
+      },
+      {
+        "date": "2026-10-24",
+        "future": false,
+        "weekend": true,
+        "day": 358,
+        "arc_color": "gold",
+        "ship": "closed our first call with a facility management prospect today and walked away with an actual plan, not a may"
+      },
+      {
+        "date": "2026-10-25",
+        "future": false,
+        "weekend": true,
+        "day": 359,
+        "arc_color": "green",
+        "ship": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare accoun"
+      },
+      {
+        "date": "2026-10-26",
+        "future": false,
+        "weekend": false,
+        "day": 360,
+        "arc_color": "green",
+        "ship": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security ga"
+      },
+      {
+        "date": "2026-10-27",
+        "future": false,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-28",
+        "future": false,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-29",
         "future": true,
         "weekend": false,
         "day": null,
@@ -10849,7 +11281,15 @@ window.DH_DATA = {
         "ship": null
       },
       {
-        "date": "2026-10-24",
+        "date": "2026-10-30",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-10-31",
         "future": true,
         "weekend": true,
         "day": null,
@@ -10857,7 +11297,7 @@ window.DH_DATA = {
         "ship": null
       },
       {
-        "date": "2026-10-25",
+        "date": "2026-11-01",
         "future": true,
         "weekend": true,
         "day": null,
@@ -10867,40 +11307,40 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 354,
-    "entries": 132,
-    "entries_30d": 30,
-    "entries_this_month": 20,
-    "streak_weekdays": 89,
-    "essays": 18,
+    "days_public": 360,
+    "entries": 138,
+    "entries_30d": 29,
+    "entries_this_month": 26,
+    "streak_weekdays": 93,
+    "essays": 19,
     "companies": 12,
-    "companies_active_90d": 5,
+    "companies_active_90d": 4,
     "first_entry": "2026-05-04",
     "day_one": null,
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 17
-      },
-      {
-        "arc": "Lake B2B",
-        "n": 11
+        "n": 19
       },
       {
         "arc": "ChampOps",
-        "n": 8
+        "n": 10
       },
       {
-        "arc": "Celsus OS",
-        "n": 5
+        "arc": "Lake B2B",
+        "n": 9
       },
       {
         "arc": "TheDeepEndHQ",
-        "n": 4
+        "n": 5
+      },
+      {
+        "arc": "Celsus OS",
+        "n": 3
       },
       {
         "arc": "Champ Harbinger",
-        "n": 1
+        "n": 2
       },
       {
         "arc": "Content Strategy",
@@ -10952,9 +11392,19 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-10-20",
-        "mentions_90d": 17,
-        "days_since": 1
+        "last_seen": "2026-10-26",
+        "mentions_90d": 22,
+        "days_since": 2
+      },
+      {
+        "name": "Cloudflare",
+        "what": "Pages, Workers, D1, R2, KV. The edge this whole site runs on.",
+        "url": null,
+        "kind": "using",
+        "category": "infra",
+        "last_seen": "2026-10-25",
+        "mentions_90d": 3,
+        "days_since": 3
       },
       {
         "name": "ChampBeam",
@@ -10966,8 +11416,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-10-12",
-        "mentions_90d": 4,
-        "days_since": 9
+        "mentions_90d": 2,
+        "days_since": 16
       },
       {
         "name": "Obsidian + Celsus",
@@ -10977,7 +11427,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 10
+        "days_since": 17
       },
       {
         "name": "Claude + Cowork",
@@ -10987,7 +11437,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 11
+        "days_since": 18
       },
       {
         "name": "Event Scout",
@@ -11000,7 +11450,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 37
+        "days_since": 44
       },
       {
         "name": "ChampUTM",
@@ -11013,17 +11463,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 39
-      },
-      {
-        "name": "Cloudflare",
-        "what": "Pages, Workers, D1, R2, KV. The edge this whole site runs on.",
-        "url": null,
-        "kind": "using",
-        "category": "infra",
-        "last_seen": "2026-08-19",
-        "mentions_90d": 1,
-        "days_since": 63
+        "days_since": 46
       },
       {
         "name": "LakeStream",
@@ -11036,7 +11476,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 78
+        "days_since": 85
       },
       {
         "name": "ChamPDF",
@@ -11049,7 +11489,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 78
+        "days_since": 85
       },
       {
         "name": "ChampMail",
@@ -11062,7 +11502,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 80
+        "days_since": 87
       },
       {
         "name": "Supabase",
@@ -11073,7 +11513,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 112
+        "days_since": 119
       },
       {
         "name": "ChampGraph",
@@ -11086,7 +11526,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 120
+        "days_since": 127
       },
       {
         "name": "ChampQuest",
@@ -11099,7 +11539,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 140
+        "days_since": 147
       },
       {
         "name": "Deep Scanner",
@@ -11579,11 +12019,11 @@ window.DH_DATA = {
       "watching": 5,
       "skill": 8
     },
-    "active_30d": 4,
+    "active_30d": 5,
     "mined_from": {
-      "entries": 132,
-      "essays": 18
+      "entries": 138,
+      "essays": 19
     }
   },
-  "built": "2026-10-20T23:52:44.945Z"
+  "built": "2026-10-27T19:20:40.054Z"
 };
