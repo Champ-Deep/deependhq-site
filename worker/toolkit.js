@@ -17,8 +17,9 @@
 import { createClerkClient } from '@clerk/backend';
 import { verifyWebhook } from '@clerk/backend/webhooks';
 import * as store from './toolkit-store.js';
+import * as cols from './column-ops.js';
 
-const TOOLS = new Set(['lead-scorer']); // only actually integrated tool ids
+const TOOLS = new Set(['lead-scorer', 'data-workbench']); // only actually integrated tool ids; data-workbench = column ops
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const MAX_LIST_NAME = 120;
 
@@ -62,11 +63,19 @@ function clerkClientFor(env) {
   return createClerkClient({ publishableKey: env.CLERK_PUBLISHABLE_KEY, secretKey: env.CLERK_SECRET_KEY });
 }
 
-function isAdmin(env, uid) {
-  return String(env.CLERK_ADMIN_IDS || '')
-    .split(',')
-    .map((s) => s.trim())
-    .includes(uid);
+// Admin = uid listed in CLERK_ADMIN_IDS, or a VERIFIED email address (read from Clerk server-side,
+// never from the token or the request) listed in CLERK_ADMIN_EMAILS. Fails closed on any Clerk error.
+const csv = (v) => String(v || '').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean);
+async function isAdmin(env, uid) {
+  if (String(env.CLERK_ADMIN_IDS || '').split(',').map((x) => x.trim()).includes(uid)) return true;
+  const emails = csv(env.CLERK_ADMIN_EMAILS);
+  if (!emails.length) return false;
+  try {
+    const u = await clerkClientFor(env).users.getUser(uid);
+    return (u.emailAddresses || []).some((e) => e.verification?.status === 'verified' && emails.includes(String(e.emailAddress).toLowerCase()));
+  } catch {
+    return false;
+  }
 }
 
 // azp claim must equal our own origin (or the operator's explicit list).
@@ -145,7 +154,7 @@ async function handleConfig(env) {
     clerk_script_url: scriptUrl,
     billing_enabled: billing,
     credits_per_usd: store.CREDITS_PER_USD,
-    providers: { treg: !!env.TREG_API_KEY, jev: !!env.JEV_API_KEY },
+    providers: { treg: !!env.TREG_API_KEY, jev: !!env.JEV_API_KEY, deepseek: !!env.JEV_API_KEY },
   });
 }
 
@@ -166,7 +175,7 @@ async function actionUsage(db, env, uid, settings) {
   const effCredit = agg.daily_credit_cap == null ? settings.default_daily_credit_cap : store.num(agg.daily_credit_cap);
   const effRow = agg.daily_row_cap == null ? settings.default_daily_row_cap : store.num(agg.daily_row_cap);
   return json({
-    user: { id: uid, email: agg.email || '', is_admin: isAdmin(env, uid) },
+    user: { id: uid, email: agg.email || '', is_admin: await isAdmin(env, uid) },
     usage: {
       day: store.utcDay(),
       credits_available: store.num(agg.credits_available),
@@ -187,7 +196,42 @@ async function actionUsage(db, env, uid, settings) {
 // ---------------------------------------------------------------------------
 // action: quote (sign-in required for throttling, no provider spend here)
 // ---------------------------------------------------------------------------
-async function actionQuote(env, body) {
+async function actionQuoteColumns(db, uid, body) {
+  let input;
+  try {
+    input = cols.validateColumnsInput(body);
+  } catch (e) {
+    return json({ error: 'invalid_columns', message: (e && e.message) || 'invalid input' }, 400);
+  }
+  const q = cols.quoteColumns(input);
+  const settings = await store.readSettings(db);
+  const agg = await store.getUserAggregate(db, uid, store.utcDayStart());
+  const capC = !agg || agg.daily_credit_cap == null ? settings.default_daily_credit_cap : store.num(agg.daily_credit_cap);
+  const capR = !agg || agg.daily_row_cap == null ? settings.default_daily_row_cap : store.num(agg.daily_row_cap);
+  const available = agg ? store.num(agg.credits_available) : 0;
+  const remainingCredits = Math.max(0, capC - (agg ? store.num(agg.credits_used) + store.num(agg.credits_held) : 0));
+  const remainingRows = Math.max(0, capR - (agg ? store.num(agg.rows) : 0));
+  const fits = q.max_cost_micro > 0 && q.max_cost_micro <= store.APP_BATCH_MICRO_CEILING;
+  const disabled = agg ? store.num(agg.disabled) : 0;
+  return json({
+    ...q,
+    fits_batch_ceiling: fits,
+    batch_ceiling_micro: store.APP_BATCH_MICRO_CEILING,
+    allowance: {
+      credits_available: available,
+      daily_credit_cap: capC,
+      remaining_daily_credits: remainingCredits,
+      remaining_daily_micro: remainingCredits * 1000,
+      daily_row_cap: capR,
+      remaining_daily_rows: remainingRows,
+      disabled,
+    },
+    can_run: fits && !disabled && q.max_credits <= available && q.max_credits <= remainingCredits && q.row_count <= remainingRows,
+  });
+}
+
+async function actionQuote(db, env, uid, body) {
+  if (body.columns !== undefined) return actionQuoteColumns(db, uid, body);
   const provider = await loadProvider(env);
   if (!provider) return json({ error: 'provider_unavailable' }, 503);
   let input;
@@ -311,33 +355,45 @@ async function settleAndRespond(db, run, results, errorMsg) {
 // ---------------------------------------------------------------------------
 async function actionRun(db, env, uid, body) {
   const toolId = clip(body.tool_id, 40);
-  if (!TOOLS.has(toolId)) return json({ error: 'unknown_tool' }, 400);
+  const columnsMode = body.columns !== undefined;
+  // Legacy lead-scorer shape stays on tool_id lead-scorer; column ops run as data-workbench.
+  if (!TOOLS.has(toolId) || (toolId === 'data-workbench') !== columnsMode) return json({ error: 'unknown_tool' }, 400);
   const requestId = clip(body.request_id, 64);
   if (!UUID_RE.test(requestId)) return json({ error: 'bad_request_id' }, 400);
   const maxCredits = body.max_credits;
   if (intIn(maxCredits, MAX_CREDIT_CAP) === null) return json({ error: 'invalid_max_credits' }, 400);
   const listName = clip(body.list_name, MAX_LIST_NAME);
 
-  const provider = await loadProvider(env);
-  if (!provider) return json({ error: 'provider_unavailable' }, 503);
+  let provider = null;
   let input;
   try {
-    input = provider.validateLeadInput({
-      rows: body.rows,
-      icp: body.icp,
-      enrich: body.enrich,
-      verify_email: body.verify_email,
-      custom: body.custom,
-    });
+    if (columnsMode) {
+      input = cols.validateColumnsInput(body);
+    } else {
+      provider = await loadProvider(env);
+      if (!provider) return json({ error: 'provider_unavailable' }, 503);
+      input = provider.validateLeadInput({
+        rows: body.rows,
+        icp: body.icp,
+        enrich: body.enrich,
+        verify_email: body.verify_email,
+        custom: body.custom,
+      });
+    }
   } catch (e) {
-    return json({ error: (e && e.message) || 'invalid_input' }, 400);
+    return columnsMode
+      ? json({ error: 'invalid_columns', message: (e && e.message) || 'invalid input' }, 400)
+      : json({ error: (e && e.message) || 'invalid_input' }, 400);
   }
 
-  // Missing provider credentials are detected BEFORE any reservation.
-  if (!env.TREG_API_KEY || !env.JEV_API_KEY) return json({ error: 'provider_not_configured' }, 503);
+  // Missing provider credentials are detected BEFORE any reservation. Column ops only need the keys they use.
+  const q = columnsMode ? cols.quoteColumns(input) : null;
+  const needTreg = columnsMode ? q.columns.some((c) => c.engine === 'treg' && c.distinct_count) : true;
+  const needLlm = columnsMode ? q.columns.some((c) => c.engine !== 'treg' && c.distinct_count) : true;
+  if ((needTreg && !env.TREG_API_KEY) || (needLlm && !env.JEV_API_KEY)) return json({ error: 'provider_not_configured' }, 503);
 
-  const q = provider.quoteLead(input);
-  const quoteMicro = store.num(q.max_cost_micro);
+  const quote = columnsMode ? q : provider.quoteLead(input);
+  const quoteMicro = store.num(quote.max_cost_micro);
   if (!Number.isSafeInteger(quoteMicro) || quoteMicro <= 0) return json({ error: 'invalid_quote' }, 400);
   if (quoteMicro > store.APP_BATCH_MICRO_CEILING) return json({ error: 'batch_ceiling' }, 400);
   const needed = store.ceilCredits(quoteMicro);
@@ -391,7 +447,7 @@ async function actionRun(db, env, uid, body) {
   let runResults = [];
   let errorMsg = null;
   try {
-    const out = await provider.executeLead(input, {
+    const out = await (columnsMode ? cols.executeColumns : provider.executeLead)(input, {
       tregKey: env.TREG_API_KEY,
       jevKey: env.JEV_API_KEY,
       model: env.LEAD_SCORER_MODEL,
@@ -443,6 +499,92 @@ async function actionAdminUsage(db, settings) {
       rows: store.num(u.rows),
     })),
   });
+}
+
+const ADMIN_PAGE_SIZE = 50;
+const MAX_GRANT = 100000;
+const GRANT_KEY_RE = /^[A-Za-z0-9._:-]{8,64}$/;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+async function actionAdminUsers(db, settings, body) {
+  const page = body.page === undefined ? 1 : body.page;
+  if (!Number.isSafeInteger(page) || page < 1 || page > 100000) return json({ error: 'invalid_page' }, 400);
+  const total = await store.countUsers(db);
+  const rows = await store.listUsersPage(db, store.utcDayStart(), ADMIN_PAGE_SIZE, (page - 1) * ADMIN_PAGE_SIZE);
+  return json({
+    day: store.utcDay(),
+    page,
+    page_size: ADMIN_PAGE_SIZE,
+    total,
+    has_more: page * ADMIN_PAGE_SIZE < total,
+    users: rows.map((u) => ({
+      id: u.uid,
+      email: u.email || '',
+      credits_available: store.num(u.credits_available),
+      credits_held: store.num(u.credits_held),
+      credits_used_today: store.num(u.credits_used),
+      spent_micro_today: store.num(u.spent_micro),
+      rows_today: store.num(u.rows),
+      daily_credit_cap: u.daily_credit_cap, // null = use default
+      effective_daily_credit_cap: u.daily_credit_cap == null ? settings.default_daily_credit_cap : store.num(u.daily_credit_cap),
+      daily_row_cap: u.daily_row_cap,
+      effective_daily_row_cap: u.daily_row_cap == null ? settings.default_daily_row_cap : store.num(u.daily_row_cap),
+      disabled: store.num(u.disabled),
+    })),
+  });
+}
+
+// Resolve the grant target to an existing Clerk identity. Email is resolved by Clerk, never by our
+// display copy, and must be VERIFIED on the matched user, so a stale or unverified address cannot redirect a grant.
+async function resolveGrantTarget(db, env, body) {
+  const hasEmail = body.target_email !== undefined;
+  const hasUid = body.target_uid !== undefined;
+  if (hasEmail === hasUid) return { error: 'invalid_target', status: 400 };
+  const clerk = clerkClientFor(env);
+  try {
+    if (hasUid) {
+      const uid = typeof body.target_uid === 'string' ? body.target_uid.trim() : '';
+      if (!/^[\w-]{1,64}$/.test(uid)) return { error: 'invalid_target', status: 400 };
+      const known = await db.prepare(`SELECT user_id FROM toolkit_accounts WHERE user_id=?1`).bind(uid).first();
+      if (!known) await clerk.users.getUser(uid); // 404 throws -> target_not_found
+      return { uid };
+    }
+    const email = typeof body.target_email === 'string' ? body.target_email.trim().toLowerCase() : '';
+    if (!email || email.length > 254 || !EMAIL_RE.test(email)) return { error: 'invalid_target', status: 400 };
+    const list = await clerk.users.getUserList({ emailAddress: [email], limit: 2 });
+    const hits = (list.data || []).filter((u) => (u.emailAddresses || []).some((e) => e.verification?.status === 'verified' && String(e.emailAddress).toLowerCase() === email));
+    if (hits.length !== 1) return { error: 'target_not_found', status: 404 };
+    return { uid: hits[0].id, email };
+  } catch (e) {
+    if (e?.status === 404) return { error: 'target_not_found', status: 404 };
+    return { error: 'clerk_unavailable', status: 503 };
+  }
+}
+
+async function actionAdminGrant(db, env, actor, body) {
+  const credits = body.credits;
+  if (!Number.isSafeInteger(credits) || credits < 1 || credits > MAX_GRANT) return json({ error: 'invalid_credits' }, 400);
+  const reason = typeof body.reason === 'string' ? body.reason.trim() : '';
+  if (!reason || reason.length > 200) return json({ error: 'invalid_reason' }, 400);
+  const idem = typeof body.idempotency_key === 'string' ? body.idempotency_key : '';
+  if (!GRANT_KEY_RE.test(idem)) return json({ error: 'invalid_idempotency_key' }, 400);
+  const target = await resolveGrantTarget(db, env, body);
+  if (target.error) return json({ error: target.error }, target.status);
+
+  const key = `admin_grant:${actor}:${idem}`; // scoped to the acting admin
+  const now = store.nowIso();
+  const res = await db.batch([
+    store.ensureAccountStmt(db, target.uid, now),
+    store.eventStmt(db, { key, uid: target.uid, type: 'admin_grant', credits, detail: JSON.stringify({ actor, reason }), now }),
+  ]);
+  const replayed = res[1].meta.changes === 0;
+  if (replayed) {
+    const prior = await store.getEvent(db, key);
+    if (!prior || prior.user_id !== target.uid || store.num(prior.credits) !== credits) return json({ error: 'idempotency_conflict' }, 409);
+  }
+  if (target.email) await store.setEmail(db, target.uid, target.email);
+  const agg = await store.getUserAggregate(db, target.uid, store.utcDayStart());
+  return json({ granted: credits, replayed, user: { id: target.uid, email: (agg && agg.email) || '' }, credits_available: store.num(agg && agg.credits_available) });
 }
 
 const GLOBAL_FIELDS = {
@@ -528,7 +670,7 @@ async function handleAction(request, env, url) {
   if (action === 'usage') {
     return actionUsage(db, env, auth.uid, await store.readSettings(db));
   }
-  if (action === 'quote') return actionQuote(env, body);
+  if (action === 'quote') return actionQuote(db, env, auth.uid, body);
   if (action === 'run') return actionRun(db, env, auth.uid, body);
   if (action === 'run_detail') {
     // Owner only: other users and admins get 404, existence is not leaked.
@@ -538,10 +680,12 @@ async function handleAction(request, env, url) {
     if (!run) return json({ error: 'not_found' }, 404);
     return json(runResponse(run, await store.listOps(db, run.id)));
   }
-  if (action === 'admin_usage' || action === 'admin_update') {
-    if (!isAdmin(env, auth.uid)) return json({ error: 'forbidden' }, 403);
+  if (['admin_usage', 'admin_update', 'admin_users', 'admin_grant'].includes(action)) {
+    if (!(await isAdmin(env, auth.uid))) return json({ error: 'forbidden' }, 403);
     const settings = await store.readSettings(db);
     if (action === 'admin_usage') return actionAdminUsage(db, settings);
+    if (action === 'admin_users') return actionAdminUsers(db, settings, body);
+    if (action === 'admin_grant') return actionAdminGrant(db, env, auth.uid, body);
     return actionAdminUpdate(db, body);
   }
   return json({ error: 'unknown_action' }, 400);

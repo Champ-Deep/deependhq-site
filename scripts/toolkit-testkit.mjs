@@ -124,12 +124,16 @@ export function svixHeaders(body, { id = randomUUID(), ts = Math.floor(Date.now(
 export const clerkFixtures = {
   subscriptions: {}, // uid -> BillingSubscriptionJSON | 'not_found'
   users: {},         // uid -> UserJSON | 'not_found'
+  userList: [],      // UserJSON[] served by GET /v1/users?email_address= (and /v1/users/count)
+  listFails: false,  // true -> the list endpoint answers 500
   unexpected: [],
 };
 
 export function resetClerkFixtures() {
   clerkFixtures.subscriptions = {};
   clerkFixtures.users = {};
+  clerkFixtures.userList = [];
+  clerkFixtures.listFails = false;
   clerkFixtures.unexpected = [];
 }
 
@@ -144,6 +148,12 @@ export function installFetchRouter() {
       if (fx === 'not_found' || !fx) return json({ errors: [{ code: 'resource_not_found', message: 'no subscription' }] }, 404);
       return json(fx);
     }
+    if (/api\.clerk\.com\/v1\/users(\/count)?\?/.test(url) || /api\.clerk\.com\/v1\/users\/count$/.test(url)) {
+      if (clerkFixtures.listFails) return json({ errors: [{ code: 'internal', message: 'boom' }] }, 500);
+      const wanted = new URL(url).searchParams.getAll('email_address').map((e) => e.toLowerCase());
+      const hits = clerkFixtures.userList.filter((u) => !wanted.length || u.email_addresses.some((e) => wanted.includes(e.email_address.toLowerCase())));
+      return /\/count/.test(url) ? json({ object: 'total_count', total_count: hits.length }) : json(hits);
+    }
     m = url.match(/api\.clerk\.com\/v1\/users\/([^/?]+)(\?|$)/);
     if (m) {
       const fx = clerkFixtures.users[m[1]];
@@ -157,7 +167,7 @@ export function installFetchRouter() {
 
 // --- Clerk fixture builders ------------------------------------------------
 
-export function userJson(id, email) {
+export function userJson(id, email, { verified = true } = {}) {
   return {
     object: 'user',
     id,
@@ -180,7 +190,7 @@ export function userJson(id, email) {
         email_address: email,
         reserved: false,
         linked_to: [],
-        verification: { status: 'verified', strategy: 'email_code', timestamp: 1 },
+        verification: { status: verified ? 'verified' : 'unverified', strategy: 'email_code', timestamp: 1 },
       },
     ],
     phone_numbers: [],

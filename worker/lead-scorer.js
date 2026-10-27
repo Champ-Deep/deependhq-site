@@ -5,7 +5,7 @@ function text(value, label, max, required = false) {
   return value.trim();
 }
 
-const canEnrich = row => !!(row.linkedin || row.email || (row.domain && row.name));
+export const canEnrich = row => !!(row.linkedin || row.email || (row.domain && row.name));
 export function quoteLead(input) {
   const breakdown = {
     enrichment_micro: input.enrich ? input.rows.filter(canEnrich).length * 6000 : 0,
@@ -57,7 +57,7 @@ export function validateLeadInput(body) {
 
 const FIT = {strong:'Strong fit',possible:'Possible fit',weak:'Weak fit',none:'Not a fit',unknown:'Unjudged'};
 
-async function providerRequest(fetcher, url, init, provider) {
+export async function providerRequest(fetcher, url, init, provider) {
   let response;
   try {
     response = await fetcher(url, {...init,signal:AbortSignal.timeout(15000)});
@@ -88,7 +88,7 @@ async function providerRequest(fetcher, url, init, provider) {
   return {ok:response.ok && data !== null,data,cost_micro,call_id:response.headers.get('X-Treg-Call-Id') || data?.id || null};
 }
 
-function emailVerdict(output) {
+export function emailVerdict(output) {
   if (!output || output.checked === false || output.status == null) return 'not_checked';
   const status = String(output.status).toLowerCase().replace(/[ -]/g,'_');
   if (['accept_all','catch_all','catchall','risky','disposable','role'].includes(status) || output.disposable === true || output.catch_all === true) return 'risky';
@@ -111,20 +111,26 @@ function customAnswer(answer, spec) {
   return {label:spec.criteria[index],index};
 }
 
-export async function executeLead(input, {tregKey,jevKey,model='typesafe/jev-1.13',call,fetcher=fetch,customerId,runId}) {
-  if (!jevKey || ((input.enrich || input.verify_email) && !tregKey)) throw new Error('The required providers are not configured.');
-  const rows = input.rows.map(row=>({input:row,email_status:row.email && input.verify_email ? 'unknown' : 'not_checked',email_reason:!row.email ? 'No email supplied.' : input.verify_email ? 'Verification requested; no verified result available.' : 'Verification not requested.',email_checked_at:null,email_source:null,icp_fit:'Unjudged',custom:Object.fromEntries(input.custom.map(c=>[c.id,{column_label:c.label,label:'Unjudged'}])),enrichment_status:'not_checked',evidence:{},notes:[]}));
-  try {
+// One Treg call through the metered adapter. Shared by the lead scorer and the column-ops path.
+// Stops the caller (throws) when the charge is unknown or above the reserve, so nothing runs past an unreconciled cost.
+export function makeTreg({tregKey,call,fetcher=fetch,customerId,runId,strict=true}) {
   let ordinal=0;
-  const treg = async(endpoint,body,reserve_micro) => {
+  return async(endpoint,body,reserve_micro) => {
     const headers = {'X-Treg-Token':tregKey,'Content-Type':'application/json','X-Treg-Route-Max-Cost':String(reserve_micro/1000000),'X-Treg-Route-Waterfall':'0','X-Treg-Meta':'feature=lead-scorer'};
     if (endpoint === 'treg.people.email.verify') headers['Cache-Control'] = 'no-cache';
     if (customerId && /^[\w.:-]{1,128}$/.test(customerId)) headers['X-Treg-Meta'] += `,customer=${customerId}`;
     if (runId) headers['Idempotency-Key'] = `${runId}:${ordinal++}`;
     const result = await call({provider:'treg',endpoint,reserve_micro},()=>providerRequest(fetcher,`https://treg.to/call/${endpoint}`,{method:'POST',headers,body:JSON.stringify(body)},'treg'));
-    if (result.cost_micro === null || result.cost_micro > reserve_micro) throw new Error('Provider charge needs reconciliation. Remaining calls stopped.');
+    if (strict && (result.cost_micro === null || result.cost_micro > reserve_micro)) throw new Error('Provider charge needs reconciliation. Remaining calls stopped.');
     return result;
   };
+}
+
+export async function executeLead(input, {tregKey,jevKey,model='typesafe/jev-1.13',call,fetcher=fetch,customerId,runId}) {
+  if (!jevKey || ((input.enrich || input.verify_email) && !tregKey)) throw new Error('The required providers are not configured.');
+  const rows = input.rows.map(row=>({input:row,email_status:row.email && input.verify_email ? 'unknown' : 'not_checked',email_reason:!row.email ? 'No email supplied.' : input.verify_email ? 'Verification requested; no verified result available.' : 'Verification not requested.',email_checked_at:null,email_source:null,icp_fit:'Unjudged',custom:Object.fromEntries(input.custom.map(c=>[c.id,{column_label:c.label,label:'Unjudged'}])),enrichment_status:'not_checked',evidence:{},notes:[]}));
+  try {
+  const treg = makeTreg({tregKey,call,fetcher,customerId,runId});
   for (const row of rows) {
     const source = row.input;
     if (input.enrich && canEnrich(source)) {

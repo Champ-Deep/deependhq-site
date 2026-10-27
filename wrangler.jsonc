@@ -7,6 +7,14 @@
   },
   "//main": "Adds worker/index.js to what was a static assets-only deployment. Assets still serve every file; the Worker adds /cta, the /field-notes and /companies redirects, POST /api/decide, GET /showcase, and the HTMLRewriter pass.",
   "main": "worker/index.js",
+  "//routes": "Custom domain for the toolkit app. wrangler deploy creates the DNS record and certificate. The apex deependhq.com stays attached through the dashboard / Workers Builds as before.",
+  "routes": [
+    { "pattern": "toolkit.deependhq.com", "custom_domain": true }
+  ],
+  "//vars": "Plain, non-secret configuration. An admin is a Clerk user with a VERIFIED address in CLERK_ADMIN_EMAILS (checked server-side), or a uid in the CLERK_ADMIN_IDS secret.",
+  "vars": {
+    "CLERK_ADMIN_EMAILS": "deep1499@gmail.com"
+  },
   "assets": {
     "//binding": "MUST be declared. Local wrangler does not auto-inject the ASSETS binding, so env.ASSETS was undefined and every page 500'd. Declaring it explicitly is correct on deployed Workers too.",
     "directory": ".",
@@ -20,6 +28,11 @@
       "/cta",
       "/command",
       "/enrich",
+      "/sign-in",
+      "/toolkit-app",
+      "/toolkit-app.html",
+      "/toolkit-signin",
+      "/toolkit-signin.html",
       "/companies",
       "/company",
       "/company/*",

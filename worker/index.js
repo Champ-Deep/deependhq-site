@@ -195,8 +195,21 @@ const CSP = [
   "form-action 'self'",
 ].join('; ');
 
+// The Clerk Frontend API host is encoded in the publishable key (base64 of "host$").
+// Deployment configuration again, so the CSP never takes a visitor-supplied origin.
+function clerkFapiOrigin(env) {
+  try {
+    const m = /^pk_(?:test|live)_(.+)$/.exec(String(env.CLERK_PUBLISHABLE_KEY || ''));
+    const host = atob(m[1]).replace(/\$$/, '');
+    return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(host) ? `https://${host}` : '';
+  } catch {
+    return '';
+  }
+}
+
 // Clerk hosts are deployment configuration, never visitor-supplied CSP sources.
 export function toolkitCsp(env) {
+  const fapi = clerkFapiOrigin(env);
   let clerk = '';
   try {
     const raw = env.CLERK_JS_URL || '';
@@ -205,12 +218,12 @@ export function toolkitCsp(env) {
   } catch {}
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com ${clerk} https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com`,
+    `script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com ${clerk} https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com ${fapi}`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: blob: https://img.clerk.com",
-    `connect-src 'self' ${clerk} https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com`,
-    "frame-src 'self' https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com",
+    `connect-src 'self' ${clerk} ${fapi} https://*.protect.clerk.com:* https://clerk-telemetry.com https://*.clerk-telemetry.com https://api.stripe.com https://img.clerk.com https://cloudflareinsights.com https://api.github.com`,
+    "frame-src 'self' https://www.champbeam.com https://champdf.com https://challenges.cloudflare.com https://*.protect.clerk.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com",
     "worker-src 'self' blob:",
     "frame-ancestors 'none'", "base-uri 'self'", "form-action 'self'",
   ].join('; ');
@@ -516,6 +529,48 @@ async function handleAudio(request, env) {
 }
 
 // ---------------------------------------------------------------------------
+// toolkit.deependhq.com : its own host, its own tiny route table.
+//   /            toolkit-app.html
+//   /sign-in     toolkit-signin.html
+//   /api/toolkit*  the shared toolkit handler (same code as deependhq.com/api/toolkit)
+// Everything the Worker sees on this host that is not above is a 404. Plain static files
+// (css, js, fonts) are served by the asset store before the Worker runs, exactly as on the
+// main site, because wrangler.jsonc run_worker_first lists only HTML routes.
+// ---------------------------------------------------------------------------
+const TOOLKIT_HOST = 'toolkit.deependhq.com';
+const TOOLKIT_SHELLS = { '/': '/toolkit-app', '/sign-in': '/toolkit-signin' };
+// These shells belong to the toolkit host only; the main site answers 404 for them.
+const TOOLKIT_ONLY = new Set(['/sign-in', '/toolkit-app', '/toolkit-app.html', '/toolkit-signin', '/toolkit-signin.html']);
+
+const notFound = (apiLike) =>
+  new Response(apiLike ? '{"error":"not_found"}' : 'not found', {
+    status: 404,
+    headers: {
+      'content-type': apiLike ? 'application/json; charset=utf-8' : 'text/plain; charset=utf-8',
+      'cache-control': 'no-store',
+      ...SECURITY_HEADERS,
+    },
+  });
+
+async function handleToolkitHost(request, env, url) {
+  const path = url.pathname;
+  if (path === '/api/toolkit' || path.startsWith('/api/toolkit/')) return handleToolkit(request, env);
+  const shell = TOOLKIT_SHELLS[path.length > 1 ? path.replace(/\/$/, '') : path];
+  if (!shell || (request.method !== 'GET' && request.method !== 'HEAD')) return notFound(path.startsWith('/api/'));
+  if (!env || !env.ASSETS || typeof env.ASSETS.fetch !== 'function') return html('assets binding missing', 500);
+  let res = await env.ASSETS.fetch(new Request(new URL(shell, url.origin), { method: 'GET' }));
+  const loc = res.headers.get('location');
+  if (res.status >= 300 && res.status < 400 && loc) res = await env.ASSETS.fetch(new Request(new URL(loc, url.origin), { method: 'GET' }));
+  if (res.status !== 200) return notFound(false);
+  const headers = new Headers(res.headers);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) headers.set(k, v);
+  headers.set('content-security-policy', toolkitCsp(env));
+  headers.set('cache-control', 'no-store');
+  headers.set('referrer-policy', 'no-referrer');
+  return new Response(request.method === 'HEAD' ? null : res.body, { status: 200, headers });
+}
+
+// ---------------------------------------------------------------------------
 // router
 // ---------------------------------------------------------------------------
 
@@ -523,6 +578,9 @@ export default {
   async fetch(request, env, ctx) {
     ctxWaitUntil = (p) => { try { ctx.waitUntil(p); } catch {} };
     const url = new URL(request.url);
+
+    if (url.hostname.toLowerCase() === String((env && env.TOOLKIT_HOST) || TOOLKIT_HOST).toLowerCase()) return handleToolkitHost(request, env, url);
+    if (TOOLKIT_ONLY.has(url.pathname)) return notFound(false);
 
     // Redirects. /cta is the one the nav used to point at and 404'd on.
     const r = REDIRECTS[url.pathname];

@@ -97,6 +97,21 @@ export async function listUsers(db, dayStart) {
   return res.results;
 }
 
+// One admin page. ORDER BY is total (created_at, user_id) so pages never overlap or skip.
+export async function listUsersPage(db, dayStart, limit, offset) {
+  const res = await db.prepare(userAggregateSql() + ' ORDER BY a.created_at, a.user_id LIMIT ?2 OFFSET ?3').bind(dayStart, limit, offset).all();
+  return res.results;
+}
+
+export async function countUsers(db) {
+  const r = await db.prepare(`SELECT COUNT(*) AS n FROM toolkit_accounts`).first();
+  return num(r && r.n);
+}
+
+export async function getEvent(db, key) {
+  return (await db.prepare(`SELECT key, user_id, type, credits FROM toolkit_events WHERE key=?1`).bind(key).first()) || null;
+}
+
 export async function getGlobalAggregate(db, dayStart) {
   return (await db.prepare(globalAggregateSql()).bind(dayStart).first()) || { spent_micro: 0, held_micro: 0 };
 }
