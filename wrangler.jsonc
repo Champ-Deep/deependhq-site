@@ -7,9 +7,15 @@
   },
   "//main": "Adds worker/index.js to what was a static assets-only deployment. Assets still serve every file; the Worker adds /cta, the /field-notes and /companies redirects, POST /api/decide, GET /showcase, and the HTMLRewriter pass.",
   "main": "worker/index.js",
-  "//routes": "Custom domain for the toolkit app. wrangler deploy creates the DNS record and certificate. The apex deependhq.com stays attached through the dashboard / Workers Builds as before.",
+  "//routes": "CRITICAL: list EVERY custom domain. wrangler deploy replaces the Worker's whole custom-domain set (changeset replace_state=true), so a list with only toolkit.deependhq.com would detach the apex and www and take the site down.",
   "routes": [
+    { "pattern": "deependhq.com", "custom_domain": true },
+    { "pattern": "www.deependhq.com", "custom_domain": true },
     { "pattern": "toolkit.deependhq.com", "custom_domain": true }
+  ],
+  "//d1": "Toolkit wallet and credit ledger. Created 2026-10-28; schema in migrations/, applied with: npx wrangler d1 migrations apply toolkit-db --remote. Every cap and grant defaults to 0 (fail closed) until set from the Admin app.",
+  "d1_databases": [
+    { "binding": "TOOLKIT_DB", "database_name": "toolkit-db", "database_id": "78b99395-186d-44f5-854d-94aa85530f04", "migrations_dir": "migrations" }
   ],
   "//vars": "Plain, non-secret configuration. An admin is a Clerk user with a VERIFIED address in CLERK_ADMIN_EMAILS (checked server-side), or a uid in the CLERK_ADMIN_IDS secret.",
   "vars": {
