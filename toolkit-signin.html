@@ -1,56 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-scheme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sign in · deependhq toolkit</title>
+<title>Sign in · The Deep End / toolkit</title>
 <meta name="theme-color" content="#0E1A33">
-<script>// Single pre-paint scheme controller, inlined into every page by the build.
-(function (d) {
-  var mode = 'system';
-  var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
-  try { var saved = localStorage.getItem('dh_scheme'); if (saved === 'light' || saved === 'dark') mode = saved; } catch (_) {}
-  function label() {
-    d.querySelectorAll('[data-dh-scheme-label]').forEach(function (el) { el.textContent = mode; });
-    d.querySelectorAll('[data-dh-scheme]').forEach(function (el) { el.setAttribute('aria-label', 'Colour scheme: ' + mode + '. Change scheme'); });
-  }
-  function apply() {
-    var scheme = mode === 'system' ? (media && media.matches ? 'light' : 'dark') : mode;
-    d.documentElement.dataset.scheme = scheme;
-    var meta = d.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = scheme === 'light' ? '#F6F5F2' : '#0E1A33';
-    window.DH_SCHEME = { mode: mode, scheme: scheme };
-    label();
-    window.dispatchEvent(new CustomEvent('dh:scheme', { detail: window.DH_SCHEME }));
-  }
-  apply();
-  d.addEventListener('DOMContentLoaded', label);
-  if (media) media.addEventListener('change', apply);
-  d.addEventListener('click', function (e) {
-    if (!e.target.closest('[data-dh-scheme]')) return;
-    mode = mode === 'system' ? 'light' : mode === 'light' ? 'dark' : 'system';
-    try { if (mode === 'system') localStorage.removeItem('dh_scheme'); else localStorage.setItem('dh_scheme', mode); } catch (_) {}
-    apply();
-  });
-  new MutationObserver(function () {
-    var el = d.querySelector('[data-dh-scheme-label]');
-    if (el && el.textContent !== mode) label();
-  }).observe(d.documentElement, { childList: true, subtree: true });
-})(document);
-</script>
-
+<meta name="color-scheme" content="dark">
 <meta name="robots" content="noindex">
-<meta name="description" content="Placeholder shell for toolkit.deependhq.com. The toolkit UI lane replaces this file; the backend contract is docs/toolkit-v3-api.md.">
+<meta name="description" content="Sign in to The Deep End toolkit. Your tools, private runs and shared balance.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/scheme-tokens.css">
+<link rel="stylesheet" href="/toolkit-desktop.css">
 </head>
 <body>
-<main id="main">
-  <h1>Sign in</h1>
-  <p>Placeholder shell. The toolkit UI lane owns this page.</p>
-  <div id="toolkit-signin-root"></div>
-  <noscript><p>This page needs JavaScript to sign in and run column operations.</p></noscript>
+<a class="skip" href="#main">Skip to sign in</a>
+<header class="menubar"><a class="brand" href="https://deependhq.com"><img src="/favicon.svg" alt="" width="32" height="32">The Deep End <span> / toolkit</span></a></header>
+<main id="main" class="signin-layout">
+  <section class="signin-form"><p class="eyebrow">ACCESS THE WORKSPACE</p><h1>Your tools.<br>Your next move.</h1><p>Sign in with Google or email. Your runs and balance belong to your account.</p><div id="toolkit-signin-root"></div><p id="signin-status" role="status">Connecting to sign-in...</p><button id="signin-retry" type="button">Retry connection</button><a class="back" href="/">Back to the desktop</a><noscript><p>Enable JavaScript to use secure sign-in.</p></noscript></section>
+  <section class="signin-story" aria-labelledby="story-title"><p class="eyebrow">THE DEEP END / TOOLKIT</p><h2 id="story-title">From raw rows.<br>To the next right action.</h2><ol class="pipeline"><li><span>01 / INPUT</span><strong>Your CSV or spreadsheet</strong><small>Map the columns. Keep the context.</small></li><li><span>02 / DECIDE</span><strong>Enrich. Verify. Classify.</strong><small>Choose the operation for each column.</small></li><li><span>03 / APPROVE</span><strong>See the dollars first.</strong><small>No run starts before you approve its quote.</small></li><li><span>04 / OUTPUT</span><strong>Evidence, not guesswork.</strong><small>Review flagged results. Export your work.</small></li></ol><p class="terminal-foot">$1 daily spending limit. Unresolved costs stay visible.</p></section>
 </main>
+<script type="module" src="/toolkit-signin.js"></script>
 </body>
 </html>

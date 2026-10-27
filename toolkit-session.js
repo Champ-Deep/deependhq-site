@@ -181,6 +181,16 @@ export function openSignIn() {
   return window.Clerk.openSignIn({ appearance: APPEARANCE() });
 }
 
+export function mountSignIn(node) {
+  if (!window.Clerk || typeof window.Clerk.mountSignIn !== 'function') {
+    throw new Error('Sign in is not available yet.');
+  }
+  const appearance = APPEARANCE();
+  appearance.variables.colorPrimary = tok('--build', '#30E060');
+  appearance.variables.colorPrimaryForeground = tok('--ink', '#0E1A33');
+  return window.Clerk.mountSignIn(node, { appearance, routing: 'hash', forceRedirectUrl: '/' });
+}
+
 export async function signOut() {
   if (window.Clerk && typeof window.Clerk.signOut === 'function') {
     await window.Clerk.signOut();

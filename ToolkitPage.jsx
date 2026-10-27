@@ -52,7 +52,7 @@ const ToolkitLauncher = ({ data }) => {
             <div><span>03</span><strong>Check &amp; judge</strong><small>Email + Jev fit</small></div>
             <div><span>04</span><strong>Make your move</strong><small>Evidence + export</small></div>
           </div>
-          <div className="tk-feature-bottom"><a className="tk-primary" href="/lead-scorer">Open Lead Scorer <span aria-hidden="true">↗</span></a><span>See the maximum cost before you run.</span></div>
+          <div className="tk-feature-bottom"><a className="tk-primary" href="https://toolkit.deependhq.com">Open the toolkit <span aria-hidden="true">↗</span></a><span>See the maximum cost before you run.</span></div>
         </article>
         <aside className="tk-wallet" aria-labelledby="tk-wallet-title">
           <span className="tk-eyebrow">One account. One balance.</span><h2 id="tk-wallet-title">Your credits<br/>go with you.</h2>

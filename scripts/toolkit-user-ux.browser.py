@@ -31,6 +31,7 @@ with sync_playwright() as p:
             section.locator('.tk-home-features').screenshot(path=str(out/f'home-tools-{width}.png'))
             section.locator('.tk-home-secondary').screenshot(path=str(out/f'home-secondary-{width}.png'))
         page.goto(base+'/toolkit.html',wait_until='networkidle')
+        assert page.get_by_role('link',name='Open the toolkit',exact=False).get_attribute('href')=='https://toolkit.deependhq.com'
         assert page.locator('.tk-products').get_by_role('heading',name='ChampHarbinger',exact=True).is_visible()
         assert page.locator('.tk-products').get_by_role('heading',name='Deep Scanner',exact=True).count()==0
         page.get_by_role('searchbox',name='Find a tool').fill('hiring')

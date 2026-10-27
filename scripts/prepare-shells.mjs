@@ -15,11 +15,13 @@ for (const name of readdirSync('.').filter(name => name.endsWith('.html'))) {
   if (/id="root"/.test(html) && !/href="\/islands.css"/.test(html)) html = html.replace('</head>', '<link rel="stylesheet" href="/islands.css">\n</head>');
   // the trailing newline goes with the script so repeated builds stay byte-identical
   html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>\n?/g, script => /dh_scheme|dh_theme|Classic is the public site's only look/.test(script) ? '' : script);
-  html = html.replace(/<meta name="theme-color"[^>]*>/, match => `${match}\n<script>${publicSite ? classic : controller}</script>`);
+  // The toolkit host is dark only: its two shells pin data-scheme="dark" and carry no scheme controller.
+  const pinnedDark = /^toolkit-(app|signin)\.html$/.test(name);
+  if (!pinnedDark) html = html.replace(/<meta name="theme-color"[^>]*>/, match => `${match}\n<script>${publicSite ? classic : controller}</script>`);
   html = html.replace(/\s*<script[^>]+src="(?:home-p[34]-island|p[34]-islands)\.js"[^>]*><\/script>/g, '');
   if (/id="root"/.test(html) && !/src="\/?home-islands.js"/.test(html)) html = html.replace('</body>', '<script src="/home-islands.js" defer></script>\n</body>');
   assert(!/dh_theme|data-theme/.test(html), `${name}: old theme remains`);
-  if (/theme-color/.test(html)) assert.equal((html.match(publicSite ? /Classic is the public site's only look/g : /Single pre-paint scheme controller/g) || []).length, 1, `${name}: controller count`);
+  if (/theme-color/.test(html)) assert.equal((html.match(publicSite ? /Classic is the public site's only look/g : /Single pre-paint scheme controller/g) || []).length, pinnedDark ? 0 : 1, `${name}: controller count`);
   writeFileSync(name, html.replace(/^[ \t]+$/gm, ''));
 }
 console.log('Page shells: public classic, standalone toolkit scheme preserved; canonical island bundle.');
