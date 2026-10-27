@@ -19,6 +19,7 @@
       "/",
       "/cta",
       "/command",
+      "/enrich",
       "/companies",
       "/company",
       "/company/*",

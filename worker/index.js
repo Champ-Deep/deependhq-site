@@ -186,9 +186,10 @@ const CSP = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob:",
+  // cloudflare-dns.com answers the MX lookups on /enrich (domain names only).
   // api.github.com feeds the live repo cards on /toolkit; the contributions API
   // feeds the commit skyline on /journey. Both are read-only, no credentials.
-  "connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de",
+  "connect-src 'self' https://assistant.deependhq.com https://openrouter.ai https://cloudflareinsights.com https://api.github.com https://github-contributions-api.jogruber.de https://cloudflare-dns.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
