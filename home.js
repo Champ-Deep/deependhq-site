@@ -46,14 +46,14 @@
   });
 
   /* ---------- stale banner, in Deep's voice ---------- */
-  var live = d.querySelector('.wx-live[data-newest]');
+  var live = d.querySelector('[data-newest]');
   if (live) {
     var nd = live.getAttribute('data-newest'), lag = ageOf(nd, 'log'), have = d.querySelector('.sys-banner');
     if (lag.state === 'stale' && !have) {
       var bar = d.createElement('div');
       bar.className = 'sys-banner'; bar.setAttribute('role', 'status');
       bar.innerHTML = '<div class="wrap"><span><b>the log is ' + lag.weekdays + ' weekdays behind.</b> last entry was day ' + esc(live.getAttribute('data-day')) + '. building in public means publishing the misses too.</span><a href="journey.html#day-' + esc(live.getAttribute('data-day')) + '">read the last one →</a></div>';
-      var nav = d.querySelector('.sys-nav');
+      var nav = d.querySelector('.v3-dock');
       if (nav && nav.parentNode) nav.parentNode.insertBefore(bar, nav.nextSibling);
     } else if (lag.state !== 'stale' && have) {
       have.parentNode.removeChild(have);
@@ -166,13 +166,6 @@
       cells[i].tabIndex = -1; cells[j].tabIndex = 0; cells[j].focus();
     });
   }
-
-  /* ---------- hero mare: identity kit v1 ----------
-     The vector mare is a <button> in the prerendered hero. Her trot-in, the
-     blaze flicker and the smear stretch are pure CSS (home.css). Click, Enter
-     or Space sends the braille gallop egg along the bottom of the screen. */
-  var hm = d.querySelector('.wx-hx-mare');
-  if (hm) hm.addEventListener('click', function () { window.dispatchEvent(new CustomEvent('dh:mare')); });
 
   /* ---------- weekly narratives: inline listen ----------
      The latest essay's audio plays right here. The <audio> element is made on
@@ -317,17 +310,6 @@
     if (e.key && e.key.length === 1) { typed = (typed + e.key.toLowerCase()).slice(-4); if (typed === 'deep') { typed = ''; mare(); } }
   });
 
-  /* ---------- nav drawer (React does not run on this page) ---------- */
-  var burger = d.querySelector('.nav-burger'), drawer = d.getElementById('nav-drawer');
-  if (burger && drawer) {
-    var setOpen = function (o) {
-      drawer.setAttribute('data-open', String(o));
-      burger.setAttribute('aria-expanded', String(o));
-      burger.setAttribute('aria-label', o ? 'close menu' : 'open menu');
-    };
-    burger.addEventListener('click', function () { setOpen(drawer.getAttribute('data-open') !== 'true'); });
-    d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') { setOpen(false); burger.focus(); } });
-  }
 
   /* ---------- copy the email ---------- */
   d.querySelectorAll('.home-wx [data-copy]').forEach(function (b) {

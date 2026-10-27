@@ -108,7 +108,6 @@
    byte what it was. */
 :root[data-scheme="light"] .mode-operator { --accent: var(--build-text); --accent-text: var(--build-text); }
 :root[data-scheme="light"] .mode-editorial { --accent: var(--win-text); --accent-text: var(--win-text); }
-:root[data-scheme="light"] .sys-nav { background: color-mix(in srgb, var(--bg) 82%, transparent); }
 :root[data-scheme="light"] .eyebrow { color: var(--win-text); }
 :root[data-scheme="light"] .mode-operator .eyebrow { color: var(--build-text); }
 :root[data-scheme="light"] .chip.build,
@@ -120,13 +119,7 @@
 :root[data-scheme="light"] .filters button[aria-pressed="true"] { color: var(--build-text); }
 :root[data-scheme="light"] .chip.win,
 :root[data-scheme="light"] .age[data-state="warn"],
-:root[data-scheme="light"] .stat b.win,
-:root[data-scheme="light"] .brand-cur,
-:root[data-scheme="light"] .brand:hover .brand-word,
-:root[data-scheme="light"] .nav-links a[aria-current="page"],
-:root[data-scheme="light"] .nav-drawer a[aria-current="page"] { color: var(--win-text); }
-:root[data-scheme="light"] .nav-links a[aria-current="page"],
-:root[data-scheme="light"] .nav-drawer a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--win-text); }
+:root[data-scheme="light"] .stat b.win { color: var(--win-text); }
 @media (min-width: 40rem) { :root { --pad: 32px; } }
 @media (min-width: 64rem) { :root { --pad: 48px; } }
 
@@ -210,29 +203,9 @@ a.chip:hover { text-decoration: none; border-color: var(--line-2); }
 .btn-ghost:hover { border-color: var(--text); }
 .btn:active { transform: translateY(1px); }
 
-/* ---------- nav ---------- */
-.sys-nav { position: sticky; top: 0; z-index: 50; background: color-mix(in oklab, var(--bg) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-.sys-nav .wrap { display: flex; align-items: center; gap: var(--s4); min-height: 60px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; min-height: 44px; }
 .brand img { width: 32px; height: 32px; display: block; flex: none; view-transition-name: brand; }
-.brand-word { font: 800 1.375rem/1 var(--font-display); letter-spacing: var(--track-serif); font-variation-settings: "WONK" 0; color: var(--text); }
-.brand-cur { font: 700 1.375rem/1 var(--font-display); color: var(--win-text); margin-left: -6px; animation: dh-blink 1.1s steps(1) infinite; }
-@keyframes dh-blink { 50% { opacity: 0; } }
 .sys .brand:hover, .brand:hover { text-decoration: none; }
-.brand:hover .brand-word { color: var(--win-text); }
-.nav-links { display: none; margin-left: var(--s4); gap: var(--s1); }
-.nav-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s3); border-radius: var(--r-md); font: 500 var(--text-md) var(--font-ui); color: var(--muted); text-decoration: none; }
-.nav-links a:hover { color: var(--text); background: var(--card); text-decoration: none; }
-.nav-links a[aria-current="page"] { color: var(--win-text); box-shadow: inset 0 -2px 0 var(--win); }
-.nav-right { margin-left: auto; display: flex; align-items: center; gap: var(--s2); }
-.nav-burger { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
-.nav-burger { flex-shrink: 0; }
-@media (max-width: 39.99rem) { .sys-nav .brand-word, .sys-nav .brand-cur { display: none; } }
-.nav-drawer { display: none; border-top: 1px solid var(--line); background: var(--surface); }
-.nav-drawer[data-open="true"] { display: block; }
-.nav-drawer a { display: flex; align-items: center; min-height: 48px; padding: 0 var(--pad); font: 500 var(--text-lg) var(--font-ui); color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); }
-.nav-drawer a[aria-current="page"] { color: var(--win-text); }
-@media (min-width: 64rem) { .nav-links { display: flex; } .nav-burger, .nav-drawer { display: none !important; } }
 
 /* ---------- stale banner (in Deep's voice) ---------- */
 .sys-banner { background: var(--danger-wash); border-bottom: 1px solid color-mix(in oklab, var(--danger) 40%, var(--line)); color: var(--text); font: 500 var(--text-sm) var(--font-mono); }
@@ -579,11 +552,10 @@ a.dh-art:hover { color: var(--build-text); }
 
 /* Forced colours: the marks keep their own colours, text follows the system. */
 @media (forced-colors: active) {
-  .brand img, .signoff img, .wx-hx-mare svg, .ico { forced-color-adjust: none; }
+  .brand img, .signoff img, .ico { forced-color-adjust: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-cur { animation: none; }
   .signoff-mare { animation: none !important; transition: none; }
   .signoff-mare:hover { rotate: none; translate: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
@@ -594,8 +566,8 @@ a.dh-art:hover { color: var(--build-text); }
    every page head sets html[data-scheme] from localStorage (dh_scheme) else
    prefers-color-scheme, before first paint, and moves the theme-color meta
    with it. Only tokens change here, which is why every component follows
-   without a special case. The old navy/classic easter egg, its dh_theme key
-   and its data-theme rules are retired with it.
+   without a special case. Light tokens remain the standalone toolkit source.
+   Public site shells use the canonical classic palette without a switch.
 
    Contract light palette (decided 2026-10-21, ink / warm white / Lamp):
    fills keep the identity values, so any accent used as text or a thin icon
@@ -635,22 +607,6 @@ a.dh-art:hover { color: var(--build-text); }
   --color-accent-tertiary: var(--win-text);
 }
 
-/* look-specific marks: render both, show one. The classic variant has no
-   scheme that reveals it any more, so it stays hidden. */
-.only-classic { display: none !important; }
-.brand-classic { font: 700 1.125rem/1 var(--font-ui); letter-spacing: var(--track-display); color: var(--text); }
-.brand-classic .gt { margin: 0 0 0 4px; }
-
-/* the switch */
-.theme-switch { display: inline-flex; align-items: center; gap: var(--s2); min-height: 44px; min-width: 44px; padding: 0 var(--s3); border-radius: var(--r-pill); border: 1px solid var(--line); background: transparent; color: var(--muted); font: 500 var(--text-xs) var(--font-mono); letter-spacing: .04em; cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
-.theme-switch:hover { border-color: var(--line-2); color: var(--text); }
-.theme-switch .sw { display: inline-flex; width: 26px; height: 14px; border-radius: 7px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line-2); flex: none; }
-.theme-switch .sw i { flex: 1; }
-.theme-switch .sw i:nth-child(1) { background: var(--bg); }
-.theme-switch .sw i:nth-child(2) { background: var(--win); }
-.theme-switch .sw i:nth-child(3) { background: var(--build); }
-.theme-switch .lbl { white-space: nowrap; }
-@media (max-width: 47.99rem) { .theme-switch { padding: 0; justify-content: center; } .theme-switch .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
 
 /* island: scheme badge (islands/scheme-badge.island.jsx), mounted by the
    footer on every page, so its CSS lives in the shared sheet rather than
@@ -1048,7 +1004,6 @@ a.rhythm-d.on:hover, a.rhythm-d.on:focus-visible { transform: scaleY(1.08); filt
 }
 
 /* Combined release: legacy controls share the same measured target floor. */
-.sys-nav a.brand{min-width:44px}
 button.dh-filter-pill,button.cs-toggle-btn,button.cs-swatch,a.dh-pill,a.dh-link,a.bp-back,button.dh-pro-x,button.dh-pro-reply{min-width:44px;min-height:44px}
 a.dh-link,a.bp-back{display:inline-flex;align-items:center}
 :root[data-scheme="light"] .dh-pill-gold{background:var(--card);color:var(--win-text)}

@@ -17,7 +17,7 @@
   .ep-head > .ep-tools { grid-column: 2; grid-row: 3 / span 3; align-self: start; margin-top: 0; padding-top: 0; border-top: 0; grid-template-columns: minmax(0, 1fr) !important; row-gap: var(--s5); }
 }
 /* nav and footer run full width on the essay and writing pages, like the homepage */
-.dh-app:has(.ep-page, .wl-page) .sys-nav .wrap, .dh-app:has(.ep-page, .wl-page) .sys-footer .wrap { max-width: none; }
+.dh-app:has(.ep-page, .wl-page) .sys-footer .wrap { max-width: none; }
 .ep-toprow { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); }
 .ep-back, .ep-share { display: inline-flex; align-items: center; min-height: 44px; font: 500 var(--text-sm) var(--font-mono); color: var(--muted); text-decoration: none; }
 .ep-back:hover, .ep-share:hover { color: var(--win-text); }

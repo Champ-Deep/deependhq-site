@@ -15,11 +15,9 @@ const SignOff = () => (
   <section className="signoff band-paper mode-editorial" aria-label="Sign-off">
     <div className="signoff-in">
       <div className="signoff-marks">
-        <img className="signoff-wm only-navy" src="brand/wordmark.svg" width="220" height="133" alt="Deep" loading="lazy" decoding="async" />
-        <p className="signoff-wm-classic only-classic" aria-label="deep">deep<span className="gt" aria-hidden="true">&gt;_</span></p>
+        <p className="signoff-wm-classic" aria-label="deep">deep<span className="gt" aria-hidden="true">&gt;_</span></p>
         <p className="signoff-line">That's the deep end.</p>
-        <img className="signoff-mare only-navy" src="brand/mare.svg" width="124" height="140" alt="" aria-hidden="true" loading="lazy" decoding="async" />
-        <img className="signoff-mare only-classic" src="brand/mare-sticker.svg" width="124" height="139" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <img className="signoff-mare" src="brand/mare-sticker.svg" width="124" height="139" alt="" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
       <div className="drops" aria-hidden="true" />
     </div>
