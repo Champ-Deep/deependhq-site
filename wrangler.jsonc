@@ -22,6 +22,10 @@
     { "binding": "TOOLKIT_FILES", "bucket_name": "toolkit-files" }
   ],
   "//kv": "Spotify refresh token and one-time OAuth states for /api/now-playing. Namespace deependhq-spotify, created 2026-10-28.",
+  "//pipelines": "AI query log: stream toolkit_ai_log_stream -> pipeline toolkit_ai_log -> sink toolkit_ai_log_sink -> Iceberg table default.toolkit_ai_log in R2 bucket toolkit-ai-log (Data Catalog). Cell values are redacted before send.",
+  "pipelines": [
+    { "binding": "AI_LOG", "stream": "a5bbc9fc2ebb4152aac04bf1f79db09b" }
+  ],
   "kv_namespaces": [
     { "binding": "SPOTIFY_KV", "id": "47cdfed513bd4bda86640026b2aa67a4" }
   ],
