@@ -146,7 +146,7 @@ function addDesktopIcon(key, name, path, open, entry) {
   d.dataset.desktop = key; d.dataset.selected = 'false'; d.setAttribute('aria-label', name + '. Double click or press Enter to open');
   const sym = el('span', undefined, 'app-icon'); sym.append(icon(path));
   if (entry?.kind === 'file') sym.append(el('span', (entry.name.split('.').pop() || 'file').slice(0, 4).toUpperCase(), 'ext'));
-  d.append(sym, el('span', name, 'desk-label'));
+  d.append(sym, el('span', name, entry?.kind === 'file' ? 'desk-label desk-file' : 'desk-label'));
   d.addEventListener('dblclick', open);
   d.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); open(); } const step = {ArrowUp: -1, ArrowLeft: -1, ArrowDown: 1, ArrowRight: 1}[e.key]; if (step) { e.preventDefault(); const list = [...desktopIcons.values()].filter(x => !x.hidden); list[(list.indexOf(d) + step + list.length) % list.length].focus(); } });
   dragIcon(d, entry); $('#desktop-icons').append(d); desktopIcons.set(key, d); return d;

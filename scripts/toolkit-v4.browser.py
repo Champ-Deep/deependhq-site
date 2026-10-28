@@ -157,6 +157,19 @@ def window_checks(page):
     close_app(page, 'ChamPDF'); close_app(page, 'Account')
     page.evaluate(f"localStorage.removeItem('dh_toolkit_windows:{USER}')")
 
+def label_checks(page, width):
+    """Desktop labels break only between words (spaces or hyphens); app and folder names are never clipped."""
+    rows = page.evaluate("""() => [...document.querySelectorAll('.desk-icon:not([hidden]) .desk-label')].filter(l => l.checkVisibility()).map(l => {
+      const r = document.createRange(); r.selectNodeContents(l);
+      const box = l.getBoundingClientRect(), tops = new Set([...r.getClientRects()].filter(x => x.width > 0 && x.bottom <= box.bottom + 1).map(x => Math.round(x.top)));
+      return [l.textContent, tops.size, l.textContent.trim().split(/[\\s-]+/).length, l.scrollWidth - l.clientWidth, l.classList.contains('desk-file')];
+    })""")
+    assert rows, ('no desktop labels', width)
+    # Lines are counted inside the label box, so a long file name clamped to 2 lines with an ellipsis counts as 2.
+    # Only app and folder labels must fit sideways; a user file name may clamp with an ellipsis.
+    bad = [r for r in rows if r[1] > r[2] or (r[3] > 0 and not r[4])]
+    assert not bad, ('desktop label breaks inside a word or clips', width, bad)
+
 def cells(page):
     return page.evaluate("[...document.querySelectorAll('.desk-icon:not([hidden])')].map(d=>[d.dataset.desktop, d.dataset.cell, d.style.left, d.style.top])")
 
@@ -442,6 +455,7 @@ def verify():
         for width in (375, 390, 768, 1280, 1440, 1600):
             page.set_viewport_size({'width': width, 'height': 1000})
             capture(page, f'desktop-{width}')
+            label_checks(page, width)
         page.set_viewport_size({'width': 390, 'height': 900})
         for app, name in [('beam', 'ChampBeam'), ('pdf', 'ChamPDF'), ('account', 'Account')]:
             w = open_app(page, app)
