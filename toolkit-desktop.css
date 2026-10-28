@@ -70,6 +70,7 @@ h2{font-size:34px}h3{font-size:26px}.signin-story h2{font-size:38px}
 .steps{font-size:20px}.pipeline span{font-size:18px}.pipeline strong{font-size:26px}.money{font-size:34px}
 input,select,textarea{font:16px/1.5 var(--font-ui);letter-spacing:0;border-color:var(--control)}
 input[type=checkbox]{accent-color:var(--build)}
+input[type=file]::file-selector-button{min-height:44px;margin-right:12px;padding:8px 16px;border:1px solid var(--control);border-radius:0;background:var(--bg);color:var(--build);font:16px var(--font-ui);cursor:pointer}input[type=file]::file-selector-button:hover{background:var(--card-2)}
 button{border-color:var(--control)}.dock button,.desktop-icons button,.window-header button{border-color:transparent}
 .dock,.window{background:var(--surface);border-color:var(--line);box-shadow:var(--glow)}
 .window[data-focused=true]{border-color:var(--build)}

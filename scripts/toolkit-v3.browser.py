@@ -136,6 +136,18 @@ def drag_checks(page):
     again = page.locator('[data-desktop="pdf"]').bounding_box()
     assert abs(again['x']-moved['x']) < 2 and abs(again['y']-moved['y']) < 2, ('icon persisted', moved, again)
     page.screenshot(path=str(OUT/'drag-icon-moved-1440.png'))
+    # A spot saved on a big monitor is clamped into a smaller viewport, on load and on resize.
+    page.evaluate("localStorage.setItem('dh_toolkit_icons:user_FIXTURE0001', JSON.stringify({pdf:[1200,700]}))")
+    for size, reload in (((900, 700), True), ((800, 600), False)):
+        page.set_viewport_size({'width': size[0], 'height': size[1]})
+        if reload:
+            page.reload()
+            page.wait_for_function("document.querySelector('#daily').textContent.includes('$')")
+        page.evaluate("() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))")  # let the resize event land
+        b = page.locator('[data-desktop="pdf"]').bounding_box()
+        assert b['x'] >= 0 and b['y'] >= 64 and b['x']+b['width'] <= size[0]+1 and b['y']+b['height'] <= size[1]+1, ('icon clamp', size, b)
+    assert json.loads(page.evaluate("localStorage.getItem('dh_toolkit_icons:user_FIXTURE0001')"))['pdf'] == [1200, 700], 'clamping keeps the saved spot'
+    page.set_viewport_size({'width': vw, 'height': vh})
     page.evaluate("localStorage.removeItem('dh_toolkit_icons:user_FIXTURE0001')")
     page.reload()
     page.wait_for_function("document.querySelector('#daily').textContent.includes('$')")
@@ -156,8 +168,14 @@ def drag_checks(page):
     zone.screenshot(path=str(OUT/'drop-hover-workbench.png'))
     page.evaluate(DROP, ['[data-app="workbench"] .dropzone', 'x.csv', 'a', ['dragleave']])
     assert zone.get_attribute('data-over') == 'false'
+    # A text drop is left alone (so fields still accept it): the desktop drop handler only cancels file drops.
+    assert page.evaluate("""() => { const dt = new DataTransfer(); dt.setData('text/plain', 'hello');
+      const e = new DragEvent('drop', {bubbles: true, cancelable: true, dataTransfer: dt});
+      document.querySelector('[data-app="workbench"] .window-body').dispatchEvent(e); return e.defaultPrevented; }""") is False, 'text drop cancelled'
     close_app(page, 'Data Workbench')
     sc = open_app(page, 'scanner')
+    fb = sc.locator('input[type=file]').evaluate("n => { const s = getComputedStyle(n, '::file-selector-button'); return [s.backgroundColor, s.color, s.borderTopColor, s.borderTopLeftRadius]; }")
+    assert fb == ['rgb(0, 0, 0)', 'rgb(0, 255, 65)', 'rgb(0, 143, 17)', '0px'], ('file button off palette', fb)
     page.evaluate(DROP, ['[data-app="scanner"] .dropzone', 'notes.txt', 'confidential', ['dragover']])
     assert sc.locator('.dropzone').get_attribute('data-over') == 'true'
     page.evaluate(DROP, ['[data-app="scanner"] .dropzone', 'notes.txt', 'confidential', ['drop']])
