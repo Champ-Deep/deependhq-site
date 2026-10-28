@@ -119,7 +119,7 @@ export async function getGlobalAggregate(db, dayStart) {
 export async function listRuns(db, uid, dayStart, limit = 30) {
   const res = await db
     .prepare(
-      `SELECT id, tool_id, list_name, status, created_at, row_count,
+      `SELECT id, COALESCE(NULLIF(job_id,''), id) AS job_id, tool_id, list_name, status, created_at, row_count,
               credits_used, credits_held, spent_micro, held_micro
        FROM toolkit_runs WHERE user_id=?1 ORDER BY created_at DESC, id LIMIT ?2`
     )

@@ -457,7 +457,8 @@ async function actionRun(db, env, uid, body) {
 
   let results;
   try {
-    results = await db.batch([store.ensureAccountStmt(db, uid, p.createdAt), store.reserveStmt(db, p)]);
+    results = await db.batch([store.ensureAccountStmt(db, uid, p.createdAt), store.reserveStmt(db, p),
+      db.prepare(`UPDATE toolkit_runs SET job_id=?1 WHERE id=?2`).bind((job && job.id) || '', p.id)]);
   } catch (e) {
     // Lost a race on UNIQUE(user_id, request_id): return the winner if the payload matches.
     if (String((e && e.message) || '').includes('UNIQUE')) {
