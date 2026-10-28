@@ -43,8 +43,6 @@ const FAMILIES = [
   // back to roughly the old size. The -v2 suffix is what allows fonts/* to be
   // cached as immutable: any future change to these files needs a new name.
   { css: 'Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,700..900,0..100,0..1;1,9..144,700..900,0..100,0..1', local: 'Fraunces', file: 'fraunces', suffix: '-v2' },
-  // VT323 (OFL), the 21st.dev Matrix Green display face. Toolkit shells only; public pages never reference it.
-  { css: 'VT323', local: 'VT323', file: 'vt323' },
 ];
 
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';

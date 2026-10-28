@@ -2,6 +2,8 @@
 // Browser Clerk and provider answers are explicit fixtures. No paid/network dispatch.
 import http from 'node:http';
 import {makeD1,setSetting,seedGrant,sessionToken,userJson,PK,SK,JWT_PUBLIC_PEM} from './toolkit-testkit.mjs';
+import {V4_ACTIONS,fakeAction,fakeDownload,fakeState,resetFakes} from './toolkit-v4-fakes.mjs';
+const issued=new Set();
 const origin='http://127.0.0.1:3175';
 const db=makeD1();
 setSetting(db,'global_daily_cap_micro',1000000);
@@ -38,15 +40,26 @@ http.createServer(async(req,res)=>{
   try {
     if(req.url==='/fixture/reset' && req.method==='POST') {
       for(const table of ['toolkit_ops','toolkit_runs','toolkit_events','toolkit_accounts']) db.query('DELETE FROM '+table);
-      seedGrant(db,'user_a',1000);mode='ok';providerCalls.length=0;setSetting(db,'default_daily_credit_cap',1000);setSetting(db,'default_daily_row_cap',1000);env.TREG_API_KEY='fixture';env.JEV_API_KEY='fixture';res.end('ok');return;
+      seedGrant(db,'user_a',1000);resetFakes();mode='ok';providerCalls.length=0;setSetting(db,'default_daily_credit_cap',1000);setSetting(db,'default_daily_row_cap',1000);env.TREG_API_KEY='fixture';env.JEV_API_KEY='fixture';res.end('ok');return;
     }
-    if(req.url==='/fixture/token') {res.setHeader('content-type','application/json');res.end(JSON.stringify({token:sessionToken({azp:origin})}));return;}
+    if(req.url==='/fixture/token') {res.setHeader('content-type','application/json');const token=sessionToken({azp:origin});issued.add(token);res.end(JSON.stringify({token}));return;}
     if(req.url==='/fixture/timeout') {mode='timeout';res.end('ok');return;}
     if(req.url==='/fixture/cap') {setSetting(db,'default_daily_credit_cap',0);res.end('ok');return;}
     if(req.url==='/fixture/no-provider') {delete env.TREG_API_KEY;delete env.JEV_API_KEY;res.end('ok');return;}
-    if(req.url==='/fixture/state') {res.setHeader('content-type','application/json');res.end(JSON.stringify({provider_calls:providerCalls,runs:db.query('SELECT * FROM toolkit_runs').results}));return;}
+    if(req.url==='/fixture/state') {res.setHeader('content-type','application/json');res.end(JSON.stringify({provider_calls:providerCalls,runs:db.query('SELECT * FROM toolkit_runs').results,v4:fakeState()}));return;}
+    const authed=issued.has(String(req.headers.authorization||'').replace(/^Bearer /,''));
+    if(req.url.startsWith('/api/toolkit/files/')) {
+      const file=authed&&fakeDownload(decodeURIComponent(req.url.slice(19)));
+      if(!file){res.writeHead(404,{'content-type':'application/json'});res.end('{"error":"not_found"}');return;}
+      res.writeHead(200,{'content-type':file.mime});res.end(file.bytes);return;
+    }
     if(req.url!=='/api/toolkit') {res.writeHead(404);res.end();return;}
     const parts=[];for await(const chunk of req) parts.push(chunk);
+    let parsed={};try{parsed=JSON.parse(Buffer.concat(parts).toString()||'{}');}catch{}
+    if(V4_ACTIONS.has(parsed.action)) {
+      const [status,out,type]=authed?fakeAction(parsed,{id:'user_a',admin:true}):[401,{error:'unauthorized'}];
+      res.writeHead(status,{'content-type':type||'application/json'});res.end(typeof out==='string'?out:JSON.stringify(out));return;
+    }
     const request=new Request(origin+req.url,{method:req.method,headers:req.headers,body:Buffer.concat(parts)});
     const result=await handleToolkit(request,env);
     res.writeHead(result.status,Object.fromEntries(result.headers));res.end(await result.text());
