@@ -102,6 +102,12 @@ const runBody = (over = {}) => ({
   const noTok = await post(env, { action: 'usage' }, { token: null });
   check('no bearer token -> 401', noTok.status === 401 && noTok.body.error === 'unauthorized', JSON.stringify(noTok.body));
 
+  // A large unauthenticated body is refused on auth, never buffered (15 MB is for signed-in callers only).
+  const big = await post(env, { action: 'usage', pad: 'x'.repeat(200000) }, { token: null });
+  check('large unauthenticated body -> 401 before buffering', big.status === 401 && big.body.error === 'unauthorized', JSON.stringify(big.body));
+  const bigHook = await handleToolkit(new Request(ORIGIN + '/api/toolkit/nope', { method: 'POST', body: 'x'.repeat(70000) }), env);
+  check('non-action POST over 64 KB -> 413', bigHook.status === 413, String(bigHook.status));
+
   const bad = await post(env, { action: 'usage' }, { token: 'not.a.jwt' });
   check('garbage token -> 401', bad.status === 401);
 

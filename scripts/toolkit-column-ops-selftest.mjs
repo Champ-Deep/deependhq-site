@@ -155,8 +155,8 @@ const rows10 = [
   check('validation: enrich fields outside name/title/company -> 400', enrichFields.status === 400);
   const nine = await post(env, { action: 'quote', rows: rows10, columns: Array.from({ length: 9 }, () => catSpec) });
   check('validation: 9 column ops -> 400', nine.status === 400);
-  const manyRows = await post(env, { action: 'quote', rows: Array.from({ length: 101 }, () => ({ Network: 'x' })), columns: [catSpec] });
-  check('validation: 101 rows -> 400', manyRows.status === 400);
+  const manyRows = await post(env, { action: 'quote', rows: Array.from({ length: 1001 }, () => ({ Network: 'x' })), columns: [catSpec] });
+  check('validation: 1001 rows -> 400 (a v4 job quote takes up to 1000)', manyRows.status === 400);
   const noRows = await post(env, { action: 'quote', rows: [], columns: [catSpec] });
   check('validation: zero rows -> 400', noRows.status === 400);
   const objCell = await post(env, { action: 'quote', rows: [{ Network: { a: 1 } }], columns: [catSpec] });

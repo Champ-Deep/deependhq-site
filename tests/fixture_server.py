@@ -12,6 +12,13 @@ can be tested with real network responses that are never production data:
   POST /fixture/delay {"ms":N}    add artificial run latency (cancel tests)
   POST /fixture/config {"configured":0|1}  flip the configured flag
 
+V4 (docs/toolkit-v4-api.md), deterministic and in memory:
+  POST /api/toolkit intake               canned reply built from the headers you send
+  POST /api/toolkit files_*              one fixture user's desktop; GET /api/toolkit/files/<id>
+  POST /api/toolkit admin_settings_*     two fixture models
+  POST /api/toolkit admin_ai_log(_export) the intake calls made so far, values already [value]
+  GET  /api/now-playing                  the launch state (no Spotify, favorites)
+
 No live keys, no provider calls, no real people. Run a port and point a
 browser, audit.py or shoot.py at it:
 
@@ -43,7 +50,126 @@ STATE = {
     "n": 0,              # global fixture row counter for cycling statuses
     "users": None,
     "global": None,
+    "files": {},         # id -> {entry..., "bytes": b""}
+    "ai_log": [],
+    "models": {"intake_model": "deepseek/deepseek-v4.1-flash", "research_model": "deepseek/deepseek-v4.1-flash"},
 }
+
+FIXTURE_MODELS = [
+    {"id": "deepseek/deepseek-v4.1-flash", "prompt_micro_per_mtok": 140000, "completion_micro_per_mtok": 280000},
+    {"id": "fixture/bigger-model", "prompt_micro_per_mtok": 1000000, "completion_micro_per_mtok": 4000000},
+]
+FIELD_GUESS = [("email", "email"), ("mail", "email"), ("title", "title"), ("role", "title"), ("company", "company"),
+               ("domain", "domain"), ("website", "domain"), ("linkedin", "linkedin_url"), ("first", "first_name"),
+               ("last", "last_name"), ("name", "person_name"), ("phone", "phone"), ("city", "city"), ("country", "country")]
+
+
+def intake_reply(body):
+    f = body.get("file") or {}
+    headers = f.get("headers") or []
+    if not headers or not isinstance(headers, list):
+        return 400, {"error": "invalid_intake", "message": "file.headers must be 1 to 30 distinct names of 100 characters or less."}
+    mapping, plan = [], []
+    for h in headers:
+        low = str(h).lower()
+        field = next((v for k, v in FIELD_GUESS if k in low), "other")
+        mapping.append({"source": h, "field": field, "keep": True})
+        if field == "title":
+            plan.append({"column": h, "op": "normalize_title", "engine": "jev"})
+        if field == "email":
+            plan.append({"column": h, "op": "verify_email", "engine": "treg"})
+    turn = len(body.get("history") or [])
+    with LOCK:
+        STATE["ai_log"].append({"id": str(uuid.uuid4()), "ts": iso(datetime.now(timezone.utc)), "user_id": "user_fixture",
+                                "action": "intake", "model": STATE["models"]["intake_model"], "headers_json": json.dumps(headers),
+                                "prompt": "[fixture prompt, samples as [value]]", "response": "[fixture reply]", "cost_micro": 900, "outcome": "ok"})
+    return 200, {
+        "reply": "Fixture reply %d: I found %d columns. I mapped them and suggested %d steps." % (turn + 1, len(headers), len(plan)),
+        "question": None if turn else "Do you want the job titles cleaned up?",
+        "mapping": mapping, "plan": plan[:8],
+        "chips": ["Clean up titles", "Verify emails", "Add a research column"],
+        "model": STATE["models"]["intake_model"], "cost_micro": 900,
+    }
+
+
+def _fentry(e):
+    return {k: e[k] for k in ("id", "kind", "name", "path", "size", "mime", "updated")}
+
+
+def files_action(action, body):
+    files = STATE["files"]
+    by_path = {e["path"]: e for e in files.values()}
+    now = iso(datetime.now(timezone.utc))
+
+    def norm(p):
+        if not isinstance(p, str) or not p.startswith("/"):
+            raise ValueError("Paths start with \"/\".")
+        segs = [x for x in p.rstrip("/").split("/")[1:]] if p != "/" else []
+        if any(x in ("", ".", "..") or len(x) > 120 or "\\" in x for x in segs):
+            raise ValueError("Names must be 1 to 120 characters, with no slashes, and not \".\" or \"..\".")
+        return "/" + "/".join(segs)
+
+    def mkdirs(path):
+        cur = ""
+        for seg in [x for x in path.split("/") if x]:
+            cur += "/" + seg
+            if cur not in by_path:
+                e = {"id": str(uuid.uuid4()), "kind": "folder", "name": seg, "path": cur, "size": 0, "mime": "", "updated": now, "bytes": b""}
+                files[e["id"]] = by_path[cur] = e
+
+    try:
+        if action == "files_list":
+            folder = norm(body.get("folder", "/"))
+            kids = [e for e in files.values() if (e["path"].rsplit("/", 1)[0] or "/") == folder]
+            kids.sort(key=lambda e: (e["kind"] != "folder", e["name"]))
+            return 200, {"entries": [_fentry(e) for e in kids], "used_bytes": sum(e["size"] for e in files.values()), "quota_bytes": 50 * 1024 * 1024}
+        if action == "files_mkdir":
+            path = norm(body.get("path"))
+            mkdirs(path)
+            return 200, {"entry": _fentry(by_path[path])}
+        if action == "files_put":
+            folder, name = norm(body.get("folder", "/")), str(body.get("name") or "")
+            if not name or "/" in name or len(name) > 120:
+                raise ValueError("Names must be 1 to 120 characters, with no slashes.")
+            ext = name.rsplit(".", 1)[-1].lower() if "." in name else ""
+            if ext not in ("csv", "xlsx", "json", "txt", "md", "pdf"):
+                return 400, {"error": "bad_type", "message": "Allowed file types: csv, xlsx, json, txt, md, pdf."}
+            data = base64.b64decode(body.get("content_base64") or "")
+            mkdirs(folder)
+            path = (folder if folder != "/" else "") + "/" + name
+            if path in by_path:
+                stem, dot, suf = name.rpartition(".")
+                n = 2
+                while (folder if folder != "/" else "") + "/%s (%d).%s" % (stem, n, suf) in by_path:
+                    n += 1
+                name = "%s (%d).%s" % (stem, n, suf)
+                path = (folder if folder != "/" else "") + "/" + name
+            e = {"id": str(uuid.uuid4()), "kind": "file", "name": name, "path": path, "size": len(data), "mime": "", "updated": now, "bytes": data}
+            files[e["id"]] = e
+            return 200, {"entry": _fentry(e)}
+        if action in ("files_move", "files_delete"):
+            e = files.get(body.get("id"))
+            if not e:
+                return 404, {"error": "not_found", "message": "No such file or folder."}
+            old = e["path"]
+            if action == "files_delete":
+                for k in [k for k, x in files.items() if x["path"] == old or x["path"].startswith(old + "/")]:
+                    del files[k]
+                return 200, {"ok": True}
+            folder = norm(body["folder"]) if "folder" in body else (old.rsplit("/", 1)[0] or "/")
+            name = body.get("name", e["name"])
+            new = (folder if folder != "/" else "") + "/" + name
+            if new in by_path and new != old:
+                return 409, {"error": "name_taken", "message": "Something with that name is already there."}
+            mkdirs(folder)
+            for x in files.values():
+                if x["path"] == old or x["path"].startswith(old + "/"):
+                    x["path"] = new + x["path"][len(old):]
+            e["name"], e["updated"] = name, now
+            return 200, {"entry": _fentry(e)}
+    except ValueError as err:
+        return 400, {"error": "invalid_path", "message": str(err)}
+    return 400, {"error": "fixture: unknown action " + str(action)}
 
 FIXTURE_TOKEN = "FIXTURE_SESSION_TOKEN"
 PK = "pk_test_" + base64.b64encode(b"fixture.example.accounts.dev$").decode()
@@ -261,6 +387,27 @@ def handle_toolkit(body, auth_ok):
         if not STATE["admin"]:
             return 403, {"error": "fixture: not an admin"}
         return admin_update(body)
+    if action == "intake":
+        return intake_reply(body)
+    if str(action).startswith("files_"):
+        with LOCK:
+            return files_action(action, body)
+    if action in ("admin_settings_get", "admin_settings_set", "admin_ai_log", "admin_ai_log_export"):
+        if not STATE["admin"]:
+            return 403, {"error": "forbidden"}
+        if action == "admin_settings_set":
+            for k in ("intake_model", "research_model"):
+                if k in body:
+                    if body[k] not in [m["id"] for m in FIXTURE_MODELS]:
+                        return 400, {"error": "unknown_model", "field": k, "message": "%s is not on OpenRouter." % body[k]}
+                    STATE["models"][k] = body[k]
+        if action.startswith("admin_settings"):
+            out = {"settings": dict(STATE["models"])}
+            if action == "admin_settings_get":
+                out["models"] = FIXTURE_MODELS
+            return 200, out
+        rows = list(reversed(STATE["ai_log"]))
+        return 200, {"page": 1, "page_size": 50, "has_more": False, "rows": rows[:50]}
     return 400, {"error": "fixture: unknown action " + str(action)}
 
 
@@ -536,6 +683,17 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, FIXTURE_CLERK.encode(), "application/javascript")
         if path == "/fixture/calls":
             return self._send(200, {"calls": STATE["calls"]})
+        if path == "/api/now-playing":
+            return self._send(200, {"spotify": {"state": "off", "track": None, "artist": None, "url": None, "art": None, "at": None},
+                                    "game": {"state": "favorites", "title": None, "at": None},
+                                    "favorites": ["Split Fiction", "Overwatch 2", "Marvel's Wolverine"]})
+        if path.startswith("/api/toolkit/files/"):
+            if (self.headers.get("Authorization") or "") != "Bearer " + FIXTURE_TOKEN:
+                return self._send(401, {"error": "fixture: missing or invalid session token"})
+            e = STATE["files"].get(path.rsplit("/", 1)[-1])
+            if not e or e["kind"] != "file":
+                return self._send(404, {"error": "not_found"})
+            return self._send(200, e["bytes"], "application/octet-stream")
         return self._static(path)
 
     def do_POST(self):
@@ -547,6 +705,8 @@ class Handler(BaseHTTPRequestHandler):
                 STATE["runs"] = {}
                 STATE["n"] = 0
                 STATE["run_delay_ms"] = 0
+                STATE["files"] = {}
+                STATE["ai_log"] = []
             return self._send(200, {"ok": True})
         if path == "/fixture/delay":
             STATE["run_delay_ms"] = int(body.get("ms") or 0)
