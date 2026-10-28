@@ -354,6 +354,8 @@ def admin_checks(page, width):
     w = open_app(page, 'admin')
     w.get_by_role('button', name='Save default allowances').wait_for()
     capture(page, f'admin-limits-{width}')
+    w.get_by_role('button', name='Save default allowances').click()
+    w.get_by_text('Default allowances saved and read back.').wait_for()
     w.get_by_role('tab', name='Users').click()
     link = w.get_by_role('link', name='Manage in Clerk')
     assert link.get_attribute('href') == 'https://dashboard.clerk.com/' and link.get_attribute('target') == '_blank'
@@ -371,7 +373,7 @@ def admin_checks(page, width):
     w.get_by_role('button', name='Save models').click()
     w.get_by_text('Models saved and read back.').wait_for()
     assert state()['v4']['settings']['intake_model'] == 'openai/gpt-5-mini'
-    assert 'Current: openai/gpt-5-mini' in w.inner_text()
+    w.get_by_text('Current: openai/gpt-5-mini', exact=False).first.wait_for()
     w.get_by_role('tab', name='AI log').click()
     w.get_by_role('region', name='AI log').wait_for()
     w.get_by_label('Action', exact=True).select_option('intake')

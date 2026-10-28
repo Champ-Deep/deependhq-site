@@ -604,7 +604,7 @@ function admin(w) {
     const t = button(label, () => show(key), 'tab'); t.setAttribute('role', 'tab'); t.id = 'tab-' + key; t.dataset.tab = key; tabs.append(t);
     const p = el('div', undefined, 'tab-panel'); p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', t.id); p.hidden = true; panels[key] = {p, t, render}; b.append(p);
   }
-  function show(key) { msg.replaceChildren(); for (const [k, x] of Object.entries(panels)) { x.p.hidden = k !== key; x.t.setAttribute('aria-selected', String(k === key)); } panels[key].p.replaceChildren(); panels[key].render(panels[key].p); }
+  function show(key) { msg.replaceChildren(); for (const [k, x] of Object.entries(panels)) { x.p.hidden = k !== key; x.t.setAttribute('aria-selected', String(k === key)); } panels[key].p.replaceChildren(); return panels[key].render(panels[key].p); }
   tabs.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; const keys = sections.map(s => s[0]), i = keys.indexOf(document.activeElement.dataset.tab); const next = keys[(i + d + keys.length) % keys.length]; show(next); panels[next].t.focus(); });
   function limits(p) {
     let grantKey = null, grantPayload = null;
@@ -620,9 +620,9 @@ function admin(w) {
       try {
         const global = (await session.api('admin_usage', {})).global; if (!w.node.isConnected) return;
         const f = el('form', undefined, 'card-form'), g = el('div', undefined, 'form-grid'), fields = {};
-        for (const [key, label, value, factor, max] of [['welcome_credits', 'Welcome credit grant ($)', global.welcome_credits, 1000, 100], ['default_daily_credit_cap', 'Default daily user cap ($)', global.default_daily_credit_cap, 1000, 1], ['global_daily_cap_micro', 'Shared daily provider cap ($)', global.daily_cap_micro, 1e6, 1000], ['default_daily_row_cap', 'Default daily row cap', global.default_daily_row_cap, 1, 100000], ['trial_pool_credits', 'Total welcome credit pool ($)', global.trial_pool_credits, 1000, 100000]]) { const n = input(String(value / factor), 'number'); n.min = '0'; n.max = String(max); n.step = factor === 1 ? '1' : '.001'; fields[key] = {n, factor}; g.append(field(label, n)); }
+        for (const [key, label, value, factor, max] of [['welcome_credits', 'Welcome credit grant ($)', global.welcome_credits, 1000, 100], ['default_daily_credit_cap', 'Default daily user cap ($)', global.default_daily_credit_cap, 1000, 1], ['global_daily_cap_micro', 'Shared daily provider cap ($)', global.daily_cap_micro, 1e6, 1000], ['default_daily_row_cap', 'Default daily row cap', global.default_daily_row_cap, 1, 100000], ['trial_pool_credits', 'Total welcome credit pool ($)', global.trial_pool_credits, 1000, 100000]]) { const n = input(String(value / factor), 'number'); n.min = '0'; n.max = String(max); n.step = factor === 1 ? '1' : '.001'; fields[key] = {n, factor, src: key === 'global_daily_cap_micro' ? 'daily_cap_micro' : key}; g.append(field(label, n)); }
         const save = button('Save default allowances', () => {}, 'btn btn-gold'); save.type = 'submit'; f.append(el('h4', 'Default allowances'), g, save);
-        f.addEventListener('submit', async e => { e.preventDefault(); save.disabled = true; try { await session.api('admin_update', Object.fromEntries(Object.entries(fields).map(([k, {n, factor}]) => [k, Math.round(Number(n.value) * factor)]))); status('Default allowances saved and read back.'); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
+        f.addEventListener('submit', async e => { e.preventDefault(); save.disabled = true; try { const want = Object.fromEntries(Object.entries(fields).map(([k, {n, factor}]) => [k, Math.round(Number(n.value) * factor)])); await session.api('admin_update', want); const back = (await session.api('admin_usage', {})).global; const off = []; for (const [k, {n, factor, src}] of Object.entries(fields)) { n.value = String(back[src] / factor); if (back[src] !== want[k]) off.push(k); } status(off.length ? 'Saved, but the server reports different values for ' + off.join(', ') + '. The fields now show what it stored.' : 'Default allowances saved and read back.', !!off.length); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
         defaults.append(f);
       } catch (e) { status(errorText(e), true); }
     })();
@@ -652,10 +652,11 @@ function admin(w) {
   function models(p) {
     p.append(el('p', 'Pick the model for the intake chat and for DeepSeek operations. The server checks the id with OpenRouter and stores its price.', 'plain'));
     const box = el('form', undefined, 'card-form'); p.append(box);
-    (async () => {
+    // resolves with the settings it rendered, so a save can read them back
+    return (async () => {
       try {
         const r = await session.api('admin_settings_get', {}); if (!w.node.isConnected) return;
-        const all = r.models || [], byId = new Map(all.map(m => [m.id, m])), picks = {};
+        const settings = r.settings || {}, all = r.models || [], byId = new Map(all.map(m => [m.id, m])), picks = {};
         for (const [key, label] of [['intake_model', 'Intake model (the chat that plans a job)'], ['research_model', 'Research model (DeepSeek operations)']]) {
           const current = r.settings?.[key] || '', wrap = el('div', undefined, 'model-pick');
           const search = input('', 'search'); search.placeholder = 'Search ' + all.length + ' models';
@@ -666,7 +667,8 @@ function admin(w) {
           wrap.append(el('h4', label), now, field('Search models for ' + label.split(' (')[0].toLowerCase(), search), list); box.append(wrap); picks[key] = list;
         }
         const save = button('Save models', () => {}, 'btn btn-gold'); save.type = 'submit'; box.append(save);
-        box.addEventListener('submit', async e => { e.preventDefault(); save.disabled = true; try { await session.api('admin_settings_set', Object.fromEntries(Object.entries(picks).map(([k, s]) => [k, s.value]))); show('models'); status('Models saved and read back.'); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
+        box.addEventListener('submit', async e => { e.preventDefault(); save.disabled = true; try { const want = Object.fromEntries(Object.entries(picks).map(([k, s]) => [k, s.value])); await session.api('admin_settings_set', want); const back = await show('models'); if (!back) return; const off = Object.keys(want).filter(k => back[k] !== want[k]); status(off.length ? 'Saved, but the server now reports ' + off.map(k => k + ' = ' + (back[k] || 'not set')).join(', ') + '.' : 'Models saved and read back.', !!off.length); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
+        return settings;
       } catch (e) { status(errorText(e), true); }
     })();
   }
