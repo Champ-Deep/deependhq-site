@@ -23,7 +23,8 @@
 // Related: WORKERS.md documents the old /api/status shape, which no longer ships.
 
 const SCHEDULER = 'https://scheduler.zoom.us/sreedeep';
-import { handleToolkit } from './toolkit.js';
+import { handleToolkit, purgeAiLog } from './toolkit.js';
+import { handleNowPlaying } from './now-playing.js';
 
 const SITE = 'https://deependhq.com';
 const DECIDE_MODEL = 'typesafe/jev-1.13';
@@ -575,6 +576,11 @@ async function handleToolkitHost(request, env, url) {
 // ---------------------------------------------------------------------------
 
 export default {
+  // Daily: drop AI log rows older than 180 days (the Iceberg table keeps the long-term copy).
+  async scheduled(event, env, ctx) {
+    await purgeAiLog(env);
+  },
+
   async fetch(request, env, ctx) {
     ctxWaitUntil = (p) => { try { ctx.waitUntil(p); } catch {} };
     const url = new URL(request.url);
@@ -612,6 +618,10 @@ export default {
 
     if (url.pathname === '/api/toolkit' || url.pathname.startsWith('/api/toolkit/')) return handleToolkit(request, env);
     if (url.pathname === '/api/collect') return handleCollect(request, env, ctx);
+    if (url.pathname === '/api/now-playing' || url.pathname.startsWith('/api/spotify/')) {
+      const res = await handleNowPlaying(request, env, ctx, url);
+      if (res) return res;
+    }
     // Retire the unused, unmetered demo. Paid work must use the shared ledger.
     if (url.pathname === '/api/decide') return json({error:'gone',message:'Use the signed-in toolkit at /lead-scorer.'},410);
     if (url.pathname === '/showcase') return handleShowcase(request, env, url);

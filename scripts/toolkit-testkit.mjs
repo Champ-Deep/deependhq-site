@@ -21,7 +21,7 @@ export const CLERK_JS_URL = 'https://cdn.clerk.com/clerk.js';
 
 export function makeD1() {
   const db = new DatabaseSync(':memory:');
-  db.exec(readFileSync(new URL('../migrations/0001_toolkit.sql', import.meta.url), 'utf8'));
+  for (const f of ['0001_toolkit.sql', '0002_v4.sql']) db.exec(readFileSync(new URL('../migrations/' + f, import.meta.url), 'utf8'));
   const san = (row) => {
     if (!row) return row;
     const out = { ...row };
@@ -59,6 +59,32 @@ export function makeD1() {
     raw: db,
     query: (sql, ...params) => ({ results: db.prepare(sql).all(...params).map(san) }),
   };
+}
+
+// In-memory R2 bucket: the put/get/delete/list surface worker/toolkit-files.js uses.
+export function makeR2() {
+  const objects = new Map();
+  return {
+    objects,
+    async put(key, value, opts = {}) {
+      const bytes = typeof value === 'string' ? new TextEncoder().encode(value) : new Uint8Array(value); // worker passes Uint8Array or string
+      objects.set(key, { bytes: bytes.slice(), httpMetadata: opts.httpMetadata || {} });
+      return { key, size: bytes.length };
+    },
+    async get(key) {
+      const o = objects.get(key);
+      if (!o) return null;
+      return { key, size: o.bytes.length, httpMetadata: o.httpMetadata, body: new Blob([o.bytes]).stream(), arrayBuffer: async () => o.bytes.slice().buffer, text: async () => new TextDecoder().decode(o.bytes) };
+    },
+    async delete(keys) { for (const k of [].concat(keys)) objects.delete(k); },
+    async list({ prefix = '' } = {}) { return { objects: [...objects.keys()].filter((k) => k.startsWith(prefix)).map((key) => ({ key })), truncated: false }; },
+  };
+}
+
+// In-memory KV namespace (get/put/delete with expirationTtl accepted and ignored).
+export function makeKV() {
+  const m = new Map();
+  return { map: m, async get(k) { return m.has(k) ? m.get(k) : null; }, async put(k, v) { m.set(k, String(v)); }, async delete(k) { m.delete(k); } };
 }
 
 export function setSetting(d1, key, value) {
