@@ -8,54 +8,48 @@
   --hwf-gap:6;     /* halftone cell pitch, read by the canvas */
   box-sizing:border-box;
   position:relative;display:flex;flex-direction:column;gap:var(--s6);
-  min-height:520px;padding:var(--s8) var(--pad) var(--s5);overflow:hidden;
+  padding:var(--s10) var(--pad) calc(var(--hwf-mark,0px) + var(--s6));overflow:hidden;
   color:var(--text);font-family:var(--font-mono);font-size:var(--text-sm)
 }
-/* 420 at 375: phone padding, then the packed overrides further down (the
-   base rules below would win on order if these lived here) */
+/* phone rhythm. --hwf-mark is set by the island to the wordmark's visible
+   height, so the bottom padding is exactly the band the dots draw in */
 @media (max-width:47.99rem){
-  .hwf-root{--hwf-gap:5;min-height:420px;gap:var(--s3);padding:var(--s4) var(--pad) var(--s3);font-size:var(--text-xs)}
+  .hwf-root{--hwf-gap:5;gap:var(--s5);padding:var(--s8) var(--pad) calc(var(--hwf-mark,0px) + var(--s4));font-size:var(--text-xs)}
 }
 .hwf-root>canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
 .hwf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* the island measures this face to fit deep_ to the footer's width */
 .hwf-face{font:800 100px var(--font-display);letter-spacing:var(--track-serif)}
 .hwf-top,.hwf-rule{position:relative;z-index:1}
-.hwf-top{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);align-content:start}
+.hwf-top{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5) var(--s4);align-content:start}
+@media (min-width:48rem){.hwf-top{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6)}}
 .hwf-brand{grid-column:1/-1;display:grid;gap:2px}
 .hwf-brand strong{font:700 var(--text-md)/1.2 var(--font-ui);letter-spacing:var(--track-display);color:var(--text)}
 .hwf-brand span{font:400 var(--text-xs)/1.4 var(--font-mono);color:var(--muted)}
-@media (min-width:48rem){
-  .hwf-top{grid-template-columns:minmax(200px,1.1fr) repeat(3,minmax(0,1fr));gap:var(--s5) var(--s8)}
+@media (min-width:64rem){
+  .hwf-top{grid-template-columns:minmax(200px,1.1fr) repeat(3,minmax(0,1fr));gap:var(--s6) var(--s10)}
   .hwf-brand{grid-column:auto;align-self:start}
 }
 .hwf-col h3{margin:0 0 var(--s2);font:600 var(--text-xs)/1.2 var(--font-mono);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--build-text)}
-@media (max-width:47.99rem){.hwf-col h3{font-size:9px;margin-bottom:var(--s1)}}
 .hwf-col ul{list-style:none;margin:0;padding:0;display:grid;gap:1px}
 .hwf-col li a{display:flex;align-items:center;min-height:44px;padding:3px 0;color:var(--muted);text-decoration:none;line-height:1.4;overflow-wrap:anywhere}
 .hwf-col li a:hover,.hwf-col li a:focus-visible{color:var(--text);text-decoration:underline;text-underline-offset:3px}
-/* the rule row sits over the wordmark, so it frosts the dots behind it */
+/* the rule row sits above the wordmark band (padding-bottom), never over it */
 .hwf-rule{
-  margin-top:auto;display:grid;gap:var(--s2);padding-top:var(--s3);
-  border-top:1px solid var(--line-2);
-  background:var(--bg)
+  display:grid;gap:var(--s3);padding-top:var(--s5);
+  border-top:1px solid var(--line-2)
 }
-@media (min-width:48rem){.hwf-rule{grid-template-columns:auto minmax(0,1fr);gap:var(--s4);align-items:start}}
-.hwf-rule-a{display:flex}
+@media (min-width:48rem){.hwf-rule{grid-template-columns:auto minmax(0,1fr);gap:var(--s8);align-items:center}}
+.hwf-rule-a{display:flex;align-items:center;gap:var(--s4)}
+.hwf-rule-a img{flex:none}
 .hwf-up{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;min-height:44px;padding:0 var(--s4);background:transparent;border:1px solid var(--line-2);border-radius:var(--r-pill);color:var(--text);font:500 var(--text-xs)/1 var(--font-mono);cursor:pointer}
 .hwf-up:hover{border-color:var(--text)}
 .hwf-rule-b{display:grid;gap:4px;min-width:0}
 .hwf-day{margin:0;font:500 var(--text-xs)/1.4 var(--font-mono);color:var(--muted)}
 .hwf-day[data-state="stale"]{color:var(--danger-text)}
-.hwf-priv{margin:0;font:400 var(--text-xs)/1.55 var(--font-mono);color:var(--dim)}
-@media (max-width:47.99rem){.hwf-priv{font-size:9.5px;line-height:1.4}.hwf-day{font-size:9.5px}}
-.hwf-priv a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.hwf-priv{margin:0;font:400 var(--text-sm)/1.55 var(--font-mono);color:var(--muted)}
+.hwf-priv a{color:var(--text);text-decoration:underline;text-underline-offset:3px;padding:14px 4px;margin:0 -4px}
 .hwf-priv a:hover{color:var(--text)}
-@media (max-width:47.99rem){
-  .hwf-top{gap:10px var(--s2)}
-  .hwf-col li a{padding:2px 0;line-height:1.35}
-  .hwf-rule{padding-top:var(--s2);gap:4px}
-}
 @media (prefers-reduced-motion:reduce){.hwf-up{transition:none}}
 
 /* ---- glass folder cards ------------------------------------------- */
