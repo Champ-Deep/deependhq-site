@@ -1,5 +1,4 @@
-"""V4 toolkit UI against the real toolkit handler, SQLite and fixture-only providers.
-V4 actions the worker on this branch lacks (intake, files, admin settings, AI log) come from scripts/toolkit-v4-fakes.mjs."""
+"""V4 toolkit UI against the real toolkit handler, SQLite and fixture-only providers."""
 import importlib.util
 import json
 import os
@@ -297,7 +296,7 @@ def workbench_flow(page, width, rows, calls):
     page.wait_for_selector('#wb-run:not([disabled])')
     quotes = [c for c in calls if c['action'] == 'quote']
     chunks = -(-rows // 100)
-    assert len(quotes) == chunks and all('Work Email' not in r for q in quotes for r in q['rows']), 'quote covers the job and skips Work Email'
+    assert len(quotes) == 1 and len(quotes[0]['rows']) == rows and all('Work Email' not in r for r in quotes[0]['rows']), 'one quote covers the whole job and skips Work Email'
     text = w.locator('.engine').inner_text()
     assert 'Up to $' in text and 'left today' in text and f'{rows} rows in {chunks} chunk' in text, text
     assert 'Jev (fast, cheap labels)' in text
@@ -308,7 +307,8 @@ def workbench_flow(page, width, rows, calls):
     w.get_by_text('Saved to Files: /Workbench results/leads ', exact=False).wait_for(timeout=60000)
     runs = state()['runs'][before:]
     assert len(runs) == chunks and sum(r['row_count'] for r in runs) == rows and all(r['status'] == 'completed' for r in runs), runs
-    assert len({c['job_id'] for c in calls if c['action'] == 'run'}) == 1, 'one job_id per job'
+    chunk_calls = [c for c in calls if c['action'] == 'run']
+    assert len({c['job_id'] for c in chunk_calls}) == 1 and [c['chunk_index'] for c in chunk_calls] == list(range(chunks)) and {c['chunk_count'] for c in chunk_calls} == {chunks}, 'one job_id, ordered chunks'
     assert f'{rows} of {rows} rows done' in w.locator('.run-line').inner_text()
     saved = [x for x in state()['v4']['files'] if x['path'].startswith('/Workbench results/leads ')]
     assert saved, state()['v4']['files']
@@ -369,7 +369,8 @@ def admin_checks(page, width):
     with page.expect_download() as dl:
         w.get_by_role('button', name='Export JSONL').click()
     lines = [json.loads(l) for l in pathlib.Path(dl.value.path()).read_text().splitlines() if l]
-    assert lines and all(l['action'] == 'intake' and l['prompt'] == '[value]' for l in lines), lines[:2]
+    assert any(l['action'] == 'intake' for l in lines), lines[:2]
+    assert not any(v in l['prompt'] + l['response'] for l in lines for v in ('Person 0', 'p0@example.com', 'Acme 1')), 'cell values never reach the AI log'
     close_app(page, 'Admin')
 
 def refresh_checks(page, token):
@@ -474,7 +475,7 @@ def verify():
         page.set_input_files('#en-file', {'name': 'contacts.csv', 'mimeType': 'text/csv', 'buffer': csv(2)})
         page.locator('#en-quote').click()
         page.wait_for_selector('#en-run[disabled]')
-        assert 'Daily spending allowance reached' in w.inner_text()
+        assert 'Your daily limit is $0.00' in w.inner_text(), w.inner_text()[-400:]
         capture(page, 'cap-1440')
         close_app(page, 'Deep Enrich')
         reset()
@@ -510,7 +511,7 @@ def verify():
     print(f'Text contrast: {len(table)} distinct text/ground nodes, {len(pairs)} colour pairs, every one at or above its threshold.')
     for (fg, bg), r in sorted(pairs.items(), key=lambda kv: kv[1]['ratio'])[:8]:
         print(f'  {fg} on {bg}: {r["ratio"]}:1 (min {r["min"]}, e.g. {r["tag"]} {r["text"][:24]!r} at {r["size"]})')
-    print(f'PASS: V4 toolkit browser flows; {len(reports)} audited screenshots; zero JS errors. Live Clerk, the V4 backend and embedded sessions not tested.')
+    print(f'PASS: V4 toolkit browser flows; {len(reports)} audited screenshots; zero JS errors. Real V4 handler with fixture providers; live Clerk and embedded sessions not tested.')
 
 if __name__ == '__main__':
     verify()

@@ -302,7 +302,7 @@ function jobEngine(w, box, runId) {
     if (next.rows.length > wl.MAX_JOB_ROWS) throw new Error('A job takes up to 1,000 rows. Split the file and try again.');
     reset(); const v = version; box.replaceChildren(); const wait = notice(box, 'Pricing your job. Nothing runs yet.'); wait.classList.add('loading');
     const batches = chunk(next.rows, wl.CHUNK_ROWS), qs = [];
-    try { for (const rows of batches) qs.push(await session.api('quote', {rows, columns: next.columns})); }
+    try { qs.push(await session.api('quote', {rows: next.rows, columns: next.columns})); } // one quote covers the whole job (up to 1,000 rows)
     catch (e) { if (v === version) { box.replaceChildren(); notice(box, errorText(e), true); } return; }
     if (closed || v !== version) return;
     job = {...next, batches}; quotes = qs; renderQuote();
@@ -327,7 +327,7 @@ function jobEngine(w, box, runId) {
     try {
       for (let i = 0; i < batches.length; i++) {
         if (closed || !signedIn()) { stopped = 'The window closed or you signed out. Remaining chunks were not started.'; break; }
-        const body = {tool_id: 'data-workbench', job_id: jobId, request_id: crypto.randomUUID(), list_name: name, rows: batches[i], columns, max_credits: quotes[i].max_credits};
+        const body = {tool_id: 'data-workbench', job_id: jobId, chunk_index: i, chunk_count: batches.length, source_name: name.replace(/\.(csv|xlsx)$/i, ''), request_id: crypto.randomUUID(), list_name: name, rows: batches[i], columns, max_credits: quotes[0].max_credits};
         pending = body; const result = await session.api('run', body); pending = null; last = result; spent += result.spent_micro || 0;
         outputs.push(...wl.resultRows(body.rows, columns, result.results)); bar.value = outputs.length;
         line.textContent = `Chunk ${i + 1} of ${batches.length} ${result.status}. ${outputs.length} of ${total} rows done, ${money(spent)} spent.`;
@@ -353,13 +353,9 @@ function jobEngine(w, box, runId) {
     const saved = el('p', 'Saving to Files...', 'saved-line'); wrap.append(saved);
     wrap.append(table(headers, outputs.slice(0, 100).map(r => headers.map(h => r[h])), 'Results table'));
     if (outputs.length > 100) wrap.append(el('p', `Showing the first 100 of ${outputs.length} rows. The CSV has all of them.`, 'plain'));
-    try {
-      // shortcut: the V4 backend saves results and returns result_file; until it does, the browser saves the same file itself.
-      let entry = savedFile;
-      if (!entry) { await session.api('files_mkdir', {path: '/Workbench results'}).catch(() => {}); entry = (await session.api('files_put', {folder: '/Workbench results', name: `${base} ${wl.stamp()}.csv`, mime: 'text/csv', content_base64: wl.toBase64(new TextEncoder().encode(csv))})).entry; }
-      saved.textContent = 'Saved to Files: ' + (entry.path || '/Workbench results/' + entry.name);
-      actions.append(button('Open in Files', () => openApp('files')?.go('/Workbench results')));
-    } catch (e) { saved.textContent = 'Not saved to Files: ' + errorText(e) + ' Download the CSV instead.'; saved.classList.add('bad'); }
+    // The worker saves the whole job to Files and returns result_file on the last chunk.
+    if (savedFile) { saved.textContent = 'Saved to Files: ' + savedFile.path; actions.append(button('Open in Files', () => openApp('files')?.go('/Workbench results'))); }
+    else { saved.textContent = 'Not saved to Files because the job did not finish. Download the CSV instead.'; saved.classList.add('bad'); }
     wrap.scrollIntoView({block: 'start'});
   }
   return {quote, reset, busy: () => busy};
@@ -686,7 +682,7 @@ function admin(w) {
     const sinceIso = () => since.value ? since.value + 'T00:00:00Z' : undefined;
     async function load() {
       try {
-        const body = {page}; if (user.value.trim()) body.user_id = user.value.trim(); if (action.value) body.filter_action = action.value; // contract says `action`, which collides with the envelope's action key if (sinceIso()) body.since = sinceIso();
+        const body = {page}; if (user.value.trim()) body.user_id = user.value.trim(); if (action.value) body.filter_action = action.value; if (sinceIso()) body.since = sinceIso();
         const r = await session.api('admin_ai_log', body); if (!w.node.isConnected) return; const rows = r.rows || [];
         list.replaceChildren(rows.length ? table(['When', 'User', 'Action', 'Operation', 'Engine', 'Model', 'Tokens in', 'Tokens out', 'Cost', 'Outcome'], rows.map(x => [x.ts ? new Date(x.ts).toISOString().replace('T', ' ').slice(0, 16) : '', x.user_id, x.action, x.op || '', x.engine || '', x.model || '', x.tokens_in ?? '', x.tokens_out ?? '', money(x.cost_micro), x.outcome || '']), 'AI log') : el('p', 'No model calls match these filters.', 'notice'));
         prev.disabled = page <= 1; next.disabled = r.has_more === undefined ? rows.length < 50 : !r.has_more;
@@ -694,7 +690,8 @@ function admin(w) {
     }
     async function exportLog() {
       exp.disabled = true;
-      try { const text = await session.apiText('admin_ai_log_export', sinceIso() ? {since: sinceIso()} : {}); let body = text; try { const j = JSON.parse(text); if (typeof j.jsonl === 'string') body = j.jsonl; } catch { /* already JSONL */ } saveBlob(new Blob([body], {type: 'application/x-ndjson'}), 'toolkit-ai-log-' + new Date().toISOString().slice(0, 10) + '.jsonl'); status('Exported ' + body.split('\n').filter(Boolean).length + ' rows.'); }
+      try { // No date picked: export the whole 180-day retention window.
+      const body = await session.apiText('admin_ai_log_export', {since: sinceIso() || new Date(Date.now() - 180 * 864e5).toISOString().slice(0, 10)}); saveBlob(new Blob([body], {type: 'application/x-ndjson'}), 'toolkit-ai-log-' + new Date().toISOString().slice(0, 10) + '.jsonl'); status('Exported ' + body.split('\n').filter(Boolean).length + ' rows.'); }
       catch (e) { status(errorText(e), true); } finally { exp.disabled = false; }
     }
     load();

@@ -7,13 +7,12 @@ assert.throws(() => validateFileTable({rows: [{__proto__x: 1, constructor: 'x'}]
 assert.deepEqual(validateFileTable({rows: [{A: '1'}, {B: '2'}]}).headers, ['A', 'B']);
 
 const allowance = {credits_available: 50, remaining_daily_credits: 20, remaining_daily_rows: 10, disabled: 0};
-const ok = quoteSummary([{max_cost_micro: 5000, max_credits: 5, row_count: 3, fits_batch_ceiling: true, allowance}]);
+const ok = quoteSummary([{max_cost_micro: 5000, max_credits: 5, row_count: 3, fits_batch_ceiling: true, can_run: true, allowance}]);
 assert.equal(ok.micro, 5000);
 assert.deepEqual(ok.reasons, []);
-const capped = quoteSummary([{max_cost_micro: 30000, max_credits: 30, row_count: 3, fits_batch_ceiling: true, allowance}]);
-assert.ok(capped.reasons.some(r => r.startsWith('Daily spending allowance')), 'over the daily allowance blocks the run');
-const zero = quoteSummary([{max_cost_micro: 1000, max_credits: 1, row_count: 1, fits_batch_ceiling: true, allowance: {...allowance, credits_available: 0, remaining_daily_credits: 0, remaining_daily_rows: 0}}]);
-assert.equal(zero.reasons.length, 3, 'zero balance, zero daily credits and zero rows each explain themselves');
+const capped = quoteSummary([{max_cost_micro: 30000, max_credits: 30, row_count: 3, can_run: false, reason: 'daily_credit_cap', message: 'Your daily limit is $1.00 and $0.20 is left today.', allowance}]);
+assert.deepEqual(capped.reasons, ['Your daily limit is $1.00 and $0.20 is left today.'], 'the server names the cap');
+assert.equal(quoteSummary([{max_cost_micro: 0, max_credits: 0, row_count: 1, can_run: true, allowance}]).reasons.length, 1, 'nothing to price explains itself');
 
 const rows = [{Company: 'Acme'}, {Company: ''}];
 const out = resultRows(rows, [{column: 'Company', op: 'classify'}], [{row_map: [0, -1], items: [{label: 'SaaS', confidence: .9, review: false}]}]);
@@ -23,10 +22,6 @@ assert.equal(out[1]['Result 1: Company / classify'], 'skipped');
 assert.equal(out[1]['Result 1: Company / classify / review'], 'Review needed', 'a row with no result is never silently clean');
 const missing = resultRows(rows, [{column: 'Company', op: 'verify'}], []);
 assert.equal(missing[0]['Result 1: Company / verify'], 'not_run');
-
-// The server can refuse for a cap the browser cannot see; the summary says which one.
-const refused = quoteSummary([{max_cost_micro: 5000, max_credits: 5, row_count: 3, fits_batch_ceiling: true, allowance, can_run: false, blocked_by: 'global_daily'}]);
-assert.ok(refused.reasons[0].includes('$25 daily budget'), refused.reasons);
 
 // Intake: header vocabulary, capped samples, merge only known fields.
 const headers = ['Person Name', 'Company Name', 'Work Email', 'Job', 'Website', 'Notes'];
@@ -99,4 +94,6 @@ for (const [micro, up, down] of [
   assert.equal(money(micro, 'down'), down, `balance ${micro}`);
   assert.ok(!/\.\d{3}/.test(money(micro)) && !/\.\d{3}/.test(money(micro, 'down')), `${micro} shows at most 2 decimals`);
 }
+// The worker hands back validated categories as objects; the editor shows their names.
+assert.equal(planItem({column: 'Company', op: 'classify', engine: 'jev', instruction: 'SaaS?', categories: [{name: 'SaaS', description: null}, {name: 'Not SaaS'}]}).categories, 'SaaS, Not SaaS');
 console.log('PASS toolkit-workbench-lib selftest');

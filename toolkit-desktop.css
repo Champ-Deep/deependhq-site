@@ -28,6 +28,8 @@ small{color:var(--muted)}
 .btn-green:hover{background:color-mix(in srgb,var(--build) 85%,white)}
 .btn-outline{background:var(--card);color:var(--text);border-color:var(--line-2)}
 .btn-outline:hover{border-color:var(--win)}
+/* Once a quote is on screen, Approve is the one primary; Get quote steps back to outline. */
+.window-body:has(#wb-run:not([disabled])) #wb-quote,.window-body:has(#en-run:not([disabled])) #en-quote{background:var(--card);color:var(--text);border-color:var(--line-2)}
 .btn-ghost{background:transparent;color:var(--text);border-color:transparent;padding:0 12px}
 .btn-ghost:hover{background:var(--card-2)}
 .btn-ghost.danger{color:var(--danger-text)}

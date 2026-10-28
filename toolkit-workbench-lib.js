@@ -13,28 +13,14 @@ export function validateFileTable(table) {
   if (table.rows.some(r => Object.values(r).some(v => String(v).length > 1000))) throw new Error('A cell exceeds 1,000 characters. Shorten it before uploading; nothing has been truncated.');
   return { headers, rows: table.rows };
 }
-// Which cap stops a job, in plain words. Keys follow the V4 contract's can_run:false explanation.
-const CAP_TEXT = {
-  user_daily: 'Your $1 daily limit cannot cover this job. Use fewer rows, or come back after the UTC day resets.',
-  balance: 'Your balance is too low. Ask an administrator for credits.',
-  global_daily: 'The shared $25 daily budget is used up for today. Ask an administrator.',
-  pool: 'The welcome credit pool is empty. Ask an administrator.',
-};
 export function quoteSummary(quotes) {
   const allowance = quotes[quotes.length - 1].allowance;
   const micro = quotes.reduce((s,q) => s+q.max_cost_micro,0);
   const credits = quotes.reduce((s,q) => s+q.max_credits,0);
   const rows = quotes.reduce((s,q) => s+q.row_count,0);
-  const reasons = [];
-  if (allowance.disabled) reasons.push('This account is disabled. Contact an administrator.');
-  if (quotes.some(q => !q.fits_batch_ceiling)) reasons.push('A batch exceeds the $0.25 limit. Use fewer rows or operations.');
-  if (micro <= 0) reasons.push('No usable cells for these operations. Check your column mapping.');
-  if (credits > allowance.credits_available) reasons.push(CAP_TEXT.balance);
-  if (credits > allowance.remaining_daily_credits) reasons.push('Daily spending allowance reached or not enabled. Ask an administrator, or return after the UTC day resets.');
-  if (rows > allowance.remaining_daily_rows) reasons.push('Daily row allowance reached or not enabled. Ask an administrator.');
-  // The server can refuse for a cap the browser cannot see (shared budget, pool). Say which one.
+  // The server names the first cap that fails (account, chunk ceiling, rows, daily limit, balance, shared budget) in plain words.
   const refused = quotes.find(q => q.can_run === false);
-  if (refused && !reasons.length) reasons.push(refused.message || CAP_TEXT[refused.blocked_by] || 'The shared daily budget or the credit pool cannot cover this job right now. Ask an administrator.');
+  const reasons = refused ? [refused.message || 'This job cannot run right now. Ask an administrator.'] : micro <= 0 ? ['No usable cells for these operations. Check your column mapping.'] : [];
   return {micro,credits,rows,allowance,reasons};
 }
 const NORMALIZED = ['title_normalized', 'seniority', 'function'];
@@ -87,7 +73,8 @@ export function mergeMapping(current, incoming) {
   const by = new Map((incoming || []).filter(m => m && FIELDS.includes(m.field)).map(m => [m.source, m]));
   return current.map(m => by.has(m.source) ? {source: m.source, field: by.get(m.source).field, keep: by.get(m.source).keep !== false} : m);
 }
-const list = v => (Array.isArray(v) ? v : String(v || '').split(',')).map(x => String(x).trim()).filter(Boolean);
+// The worker returns validated categories as {name, description}; edits come back as comma text.
+const list = v => (Array.isArray(v) ? v : String(v || '').split(',')).map(x => String(x && typeof x === 'object' ? x.name ?? '' : x).trim()).filter(Boolean);
 // A plan item straight from intake or the editor, in the editor's shape.
 export function planItem(p = {}, headers = []) {
   const op = OPS[p.op] ? p.op : 'classify';
@@ -141,11 +128,6 @@ export function toBase64(bytes) {
   return btoa(s);
 }
 export const FILE_TYPES = /\.(csv|xlsx|json|txt|md|pdf)$/i, FILE_LIMIT = 10 * 1024 * 1024;
-export function stamp(d = new Date()) {
-  const p = n => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}${p(d.getMinutes())}`;
-}
-
 // ---- Desktop geometry ----
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(Math.max(lo, hi), v));
 // a = the usable desktop {x,y,w,h}. Corners take a 48px band so they are easy to hit.

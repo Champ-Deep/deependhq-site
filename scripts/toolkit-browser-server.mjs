@@ -1,24 +1,40 @@
-// TEST-ONLY bridge: real toolkit API, real SQLite, real JWT verification.
+// TEST-ONLY bridge: real toolkit API (V4 included), real SQLite, real JWT verification, in-memory R2.
 // Browser Clerk and provider answers are explicit fixtures. No paid/network dispatch.
 import http from 'node:http';
-import {makeD1,setSetting,seedGrant,sessionToken,userJson,PK,SK,JWT_PUBLIC_PEM} from './toolkit-testkit.mjs';
-import {V4_ACTIONS,fakeAction,fakeDownload,fakeState,resetFakes} from './toolkit-v4-fakes.mjs';
-const issued=new Set();
+import {makeD1,makeR2,setSetting,seedGrant,sessionToken,userJson,PK,SK,JWT_PUBLIC_PEM} from './toolkit-testkit.mjs';
 const origin='http://127.0.0.1:3175';
 const db=makeD1();
 setSetting(db,'global_daily_cap_micro',1000000);
 setSetting(db,'default_daily_credit_cap',1000);
 setSetting(db,'default_daily_row_cap',1000);
 seedGrant(db,'user_a',1000);
-const env={TOOLKIT_DB:db,CLERK_PUBLISHABLE_KEY:PK,CLERK_SECRET_KEY:SK,CLERK_JWT_KEY:JWT_PUBLIC_PEM,CLERK_ADMIN_IDS:'user_a',TREG_API_KEY:'fixture',JEV_API_KEY:'fixture',OPENROUTER_API_KEY:'fixture'};
+const env={TOOLKIT_DB:db,TOOLKIT_FILES:makeR2(),CLERK_PUBLISHABLE_KEY:PK,CLERK_SECRET_KEY:SK,CLERK_JWT_KEY:JWT_PUBLIC_PEM,CLERK_ADMIN_IDS:'user_a',TREG_API_KEY:'fixture',JEV_API_KEY:'fixture',OPENROUTER_API_KEY:'fixture'};
 let mode='ok';
 const providerCalls=[];
+const MODELS=[
+  {id:'deepseek/deepseek-v4.1-flash',pricing:{prompt:'0.00000014',completion:'0.00000028'},supported_parameters:['response_format','structured_outputs']},
+  {id:'deepseek/deepseek-v4.1',pricing:{prompt:'0.00000055',completion:'0.00000219'},supported_parameters:['response_format','structured_outputs']},
+  {id:'openai/gpt-5-mini',pricing:{prompt:'0.00000025',completion:'0.000002'},supported_parameters:['response_format','structured_outputs']},
+];
+const GUESS=[[/e-?mail/i,'email'],[/company|account/i,'company'],[/domain|website/i,'domain'],[/title|job|role/i,'title'],[/name/i,'person_name']];
+// Fixture intake model: turn one proposes a classify plan and asks a question, turn two adds a yes or no check.
+function intakeAnswer(messages){
+  const {file}=JSON.parse(messages[messages.length-1].content);
+  const first=!messages.some(m=>m.role==='assistant');
+  const mapping=file.headers.map(h=>({source:h,field:(GUESS.find(([re])=>re.test(h))||[0,'other'])[1],keep:true}));
+  const company=mapping.find(m=>m.field==='company')?.source||file.headers[0];
+  const plan=[{column:company,op:'classify',engine:'jev',instruction:'Is this a SaaS company?',categories:['SaaS','Not SaaS']}];
+  if(!first) plan.push({column:company,op:'verify',engine:'jev',instruction:'Does this company sell to businesses?'});
+  return {reply:first?`I read ${file.rows_total} rows. I will sort ${company} into SaaS or not SaaS.`:'Done. I added a yes or no check for whether each company sells to businesses.',
+    question:first?'Do you also want to know whether each company sells to businesses?':null,mapping,plan,chips:first?['Yes, add that','Also verify emails']:['Research company size']};
+}
 globalThis.fetch=async(url,init)=>{
   url=typeof url==='string'?url:url.url;
   if(url.includes('api.clerk.com') && url.includes('/users/user_a')) return Response.json({object:'user',id:'user_a',email_addresses:[]});
   // Clerk getUserList calls the list and the count endpoints; one verified fixture operator.
   if(url.includes('api.clerk.com/v1/users/count')) return Response.json({object:'total_count',total_count:1});
   if(url.includes('api.clerk.com/v1/users?')) return Response.json([userJson('user_a','fixture.operator@example.com')]);
+  if(url==='https://openrouter.ai/api/v1/models') return Response.json({data:MODELS});
   providerCalls.push(url);
   if(url.includes('treg.people.enrich')) return Response.json({output:{title:'Director',company:'Example'}},{headers:{'X-Treg-Cost-Micro':'1000'}});
   if(url.includes('treg.people.email.verify')) {
@@ -30,38 +46,31 @@ globalThis.fetch=async(url,init)=>{
     return Response.json({answers:Object.fromEntries(Object.entries(questions).map(([k,q])=>[k,k.startsWith('q')?(q.type==='noul'?{type:'noul',noul:.95}:{type:'choice',choice:Object.keys(q.criteria)[0],confidence:.95}):{type:'choice',choice:k.endsWith('_icp')?'strong':'k1'}])),usage:{cost:0.0005}});
   }
   if(url.includes('/chat/completions')) {
-    const body=JSON.parse(init.body),data=JSON.parse(body.messages[1].content);
+    const body=JSON.parse(init.body);
+    if(body.response_format?.type==='json_object') return Response.json({choices:[{message:{content:JSON.stringify(intakeAnswer(body.messages))}}],usage:{prompt_tokens:900,completion_tokens:210,cost:0.00042}});
+    const data=JSON.parse(body.messages[1].content);
     return Response.json({choices:[{message:{content:JSON.stringify({results:data.items.map(({i})=>({i,confidence:.95,...(data.categories?{label:data.categories[0].name}:{p_true:.95})}))})}}],usage:{cost:0.00001}});
   }
   throw new Error('Forbidden unexpected network call: '+url);
 };
 const {handleToolkit}=await import('../worker/toolkit.js');
+const setting=k=>{const v=db.query(`SELECT value FROM toolkit_settings WHERE key='${k}'`).results[0]?.value;return v?JSON.parse(v).id:null;};
 http.createServer(async(req,res)=>{
   try {
     if(req.url==='/fixture/reset' && req.method==='POST') {
-      for(const table of ['toolkit_ops','toolkit_runs','toolkit_events','toolkit_accounts']) db.query('DELETE FROM '+table);
-      seedGrant(db,'user_a',1000);resetFakes();mode='ok';providerCalls.length=0;setSetting(db,'default_daily_credit_cap',1000);setSetting(db,'default_daily_row_cap',1000);env.TREG_API_KEY='fixture';env.JEV_API_KEY='fixture';res.end('ok');return;
+      for(const table of ['toolkit_ops','toolkit_runs','toolkit_events','toolkit_accounts','files','ai_log']) db.query('DELETE FROM '+table);
+      db.query("DELETE FROM toolkit_settings WHERE key IN ('intake_model','research_model')");env.TOOLKIT_FILES=makeR2();
+      seedGrant(db,'user_a',1000);mode='ok';providerCalls.length=0;setSetting(db,'default_daily_credit_cap',1000);setSetting(db,'default_daily_row_cap',1000);env.TREG_API_KEY='fixture';env.JEV_API_KEY='fixture';res.end('ok');return;
     }
-    if(req.url==='/fixture/token') {res.setHeader('content-type','application/json');const token=sessionToken({azp:origin});issued.add(token);res.end(JSON.stringify({token}));return;}
+    if(req.url==='/fixture/token') {res.setHeader('content-type','application/json');res.end(JSON.stringify({token:sessionToken({azp:origin})}));return;}
     if(req.url==='/fixture/timeout') {mode='timeout';res.end('ok');return;}
     if(req.url==='/fixture/cap') {setSetting(db,'default_daily_credit_cap',0);res.end('ok');return;}
     if(req.url==='/fixture/no-provider') {delete env.TREG_API_KEY;delete env.JEV_API_KEY;res.end('ok');return;}
-    if(req.url==='/fixture/state') {res.setHeader('content-type','application/json');res.end(JSON.stringify({provider_calls:providerCalls,runs:db.query('SELECT * FROM toolkit_runs').results,v4:fakeState()}));return;}
-    const authed=issued.has(String(req.headers.authorization||'').replace(/^Bearer /,''));
-    if(req.url.startsWith('/api/toolkit/files/')) {
-      const file=authed&&fakeDownload(decodeURIComponent(req.url.slice(19)));
-      if(!file){res.writeHead(404,{'content-type':'application/json'});res.end('{"error":"not_found"}');return;}
-      res.writeHead(200,{'content-type':file.mime});res.end(file.bytes);return;
-    }
-    if(req.url!=='/api/toolkit') {res.writeHead(404);res.end();return;}
+    if(req.url==='/fixture/state') {res.setHeader('content-type','application/json');res.end(JSON.stringify({provider_calls:providerCalls,runs:db.query('SELECT * FROM toolkit_runs').results,v4:{files:db.query("SELECT id,kind,path,name,size,mime FROM files WHERE user_id='user_a' ORDER BY path").results,settings:{intake_model:setting('intake_model'),research_model:setting('research_model')}}}));return;}
+    if(!req.url.startsWith('/api/toolkit')) {res.writeHead(404);res.end();return;}
     const parts=[];for await(const chunk of req) parts.push(chunk);
-    let parsed={};try{parsed=JSON.parse(Buffer.concat(parts).toString()||'{}');}catch{}
-    if(V4_ACTIONS.has(parsed.action)) {
-      const [status,out,type]=authed?fakeAction(parsed,{id:'user_a',admin:true}):[401,{error:'unauthorized'}];
-      res.writeHead(status,{'content-type':type||'application/json'});res.end(typeof out==='string'?out:JSON.stringify(out));return;
-    }
-    const request=new Request(origin+req.url,{method:req.method,headers:req.headers,body:Buffer.concat(parts)});
+    const request=new Request(origin+req.url,{method:req.method,headers:req.headers,body:req.method==='GET'?undefined:Buffer.concat(parts)});
     const result=await handleToolkit(request,env);
-    res.writeHead(result.status,Object.fromEntries(result.headers));res.end(await result.text());
-  } catch {res.writeHead(500);res.end('fixture_bridge_error');}
+    res.writeHead(result.status,Object.fromEntries(result.headers));res.end(Buffer.from(await result.arrayBuffer()));
+  } catch(e) {console.error(e);res.writeHead(500);res.end('fixture_bridge_error');}
 }).listen(3176,'127.0.0.1',()=>console.log('TEST ONLY: real API bridge listening on 3176'));
