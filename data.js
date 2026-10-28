@@ -1,6 +1,6 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-27T20:50:22.997Z
+// Built 2026-10-28T12:24:44.474Z
 
 window.DH_DATA = {
   "brand": {
@@ -4742,7 +4742,7 @@ window.DH_DATA = {
     },
     {
       "what": "Gaming",
-      "detail": "Civ, Crusader Kings, anything 4X. One more turn at 2 AM."
+      "detail": "Split Fiction co-op on the couch, Overwatch after midnight, Marvel's Wolverine on PS5."
     },
     {
       "what": "Reading",
@@ -4751,7 +4751,11 @@ window.DH_DATA = {
   ],
   "off_the_clock": {
     "spotify_playlist": "",
-    "current_game": ""
+    "favorite_games": [
+      "Split Fiction",
+      "Overwatch",
+      "Marvel's Wolverine"
+    ]
   },
   "things_to_try": [
     {
@@ -4793,8 +4797,8 @@ window.DH_DATA = {
       "how": "find me on a Sunday"
     },
     {
-      "who": "Anyone running a CK3 multiplayer on a Sunday",
-      "how": "send me the lobby code"
+      "who": "Need a Split Fiction co-op partner?",
+      "how": "send me your PSN"
     }
   ],
   "dispatch": {
@@ -10358,7 +10362,7 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-27T20:50:22.967Z",
+    "built": "2026-10-28T12:24:44.445Z",
     "built_date": "2026-10-28",
     "newest_entry": {
       "date": "2026-10-27",
@@ -12162,5 +12166,5 @@ window.DH_DATA = {
       "essays": 19
     }
   },
-  "built": "2026-10-27T20:50:22.997Z"
+  "built": "2026-10-28T12:24:44.474Z"
 };

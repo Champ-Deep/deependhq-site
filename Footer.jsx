@@ -28,16 +28,11 @@ const ELSEWHERE_LINKS = [
   { label: 'deep@championsmail.com', href: 'mailto:deep@championsmail.com' },
 ];
 
-// One sentence, split only where a link sits inside it, so the island can
-// rebuild exactly what the fallback prints.
+// One short line, split only where the link sits, so the island can rebuild
+// exactly what the fallback prints. The full account (what the site and the
+// Ask Deep chat record, the dh_vid cookie, retention) lives on /privacy.
 const PRIVACY = [
-  {
-    t: '© 2026 Sreedeep Surapaneni · Champions Group · the Ask Deep chat answers from this site only, stores nothing in cookies, and records your IP address, approximate location and the page you came from (',
-  },
-  { t: 'details', href: '/privacy' },
-  {
-    t: ') · this site records page views, scroll depth and outbound clicks on its own server: no ad network and no third-party analytics, and a random first-party id so returning readers are not counted as new ones. the numbers are on ',
-  },
+  { t: '© 2026 Sreedeep Surapaneni · no ad networks, no third-party analytics. What this site and Ask Deep record, and for how long: ' },
   { t: '/privacy', href: '/privacy' },
 ];
 

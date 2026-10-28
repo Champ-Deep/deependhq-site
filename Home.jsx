@@ -581,21 +581,62 @@ const Writing = () => {
 
 // ---------------------------------------------------------------- 00:30 off the clock
 // Written from off_hours in content.json. Rewrite this line when those change.
-const HUMAN_LINE = 'Sundays at sunrise, the gray mare at Bangalore Turf Club. Jiu-jitsu two mornings a week, purple belt, still terrible at takedowns. One more turn of Civ at 2 AM. Caro, Iyer and Naipaul for the long flights.';
-// Six tiles: one per thing in the line above, the listening card fed by
-// off_the_clock.spotify_playlist, and the current game slot. Both off_the_clock
-// keys are empty placeholders today, and an empty key renders the honest empty
-// state ("playlist coming", "current game: to be named") rather than a fake.
+const HUMAN_LINE = 'Sundays at sunrise, the gray mare at Bangalore Turf Club. Jiu-jitsu two mornings a week, purple belt, still terrible at takedowns. Split Fiction co-op on the couch, Overwatch after midnight. Caro, Iyer and Naipaul for the long flights.';
+// Five tiles: the three plain objects from the line above, then two live cards
+// fed by /api/now-playing (docs/toolkit-v4-api.md section 6). The prerender is
+// the launch state the feed returns with no secrets: listening "on rotation"
+// and the favourite games from off_the_clock.favorite_games. The inline script
+// below only upgrades a card for playing or recent; any failure keeps this.
 const OTC = DH.off_the_clock || {};
 const plId = String(OTC.spotify_playlist || '').trim().replace(/^.*playlist\//, '').replace(/[?#].*$/, '').replace(/\/+$/, '').trim();
-const game = String(OTC.current_game || '').trim();
+const FAV_GAMES = (OTC.favorite_games || []).map((g) => String(g).trim()).filter(Boolean).slice(0, 3);
+// Feed values go in through textContent only, links only to open.spotify.com,
+// art only over https. A recent state shows its own age (honesty rule).
+const NP_SCRIPT = `(function(){var L=document.querySelector('[data-np="listen"]'),G=document.querySelector('[data-np="game"]');if(!L||!G||!window.fetch)return;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
+function ago(iso){var t=Date.parse(iso||'');if(isNaN(t))return '';var m=Math.max(0,Math.round((Date.now()-t)/60000));if(m<2)return 'just now';if(m<60)return m+'m ago';var h=Math.round(m/60);if(h<48)return h+'h ago';return Math.round(h/24)+'d ago';}
+function str(v){return typeof v==='string'?v.trim().slice(0,120):'';}
+function key(card,s,at){card.setAttribute('data-state',s);var a=s==='recent'?ago(at):'';card.querySelector('.otc-live-kt').textContent=(s==='playing'?'now playing':'last played')+(a?' \u00b7 '+a:'');}
+fetch('/api/now-playing',{headers:{accept:'application/json'}}).then(function(r){return r.ok?r.json():null;}).then(function(d){if(!d)return;
+var sp=d.spotify||{},s=sp.state,tr=str(sp.track);if((s==='playing'||s==='recent')&&tr){var url=str(sp.url),art=str(sp.art);url=/^https:\\/\\/open\\.spotify\\.com\\//.test(url)?url:'';
+var row=el(url?'a':'div','otc-live-row');if(url){row.href=url;row.target='_blank';row.rel='noreferrer';}
+if(/^https:\\/\\//.test(art)){var im=el('img','otc-live-art');im.src=art;im.alt='';im.width=56;im.height=56;im.loading='lazy';im.decoding='async';row.appendChild(im);}else{var mi=L.querySelector('.ico');if(mi)row.appendChild(mi);}
+var tx=el('span','otc-live-t');tx.appendChild(el('b',null,tr));tx.appendChild(el('span',null,str(sp.artist)));if(url)tx.appendChild(el('span','otc-live-go','on Spotify \u2197'));row.appendChild(tx);
+var b=L.querySelector('.otc-live-b');b.replaceChildren(row);key(L,s,sp.at);}
+var g=d.game||{},gs=g.state,ti=str(g.title);if((gs==='playing'||gs==='recent')&&ti){var t2=el('span','otc-live-t');t2.appendChild(el('b',null,ti));t2.appendChild(el('span',null,'on PS5'));var r2=el('div','otc-live-row'),gi=G.querySelector('.ico');if(gi)r2.appendChild(gi);r2.appendChild(t2);G.querySelector('.otc-live-b').replaceChildren(r2);key(G,gs,g.at);}
+}).catch(function(){});})();`;
 const HUMAN_TILES = [
   { id: 'horseshoe', label: 'sunday rides' },
   { id: 'gi', label: 'jiu-jitsu' },
-  { id: 'gamepad', label: 'civilization and crusader kings', note: 'one more turn at 2 AM' },
-  { id: 'music', label: 'listening', spotify: true },
   { id: 'book', label: 'long-flight reading' },
+  { live: 'listen' },
+  { live: 'game' },
 ];
+// 21st.dev port: BJORK now playing card 39708 (art tile, truncating title and
+// artist, four-bar equalizer). Transport and scrubber dropped: this card
+// reports what is playing, it does not control playback.
+const Eq = () => <span className="otc-eq" aria-hidden="true"><i /><i /><i /><i /></span>;
+const LiveCard = ({ kind }) => (kind === 'listen'
+  ? (
+    <li className="otc-tile otc-live" data-np="listen" data-state="off">
+      <span className="otc-live-k"><Eq /><span className="otc-live-kt">listening</span></span>
+      <div className="otc-live-b">
+        {plId
+          ? <a className="otc-live-row" href={`https://open.spotify.com/playlist/${plId}`} target="_blank" rel="noreferrer"><Ico id="music" size={40} /><span className="otc-live-t"><b>playlists on rotation</b><span className="otc-live-go">open on Spotify ↗</span></span></a>
+          : <div className="otc-live-row"><Ico id="music" size={40} /><span className="otc-live-t"><b>playlists on rotation</b><span>on Spotify, most nights</span></span></div>}
+      </div>
+    </li>
+  )
+  : (
+    <li className="otc-tile otc-live" data-np="game" data-state="favorites">
+      <span className="otc-live-k"><Eq /><span className="otc-live-kt">playing</span></span>
+      <div className="otc-live-b">
+        <div className="otc-live-row"><Ico id="gamepad" size={40} />
+          <ol className="otc-fav" aria-label="favourite games right now">{FAV_GAMES.map((g) => <li key={g}>{g}</li>)}</ol>
+        </div>
+      </div>
+    </li>
+  ));
 const Human = () => {
   const words = HUMAN_LINE.split(' ');
   const step = +(52 / words.length).toFixed(3);
@@ -607,31 +648,17 @@ const Human = () => {
           <p className="wx-human-big" style={{ '--step': `${step}%` }}>
             {words.map((w, i) => <React.Fragment key={i}><span className="wx-w" style={{ '--i': i }}>{w}</span>{' '}</React.Fragment>)}
           </p>
-          <ul className="wx-human-ico otc-tiles" aria-label="Off the clock, in six objects">
-            {HUMAN_TILES.map((h) => (h.spotify
-              ? (
-                <li key={h.id} className="otc-tile otc-spotify">
-                  <span className="otc-sp-k">{h.label}</span>
-                  {plId
-                    ? <a className="otc-sp-cover" data-otc-play={plId} href={`https://open.spotify.com/playlist/${plId}`}>
-                        <Ico id={h.id} size={40} />
-                        <span className="otc-sp-go">tap to load the playlist</span>
-                      </a>
-                    : <span className="otc-sp-cover is-empty">
-                        <Ico id={h.id} size={40} />
-                        <span className="otc-sp-go">playlist coming</span>
-                      </span>}
-                </li>
-              )
+          <ul className="wx-human-ico otc-tiles" aria-label="Off the clock, in five objects">
+            {HUMAN_TILES.map((h) => (h.live
+              ? <LiveCard key={h.live} kind={h.live} />
               : (
                 <li key={h.id} className="otc-tile">
                   <Ico id={h.id} />
                   <span>{h.label}</span>
-                  {h.note && <span className="otc-tile-note">{h.note}</span>}
                 </li>
               )))}
-            <li className="otc-tile otc-tile-pending"><Ico id="crown" /><span>{game ? `current game: ${game}` : 'current game: to be named'}</span></li>
           </ul>
+          <script dangerouslySetInnerHTML={{ __html: NP_SCRIPT }} />
         </div>
         <div className="wx-human-side">
           <h3>dms I answer</h3>

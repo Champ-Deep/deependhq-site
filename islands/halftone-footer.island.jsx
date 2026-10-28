@@ -205,6 +205,9 @@ export default function HalftoneFooter(props) {
       m.fillStyle = '#000';
       m.textBaseline = 'alphabetic';
       m.fillText(word, (w - box.width) / 2, h + cap * c);
+      // The visible band of the wordmark becomes the root's bottom padding, so
+      // links and the rule row never sit over the dots. It depends on width only.
+      root.style.setProperty('--hwf-mark', `${Math.ceil(cap * (1 - c))}px`);
       const img = m.getImageData(0, 0, w, h).data;
 
       const gap = Math.max(3, parseFloat(opt('--hwf-gap', '6')) || 6);
