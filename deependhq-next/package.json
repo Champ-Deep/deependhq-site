@@ -13,9 +13,9 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.2.10",
+    "@next/mdx": "^16.4.3",
     "framer-motion": "^12.42.2",
-    "next": "^16.2.10",
+    "next": "^16.4.3",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
