@@ -5,6 +5,18 @@ export function money(micro, round = 'up') {
   const cents = (round === 'down' ? Math.floor : Math.ceil)(abs / 10000);
   return (n < 0 ? '-' : '') + (cents / 100).toLocaleString('en-US', {style: 'currency', currency: 'USD'});
 }
+// One Recent runs line per Workbench job: chunks share job_id; rows and spend add up, mixed statuses read "partly done".
+export function groupRuns(runs) {
+  const jobs = new Map();
+  for (const r of runs) {
+    const k = r.job_id || r.id, g = jobs.get(k);
+    if (!g) { jobs.set(k, {...r}); continue; }
+    g.row_count += r.row_count; g.spent_micro += r.spent_micro;
+    if (g.status !== r.status) g.status = 'partly done';
+    if (Date.parse(r.created_at) > Date.parse(g.created_at)) g.created_at = r.created_at;
+  }
+  return [...jobs.values()];
+}
 export function validateFileTable(table) {
   if (!table.rows.length) throw new Error('This file has no data rows. Add a header and at least one row.');
   if (table.rows.length > 1000) throw new Error('Use up to 1,000 rows per file. Split the file and try again.');

@@ -1,6 +1,6 @@
 // scripts/toolkit-workbench-lib-selftest.mjs : pure helpers behind the V4 Data Workbench, Deep Enrich and the desktop.
 import assert from 'node:assert/strict';
-import {money, validateFileTable, quoteSummary, resultRows, guessFields, intakeFile, mergeMapping, planItem, planToSpecs, keptRows, toBase64, snapZone, zoneRect, fitRect, resizeRect, nearestFreeCell} from '../toolkit-workbench-lib.js';
+import {money, validateFileTable, quoteSummary, resultRows, guessFields, intakeFile, mergeMapping, planItem, planToSpecs, keptRows, toBase64, snapZone, zoneRect, fitRect, resizeRect, nearestFreeCell, groupRuns} from '../toolkit-workbench-lib.js';
 
 assert.throws(() => validateFileTable({rows: []}), /no data rows/);
 assert.throws(() => validateFileTable({rows: [{__proto__x: 1, constructor: 'x'}]}), /reserved names/);
@@ -96,4 +96,11 @@ for (const [micro, up, down] of [
 }
 // The worker hands back validated categories as objects; the editor shows their names.
 assert.equal(planItem({column: 'Company', op: 'classify', engine: 'jev', instruction: 'SaaS?', categories: [{name: 'SaaS', description: null}, {name: 'Not SaaS'}]}).categories, 'SaaS, Not SaaS');
+const grouped = groupRuns([
+  {id: 'r1', job_id: 'j1', status: 'completed', row_count: 100, spent_micro: 2000, created_at: '2026-10-28T10:00:00Z'},
+  {id: 'r2', job_id: 'j1', status: 'failed', row_count: 50, spent_micro: 1000, created_at: '2026-10-28T10:01:00Z'},
+  {id: 'r3', job_id: 'r3', status: 'completed', row_count: 3, spent_micro: 10, created_at: '2026-10-28T09:00:00Z'},
+  {id: 'r4', status: 'completed', row_count: 1, spent_micro: 1, created_at: '2026-10-28T08:00:00Z'}]);
+assert.equal(grouped.length, 3, 'two chunks of j1 become one line; a missing job_id stands alone');
+assert.deepEqual([grouped[0].row_count, grouped[0].spent_micro, grouped[0].status, grouped[0].created_at], [150, 3000, 'partly done', '2026-10-28T10:01:00Z']);
 console.log('PASS toolkit-workbench-lib selftest');

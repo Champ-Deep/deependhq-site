@@ -226,7 +226,7 @@ function paintUsage() {
   const u = usage?.usage;
   $('#daily').textContent = u ? money(Math.max(0, u.daily_credit_cap - u.credits_used - u.credits_held) * 1000, 'down') + ' left today' : 'Allowance unavailable';
   $('#balance').textContent = u ? money(u.credits_available * 1000, 'down') + ' balance' : 'Balance unavailable';
-  const recent = $('#recent-runs'), runs = [...(usage?.runs || [])].sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)).slice(0, 5);
+  const recent = $('#recent-runs'), runs = wl.groupRuns(usage?.runs || []).sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)).slice(0, 5);
   recent.replaceChildren(...(!usage ? [el('li', signedIn() ? 'Runs unavailable. Refresh the connection.' : 'Sign in to see your recent runs.', 'empty')] : !runs.length ? [el('li', 'No runs yet', 'empty')] : runs.map(r => { const li = el('li'); li.append(el('strong', r.list_name || r.tool_id), el('span', r.status + ' / ' + r.row_count + ' ' + (r.row_count === 1 ? 'row' : 'rows') + ' / ' + money(r.spent_micro)), el('small', age(r.created_at))); return li; })));
   $('#identity').textContent = usage?.user.email || 'Your files stay in your browser until you approve a run.';
   $('#menu-user').textContent = usage?.user.email || (signedIn() ? 'Signed in' : 'Signed out');
