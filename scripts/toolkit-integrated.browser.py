@@ -17,8 +17,8 @@ def capture(page,selector,name):
     (OUT/(name+'-audit.json')).write_text(json.dumps(findings,indent=2))
     assert not [f for f in findings if f['severity']=='FAIL'], (name,findings)
     page.locator(selector).screenshot(path=str(OUT/(name+'.png')))
-# V3 toolkit.deependhq.com: sign-in shell, every desktop app, workbench upload/map/ops/quote/run/export, cap, held, admin grant.
-_v3=importlib.util.spec_from_file_location('toolkit_v3',str(pathlib.Path(__file__).with_name('toolkit-v3.browser.py')))
+# V4 toolkit.deependhq.com: desktop windows and icons, Files, intake Workbench, Deep Enrich, admin models and AI log, cap, sign-in.
+_v3=importlib.util.spec_from_file_location('toolkit_v4',str(pathlib.Path(__file__).with_name('toolkit-v4.browser.py')))
 assert _v3 is not None and _v3.loader is not None
 _v3mod=importlib.util.module_from_spec(_v3);_v3.loader.exec_module(_v3mod);_v3mod.verify()
 with sync_playwright() as p:

@@ -123,24 +123,31 @@ export async function getToken() {
   }
 }
 
-export async function api(action, body) {
+// One authed fetch for JSON actions, raw exports and file downloads.
+async function authed(path, init) {
   const token = await getToken();
   if (!token) throw new Error('Sign in required.');
-  let r;
   try {
-    r = await fetch('/api/toolkit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
-      },
-      body: JSON.stringify(Object.assign({ action: action }, body || {})),
+    return await fetch(path, Object.assign({}, init, {
+      headers: Object.assign({}, init.headers, { Authorization: 'Bearer ' + token }),
       credentials: 'same-origin',
       cache: 'no-store',
-    });
+    }));
   } catch (e) {
     throw new Error('Could not reach the toolkit API. Check your connection and retry.');
   }
+}
+
+function post(action, body) {
+  return authed('/api/toolkit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(Object.assign({ action: action }, body || {})),
+  });
+}
+
+export async function api(action, body) {
+  const r = await post(action, body);
   let data = null;
   try {
     data = await r.json();
@@ -157,6 +164,29 @@ export async function api(action, body) {
   return data;
 }
 
+// Exports such as admin_ai_log_export answer with text (JSONL), or JSON carrying it.
+export async function apiText(action, body) {
+  const r = await post(action, body);
+  const text = await r.text();
+  if (!r.ok) {
+    let data = null;
+    try { data = JSON.parse(text); } catch (e) { /* not JSON */ }
+    const err = new Error((data && data.error) || 'HTTP ' + r.status);
+    err.status = r.status;
+    err.data = data;
+    throw err;
+  }
+  return text;
+}
+
+// GET /api/toolkit/files/<id> with the Bearer token. 404 means the file is not the caller's.
+export async function fetchFile(id) {
+  const r = await authed('/api/toolkit/files/' + encodeURIComponent(id), { method: 'GET', headers: {} });
+  if (r.status === 404) throw new Error('That file is not in your storage any more.');
+  if (!r.ok) throw new Error('Download failed (HTTP ' + r.status + ').');
+  return r.blob();
+}
+
 // Shared appearance so native Clerk components sit on the page tokens instead
 // of arriving as a white rectangle. Only documented variables are set, read
 // from CSS at mount time so the modal follows the active scheme.
@@ -164,13 +194,13 @@ const tok = (name, fallback) => (getComputedStyle(document.documentElement).getP
 const APPEARANCE = () => ({
   colorScheme: document.documentElement.getAttribute('data-scheme') === 'light' ? 'light' : 'dark',
   variables: {
-    colorBackground: tok('--surface', '#15213A'),
-    colorText: tok('--text', '#F4EBD9'),
-    colorPrimary: tok('--win', '#F4A62A'),
+    colorBackground: tok('--surface', '#12151D'),
+    colorText: tok('--text', '#E8E4DC'),
+    colorPrimary: tok('--win', '#C9A84C'),
     colorDanger: tok('--danger', '#E05030'),
-    colorInputBackground: tok('--bg', '#0E1A33'),
-    colorInputText: tok('--text', '#F4EBD9'),
-    // Only the toolkit shells set these two (Matrix Green: square corners, mono face).
+    colorInputBackground: tok('--bg', '#0D0F14'),
+    colorInputText: tok('--text', '#E8E4DC'),
+    // Only the toolkit shells set these two (main-site radius and Inter).
     borderRadius: tok('--clerk-radius', '6px'),
     ...(tok('--clerk-font', '') ? { fontFamily: tok('--clerk-font', '') } : {}),
   },
@@ -188,8 +218,8 @@ export function mountSignIn(node) {
     throw new Error('Sign in is not available yet.');
   }
   const appearance = APPEARANCE();
-  appearance.variables.colorPrimary = tok('--build', '#30E060');
-  appearance.variables.colorPrimaryForeground = tok('--ink', '#0E1A33');
+  // Ink text on the marigold primary, the main site's btn-gold.
+  appearance.variables.colorPrimaryForeground = tok('--navy', '#0D0F14');
   return window.Clerk.mountSignIn(node, { appearance, routing: 'hash', forceRedirectUrl: '/' });
 }
 

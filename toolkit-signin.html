@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sign in · The Deep End / toolkit</title>
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#0D0F14">
 <meta name="color-scheme" content="dark">
 <meta name="robots" content="noindex">
 <meta name="description" content="Sign in to The Deep End toolkit. Your tools, private runs and shared balance.">
@@ -13,12 +13,12 @@
 <link rel="stylesheet" href="/scheme-tokens.css">
 <link rel="stylesheet" href="/toolkit-desktop.css">
 </head>
-<body>
+<body class="signin-page">
 <a class="skip" href="#main">Skip to sign in</a>
-<header class="menubar"><a class="brand" href="https://deependhq.com"><img src="/favicon.svg" alt="" width="32" height="32">The Deep End <span> / toolkit</span></a></header>
+<header class="menubar"><a class="brand" href="https://deependhq.com"><img src="/favicon.svg" alt="" width="28" height="28"><span class="wordmark">The Deep End</span><span class="brand-sub">toolkit</span></a><a class="btn btn-outline back" href="/">Back to the desktop</a></header>
 <main id="main" class="signin-layout">
-  <section class="signin-form"><p class="eyebrow">ACCESS THE WORKSPACE</p><h1>Your tools.<br>Your next move.</h1><p>Sign in with your email. Your runs and balance belong to your account.</p><div id="toolkit-signin-root"></div><p id="signin-status" role="status">Connecting to sign-in...</p><button id="signin-retry" type="button">Retry connection</button><a class="back" href="/">Back to the desktop</a><noscript><p>Enable JavaScript to use secure sign-in.</p></noscript></section>
-  <section class="signin-story" aria-labelledby="story-title"><p class="eyebrow">THE DEEP END / TOOLKIT</p><h2 id="story-title">From raw rows.<br>To the next right action.</h2><ol class="pipeline"><li><span>01 / INPUT</span><strong>Your CSV or spreadsheet</strong><small>Map the columns. Keep the context.</small></li><li><span>02 / DECIDE</span><strong>Enrich. Verify. Classify.</strong><small>Choose the operation for each column.</small></li><li><span>03 / APPROVE</span><strong>See the dollars first.</strong><small>No run starts before you approve its quote.</small></li><li><span>04 / OUTPUT</span><strong>Evidence, not guesswork.</strong><small>Review flagged results. Export your work.</small></li></ol><p class="terminal-foot">$1 daily spending limit. Unresolved costs stay visible.</p></section>
+  <section class="signin-form"><p class="eyebrow">Sign in</p><h1>Your tools.<br><span>Your next move.</span></h1><p class="lede">Sign in with your email. Your files, runs and balance belong to your account.</p><div id="toolkit-signin-root"></div><p id="signin-status" role="status">Connecting to sign-in...</p><button id="signin-retry" class="btn btn-outline" type="button">Retry connection</button><noscript><p>Enable JavaScript to use secure sign-in.</p></noscript></section>
+  <section class="signin-story" aria-labelledby="story-title"><p class="eyebrow">How the toolkit works</p><h2 id="story-title">From raw rows to the next right action.</h2><ol class="pipeline"><li><span>01</span><div><strong>Drop your file</strong><small>A CSV or spreadsheet. It stays in your browser.</small></div></li><li><span>02</span><div><strong>Say what you need</strong><small>The assistant proposes columns and a plan you can edit.</small></div></li><li><span>03</span><div><strong>See the dollars first</strong><small>No run starts before you approve its quote.</small></div></li><li><span>04</span><div><strong>Get a better file</strong><small>Results with review flags, saved to your Files.</small></div></li></ol><p class="story-foot">$1 daily spending limit per person. Unresolved costs stay visible.</p></section>
 </main>
 <script type="module" src="/toolkit-signin.js"></script>
 </body>
