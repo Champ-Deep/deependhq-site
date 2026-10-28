@@ -386,6 +386,10 @@ const intakeFile = { name: 'leads.csv', rows_total: 50, headers: ['Person Name',
   check('autosave: chunk parts are cleaned up', parts.length === 0, parts.join());
   const single = await post(env, runBody([spec], [{ Job: 'Sales' }], { max_credits: 10 }));
   check('autosave: a run with no job fields is saved as a one-chunk job', single.body.result_file && single.body.result_file.kind === 'file');
+  const ur = (await post(env, { action: 'usage' })).body.runs;
+  const sameJob = ur.filter((r) => r.job_id === job);
+  check('usage runs: both chunks of a job share its job_id, a job-less run reports its own id',
+    sameJob.length === 2 && ur.length === 3 && ur.filter((r) => r.job_id !== job).every((r) => r.job_id === r.id), JSON.stringify(ur.map((r) => r.job_id)));
   const badJob = await post(env, runBody([spec], [{ Job: 'Sales' }], { max_credits: 10, job_id: job, chunk_index: 2, chunk_count: 2 }));
   check('autosave: chunk_index outside chunk_count -> 400 before any reservation', badJob.status === 400 && badJob.body.error === 'invalid_job');
 }

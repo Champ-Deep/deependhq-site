@@ -21,7 +21,7 @@ export const CLERK_JS_URL = 'https://cdn.clerk.com/clerk.js';
 
 export function makeD1() {
   const db = new DatabaseSync(':memory:');
-  for (const f of ['0001_toolkit.sql', '0002_v4.sql']) db.exec(readFileSync(new URL('../migrations/' + f, import.meta.url), 'utf8'));
+  for (const f of ['0001_toolkit.sql', '0002_v4.sql', '0003_run_job_id.sql']) db.exec(readFileSync(new URL('../migrations/' + f, import.meta.url), 'utf8'));
   const san = (row) => {
     if (!row) return row;
     const out = { ...row };
