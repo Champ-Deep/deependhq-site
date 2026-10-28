@@ -984,9 +984,9 @@ export async function adminFromRequest(request, env) {
 // ---------------------------------------------------------------------------
 // POST /api/toolkit dispatcher
 // ---------------------------------------------------------------------------
-async function handleAction(request, env, url) {
+async function handleAction(request, env, url, preAuth) {
   if (!sameOrigin(request, url)) return json({ error: 'forbidden_origin' }, 403);
-  const auth = await authenticate(request, url, env);
+  const auth = preAuth || await authenticate(request, url, env);
   if (auth.error) return json({ error: auth.error }, auth.status);
   const db = getDb(env);
   if (!db) return json({ error: 'toolkit_db_not_configured' }, 503);
@@ -1151,9 +1151,17 @@ async function handleWebhook(request, env) {
 export async function handleToolkit(request, env) {
   const url = new URL(request.url);
   try {
+    let auth = null;
+    const isAction = url.pathname === '/api/toolkit' && request.method === 'POST';
+    if (isAction) {
+      // Authenticate before buffering so only signed-in callers can send large bodies.
+      if (!sameOrigin(request, url)) return json({ error: 'forbidden_origin' }, 403);
+      auth = await authenticate(request, url, env);
+      if (auth.error) return json({ error: auth.error }, auth.status);
+    }
     if (request.method === 'POST' && request.body) {
       // Actions carry up to a 1000-row quote or a 10 MB file as base64 (about 13.4 MB).
-      const limit = url.pathname === '/api/toolkit/webhook' ? 262144 : 15 * 1024 * 1024;
+      const limit = isAction ? 15 * 1024 * 1024 : url.pathname === '/api/toolkit/webhook' ? 262144 : 65536;
       const reader = request.body.getReader();
       const chunks = [];
       let size = 0;
@@ -1182,7 +1190,7 @@ export async function handleToolkit(request, env) {
     }
     if (url.pathname === '/api/toolkit') {
       if (request.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
-      return await handleAction(request, env, url);
+      return await handleAction(request, env, url, auth);
     }
     return json({ error: 'not_found' }, 404);
   } catch (e) {
