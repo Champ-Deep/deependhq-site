@@ -217,7 +217,7 @@ addEventListener('drop', async e => {
   if (!e.dataTransfer?.types.includes('Files')) return; e.preventDefault(); delete $('#main').dataset.drop;
   const f = e.dataTransfer.files[0]; if (!f) return;
   if (!wl.FILE_TYPES.test(f.name)) { status(f.name + ' was not opened. Drop a CSV, XLSX, JSON, TXT, MD or PDF.'); return; }
-  if (signedIn()) { try { await saveFile('/', f); status(f.name + ' saved to your desktop.'); await refreshDesktopFiles(); } catch (err) { status(errorText(err)); } }
+  if (signedIn()) { try { await saveFile('/', f); await refreshDesktopFiles(); status(f.name + ' saved to your desktop.'); } catch (err) { status(errorText(err)); } }
   else status('Sign in to keep files on your desktop. ' + (tabular(f.name) ? 'Opened in Data Workbench for now.' : ''));
   if (tabular(f.name)) openApp('workbench')?.load(f);
 });
@@ -522,7 +522,7 @@ function filesApp(w) {
   const message = (text, bad = false) => { msg.replaceChildren(); if (text) notice(msg, text, bad); };
   const join = (base, name) => (base === '/' ? '' : base) + '/' + name;
   const parentOf = path => path.replace(/\/[^/]+$/, '') || '/';
-  async function act(fn, done) { if (busy) return; busy = true; try { await fn(); if (done) message(done); await go(folder, true); if (folder === '/' || done) refreshDesktopFiles(); } catch (e) { message(errorText(e), true); } finally { busy = false; } }
+  async function act(fn, done) { if (busy) return; busy = true; try { await fn(); await go(folder, true); if (folder === '/' || done) await refreshDesktopFiles(); if (done) message(done); } catch (e) { message(errorText(e), true); } finally { busy = false; } }
   function droppable(node, path) {
     node.addEventListener('dragover', e => { if (!e.dataTransfer.types.includes(DH_FILE)) return; e.preventDefault(); node.dataset.over = 'true'; });
     node.addEventListener('dragleave', () => { node.dataset.over = 'false'; });

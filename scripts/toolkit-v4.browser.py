@@ -4,7 +4,7 @@ import json
 import os
 import pathlib
 import urllib.request
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = pathlib.Path(os.environ.get('TOOLKIT_EVIDENCE', ROOT / 'scratch/toolkit-v4'))
@@ -245,10 +245,10 @@ def files_checks(page, width):
     page.drag_and_drop('[data-app="files"] .file-row[data-kind="file"]', '[data-app="files"] .file-row[data-kind="folder"]')
     f.get_by_text('Moved dropped.csv to /Leads.').wait_for()
     assert '/Leads/dropped.csv' in [x['path'] for x in state()['v4']['files']]
-    assert page.locator('.desk-icon[aria-label^="dropped.csv"]').count() == 0, 'a moved file leaves the desktop'
+    expect(page.locator('.desk-icon[aria-label^="dropped.csv"]'), 'a moved file leaves the desktop').to_have_count(0)
     folder.get_by_role('button', name='Open folder Leads').click()
     row = f.locator('.file-row', has_text='dropped.csv'); row.wait_for()
-    assert f.locator('[aria-current="location"]').inner_text() == 'Leads'
+    expect(f.locator('[aria-current="location"]')).to_have_text('Leads')
     row.get_by_role('button', name='Rename dropped.csv').click()
     f.get_by_label('New name for dropped.csv').fill('renamed.csv')
     f.get_by_role('button', name='Save name').click()
@@ -286,12 +286,12 @@ def workbench_flow(page, width, rows, calls):
     intake = [c for c in calls if c['action'] == 'intake'][-1]
     assert intake['goal'] == 'Categorization' and intake['history'] == [] and intake['file']['rows_total'] == rows
     assert all(len(v) <= 5 and all(len(s) <= 200 for s in v) for v in intake['file']['samples'].values())
-    assert w.locator('.op-card').count() == 1
+    expect(w.locator('.op-card')).to_have_count(1)
     w.get_by_role('button', name='Yes, add that', exact=True).click()
     w.get_by_text('I added a yes or no check', exact=False).wait_for()
     second = [c for c in calls if c['action'] == 'intake'][-1]
     assert [h['role'] for h in second['history']] == ['assistant', 'user'] and second['goal'] == 'Categorization'
-    assert w.locator('.op-card').count() == 2, 'the second turn updated the plan'
+    expect(w.locator('.op-card'), 'the second turn updated the plan').to_have_count(2)
     capture(page, f'workbench-3-setup-{width}')
     # Edit the mapping: retag a column and skip another. A skipped column never leaves the browser.
     w.get_by_label('Field for Job', exact=True).select_option('title')
@@ -393,8 +393,9 @@ def refresh_checks(page, token):
     page.evaluate("window.__noReload = true")
     page.get_by_role('button', name='Sign out', exact=True).click()
     page.wait_for_function("document.querySelector('#daily').textContent === 'Allowance unavailable'")
-    assert page.locator('.desk-icon[data-desktop^="file:"]').count() == 0 and not page.locator('[data-launch="admin"]').is_visible()
-    assert 'Signed out' in page.locator('#session-status').inner_text()
+    expect(page.locator('.desk-icon[data-desktop^="file:"]')).to_have_count(0)
+    expect(page.locator('[data-launch="admin"]')).to_be_hidden()
+    expect(page.locator('#session-status')).to_contain_text('Signed out')
     page.evaluate("Clerk.openSignIn()")
     page.wait_for_function(WAIT_SIGNED)
     page.locator('[data-launch="admin"]').wait_for(state='visible')
