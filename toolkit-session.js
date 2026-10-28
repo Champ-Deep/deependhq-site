@@ -194,12 +194,12 @@ const tok = (name, fallback) => (getComputedStyle(document.documentElement).getP
 const APPEARANCE = () => ({
   colorScheme: document.documentElement.getAttribute('data-scheme') === 'light' ? 'light' : 'dark',
   variables: {
-    colorBackground: tok('--surface', '#15213A'),
-    colorText: tok('--text', '#F4EBD9'),
-    colorPrimary: tok('--win', '#F4A62A'),
+    colorBackground: tok('--surface', '#12151D'),
+    colorText: tok('--text', '#E8E4DC'),
+    colorPrimary: tok('--win', '#C9A84C'),
     colorDanger: tok('--danger', '#E05030'),
-    colorInputBackground: tok('--bg', '#0E1A33'),
-    colorInputText: tok('--text', '#F4EBD9'),
+    colorInputBackground: tok('--bg', '#0D0F14'),
+    colorInputText: tok('--text', '#E8E4DC'),
     // Only the toolkit shells set these two (main-site radius and Inter).
     borderRadius: tok('--clerk-radius', '6px'),
     ...(tok('--clerk-font', '') ? { fontFamily: tok('--clerk-font', '') } : {}),
@@ -219,7 +219,7 @@ export function mountSignIn(node) {
   }
   const appearance = APPEARANCE();
   // Ink text on the marigold primary, the main site's btn-gold.
-  appearance.variables.colorPrimaryForeground = tok('--navy', '#0E1A33');
+  appearance.variables.colorPrimaryForeground = tok('--navy', '#0D0F14');
   return window.Clerk.mountSignIn(node, { appearance, routing: 'hash', forceRedirectUrl: '/' });
 }
 

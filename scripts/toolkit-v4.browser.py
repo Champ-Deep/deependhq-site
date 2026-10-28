@@ -486,7 +486,7 @@ def verify():
             page.get_by_role('link', name='Sign in', exact=True).click()
             page.wait_for_selector('[data-fixture="signin"]')
             look = json.loads(page.locator('#toolkit-signin-root').get_attribute('data-appearance'))
-            assert {k: look.get(k) for k in ('colorPrimary', 'colorPrimaryForeground', 'colorBackground', 'colorText', 'borderRadius')} == {'colorPrimary': '#F4A62A', 'colorPrimaryForeground': '#0E1A33', 'colorBackground': '#15213A', 'colorText': '#F4EBD9', 'borderRadius': '6px'}, look
+            assert {k: look.get(k) for k in ('colorPrimary', 'colorPrimaryForeground', 'colorBackground', 'colorText', 'borderRadius')} == {'colorPrimary': '#C9A84C', 'colorPrimaryForeground': '#0D0F14', 'colorBackground': '#12151D', 'colorText': '#E8E4DC', 'borderRadius': '6px'}, look
             assert 'Inter' in look.get('fontFamily', ''), look
             capture(page, f'signin-{width}')
             page.get_by_role('button', name='Continue with Google (fixture)').click()

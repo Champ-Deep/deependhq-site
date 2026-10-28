@@ -2,6 +2,8 @@
    Speaks the main site's language: scheme-tokens.css navy-night tokens, Inter for UI, JetBrains Mono for data,
    the system.css btn-gold / btn-green / btn-outline buttons and the site-v3.css floating v3-dock.
    Vanilla ports: 21st.dev macOS Dock 2572 (dock magnification), 21st.dev Suggestions 12342 (intake chips). */
+/* The public site's canonical classic palette, verbatim from site-v3.css :root, so the toolkit matches deependhq.com as served. */
+:root{color-scheme:dark;--navy:#0D0F14;--marigold:#C9A84C;--bg:#0D0F14;--surface:#12151D;--card:#181C26;--card-2:#1E2330;--line:#2A2E3A;--line-2:#3A3F50;--text:#E8E4DC;--muted:#A8A8A2;--dim:#8A8A92;--win:#C9A84C;--win-text:#C9A84C}
 :root{--clerk-radius:6px;--clerk-font:'Inter',system-ui,sans-serif;--menubar-h:56px;--widgets-w:320px;--dock-h:88px}
 *{box-sizing:border-box}
 html{background:var(--bg)}
