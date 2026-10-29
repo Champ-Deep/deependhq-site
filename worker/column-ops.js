@@ -17,7 +17,7 @@
 import { providerRequest, emailVerdict, makeTreg } from './lead-scorer.js';
 
 export const MAX_ROWS = 100;        // rows per run request
-export const MAX_JOB_ROWS = 1000;   // rows per quoted job (the UI runs it in chunks of MAX_ROWS)
+export const MAX_JOB_ROWS = 20000;  // rows per quoted job (the UI runs it in chunks of MAX_ROWS); the 5 MiB file cap and the quote are the real limits
 export const MAX_COLUMNS = 8;
 export const BATCH = 20;            // Jev loses accuracy as state grows with unrelated items
 export const ENRICH_MICRO = 6000;

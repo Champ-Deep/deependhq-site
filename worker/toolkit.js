@@ -161,7 +161,7 @@ async function handleConfig(env) {
     clerk_script_url: scriptUrl,
     billing_enabled: billing,
     credits_per_usd: store.CREDITS_PER_USD,
-    providers: { treg: !!env.TREG_API_KEY, jev: !!env.JEV_API_KEY, deepseek: !!env.JEV_API_KEY },
+    providers: { treg: !!env.TREG_API_KEY, jev: !!llmKey(env), deepseek: !!llmKey(env) },
   });
 }
 
@@ -195,7 +195,7 @@ async function actionUsage(db, env, uid, settings) {
       daily_row_cap: effRow,
       disabled: store.num(agg.disabled),
     },
-    providers: { treg: !!env.TREG_API_KEY, jev: !!env.JEV_API_KEY },
+    providers: { treg: !!env.TREG_API_KEY, jev: !!llmKey(env) },
     runs,
   });
 }
@@ -420,7 +420,7 @@ async function actionRun(db, env, uid, body) {
   const q = columnsMode ? cols.quoteColumns(input, llm) : null;
   const needTreg = columnsMode ? q.columns.some((c) => c.engine === 'treg' && c.distinct_count) : true;
   const needLlm = columnsMode ? q.columns.some((c) => c.engine !== 'treg' && c.distinct_count) : true;
-  if ((needTreg && !env.TREG_API_KEY) || (needLlm && !env.JEV_API_KEY)) return json({ error: 'provider_not_configured' }, 503);
+  if ((needTreg && !env.TREG_API_KEY) || (needLlm && !llmKey(env))) return json({ error: 'provider_not_configured' }, 503);
 
   const quote = columnsMode ? q : provider.quoteLead(input);
   const quoteMicro = store.num(quote.max_cost_micro);
@@ -485,7 +485,7 @@ async function actionRun(db, env, uid, body) {
   try {
     const out = await (columnsMode ? cols.executeColumns : provider.executeLead)(input, {
       tregKey: env.TREG_API_KEY,
-      jevKey: env.JEV_API_KEY,
+      jevKey: llmKey(env),
       model: env.LEAD_SCORER_MODEL,
       llm,
       log,
@@ -517,7 +517,7 @@ function parseJob(body) {
   if (keys.every((k) => body[k] === undefined)) return { id: null, index: 0, count: 1, source: '' };
   const count = body.chunk_count, index = body.chunk_index;
   if (typeof body.job_id !== 'string' || !UUID_RE.test(body.job_id)) return { error: 'job_id must be a UUID.' };
-  if (!Number.isSafeInteger(count) || count < 1 || count > cols.MAX_JOB_ROWS / cols.MAX_ROWS) return { error: 'chunk_count must be 1 to 10.' };
+  if (!Number.isSafeInteger(count) || count < 1 || count > cols.MAX_JOB_ROWS / cols.MAX_ROWS) return { error: `chunk_count must be 1 to ${cols.MAX_JOB_ROWS / cols.MAX_ROWS}.` };
   if (!Number.isSafeInteger(index) || index < 0 || index >= count) return { error: 'chunk_index must be within chunk_count.' };
   if (body.source_name !== undefined && (typeof body.source_name !== 'string' || body.source_name.length > 200)) return { error: 'source_name must be 200 characters or less.' };
   const source = String(body.source_name || '').replace(/[/\\\u0000-\u001f\u007f]/g, '-').trim().slice(0, 90);
@@ -755,6 +755,9 @@ async function actionAdminUpdate(db, body) {
 // v4: model settings, AI log, intake
 // ---------------------------------------------------------------------------
 // Stored as toolkit_settings rows holding {id, prompt_micro_per_mtok, completion_micro_per_mtok}.
+// One OpenRouter key serves Jev (alpha/decisions) and the chat models. Either secret name works.
+export const llmKey = (env) => env.OPENROUTER_API_KEY || env.JEV_API_KEY;
+
 export async function readModels(db) {
   const rows = (await db.prepare(`SELECT key, value FROM toolkit_settings WHERE key IN ('intake_model', 'research_model')`).all()).results;
   const out = { intake_model: cols.DEFAULT_LLM, research_model: cols.DEFAULT_LLM };
@@ -823,7 +826,7 @@ function validateIntake(body) {
   if (!isStr(f.name, 200, 1)) return 'file.name must be 1 to 200 characters.';
   if (f.rows_total !== undefined && !(Number.isSafeInteger(f.rows_total) && f.rows_total >= 0)) return 'file.rows_total must be a whole number.';
   const h = f.headers;
-  if (!Array.isArray(h) || h.length < 1 || h.length > 30 || h.some((x) => !isStr(x, 100, 1) || ['__proto__', 'prototype', 'constructor'].includes(x)) || new Set(h).size !== h.length) return 'file.headers must be 1 to 30 distinct names of 100 characters or less.';
+  if (!Array.isArray(h) || h.length < 1 || h.length > 200 || h.some((x) => !isStr(x, 200, 1) || ['__proto__', 'prototype', 'constructor'].includes(x)) || new Set(h).size !== h.length) return 'file.headers must be 1 to 200 distinct names of 200 characters or less.';
   const s = f.samples ?? {};
   if (typeof s !== 'object' || Array.isArray(s)) return 'file.samples must be an object.';
   for (const [k, v] of Object.entries(s)) {
@@ -855,7 +858,7 @@ Use at most 8 operations. Only use headers that exist. Nothing runs until the us
 async function actionIntake(db, env, uid, body) {
   const invalid = validateIntake(body);
   if (invalid) return json({ error: 'invalid_intake', message: invalid }, 400);
-  if (!env.JEV_API_KEY) return json({ error: 'provider_not_configured', message: 'The AI provider is not configured.' }, 503);
+  if (!llmKey(env)) return json({ error: 'provider_not_configured', message: 'The AI provider is not configured.' }, 503);
   const { headers, samples = {}, name, rows_total } = body.file;
   const history = body.history ?? [];
   const goal = body.goal ?? '';
@@ -877,7 +880,7 @@ async function actionIntake(db, env, uid, body) {
   }
 
   const r = await makeCall(db, p.id)({ provider: 'deepseek', endpoint: 'chat.completions', reserve_micro: reserve },
-    () => cols.openRouterPost(fetch, cols.CHAT_URL, env.JEV_API_KEY, req, 'deepseek'));
+    () => cols.openRouterPost(fetch, cols.CHAT_URL, llmKey(env), req, 'deepseek'));
   let parsed = null;
   try { parsed = JSON.parse(r.data?.choices?.[0]?.message?.content ?? ''); } catch { parsed = null; }
   const ok = r.ok && parsed && typeof parsed === 'object' && !Array.isArray(parsed);
@@ -1161,8 +1164,8 @@ export async function handleToolkit(request, env) {
       if (auth.error) return json({ error: auth.error }, auth.status);
     }
     if (request.method === 'POST' && request.body) {
-      // Actions carry up to a 1000-row quote or a 10 MB file as base64 (about 13.4 MB).
-      const limit = isAction ? 15 * 1024 * 1024 : url.pathname === '/api/toolkit/webhook' ? 262144 : 65536;
+      // Actions carry a whole-job quote (a 5 MiB file as JSON rows) or a 10 MB file as base64 (about 13.4 MB).
+      const limit = isAction ? 32 * 1024 * 1024 : url.pathname === '/api/toolkit/webhook' ? 262144 : 65536;
       const reader = request.body.getReader();
       const chunks = [];
       let size = 0;

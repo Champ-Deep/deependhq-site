@@ -19,9 +19,8 @@ export function groupRuns(runs) {
 }
 export function validateFileTable(table) {
   if (!table.rows.length) throw new Error('This file has no data rows. Add a header and at least one row.');
-  if (table.rows.length > 1000) throw new Error('Use up to 1,000 rows per file. Split the file and try again.');
   const headers = [...new Set(table.rows.flatMap(r => Object.keys(r)))];
-  if (headers.length > 30 || headers.some(h => !h || h.length > 100 || ['__proto__','prototype','constructor'].includes(h))) throw new Error('Use up to 30 named columns, each at most 100 characters, without reserved names.');
+  if (headers.length > 200 || headers.some(h => !h || h.length > 200 || ['__proto__','prototype','constructor'].includes(h))) throw new Error('Use up to 200 named columns, each at most 200 characters, without reserved names.');
   if (table.rows.some(r => Object.values(r).some(v => String(v).length > 1000))) throw new Error('A cell exceeds 1,000 characters. Shorten it before uploading; nothing has been truncated.');
   return { headers, rows: table.rows };
 }
@@ -64,7 +63,7 @@ export const OP_LABEL = {normalize_title:'Normalize job titles',classify:'Sort i
 export const ENGINE_LABEL = {jev:'Jev (fast, cheap labels)',deepseek:'DeepSeek (research and reasoning)',treg:'Treg (contact data)'};
 export const STARTER_CHIPS = ['Enrichment','Title normalization','Categorization','Classification','Email verification','Company research'];
 export const PRIVACY_LINE = 'We keep your instructions and the AI conversation (never your cell values) to improve the toolkit.';
-export const MAX_JOB_ROWS = 1000, CHUNK_ROWS = 100;
+export const MAX_JOB_ROWS = 20000, CHUNK_ROWS = 100;
 
 // Header names to the contract's field vocabulary. Order matters: "Company name" is a company, not a person.
 const GUESS = [[/e-?mail/i,'email'],[/linked\s*in/i,'linkedin_url'],[/first/i,'first_name'],[/last|surname/i,'last_name'],[/company|account|organi[sz]ation|employer/i,'company'],[/domain|website|url|site/i,'domain'],[/title|job|role|position|designation/i,'title'],[/name/i,'person_name'],[/phone|mobile|tel/i,'phone'],[/city|town/i,'city'],[/country/i,'country'],[/industry|sector|vertical/i,'industry']];

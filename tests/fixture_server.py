@@ -68,7 +68,7 @@ def intake_reply(body):
     f = body.get("file") or {}
     headers = f.get("headers") or []
     if not headers or not isinstance(headers, list):
-        return 400, {"error": "invalid_intake", "message": "file.headers must be 1 to 30 distinct names of 100 characters or less."}
+        return 400, {"error": "invalid_intake", "message": "file.headers must be 1 to 200 distinct names of 200 characters or less."}
     mapping, plan = [], []
     for h in headers:
         low = str(h).lower()
