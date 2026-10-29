@@ -41,6 +41,7 @@
     "//binding": "MUST be declared. Local wrangler does not auto-inject the ASSETS binding, so env.ASSETS was undefined and every page 500'd. Declaring it explicitly is correct on deployed Workers too.",
     "directory": ".",
     "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page",
     "//run_worker_first": "Wrangler serves an exactly matching asset before the Worker runs. Without this list /field-notes answered 200 with field-notes.html and never reached the redirect, and the HTMLRewriter plus the security headers never ran on a normal page load. Every HTML route is listed so it hits the Worker first. Static assets (css, js, data.js, fonts, xml, images) keep the cheaper direct asset path. The five .txt files are listed so the Worker can add charset=utf-8 to their content type.",
     "//audio": "/audio/* runs the Worker first so the essay readings answer Range requests with 206. The asset store answers every Range request with the whole file and a 200, and a browser cannot seek in audio served that way.",
