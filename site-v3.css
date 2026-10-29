@@ -3,7 +3,10 @@
    Public classic overrides leave standalone toolkit tokens unchanged. */
 :root{color-scheme:dark;--navy:#0D0F14;--marigold:#C9A84C;--bg:#0D0F14;--surface:#12151D;--card:#181C26;--card-2:#1E2330;--line:#2A2E3A;--line-2:#3A3F50;--text:#E8E4DC;--muted:#A8A8A2;--dim:#8A8A92;--win:#C9A84C;--win-text:#C9A84C}
 body{padding-bottom:112px}
-#dh-assistant-btn{bottom:112px!important}
+#dh-assistant-btn{bottom:112px!important;transition:bottom var(--dur-2) var(--ease-out)}
+/* Ask Deep retreats with the dock: the greeting bubble covered the footer word, the button drops into the padding band. */
+html[data-dock-away] #dh-assistant-btn{bottom:20px!important}
+html[data-dock-away] .dh-pro{opacity:0;pointer-events:none;transition:opacity var(--dur-2) var(--ease-out)}
 /* Dock: one scale (24px icons, 11px labels, 44px targets), glass because it floats over scrolling content,
    and it retreats while the footer is in view (html[data-dock-away], set in site-classic.js). */
 .v3-dock{position:fixed;z-index:80;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;width:max-content;max-width:calc(100% - 32px);padding:12px 16px;background:color-mix(in oklab,var(--surface) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3);font-family:var(--font-ui);color:var(--text);transition:transform var(--dur-2) var(--ease-out)}
