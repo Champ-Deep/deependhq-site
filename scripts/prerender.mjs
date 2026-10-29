@@ -316,8 +316,26 @@ function firstProse(p) {
 }
 
 function headFor(page, variant) {
-  if (!variant) return '';
   const base = 'https://deependhq.com';
+  if (!variant) {
+    const canon = `${base}/${page.id === 'field-notes' ? 'journey' : page.id || ''}`;
+    const desc = {
+      journey: 'The daily build log of Sreedeep Surapaneni: what shipped, what changed, and the lessons from operating twelve companies in public.',
+      toolkit: 'Explore Sreedeep Surapaneni’s toolkit: the tools, public repositories, and working systems behind twelve companies and a daily build-in-public practice.',
+    }[page.id];
+    const ld = page.kind === 'app' ? {
+      '@context': 'https://schema.org',
+      '@graph': [
+        { '@type': 'Person', '@id': `${base}/#person`, name: 'Sreedeep Surapaneni', url: `${base}/`, sameAs: [
+          'https://www.linkedin.com/in/sreedeep-surapaneni',
+          'https://github.com/Champ-Deep',
+          'https://bsky.app/profile/sreedeep-sura.bsky.social',
+        ] },
+        { '@type': 'WebSite', '@id': `${base}/#website`, url: `${base}/`, name: 'The Deep End', author: { '@id': `${base}/#person` } },
+      ],
+    } : undefined;
+    return { canon, desc, ld };
+  }
   if (page.entity === 'posts') {
     const p = variant;
     const title = `${p.title} · deep >_`;
@@ -361,29 +379,20 @@ function applyBase(html) {
   return html.replace(/<head([^>]*)>/i, '<head$1>\n  <base href="/">');
 }
 
-// Rewrite title, description and canonical, and append JSON-LD. Only the first
-// occurrence of each is touched, so a page cannot end up with two titles.
+// Replace only supplied metadata, preserving static titles and descriptions.
 function applyHead(html, h) {
   if (!h) return html;
   let out = html;
-  const t = esc(h.title);
-  if (/<title>[\s\S]*?<\/title>/i.test(out)) {
-    out = out.replace(/<title>[\s\S]*?<\/title>/i, `<title>${t}</title>`);
-  } else {
-    out = out.replace(/<\/head>/i, `  <title>${t}</title>\n</head>`);
-  }
-  const meta = `<meta name="description" content="${esc(h.desc)}">` +
-    `<link rel="canonical" href="${esc(h.canon)}">`;
-  if (/<link rel="canonical"/i.test(out)) {
-    out = out.replace(/<link rel="canonical"[^>]*>/i, `<link rel="canonical" href="${esc(h.canon)}">`);
-  } else if (/<meta name="description"/i.test(out)) {
-    out = out.replace(/(<meta name="description"[^>]*>)/i, `$1\n  ${meta}`);
-  } else {
-    out = out.replace(/<\/head>/i, `  ${meta}\n</head>`);
-  }
-  const ld = `<script type="application/ld+json">${JSON.stringify(h.ld)}</script>`;
-  if (!/application\/ld\+json/.test(out)) {
-    out = out.replace(/<\/head>/i, `  ${ld}\n</head>`);
+  const tags = [
+    [h.title, /<title>[\s\S]*?<\/title>/gi, `<title>${esc(h.title)}</title>`],
+    [h.desc, /<meta name="description"[^>]*>/gi, `<meta name="description" content="${esc(h.desc)}">`],
+    [h.canon, /<link rel="canonical"[^>]*>/gi, `<link rel="canonical" href="${esc(h.canon)}">`],
+    [h.ld, /<script type="application\/ld\+json">[\s\S]*?<\/script>/gi,
+      `<script type="application/ld+json">${JSON.stringify(h.ld)?.replace(/</g, '\\u003c')}</script>`],
+  ];
+  for (const [value, pattern, tag] of tags) {
+    if (value === undefined) continue;
+    out = out.replace(pattern, '').replace(/<\/head>/i, () => `${tag}</head>`);
   }
   return out;
 }
