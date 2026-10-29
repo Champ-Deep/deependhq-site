@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-28T12:24:44.474Z
+// Built 2026-10-29T19:52:07.912Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 361,
-    "today_date": "2026-10-27",
+    "today_day": 363,
+    "today_date": "2026-10-29",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,18 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 363,
+          "date": "2026-10-29",
+          "shipping_now": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT…",
+          "arc_color": "gold"
+        },
+        {
+          "day": 362,
+          "date": "2026-10-28",
+          "shipping_now": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel…",
+          "arc_color": "gold"
+        },
         {
           "day": 361,
           "date": "2026-10-27",
@@ -82,18 +94,6 @@ window.DH_DATA = {
           "day": 352,
           "date": "2026-10-18",
           "shipping_now": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed,…",
-          "arc_color": "green"
-        },
-        {
-          "day": 351,
-          "date": "2026-10-17",
-          "shipping_now": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday,…",
-          "arc_color": "green"
-        },
-        {
-          "day": 350,
-          "date": "2026-10-16",
-          "shipping_now": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built four replacement…",
           "arc_color": "green"
         }
       ],
@@ -566,7 +566,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-26",
       "last_ship_day": 360,
-      "days_since": 2,
+      "days_since": 4,
       "entries_30d": 2,
       "recent": [
         {
@@ -630,7 +630,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 21,
+      "days_since": 23,
       "entries_30d": 1,
       "recent": [
         {
@@ -694,8 +694,8 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-24",
       "last_ship_day": 358,
-      "days_since": 4,
-      "entries_30d": 9,
+      "days_since": 6,
+      "entries_30d": 8,
       "recent": [
         {
           "day": 358,
@@ -764,7 +764,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 22,
+      "days_since": 24,
       "entries_30d": 1,
       "recent": [
         {
@@ -830,6 +830,60 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-29",
+      "day": 363,
+      "mood": "🛠️",
+      "shipping_now": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team leads on the other, split by role instead of picking a winner.",
+      "yesterday_thread": "also took a first call on a large data licensing deal with a new prospect today. no number yet, just the next step: pull a live sample, then write the SOW.",
+      "raw_thought": "three decision desk sweeps today and i'm making calls at midnight that should have happened at 3pm. the backlog does not care that i am tired.",
+      "arcs": [
+        "ChampOps"
+      ],
+      "arc_color": "gold",
+      "signals": [
+        "unblocked",
+        "shipped",
+        "external-meeting"
+      ],
+      "energy": 4,
+      "meetings": {
+        "count": 11,
+        "external": 5
+      },
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "day": 362,
+      "mood": "🌊",
+      "shipping_now": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel like homework. rebuilt from zero as five tiny one-interaction toys, one per brand, no instructions beyond about four words each. all five live on workers.dev tonight.",
+      "yesterday_thread": "the span agent handoff is still mostly paperwork. wrote the full access and credentials matrix for the two engineers taking it over today, github, railway, cloudflare, all mapped. one thing still blocking it: i still have not rotated the tokens.",
+      "raw_thought": "almost shipped nothing today. a hiring call, a sponsorship mess, and handoff docs ate the whole evening. the toys only happened because i killed the first version late and rebuilt it fast instead of polishing something i already knew was wrong.",
+      "arcs": [
+        "Dopamine Sites",
+        "ChampOps"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Dopamine Sites",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-10-27",
       "day": 361,
@@ -4638,7 +4692,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 361 · Oct 27",
+    "last_ship": "day 363 · Oct 29",
     "state": "shipping"
   },
   "status_board": {
@@ -4662,20 +4716,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "broke a three day standoff over which AI coding tool the team gets. shipped the compari...",
+        "tag": "shipped d363"
+      },
+      {
+        "text": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding...",
+        "tag": "shipped d362"
+      },
+      {
         "text": "ran a live security, sample and ux review on the data-product agent we have been buildi...",
         "tag": "shipped d361"
       },
       {
         "text": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the da...",
         "tag": "shipped d360"
-      },
-      {
-        "text": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto ou...",
-        "tag": "shipped d359"
-      },
-      {
-        "text": "closed our first call with a facility management prospect today and walked away with an...",
-        "tag": "shipped d358"
       }
     ],
     "soon": [
@@ -5580,7 +5634,7 @@ window.DH_DATA = {
       "related_companies": [],
       "audio": {
         "src": "audio/week-48-the-receipts-arc.mp3",
-        "duration": 260.7,
+        "duration": 260.4,
         "voice": "Brian",
         "starts": [
           {
@@ -5589,54 +5643,54 @@ window.DH_DATA = {
           },
           {
             "i": 0,
-            "t": 28.13
+            "t": 31.51
           },
           {
             "i": 1,
-            "t": 48.77
+            "t": 52.85
           },
           {
             "i": 2,
-            "t": 73.2
+            "t": 73.68
           },
           {
             "i": 3,
-            "t": 99.66
+            "t": 102.52
           },
           {
             "i": 4,
-            "t": 101.87
+            "t": 104.61
           },
           {
             "i": 5,
-            "t": 120.94
+            "t": 126.12
           },
           {
             "i": 6,
-            "t": 124.13
+            "t": 129.51
           },
           {
             "i": 7,
-            "t": 152.07
+            "t": 156.52
           },
           {
             "i": 8,
-            "t": 168.56
+            "t": 171.58
           },
           {
             "i": 9,
-            "t": 172.12
+            "t": 174.96
           },
           {
             "i": 10,
-            "t": 207.43
+            "t": 209.6
           },
           {
             "i": 11,
-            "t": 242.18
+            "t": 241.96
           }
         ],
-        "bytes": 2085616
+        "bytes": 2083316
       },
       "viz": {
         "window": {
@@ -10362,33 +10416,54 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-28T12:24:44.445Z",
-    "built_date": "2026-10-28",
+    "built": "2026-10-29T19:52:07.877Z",
+    "built_date": "2026-10-30",
     "newest_entry": {
-      "date": "2026-10-27",
-      "day": 361
+      "date": "2026-10-29",
+      "day": 363
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 138,
+        "days_old": 140,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 126,
+        "days_old": 128,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 126,
+        "days_old": 128,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 363,
+      "date": "2026-10-29",
+      "mood": "🛠️",
+      "arc_color": "gold",
+      "arcs": [
+        "ChampOps"
+      ],
+      "ship": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team leads on the other, split by role instead of picking a winner."
+    },
+    {
+      "day": 362,
+      "date": "2026-10-28",
+      "mood": "🌊",
+      "arc_color": "gold",
+      "arcs": [
+        "Dopamine Sites",
+        "ChampOps"
+      ],
+      "ship": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel like homework. rebuilt from zero as five tiny one-interaction toys, one per brand, no instructions beyond about four words each. all five live on workers.dev tonight."
+    },
     {
       "day": 361,
       "date": "2026-10-27",
@@ -10520,28 +10595,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built four replacement pages that show where every number comes from, who said it, when, how it was measured. two shipped ready, one on hold because the client got cut."
-    },
-    {
-      "day": 349,
-      "date": "2026-10-15",
-      "mood": "🧹",
-      "arc_color": "gold",
-      "arcs": [
-        "Lake B2B",
-        "Champions Operations"
-      ],
-      "ship": "closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut it, i had been sitting on the call. decided tonight: cut it. a decided no beats an undecided yes every time, and now the ops team can actually execute instead of wait on me."
-    },
-    {
-      "day": 348,
-      "date": "2026-10-14",
-      "mood": "🌀",
-      "arc_color": "green",
-      "arcs": [
-        "Champions Operations",
-        "Lake B2B"
-      ],
-      "ship": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live account, the works. one of those someone-finally-built-the-thing days."
     }
   ],
   "heatmap": {
@@ -11409,21 +11462,21 @@ window.DH_DATA = {
         "date": "2026-10-28",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 362,
+        "arc_color": "gold",
+        "ship": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff tha"
       },
       {
         "date": "2026-10-29",
-        "future": true,
+        "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 363,
+        "arc_color": "gold",
+        "ship": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout"
       },
       {
         "date": "2026-10-30",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -11448,11 +11501,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 361,
-    "entries": 139,
+    "days_public": 363,
+    "entries": 141,
     "entries_30d": 30,
-    "entries_this_month": 27,
-    "streak_weekdays": 94,
+    "entries_this_month": 29,
+    "streak_weekdays": 96,
     "essays": 19,
     "companies": 12,
     "companies_active_90d": 4,
@@ -11461,15 +11514,15 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 19
+        "n": 17
       },
       {
         "arc": "ChampOps",
-        "n": 11
+        "n": 12
       },
       {
         "arc": "Lake B2B",
-        "n": 9
+        "n": 8
       },
       {
         "arc": "TheDeepEndHQ",
@@ -11484,11 +11537,11 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "Data Products",
+        "arc": "Dopamine Sites",
         "n": 1
       },
       {
-        "arc": "Content Strategy",
+        "arc": "Data Products",
         "n": 1
       }
     ],
@@ -11533,8 +11586,8 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-10-27",
-        "mentions_90d": 23,
+        "last_seen": "2026-10-29",
+        "mentions_90d": 25,
         "days_since": 1
       },
       {
@@ -11543,9 +11596,9 @@ window.DH_DATA = {
         "url": null,
         "kind": "using",
         "category": "infra",
-        "last_seen": "2026-10-25",
-        "mentions_90d": 3,
-        "days_since": 3
+        "last_seen": "2026-10-28",
+        "mentions_90d": 4,
+        "days_since": 2
       },
       {
         "name": "ChampBeam",
@@ -11558,7 +11611,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 2,
-        "days_since": 16
+        "days_since": 18
       },
       {
         "name": "Obsidian + Celsus",
@@ -11568,7 +11621,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 17
+        "days_since": 19
       },
       {
         "name": "Claude + Cowork",
@@ -11578,7 +11631,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 18
+        "days_since": 20
       },
       {
         "name": "Event Scout",
@@ -11591,7 +11644,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 44
+        "days_since": 46
       },
       {
         "name": "ChampUTM",
@@ -11604,7 +11657,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 46
+        "days_since": 48
       },
       {
         "name": "LakeStream",
@@ -11617,7 +11670,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 85
+        "days_since": 87
       },
       {
         "name": "ChamPDF",
@@ -11630,7 +11683,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 1,
-        "days_since": 85
+        "days_since": 87
       },
       {
         "name": "ChampMail",
@@ -11643,7 +11696,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 1,
-        "days_since": 87
+        "days_since": 89
       },
       {
         "name": "Supabase",
@@ -11654,7 +11707,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 119
+        "days_since": 121
       },
       {
         "name": "ChampGraph",
@@ -11667,7 +11720,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 127
+        "days_since": 129
       },
       {
         "name": "ChampQuest",
@@ -11680,7 +11733,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 147
+        "days_since": 149
       },
       {
         "name": "Deep Scanner",
@@ -12162,9 +12215,9 @@ window.DH_DATA = {
     },
     "active_30d": 5,
     "mined_from": {
-      "entries": 139,
+      "entries": 141,
       "essays": 19
     }
   },
-  "built": "2026-10-28T12:24:44.474Z"
+  "built": "2026-10-29T19:52:07.912Z"
 };

@@ -1,8 +1,32 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (139) and every weekly essay (19), newest first. Rebuilt 2026-10-28. Cite the day number and date when quoting, for example "day 361, 2026-10-27".
+> Every public journey entry (141) and every weekly essay (19), newest first. Rebuilt 2026-10-29. Cite the day number and date when quoting, for example "day 363, 2026-10-29".
 
 ## Journey
+
+### Day 363, 2026-10-29 (a real outcome)
+
+broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team leads on the other, split by role instead of picking a winner.
+
+Thread: also took a first call on a large data licensing deal with a new prospect today. no number yet, just the next step: pull a live sample, then write the SOW.
+
+Raw thought: three decision desk sweeps today and i'm making calls at midnight that should have happened at 3pm. the backlog does not care that i am tired.
+
+Arcs: ChampOps
+
+Link: https://deependhq.com/journey.html#day-363
+
+### Day 362, 2026-10-28 (a real outcome)
+
+killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel like homework. rebuilt from zero as five tiny one-interaction toys, one per brand, no instructions beyond about four words each. all five live on workers.dev tonight.
+
+Thread: the span agent handoff is still mostly paperwork. wrote the full access and credentials matrix for the two engineers taking it over today, github, railway, cloudflare, all mapped. one thing still blocking it: i still have not rotated the tokens.
+
+Raw thought: almost shipped nothing today. a hiring call, a sponsorship mess, and handoff docs ate the whole evening. the toys only happened because i killed the first version late and rebuilt it fast instead of polishing something i already knew was wrong.
+
+Arcs: Dopamine Sites, ChampOps
+
+Link: https://deependhq.com/journey.html#day-362
 
 ### Day 361, 2026-10-27 (building)
 

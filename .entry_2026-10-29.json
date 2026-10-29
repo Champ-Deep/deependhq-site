@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-29",
+  "mood": "🛠️",
+  "shipping_now": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team leads on the other, split by role instead of picking a winner.",
+  "yesterday_thread": "also took a first call on a large data licensing deal with a new prospect today. no number yet, just the next step: pull a live sample, then write the SOW.",
+  "raw_thought": "three decision desk sweeps today and i'm making calls at midnight that should have happened at 3pm. the backlog does not care that i am tired.",
+  "arcs": ["ChampOps"],
+  "arc_color": "gold",
+  "last_ship": "Codex/Hermes split sent to IT",
+  "energy": 4,
+  "meetings": { "count": 11, "external": 5 },
+  "signals": ["unblocked", "shipped", "external-meeting"]
+}

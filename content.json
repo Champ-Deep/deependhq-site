@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 361,
-    "today_date": "2026-10-27",
+    "today_day": 363,
+    "today_date": "2026-10-29",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,41 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-10-29",
+      "day": 363,
+      "mood": "🛠️",
+      "shipping_now": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team leads on the other, split by role instead of picking a winner.",
+      "yesterday_thread": "also took a first call on a large data licensing deal with a new prospect today. no number yet, just the next step: pull a live sample, then write the SOW.",
+      "raw_thought": "three decision desk sweeps today and i'm making calls at midnight that should have happened at 3pm. the backlog does not care that i am tired.",
+      "arcs": [
+        "ChampOps"
+      ],
+      "arc_color": "gold",
+      "signals": [
+        "unblocked",
+        "shipped",
+        "external-meeting"
+      ],
+      "energy": 4,
+      "meetings": {
+        "count": 11,
+        "external": 5
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "day": 362,
+      "mood": "🌊",
+      "shipping_now": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel like homework. rebuilt from zero as five tiny one-interaction toys, one per brand, no instructions beyond about four words each. all five live on workers.dev tonight.",
+      "yesterday_thread": "the span agent handoff is still mostly paperwork. wrote the full access and credentials matrix for the two engineers taking it over today, github, railway, cloudflare, all mapped. one thing still blocking it: i still have not rotated the tokens.",
+      "raw_thought": "almost shipped nothing today. a hiring call, a sponsorship mess, and handoff docs ate the whole evening. the toys only happened because i killed the first version late and rebuilt it fast instead of polishing something i already knew was wrong.",
+      "arcs": [
+        "Dopamine Sites",
+        "ChampOps"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-10-27",
       "day": 361,
@@ -2243,20 +2278,20 @@
     ],
     "recently": [
       {
+        "text": "broke a three day standoff over which AI coding tool the team gets. shipped the compari...",
+        "tag": "shipped d363"
+      },
+      {
+        "text": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding...",
+        "tag": "shipped d362"
+      },
+      {
         "text": "ran a live security, sample and ux review on the data-product agent we have been buildi...",
         "tag": "shipped d361"
       },
       {
         "text": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the da...",
         "tag": "shipped d360"
-      },
-      {
-        "text": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto ou...",
-        "tag": "shipped d359"
-      },
-      {
-        "text": "closed our first call with a facility management prospect today and walked away with an...",
-        "tag": "shipped d358"
       }
     ],
     "soon": [
@@ -2332,7 +2367,11 @@
   ],
   "off_the_clock": {
     "spotify_playlist": "",
-    "favorite_games": ["Split Fiction", "Overwatch", "Marvel's Wolverine"]
+    "favorite_games": [
+      "Split Fiction",
+      "Overwatch",
+      "Marvel's Wolverine"
+    ]
   },
   "things_to_try": [
     {
@@ -4165,52 +4204,82 @@
       "label": "calls",
       "clock": "15:00",
       "snippet": [
-        ["cmd", "ls vault/Calendar/Meetings | tail -1"]
+        [
+          "cmd",
+          "ls vault/Calendar/Meetings | tail -1"
+        ]
       ]
     },
     {
       "label": "outreach",
       "clock": "16:30",
       "snippet": [
-        ["cmd", "wc -l Efforts/Lead\\ Gen/targets-*.csv"]
+        [
+          "cmd",
+          "wc -l Efforts/Lead\\ Gen/targets-*.csv"
+        ]
       ]
     },
     {
       "label": "research",
       "clock": "18:00",
       "snippet": [
-        ["cmd", "rg -l \"competitor\" Atlas/ | wc -l"]
+        [
+          "cmd",
+          "rg -l \"competitor\" Atlas/ | wc -l"
+        ]
       ]
     },
     {
       "label": "build",
       "clock": "19:00",
       "snippet": [
-        ["cmd", "git log --since=today --oneline | wc -l"]
+        [
+          "cmd",
+          "git log --since=today --oneline | wc -l"
+        ]
       ]
     },
     {
       "label": "write",
       "clock": "23:00",
       "snippet": [
-        ["cmd",          "tail -3 Calendar/Daily\\ Notes/<today>.md"]
+        [
+          "cmd",
+          "tail -3 Calendar/Daily\\ Notes/<today>.md"
+        ]
       ]
     },
     {
       "label": "compile",
       "clock": "01:03",
       "snippet": [
-        ["cmd", "node scripts/build-data.mjs"],
-        ["out", "content.json -> data.js -> prerendered pages"]
+        [
+          "cmd",
+          "node scripts/build-data.mjs"
+        ],
+        [
+          "out",
+          "content.json -> data.js -> prerendered pages"
+        ]
       ]
     },
     {
       "label": "ship",
       "clock": "02:00",
       "snippet": [
-        ["cmd", "bash scripts/publish.sh"],
-        ["ok",          "illustrative publish step, not a deployment receipt"],
-        ["out", "next window opens 15:00 IST"]
+        [
+          "cmd",
+          "bash scripts/publish.sh"
+        ],
+        [
+          "ok",
+          "illustrative publish step, not a deployment receipt"
+        ],
+        [
+          "out",
+          "next window opens 15:00 IST"
+        ]
       ]
     }
   ],
