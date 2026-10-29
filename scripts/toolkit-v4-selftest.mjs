@@ -123,7 +123,9 @@ const runBody = (columns, rows, over = {}) => ({ action: 'run', tool_id: 'data-w
   check('quote: whole job fits the caps, can_run true, no reason', q.body.can_run === true && !q.body.reason, JSON.stringify(q.body.allowance));
   check('quote: makes no provider call', fx.calls.length === 0);
   const q1001 = await post(env, { action: 'quote', rows: Array.from({ length: 1001 }, () => ({ Job: 'x' })), columns: [spec] });
-  check('quote: 1001 rows -> 400', q1001.status === 400 && q1001.body.error === 'invalid_columns');
+  check('quote: 1001 rows accepted (11 chunks); the file size cap and the allowance bound a job, not a row count', q1001.status === 200 && q1001.body.chunks === 11, JSON.stringify(q1001.body).slice(0, 160));
+  const qOver = await post(env, { action: 'quote', rows: Array.from({ length: 20001 }, () => ({ Job: 'x' })), columns: [spec] });
+  check('quote: 20,001 rows -> 400', qOver.status === 400 && qOver.body.error === 'invalid_columns');
   const r1000 = await post(env, runBody([spec], rows1000, { max_credits: 300 }));
   check('run: 1000 rows in one request -> 400 (run stays at 100)', r1000.status === 400 && r1000.body.error === 'invalid_columns');
   const r100 = await post(env, runBody([spec], rows1000.slice(0, 100), { max_credits: 30 }));
@@ -490,4 +492,19 @@ const intakeFile = { name: 'leads.csv', rows_total: 50, headers: ['Person Name',
 }
 
 check('no unexpected network calls (v4)', clerkFixtures.unexpected.length === 0, clerkFixtures.unexpected.join(','));
+
+// Provider key alias and the lifted caps (size is the only user-facing file limit).
+{
+  const { llmKey } = await import('../worker/toolkit.js');
+  const cols = await import('../worker/column-ops.js');
+  check('llmKey: OPENROUTER_API_KEY works alone, JEV_API_KEY still works, OPENROUTER wins when both are set',
+    llmKey({ OPENROUTER_API_KEY: 'or' }) === 'or' && llmKey({ JEV_API_KEY: 'jev' }) === 'jev' && llmKey({ OPENROUTER_API_KEY: 'or', JEV_API_KEY: 'jev' }) === 'or' && llmKey({}) === undefined);
+  const d1 = await makeD1();
+  const noKey = await post(baseEnv(d1, { JEV_API_KEY: undefined }), { action: 'intake', file: { name: 'a.csv', headers: ['A'], samples: { A: ['x'] }, rows_total: 1 }, goal: 'tidy' });
+  check('intake: no OpenRouter key under either name -> 503 provider_not_configured', noKey.status === 503 && noKey.body.error === 'provider_not_configured');
+  const wide = Array.from({ length: 120 }, (_, i) => 'Column ' + i);
+  const wideRes = await post(baseEnv(d1, { JEV_API_KEY: undefined, OPENROUTER_API_KEY: 'or' }), { action: 'intake', file: { name: 'w.csv', headers: wide, samples: {}, rows_total: 5000 }, goal: 'tidy' });
+  check('intake: 120 headers pass validation (cap is 200) with OPENROUTER_API_KEY only', wideRes.status !== 400, JSON.stringify(wideRes.body).slice(0, 160));
+  check('caps: a job is 20,000 rows in 200 chunks', cols.MAX_JOB_ROWS === 20000 && cols.MAX_JOB_ROWS / cols.MAX_ROWS === 200);
+}
 finish('toolkit-v4-selftest');

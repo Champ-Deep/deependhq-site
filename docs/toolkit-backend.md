@@ -20,7 +20,7 @@ Scope: `worker/toolkit.js`, `worker/toolkit-store.js`, `migrations/0001_toolkit.
 | `CLERK_WEBHOOK_SIGNING_SECRET` | svix verification of billing webhook | webhook 503, `billing_enabled=false` |
 | `CLERK_AUTHORIZED_PARTIES` | optional comma list overriding default `[request origin]` | azp must equal request origin |
 | `CLERK_ADMIN_IDS` | comma list of Clerk user ids with admin access | nobody is admin |
-| `TREG_API_KEY`, `JEV_API_KEY` | provider credentials | `run` 503 before any reservation, `providers:{...}:false` |
+| `TREG_API_KEY`, `OPENROUTER_API_KEY` (alias `JEV_API_KEY`, one OpenRouter key serves Jev and the chat models) | provider credentials | `run` 503 before any reservation, `providers:{...}:false` |
 | `LEAD_SCORER_MODEL` | passed through to `executeLead` as `model` | provider default |
 | `__TOOLKIT_TEST_PROVIDER` | selftest module path only | never set in production |
 

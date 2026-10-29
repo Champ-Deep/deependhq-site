@@ -299,10 +299,10 @@ function jobEngine(w, box, runId) {
   async function quote(next) {
     if (busy) return;
     if (!signedIn()) throw new Error('Sign in before requesting a quote. Your file is still only in your browser.');
-    if (next.rows.length > wl.MAX_JOB_ROWS) throw new Error('A job takes up to 1,000 rows. Split the file and try again.');
+    if (next.rows.length > wl.MAX_JOB_ROWS) throw new Error('A job takes up to 20,000 rows. Split the file and try again.');
     reset(); const v = version; box.replaceChildren(); const wait = notice(box, 'Pricing your job. Nothing runs yet.'); wait.classList.add('loading');
     const batches = chunk(next.rows, wl.CHUNK_ROWS), qs = [];
-    try { qs.push(await session.api('quote', {rows: next.rows, columns: next.columns})); } // one quote covers the whole job (up to 1,000 rows)
+    try { qs.push(await session.api('quote', {rows: next.rows, columns: next.columns})); } // one quote covers the whole job
     catch (e) { if (v === version) { box.replaceChildren(); notice(box, errorText(e), true); } return; }
     if (closed || v !== version) return;
     job = {...next, batches}; quotes = qs; renderQuote();
@@ -368,7 +368,7 @@ function workbench(w) {
   const head = el('header', undefined, 'app-head'); head.append(eyebrow('Data Workbench'), el('h3', 'Tell it what you need. Approve the price. Get a better file.', 'app-title')); root.append(head);
   const steps = stepper(['File', 'Goal', 'Set up', 'Quote', 'Run', 'Results']); root.append(steps.ol); steps.at(0);
   const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite'); root.append(msg);
-  const {drop, file} = fileDrop('wb-file', 'Up to 1,000 rows, 30 columns and 5 MiB. XLSX reads the first sheet.'); root.append(drop);
+  const {drop, file} = fileDrop('wb-file', 'Any CSV or XLSX up to 5 MiB. XLSX reads the first sheet. You see the price before anything runs.'); root.append(drop);
   const previewBox = el('div'), chatBox = el('section', undefined, 'chat'), setupBox = el('section', undefined, 'setup'), engineBox = el('section', undefined, 'engine');
   root.append(previewBox, chatBox, setupBox, engineBox);
   const eng = jobEngine(w, engineBox, 'wb-run');
@@ -466,7 +466,7 @@ function enrichApp(w) {
   const head = el('header', undefined, 'app-head'); head.append(eyebrow('Deep Enrich'), el('h3', 'Add contact data and research answers to a list.', 'app-title')); root.append(head);
   if (!requireSignIn(root)) return;
   const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
-  const {drop, file} = fileDrop('en-file', 'Up to 1,000 rows. Pick the columns, choose what to add, approve the quote.'); root.append(drop, msg);
+  const {drop, file} = fileDrop('en-file', 'Up to 5 MiB. Pick the columns, choose what to add, approve the quote.'); root.append(drop, msg);
   const form = el('div', undefined, 'enrich-form'), engineBox = el('section', undefined, 'engine'); root.append(form, engineBox);
   const eng = jobEngine(w, engineBox, 'en-run');
   let source = null, filename = '';
