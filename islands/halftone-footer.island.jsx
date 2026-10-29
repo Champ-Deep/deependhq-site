@@ -101,7 +101,7 @@ export const hwfAgo = (days) => {
 
 export default function HalftoneFooter(props) {
   const {
-    wordmark = 'deep_',
+    wordmark = 'deep',
     label = 'Sreedeep Surapaneni',
     meta = 'Champions Group · Bangalore',
     columns = [],
@@ -198,16 +198,17 @@ export default function HalftoneFooter(props) {
       m.font = `${weight} ${fit}px ${stack}`;
       const box = m.measureText(word);
       const cap = box.actualBoundingBoxAscent || fit * 0.72;
+      const desc = box.actualBoundingBoxDescent || 0; // the p hangs below the baseline
       // The crop lives in CSS (--hwf-crop) because it is a layout decision the
       // media query already owns; clamped to the source component's 0 to 0.6.
-      const raw = parseFloat(opt('--hwf-crop', '0.3'));
-      const c = Math.max(0, Math.min(0.6, Number.isFinite(raw) ? raw : 0.3));
+      const raw = parseFloat(opt('--hwf-crop', '0'));
+      const c = Math.max(0, Math.min(0.6, Number.isFinite(raw) ? raw : 0));
       m.fillStyle = '#000';
       m.textBaseline = 'alphabetic';
-      m.fillText(word, (w - box.width) / 2, h + cap * c);
+      m.fillText(word, (w - box.width) / 2, h + (cap + desc) * c - desc);
       // The visible band of the wordmark becomes the root's bottom padding, so
       // links and the rule row never sit over the dots. It depends on width only.
-      root.style.setProperty('--hwf-mark', `${Math.ceil(cap * (1 - c))}px`);
+      root.style.setProperty('--hwf-mark', `${Math.ceil((cap + desc) * (1 - c))}px`);
       const img = m.getImageData(0, 0, w, h).data;
 
       const gap = Math.max(3, parseFloat(opt('--hwf-gap', '6')) || 6);
@@ -445,7 +446,7 @@ export default function HalftoneFooter(props) {
       </div>
       <div className="hwf-rule">
         <div className="hwf-rule-a">
-          <img src="/favicon.svg" width="32" height="32" alt="Deep's scouter mark" />
+          <img src="/brand/brandmark.svg" width="32" height="32" alt="Deep's scouter mark" />
           {backToTop ? (
             <button type="button" className="hwf-up" onClick={toTop}>
               back to top ↑

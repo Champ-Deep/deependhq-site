@@ -47,7 +47,7 @@ const Hero = () => {
   return (
     <section className="v3-hero mode-operator" id="top" aria-labelledby="wx-hero-h">
       <div className="v3-hero-head">
-        <a href="index.html" className="v3-wordmark">the deep end<span aria-hidden="true">&gt;_</span></a>
+        <a href="index.html" className="v3-wordmark"><img src="brand/brandmark.svg" width="28" height="28" alt="" />the deep end</a>
         <p>Bengaluru · independent signal</p>
       </div>
       <div className="v3-hero-grid">

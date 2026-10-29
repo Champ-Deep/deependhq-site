@@ -36,6 +36,14 @@ export function isConfigured() {
 // Loads the pinned Clerk script once, then Clerk.load(). Accepts both SDK
 // shapes: a script that auto-instantiates window.Clerk, and one that exposes
 // the Clerk class for us to construct.
+// One product name everywhere. The Clerk dashboard app name is spelled differently, and Clerk prints that
+// name in its card titles, so the strings that interpolate it are overridden here.
+const NAME = 'The Deep End Toolkit';
+const LOCALIZATION = {
+  signIn: { start: { title: 'Sign in to ' + NAME }, password: { subtitle: 'to continue to ' + NAME }, emailCode: { subtitle: 'to continue to ' + NAME }, emailLink: { subtitle: 'to continue to ' + NAME } },
+  signUp: { start: { subtitle: 'to continue to ' + NAME }, emailCode: { subtitle: 'to continue to ' + NAME }, emailLink: { subtitle: 'to continue to ' + NAME } },
+};
+
 export async function startClerk() {
   if (clerkReady) return clerkReady;
   clerkReady = (async () => {
@@ -55,10 +63,10 @@ export async function startClerk() {
       });
     }
     if (window.Clerk && typeof window.Clerk.load === 'function') {
-      await window.Clerk.load();
+      await window.Clerk.load({ localization: LOCALIZATION });
     } else if (typeof window.Clerk === 'function') {
       const made = new window.Clerk(cfg.clerk_publishable_key);
-      await made.load();
+      await made.load({ localization: LOCALIZATION });
       window.Clerk = made;
     } else {
       throw new Error('The Clerk script did not provide a usable SDK.');
@@ -194,11 +202,11 @@ const tok = (name, fallback) => (getComputedStyle(document.documentElement).getP
 const APPEARANCE = () => ({
   colorScheme: document.documentElement.getAttribute('data-scheme') === 'light' ? 'light' : 'dark',
   variables: {
-    colorBackground: tok('--surface', '#12151D'),
+    colorBackground: tok('--card', '#181C26'),
     colorText: tok('--text', '#E8E4DC'),
     colorPrimary: tok('--win', '#C9A84C'),
     colorDanger: tok('--danger', '#E05030'),
-    colorInputBackground: tok('--bg', '#0D0F14'),
+    colorInputBackground: tok('--surface', '#12151D'),
     colorInputText: tok('--text', '#E8E4DC'),
     // Only the toolkit shells set these two (main-site radius and Inter).
     borderRadius: tok('--clerk-radius', '6px'),
@@ -220,6 +228,8 @@ export function mountSignIn(node) {
   const appearance = APPEARANCE();
   // Ink text on the marigold primary, the main site's btn-gold.
   appearance.variables.colorPrimaryForeground = tok('--navy', '#0D0F14');
+  // 21st.dev 2034 input glow: toolkit-signin.js drives a pointer-following ring on this class.
+  appearance.elements = { formFieldInput: 'dh-glow' };
   return window.Clerk.mountSignIn(node, { appearance, routing: 'hash', forceRedirectUrl: '/' });
 }
 

@@ -4,7 +4,7 @@
    its top padding would only double up on the island's own rhythm */
 .sys-footer:has(.hwf-root){padding-top:0}
 .hwf-root{
-  --hwf-crop:.3;   /* how far the wordmark hangs past the bottom edge */
+  --hwf-crop:0;    /* the whole word is drawn; the dock retreats instead of covering it */
   --hwf-gap:6;     /* halftone cell pitch, read by the canvas */
   box-sizing:border-box;
   position:relative;display:flex;flex-direction:column;gap:var(--s6);

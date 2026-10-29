@@ -496,14 +496,14 @@ def verify():
         capture(page, 'cap-1440')
         close_app(page, 'Deep Enrich')
         reset()
-        # Sign-in reads as a page of deependhq.com: marigold primary, ink text, Inter, 6px corners.
+        # Sign-in reads as a page of deependhq.com: marigold primary, ink text, card ground, Inter, 6px corners.
         for width in (390, 1440):
             page.set_viewport_size({'width': width, 'height': 1000})
             page.get_by_role('button', name='Sign out', exact=True).click()
             page.get_by_role('link', name='Sign in', exact=True).click()
             page.wait_for_selector('[data-fixture="signin"]')
             look = json.loads(page.locator('#toolkit-signin-root').get_attribute('data-appearance'))
-            assert {k: look.get(k) for k in ('colorPrimary', 'colorPrimaryForeground', 'colorBackground', 'colorText', 'borderRadius')} == {'colorPrimary': '#C9A84C', 'colorPrimaryForeground': '#0D0F14', 'colorBackground': '#12151D', 'colorText': '#E8E4DC', 'borderRadius': '6px'}, look
+            assert {k: look.get(k) for k in ('colorPrimary', 'colorPrimaryForeground', 'colorBackground', 'colorText', 'borderRadius')} == {'colorPrimary': '#C9A84C', 'colorPrimaryForeground': '#0D0F14', 'colorBackground': '#181C26', 'colorText': '#E8E4DC', 'borderRadius': '6px'}, look
             assert 'Inter' in look.get('fontFamily', ''), look
             capture(page, f'signin-{width}')
             page.get_by_role('button', name='Continue with Google (fixture)').click()

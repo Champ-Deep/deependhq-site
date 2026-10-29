@@ -93,7 +93,7 @@ const Footer = () => {
   }`;
 
   const islandProps = {
-    wordmark: 'deep_',
+    wordmark: 'deep',
     label: 'Sreedeep Surapaneni',
     meta: 'Champions Group · Bangalore',
     columns,
@@ -121,7 +121,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="foot-bottom">
-            <img src="favicon.svg" width="32" height="32" alt="Deep's scouter mark" />
+            <img src="brand/brandmark.svg" width="32" height="32" alt="Deep's scouter mark" />
             <span className="foot-id">
               {PRIVACY.map((s, i) =>
                 s.href ? (

@@ -18,8 +18,8 @@ h1,h2,h3,h4{font-family:var(--font-ui);font-weight:800;letter-spacing:var(--trac
 small{color:var(--muted)}
 .skip{position:fixed;top:0;left:20px;transform:translateY(-120%);z-index:10000;background:var(--win);color:var(--navy);padding:12px 16px;border-radius:0 0 var(--r-md) var(--r-md);font-weight:700;display:flex;align-items:center;min-height:44px;text-decoration:none}
 .skip:focus{transform:none}
-/* editorial eyebrow: gold Inter 600 small caps */
-.eyebrow{font:600 var(--text-xs)/1.4 var(--font-ui);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--win-text);margin:0 0 8px}
+/* eyebrow: the deependhq.com/toolkit .tk-eyebrow, mono small caps in lamp text */
+.eyebrow{font:500 11px/1.5 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--win-text);margin:0 0 12px}
 .plain{color:var(--muted);max-width:65ch}
 
 /* buttons: system.css .btn-gold / .btn-green / .btn-outline */
@@ -32,6 +32,8 @@ small{color:var(--muted)}
 .btn-outline:hover{border-color:var(--win)}
 /* Once a quote is on screen, Approve is the one primary; Get quote steps back to outline. */
 .window-body:has(#wb-run:not([disabled])) #wb-quote,.window-body:has(#en-run:not([disabled])) #en-quote{background:var(--card);color:var(--text);border-color:var(--line-2)}
+.btn-text{background:transparent;color:var(--text);border-color:transparent;padding:0 12px}
+.btn-text:hover{text-decoration:underline;text-underline-offset:4px}
 .btn-ghost{background:transparent;color:var(--text);border-color:transparent;padding:0 12px}
 .btn-ghost:hover{background:var(--card-2)}
 .btn-ghost.danger{color:var(--danger-text)}
@@ -62,8 +64,8 @@ legend{padding:0 8px;font:600 13px var(--font-ui);color:var(--text)}
 /* menubar: a slim surface bar, the site wordmark on the left */
 .menubar{position:fixed;inset:0 0 auto 0;z-index:950;height:var(--menubar-h);display:flex;align-items:center;gap:16px;padding:0 20px;background:var(--surface);border-bottom:1px solid var(--line)}
 .brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;text-decoration:none;color:var(--text)}
-.wordmark{font:800 17px/1 var(--font-ui);letter-spacing:var(--track-display)}
-.brand-sub{font:600 var(--text-xs)/1 var(--font-ui);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--win-text);padding:4px 8px;border:1px solid var(--line-2);border-radius:var(--r-pill)}
+.brand img{display:block;flex:none}
+.wordmark{font:700 17px/1 var(--font-ui);letter-spacing:-.02em;color:var(--text)}
 .menu-user{font:13px var(--font-mono);color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:26ch}
 .wallet{display:flex;gap:8px}
 .wallet span{font:500 13px/1 var(--font-mono);color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:var(--r-pill);padding:7px 12px;white-space:nowrap}
@@ -107,15 +109,17 @@ legend{padding:0 8px;font:600 13px var(--font-ui);color:var(--text)}
 .recent-runs li small{font-size:12px;color:var(--dim)}
 .recent-runs .empty{color:var(--muted);font-size:14px}
 
-/* dock: site-v3.css .v3-dock */
-.dock{position:fixed;z-index:900;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:4px;width:max-content;max-width:calc(100% - 32px);padding:8px 12px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3)}
-.dock-app{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;min-width:72px;min-height:60px;padding:4px 6px 8px;border:0;border-radius:var(--r-md);background:transparent;color:var(--text);cursor:pointer;font:500 11px/1.2 var(--font-ui)}
-.dock-app:hover{background:var(--card)}
-.dock-symbol{display:grid;place-items:center;width:32px;height:32px;color:var(--muted);transform:scale(var(--scale,1));transform-origin:50% 100%;transition:transform var(--dur-1) var(--ease-out)}
-.dock-symbol svg{width:26px;height:26px}
-.dock-app:hover .dock-symbol,.dock-app:focus-visible .dock-symbol{color:var(--win-text)}
-.dock-app[data-open=true] .dock-symbol{color:var(--text)}
-.dock-app[data-open=true]::after{content:'';position:absolute;bottom:2px;width:4px;height:4px;border-radius:50%;background:var(--win)}
+/* dock: the site-v3.css .v3-dock family. Same glass surface, border, radius, shadow, 24px icons, 11px labels. */
+.dock{position:fixed;z-index:900;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:20px;width:max-content;max-width:calc(100% - 32px);padding:12px 16px;background:color-mix(in oklab,var(--surface) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.dock{background:var(--surface)}}
+@media(prefers-reduced-transparency:reduce){.dock{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}}
+.dock-app{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;min-width:44px;min-height:44px;padding:0 2px;border:0;border-radius:var(--r-md);background:transparent;color:var(--muted);cursor:pointer;font:500 11px/1.2 var(--font-ui);white-space:nowrap}
+.dock-app:hover{color:var(--text)}
+.dock-symbol{display:grid;place-items:center;width:24px;height:24px;color:var(--muted);transform:scale(var(--scale,1));transform-origin:50% 100%;transition:transform var(--dur-1) var(--ease-out)}
+.dock-symbol svg{width:24px;height:24px}
+.dock-app:hover .dock-symbol,.dock-app:focus-visible .dock-symbol{color:var(--text)}
+.dock-app[data-open=true],.dock-app[data-open=true] .dock-symbol{color:var(--text)}
+.dock-app[data-open=true]::after{content:'';position:absolute;top:27px;left:50%;width:12px;height:2px;margin-left:-6px;border-radius:2px;background:var(--win)}
 .dock-app[data-launch=workbench],.dock-app[data-launch=enrich]{font-weight:600}
 
 /* windows */
@@ -256,18 +260,33 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
 .embed-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px}
 .embed iframe{flex:1;width:100%;min-height:320px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg)}
 
-/* sign-in: a page of deependhq.com */
-.signin-page{min-height:100vh;background-color:var(--bg);background-image:radial-gradient(circle at 1px 1px,var(--line) 1px,transparent 0);background-size:24px 24px}
+/* sign-in: a page of deependhq.com. 21st.dev 2034 Modern Animated Sign In, ported: two-pane card shell on a
+   radial ground (navy, Lamp glow at 12 percent, never the source's blue), BoxReveal headline lines as CSS
+   keyframes, the pointer-following input glow. Clerk renders the fields. */
+.signin-page{min-height:100vh;background-color:var(--bg);background-image:radial-gradient(60rem 36rem at 12% -8%,color-mix(in oklab,var(--win) 12%,transparent),transparent 70%),radial-gradient(56rem 40rem at 100% 108%,var(--surface),transparent 72%)}
 .signin-page #main{position:static;overflow:visible}
-.signin-layout{max-width:var(--content-max);margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;padding:calc(var(--menubar-h) + 64px) var(--pad) 64px}
-.signin-form h1{font-size:var(--text-hero);margin:4px 0 16px}
-.signin-form h1 span{color:var(--win-text)}
+.signin-layout{max-width:var(--content-max);margin:0 auto;padding:calc(var(--menubar-h) + 48px) var(--pad) 136px} /* bottom clears the fixed dock */
+.signin-shell{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-3);overflow:hidden}
+.signin-form{padding:48px;min-width:0}
+.signin-form h1{font:800 clamp(36px,4.4vw,60px)/1.05 var(--font-ui);letter-spacing:-.04em;margin:0 0 16px;color:var(--text)}
+.signin-form h1 .gold{color:var(--win-text)}
 .lede{font-size:var(--text-lg);color:var(--muted);max-width:42ch;margin-bottom:24px}
+.sr-line{position:relative;display:block;width:fit-content;max-width:100%;overflow:hidden}
+.sr-line>span{display:block;animation:sr-rise 500ms var(--ease-out) both;animation-delay:calc(var(--i,0) * 120ms + 250ms)}
+.sr-line::after{content:'';position:absolute;inset:4px 0;border-radius:4px;background:var(--win);pointer-events:none;animation:sr-wipe 500ms ease-in both;animation-delay:calc(var(--i,0) * 120ms)}
+@keyframes sr-rise{from{opacity:0;transform:translateY(75px)}}
+@keyframes sr-wipe{from{transform:translateX(0)}to{transform:translateX(101%)}}
 #signin-status{font:13px var(--font-mono);color:var(--muted);margin:16px 0}
 #toolkit-signin-root{max-width:440px}
 #toolkit-signin-root button{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin:8px 0;border:1px solid var(--line-2);border-radius:var(--r-md);background:var(--card);color:var(--text);font:600 14px var(--font-ui);cursor:pointer}
 #toolkit-signin-root p{color:var(--muted);font-size:14px}
-.signin-story{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px;align-self:start}
+.signin-story{padding:40px;min-width:0;background:radial-gradient(28rem 20rem at 50% 0%,color-mix(in oklab,var(--win) 12%,var(--card)),var(--card) 70%);border-left:1px solid var(--line)}
+.story-art{position:relative;display:grid;place-items:center;width:168px;height:168px;margin:0 auto 24px}
+.story-art i{position:absolute;border-radius:50%;border:1px solid var(--line-2)}
+.story-art i:nth-child(1){inset:0;border-color:var(--line)}
+.story-art i:nth-child(2){inset:18px}
+.story-art i:nth-child(3){inset:30px;border-color:color-mix(in oklab,var(--win) 40%,var(--line-2))}
+.story-art img{position:relative;display:block;width:96px;height:96px}
 .signin-story h2{font-size:var(--text-h2);margin-bottom:8px}
 .pipeline{list-style:none;padding:0;margin:20px 0}
 .pipeline li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px 0;border-top:1px solid var(--line)}
@@ -276,18 +295,21 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
 .pipeline small{display:block;font-size:14px;margin-top:2px}
 .story-foot{font:13px var(--font-mono);color:var(--muted)}
 .signin-form .cl-rootBox,.signin-form .cl-cardBox{width:100%;max-width:440px}
-.signin-form .cl-card{box-shadow:none;background:var(--surface);border:1px solid var(--line)}
+.signin-form .cl-card{box-shadow:none;border:1px solid var(--line)}
 .signin-form .cl-formButtonPrimary{color:var(--navy);min-height:44px}
 .signin-form .cl-formFieldInput,.signin-form .cl-socialButtonsBlockButton{min-height:44px}
 .signin-form .cl-socialButtonsBlockButtonText,.signin-form .cl-formFieldLabel,.signin-form .cl-headerTitle{color:var(--text)}
 .signin-form .cl-footerActionLink,.signin-form .cl-formFieldAction{min-height:44px;display:inline-flex;align-items:center;color:var(--win-text)}
+/* the 2034 glow: a 2px ring whose Lamp highlight sits under the pointer (--gx/--gy from toolkit-signin.js) */
+.signin-form .dh-glow{border:2px solid transparent!important;background:linear-gradient(var(--surface),var(--surface)) padding-box,radial-gradient(var(--glow-r,0px) circle at var(--gx,50%) var(--gy,50%),var(--win),var(--line-2) 80%) border-box!important}
+.signin-form .dh-glow:hover,.signin-form .dh-glow:focus{--glow-r:100px}
+.signin-form .dh-glow:focus-visible{outline:2px solid var(--win);outline-offset:2px}
 
-@media (max-width:64rem){:root{--widgets-w:280px}.menu-user{display:none}.signin-layout{gap:32px}}
+@media (max-width:64rem){:root{--widgets-w:280px}.menu-user{display:none}.signin-form,.signin-story{padding:32px}}
 @media (max-width:48rem){
   :root{--menubar-h:auto}
   .menubar{position:sticky;height:auto;flex-wrap:wrap;gap:8px;padding:8px 12px}
   .menubar .btn{min-height:44px}
-  .brand-sub{display:none}
   .wallet{order:3;width:100%;justify-content:space-between}
   #main{position:static;overflow:visible}
   .desktop{position:static;padding:16px 12px 120px;min-height:calc(100vh - 110px)}
@@ -315,7 +337,9 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
   .file-meta{grid-column:2}
   .file-acts{grid-column:1/-1;flex-wrap:wrap}
   .file-acts .btn,.crumb,.tab{min-height:44px}
-  .signin-layout{grid-template-columns:minmax(0,1fr);padding:32px var(--pad) 48px}
-  .signin-story{padding:24px}
+  .signin-layout{padding:24px 12px 112px}
+  .signin-shell{grid-template-columns:minmax(0,1fr)}
+  .signin-form{padding:28px 20px}
+  .signin-story{padding:28px 20px;border-left:0;border-top:1px solid var(--line)}
 }
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.dock-symbol{transform:none!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.sr-line::after{display:none}.dock-symbol{transform:none!important}}

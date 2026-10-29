@@ -35,8 +35,8 @@ const ToolkitLauncher = ({ data }) => {
   return (
     <section className="tk-launcher" aria-labelledby="tk-title">
       <div className="tk-account-strip">
-        <span className="tk-small">DEEP END / TOOLKIT</span>
-        <a className="tk-account-link" href="/account">Your credits &amp; account <span aria-hidden="true">↗</span></a>
+        <span className="tk-eyebrow">The Deep End Toolkit</span>
+        <a className="tk-account-link" href="https://toolkit.deependhq.com/">Your credits &amp; account <span aria-hidden="true">↗</span></a>
       </div>
       <header className="tk-intro">
         <div><h1 id="tk-title">The right tool.<br/>For your <span>next move.</span></h1></div>
@@ -52,12 +52,12 @@ const ToolkitLauncher = ({ data }) => {
             <div><span>03</span><strong>Check &amp; judge</strong><small>Email + Jev fit</small></div>
             <div><span>04</span><strong>Make your move</strong><small>Evidence + export</small></div>
           </div>
-          <div className="tk-feature-bottom"><a className="tk-primary" href="https://toolkit.deependhq.com">Open the toolkit <span aria-hidden="true">↗</span></a><span>See the maximum cost before you run.</span></div>
+          <div className="tk-feature-bottom"><a className="tk-primary" href="https://toolkit.deependhq.com/sign-in">Open the toolkit <span aria-hidden="true">↗</span></a><span>See the maximum cost before you run.</span></div>
         </article>
         <aside className="tk-wallet" aria-labelledby="tk-wallet-title">
           <span className="tk-eyebrow">One account. One balance.</span><h2 id="tk-wallet-title">Your credits<br/>go with you.</h2>
           <ol className="tk-wallet-steps"><li><span>01</span><div><strong>Sign in once</strong><p>Your account, private runs and history.</p></div></li><li><span>02</span><div><strong>Know the cost</strong><p>Credits are reserved before work starts.</p></div></li><li><span>03</span><div><strong>Stay in control</strong><p>Unused reservations return to your balance.</p></div></li></ol>
-          <a className="tk-secondary" href="/account">Account, usage &amp; plans</a><p className="tk-disclosure">Welcome credits and paid plans appear when enabled. No automatic overage charges.</p>
+          <a className="tk-secondary" href="https://toolkit.deependhq.com/">Account, usage &amp; plans</a><p className="tk-disclosure">Welcome credits and paid plans appear when enabled. No automatic overage charges.</p>
         </aside>
       </div>
       <section className="tk-collection" id="tk-products" aria-labelledby="tk-collection-title">
