@@ -3,23 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sign in · The Deep End / toolkit</title>
+<title>Sign in · The Deep End Toolkit</title>
 <meta name="theme-color" content="#0D0F14">
 <meta name="color-scheme" content="dark">
 <meta name="robots" content="noindex">
-<meta name="description" content="Sign in to The Deep End toolkit. Your tools, private runs and shared balance.">
+<meta name="description" content="Sign in to The Deep End Toolkit. Your tools, private runs and shared balance.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/scheme-tokens.css">
+<link rel="stylesheet" href="/site-v3.css">
 <link rel="stylesheet" href="/toolkit-desktop.css">
 </head>
 <body class="signin-page">
 <a class="skip" href="#main">Skip to sign in</a>
-<header class="menubar"><a class="brand" href="https://deependhq.com"><img src="/favicon.svg" alt="" width="28" height="28"><span class="wordmark">The Deep End</span><span class="brand-sub">toolkit</span></a><a class="btn btn-outline back" href="/">Back to the desktop</a></header>
+<header class="menubar"><a class="brand" href="https://deependhq.com/toolkit"><img src="/brand/brandmark.svg" alt="" width="28" height="28"><span class="wordmark">The Deep End Toolkit</span></a><a class="btn btn-text back" href="/">Back to the desktop</a></header>
+<!-- Two-pane card shell, radial ground, box reveal and input glow ported from 21st.dev 2034 (Modern Animated Sign In, arunachalam). Clerk renders the fields. -->
 <main id="main" class="signin-layout">
-  <section class="signin-form"><p class="eyebrow">Sign in</p><h1>Your tools.<br><span>Your next move.</span></h1><p class="lede">Sign in with your email. Your files, runs and balance belong to your account.</p><div id="toolkit-signin-root"></div><p id="signin-status" role="status">Connecting to sign-in...</p><button id="signin-retry" class="btn btn-outline" type="button">Retry connection</button><noscript><p>Enable JavaScript to use secure sign-in.</p></noscript></section>
-  <section class="signin-story" aria-labelledby="story-title"><p class="eyebrow">How the toolkit works</p><h2 id="story-title">From raw rows to the next right action.</h2><ol class="pipeline"><li><span>01</span><div><strong>Drop your file</strong><small>A CSV or spreadsheet. It stays in your browser.</small></div></li><li><span>02</span><div><strong>Say what you need</strong><small>The assistant proposes columns and a plan you can edit.</small></div></li><li><span>03</span><div><strong>See the dollars first</strong><small>No run starts before you approve its quote.</small></div></li><li><span>04</span><div><strong>Get a better file</strong><small>Results with review flags, saved to your Files.</small></div></li></ol><p class="story-foot">$1 daily spending limit per person. Unresolved costs stay visible.</p></section>
+  <div class="signin-shell">
+    <section class="signin-form">
+      <p class="eyebrow">Sign in</p>
+      <h1><span class="sr-line" style="--i:0"><span>Your tools.</span></span><span class="sr-line" style="--i:1"><span class="gold">Your next move.</span></span></h1>
+      <p class="lede sr-line" style="--i:2"><span>Sign in with your email. Your files, runs and balance belong to your account.</span></p>
+      <div id="toolkit-signin-root"></div>
+      <p id="signin-status" role="status">Connecting to sign-in...</p>
+      <button id="signin-retry" class="btn btn-text" type="button">Retry connection</button>
+      <noscript><p>Enable JavaScript to use secure sign-in.</p></noscript>
+    </section>
+    <section class="signin-story" aria-labelledby="story-title">
+      <div class="story-art" aria-hidden="true"><i></i><i></i><i></i><img src="/brand/brandmark.svg" alt="" width="96" height="96"></div>
+      <p class="eyebrow">How the toolkit works</p>
+      <h2 id="story-title">From raw rows to the next right action.</h2>
+      <ol class="pipeline"><li><span>01</span><div><strong>Drop your file</strong><small>A CSV or spreadsheet. It stays in your browser.</small></div></li><li><span>02</span><div><strong>Say what you need</strong><small>The assistant proposes columns and a plan you can edit.</small></div></li><li><span>03</span><div><strong>See the dollars first</strong><small>No run starts before you approve its quote.</small></div></li><li><span>04</span><div><strong>Get a better file</strong><small>Results with review flags, saved to your Files.</small></div></li></ol>
+      <p class="story-foot">$1 daily spending limit per person. Unresolved costs stay visible.</p>
+    </section>
+  </div>
 </main>
+<!-- The deependhq.com dock (Nav.jsx markup, absolute links). Toolkit is the current page; Login is hidden because this is it. -->
+<nav class="v3-dock" aria-label="Primary"><a class="v3-dock-home" href="https://deependhq.com/" aria-label="Deep, home"><img src="/brand/brandmark.svg" width="28" height="28" alt=""><span>Deep</span></a><span class="v3-dock-sep" aria-hidden="true"></span><div class="v3-dock-links"><a href="https://deependhq.com/journey"><svg class="ico v3-dock-symbol" width="24" height="24" aria-hidden="true" focusable="false"><use href="/brand/icons.svg#i-horseshoe"></use></svg><span>Mission Log</span></a><a href="https://deependhq.com/writing"><svg class="ico v3-dock-symbol" width="24" height="24" aria-hidden="true" focusable="false"><use href="/brand/icons.svg#i-book"></use></svg><span>Writing</span></a><a href="https://deependhq.com/pillars"><svg class="ico v3-dock-symbol" width="24" height="24" aria-hidden="true" focusable="false"><use href="/brand/icons.svg#i-crown"></use></svg><span>Pillars</span></a><a href="https://deependhq.com/toolkit" aria-current="page"><svg class="ico v3-dock-symbol" width="24" height="24" aria-hidden="true" focusable="false"><use href="/brand/icons.svg#i-prompt"></use></svg><span>Toolkit</span></a><a href="https://deependhq.com/now"><svg class="ico v3-dock-symbol" width="24" height="24" aria-hidden="true" focusable="false"><use href="/brand/icons.svg#i-diya"></use></svg><span>Now</span></a></div><details class="v3-dock-mobile"><summary>Explore <span aria-hidden="true">↑</span></summary><div class="v3-dock-menu"><a href="https://deependhq.com/journey">Mission Log</a><a href="https://deependhq.com/writing">Writing</a><a href="https://deependhq.com/pillars">Pillars</a><a href="https://deependhq.com/toolkit" aria-current="page">Toolkit</a><a href="https://deependhq.com/now">Now</a></div></details><span class="v3-dock-sep" aria-hidden="true"></span><div class="v3-dock-actions"><a href="https://scheduler.zoom.us/sreedeep" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Book a Call</a></div></nav>
 <script type="module" src="/toolkit-signin.js"></script>
 </body>
 </html>

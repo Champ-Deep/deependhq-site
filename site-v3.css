@@ -4,31 +4,41 @@
 :root{color-scheme:dark;--navy:#0D0F14;--marigold:#C9A84C;--bg:#0D0F14;--surface:#12151D;--card:#181C26;--card-2:#1E2330;--line:#2A2E3A;--line-2:#3A3F50;--text:#E8E4DC;--muted:#A8A8A2;--dim:#8A8A92;--win:#C9A84C;--win-text:#C9A84C}
 body{padding-bottom:112px}
 #dh-assistant-btn{bottom:112px!important}
-.v3-dock{position:fixed;z-index:80;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;width:max-content;max-width:calc(100% - 32px);padding:12px 16px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3);font-family:var(--font-ui);color:var(--text)}
+/* Dock: one scale (24px icons, 11px labels, 44px targets), glass because it floats over scrolling content,
+   and it retreats while the footer is in view (html[data-dock-away], set in site-classic.js). */
+.v3-dock{position:fixed;z-index:80;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;width:max-content;max-width:calc(100% - 32px);padding:12px 16px;background:color-mix(in oklab,var(--surface) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3);font-family:var(--font-ui);color:var(--text);transition:transform var(--dur-2) var(--ease-out)}
+html[data-dock-away] .v3-dock:not(:focus-within){transform:translate(-50%,calc(100% + 56px))}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.v3-dock{background:var(--surface)}}
+@media(prefers-reduced-transparency:reduce){.v3-dock{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}}
 .v3-dock a,.v3-dock summary{display:flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;text-decoration:none;color:var(--text)}
-.v3-dock-home{font:800 20px/1 var(--font-ui);letter-spacing:-.03em;gap:4px}
-.v3-dock-home span{color:var(--build-text)}
-.v3-dock-links{display:flex;gap:16px}
-.v3-dock-links a{flex-direction:column;gap:4px;font-size:11px;line-height:1.2;padding:4px}
-.v3-dock-links .v3-dock-symbol{display:block;width:28px;height:28px;transform-origin:50% 100%;transition:transform var(--dur-2) var(--ease-out);color:var(--muted);--icon-cut:var(--surface);--icon-accent:var(--win)}
-.v3-dock-links a:hover .v3-dock-symbol,.v3-dock-links a:focus-visible .v3-dock-symbol{transform:translateY(-6px) scale(1.2);color:var(--build-text)}
-.v3-dock-links a:has(+ a:hover) .v3-dock-symbol,.v3-dock-links a:hover + a .v3-dock-symbol{transform:translateY(-2px) scale(1.08)}
-.v3-dock a[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;color:var(--build-text)}
+.v3-dock-home{gap:8px;font:700 17px/1 var(--font-ui);letter-spacing:-.02em}
+.v3-dock-home img{display:block;width:28px;height:28px;flex:none}
+.v3-dock-sep{flex:none;width:1px;height:24px;background:var(--line-2)}
+.v3-dock-links{display:flex;gap:20px}
+.v3-dock-links a{position:relative;flex-direction:column;gap:8px;padding:0 2px;font:500 11px/1.2 var(--font-ui);color:var(--muted)}
+.v3-dock-links a:hover{color:var(--text)}
+.v3-dock-links .v3-dock-symbol{display:block;width:24px;height:24px;transform-origin:50% 100%;transition:transform var(--dur-2) var(--ease-out);color:var(--muted);--icon-cut:var(--surface);--icon-accent:var(--win)}
+.v3-dock-links a:hover .v3-dock-symbol,.v3-dock-links a:focus-visible .v3-dock-symbol{transform:translateY(-3px) scale(1.1);color:var(--text)}
+.v3-dock-links a[aria-current="page"],.v3-dock-links a[aria-current="page"] .v3-dock-symbol{color:var(--build-text)}
+.v3-dock-links a[aria-current="page"]::after{content:"";position:absolute;left:50%;top:27px;width:12px;height:2px;margin-left:-6px;border-radius:2px;background:var(--build-text)}
 .v3-dock-actions{display:flex;gap:8px;align-items:center}
 .v3-dock-actions .btn{padding:0 16px;font-size:13px;white-space:nowrap}
 .v3-dock-actions .btn-gold{background:var(--win);color:var(--navy)}
-.v3-dock-actions .btn-outline{border:1px solid var(--line-2);background:var(--card);color:var(--text)}
+.v3-dock .v3-dock-login{padding:0 12px;font:600 13px/1 var(--font-ui);color:var(--text);white-space:nowrap}
+.v3-dock .v3-dock-login:hover{text-decoration:underline;text-underline-offset:4px}
 .v3-dock-mobile{display:none;position:relative}
 .v3-dock summary{cursor:pointer;gap:8px;list-style:none;font-size:13px}
 .v3-dock summary::-webkit-details-marker{display:none}
+/* the menu stays opaque: glass nested inside the glass dock would blur nothing */
 .v3-dock-menu{position:absolute;bottom:calc(100% + 24px);left:0;min-width:200px;padding:12px;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3)}
+.v3-dock-mobile:not([open]) .v3-dock-menu{display:none} /* Chrome lays out closed <details> content; keep it out of geometry and audits */
 .v3-dock-menu a{justify-content:flex-start;padding:0 12px;font-size:15px}
 .v3-dock-menu a:hover{background:var(--card)}
 .v3-dock :focus-visible,.v3-hero :focus-visible{outline:2px solid var(--build-text);outline-offset:4px}
 .v3-hero{padding:24px var(--pad) 48px;max-width:1600px;margin:auto;color:var(--text)}
 .v3-hero-head{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
 .v3-wordmark{display:inline-flex;align-items:center;min-height:44px;font:700 24px/1 var(--font-ui);letter-spacing:-.03em;text-decoration:none;gap:8px;color:var(--text)}
-.v3-wordmark span{color:var(--build-text)}
+.v3-wordmark img{display:block;flex:none}
 .v3-hero-head p{font-size:11px;color:var(--dim)}
 .v3-hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:64px;align-items:center;padding-block:48px}
 .v3-copy{min-width:0}
@@ -63,9 +73,12 @@ body{padding-bottom:112px}
 .v3-latest-label>span{display:block;width:100%;font-size:18px;color:var(--text);font-weight:700}
 .v3-latest>a{display:inline-flex;align-items:center;gap:16px;min-height:44px;white-space:nowrap;color:var(--build-text);text-decoration:none}
 .signoff.band-paper{--text:#E8E4DC;--muted:#A8A8A2;--dim:#8A8A92;--ink:#E8E4DC;--paper-muted:#A8A8A2;background:var(--surface);color:var(--text);border-top:1px solid var(--line)}
+.signoff-wm-classic{display:flex;align-items:center;gap:16px}
+.signoff-wm-classic img{display:block;flex:none}
+.signoff-wm-classic .signoff-wordmark{height:clamp(56px,6vw,80px);width:auto}
 @keyframes v3-flip{from{transform:rotateX(0)}to{transform:rotateX(-180deg)}}
 @keyframes v3-squiggle{0%{filter:url(#v3-squiggle-0)}33%{filter:url(#v3-squiggle-1)}66%{filter:url(#v3-squiggle-2)}}
-@media(max-width:64rem){.v3-dock{gap:16px}.v3-dock-links{gap:8px}.v3-hero-grid{gap:32px}.v3-board{font-size:clamp(24px,4.4vw,48px)}}
+@media(max-width:64rem){.v3-dock{gap:16px}.v3-dock-links{gap:12px}.v3-hero-grid{gap:32px}.v3-board{font-size:clamp(24px,4.4vw,48px)}}
 @media(max-width:48rem){.v3-dock-links{display:none}.v3-dock-mobile{display:block}.v3-hero-grid{grid-template-columns:minmax(0,1fr);padding-block:32px;gap:32px}.v3-board{font-size:clamp(26px,7.5vw,52px)}.v3-portrait{max-width:420px;width:100%;justify-self:center}.v3-latest{grid-template-columns:1fr;gap:12px}.v3-latest-label{align-items:center}.v3-latest-label>span{width:auto}.v3-hero-head{align-items:flex-start;gap:12px}.v3-hero-head p{max-width:16ch;text-align:right}.v3-wordmark{font-size:20px}}
-@media(max-width:30rem){.v3-dock{padding:8px;gap:8px;max-width:calc(100% - 24px);bottom:max(12px,env(safe-area-inset-bottom))}.v3-dock-home{font-size:16px}.v3-dock-actions .btn{padding:0 10px;font-size:12px}.v3-dock summary{font-size:12px}.v3-dock-actions{gap:4px}.v3-hero{padding-top:12px}.v3-board-row{gap:2px}.v3-flap{border-radius:2px}.v3-replay{max-width:168px}}
-@media(prefers-reduced-motion:reduce){.v3-dock-symbol,.v3-flap i,.v3-squiggle{animation:none!important;transition:none!important;transform:none!important;filter:none!important}.v3-flap i{display:none}.v3-replay{display:none}}
+@media(max-width:30rem){.v3-dock{padding:8px 12px;gap:10px;max-width:calc(100% - 24px);bottom:max(12px,env(safe-area-inset-bottom))}.v3-dock-home{font-size:16px}.v3-dock-actions .btn{padding:0 12px;font-size:12px}.v3-dock .v3-dock-login{padding:0 8px;font-size:12px}.v3-dock summary{font-size:12px}.v3-dock-actions{gap:2px}.v3-hero{padding-top:12px}.v3-board-row{gap:2px}.v3-flap{border-radius:2px}.v3-replay{max-width:168px}}
+@media(prefers-reduced-motion:reduce){.v3-dock{transition:none}.v3-dock-symbol,.v3-flap i,.v3-squiggle{animation:none!important;transition:none!important;transform:none!important;filter:none!important}.v3-flap i{display:none}.v3-replay{display:none}}
