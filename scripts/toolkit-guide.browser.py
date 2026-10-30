@@ -32,6 +32,13 @@ def sprite_check():
     """Every fill is a palette colour, every coordinate an integer in 0..32, the badge has no lamp, the JSON matches."""
     data = json.loads((ROOT / 'brand/pixel-mare.json').read_text())
     assert sorted(data['frames']) == ['blink', 'idle', 'point', 'think']
+    f = data['frames']
+    blaze = {(x, y) for y, r in enumerate(f['idle']) for x, c in enumerate(r) if c == 'l'}
+    assert blaze, 'idle carries the lamp blaze'
+    for name in ('blink', 'think', 'point'):
+        assert all(f[name][y][x] == 'l' for x, y in blaze), f'{name} keeps every idle blaze cell'
+    assert f['blink'] != f['idle'], 'blink differs from idle'
+    assert {(x, y) for y in range(32) for x in range(32) if f['blink'][y][x] != f['idle'][y][x]}.isdisjoint(blaze), 'blink changes only non-blaze cells'
     for name in ['brand/pixel-mare.svg', 'brand/pixel-mare-badge.svg']:
         svg = (ROOT / name).read_text()
         fills = set(re.findall(r'fill="([^"]+)"', svg))

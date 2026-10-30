@@ -31,6 +31,8 @@ BADGE = os.path.join(ROOT, 'brand', 'pixel-mare-badge.svg')
 N = 32
 PALETTE = {'i': '#0E1A33', 'p': '#F4EBD9', 'm': '#A9ABA6', 'l': '#F4A62A'}
 FRAMES = ('idle', 'blink', 'think', 'point')
+EYE_OPEN = [(9, 14), (9, 15)]  # (x, y): a two-cell ink eye behind the blaze
+EYE_SHUT = [(9, 15), (10, 15)]  # the closed lid: a flat line wider than tall, the usual pixel blink
 SPRITE_CROP = (.5, .44)   # fraction of the source width and height kept for the sprite bust
 BADGE_CROP = (.46, .4)    # and for the badge head
 
@@ -94,8 +96,8 @@ def trace():
 
 def frames_from(idle):
     """Starting points for the other frames; hand-tune them in the JSON."""
-    lamp = [(x, y) for y, r in enumerate(idle) for x, c in enumerate(r) if c == 'l']
-    blink = stamp(idle, lamp, 'i') if lamp else idle  # the lit eye closes to an ink line
+    idle = stamp(idle, EYE_OPEN, 'i')
+    blink = stamp(stamp(idle, EYE_OPEN, 'm'), EYE_SHUT, 'i')  # only the eye changes; the lamp blaze stays in every frame
     think = stamp(idle, [(15, 7), (18, 5), (21, 3)], 'l')  # three dots rising beside the head
     arrow = [(x, 16) for x in range(24, 30)] + [(29, 14), (29, 15), (30, 15), (30, 16), (31, 16), (29, 17), (30, 17), (29, 18)]
     point = stamp(idle, arrow, 'l')  # a lamp arrow off to the right at eye height

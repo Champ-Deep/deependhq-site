@@ -24,6 +24,12 @@
     7.13
    ],
    [
+    "button.tg-close",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
     "p.tg-status",
     "#A8A8A2",
     "#12151D",
@@ -31,12 +37,6 @@
    ],
    [
     "span.tg-count",
-    "#A8A8A2",
-    "#12151D",
-    7.64
-   ],
-   [
-    "button.tg-close",
     "#A8A8A2",
     "#12151D",
     7.64
@@ -66,13 +66,13 @@
     13.43
    ],
    [
-    "p.tg-text",
+    "button.btn",
     "#E8E4DC",
     "#181C26",
     13.43
    ],
    [
-    "button.btn",
+    "p.tg-text",
     "#E8E4DC",
     "#181C26",
     13.43
@@ -116,13 +116,13 @@
     5.93
    ],
    [
-    "span.tg-count",
+    "button.tg-close",
     "#515B6E",
     "#FFFFFF",
     6.84
    ],
    [
-    "p.tg-meta",
+    "span.tg-count",
     "#515B6E",
     "#FFFFFF",
     6.84
@@ -134,7 +134,7 @@
     6.84
    ],
    [
-    "button.tg-close",
+    "p.tg-meta",
     "#515B6E",
     "#FFFFFF",
     6.84
@@ -152,19 +152,7 @@
     14.65
    ],
    [
-    "label.tg-label",
-    "#0E1A33",
-    "#FFFFFF",
-    17.29
-   ],
-   [
     "p.tg-text",
-    "#0E1A33",
-    "#FFFFFF",
-    17.29
-   ],
-   [
-    "button.btn",
     "#0E1A33",
     "#FFFFFF",
     17.29
@@ -177,6 +165,18 @@
    ],
    [
     "button.tg-chip",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.btn",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "label.tg-label",
     "#0E1A33",
     "#FFFFFF",
     17.29
@@ -208,6 +208,12 @@
     7.13
    ],
    [
+    "button.tg-close",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
     "p.tg-status",
     "#A8A8A2",
     "#12151D",
@@ -215,12 +221,6 @@
    ],
    [
     "span.tg-count",
-    "#A8A8A2",
-    "#12151D",
-    7.64
-   ],
-   [
-    "button.tg-close",
     "#A8A8A2",
     "#12151D",
     7.64
@@ -250,13 +250,13 @@
     13.43
    ],
    [
-    "p.tg-text",
+    "button.btn",
     "#E8E4DC",
     "#181C26",
     13.43
    ],
    [
-    "button.btn",
+    "p.tg-text",
     "#E8E4DC",
     "#181C26",
     13.43
@@ -300,13 +300,13 @@
     5.93
    ],
    [
-    "span.tg-count",
+    "button.tg-close",
     "#515B6E",
     "#FFFFFF",
     6.84
    ],
    [
-    "p.tg-meta",
+    "span.tg-count",
     "#515B6E",
     "#FFFFFF",
     6.84
@@ -318,7 +318,7 @@
     6.84
    ],
    [
-    "button.tg-close",
+    "p.tg-meta",
     "#515B6E",
     "#FFFFFF",
     6.84
@@ -336,19 +336,7 @@
     14.65
    ],
    [
-    "label.tg-label",
-    "#0E1A33",
-    "#FFFFFF",
-    17.29
-   ],
-   [
     "p.tg-text",
-    "#0E1A33",
-    "#FFFFFF",
-    17.29
-   ],
-   [
-    "button.btn",
     "#0E1A33",
     "#FFFFFF",
     17.29
@@ -361,6 +349,18 @@
    ],
    [
     "button.tg-chip",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.btn",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "label.tg-label",
     "#0E1A33",
     "#FFFFFF",
     17.29
@@ -392,6 +392,12 @@
     7.13
    ],
    [
+    "button.tg-close",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
     "p.tg-status",
     "#A8A8A2",
     "#12151D",
@@ -399,12 +405,6 @@
    ],
    [
     "span.tg-count",
-    "#A8A8A2",
-    "#12151D",
-    7.64
-   ],
-   [
-    "button.tg-close",
     "#A8A8A2",
     "#12151D",
     7.64
@@ -434,13 +434,13 @@
     13.43
    ],
    [
-    "p.tg-text",
+    "button.btn",
     "#E8E4DC",
     "#181C26",
     13.43
    ],
    [
-    "button.btn",
+    "p.tg-text",
     "#E8E4DC",
     "#181C26",
     13.43
@@ -484,13 +484,13 @@
     5.93
    ],
    [
-    "span.tg-count",
+    "button.tg-close",
     "#515B6E",
     "#FFFFFF",
     6.84
    ],
    [
-    "p.tg-meta",
+    "span.tg-count",
     "#515B6E",
     "#FFFFFF",
     6.84
@@ -502,7 +502,7 @@
     6.84
    ],
    [
-    "button.tg-close",
+    "p.tg-meta",
     "#515B6E",
     "#FFFFFF",
     6.84
@@ -520,19 +520,7 @@
     14.65
    ],
    [
-    "label.tg-label",
-    "#0E1A33",
-    "#FFFFFF",
-    17.29
-   ],
-   [
     "p.tg-text",
-    "#0E1A33",
-    "#FFFFFF",
-    17.29
-   ],
-   [
-    "button.btn",
     "#0E1A33",
     "#FFFFFF",
     17.29
@@ -545,6 +533,18 @@
    ],
    [
     "button.tg-chip",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.btn",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "label.tg-label",
     "#0E1A33",
     "#FFFFFF",
     17.29
