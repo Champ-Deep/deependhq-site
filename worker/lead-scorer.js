@@ -113,10 +113,10 @@ function customAnswer(answer, spec) {
 
 // One Treg call through the metered adapter. Shared by the lead scorer and the column-ops path.
 // Stops the caller (throws) when the charge is unknown or above the reserve, so nothing runs past an unreconciled cost.
-export function makeTreg({tregKey,call,fetcher=fetch,customerId,runId,strict=true}) {
+export function makeTreg({tregKey,call,fetcher=fetch,customerId,runId,strict=true,feature='lead-scorer'}) {
   let ordinal=0;
   return async(endpoint,body,reserve_micro) => {
-    const headers = {'X-Treg-Token':tregKey,'Content-Type':'application/json','X-Treg-Route-Max-Cost':String(reserve_micro/1000000),'X-Treg-Route-Waterfall':'0','X-Treg-Meta':'feature=lead-scorer'};
+    const headers = {'X-Treg-Token':tregKey,'Content-Type':'application/json','X-Treg-Route-Max-Cost':String(reserve_micro/1000000),'X-Treg-Route-Waterfall':'0','X-Treg-Meta':`feature=${feature}`};
     if (endpoint === 'treg.people.email.verify') headers['Cache-Control'] = 'no-cache';
     if (customerId && /^[\w.:-]{1,128}$/.test(customerId)) headers['X-Treg-Meta'] += `,customer=${customerId}`;
     if (runId) headers['Idempotency-Key'] = `${runId}:${ordinal++}`;
