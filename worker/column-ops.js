@@ -48,6 +48,9 @@ const DOMAIN = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/i;
 const LINKEDIN = /^https:\/\/(?:www\.)?linkedin\.com\/in\/[^/?#\s]+\/?$/i;
 const JEV_URL = 'https://openrouter.ai/api/alpha/decisions';
 export const CHAT_URL = 'https://openrouter.ai/api/v1/chat/completions';
+// The reserve is priced at llm's rates, so routing may not pick a pricier endpoint of the same model.
+// max_price is USD per million tokens; the stored rates are micro-USD per million tokens.
+export const routing = (llm) => ({ require_parameters: true, max_price: { prompt: llm.prompt_micro_per_mtok / 1e6, completion: llm.completion_micro_per_mtok / 1e6 } });
 export const openRouterPost = (fetcher, url, key, body, provider) => providerRequest(fetcher, url, {
   method: 'POST',
   headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', 'HTTP-Referer': 'https://deependhq.com', 'X-Title': 'Deep End Toolkit' },
@@ -229,7 +232,7 @@ export function deepseekRequest(spec, values, llm = DEFAULT_LLM) {
   return {
     model: llm.id, temperature: 0, max_tokens, messages,
     response_format: { type: 'json_schema', json_schema: { name, strict: true, schema: { type: 'object', additionalProperties: false, required: ['results'], properties: { results: { type: 'array', items: item } } } } },
-    provider: { require_parameters: true },
+    provider: routing(llm),
     ...(spec.web ? { plugins: [{ id: 'web', engine: 'exa', max_results: WEB_RESULTS }] } : {}),
   };
 }
@@ -376,7 +379,7 @@ export async function executeColumns(input, { tregKey, jevKey, model, llm = DEFA
   const needTreg = plan.some((p) => p.spec.engine === 'treg' && p.items.length);
   const needLlm = plan.some((p) => p.spec.engine !== 'treg' && p.items.length);
   if ((needTreg && !tregKey) || (needLlm && !jevKey)) throw new Error('The required providers are not configured.');
-  const treg = needTreg ? makeTreg({ tregKey, call, fetcher, customerId, runId, strict: false }) : null;
+  const treg = needTreg ? makeTreg({ tregKey, call, fetcher, customerId, runId, strict: false, feature: 'data-workbench' }) : null;
   const out = plan.map(({ spec, items, row_map }) => ({
     column: spec.column, op: spec.op, engine: spec.engine, distinct_count: items.length, row_map,
     ...(spec.output_columns ? { output_columns: spec.output_columns } : {}),
