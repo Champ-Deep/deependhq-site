@@ -193,6 +193,8 @@ const rows10 = [
   const enrichCalls = fx.calls.filter((c) => c.provider === 'treg' && c.endpoint !== 'treg.people.email.verify');
   check('wire: enrich uses real endpoint names (linkedin profile / people.enrich) once per distinct identity', enrichCalls.length > 0 && enrichCalls.every((c) => ['treg.linkedin.user.profile', 'treg.people.enrich'].includes(c.endpoint)) && enrichCalls.length === quote.body.columns[3].distinct_count, JSON.stringify(enrichCalls.map((c) => c.endpoint)));
   check('wire: Treg gets run-scoped idempotency keys and the customer id', by('treg').every((c) => /^[0-9a-f-]{36}:\d+$/.test(c.headers['Idempotency-Key']) && c.headers['X-Treg-Meta'].includes('customer=user_a')));
+  check('wire: workbench Treg calls are attributed to data-workbench, not lead-scorer', by('treg').every((c) => c.headers['X-Treg-Meta'].startsWith('feature=data-workbench,')));
+  check('wire: max_price caps routing at the reserved rates (USD per Mtok)', ds.provider.max_price.prompt === 0.14 && ds.provider.max_price.completion === 0.42, JSON.stringify(ds.provider));
 
   const spent = 4000 + 60 + 3 * 9000 + enrichCalls.length * 6000;
   check('settle: spent_micro is the sum of provider-reported costs (Treg header, usage.cost)', r.body.spent_micro === spent && r.body.held_micro === 0, `${r.body.spent_micro} vs ${spent}`);

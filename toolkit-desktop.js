@@ -224,8 +224,8 @@ addEventListener('drop', async e => {
 // Desktop and dock repaint from fresh config and usage after sign-in, sign-out and Refresh connection.
 function paintUsage() {
   const u = usage?.usage;
-  $('#daily').textContent = u ? money(Math.max(0, u.daily_credit_cap - u.credits_used - u.credits_held) * 1000, 'down') + ' left today' : 'Allowance unavailable';
-  $('#balance').textContent = u ? money(u.credits_available * 1000, 'down') + ' balance' : 'Balance unavailable';
+  $('#daily').textContent = u ? money(Math.max(0, u.daily_credit_cap - u.credits_used - u.credits_held) * 1000, 'down') : 'Unavailable';
+  $('#balance').textContent = u ? money(u.credits_available * 1000, 'down') : 'Unavailable';
   const recent = $('#recent-runs'), runs = wl.groupRuns(usage?.runs || []).sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)).slice(0, 5);
   recent.replaceChildren(...(!usage ? [el('li', signedIn() ? 'Runs unavailable. Refresh the connection.' : 'Sign in to see your recent runs.', 'empty')] : !runs.length ? [el('li', 'No runs yet', 'empty')] : runs.map(r => { const li = el('li'); li.append(el('strong', r.list_name || r.tool_id), el('span', r.status + ' / ' + r.row_count + ' ' + (r.row_count === 1 ? 'row' : 'rows') + ' / ' + money(r.spent_micro)), el('small', age(r.created_at))); return li; })));
   $('#identity').textContent = usage?.user.email || 'Your files stay in your browser until you approve a run.';
@@ -278,11 +278,15 @@ function dropTarget(zone, onFile, app) {
     if (id) { const entry = JSON.parse(id); openFileIn(entry, app); } else onFile(e.dataTransfer.files[0]);
   });
 }
-async function readTable(f) {
+async function readTable(f, cut = false) {
   if (!f) throw new Error('Choose a file.');
   if (!tabular(f.name)) throw new Error('Choose a CSV or XLSX file. Nothing was uploaded.');
   if (f.size > MAX_FILE_BYTES) throw new Error('This file exceeds 5 MiB. Split it and try again.');
-  return wl.validateFileTable(/\.xlsx$/i.test(f.name) ? await parseXlsx(await f.arrayBuffer()) : parseCsv(await f.text()));
+  const table = /\.xlsx$/i.test(f.name) ? await parseXlsx(await f.arrayBuffer()) : parseCsv(await f.text());
+  if (!cut) return wl.validateFileTable(table);
+  // Workbench: the server refuses values over 1,000 characters, so the copy it is sent is cut; originals stay for the download.
+  const long = new Set(), rows = table.rows.map(r => Object.fromEntries(Object.entries(r).map(([k, v]) => { const t = String(v ?? ''); if (t.length > 1000) long.add(k); return [k, t.length > 1000 ? t.slice(0, 1000) : v]; })));
+  return {...wl.validateFileTable({...table, rows}), originals: table.rows, long};
 }
 function fileDrop(id, hint) {
   const drop = el('div', undefined, 'dropzone'), file = input('', 'file'); file.id = id; file.accept = '.csv,.xlsx';
@@ -292,65 +296,75 @@ function fileDrop(id, hint) {
 const loadedText = n => `${n} ${n === 1 ? 'row' : 'rows'} loaded in your browser. Nothing is sent until you approve a run.`;
 
 // The engine both Data Workbench and Deep Enrich share: quote a whole job, run it in chunks of 100, save the results.
-function jobEngine(w, box, runId) {
+// ui (Data Workbench only): boxes per stage, stage(name) to switch the visible stage, trace() for the run, report() for the results.
+function jobEngine(w, box, runId, ui = {}) {
   let job = null, quotes = null, version = 0, busy = false, closed = false;
+  const B = {quote: ui.boxes?.quote || box, run: ui.boxes?.run || box, results: ui.boxes?.results || box};
+  const eb = t => ui.stage ? '' : eyebrow(t); // the Workbench stepper already names the stage
   const prior = w.cleanup; w.cleanup = () => { closed = true; prior?.(); };
-  function reset() { version++; job = null; quotes = null; if (!busy) box.replaceChildren(); }
+  function reset() { version++; job = null; quotes = null; if (!busy) for (const b of new Set(Object.values(B))) b.replaceChildren(); }
   async function quote(next) {
     if (busy) return;
     if (!signedIn()) throw new Error('Sign in before requesting a quote. Your file is still only in your browser.');
     if (next.rows.length > wl.MAX_JOB_ROWS) throw new Error('A job takes up to 20,000 rows. Split the file and try again.');
-    reset(); const v = version; box.replaceChildren(); const wait = notice(box, 'Pricing your job. Nothing runs yet.'); wait.classList.add('loading');
+    reset(); const v = version; ui.stage?.('quote'); B.quote.replaceChildren(); const wait = notice(B.quote, 'Pricing your job. Nothing runs yet.'); wait.classList.add('loading');
     const batches = chunk(next.rows, wl.CHUNK_ROWS), qs = [];
     try { qs.push(await session.api('quote', {rows: next.rows, columns: next.columns})); } // one quote covers the whole job
-    catch (e) { if (v === version) { box.replaceChildren(); notice(box, errorText(e), true); } return; }
+    catch (e) { if (v === version) { B.quote.replaceChildren(); notice(B.quote, errorText(e), true); } return; }
     if (closed || v !== version) return;
     job = {...next, batches}; quotes = qs; renderQuote();
   }
   function renderQuote() {
-    box.replaceChildren(); const q = wl.quoteSummary(quotes), left = q.allowance.remaining_daily_micro ?? q.allowance.remaining_daily_credits * 1000;
+    const box = B.quote; box.replaceChildren(); const q = wl.quoteSummary(quotes), left = q.allowance.remaining_daily_micro ?? q.allowance.remaining_daily_credits * 1000;
     const k = job.batches.length;
-    box.append(eyebrow('Step 4 / Quote'), el('h3', 'Your quote'));
-    const line = el('p', undefined, 'quote-line'); line.append('Up to ', el('strong', money(q.micro)), ', ', el('span', money(left, 'down') + ' left today', 'quote-left')); box.append(line);
-    box.append(el('p', `${q.rows} rows in ${k} ${k === 1 ? 'chunk' : 'chunks'} of up to 100, run one after another. Duplicate values in a chunk are billed once, and you pay what the providers actually charge, never more than this.`, 'plain'));
+    box.append(eb('Step 4 / Quote'), el('h3', 'Your quote'));
+    box.append(metrics([['Up to', money(q.micro)], ['Rows', q.rows.toLocaleString('en-US')], ['Chunks of 100', String(k)], ['Left today after this job', money(Math.max(0, left - q.micro), 'down')]]));
+    box.append(el('p', `${q.rows} rows in ${k} ${k === 1 ? 'chunk' : 'chunks'} of up to 100, run one after another. ${money(left, 'down')} left today before this job. Duplicate values in a chunk are billed once, and you pay what the providers actually charge, never more than this.`, 'plain'));
     box.append(table(['What happens', 'Column', 'Engine', 'Up to'], job.columns.map((c, i) => [wl.OP_LABEL[c.op] || c.op, c.column, wl.ENGINE_LABEL[c.engine] || c.engine, money(quotes.reduce((s, x) => s + (x.columns?.[i]?.max_cost_micro || 0), 0))]), 'Quote by operation'));
     if (q.reasons.length) { const n = notice(box, 'This job cannot run yet. ', true); n.append(q.reasons.join(' ')); }
-    const run = button('Approve up to ' + money(q.micro) + ' and run', runAll, 'btn btn-green'); run.id = runId; run.disabled = q.reasons.length > 0; box.append(run);
+    const run = button('Approve up to ' + money(q.micro) + ' and run', runAll, ui.stage ? 'btn btn-gold' : 'btn btn-green'); run.id = runId; run.disabled = q.reasons.length > 0; box.append(run);
     run.scrollIntoView({block: 'nearest'});
   }
   async function runAll() {
     if (busy || !job) return; busy = true; const {batches, columns, name, onSaved} = job, total = job.rows.length, jobId = crypto.randomUUID();
-    box.replaceChildren(eyebrow('Step 5 / Run'), el('h3', 'Running your job'));
+    const box = B.run; ui.stage?.('run'); box.replaceChildren(eb('Step 5 / Run'), el('h3', 'Running your job'));
     const bar = el('progress'); bar.max = total; bar.value = 0; bar.setAttribute('aria-label', 'Rows done');
     const line = el('p', `Chunk 1 of ${batches.length} running...`, 'run-line'); line.setAttribute('aria-live', 'polite'); box.append(bar, line);
-    const outputs = []; let stopped = null, pending = null, last = null, spent = 0;
+    const trace = ui.trace?.(box, batches.length, total);
+    const outputs = []; let stopped = null, pending = null, last = null, spent = 0, at = 0;
     try {
       for (let i = 0; i < batches.length; i++) {
         if (closed || !signedIn()) { stopped = 'The window closed or you signed out. Remaining chunks were not started.'; break; }
+        at = i; trace?.chunk(i, 'running');
         const body = {tool_id: 'data-workbench', job_id: jobId, chunk_index: i, chunk_count: batches.length, source_name: name.replace(/\.(csv|xlsx)$/i, ''), request_id: crypto.randomUUID(), list_name: name, rows: batches[i], columns, max_credits: quotes[0].max_credits};
         pending = body; const result = await session.api('run', body); pending = null; last = result; spent += result.spent_micro || 0;
-        outputs.push(...wl.resultRows(body.rows, columns, result.results)); bar.value = outputs.length;
+        const added = wl.resultRows(body.rows, columns, result.results); outputs.push(...added); bar.value = outputs.length; trace?.chunk(i, result.status, added, outputs.length - added.length, spent);
         line.textContent = `Chunk ${i + 1} of ${batches.length} ${result.status}. ${outputs.length} of ${total} rows done, ${money(spent)} spent.`;
         if (result.status !== 'completed') { stopped = 'Run stopped: ' + (result.error || result.status) + '. Finished results are kept. Held costs are not free.'; break; }
       }
     } catch (e) {
-      stopped = errorText(e) + ' No further chunks were started.';
+      stopped = errorText(e) + ' No further chunks were started.'; trace?.chunk(at, 'failed');
       if (pending) { const body = pending; box.append(button('Check or retry the same request', async () => { try { const r = await session.api('run', body); if (['new', 'running'].includes(r.status)) { notice(box, 'The original request is still running. Check again shortly.'); return; } outputs.push(...wl.resultRows(body.rows, columns, r.results)); results(outputs, null, 'Original request: ' + r.status + '. Remaining chunks were not run.'); await refreshUsage(); } catch (err) { notice(box, errorText(err), true); } })); }
     } finally { busy = false; }
     if (closed) return;
     if (stopped) notice(box, stopped, true);
-    await results(outputs, last?.result_file, stopped ? null : `Done. ${outputs.length} rows, ${money(spent)} spent. Review the flags before you use the results.`);
+    await results(outputs, last?.result_file, stopped ? null : `Done. ${outputs.length} rows, ${money(spent)} spent. Review the flags before you use the results.`, stopped);
     refreshUsage().catch(() => {}); onSaved?.();
   }
-  async function results(outputs, savedFile, doneText) {
+  async function results(outputs, savedFile, doneText, stopNote) {
     if (!outputs.length) return;
-    const wrap = el('section', undefined, 'results'); box.append(wrap);
-    wrap.append(eyebrow('Step 6 / Results'), el('h3', 'Results with review flags'));
+    // Long cells were cut to 1,000 characters for the providers; the download keeps the original values.
+    if (job?.originals) outputs = outputs.map((r, i) => ({...r, ...job.originals[i]}));
+    ui.stage?.('results'); B.run.querySelector('h3')?.replaceChildren('Job finished');
+    const wrap = el('section', undefined, 'results'); B.results.append(wrap);
+    wrap.append(eb('Step 6 / Results'), el('h3', ui.report ? 'Your report' : 'Results with review flags'));
     if (doneText) notice(wrap, doneText);
+    if (stopNote && ui.stage) notice(wrap, stopNote, true);
     const headers = Object.keys(outputs[0]), csv = toCsv(headers, outputs), base = (job?.name || 'results').replace(/\.(csv|xlsx)$/i, '');
     const actions = el('div', undefined, 'toolbar'); wrap.append(actions);
     actions.append(button('Download CSV', () => saveBlob(new Blob([csv], {type: 'text/csv;charset=utf-8'}), base + ' results.csv'), 'btn btn-gold'));
     const saved = el('p', 'Saving to Files...', 'saved-line'); wrap.append(saved);
+    ui.report?.(outputs, wrap, actions, base);
     wrap.append(table(headers, outputs.slice(0, 100).map(r => headers.map(h => r[h])), 'Results table'));
     if (outputs.length > 100) wrap.append(el('p', `Showing the first 100 of ${outputs.length} rows. The CSV has all of them.`, 'plain'));
     // The worker saves the whole job to Files and returns result_file on the last chunk.
@@ -361,93 +375,185 @@ function jobEngine(w, box, runId) {
   return {quote, reset, busy: () => busy};
 }
 
-function stepper(names) { const ol = el('ol', undefined, 'steps'); names.forEach((s, i) => ol.append(el('li', String(i + 1).padStart(2, '0') + ' ' + s))); return {ol, at: n => [...ol.children].forEach((s, i) => i === n ? s.setAttribute('aria-current', 'step') : s.removeAttribute('aria-current'))}; }
+// 21st.dev Basic Stepper (29925), vanilla port: numbered circles, connecting line, check when done, active gold, future dim.
+// Only stages already reached can be clicked; the rest are aria-disabled, never [disabled].
+const CHECK = 'M7 16.5l6 6L25 10';
+function stepper(names, onPick) {
+  const ol = el('ol', undefined, 'stepper'); ol.setAttribute('aria-label', 'Workbench stages');
+  const items = names.map((name, i) => {
+    const li = el('li'), b = button('', () => { if (b.getAttribute('aria-disabled') !== 'true') onPick(i); }, 'step-btn');
+    const dot = el('span', String(i + 1), 'step-dot'); dot.setAttribute('aria-hidden', 'true');
+    b.append(dot, el('span', name, 'step-name')); li.append(b); ol.append(li); return {li, b, dot};
+  });
+  function at(n, reached) {
+    items.forEach(({li, b, dot}, i) => {
+      li.dataset.state = i === n ? 'active' : i < reached || i < n ? 'done' : 'todo'; // reached but not yet passed stays numbered
+      dot.replaceChildren(li.dataset.state === 'done' ? icon(CHECK) : String(i + 1));
+      if (i === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+      b.setAttribute('aria-disabled', String(i > reached));
+      b.setAttribute('aria-label', `${i + 1}. ${names[i]}${li.dataset.state === 'done' ? ', done' : i > reached ? ', not reached yet' : ''}`);
+    });
+  }
+  return {ol, at};
+}
+const ADDS = {normalize_title: () => 'a clean title, seniority and function', classify: p => 'one of: ' + (p.categories || 'your categories'), verify: () => 'a yes or no answer',
+  research: p => p.output_columns ? 'columns: ' + p.output_columns : 'research answers', enrich: p => 'contact ' + p.fields.join(', '), verify_email: () => 'a deliverability verdict'};
+const ENGINE_SHORT = {treg: 'Treg', jev: 'Jev', deepseek: 'DeepSeek'};
+const STAGES = ['File', 'Columns', 'Ask', 'Quote', 'Run', 'Report'];
 
 function workbench(w) {
-  const root = w.body; root.classList.add('flow');
-  const head = el('header', undefined, 'app-head'); head.append(eyebrow('Data Workbench'), el('h3', 'Tell it what you need. Approve the price. Get a better file.', 'app-title')); root.append(head);
-  const steps = stepper(['File', 'Goal', 'Set up', 'Quote', 'Run', 'Results']); root.append(steps.ol); steps.at(0);
-  const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite'); root.append(msg);
-  const {drop, file} = fileDrop('wb-file', 'Any CSV or XLSX up to 5 MiB. XLSX reads the first sheet. You see the price before anything runs.'); root.append(drop);
-  const previewBox = el('div'), chatBox = el('section', undefined, 'chat'), setupBox = el('section', undefined, 'setup'), engineBox = el('section', undefined, 'engine');
-  root.append(previewBox, chatBox, setupBox, engineBox);
-  const eng = jobEngine(w, engineBox, 'wb-run');
-  let source = null, filename = '', turns = [], mapping = [], plan = [], asking = false;
-  const message = (text, bad = false) => { msg.replaceChildren(); notice(msg, text, bad); };
-  function changed() { eng.reset(); }
+  const root = w.body; root.classList.add('flow', 'wb');
+  const head = el('header', undefined, 'app-head'); head.append(eyebrow('Data Workbench'), el('h3', 'Drop a messy list. Get it back clean and enriched.', 'app-title')); root.append(head);
+  let current = 0, reached = 0;
+  const steps = stepper(STAGES, i => go(i)); root.append(steps.ol);
+  // One section per stage; only the active one is on screen.
+  const S = STAGES.map((name, i) => { const sec = el('section', undefined, 'stage'); sec.dataset.stage = name.toLowerCase(); sec.setAttribute('aria-label', name); sec.hidden = i > 0; root.append(sec); return sec; });
+  function go(i) { current = i; reached = Math.max(reached, i); toReport.hidden = reached < 5; S.forEach((sec, k) => { sec.hidden = k !== i; }); steps.at(i, reached); root.scrollTop = 0; }
+  w.node.guideGo = go; // the toolkit guide's "Go to <Stage>" button
+  const foot = (...kids) => { const f = el('div', undefined, 'stage-foot'); f.append(...kids); return f; };
+  const back = i => button('Back', () => go(i), 'btn btn-outline');
+  const msgUnder = () => { const m = el('div', undefined, 'msg'); m.setAttribute('aria-live', 'polite'); return m; };
+  const say = (m, text, bad = false) => { m.replaceChildren(); if (text) notice(m, text, bad); };
+  steps.at(0, 0);
+
+  // Stages 4 to 6 belong to the shared engine; Workbench gives it a box per stage and the trace and report hooks.
+  const qBox = el('div'), rBox = el('div'), resBox = el('div');
+  const toReport = button('See the report', () => go(5), 'btn btn-gold'); toReport.hidden = true;
+  S[3].append(qBox, foot(back(2))); S[4].append(rBox, foot(back(3), toReport)); S[5].append(resBox, foot(back(2)));
+  const eng = jobEngine(w, qBox, 'wb-run', {boxes: {quote: qBox, run: rBox, results: resBox}, stage: n => go({quote: 3, run: 4, results: 5}[n]), trace, report});
+
+  let source = null, filename = '', fileSize = 0, turns = [], mapping = [], plan = [], specs = [], asking = false, manual = false, aiSpent = 0, aiModel = '';
+  function changed() { eng.reset(); reached = Math.min(reached, current); steps.at(current, reached); }
+
+  // ---- 1. File ----
+  const {drop, file} = fileDrop('wb-file', 'Any CSV or XLSX up to 5 MiB. You see the price before anything runs.');
+  const fileMsg = msgUnder(), fileInfo = el('div', undefined, 'file-info');
+  const sample = button('Try the sample', async () => {
+    try { const r = await fetch('/toolkit-sample-leads.csv'); if (!r.ok) throw new Error('HTTP ' + r.status); load(new File([await r.blob()], 'sample-leads.csv', {type: 'text/csv'})); }
+    catch (e) { say(fileMsg, 'The sample did not load (' + e.message + '). Drop your own file instead.', true); }
+  }, 'btn btn-outline'); sample.id = 'wb-sample';
+  const toCols = button('Map the columns', () => go(1), 'btn btn-gold'); toCols.id = 'wb-to-columns';
+  const fileFoot = foot(toCols); fileFoot.hidden = true;
+  S[0].append(drop, fileMsg, el('div', undefined, 'or-row'), fileInfo, fileFoot); S[0].querySelector('.or-row').append(el('span', 'No file handy?'), sample);
   async function load(f) {
     if (eng.busy()) return;
-    try { source = await readTable(f); } catch (e) { message(e.message, true); steps.at(0); return; }
-    filename = f.name; turns = []; mapping = wl.guessFields(source.headers); plan = []; eng.reset(); setupBox.replaceChildren();
-    message(loadedText(source.rows.length)); steps.at(1);
-    previewBox.replaceChildren(el('h3', 'Preview: ' + f.name), table(source.headers, source.rows.slice(0, 5).map(r => source.headers.map(h => r[h])), 'File preview'));
-    renderChat();
+    try { source = await readTable(f, true); } catch (e) { say(fileMsg, e.message, true); return; }
+    filename = f.name; fileSize = f.size; turns = []; plan = []; manual = false; aiSpent = 0; aiModel = '';
+    mapping = wl.guessFields(source.headers).map(m => ({...m, sure: wl.guessSure(m.field, samplesOf(m.source))}));
+    eng.reset(); reached = 0; go(0); say(fileMsg, loadedText(source.rows.length));
+    fileInfo.replaceChildren(metrics([['File', f.name], ['Rows', source.rows.length.toLocaleString('en-US')], ['Columns', String(source.headers.length)], ['Size', size(f.size)]]),
+      el('h4', 'First 5 rows'), table(source.headers, source.rows.slice(0, 5).map(r => source.headers.map(h => r[h])), 'File preview'));
+    fileFoot.hidden = false; S[0].querySelector('.or-row').hidden = true; reached = 1; steps.at(0, 1); renderColumns(); renderAsk(); toCols.focus();
   }
   w.load = load; file.addEventListener('change', () => load(file.files[0])); dropTarget(drop, load, 'workbench');
-  function renderChat() {
-    chatBox.replaceChildren(eyebrow('Step 2 / Goal'), el('h3', 'What do you want to do with this file?'));
-    const log = el('ol', undefined, 'chat-log'); log.setAttribute('aria-live', 'polite'); chatBox.append(log);
-    for (const t of turns) {
+  function samplesOf(h) { const seen = new Set(); for (const r of source.originals) { const v = String(r[h] ?? '').trim(); if (v) seen.add(v); if (seen.size >= 3) break; } return [...seen]; }
+
+  // ---- 2. Columns: 21st.dev Import Patchbay (26969), vanilla port. Source jack, cable, field socket. ----
+  function renderColumns() {
+    const n = source.rows.length, bay = el('div', undefined, 'patchbay'); bay.setAttribute('role', 'group'); bay.setAttribute('aria-label', 'Column mapping');
+    for (const m of mapping) {
+      const filled = source.originals.filter(r => String(r[m.source] ?? '').trim()).length, pct = n ? Math.round(filled / n * 100) : 0;
+      const row = el('div', undefined, 'map-row'); row.dataset.source = m.source; row.dataset.keep = String(m.keep); row.dataset.sure = String(m.sure);
+      const src = el('div', undefined, 'pb-src'); src.append(el('strong', m.source, 'map-source'));
+      const sm = el('ul', undefined, 'pb-samples'); sm.setAttribute('aria-label', 'Sample values from ' + m.source);
+      for (const v of samplesOf(m.source)) sm.append(el('li', v.length > 60 ? v.slice(0, 60) + '...' : v));
+      if (!sm.childElementCount) sm.append(el('li', 'No values', 'empty'));
+      const fill = el('p', undefined, 'pb-fill'); fill.append(el('span', `${pct}% filled`), el('span', undefined, 'pb-meter')); fill.lastChild.style.setProperty('--p', pct + '%');
+      src.append(sm, fill);
+      const cable = el('span', undefined, 'pb-cable'); cable.setAttribute('aria-hidden', 'true');
+      const dst = el('div', undefined, 'pb-dst');
+      const s = select(wl.FIELDS.map(f => [f, wl.FIELD_LABEL[f]]), m.field); s.setAttribute('aria-label', 'Field for ' + m.source);
+      const tag = el('small', undefined, 'pb-tag'), paint = () => { s.disabled = !m.keep; tag.textContent = !m.keep ? 'Stays in your browser' : m.sure ? 'Matched' : 'Not sure, check it'; };
+      s.addEventListener('change', () => { m.field = s.value; m.sure = true; row.dataset.sure = 'true'; paint(); changed(); });
+      const keep = check('Keep', m.keep, v => { m.keep = v; row.dataset.keep = String(v); paint(); changed(); }); keep.querySelector('input').setAttribute('aria-label', 'Keep ' + m.source); paint();
+      dst.append(s, tag, keep); row.append(src, cable, dst);
+      if (source.long.has(m.source)) row.append(el('p', 'Long values are cut to 1,000 characters before they are sent; your download keeps the original.', 'pb-long'));
+      bay.append(row);
+    }
+    const unsure = mapping.filter(m => !m.sure).map(m => m.source);
+    const confirm = button('Confirm columns', () => { for (const m of mapping) m.sure = true; bay.querySelectorAll('.map-row').forEach(r => { r.dataset.sure = 'true'; }); go(2); S[2].querySelector('#wb-goal')?.focus(); }, 'btn btn-gold'); confirm.id = 'wb-confirm';
+    S[1].replaceChildren(el('h3', 'Check how your columns line up'),
+      el('p', `${mapping.length} columns. ${unsure.length ? 'Dashed means not sure, check: ' + unsure.join(', ') + '. ' : ''}Untick Keep for anything that should never leave your browser.`, 'plain'),
+      bay, foot(back(0), confirm));
+  }
+
+  // ---- 3. Ask: 21st.dev AI Prompt Box (10442) with the Suggestions chips (12342), vanilla port on the site tokens. ----
+  const askMsg = msgUnder(), planMsg = msgUnder();
+  function renderAsk() {
+    // The last exchange stays in view; older turns fold away so the plan cards stay near the quote button.
+    const bubbles = list => { const ol = el('ol', undefined, 'chat-log'); for (const t of list) {
       const li = el('li', undefined, 'bubble ' + (t.role === 'user' ? 'from-user' : 'from-ai'));
       li.append(el('span', t.role === 'user' ? 'You' : 'Toolkit assistant', 'who'), el('p', t.reply ?? t.content));
       if (t.question) li.append(el('p', t.question, 'question'));
-      if (t.meta) li.append(el('small', t.meta));
-      log.append(li);
-    }
+      ol.append(li); } return ol; };
+    const log = el('div'); log.setAttribute('aria-live', 'polite');
+    if (turns.length > 2) { const d = el('details', undefined, 'older'); d.append(el('summary', `Earlier messages (${turns.length - 2})`), bubbles(turns.slice(0, -2))); log.append(d); }
+    log.append(bubbles(turns.slice(-2)));
     const chips = el('div', undefined, 'chips'); chips.setAttribute('aria-label', 'Suggestions');
-    // 21st.dev Suggestions (12342) chip pattern, vanilla port on the site tokens.
     const lastAi = [...turns].reverse().find(t => t.role === 'assistant');
     for (const c of (turns.length ? lastAi?.chips || [] : wl.STARTER_CHIPS)) chips.append(button(c, () => send(c), 'chip'));
-    chatBox.append(chips);
-    const form = el('form', undefined, 'composer'), box = el('textarea'); box.id = 'wb-goal'; box.rows = 2; box.maxLength = 2000; box.placeholder = turns.length ? 'Answer, or ask for a change' : 'For example: normalize the job titles and tell me which companies are SaaS';
-    const send_ = button(asking ? 'Thinking...' : 'Send', () => {}, 'btn btn-gold'); send_.type = 'submit'; send_.disabled = asking;
-    form.append(field(turns.length ? 'Your reply' : 'Describe the job in your own words', box), send_);
+    const form = el('form', undefined, 'promptbox'), box = el('textarea'); box.id = 'wb-goal'; box.rows = 1; box.maxLength = 2000;
+    box.placeholder = turns.length ? 'Answer, or ask for a change' : 'For example: clean up the job titles and tell me which companies are SaaS';
+    box.setAttribute('aria-label', turns.length ? 'Your reply' : 'Describe the job in your own words');
+    const grow = () => { box.style.height = 'auto'; box.style.height = Math.min(box.scrollHeight, 240) + 'px'; }; box.addEventListener('input', grow);
+    const sendBtn = button('', () => {}, 'pb-send'); sendBtn.type = 'submit'; sendBtn.setAttribute('aria-label', asking ? 'Thinking' : 'Send'); sendBtn.append(icon('M16 26V7 M8 14l8-8 8 8')); sendBtn.dataset.busy = String(asking);
+    const row = el('div', undefined, 'pb-row'); row.append(el('small', 'Enter to send, Shift Enter for a new line', 'pb-hint'), sendBtn);
+    form.append(box, row);
     form.addEventListener('submit', e => { e.preventDefault(); send(box.value); });
     box.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(box.value); } });
-    chatBox.append(form, el('p', wl.PRIVACY_LINE, 'privacy'));
-    if (!setupBox.childElementCount) chatBox.append(button('Skip the chat and set it up by hand', () => { renderSetup(); steps.at(2); }, 'btn btn-ghost'));
+    const meta = el('p', undefined, 'pb-meta');
+    if (aiModel) { meta.append(el('span', aiModel, 'model-badge'), el('span', 'Assistant cost so far: ' + money(aiSpent), 'pb-cost')); }
+    else meta.append(el('span', 'The assistant plans the job. It does not touch your cell values.', 'pb-cost'));
+    const planBox = el('section', undefined, 'plan-box'); planBox.setAttribute('aria-label', 'The plan');
+    if (plan.length || manual) {
+      planBox.append(el('h4', plan.length ? 'The plan' : 'Build the plan'), el('p', 'Edit any card. Nothing runs until you approve the quote.', 'plain'));
+      const ops = el('ol', undefined, 'plan'); plan.forEach((p, i) => ops.append(planCard(p, i)));
+      if (!plan.length) ops.append(el('li', 'No operations yet. Add one.', 'empty'));
+      const add = button('Add operation', () => { plan.push(wl.planItem({}, source.headers.filter(h => mapping.find(m => m.source === h)?.keep))); changed(); renderAsk(); }); add.disabled = plan.length >= 8;
+      planBox.append(ops, el('div', undefined, 'toolbar'), planMsg); planBox.querySelector('.toolbar').append(add);
+    } else planBox.append(button('Skip the assistant and set it up by hand', () => { manual = true; renderAsk(); }, 'btn btn-ghost link-btn'));
+    const quote = button('Looks right, get the quote', getQuote, 'btn btn-gold'); quote.id = 'wb-quote';
+    // The plan sits right under the conversation so the cards being approved stay next to the quote button.
+    S[2].replaceChildren(el('h3', 'What should happen to this file?'), log, planBox, chips, form, meta, askMsg, el('p', wl.PRIVACY_LINE, 'privacy'), plan.length || manual ? foot(back(1), quote) : foot(back(1)));
+    requestAnimationFrame(grow);
   }
   async function send(text) {
     text = String(text || '').trim(); if (!text || asking || !source) return;
-    if (!signedIn()) { message('Sign in to talk to the assistant. Your file is still only in your browser.', true); return; }
-    turns.push({role: 'user', content: text}); asking = true; renderChat();
+    if (!signedIn()) { say(askMsg, 'Sign in to talk to the assistant, or set the plan up by hand below. Your file is still only in your browser.', true); manual = true; renderAsk(); return; }
+    turns.push({role: 'user', content: text}); asking = true; say(askMsg, 'Thinking about your file...'); askMsg.firstChild.classList.add('loading'); renderAsk();
     try {
       const history = turns.slice(1).map(t => ({role: t.role, content: String(t.content).slice(0, 4000)})).slice(-12);
       const r = await session.api('intake', {file: wl.intakeFile(filename, source.headers, source.rows), goal: turns[0].content.slice(0, 2000), history});
-      turns.push({role: 'assistant', content: [r.reply, r.question].filter(Boolean).join(' '), reply: r.reply, question: r.question, chips: r.chips || [], meta: [r.model, r.cost_micro != null ? 'cost ' + money(r.cost_micro) : ''].filter(Boolean).join(' / ')});
-      if (Array.isArray(r.mapping)) mapping = wl.mergeMapping(mapping, r.mapping);
+      turns.push({role: 'assistant', content: [r.reply, r.question].filter(Boolean).join(' '), reply: r.reply, question: r.question, chips: r.chips || []});
+      aiModel = r.model || aiModel; aiSpent += Number(r.cost_micro) || 0;
+      // Confirmed columns stay as the user set them; the assistant's mapping only fills the plan.
       if (Array.isArray(r.plan) && r.plan.length) plan = r.plan.map(p => wl.planItem(p, source.headers));
-      changed(); renderSetup(); steps.at(2); setupBox.scrollIntoView({block: 'start'}); refreshUsage().catch(() => {});
-    } catch (e) { turns.pop(); message(errorText(e), true); }
-    finally { asking = false; renderChat(); chatBox.querySelector('#wb-goal')?.focus(); }
+      say(askMsg); changed(); refreshUsage().catch(() => {});
+    } catch (e) {
+      turns.pop();
+      if (e.message === 'provider_not_configured') { manual = true; say(askMsg, 'The assistant is not switched on yet. Set it up by hand below.'); }
+      else say(askMsg, errorText(e) + ' Try again, or set the plan up by hand below.', true);
+    } finally { asking = false; renderAsk(); S[2].querySelector('#wb-goal')?.focus(); }
   }
-  function renderSetup() {
-    setupBox.replaceChildren(eyebrow('Step 3 / Set up'), el('h3', 'Check the columns and the plan'), el('p', 'The assistant filled these in. Change anything; nothing runs until you approve the quote.', 'plain'));
-    const map = el('div', undefined, 'mapping'); map.setAttribute('role', 'group'); map.setAttribute('aria-label', 'Column mapping');
-    for (const m of mapping) {
-      const row = el('div', undefined, 'map-row'); row.dataset.source = m.source; row.dataset.keep = String(m.keep);
-      const s = select(wl.FIELDS.map(f => [f, wl.FIELD_LABEL[f]]), m.field); s.setAttribute('aria-label', 'Field for ' + m.source); s.addEventListener('change', () => { m.field = s.value; changed(); });
-      row.append(el('span', m.source, 'map-source'), s, check('Keep', m.keep, v => { m.keep = v; row.dataset.keep = String(v); changed(); }));
-      row.querySelector('input').setAttribute('aria-label', 'Keep ' + m.source);
-      map.append(row);
-    }
-    setupBox.append(el('h4', 'Columns'), map, el('h4', 'Plan'));
-    const ops = el('ol', undefined, 'plan'); setupBox.append(ops);
-    plan.forEach((p, i) => ops.append(planCard(p, i)));
-    if (!plan.length) ops.append(el('li', 'No operations yet. Add one, or ask the assistant above.', 'empty'));
-    const bar = el('div', undefined, 'toolbar'), add = button('Add operation', () => { plan.push(wl.planItem({}, source.headers.filter(h => mapping.find(m => m.source === h)?.keep))); changed(); renderSetup(); }); add.disabled = plan.length >= 8;
-    const go = button('Get quote', async () => { try { const columns = wl.planToSpecs(plan, mapping, source.headers); steps.at(3); await eng.quote({name: filename, rows: wl.keptRows(source.rows, mapping), columns}); steps.at(engineBox.querySelector('.results') ? 5 : 3); } catch (e) { message(e.message, true); } }, 'btn btn-gold'); go.id = 'wb-quote';
-    bar.append(add, go); setupBox.append(bar);
+  async function getQuote() {
+    say(planMsg);
+    try { specs = wl.planToSpecs(plan, mapping, source.headers); } catch (e) { say(planMsg, e.message, true); return; }
+    const long = [...source.long].some(h => mapping.find(m => m.source === h)?.keep);
+    try { await eng.quote({name: filename, rows: wl.keptRows(source.rows, mapping), originals: long ? wl.keptRows(source.originals, mapping) : null, columns: specs}); }
+    catch (e) { go(2); say(planMsg, e.message, true); }
   }
   function planCard(p, i) {
     const li = el('li', undefined, 'op-card'); li.dataset.operation = i;
-    const head = el('div', undefined, 'op-head'); head.append(el('strong', 'Operation ' + (i + 1)), button('Remove', () => { plan.splice(i, 1); changed(); renderSetup(); }, 'btn btn-ghost'));
+    const head = el('div', undefined, 'op-head'), sum = el('div', undefined, 'op-sum');
+    const badge = el('span', ENGINE_SHORT[p.engine] || p.engine, 'engine-badge'); badge.dataset.engine = p.engine;
+    sum.append(el('strong', (i + 1) + '. ' + (wl.OP_LABEL[p.op] || p.op)), badge, el('span', `on ${p.column || 'a column'}, adds ${ADDS[p.op]?.(p) || 'a column'}`, 'op-adds'));
+    head.append(sum, button('Remove', () => { plan.splice(i, 1); changed(); renderAsk(); }, 'btn btn-ghost'));
     head.lastChild.setAttribute('aria-label', 'Remove operation ' + (i + 1)); li.append(head);
-    const grid = el('div', undefined, 'form-grid');
+    const grid = el('div', undefined, 'form-grid'), redraw = () => { changed(); li.replaceWith(planCard(p, i)); };
     const col = select(source.headers.map(h => [h, h]), p.column), op = select(Object.keys(wl.OPS).map(k => [k, wl.OP_LABEL[k]]), p.op), engine = select(wl.OPS[p.op].map(e => [e, wl.ENGINE_LABEL[e]]), p.engine);
-    col.addEventListener('change', () => { p.column = col.value; changed(); });
-    op.addEventListener('change', () => { p.op = op.value; p.engine = wl.OPS[p.op][0]; changed(); renderSetup(); });
-    engine.addEventListener('change', () => { p.engine = engine.value; changed(); });
+    col.addEventListener('change', () => { p.column = col.value; redraw(); });
+    op.addEventListener('change', () => { p.op = op.value; p.engine = wl.OPS[p.op][0]; redraw(); });
+    engine.addEventListener('change', () => { p.engine = engine.value; redraw(); });
     grid.append(field('Column', col), field('Operation', op), field('Engine', engine));
     const text = (label, key, multi) => { const n = multi ? el('textarea') : input(p[key]); if (multi) n.value = p[key]; n.maxLength = 1000; n.addEventListener('input', () => { p[key] = n.value; changed(); }); grid.append(field(label, n, multi ? 'wide' : '')); };
     if (p.op === 'classify') { text('What should decide the category?', 'instruction', true); text('Categories, separated by commas', 'categories'); }
@@ -455,9 +561,44 @@ function workbench(w) {
     if (p.op === 'research') { text('Research question', 'instruction', true); text('Output column names, separated by commas', 'output_columns'); grid.append(check('Search the web (priced into the quote)', p.web, v => { p.web = v; changed(); })); }
     li.append(grid);
     if (p.op === 'enrich') { const c = el('div', undefined, 'checks'); c.append(el('span', 'Fields to add', 'field-label')); for (const k of ['name', 'title', 'company']) c.append(check(k[0].toUpperCase() + k.slice(1), p.fields.includes(k), v => { p.fields = v ? [...p.fields, k] : p.fields.filter(x => x !== k); changed(); })); li.append(c); }
-    if (p.op === 'normalize_title') li.append(el('p', 'Adds three columns: the clean title, seniority and function.', 'plain'));
     if (p.op === 'verify_email') li.append(el('p', 'Checks each address with the provider. Not a model guess.', 'plain'));
     return li;
+  }
+
+  // ---- 5. Run: ReUI trace CSV import (40158), vanilla port. Per chunk bars, counters, flagged rows as they arrive. ----
+  function trace(box, count, total) {
+    const nums = metrics([['Rows done', '0 of ' + total.toLocaleString('en-US')], ['Spent so far', money(0)], ['Flagged for review', '0'], ['Skipped or not run', '0']]); nums.classList.add('trace-nums');
+    const dd = [...nums.querySelectorAll('dd')];
+    const list = el('ol', undefined, 'trace'); list.setAttribute('aria-label', 'Chunks');
+    const items = Array.from({length: count}, (_, i) => { const li = el('li'); li.dataset.state = 'waiting'; const bar = el('progress'); bar.max = Math.min(wl.CHUNK_ROWS, total - i * wl.CHUNK_ROWS); bar.value = 0; bar.setAttribute('aria-label', 'Chunk ' + (i + 1)); const st = el('span', 'waiting', 'trace-state'); li.append(el('span', 'Chunk ' + (i + 1), 'trace-name'), bar, st); list.append(li); return {li, bar, st}; });
+    const flags = el('ul', undefined, 'trace-flags'); flags.setAttribute('aria-live', 'polite'); flags.setAttribute('aria-label', 'Flagged rows');
+    box.append(nums, list, el('h4', 'Flagged as they arrive'), flags);
+    let flagged = 0, skipped = 0, shown = 0;
+    return {chunk(i, state, rows = [], offset = 0, spent = 0) {
+      const it = items[i]; if (!it) return;
+      it.li.dataset.state = state; it.st.textContent = state;
+      if (state === 'running') { it.li.scrollIntoView?.({block: 'nearest'}); return; }
+      it.bar.value = rows.length; dd[0].textContent = (offset + rows.length).toLocaleString('en-US') + ' of ' + total.toLocaleString('en-US'); dd[1].textContent = money(spent);
+      rows.forEach((r, k) => {
+        const keys = Object.keys(r), why = keys.filter(h => / \/ review$/.test(h) && r[h] === 'Review needed').map(h => h.replace(/ \/ review$/, ''));
+        skipped += keys.filter(h => /^Result \d+: [^/]+ \/ [^/]+$/.test(h)).some(h => ['skipped', 'not_run'].includes(r[h])) ? 1 : 0;
+        if (!why.length) return; flagged++;
+        if (shown++ < 50) flags.append(el('li', `Row ${offset + k + 1}: ${why.join(', ')}`));
+      });
+      dd[2].textContent = String(flagged); dd[3].textContent = String(skipped);
+      if (!flags.childElementCount) flags.replaceChildren(el('li', 'Nothing flagged yet.', 'empty'));
+      else flags.querySelector('.empty')?.remove();
+    }};
+  }
+
+  // ---- 6. Report: counted in the browser from the result rows; SPAN data-card style, three exports. ----
+  function report(outputs, wrap, actions, base) {
+    const kept = mapping.filter(m => m.keep).map(m => m.source);
+    const brief = wl.agentBrief({name: filename, rows: source.rows.length, columns: source.headers.length, size_bytes: fileSize}, mapping, specs, wl.reportAggregates(source.originals, outputs, kept));
+    const cards = el('div', undefined, 'rp-grid'); cards.innerHTML = wl.reportCards(brief); // every value passes through esc()
+    actions.append(button('Download report', () => saveBlob(new Blob([wl.reportHtml(brief)], {type: 'text/html;charset=utf-8'}), base + ' report.html')),
+      button('Agent brief (JSON)', () => saveBlob(new Blob([JSON.stringify(brief, null, 2)], {type: 'application/json'}), base + ' brief.json')));
+    wrap.append(cards, el('h4', 'Result rows'));
   }
 }
 
@@ -650,24 +791,24 @@ function admin(w) {
   }
   const price = m => m ? `${money(m.prompt_micro_per_mtok)} in, ${money(m.completion_micro_per_mtok)} out per 1M tokens` : 'price unknown';
   function models(p) {
-    p.append(el('p', 'Pick the model for the intake chat and for DeepSeek operations. The server checks the id with OpenRouter and stores its price.', 'plain'));
+    p.append(el('p', 'One model runs the intake chat, the guide and DeepSeek operations. The server checks the id with OpenRouter and stores its price.', 'plain'));
     const box = el('form', undefined, 'card-form'); p.append(box);
     // resolves with the settings it rendered, so a save can read them back
     return (async () => {
       try {
         const r = await session.api('admin_settings_get', {}); if (!w.node.isConnected) return;
-        const settings = r.settings || {}, all = r.models || [], byId = new Map(all.map(m => [m.id, m])), picks = {};
-        for (const [key, label] of [['intake_model', 'Intake model (the chat that plans a job)'], ['research_model', 'Research model (DeepSeek operations)']]) {
-          const current = r.settings?.[key] || '', wrap = el('div', undefined, 'model-pick');
-          const search = input('', 'search'); search.placeholder = 'Search ' + all.length + ' models';
-          const list = el('select'); list.size = 6; list.setAttribute('aria-label', label);
-          const fill = () => { const q = search.value.trim().toLowerCase(), keep = list.value || current; list.replaceChildren(...all.filter(m => !q || m.id.toLowerCase().includes(q) || m.id === keep).slice(0, 200).map(m => new Option(m.id + '  /  ' + price(m), m.id))); list.value = keep; };
-          search.addEventListener('input', fill); fill();
-          const now = el('p', 'Current: ' + (current || 'not set') + (current ? ', ' + price(byId.get(current)) : ''), 'plain');
-          wrap.append(el('h4', label), now, field('Search models for ' + label.split(' (')[0].toLowerCase(), search), list); box.append(wrap); picks[key] = list;
-        }
-        const save = button('Save models', () => {}, 'btn btn-gold'); save.type = 'submit'; box.append(save);
-        box.addEventListener('submit', async e => { e.preventDefault(); save.disabled = true; try { const want = Object.fromEntries(Object.entries(picks).map(([k, s]) => [k, s.value])); await session.api('admin_settings_set', want); const back = await show('models'); if (!back) return; const off = Object.keys(want).filter(k => back[k] !== want[k]); status(off.length ? 'Saved, but the server now reports ' + off.map(k => k + ' = ' + (back[k] || 'not set')).join(', ') + '.' : 'Models saved and read back.', !!off.length); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
+        const settings = r.settings || {}, all = r.models || [], byId = new Map(all.map(m => [m.id, m]));
+        const label = 'Model for everything (chat, guide, research ops)', current = settings.intake_model || '', wrap = el('div', undefined, 'model-pick');
+        // the one-model setting writes both; a split left by the old two pickers is shown until the next save
+        if (settings.research_model && settings.research_model !== current) wrap.append(el('p', 'Currently split: intake ' + (current || 'not set') + ', research ' + settings.research_model + '. Saving sets both.', 'plain'));
+        const search = input('', 'search'); search.placeholder = 'Search ' + all.length + ' models';
+        const list = el('select'); list.size = 6; list.setAttribute('aria-label', label);
+        const fill = () => { const q = search.value.trim().toLowerCase(), keep = list.value || current; list.replaceChildren(...all.filter(m => !q || m.id.toLowerCase().includes(q) || m.id === keep).slice(0, 200).map(m => new Option(m.id + '  /  ' + price(m), m.id))); list.value = keep; };
+        search.addEventListener('input', fill); fill();
+        const now = el('p', 'Current: ' + (current || 'not set') + (current ? ', ' + price(byId.get(current)) : ''), 'plain');
+        wrap.append(el('h4', label), now, field('Search models', search), list); box.append(wrap);
+        const save = button('Save model', () => {}, 'btn btn-gold'); save.type = 'submit'; box.append(save);
+        box.addEventListener('submit', async e => { e.preventDefault(); if (!list.value) { status('Pick a model first.', true); return; } save.disabled = true; try { const model = list.value; await session.api('admin_settings_set', {model}); const back = await show('models'); if (!back) return; const off = ['intake_model', 'research_model'].filter(k => back[k] !== model); status(off.length ? 'Saved, but the server now reports ' + off.map(k => k + ' = ' + (back[k] || 'not set')).join(', ') + '.' : 'Model saved and read back.', !!off.length); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
         return settings;
       } catch (e) { status(errorText(e), true); }
     })();
