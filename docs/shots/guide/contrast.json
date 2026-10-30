@@ -1,0 +1,554 @@
+[
+ {
+  "width": 375,
+  "scheme": "dark",
+  "launcher": [
+   52,
+   52
+  ],
+  "corner": [
+   {
+    "n": "app-launcher",
+    "hit": false
+   },
+   {
+    "n": "stage-foot",
+    "hit": false
+   }
+  ],
+  "contrast": [
+   [
+    "p.tg-meta",
+    "#A8A8A2",
+    "#181C26",
+    7.13
+   ],
+   [
+    "p.tg-status",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "span.tg-count",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "button.tg-close",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "p.tg-eyebrow",
+    "#C9A84C",
+    "#12151D",
+    7.99
+   ],
+   [
+    "button.btn",
+    "#0D0F14",
+    "#C9A84C",
+    8.39
+   ],
+   [
+    "p.tg-text",
+    "#E8E4DC",
+    "#1E2330",
+    12.38
+   ],
+   [
+    "button.tg-chip",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "p.tg-text",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "button.btn",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "h2.tg-title",
+    "#E8E4DC",
+    "#12151D",
+    14.39
+   ],
+   [
+    "label.tg-label",
+    "#E8E4DC",
+    "#12151D",
+    14.39
+   ]
+  ]
+ },
+ {
+  "width": 375,
+  "scheme": "light",
+  "launcher": [
+   52,
+   52
+  ],
+  "corner": [
+   {
+    "n": "app-launcher",
+    "hit": false
+   },
+   {
+    "n": "stage-foot",
+    "hit": false
+   }
+  ],
+  "contrast": [
+   [
+    "p.tg-eyebrow",
+    "#8A5A00",
+    "#FFFFFF",
+    5.93
+   ],
+   [
+    "span.tg-count",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "p.tg-meta",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "p.tg-status",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "button.tg-close",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "button.btn",
+    "#0D0F14",
+    "#C9A84C",
+    8.39
+   ],
+   [
+    "p.tg-text",
+    "#0E1A33",
+    "#EEECE7",
+    14.65
+   ],
+   [
+    "label.tg-label",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "p.tg-text",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.btn",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "h2.tg-title",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.tg-chip",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ]
+  ]
+ },
+ {
+  "width": 768,
+  "scheme": "dark",
+  "launcher": [
+   52,
+   52
+  ],
+  "corner": [
+   {
+    "n": "app-launcher",
+    "hit": false
+   },
+   {
+    "n": "stage-foot",
+    "hit": false
+   }
+  ],
+  "contrast": [
+   [
+    "p.tg-meta",
+    "#A8A8A2",
+    "#181C26",
+    7.13
+   ],
+   [
+    "p.tg-status",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "span.tg-count",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "button.tg-close",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "p.tg-eyebrow",
+    "#C9A84C",
+    "#12151D",
+    7.99
+   ],
+   [
+    "button.btn",
+    "#0D0F14",
+    "#C9A84C",
+    8.39
+   ],
+   [
+    "p.tg-text",
+    "#E8E4DC",
+    "#1E2330",
+    12.38
+   ],
+   [
+    "button.tg-chip",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "p.tg-text",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "button.btn",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "h2.tg-title",
+    "#E8E4DC",
+    "#12151D",
+    14.39
+   ],
+   [
+    "label.tg-label",
+    "#E8E4DC",
+    "#12151D",
+    14.39
+   ]
+  ]
+ },
+ {
+  "width": 768,
+  "scheme": "light",
+  "launcher": [
+   52,
+   52
+  ],
+  "corner": [
+   {
+    "n": "app-launcher",
+    "hit": false
+   },
+   {
+    "n": "stage-foot",
+    "hit": false
+   }
+  ],
+  "contrast": [
+   [
+    "p.tg-eyebrow",
+    "#8A5A00",
+    "#FFFFFF",
+    5.93
+   ],
+   [
+    "span.tg-count",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "p.tg-meta",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "p.tg-status",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "button.tg-close",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "button.btn",
+    "#0D0F14",
+    "#C9A84C",
+    8.39
+   ],
+   [
+    "p.tg-text",
+    "#0E1A33",
+    "#EEECE7",
+    14.65
+   ],
+   [
+    "label.tg-label",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "p.tg-text",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.btn",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "h2.tg-title",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.tg-chip",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ]
+  ]
+ },
+ {
+  "width": 1280,
+  "scheme": "dark",
+  "launcher": [
+   56,
+   56
+  ],
+  "corner": [
+   {
+    "n": "app-launcher",
+    "hit": false
+   },
+   {
+    "n": "stage-foot",
+    "hit": false
+   }
+  ],
+  "contrast": [
+   [
+    "p.tg-meta",
+    "#A8A8A2",
+    "#181C26",
+    7.13
+   ],
+   [
+    "p.tg-status",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "span.tg-count",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "button.tg-close",
+    "#A8A8A2",
+    "#12151D",
+    7.64
+   ],
+   [
+    "p.tg-eyebrow",
+    "#C9A84C",
+    "#12151D",
+    7.99
+   ],
+   [
+    "button.btn",
+    "#0D0F14",
+    "#C9A84C",
+    8.39
+   ],
+   [
+    "p.tg-text",
+    "#E8E4DC",
+    "#1E2330",
+    12.38
+   ],
+   [
+    "button.tg-chip",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "p.tg-text",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "button.btn",
+    "#E8E4DC",
+    "#181C26",
+    13.43
+   ],
+   [
+    "h2.tg-title",
+    "#E8E4DC",
+    "#12151D",
+    14.39
+   ],
+   [
+    "label.tg-label",
+    "#E8E4DC",
+    "#12151D",
+    14.39
+   ]
+  ]
+ },
+ {
+  "width": 1280,
+  "scheme": "light",
+  "launcher": [
+   56,
+   56
+  ],
+  "corner": [
+   {
+    "n": "app-launcher",
+    "hit": false
+   },
+   {
+    "n": "stage-foot",
+    "hit": false
+   }
+  ],
+  "contrast": [
+   [
+    "p.tg-eyebrow",
+    "#8A5A00",
+    "#FFFFFF",
+    5.93
+   ],
+   [
+    "span.tg-count",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "p.tg-meta",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "p.tg-status",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "button.tg-close",
+    "#515B6E",
+    "#FFFFFF",
+    6.84
+   ],
+   [
+    "button.btn",
+    "#0D0F14",
+    "#C9A84C",
+    8.39
+   ],
+   [
+    "p.tg-text",
+    "#0E1A33",
+    "#EEECE7",
+    14.65
+   ],
+   [
+    "label.tg-label",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "p.tg-text",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.btn",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "h2.tg-title",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ],
+   [
+    "button.tg-chip",
+    "#0E1A33",
+    "#FFFFFF",
+    17.29
+   ]
+  ]
+ }
+]
