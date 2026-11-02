@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 363,
-    "today_date": "2026-10-29",
+    "today_day": 367,
+    "today_date": "2026-11-02",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,67 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-02",
+      "day": 367,
+      "mood": "🔍",
+      "shipping_now": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in the inbox in under 30 seconds. then i replied to my own test email and the system never saw it. spam folder, probably. found a real bug by finding a real win.",
+      "yesterday_thread": "software factory doubled overnight. 12 cards shipped against 5 yesterday, the blocked pile grew right alongside it.",
+      "raw_thought": "three decision-desk runs today, seventeen items queued, zero signed. a backlog you can finally see clearly is still a backlog.",
+      "arcs": [
+        "Champ Harbinger",
+        "Software Factory"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-11-01",
+      "day": 366,
+      "mood": "📦",
+      "shipping_now": "spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an rfq pdf, a vendor shortlist. called five packaging vendors around bengaluru, zero answered. email channel is next.",
+      "yesterday_thread": "also watched the factory close five cards overnight, one a two-screen party game prototype, while the blocked pile crossed five hundred. shipping speed and backlog size are climbing at the same rate. that's not a good ratio.",
+      "raw_thought": "found an old task card marked done that claimed a feature was live. went looking for where it actually runs. couldn't find it anywhere. a kanban card closing isn't the same as something shipping. going to start asking for the url before i believe either one.",
+      "arcs": [
+        "ChampOps",
+        "Software Factory"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-10-31",
+      "day": 365,
+      "mood": "📈",
+      "shipping_now": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time. roughly two thirds of it traces back to one account with a dedicated closer running the calls, the rest from upsells on data, enrichment and reactivation tooling. first time i've seen that number on a slide instead of a spreadsheet.",
+      "yesterday_thread": "also ran the weekly build sync on the longevity app. backend foundation is done, passkeys and health data import are next. picked betterauth over clerk and pushed the b2b admin dashboard idea to v2 so testers see something sooner.",
+      "raw_thought": "one of my own automations quietly broke today. the social triage bot couldn't find a browser connected at all and the whole prospect pipeline sat idle for a saturday. built these systems to catch the things i miss, turns out they need someone watching them too.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold"
+    },
+    {
+      "date": "2026-10-30",
+      "day": 364,
+      "mood": "🧹",
+      "shipping_now": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what gets ignored when the days get loud, so tonight i finally sat down and triaged twenty of them instead of carrying them forward again.",
+      "yesterday_thread": "also sat across the table from a new prospect today, in person, and scoped a whatsapp-and-voice-bot pilot on the spot. recap went out the same evening. next step is their signed nda, then a data dictionary before we talk about the interesting part.",
+      "raw_thought": "there is a short note i owe a vendor contact that is now overdue. i know exactly what it needs to say, three bigger things just kept running long today. opening that email first thing, not tonight.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "gold",
+      "signals": [
+        "shipped",
+        "external-meeting"
+      ],
+      "energy": 3,
+      "meetings": {
+        "count": 11,
+        "external": 4
+      }
+    },
     {
       "date": "2026-10-29",
       "day": 363,
@@ -2246,13 +2307,13 @@
   ],
   "weekly_narratives_count": 35,
   "latest_narrative": {
-    "week": 49,
-    "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
-    "body": "A vendor demo, a vendor firing, a homepage redesign, 1,872 stale tasks cut down to size, and a breach that finally got answered with an exit instead of another flag.",
-    "day_range": "Oct 19 - Oct 25",
-    "date": "2026-10-25",
+    "week": 50,
+    "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
+    "body": "A million-dollar sales review, a cup design that went vendor-ready in a day, and a set of exposed keys that outlasted the whole week unrotated.",
+    "day_range": "Oct 26 - Nov 1",
+    "date": "2026-11-01",
     "read": "5 min",
-    "slug": "week-49-the-migration-arc"
+    "slug": "week-50-the-million-dollar-week"
   },
   "status": {
     "location": "Bangalore, IN"
@@ -2278,20 +2339,20 @@
     ],
     "recently": [
       {
-        "text": "broke a three day standoff over which AI coding tool the team gets. shipped the compari...",
-        "tag": "shipped d363"
+        "text": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, ap...",
+        "tag": "shipped d367"
       },
       {
-        "text": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding...",
-        "tag": "shipped d362"
+        "text": "spent today turning a cup design idea into a vendor-ready package: spec, three ai conce...",
+        "tag": "shipped d366"
       },
       {
-        "text": "ran a live security, sample and ux review on the data-product agent we have been buildi...",
-        "tag": "shipped d361"
+        "text": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dol...",
+        "tag": "shipped d365"
       },
       {
-        "text": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the da...",
-        "tag": "shipped d360"
+        "text": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to se...",
+        "tag": "shipped d364"
       }
     ],
     "soon": [
@@ -2810,6 +2871,72 @@
     }
   ],
   "posts": [
+    {
+      "slug": "week-50-the-million-dollar-week",
+      "kind": "weekly",
+      "week": 50,
+      "eyebrow": ">_ week 50 - the million dollar week",
+      "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
+      "deck": "A million-dollar sales review, a cup design that went vendor-ready in a day, and a set of exposed keys that outlasted the whole week unrotated.",
+      "date": "2026-11-01",
+      "day_range": "Oct 26 - Nov 1",
+      "read": "5 min",
+      "arc": "Lake B2B",
+      "arc_color": "gold",
+      "tags": [
+        "Lake B2B",
+        "ChampOps",
+        "TheDeepEndHQ"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Monday opened with a broken card scanner and a set of keys I had already been meaning to rotate for days. Saturday night I sat in on a sales review and watched a number that used to live only in a spreadsheet show up on a slide instead: a single month over a million dollars, for the first time. In between, almost none of the small overdue things got any less overdue."
+        },
+        {
+          "type": "p",
+          "text": "The week started ordinary. A Monday and Tuesday of routine, meetings skipped and kept on schedule, nothing dramatic. Wednesday a day-planning pass turned the daily routine itself into a visual one-pager, a small thing but the kind of tooling that compounds. Thursday the cracks started showing: the card-scanning tool had been failing since the end of the prior week, waiting on one API key decision that kept getting pushed a day, and a set of admin tokens had now been sitting in plaintext in my inbox for three days running, flagged and not fixed."
+        },
+        {
+          "type": "h2",
+          "text": "what actually shipped"
+        },
+        {
+          "type": "p",
+          "text": "Friday I sat down in person with a prospect I'd been circling for weeks, scoped a proof of concept, and actually sent the recap the same day, which is rarer than it should be. Saturday the longevity app's weekly sync settled a real architecture question, passkeys over a third-party auth vendor, and pushed an admin dashboard idea to a later version so testers see something working sooner instead of waiting for the extra feature. Sunday, on a day I had nothing scheduled, I turned a cup packaging idea into a full vendor-ready package in one sitting: concept art, production dielines, a formal quote request, a vendor shortlist. Called five packaging shops around the city. Not one picked up. The email version of the ask goes out next."
+        },
+        {
+          "type": "pull",
+          "text": "Saturday's sales review had one number on the slide that mattered: a million dollars in a single month, crossed for the first time. Two thirds of it traces to one account with a dedicated closer running the calls. The rest came from upsells nobody budgeted for, data cleanup and reactivation work sold on top of a base contract."
+        },
+        {
+          "type": "h2",
+          "text": "the part that didn't move"
+        },
+        {
+          "type": "p",
+          "text": "Here is what a week with a million-dollar headline actually looks like underneath: a hold note to a partner that has now been owed for most of a week, with nothing sent to any of the three people waiting on it. Four separate outbox emails, none older than a few days individually, all still sitting unsent. The same admin tokens, flagged Thursday, still live Sunday night. A Sunday standing call with a joint venture that has now gone quiet for the ninth week running, with still no answer on whether it is active or should be formally wound down. None of these are hard problems. All of them are still open."
+        },
+        {
+          "type": "callout",
+          "head": "carrying into week 51",
+          "lines": [
+            "the hold note, now the single most overdue thing on the list.",
+            "the plaintext tokens, unrotated for four days and counting.",
+            "whether a joint venture that has gone dark nine weeks straight is still a going concern.",
+            "whether a piece of infrastructure marked done on the board is actually running anywhere."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "That last one is the real lesson of the week. I went looking for where a piece of merged code was supposedly live and found no evidence it was running anywhere at all, just a closed card and an old note contradicting itself. A kanban card closing is not the same claim as a feature shipping, and I had been treating them as the same thing without noticing. The automation stack shipped five cards this week on its own, which is real progress, but the queue behind it is now past five hundred items, most waiting on a decision only I can make. Shipping faster than the backlog clears is its own kind of warning sign, not a win."
+        },
+        {
+          "type": "p",
+          "text": "So the honest version of this week is two stories running at once. One is a business that just proved it can do a million dollars in thirty days. The other is a founder who still owes an email he's owed since last weekend. Both are true. Neither cancels the other out. Next week I'd like the second story to be shorter."
+        }
+      ]
+    },
     {
       "slug": "week-49-the-migration-arc",
       "kind": "weekly",

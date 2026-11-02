@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-10-29T19:52:07.912Z
+// Built 2026-11-02T19:51:11.472Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 363,
-    "today_date": "2026-10-29",
+    "today_day": 367,
+    "today_date": "2026-11-02",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,24 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 366,
+          "date": "2026-11-01",
+          "shipping_now": "spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an…",
+          "arc_color": "green"
+        },
+        {
+          "day": 365,
+          "date": "2026-10-31",
+          "shipping_now": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time.…",
+          "arc_color": "gold"
+        },
+        {
+          "day": 364,
+          "date": "2026-10-30",
+          "shipping_now": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what…",
+          "arc_color": "gold"
+        },
         {
           "day": 363,
           "date": "2026-10-29",
@@ -77,27 +95,15 @@ window.DH_DATA = {
           "date": "2026-10-21",
           "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six…",
           "arc_color": "green"
-        },
-        {
-          "day": 354,
-          "date": "2026-10-20",
-          "shipping_now": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static…",
-          "arc_color": "green"
-        },
-        {
-          "day": 353,
-          "date": "2026-10-19",
-          "shipping_now": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the…",
-          "arc_color": "green"
-        },
-        {
-          "day": 352,
-          "date": "2026-10-18",
-          "shipping_now": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed,…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-50-the-million-dollar-week",
+          "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
+          "date": "2026-11-01",
+          "read": "5 min"
+        },
         {
           "slug": "week-49-the-migration-arc",
           "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
@@ -238,6 +244,18 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 365,
+          "date": "2026-10-31",
+          "shipping_now": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time.…",
+          "arc_color": "gold"
+        },
+        {
+          "day": 364,
+          "date": "2026-10-30",
+          "shipping_now": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what…",
+          "arc_color": "gold"
+        },
+        {
           "day": 358,
           "date": "2026-10-24",
           "shipping_now": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their…",
@@ -296,21 +314,15 @@ window.DH_DATA = {
           "date": "2026-09-25",
           "shipping_now": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post. explains…",
           "arc_color": "green"
-        },
-        {
-          "day": 328,
-          "date": "2026-09-24",
-          "shipping_now": "ran the entity-resolution model against my whole second brain today as a shadow test, no writes to the real graph. 2861 notes,…",
-          "arc_color": "green"
-        },
-        {
-          "day": 325,
-          "date": "2026-09-21",
-          "shipping_now": "a discovery call that looked dead came back to life tonight. the prospect no-showed the morning slot, figured it was a cold…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-50-the-million-dollar-week",
+          "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
+          "date": "2026-11-01",
+          "read": "5 min"
+        },
         {
           "slug": "week-38-the-signals-were-everywhere",
           "title": "The signals were everywhere. The outbox was not.",
@@ -564,11 +576,16 @@ window.DH_DATA = {
         "ChamPDF",
         "ChampSets"
       ],
-      "last_ship": "2026-10-26",
-      "last_ship_day": 360,
-      "days_since": 4,
-      "entries_30d": 2,
+      "last_ship": "2026-11-02",
+      "last_ship_day": 367,
+      "days_since": 1,
+      "entries_30d": 3,
       "recent": [
+        {
+          "day": 367,
+          "date": "2026-11-02",
+          "ship": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in "
+        },
         {
           "day": 360,
           "date": "2026-10-26",
@@ -630,7 +647,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 23,
+      "days_since": 27,
       "entries_30d": 1,
       "recent": [
         {
@@ -692,11 +709,21 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-10-24",
-      "last_ship_day": 358,
-      "days_since": 6,
-      "entries_30d": 8,
+      "last_ship": "2026-10-31",
+      "last_ship_day": 365,
+      "days_since": 3,
+      "entries_30d": 9,
       "recent": [
+        {
+          "day": 365,
+          "date": "2026-10-31",
+          "ship": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month "
+        },
+        {
+          "day": 364,
+          "date": "2026-10-30",
+          "ship": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does "
+        },
         {
           "day": 358,
           "date": "2026-10-24",
@@ -706,16 +733,6 @@ window.DH_DATA = {
           "day": 353,
           "date": "2026-10-19",
           "ship": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three v"
-        },
-        {
-          "day": 350,
-          "date": "2026-10-16",
-          "ship": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built fo"
-        },
-        {
-          "day": 349,
-          "date": "2026-10-15",
-          "ship": "closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut "
         }
       ],
       "company_slugs": [
@@ -764,7 +781,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 24,
+      "days_since": 28,
       "entries_30d": 1,
       "recent": [
         {
@@ -830,6 +847,124 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-02",
+      "day": 367,
+      "mood": "🔍",
+      "shipping_now": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in the inbox in under 30 seconds. then i replied to my own test email and the system never saw it. spam folder, probably. found a real bug by finding a real win.",
+      "yesterday_thread": "software factory doubled overnight. 12 cards shipped against 5 yesterday, the blocked pile grew right alongside it.",
+      "raw_thought": "three decision-desk runs today, seventeen items queued, zero signed. a backlog you can finally see clearly is still a backlog.",
+      "arcs": [
+        "Champ Harbinger",
+        "Software Factory"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Champ Harbinger",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Software Factory",
+          "company_name": null,
+          "slug": null
+        }
+      ],
+      "pillars": [
+        "champ"
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "day": 366,
+      "mood": "📦",
+      "shipping_now": "spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an rfq pdf, a vendor shortlist. called five packaging vendors around bengaluru, zero answered. email channel is next.",
+      "yesterday_thread": "also watched the factory close five cards overnight, one a two-screen party game prototype, while the blocked pile crossed five hundred. shipping speed and backlog size are climbing at the same rate. that's not a good ratio.",
+      "raw_thought": "found an old task card marked done that claimed a feature was live. went looking for where it actually runs. couldn't find it anywhere. a kanban card closing isn't the same as something shipping. going to start asking for the url before i believe either one.",
+      "arcs": [
+        "ChampOps",
+        "Software Factory"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Software Factory",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "day": 365,
+      "mood": "📈",
+      "shipping_now": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time. roughly two thirds of it traces back to one account with a dedicated closer running the calls, the rest from upsells on data, enrichment and reactivation tooling. first time i've seen that number on a slide instead of a spreadsheet.",
+      "yesterday_thread": "also ran the weekly build sync on the longevity app. backend foundation is done, passkeys and health data import are next. picked betterauth over clerk and pushed the b2b admin dashboard idea to v2 so testers see something sooner.",
+      "raw_thought": "one of my own automations quietly broke today. the social triage bot couldn't find a browser connected at all and the whole prospect pipeline sat idle for a saturday. built these systems to catch the things i miss, turns out they need someone watching them too.",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "day": 364,
+      "mood": "🧹",
+      "shipping_now": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what gets ignored when the days get loud, so tonight i finally sat down and triaged twenty of them instead of carrying them forward again.",
+      "yesterday_thread": "also sat across the table from a new prospect today, in person, and scoped a whatsapp-and-voice-bot pilot on the spot. recap went out the same evening. next step is their signed nda, then a data dictionary before we talk about the interesting part.",
+      "raw_thought": "there is a short note i owe a vendor contact that is now overdue. i know exactly what it needs to say, three bigger things just kept running long today. opening that email first thing, not tonight.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "gold",
+      "signals": [
+        "shipped",
+        "external-meeting"
+      ],
+      "energy": 3,
+      "meetings": {
+        "count": 11,
+        "external": 4
+      },
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
     {
       "date": "2026-10-29",
       "day": 363,
@@ -4682,17 +4817,17 @@ window.DH_DATA = {
   ],
   "weekly_narratives_count": 35,
   "latest_narrative": {
-    "week": 49,
-    "title": "I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.",
-    "body": "A vendor demo, a vendor firing, a homepage redesign, 1,872 stale tasks cut down to size, and a breach that finally got answered with an exit instead of another flag.",
-    "day_range": "Oct 19 - Oct 25",
-    "date": "2026-10-25",
+    "week": 50,
+    "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
+    "body": "A million-dollar sales review, a cup design that went vendor-ready in a day, and a set of exposed keys that outlasted the whole week unrotated.",
+    "day_range": "Oct 26 - Nov 1",
+    "date": "2026-11-01",
     "read": "5 min",
-    "slug": "week-49-the-migration-arc"
+    "slug": "week-50-the-million-dollar-week"
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 363 · Oct 29",
+    "last_ship": "day 367 · Nov 2",
     "state": "shipping"
   },
   "status_board": {
@@ -4716,20 +4851,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
-        "text": "broke a three day standoff over which AI coding tool the team gets. shipped the compari...",
-        "tag": "shipped d363"
+        "text": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, ap...",
+        "tag": "shipped d367"
       },
       {
-        "text": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding...",
-        "tag": "shipped d362"
+        "text": "spent today turning a cup design idea into a vendor-ready package: spec, three ai conce...",
+        "tag": "shipped d366"
       },
       {
-        "text": "ran a live security, sample and ux review on the data-product agent we have been buildi...",
-        "tag": "shipped d361"
+        "text": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dol...",
+        "tag": "shipped d365"
       },
       {
-        "text": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the da...",
-        "tag": "shipped d360"
+        "text": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to se...",
+        "tag": "shipped d364"
       }
     ],
     "soon": [
@@ -5248,6 +5383,306 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-50-the-million-dollar-week",
+      "kind": "weekly",
+      "week": 50,
+      "eyebrow": ">_ week 50 - the million dollar week",
+      "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
+      "deck": "A million-dollar sales review, a cup design that went vendor-ready in a day, and a set of exposed keys that outlasted the whole week unrotated.",
+      "date": "2026-11-01",
+      "day_range": "Oct 26 - Nov 1",
+      "read": "5 min",
+      "arc": "Lake B2B",
+      "arc_color": "gold",
+      "tags": [
+        "Lake B2B",
+        "ChampOps",
+        "TheDeepEndHQ"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Monday opened with a broken card scanner and a set of keys I had already been meaning to rotate for days. Saturday night I sat in on a sales review and watched a number that used to live only in a spreadsheet show up on a slide instead: a single month over a million dollars, for the first time. In between, almost none of the small overdue things got any less overdue."
+        },
+        {
+          "type": "p",
+          "text": "The week started ordinary. A Monday and Tuesday of routine, meetings skipped and kept on schedule, nothing dramatic. Wednesday a day-planning pass turned the daily routine itself into a visual one-pager, a small thing but the kind of tooling that compounds. Thursday the cracks started showing: the card-scanning tool had been failing since the end of the prior week, waiting on one API key decision that kept getting pushed a day, and a set of admin tokens had now been sitting in plaintext in my inbox for three days running, flagged and not fixed."
+        },
+        {
+          "type": "h2",
+          "text": "what actually shipped"
+        },
+        {
+          "type": "p",
+          "text": "Friday I sat down in person with a prospect I'd been circling for weeks, scoped a proof of concept, and actually sent the recap the same day, which is rarer than it should be. Saturday the longevity app's weekly sync settled a real architecture question, passkeys over a third-party auth vendor, and pushed an admin dashboard idea to a later version so testers see something working sooner instead of waiting for the extra feature. Sunday, on a day I had nothing scheduled, I turned a cup packaging idea into a full vendor-ready package in one sitting: concept art, production dielines, a formal quote request, a vendor shortlist. Called five packaging shops around the city. Not one picked up. The email version of the ask goes out next."
+        },
+        {
+          "type": "pull",
+          "text": "Saturday's sales review had one number on the slide that mattered: a million dollars in a single month, crossed for the first time. Two thirds of it traces to one account with a dedicated closer running the calls. The rest came from upsells nobody budgeted for, data cleanup and reactivation work sold on top of a base contract."
+        },
+        {
+          "type": "h2",
+          "text": "the part that didn't move"
+        },
+        {
+          "type": "p",
+          "text": "Here is what a week with a million-dollar headline actually looks like underneath: a hold note to a partner that has now been owed for most of a week, with nothing sent to any of the three people waiting on it. Four separate outbox emails, none older than a few days individually, all still sitting unsent. The same admin tokens, flagged Thursday, still live Sunday night. A Sunday standing call with a joint venture that has now gone quiet for the ninth week running, with still no answer on whether it is active or should be formally wound down. None of these are hard problems. All of them are still open."
+        },
+        {
+          "type": "callout",
+          "head": "carrying into week 51",
+          "lines": [
+            "the hold note, now the single most overdue thing on the list.",
+            "the plaintext tokens, unrotated for four days and counting.",
+            "whether a joint venture that has gone dark nine weeks straight is still a going concern.",
+            "whether a piece of infrastructure marked done on the board is actually running anywhere."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "That last one is the real lesson of the week. I went looking for where a piece of merged code was supposedly live and found no evidence it was running anywhere at all, just a closed card and an old note contradicting itself. A kanban card closing is not the same claim as a feature shipping, and I had been treating them as the same thing without noticing. The automation stack shipped five cards this week on its own, which is real progress, but the queue behind it is now past five hundred items, most waiting on a decision only I can make. Shipping faster than the backlog clears is its own kind of warning sign, not a win."
+        },
+        {
+          "type": "p",
+          "text": "So the honest version of this week is two stories running at once. One is a business that just proved it can do a million dollars in thirty days. The other is a founder who still owes an email he's owed since last weekend. Both are true. Neither cancels the other out. Next week I'd like the second story to be shorter."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        },
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        }
+      ],
+      "audio": {
+        "src": "audio/week-50-the-million-dollar-week.mp3",
+        "duration": 254.4,
+        "voice": "Brian",
+        "starts": [
+          {
+            "i": -1,
+            "t": 0
+          },
+          {
+            "i": 0,
+            "t": 19.68
+          },
+          {
+            "i": 1,
+            "t": 41.9
+          },
+          {
+            "i": 2,
+            "t": 76.29
+          },
+          {
+            "i": 3,
+            "t": 78.64
+          },
+          {
+            "i": 4,
+            "t": 124.55
+          },
+          {
+            "i": 5,
+            "t": 144.39
+          },
+          {
+            "i": 6,
+            "t": 145.87
+          },
+          {
+            "i": 7,
+            "t": 179.75
+          },
+          {
+            "i": 8,
+            "t": 198.95
+          },
+          {
+            "i": 9,
+            "t": 237.54
+          }
+        ],
+        "bytes": 2035043
+      },
+      "viz": {
+        "window": {
+          "start": "2026-10-26",
+          "end": "2026-11-01"
+        },
+        "days": [
+          {
+            "date": "2026-10-26",
+            "dow": "mon",
+            "day": 360,
+            "arc_color": "green",
+            "arcs": [
+              "ChampOps",
+              "Champ Harbinger"
+            ],
+            "ship": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before."
+          },
+          {
+            "date": "2026-10-27",
+            "dow": "tue",
+            "day": 361,
+            "arc_color": "green",
+            "arcs": [
+              "ChampOps",
+              "Data Products"
+            ],
+            "ship": "ran a live security, sample and ux review on the data-product agent we have been building all month."
+          },
+          {
+            "date": "2026-10-28",
+            "dow": "wed",
+            "day": 362,
+            "arc_color": "gold",
+            "arcs": [
+              "Dopamine Sites",
+              "ChampOps"
+            ],
+            "ship": "killed the first version of our dopamine sites today."
+          },
+          {
+            "date": "2026-10-29",
+            "dow": "thu",
+            "day": 363,
+            "arc_color": "gold",
+            "arcs": [
+              "ChampOps"
+            ],
+            "ship": "broke a three day standoff over which AI coding tool the team gets."
+          },
+          {
+            "date": "2026-10-30",
+            "dow": "fri",
+            "day": 364,
+            "arc_color": "gold",
+            "arcs": [
+              "ChampOps",
+              "Lake B2B"
+            ],
+            "ship": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september."
+          },
+          {
+            "date": "2026-10-31",
+            "dow": "sat",
+            "day": 365,
+            "arc_color": "gold",
+            "arcs": [
+              "Lake B2B",
+              "ChampOps"
+            ],
+            "ship": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time."
+          },
+          {
+            "date": "2026-11-01",
+            "dow": "sun",
+            "day": 366,
+            "arc_color": "green",
+            "arcs": [
+              "ChampOps",
+              "Software Factory"
+            ],
+            "ship": "spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an rfq pdf, a ve"
+          }
+        ],
+        "para_days": [
+          [
+            "2026-10-27",
+            "2026-10-31"
+          ],
+          [
+            "2026-10-27",
+            "2026-10-29",
+            "2026-10-30"
+          ],
+          [],
+          [
+            "2026-11-01",
+            "2026-10-31"
+          ],
+          [
+            "2026-10-31"
+          ],
+          [],
+          [
+            "2026-11-01",
+            "2026-10-30"
+          ],
+          [
+            "2026-10-30"
+          ],
+          [
+            "2026-11-01"
+          ],
+          [
+            "2026-10-31"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 7,
+            "paras": [
+              0,
+              1,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 2,
+            "paras": [
+              0,
+              1,
+              3,
+              4,
+              6,
+              7,
+              9
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champ Harbinger",
+            "n": 1,
+            "paras": [],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Data Products",
+            "n": 1,
+            "paras": [
+              0,
+              1
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 706,
+        "entries": 7,
+        "listen_min": 4
+      }
+    },
     {
       "slug": "week-49-the-migration-arc",
       "kind": "weekly",
@@ -10416,33 +10851,77 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-10-29T19:52:07.877Z",
-    "built_date": "2026-10-30",
+    "built": "2026-11-02T19:51:11.425Z",
+    "built_date": "2026-11-03",
     "newest_entry": {
-      "date": "2026-10-29",
-      "day": 363
+      "date": "2026-11-02",
+      "day": 367
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 140,
+        "days_old": 144,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 128,
+        "days_old": 132,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 128,
+        "days_old": 132,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 367,
+      "date": "2026-11-02",
+      "mood": "🔍",
+      "arc_color": "green",
+      "arcs": [
+        "Champ Harbinger",
+        "Software Factory"
+      ],
+      "ship": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in the inbox in under 30 seconds. then i replied to my own test email and the system never saw it. spam folder, probably. found a real bug by finding a real win."
+    },
+    {
+      "day": 366,
+      "date": "2026-11-01",
+      "mood": "📦",
+      "arc_color": "green",
+      "arcs": [
+        "ChampOps",
+        "Software Factory"
+      ],
+      "ship": "spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an rfq pdf, a vendor shortlist. called five packaging vendors around bengaluru, zero answered. email channel is next."
+    },
+    {
+      "day": 365,
+      "date": "2026-10-31",
+      "mood": "📈",
+      "arc_color": "gold",
+      "arcs": [
+        "Lake B2B",
+        "ChampOps"
+      ],
+      "ship": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time. roughly two thirds of it traces back to one account with a dedicated closer running the calls, the rest from upsells on data, enrichment and reactivation tooling. first time i've seen that number on a slide instead of a spreadsheet."
+    },
+    {
+      "day": 364,
+      "date": "2026-10-30",
+      "mood": "🧹",
+      "arc_color": "gold",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "ship": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what gets ignored when the days get loud, so tonight i finally sat down and triaged twenty of them instead of carrying them forward again."
+    },
     {
       "day": 363,
       "date": "2026-10-29",
@@ -10551,113 +11030,13 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static site stays fast and only the interactive pieces (footer, folder cards, widget grid) load react at all. new logo marks landed too. build starts tomorrow."
-    },
-    {
-      "day": 353,
-      "date": "2026-10-19",
-      "mood": "⚖️",
-      "arc_color": "green",
-      "arcs": [
-        "Champions Operations",
-        "Lake B2B"
-      ],
-      "ship": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three vendors in the running for something far smaller we need internally, pick due by month end."
-    },
-    {
-      "day": 352,
-      "date": "2026-10-18",
-      "mood": "🚀",
-      "arc_color": "green",
-      "arcs": [
-        "Champ Harbinger",
-        "Champions Operations"
-      ],
-      "ship": "built a full deleteme clone from scratch tonight. white label, brand switching wired in across three identities, postgres backed, every test green including a full playwright journey end to end. zero to a working product in one sitting."
-    },
-    {
-      "day": 351,
-      "date": "2026-10-17",
-      "mood": "⚙️",
-      "arc_color": "green",
-      "arcs": [
-        "Content Strategy",
-        "Champions Operations"
-      ],
-      "ship": "four days straight now, the thought leadership engine wrote and shipped a genuinely different angle each day, on a saturday, without anyone pushing it. today's take: a shared field like active meaning something different in every system is the real ai reliability problem, not stale data."
-    },
-    {
-      "day": 350,
-      "date": "2026-10-16",
-      "mood": "🛠️",
-      "arc_color": "green",
-      "arcs": [
-        "Lake B2B",
-        "Champions Operations"
-      ],
-      "ship": "audited every case study on lakeb2b.com: 156 pages, zero with a named quote, zero with a client logo. built four replacement pages that show where every number comes from, who said it, when, how it was measured. two shipped ready, one on hold because the client got cut."
     }
   ],
   "heatmap": {
-    "start": "2026-07-13",
-    "end": "2026-11-01",
+    "start": "2026-07-20",
+    "end": "2026-11-08",
     "weeks": 16,
     "cells": [
-      {
-        "date": "2026-07-13",
-        "future": false,
-        "weekend": false,
-        "day": 255,
-        "arc_color": "blue",
-        "ship": "a call with a vc portfolio director opened two unexpected doors. one portfolio company does remote patient mon"
-      },
-      {
-        "date": "2026-07-14",
-        "future": false,
-        "weekend": false,
-        "day": 256,
-        "arc_color": "gold",
-        "ship": "heavy external day: two meetings, two new threads. a 40-year hotelier is scaling a staffless in-hotel shop sys"
-      },
-      {
-        "date": "2026-07-15",
-        "future": false,
-        "weekend": false,
-        "day": 257,
-        "arc_color": "green",
-        "ship": "ran 3 discovery calls in one afternoon. the real find: an email infrastructure company, API-first, $15M ARR. s"
-      },
-      {
-        "date": "2026-07-16",
-        "future": false,
-        "weekend": false,
-        "day": 258,
-        "arc_color": "green",
-        "ship": "gtm weekly check-in landed with a real number: 19 leads in 2 weeks from a small external team. expanded scope "
-      },
-      {
-        "date": "2026-07-17",
-        "future": false,
-        "weekend": false,
-        "day": 259,
-        "arc_color": "green",
-        "ship": "lake b2b website audit ran 33 minutes and landed three hard calls: cut the nav to 4 items, go api-first, test "
-      },
-      {
-        "date": "2026-07-18",
-        "future": false,
-        "weekend": true,
-        "day": null,
-        "arc_color": null,
-        "ship": null
-      },
-      {
-        "date": "2026-07-19",
-        "future": false,
-        "weekend": true,
-        "day": 261,
-        "arc_color": "blue",
-        "ship": "email infrastructure vendor opened a shared dev channel for the champmail integration. from signup to live col"
-      },
       {
         "date": "2026-07-20",
         "future": false,
@@ -11478,12 +11857,68 @@ window.DH_DATA = {
         "date": "2026-10-30",
         "future": false,
         "weekend": false,
+        "day": 364,
+        "arc_color": "gold",
+        "ship": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does "
+      },
+      {
+        "date": "2026-10-31",
+        "future": false,
+        "weekend": true,
+        "day": 365,
+        "arc_color": "gold",
+        "ship": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month "
+      },
+      {
+        "date": "2026-11-01",
+        "future": false,
+        "weekend": true,
+        "day": 366,
+        "arc_color": "green",
+        "ship": "spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two product"
+      },
+      {
+        "date": "2026-11-02",
+        "future": false,
+        "weekend": false,
+        "day": 367,
+        "arc_color": "green",
+        "ship": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in "
+      },
+      {
+        "date": "2026-11-03",
+        "future": false,
+        "weekend": false,
         "day": null,
         "arc_color": null,
         "ship": null
       },
       {
-        "date": "2026-10-31",
+        "date": "2026-11-04",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-11-05",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-11-06",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-11-07",
         "future": true,
         "weekend": true,
         "day": null,
@@ -11491,7 +11926,7 @@ window.DH_DATA = {
         "ship": null
       },
       {
-        "date": "2026-11-01",
+        "date": "2026-11-08",
         "future": true,
         "weekend": true,
         "day": null,
@@ -11501,47 +11936,47 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 363,
-    "entries": 141,
+    "days_public": 367,
+    "entries": 145,
     "entries_30d": 30,
-    "entries_this_month": 29,
-    "streak_weekdays": 96,
-    "essays": 19,
+    "entries_this_month": 2,
+    "streak_weekdays": 98,
+    "essays": 20,
     "companies": 12,
     "companies_active_90d": 4,
     "first_entry": "2026-05-04",
     "day_one": null,
     "arcs_30d": [
       {
-        "arc": "Champions Operations",
-        "n": 17
+        "arc": "ChampOps",
+        "n": 15
       },
       {
-        "arc": "ChampOps",
-        "n": 12
+        "arc": "Champions Operations",
+        "n": 14
       },
       {
         "arc": "Lake B2B",
-        "n": 8
+        "n": 9
+      },
+      {
+        "arc": "Champ Harbinger",
+        "n": 3
       },
       {
         "arc": "TheDeepEndHQ",
-        "n": 5
+        "n": 3
       },
       {
         "arc": "Celsus OS",
         "n": 3
       },
       {
-        "arc": "Champ Harbinger",
+        "arc": "Software Factory",
         "n": 2
       },
       {
         "arc": "Dopamine Sites",
-        "n": 1
-      },
-      {
-        "arc": "Data Products",
         "n": 1
       }
     ],
@@ -11586,9 +12021,9 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-10-29",
-        "mentions_90d": 25,
-        "days_since": 1
+        "last_seen": "2026-11-01",
+        "mentions_90d": 27,
+        "days_since": 2
       },
       {
         "name": "Cloudflare",
@@ -11598,7 +12033,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-10-28",
         "mentions_90d": 4,
-        "days_since": 2
+        "days_since": 6
       },
       {
         "name": "ChampBeam",
@@ -11610,8 +12045,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-10-12",
-        "mentions_90d": 2,
-        "days_since": 18
+        "mentions_90d": 1,
+        "days_since": 22
       },
       {
         "name": "Obsidian + Celsus",
@@ -11621,7 +12056,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 19
+        "days_since": 23
       },
       {
         "name": "Claude + Cowork",
@@ -11631,7 +12066,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 20
+        "days_since": 24
       },
       {
         "name": "Event Scout",
@@ -11644,7 +12079,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 46
+        "days_since": 50
       },
       {
         "name": "ChampUTM",
@@ -11657,7 +12092,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 48
+        "days_since": 52
       },
       {
         "name": "LakeStream",
@@ -11669,8 +12104,8 @@ window.DH_DATA = {
         "category": "repo",
         "featured": false,
         "last_seen": "2026-08-04",
-        "mentions_90d": 1,
-        "days_since": 87
+        "mentions_90d": 0,
+        "days_since": 91
       },
       {
         "name": "ChamPDF",
@@ -11682,8 +12117,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-08-04",
-        "mentions_90d": 1,
-        "days_since": 87
+        "mentions_90d": 0,
+        "days_since": 91
       },
       {
         "name": "ChampMail",
@@ -11695,8 +12130,8 @@ window.DH_DATA = {
         "category": "tool",
         "featured": true,
         "last_seen": "2026-08-02",
-        "mentions_90d": 1,
-        "days_since": 89
+        "mentions_90d": 0,
+        "days_since": 93
       },
       {
         "name": "Supabase",
@@ -11707,7 +12142,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 121
+        "days_since": 125
       },
       {
         "name": "ChampGraph",
@@ -11720,7 +12155,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 129
+        "days_since": 133
       },
       {
         "name": "ChampQuest",
@@ -11733,7 +12168,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 149
+        "days_since": 153
       },
       {
         "name": "Deep Scanner",
@@ -12215,9 +12650,9 @@ window.DH_DATA = {
     },
     "active_30d": 5,
     "mined_from": {
-      "entries": 141,
-      "essays": 19
+      "entries": 145,
+      "essays": 20
     }
   },
-  "built": "2026-10-29T19:52:07.912Z"
+  "built": "2026-11-02T19:51:11.472Z"
 };

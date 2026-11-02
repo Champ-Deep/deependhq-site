@@ -1,0 +1,58 @@
+{
+  "slug": "week-50-the-million-dollar-week",
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "voice_name": "Brian",
+  "model": "eleven_multilingual_v2",
+  "format": "mp3_44100_64",
+  "chars": 4239,
+  "bytes": 2035043,
+  "duration": 254.4,
+  "starts": [
+    {
+      "i": -1,
+      "t": 0
+    },
+    {
+      "i": 0,
+      "t": 19.68
+    },
+    {
+      "i": 1,
+      "t": 41.9
+    },
+    {
+      "i": 2,
+      "t": 76.29
+    },
+    {
+      "i": 3,
+      "t": 78.64
+    },
+    {
+      "i": 4,
+      "t": 124.55
+    },
+    {
+      "i": 5,
+      "t": 144.39
+    },
+    {
+      "i": 6,
+      "t": 145.87
+    },
+    {
+      "i": 7,
+      "t": 179.75
+    },
+    {
+      "i": 8,
+      "t": 198.95
+    },
+    {
+      "i": 9,
+      "t": 237.54
+    }
+  ],
+  "text_sha": "126fdbd2613edfb3",
+  "generated": "2026-11-01T19:54:21.224Z"
+}

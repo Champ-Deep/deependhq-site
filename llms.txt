@@ -1,6 +1,6 @@
 # deep >_ (deependhq.com)
 
-> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 363, 141 entries since 2026-05-04.
+> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 367, 145 entries since 2026-05-04.
 
 ```
      █████                                ███
@@ -16,7 +16,7 @@
                             ░░░░░
 ```
 
-Rebuilt 2026-10-29 19:52 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
+Rebuilt 2026-11-02 19:51 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
 
 ## Read
 - [Home](https://deependhq.com/): the working window, 3 PM to 2 AM IST, and how a day becomes an entry
@@ -27,21 +27,21 @@ Rebuilt 2026-10-29 19:52 UTC. Every number on the site is derived from one sourc
 - [Now](https://deependhq.com/now.html): what has attention right now
 
 ## Latest entries
+- [Day 367, 2026-11-02](https://deependhq.com/journey.html#day-367): shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in the inbox in under 30 seconds. then i replied to...
+- [Day 366, 2026-11-01](https://deependhq.com/journey.html#day-366): spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an rfq pdf, a vendor shortlist....
+- [Day 365, 2026-10-31](https://deependhq.com/journey.html#day-365): sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time. roughly two thirds of it...
+- [Day 364, 2026-10-30](https://deependhq.com/journey.html#day-364): cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what gets ignored when the days...
 - [Day 363, 2026-10-29](https://deependhq.com/journey.html#day-363): broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team...
 - [Day 362, 2026-10-28](https://deependhq.com/journey.html#day-362): killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel like homework. rebuilt from...
 - [Day 361, 2026-10-27](https://deependhq.com/journey.html#day-361): ran a live security, sample and ux review on the data-product agent we have been building all month. clean pass, zero deployment risk taken. handed the whole...
-- [Day 360, 2026-10-26](https://deependhq.com/journey.html#day-360): best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot voice product, a client landing...
-- [Day 359, 2026-10-25](https://deependhq.com/journey.html#day-359): finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one env file, one deploy command....
-- [Day 358, 2026-10-24](https://deependhq.com/journey.html#day-358): closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their list, we dedupe it, then we...
-- [Day 357, 2026-10-23](https://deependhq.com/journey.html#day-357): Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on the first real run. Then ran...
 
 ## Essays
+- [Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.](https://deependhq.com/post.html?slug=week-50-the-million-dollar-week): 2026-11-01, 5 min
 - [I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.](https://deependhq.com/post.html?slug=week-49-the-migration-arc): 2026-10-25, 5 min
 - [This week I shipped two products from zero and the decision I keep avoiding finally got its receipts.](https://deependhq.com/post.html?slug=week-48-the-receipts-arc): 2026-10-18, 4 min
 - [This week I shipped faster than ever and still could not close the oldest decision on my list.](https://deependhq.com/post.html?slug=week-47-the-decision-debt-arc): 2026-10-11, 4 min
 - [This week the system caught everything except the empty rooms.](https://deependhq.com/post.html?slug=week-46-the-empty-room-arc): 2026-10-04, 4 min
 - [Spent the week diagnosing why things dont ship. Sunday proved the diagnosis right.](https://deependhq.com/post.html?slug=week-45-the-wall-we-named): 2026-09-27, 4 min
-- [Got disciplined about everything this week except the thing we paid cash for.](https://deependhq.com/post.html?slug=week-44-the-discipline-arc): 2026-09-19, 4 min
 
 ## Built here
 - [ChampBeam](https://champbeam.com): Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now. (live at champbeam.com)
@@ -71,4 +71,4 @@ Rebuilt 2026-10-29 19:52 UTC. Every number on the site is derived from one sourc
 
 ## Optional
 - [humans.txt](https://deependhq.com/humans.txt): who made this, and a gray mare
-- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 363, 2026-10-29.
+- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 367, 2026-11-02.

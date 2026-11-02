@@ -1,8 +1,56 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (141) and every weekly essay (19), newest first. Rebuilt 2026-10-29. Cite the day number and date when quoting, for example "day 363, 2026-10-29".
+> Every public journey entry (145) and every weekly essay (20), newest first. Rebuilt 2026-11-02. Cite the day number and date when quoting, for example "day 367, 2026-11-02".
 
 ## Journey
+
+### Day 367, 2026-11-02 (building)
+
+shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in the inbox in under 30 seconds. then i replied to my own test email and the system never saw it. spam folder, probably. found a real bug by finding a real win.
+
+Thread: software factory doubled overnight. 12 cards shipped against 5 yesterday, the blocked pile grew right alongside it.
+
+Raw thought: three decision-desk runs today, seventeen items queued, zero signed. a backlog you can finally see clearly is still a backlog.
+
+Arcs: Champ Harbinger, Software Factory
+
+Link: https://deependhq.com/journey.html#day-367
+
+### Day 366, 2026-11-01 (building)
+
+spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an rfq pdf, a vendor shortlist. called five packaging vendors around bengaluru, zero answered. email channel is next.
+
+Thread: also watched the factory close five cards overnight, one a two-screen party game prototype, while the blocked pile crossed five hundred. shipping speed and backlog size are climbing at the same rate. that's not a good ratio.
+
+Raw thought: found an old task card marked done that claimed a feature was live. went looking for where it actually runs. couldn't find it anywhere. a kanban card closing isn't the same as something shipping. going to start asking for the url before i believe either one.
+
+Arcs: ChampOps, Software Factory
+
+Link: https://deependhq.com/journey.html#day-366
+
+### Day 365, 2026-10-31 (a real outcome)
+
+sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time. roughly two thirds of it traces back to one account with a dedicated closer running the calls, the rest from upsells on data, enrichment and reactivation tooling. first time i've seen that number on a slide instead of a spreadsheet.
+
+Thread: also ran the weekly build sync on the longevity app. backend foundation is done, passkeys and health data import are next. picked betterauth over clerk and pushed the b2b admin dashboard idea to v2 so testers see something sooner.
+
+Raw thought: one of my own automations quietly broke today. the social triage bot couldn't find a browser connected at all and the whole prospect pipeline sat idle for a saturday. built these systems to catch the things i miss, turns out they need someone watching them too.
+
+Arcs: Lake B2B, ChampOps
+
+Link: https://deependhq.com/journey.html#day-365
+
+### Day 364, 2026-10-30 (a real outcome)
+
+cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what gets ignored when the days get loud, so tonight i finally sat down and triaged twenty of them instead of carrying them forward again.
+
+Thread: also sat across the table from a new prospect today, in person, and scoped a whatsapp-and-voice-bot pilot on the spot. recap went out the same evening. next step is their signed nda, then a data dictionary before we talk about the interesting part.
+
+Raw thought: there is a short note i owe a vendor contact that is now overdue. i know exactly what it needs to say, three bigger things just kept running long today. opening that email first thing, not tonight.
+
+Arcs: ChampOps, Lake B2B
+
+Link: https://deependhq.com/journey.html#day-364
 
 ### Day 363, 2026-10-29 (a real outcome)
 
@@ -1679,6 +1727,30 @@ Arcs: InfraTech, Champions Operations
 Link: https://deependhq.com/journey.html#day-184
 
 ## Essays
+
+### Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.
+
+2026-11-01, 5 min, Lake B2B. https://deependhq.com/post.html?slug=week-50-the-million-dollar-week
+
+A million-dollar sales review, a cup design that went vendor-ready in a day, and a set of exposed keys that outlasted the whole week unrotated.
+
+Monday opened with a broken card scanner and a set of keys I had already been meaning to rotate for days. Saturday night I sat in on a sales review and watched a number that used to live only in a spreadsheet show up on a slide instead: a single month over a million dollars, for the first time. In between, almost none of the small overdue things got any less overdue.
+
+The week started ordinary. A Monday and Tuesday of routine, meetings skipped and kept on schedule, nothing dramatic. Wednesday a day-planning pass turned the daily routine itself into a visual one-pager, a small thing but the kind of tooling that compounds. Thursday the cracks started showing: the card-scanning tool had been failing since the end of the prior week, waiting on one API key decision that kept getting pushed a day, and a set of admin tokens had now been sitting in plaintext in my inbox for three days running, flagged and not fixed.
+
+what actually shipped
+
+Friday I sat down in person with a prospect I'd been circling for weeks, scoped a proof of concept, and actually sent the recap the same day, which is rarer than it should be. Saturday the longevity app's weekly sync settled a real architecture question, passkeys over a third-party auth vendor, and pushed an admin dashboard idea to a later version so testers see something working sooner instead of waiting for the extra feature. Sunday, on a day I had nothing scheduled, I turned a cup packaging idea into a full vendor-ready package in one sitting: concept art, production dielines, a formal quote request, a vendor shortlist. Called five packaging shops around the city. Not one picked up. The email version of the ask goes out next.
+
+Saturday's sales review had one number on the slide that mattered: a million dollars in a single month, crossed for the first time. Two thirds of it traces to one account with a dedicated closer running the calls. The rest came from upsells nobody budgeted for, data cleanup and reactivation work sold on top of a base contract.
+
+the part that didn't move
+
+Here is what a week with a million-dollar headline actually looks like underneath: a hold note to a partner that has now been owed for most of a week, with nothing sent to any of the three people waiting on it. Four separate outbox emails, none older than a few days individually, all still sitting unsent. The same admin tokens, flagged Thursday, still live Sunday night. A Sunday standing call with a joint venture that has now gone quiet for the ninth week running, with still no answer on whether it is active or should be formally wound down. None of these are hard problems. All of them are still open.
+
+That last one is the real lesson of the week. I went looking for where a piece of merged code was supposedly live and found no evidence it was running anywhere at all, just a closed card and an old note contradicting itself. A kanban card closing is not the same claim as a feature shipping, and I had been treating them as the same thing without noticing. The automation stack shipped five cards this week on its own, which is real progress, but the queue behind it is now past five hundred items, most waiting on a decision only I can make. Shipping faster than the backlog clears is its own kind of warning sign, not a win.
+
+So the honest version of this week is two stories running at once. One is a business that just proved it can do a million dollars in thirty days. The other is a founder who still owes an email he's owed since last weekend. Both are true. Neither cancels the other out. Next week I'd like the second story to be shorter.
 
 ### I flagged the same security fix five nights running, then skipped the fix entirely and migrated the whole platform instead.
 
