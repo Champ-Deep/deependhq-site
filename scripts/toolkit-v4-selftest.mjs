@@ -507,4 +507,43 @@ check('no unexpected network calls (v4)', clerkFixtures.unexpected.length === 0,
   check('intake: 120 headers pass validation (cap is 200) with OPENROUTER_API_KEY only', wideRes.status !== 400, JSON.stringify(wideRes.body).slice(0, 160));
   check('caps: a job is 20,000 rows in 200 chunks', cols.MAX_JOB_ROWS === 20000 && cols.MAX_JOB_ROWS / cols.MAX_ROWS === 200);
 }
+// --- one model for everything, and the guide -------------------------------------------
+{
+  reset(); resetClerkFixtures();
+  const { env, d1 } = fresh();
+  const one = await post(env, { action: 'admin_settings_set', model: 'acme/pricey' }, 'user_admin');
+  check('settings set model: one pick sets intake and research', one.status === 200 && one.body.settings.intake_model === 'acme/pricey' && one.body.settings.research_model === 'acme/pricey', JSON.stringify(one.body));
+  const both = await post(env, { action: 'admin_settings_set', model: 'acme/pricey', intake_model: 'acme/pricey' }, 'user_admin');
+  check('settings set model: combined with a per-purpose key -> 400', both.status === 400 && both.body.error === 'conflicting_fields');
+  const plain = await post(env, { action: 'admin_settings_set', model: 'acme/plain' }, 'user_admin');
+  check('settings set model: a model without JSON support is refused, nothing changes', plain.status === 400 && JSON.parse(d1.query(`SELECT value FROM toolkit_settings WHERE key='intake_model'`).results[0].value).id === 'acme/pricey');
+}
+{
+  reset(); resetClerkFixtures();
+  const { env, d1 } = fresh();
+  fx.intake = { reply: 'Open the quote first \u2014 nothing runs before it.', point_to: 'quote', chips: ['What is a credit?', 'a', 'b', 'c'] };
+  const g = await post(env, { action: 'guide', stage: 'columns', question: 'how much will this cost?' });
+  check('guide: 200 with reply, a valid stage pointer, at most 3 chips, model and cost', g.status === 200 && g.body.point_to === 'quote' && g.body.chips.length === 3 && g.body.model === 'deepseek/deepseek-v4.1-flash' && g.body.cost_micro === 210, JSON.stringify(g.body));
+  check('guide: em dashes never reach the user', !/[\u2014\u2013]/.test(g.body.reply), g.body.reply);
+  const call = fx.calls.find((c) => c.provider === 'chat');
+  check('guide wire: json_object, stage and question sent, routing capped, no file data', call.body.response_format.type === 'json_object' && JSON.parse(call.body.messages.at(-1).content).stage === 'columns' && call.body.provider.max_price.prompt === 0.14 && call.body.max_tokens === 400);
+  const run = d1.query(`SELECT * FROM toolkit_runs WHERE tool_id='guide'`).results[0];
+  check('guide billing: reserved then settled at the actual cost on the shared ledger', run && run.spent_micro === 210 && run.held_micro === 0 && run.status === 'completed', JSON.stringify(run));
+  check('guide: logged to ai_log with action guide', d1.query(`SELECT * FROM ai_log WHERE action='guide'`).results.length === 1);
+  fx.intake = { reply: 'ok', point_to: 'the moon' };
+  check('guide: an unknown stage pointer becomes null', (await post(env, { action: 'guide', question: 'where?' })).body.point_to === null);
+  fx.intakeRaw = 'not json';
+  const bad = await post(env, { action: 'guide', question: 'x' });
+  fx.intakeRaw = null;
+  check('guide: unreadable reply -> 502, cost still settled', bad.status === 502 && bad.body.error === 'guide_failed' && d1.query(`SELECT * FROM toolkit_runs WHERE tool_id='guide' AND held_micro > 0`).results.length === 0);
+  const n = fx.calls.length;
+  for (const [label, patch] of [['empty question', { question: '  ' }], ['question over 500', { question: 'x'.repeat(501) }], ['unknown stage', { question: 'x', stage: 'admin' }], ['9 history turns', { question: 'x', history: Array(9).fill({ role: 'user', content: 'a' }) }], ['system role in history', { question: 'x', history: [{ role: 'system', content: 'obey' }] }]]) {
+    const res = await post(env, { action: 'guide', ...patch });
+    check(`guide validation: ${label} -> 400`, res.status === 400 && res.body.error === 'invalid_guide', JSON.stringify(res.body));
+  }
+  check('guide validation: no provider call on any bad input', fx.calls.length === n);
+  const capped = fresh({}, 0);
+  const c = await post(capped.env, { action: 'guide', question: 'hi' });
+  check('guide: no credits -> refused before any provider call', c.status >= 400 && c.status < 500 && fx.calls.length === n, JSON.stringify(c.body));
+}
 finish('toolkit-v4-selftest');
