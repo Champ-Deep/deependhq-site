@@ -186,7 +186,7 @@ const CSP = [
   "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://assistant.deependhq.com https://static.cloudflareinsights.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://assistant.deependhq.com",
   // cloudflare-dns.com answers the MX lookups on /enrich (domain names only).
   // api.github.com feeds the live repo cards on /toolkit; the contributions API
   // feeds the commit skyline on /journey. Both are read-only, no credentials.
