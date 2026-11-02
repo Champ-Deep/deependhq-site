@@ -409,6 +409,7 @@ function workbench(w) {
   // One section per stage; only the active one is on screen.
   const S = STAGES.map((name, i) => { const sec = el('section', undefined, 'stage'); sec.dataset.stage = name.toLowerCase(); sec.setAttribute('aria-label', name); sec.hidden = i > 0; root.append(sec); return sec; });
   function go(i) { current = i; reached = Math.max(reached, i); toReport.hidden = reached < 5; S.forEach((sec, k) => { sec.hidden = k !== i; }); steps.at(i, reached); root.scrollTop = 0; }
+  w.node.guideGo = go; // the toolkit guide's "Go to <Stage>" button
   const foot = (...kids) => { const f = el('div', undefined, 'stage-foot'); f.append(...kids); return f; };
   const back = i => button('Back', () => go(i), 'btn btn-outline');
   const msgUnder = () => { const m = el('div', undefined, 'msg'); m.setAttribute('aria-live', 'polite'); return m; };
@@ -790,24 +791,24 @@ function admin(w) {
   }
   const price = m => m ? `${money(m.prompt_micro_per_mtok)} in, ${money(m.completion_micro_per_mtok)} out per 1M tokens` : 'price unknown';
   function models(p) {
-    p.append(el('p', 'Pick the model for the intake chat and for DeepSeek operations. The server checks the id with OpenRouter and stores its price.', 'plain'));
+    p.append(el('p', 'One model runs the intake chat, the guide and DeepSeek operations. The server checks the id with OpenRouter and stores its price.', 'plain'));
     const box = el('form', undefined, 'card-form'); p.append(box);
     // resolves with the settings it rendered, so a save can read them back
     return (async () => {
       try {
         const r = await session.api('admin_settings_get', {}); if (!w.node.isConnected) return;
-        const settings = r.settings || {}, all = r.models || [], byId = new Map(all.map(m => [m.id, m])), picks = {};
-        for (const [key, label] of [['intake_model', 'Intake model (the chat that plans a job)'], ['research_model', 'Research model (DeepSeek operations)']]) {
-          const current = r.settings?.[key] || '', wrap = el('div', undefined, 'model-pick');
-          const search = input('', 'search'); search.placeholder = 'Search ' + all.length + ' models';
-          const list = el('select'); list.size = 6; list.setAttribute('aria-label', label);
-          const fill = () => { const q = search.value.trim().toLowerCase(), keep = list.value || current; list.replaceChildren(...all.filter(m => !q || m.id.toLowerCase().includes(q) || m.id === keep).slice(0, 200).map(m => new Option(m.id + '  /  ' + price(m), m.id))); list.value = keep; };
-          search.addEventListener('input', fill); fill();
-          const now = el('p', 'Current: ' + (current || 'not set') + (current ? ', ' + price(byId.get(current)) : ''), 'plain');
-          wrap.append(el('h4', label), now, field('Search models for ' + label.split(' (')[0].toLowerCase(), search), list); box.append(wrap); picks[key] = list;
-        }
-        const save = button('Save models', () => {}, 'btn btn-gold'); save.type = 'submit'; box.append(save);
-        box.addEventListener('submit', async e => { e.preventDefault(); save.disabled = true; try { const want = Object.fromEntries(Object.entries(picks).map(([k, s]) => [k, s.value])); await session.api('admin_settings_set', want); const back = await show('models'); if (!back) return; const off = Object.keys(want).filter(k => back[k] !== want[k]); status(off.length ? 'Saved, but the server now reports ' + off.map(k => k + ' = ' + (back[k] || 'not set')).join(', ') + '.' : 'Models saved and read back.', !!off.length); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
+        const settings = r.settings || {}, all = r.models || [], byId = new Map(all.map(m => [m.id, m]));
+        const label = 'Model for everything (chat, guide, research ops)', current = settings.intake_model || '', wrap = el('div', undefined, 'model-pick');
+        // the one-model setting writes both; a split left by the old two pickers is shown until the next save
+        if (settings.research_model && settings.research_model !== current) wrap.append(el('p', 'Currently split: intake ' + (current || 'not set') + ', research ' + settings.research_model + '. Saving sets both.', 'plain'));
+        const search = input('', 'search'); search.placeholder = 'Search ' + all.length + ' models';
+        const list = el('select'); list.size = 6; list.setAttribute('aria-label', label);
+        const fill = () => { const q = search.value.trim().toLowerCase(), keep = list.value || current; list.replaceChildren(...all.filter(m => !q || m.id.toLowerCase().includes(q) || m.id === keep).slice(0, 200).map(m => new Option(m.id + '  /  ' + price(m), m.id))); list.value = keep; };
+        search.addEventListener('input', fill); fill();
+        const now = el('p', 'Current: ' + (current || 'not set') + (current ? ', ' + price(byId.get(current)) : ''), 'plain');
+        wrap.append(el('h4', label), now, field('Search models', search), list); box.append(wrap);
+        const save = button('Save model', () => {}, 'btn btn-gold'); save.type = 'submit'; box.append(save);
+        box.addEventListener('submit', async e => { e.preventDefault(); if (!list.value) { status('Pick a model first.', true); return; } save.disabled = true; try { const model = list.value; await session.api('admin_settings_set', {model}); const back = await show('models'); if (!back) return; const off = ['intake_model', 'research_model'].filter(k => back[k] !== model); status(off.length ? 'Saved, but the server now reports ' + off.map(k => k + ' = ' + (back[k] || 'not set')).join(', ') + '.' : 'Model saved and read back.', !!off.length); } catch (err) { status(errorText(err), true); } finally { save.disabled = false; } });
         return settings;
       } catch (e) { status(errorText(e), true); }
     })();

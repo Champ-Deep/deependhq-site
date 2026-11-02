@@ -385,17 +385,17 @@ def admin_checks(page, width):
     w.get_by_role('button', name='Save user').first.wait_for()
     capture(page, f'admin-users-{width}')
     w.get_by_role('tab', name='Models').click()
-    intake = w.get_by_label('Intake model (the chat that plans a job)')
+    intake = w.get_by_label('Model for everything (chat, guide, research ops)')
     intake.wait_for()
     assert 'per 1M tokens' in intake.inner_text()
-    w.get_by_label('Search models for intake model').fill('gpt')
+    w.get_by_label('Search models').fill('gpt')
     ids = [o.split(' / ')[0].strip() for o in intake.locator('option').all_inner_texts()]
     assert ids == ['deepseek/deepseek-v4.1-flash', 'openai/gpt-5-mini'], ('search keeps the current pick plus matches', ids)
     intake.select_option('openai/gpt-5-mini')
     capture(page, f'admin-models-{width}')
-    w.get_by_role('button', name='Save models').click()
-    w.get_by_text('Models saved and read back.').wait_for()
-    assert state()['v4']['settings']['intake_model'] == 'openai/gpt-5-mini'
+    w.get_by_role('button', name='Save model').click()
+    w.get_by_text('Model saved and read back.').wait_for()
+    assert state()['v4']['settings']['intake_model'] == 'openai/gpt-5-mini' == state()['v4']['settings']['research_model']
     w.get_by_text('Current: openai/gpt-5-mini', exact=False).first.wait_for()
     w.get_by_role('tab', name='AI log').click()
     w.get_by_role('region', name='AI log').wait_for()
