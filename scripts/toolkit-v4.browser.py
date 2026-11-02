@@ -271,15 +271,34 @@ def files_checks(page, width):
     page.wait_for_function("!document.querySelector('.desk-icon[aria-label^=\"Leads\"]')")
     close_app(page, 'Files')
 
+ONE_STAGE = """() => { const w = document.querySelector('[data-app="workbench"]'); const on = [...w.querySelectorAll('.stage')].filter(s => !s.hidden && s.checkVisibility());
+  const cur = w.querySelector('.step-btn[aria-current="step"] .step-name'); return [on.map(s => s.dataset.stage), cur && cur.textContent]; }"""
+
+def stage_is(page, name):
+    """Exactly one stage's content is on screen, and it is the stage the stepper marks current."""
+    page.wait_for_function("n => { const s = [...document.querySelectorAll('[data-app=workbench] .stage')].filter(x => !x.hidden); return s.length === 1 && s[0].dataset.stage === n; }", arg=name.lower())
+    assert page.evaluate(ONE_STAGE) == [[name.lower()], name], page.evaluate(ONE_STAGE)
+
 def workbench_flow(page, width, rows, calls):
-    """File, preview, chat round trip, editable mapping and plan, quote, chunked run, results saved to Files."""
+    """Six stages: File, Columns, Ask, Quote, Run, Report. One stage on screen at a time, Back works, results saved to Files."""
     w = open_app(page, 'workbench')
-    capture(page, f'workbench-1-file-{width}')
+    stage_is(page, 'File')
+    capture(page, f'workbench-0-empty-{width}')
     page.set_input_files('#wb-file', {'name': 'leads.csv', 'mimeType': 'text/csv', 'buffer': csv(rows)})
     w.get_by_text(f'{rows} rows loaded in your browser. Nothing is sent until you approve a run.', exact=True).wait_for()
+    assert [t.inner_text() for t in w.locator('.file-info th').all()] == ['PERSON NAME', 'COMPANY NAME', 'WORK EMAIL', 'JOB']
+    capture(page, f'workbench-1-file-{width}')
+    page.locator('#wb-to-columns').click(); stage_is(page, 'Columns')
+    assert w.locator('.map-row').count() == 4 and w.locator('.map-row[data-source="Job"] .pb-samples li').first.inner_text() == 'VP Sales'
+    w.get_by_label('Field for Job', exact=True).select_option('title')
+    w.get_by_label('Keep Work Email', exact=True).uncheck()
+    assert w.locator('.map-row[data-source="Work Email"]').get_attribute('data-keep') == 'false'
+    capture(page, f'workbench-2-columns-{width}')
+    w.get_by_role('button', name='Back', exact=True).click(); stage_is(page, 'File')
+    w.get_by_role('button', name='2. Columns', exact=True).click(); stage_is(page, 'Columns')
+    page.locator('#wb-confirm').click(); stage_is(page, 'Ask')
     assert w.get_by_text('We keep your instructions and the AI conversation (never your cell values) to improve the toolkit.', exact=True).is_visible()
     assert [c.inner_text() for c in w.locator('.chips .chip').all()] == ['Enrichment', 'Title normalization', 'Categorization', 'Classification', 'Email verification', 'Company research']
-    capture(page, f'workbench-2-goal-{width}')
     calls.clear()
     w.get_by_role('button', name='Categorization', exact=True).click()
     w.get_by_text('Do you also want to know whether each company sells to businesses?').wait_for()
@@ -287,49 +306,53 @@ def workbench_flow(page, width, rows, calls):
     assert intake['goal'] == 'Categorization' and intake['history'] == [] and intake['file']['rows_total'] == rows
     assert all(len(v) <= 5 and all(len(s) <= 200 for s in v) for v in intake['file']['samples'].values())
     expect(w.locator('.op-card')).to_have_count(1)
+    assert w.locator('.model-badge').inner_text() and 'Assistant cost so far: ' in w.locator('.pb-cost').inner_text()
     w.get_by_role('button', name='Yes, add that', exact=True).click()
     w.get_by_text('I added a yes or no check', exact=False).wait_for()
     second = [c for c in calls if c['action'] == 'intake'][-1]
     assert [h['role'] for h in second['history']] == ['assistant', 'user'] and second['goal'] == 'Categorization'
     expect(w.locator('.op-card'), 'the second turn updated the plan').to_have_count(2)
-    capture(page, f'workbench-3-setup-{width}')
-    # Edit the mapping: retag a column and skip another. A skipped column never leaves the browser.
-    w.get_by_label('Field for Job', exact=True).select_option('title')
-    w.get_by_label('Keep Work Email', exact=True).uncheck()
-    assert w.locator('.map-row[data-source="Work Email"]').get_attribute('data-keep') == 'false'
+    assert all(b.inner_text() for b in w.locator('.op-card .engine-badge').all())
+    capture(page, f'workbench-3-ask-{width}')
     # Edit the plan: add, change and remove an operation.
     w.get_by_role('button', name='Add operation', exact=True).click()
     op = w.locator('.op-card').nth(2)
     op.get_by_label('Operation', exact=True).select_option('normalize_title')
+    op = w.locator('.op-card').nth(2)
     assert op.get_by_label('Engine', exact=True).locator('option').all_inner_texts() == ['Jev (fast, cheap labels)', 'DeepSeek (research and reasoning)']
     op.get_by_role('button', name='Remove operation 3').click()
     assert w.locator('.op-card').count() == 2
     calls.clear()
     page.locator('#wb-quote').click()
+    stage_is(page, 'Quote')
     page.wait_for_selector('#wb-run:not([disabled])')
     quotes = [c for c in calls if c['action'] == 'quote']
     chunks = -(-rows // 100)
     assert len(quotes) == 1 and len(quotes[0]['rows']) == rows and all('Work Email' not in r for r in quotes[0]['rows']), 'one quote covers the whole job and skips Work Email'
-    text = w.locator('.engine').inner_text()
-    assert 'Up to $' in text and 'left today' in text and f'{rows} rows in {chunks} chunk' in text, text
+    text = w.locator('[data-stage="quote"]').inner_text()
+    assert 'Up to' in text and 'left today' in text and f'{rows} rows in {chunks} chunk' in text, text
     assert 'Jev (fast, cheap labels)' in text
-    page.locator('#wb-run').scroll_into_view_if_needed()
     capture(page, f'workbench-4-quote-{width}')
     before = len(state()['runs'])
     page.locator('#wb-run').click()
     w.get_by_text('Saved to Files: /Workbench results/leads ', exact=False).wait_for(timeout=60000)
+    stage_is(page, 'Report')
     runs = state()['runs'][before:]
     assert len(runs) == chunks and sum(r['row_count'] for r in runs) == rows and all(r['status'] == 'completed' for r in runs), runs
     chunk_calls = [c for c in calls if c['action'] == 'run']
     assert len({c['job_id'] for c in chunk_calls}) == 1 and [c['chunk_index'] for c in chunk_calls] == list(range(chunks)) and {c['chunk_count'] for c in chunk_calls} == {chunks}, 'one job_id, ordered chunks'
     assert f'{rows} of {rows} rows done' in w.locator('.run-line').inner_text()
+    assert w.locator('.trace li[data-state="completed"]').count() == chunks
     saved = [x for x in state()['v4']['files'] if x['path'].startswith('/Workbench results/leads ')]
     assert saved, state()['v4']['files']
+    assert w.locator('.rp-card').count() >= 3
     with page.expect_download() as dl:
         w.get_by_role('button', name='Download CSV', exact=True).click()
     out = pathlib.Path(dl.value.path()).read_text()
     assert out.count('\n') >= rows and 'SaaS' in out and 'Person 0' in out
-    capture(page, f'workbench-5-results-{width}')
+    capture(page, f'workbench-5-report-{width}')
+    w.get_by_role('button', name='5. Run, done').click(); stage_is(page, 'Run')
+    capture(page, f'workbench-run-{width}')
     close_app(page, 'Data Workbench')
 
 def enrich_flow(page, width):
@@ -392,7 +415,7 @@ def refresh_checks(page, token):
     """Sign-out empties the desktop, in-page sign-in and Refresh connection repaint it without a reload."""
     page.evaluate("window.__noReload = true")
     page.get_by_role('button', name='Sign out', exact=True).click()
-    page.wait_for_function("document.querySelector('#daily').textContent === 'Allowance unavailable'")
+    page.wait_for_function("document.querySelector('#daily').textContent === 'Unavailable'")
     expect(page.locator('.desk-icon[data-desktop^="file:"]')).to_have_count(0)
     expect(page.locator('[data-launch="admin"]')).to_be_hidden()
     expect(page.locator('#session-status')).to_contain_text('Signed out')

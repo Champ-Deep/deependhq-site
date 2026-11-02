@@ -70,15 +70,22 @@ const GUESS = [[/e-?mail/i,'email'],[/linked\s*in/i,'linkedin_url'],[/first/i,'f
 export function guessFields(headers) {
   return headers.map(h => ({source: h, field: (GUESS.find(([re]) => re.test(h)) || [0, 'other'])[1], keep: true}));
 }
-// Up to 5 distinct non-empty samples per header, each at most 200 characters (contract section 1).
+// A guess is sure when the header matched and the sample values look like that field; unsure ones render dashed until confirmed.
+const LOOKS = {email: /@/, domain: /\./, linkedin_url: /linkedin/i, phone: /\d{3}/};
+export function guessSure(field, samples) {
+  if (field === 'other') return false;
+  const re = LOOKS[field], vals = samples.filter(Boolean);
+  return !re || !vals.length || vals.filter(v => re.test(v)).length * 2 > vals.length;
+}
+// Up to 5 distinct non-empty samples per header, each at most 200 characters (contract section 1). Headers up to 200.
 export function intakeFile(name, headers, rows) {
   const samples = {};
-  for (const h of headers.slice(0, 30)) {
+  for (const h of headers.slice(0, 200)) {
     const seen = new Set();
     for (const r of rows) { const v = String(r[h] ?? '').trim().slice(0, 200); if (v) seen.add(v); if (seen.size >= 5) break; }
     samples[h] = [...seen];
   }
-  return {name: String(name).slice(0, 200), rows_total: rows.length, headers: headers.slice(0, 30), samples};
+  return {name: String(name).slice(0, 200), rows_total: rows.length, headers: headers.slice(0, 200), samples};
 }
 export function mergeMapping(current, incoming) {
   const by = new Map((incoming || []).filter(m => m && FIELDS.includes(m.field)).map(m => [m.source, m]));
@@ -132,6 +139,52 @@ export function planToSpecs(plan, mapping, headers) {
 export function keptRows(rows, mapping) {
   const kept = mapping.filter(m => m.keep).map(m => m.source);
   return rows.map(r => Object.fromEntries(kept.map(h => [h, r[h] ?? ''])));
+}
+// ---- V5 report: counted in the browser from the result rows, never stored, no AI call ----
+const META = / \/ (confidence|evidence|checked_at|review)$/;
+const filled = v => String(v ?? '').trim() !== '';
+const pct = (n, d) => d ? Math.round(n / d * 1000) / 10 : 0;
+// Before = the kept columns of the file the job started from; after = the result rows. Rows line up by index.
+export function reportAggregates(source, outputs, kept) {
+  const rows = outputs.length, before = source.slice(0, rows), headers = rows ? Object.keys(outputs[0]) : [];
+  const added = headers.filter(h => /^Result \d+: /.test(h) && !META.test(h));
+  const count = (list, h) => list.filter(r => filled(r[h])).length;
+  const fill = [...added, ...kept].map(h => { const b = kept.includes(h) ? count(before, h) : 0, a = count(outputs, h); return {column: h, before: b, after: a, before_pct: pct(b, rows), after_pct: pct(a, rows)}; });
+  const distributions = added.map(h => {
+    const tally = new Map();
+    for (const r of outputs) { const v = filled(r[h]) ? String(r[h]).trim() : '(empty)'; tally.set(v, (tally.get(v) || 0) + 1); }
+    const top = [...tally].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 10).map(([value, n]) => ({value, count: n, pct: pct(n, rows)}));
+    return {column: h, distinct: tally.size, top};
+  });
+  const reviewCols = headers.filter(h => / \/ review$/.test(h));
+  const flagged = outputs.map((r, i) => reviewCols.some(h => r[h] === 'Review needed') ? i + 1 : 0).filter(Boolean);
+  return {rows, columns_kept: kept.length, columns_added: added.length, fill, distributions, review: {count: flagged.length, pct: pct(flagged.length, rows), rows: flagged.slice(0, 50)}};
+}
+export function agentBrief(file, mapping, plan, aggregates) {
+  return {file, mapping: mapping.map(({source, field, keep}) => ({source, field, keep})), plan, aggregates, generated_at: new Date().toISOString()};
+}
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c]);
+const n0 = n => Number(n).toLocaleString('en-US');
+// One markup for the in-app cards and the downloaded report. SPAN data-card rule: every number names its source and carries a note.
+export function reportCards(brief) {
+  const a = brief.aggregates, f = brief.file.name;
+  const card = (title, body, source, note, cls = '') => `<article class="rp-card${cls}"><h4>${esc(title)}</h4>${body}<p class="rp-src"><b>Source</b> ${esc(source)}</p><p class="rp-note"><b>Note</b> ${esc(note)}</p></article>`;
+  const bar = (label, value, p, extra = '') => `<li><span class="rp-label">${esc(label)}</span><span class="rp-val">${esc(value)}</span><span class="rp-bar" aria-hidden="true"><i style="width:${Math.min(100, p)}%"></i>${extra}</span></li>`;
+  const metric = (label, value) => `<div><dt>${esc(label)}</dt><dd class="money">${esc(value)}</dd></div>`;
+  const out = [card('Summary', `<dl class="metrics">${metric('Result rows', n0(a.rows))}${metric('Columns kept', n0(a.columns_kept))}${metric('Columns added', n0(a.columns_added))}${metric('Flagged for review', n0(a.review.count))}</dl>`,
+    `${n0(a.rows)} result rows of ${f}.`, 'Counted in your browser from the rows in the table below. Nothing was sent to a model for this report.', ' rp-wide')];
+  out.push(card('Fill rate, before and after', `<ul class="rp-bars" data-kind="fill">${a.fill.map(x => bar(x.column, `${x.before_pct}% to ${x.after_pct}%`, x.after_pct, `<b style="width:${Math.min(100, x.before_pct)}%"></b>`)).join('')}</ul>`,
+    `Non-empty cells per column in ${n0(a.rows)} rows. Before is your file, after is the result.`, 'Thin grey bar is your file, gold is the result. Added columns start at 0%.', ' rp-wide'));
+  for (const d of a.distributions) out.push(card(d.column, `<ul class="rp-bars" data-kind="dist">${d.top.map(t => bar(t.value, `${n0(t.count)} (${t.pct}%)`, t.pct)).join('')}</ul>`,
+    `${n0(a.rows)} values in the column ${d.column}.`, d.distinct > 10 ? `Top 10 of ${n0(d.distinct)} different values.` : `All ${n0(d.distinct)} different values. "skipped" means the row had no input for this step.`));
+  out.push(card('Rows flagged for review', `<p class="rp-big">${n0(a.review.count)} <small>of ${n0(a.rows)} rows (${a.review.pct}%)</small></p>${a.review.rows.length ? `<p class="rp-rows">Rows ${a.review.rows.join(', ')}${a.review.count > a.review.rows.length ? ' and more' : ''}</p>` : ''}`,
+    'Every review column in the result rows.', 'A row counts once even if several steps flagged it. Check these before you use the file.'));
+  return out.join('');
+}
+// The downloaded report: one HTML file, inline CSS, no scripts.
+export function reportHtml(brief) {
+  const css = 'body{margin:0;background:#0D0F14;color:#E8E4DC;font:15px/1.6 Inter,system-ui,sans-serif}main{max-width:1100px;margin:0 auto;padding:32px 20px}h1{font-size:28px;line-height:1.15;margin:0 0 4px}h4{margin:0 0 10px;font-size:15px;overflow-wrap:anywhere}.lede{color:#A8A8A2;margin:0 0 24px}.rp-grid{display:flex;flex-wrap:wrap;gap:14px}.rp-card{flex:1 1 320px;min-width:0;background:#181C26;border:1px solid #2A2E3A;border-radius:10px;padding:16px 18px}.rp-wide{flex-basis:100%}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0}.metrics div{background:#1E2330;border-radius:6px;padding:12px 14px}.metrics dt{font-size:13px;color:#A8A8A2}.metrics dd{margin:4px 0 0;font:700 22px/1.1 ui-monospace,monospace}.rp-bars{list-style:none;margin:0;padding:0;display:grid;gap:8px}.rp-bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px}.rp-label{overflow-wrap:anywhere}.rp-val{font:13px ui-monospace,monospace;color:#A8A8A2}.rp-bar{grid-column:1/-1;position:relative;height:12px;border-radius:2px;background:#232838}.rp-bar i,.rp-bar b{position:absolute;left:0;bottom:0;height:8px;border-radius:2px;background:#C9A84C}.rp-bar b{top:0;bottom:auto;height:3px;background:#A8A8A2}.rp-src,.rp-note{margin:10px 0 0;font-size:13px;color:#A8A8A2}.rp-note{margin-top:2px}.rp-src b,.rp-note b{color:#E8E4DC;margin-right:6px}.rp-big{font:700 28px/1.1 ui-monospace,monospace;margin:0}.rp-big small{font:400 14px Inter,sans-serif;color:#A8A8A2}.rp-rows{font:13px ui-monospace,monospace;color:#A8A8A2;overflow-wrap:anywhere}';
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(brief.file.name)} report</title><style>${css}</style></head><body><main><h1>${esc(brief.file.name)}</h1><p class="lede">Data Workbench report, generated ${esc(brief.generated_at.slice(0, 16).replace('T', ' '))} UTC. ${n0(brief.aggregates.rows)} rows, ${brief.plan.length} ${brief.plan.length === 1 ? 'step' : 'steps'}.</p><div class="rp-grid">${reportCards(brief)}</div></main></body></html>`;
 }
 export function toBase64(bytes) {
   let s = '';

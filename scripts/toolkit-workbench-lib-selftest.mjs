@@ -1,6 +1,6 @@
 // scripts/toolkit-workbench-lib-selftest.mjs : pure helpers behind the V4 Data Workbench, Deep Enrich and the desktop.
 import assert from 'node:assert/strict';
-import {money, validateFileTable, quoteSummary, resultRows, guessFields, intakeFile, mergeMapping, planItem, planToSpecs, keptRows, toBase64, snapZone, zoneRect, fitRect, resizeRect, nearestFreeCell, groupRuns} from '../toolkit-workbench-lib.js';
+import {money, validateFileTable, quoteSummary, resultRows, guessFields, intakeFile, mergeMapping, planItem, planToSpecs, keptRows, guessSure, reportAggregates, agentBrief, reportCards, reportHtml, toBase64, snapZone, zoneRect, fitRect, resizeRect, nearestFreeCell, groupRuns} from '../toolkit-workbench-lib.js';
 
 assert.throws(() => validateFileTable({rows: []}), /no data rows/);
 assert.throws(() => validateFileTable({rows: [{__proto__x: 1, constructor: 'x'}]}), /reserved names/);
@@ -31,6 +31,20 @@ assert.equal(file.samples['Person Name'].length, 5);
 assert.equal(file.samples.Notes[0].length, 200);
 assert.deepEqual(file.samples.Job, []);
 assert.equal(file.rows_total, 9);
+assert.equal(intakeFile('wide.csv', Array.from({length: 60}, (_, i) => 'c' + i), [{c0: 'a'}]).headers.length, 60, 'intake sends every header up to 200');
+assert.deepEqual([guessSure('email', ['a@b.co', 'n/a', 'c@d.co']), guessSure('email', ['n/a', 'x']), guessSure('other', ['x']), guessSure('title', ['VP Sales'])], [true, false, false, true]);
+
+// V5 report: fill before and after, distributions, review count, all from the rows; the HTML has no script.
+const src = [{Job: 'VP', Email: ''}, {Job: '', Email: 'a@b.co'}, {Job: 'CEO', Email: 'c@d.co'}];
+const outs = src.map((r, i) => ({...r, 'Result 1: Job / classify': ['SaaS', 'skipped', 'SaaS'][i], 'Result 1: Job / classify / review': ['No flag', 'Review needed', 'Review needed'][i], 'Result 1: Job / classify / evidence': 'x'}));
+const agg = reportAggregates(src, outs, ['Job', 'Email']);
+assert.deepEqual(agg.fill.map(f => [f.column, f.before, f.after]), [['Result 1: Job / classify', 0, 3], ['Job', 2, 2], ['Email', 2, 2]]);
+assert.deepEqual(agg.distributions[0].top, [{value: 'SaaS', count: 2, pct: 66.7}, {value: 'skipped', count: 1, pct: 33.3}]);
+assert.deepEqual([agg.rows, agg.columns_added, agg.review.count, agg.review.rows], [3, 1, 2, [2, 3]]);
+const brief = agentBrief({name: 'a<b>.csv', rows: 3}, [{source: 'Job', field: 'title', keep: true, extra: 1}], [{column: 'Job', op: 'classify'}], agg);
+assert.deepEqual(Object.keys(brief), ['file', 'mapping', 'plan', 'aggregates', 'generated_at']);
+assert.deepEqual(brief.mapping, [{source: 'Job', field: 'title', keep: true}]);
+assert.ok(reportCards(brief).includes('a&lt;b&gt;.csv') && !reportHtml(brief).includes('<script'), 'escaped, no scripts');
 const merged = mergeMapping(guessFields(headers), [{source: 'Notes', field: 'industry', keep: false}, {source: 'Job', field: 'not_a_field'}]);
 assert.deepEqual(merged.find(m => m.source === 'Notes'), {source: 'Notes', field: 'industry', keep: false});
 assert.equal(merged.find(m => m.source === 'Job').field, 'title', 'unknown fields from the model are ignored');
