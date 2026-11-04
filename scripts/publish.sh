@@ -96,6 +96,11 @@ rsync -a --delete \
 
 cd "$TMP/repo"
 
+# deploy-gate (champ-skills security/ultimate-security): secrets, HIGH/CRITICAL deps, audit-required changes.
+# Not skipped by PUBLISH_SKIP_GATES. Override only with Deep's approval: DEPLOY_GATE_OVERRIDE="<reason>".
+python3 "$HOME/champ-skills/security/ultimate-security/scripts/deploy_gate.py" check . --name "$REPO_NAME" \
+  || { echo "PUBLISH-FAILED: security gate refused." >&2; exit 8; }
+
 # The gates run against the MIRRORED tree, not the worktree, so what is checked
 # is exactly what is about to be pushed. A failure here stops the publish.
 if [ "${PUBLISH_SKIP_GATES:-0}" != "1" ]; then

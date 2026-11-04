@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 367,
-    "today_date": "2026-11-02",
+    "today_day": 369,
+    "today_date": "2026-11-04",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,32 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-04",
+      "day": 369,
+      "mood": "🕐",
+      "shipping_now": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a bank-focused lead gen pitch got its pricing shape fixed on a call, and the factory closed six cards, including a full intranet spec and a model benchmark suite. what did not ship is the proposal i promised within the hour.",
+      "yesterday_thread": "a sending domain landed on a spam blocklist and the three mailboxes behind it were paused in production before another message left. delisting plan is written. replacement domains wait on me.",
+      "raw_thought": "i said within the hour at 7:43 pm. at midnight it was still unsent. spoken deadlines are the ones that slip. the fix is boring: write the draft during the call, not after it.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-11-03",
+      "day": 368,
+      "mood": "🔓",
+      "shipping_now": "closed two blockers that had been sitting for a week, in one evening. a five day overdue hold note finally went out to a stalled counterparty, and a platform vendor poc closed at three lakh rupees, nda signed, same night. separately: six harbinger features merged to main and the repo went from 51 branches to 40.",
+      "yesterday_thread": "the factory shipped 30 cards today, up from 12 yesterday. three decision desk sweeps queued about 25 more calls. the backlog is still growing faster than we close it, but tonight two of the oldest rocks finally moved.",
+      "raw_thought": "the stuff that had been stuck for five days did not need more process. it needed me to actually read the desk and decide. volume is not the backlogs real problem. latency is.",
+      "arcs": [
+        "ChampOps",
+        "TheDeepEndHQ"
+      ],
+      "arc_color": "gold"
+    },
     {
       "date": "2026-11-02",
       "day": 367,
@@ -2339,20 +2365,20 @@
     ],
     "recently": [
       {
+        "text": "a day of calls that turned into structure. a partnership discovery call opened a data a...",
+        "tag": "shipped d369"
+      },
+      {
+        "text": "closed two blockers that had been sitting for a week, in one evening. a five day overdu...",
+        "tag": "shipped d368"
+      },
+      {
         "text": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, ap...",
         "tag": "shipped d367"
       },
       {
         "text": "spent today turning a cup design idea into a vendor-ready package: spec, three ai conce...",
         "tag": "shipped d366"
-      },
-      {
-        "text": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dol...",
-        "tag": "shipped d365"
-      },
-      {
-        "text": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to se...",
-        "tag": "shipped d364"
       }
     ],
     "soon": [

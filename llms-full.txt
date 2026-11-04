@@ -1,8 +1,32 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (145) and every weekly essay (20), newest first. Rebuilt 2026-11-02. Cite the day number and date when quoting, for example "day 367, 2026-11-02".
+> Every public journey entry (147) and every weekly essay (20), newest first. Rebuilt 2026-11-04. Cite the day number and date when quoting, for example "day 369, 2026-11-04".
 
 ## Journey
+
+### Day 369, 2026-11-04 (building)
+
+a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a bank-focused lead gen pitch got its pricing shape fixed on a call, and the factory closed six cards, including a full intranet spec and a model benchmark suite. what did not ship is the proposal i promised within the hour.
+
+Thread: a sending domain landed on a spam blocklist and the three mailboxes behind it were paused in production before another message left. delisting plan is written. replacement domains wait on me.
+
+Raw thought: i said within the hour at 7:43 pm. at midnight it was still unsent. spoken deadlines are the ones that slip. the fix is boring: write the draft during the call, not after it.
+
+Arcs: ChampOps, Lake B2B
+
+Link: https://deependhq.com/journey.html#day-369
+
+### Day 368, 2026-11-03 (a real outcome)
+
+closed two blockers that had been sitting for a week, in one evening. a five day overdue hold note finally went out to a stalled counterparty, and a platform vendor poc closed at three lakh rupees, nda signed, same night. separately: six harbinger features merged to main and the repo went from 51 branches to 40.
+
+Thread: the factory shipped 30 cards today, up from 12 yesterday. three decision desk sweeps queued about 25 more calls. the backlog is still growing faster than we close it, but tonight two of the oldest rocks finally moved.
+
+Raw thought: the stuff that had been stuck for five days did not need more process. it needed me to actually read the desk and decide. volume is not the backlogs real problem. latency is.
+
+Arcs: ChampOps, TheDeepEndHQ
+
+Link: https://deependhq.com/journey.html#day-368
 
 ### Day 367, 2026-11-02 (building)
 

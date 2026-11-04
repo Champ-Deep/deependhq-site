@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-11-02T19:51:11.472Z
+// Built 2026-11-04T19:36:09.464Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 367,
-    "today_date": "2026-11-02",
+    "today_day": 369,
+    "today_date": "2026-11-04",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,18 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 369,
+          "date": "2026-11-04",
+          "shipping_now": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a bank-focused lead…",
+          "arc_color": "green"
+        },
+        {
+          "day": 368,
+          "date": "2026-11-03",
+          "shipping_now": "closed two blockers that had been sitting for a week, in one evening. a five day overdue hold note finally went out to a stalled…",
+          "arc_color": "gold"
+        },
         {
           "day": 366,
           "date": "2026-11-01",
@@ -82,18 +94,6 @@ window.DH_DATA = {
           "day": 357,
           "date": "2026-10-23",
           "shipping_now": "Shipped the backbone of our internal mail infrastructure today: send, mailboxes, domains, events, and it passed its own gate on…",
-          "arc_color": "green"
-        },
-        {
-          "day": 356,
-          "date": "2026-10-22",
-          "shipping_now": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage…",
-          "arc_color": "green"
-        },
-        {
-          "day": 355,
-          "date": "2026-10-21",
-          "shipping_now": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six…",
           "arc_color": "green"
         }
       ],
@@ -244,6 +244,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 369,
+          "date": "2026-11-04",
+          "shipping_now": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a bank-focused lead…",
+          "arc_color": "green"
+        },
+        {
           "day": 365,
           "date": "2026-10-31",
           "shipping_now": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time.…",
@@ -308,12 +314,6 @@ window.DH_DATA = {
           "date": "2026-09-29",
           "shipping_now": "the enterprise IT services client call happened tonight, the one that told us flat out two days ago: zero qualified leads in two…",
           "arc_color": "gold"
-        },
-        {
-          "day": 329,
-          "date": "2026-09-25",
-          "shipping_now": "built and shipped a 10-slide intent-signal carousel for lakeb2b today, straight through to a published linkedin post. explains…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -578,7 +578,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-11-02",
       "last_ship_day": 367,
-      "days_since": 1,
+      "days_since": 3,
       "entries_30d": 3,
       "recent": [
         {
@@ -647,7 +647,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 27,
+      "days_since": 29,
       "entries_30d": 1,
       "recent": [
         {
@@ -709,11 +709,16 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-10-31",
-      "last_ship_day": 365,
-      "days_since": 3,
-      "entries_30d": 9,
+      "last_ship": "2026-11-04",
+      "last_ship_day": 369,
+      "days_since": 1,
+      "entries_30d": 10,
       "recent": [
+        {
+          "day": 369,
+          "date": "2026-11-04",
+          "ship": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a b"
+        },
         {
           "day": 365,
           "date": "2026-10-31",
@@ -728,11 +733,6 @@ window.DH_DATA = {
           "day": 358,
           "date": "2026-10-24",
           "ship": "closed our first call with a facility management prospect today and walked away with an actual plan, not a may"
-        },
-        {
-          "day": 353,
-          "date": "2026-10-19",
-          "ship": "sat through a full demo of a compliance platform already running at banks moving 30 petabytes of data. three v"
         }
       ],
       "company_slugs": [
@@ -781,7 +781,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 28,
+      "days_since": 30,
       "entries_30d": 1,
       "recent": [
         {
@@ -847,6 +847,59 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-04",
+      "day": 369,
+      "mood": "🕐",
+      "shipping_now": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a bank-focused lead gen pitch got its pricing shape fixed on a call, and the factory closed six cards, including a full intranet spec and a model benchmark suite. what did not ship is the proposal i promised within the hour.",
+      "yesterday_thread": "a sending domain landed on a spam blocklist and the three mailboxes behind it were paused in production before another message left. delisting plan is written. replacement domains wait on me.",
+      "raw_thought": "i said within the hour at 7:43 pm. at midnight it was still unsent. spoken deadlines are the ones that slip. the fix is boring: write the draft during the call, not after it.",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "day": 368,
+      "mood": "🔓",
+      "shipping_now": "closed two blockers that had been sitting for a week, in one evening. a five day overdue hold note finally went out to a stalled counterparty, and a platform vendor poc closed at three lakh rupees, nda signed, same night. separately: six harbinger features merged to main and the repo went from 51 branches to 40.",
+      "yesterday_thread": "the factory shipped 30 cards today, up from 12 yesterday. three decision desk sweeps queued about 25 more calls. the backlog is still growing faster than we close it, but tonight two of the oldest rocks finally moved.",
+      "raw_thought": "the stuff that had been stuck for five days did not need more process. it needed me to actually read the desk and decide. volume is not the backlogs real problem. latency is.",
+      "arcs": [
+        "ChampOps",
+        "TheDeepEndHQ"
+      ],
+      "arc_color": "gold",
+      "company_links": [
+        {
+          "arc": "ChampOps",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        },
+        {
+          "arc": "TheDeepEndHQ",
+          "company_name": null,
+          "slug": null
+        }
+      ]
+    },
     {
       "date": "2026-11-02",
       "day": 367,
@@ -4827,7 +4880,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 367 · Nov 2",
+    "last_ship": "day 369 · Nov 4",
     "state": "shipping"
   },
   "status_board": {
@@ -4851,20 +4904,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "a day of calls that turned into structure. a partnership discovery call opened a data a...",
+        "tag": "shipped d369"
+      },
+      {
+        "text": "closed two blockers that had been sitting for a week, in one evening. a five day overdu...",
+        "tag": "shipped d368"
+      },
+      {
         "text": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, ap...",
         "tag": "shipped d367"
       },
       {
         "text": "spent today turning a cup design idea into a vendor-ready package: spec, three ai conce...",
         "tag": "shipped d366"
-      },
-      {
-        "text": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dol...",
-        "tag": "shipped d365"
-      },
-      {
-        "text": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to se...",
-        "tag": "shipped d364"
       }
     ],
     "soon": [
@@ -10851,33 +10904,55 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-11-02T19:51:11.425Z",
-    "built_date": "2026-11-03",
+    "built": "2026-11-04T19:36:09.433Z",
+    "built_date": "2026-11-05",
     "newest_entry": {
-      "date": "2026-11-02",
-      "day": 367
+      "date": "2026-11-04",
+      "day": 369
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 144,
+        "days_old": 146,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 132,
+        "days_old": 134,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 132,
+        "days_old": 134,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 369,
+      "date": "2026-11-04",
+      "mood": "🕐",
+      "arc_color": "green",
+      "arcs": [
+        "ChampOps",
+        "Lake B2B"
+      ],
+      "ship": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a bank-focused lead gen pitch got its pricing shape fixed on a call, and the factory closed six cards, including a full intranet spec and a model benchmark suite. what did not ship is the proposal i promised within the hour."
+    },
+    {
+      "day": 368,
+      "date": "2026-11-03",
+      "mood": "🔓",
+      "arc_color": "gold",
+      "arcs": [
+        "ChampOps",
+        "TheDeepEndHQ"
+      ],
+      "ship": "closed two blockers that had been sitting for a week, in one evening. a five day overdue hold note finally went out to a stalled counterparty, and a platform vendor poc closed at three lakh rupees, nda signed, same night. separately: six harbinger features merged to main and the repo went from 51 branches to 40."
+    },
     {
       "day": 367,
       "date": "2026-11-02",
@@ -11008,28 +11083,6 @@ window.DH_DATA = {
         "Champions Operations"
       ],
       "ship": "unblocked a deploy that had been stuck for 31 sweeps straight, then spent the rest of the night redesigning the whole homepage around one rule: every section should feel like the one part people actually liked. 104 agent cards shipped today, zero blocked, zero stuck."
-    },
-    {
-      "day": 355,
-      "date": "2026-10-21",
-      "mood": "🔨",
-      "arc_color": "green",
-      "arcs": [
-        "TheDeepEndHQ",
-        "Champions Operations"
-      ],
-      "ship": "shipped the deependhq refresh today. draggable entry grid, the terrain hero with its seven lane day animation, and the full six lane integration all landed. isolated preview is live."
-    },
-    {
-      "day": 354,
-      "date": "2026-10-20",
-      "mood": "🔨",
-      "arc_color": "green",
-      "arcs": [
-        "TheDeepEndHQ",
-        "ChampOps"
-      ],
-      "ship": "spent today locking the deependhq refresh plan. skipping the full next.js rewrite, going with react islands instead so the static site stays fast and only the interactive pieces (footer, folder cards, widget grid) load react at all. new logo marks landed too. build starts tomorrow."
     }
   ],
   "heatmap": {
@@ -11889,21 +11942,21 @@ window.DH_DATA = {
         "date": "2026-11-03",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 368,
+        "arc_color": "gold",
+        "ship": "closed two blockers that had been sitting for a week, in one evening. a five day overdue hold note finally wen"
       },
       {
         "date": "2026-11-04",
-        "future": true,
+        "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 369,
+        "arc_color": "green",
+        "ship": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a b"
       },
       {
         "date": "2026-11-05",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -11936,11 +11989,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 367,
-    "entries": 145,
+    "days_public": 369,
+    "entries": 147,
     "entries_30d": 30,
-    "entries_this_month": 2,
-    "streak_weekdays": 98,
+    "entries_this_month": 4,
+    "streak_weekdays": 100,
     "essays": 20,
     "companies": 12,
     "companies_active_90d": 4,
@@ -11949,22 +12002,22 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "ChampOps",
-        "n": 15
+        "n": 17
       },
       {
         "arc": "Champions Operations",
-        "n": 14
+        "n": 12
       },
       {
         "arc": "Lake B2B",
-        "n": 9
-      },
-      {
-        "arc": "Champ Harbinger",
-        "n": 3
+        "n": 10
       },
       {
         "arc": "TheDeepEndHQ",
+        "n": 4
+      },
+      {
+        "arc": "Champ Harbinger",
         "n": 3
       },
       {
@@ -12021,9 +12074,9 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-11-01",
-        "mentions_90d": 27,
-        "days_since": 2
+        "last_seen": "2026-11-04",
+        "mentions_90d": 29,
+        "days_since": 1
       },
       {
         "name": "Cloudflare",
@@ -12033,7 +12086,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-10-28",
         "mentions_90d": 4,
-        "days_since": 6
+        "days_since": 8
       },
       {
         "name": "ChampBeam",
@@ -12046,7 +12099,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 1,
-        "days_since": 22
+        "days_since": 24
       },
       {
         "name": "Obsidian + Celsus",
@@ -12056,7 +12109,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 23
+        "days_since": 25
       },
       {
         "name": "Claude + Cowork",
@@ -12066,7 +12119,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 24
+        "days_since": 26
       },
       {
         "name": "Event Scout",
@@ -12079,7 +12132,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 50
+        "days_since": 52
       },
       {
         "name": "ChampUTM",
@@ -12092,7 +12145,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 52
+        "days_since": 54
       },
       {
         "name": "LakeStream",
@@ -12105,7 +12158,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 91
+        "days_since": 93
       },
       {
         "name": "ChamPDF",
@@ -12118,7 +12171,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 91
+        "days_since": 93
       },
       {
         "name": "ChampMail",
@@ -12131,7 +12184,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 0,
-        "days_since": 93
+        "days_since": 95
       },
       {
         "name": "Supabase",
@@ -12142,7 +12195,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 125
+        "days_since": 127
       },
       {
         "name": "ChampGraph",
@@ -12155,7 +12208,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 133
+        "days_since": 135
       },
       {
         "name": "ChampQuest",
@@ -12168,7 +12221,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 153
+        "days_since": 155
       },
       {
         "name": "Deep Scanner",
@@ -12650,9 +12703,9 @@ window.DH_DATA = {
     },
     "active_30d": 5,
     "mined_from": {
-      "entries": 145,
+      "entries": 147,
       "essays": 20
     }
   },
-  "built": "2026-11-02T19:51:11.472Z"
+  "built": "2026-11-04T19:36:09.464Z"
 };
