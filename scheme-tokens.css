@@ -1,4 +1,7 @@
 /* Generated from system.css. */
+/* Sonar's Back Room palette is scoped so the desktop keeps its current scheme. */
+:root{--sonar-bg:#0E1A33;--sonar-card:#1A2742;--sonar-line:#24314F;--sonar-text:#F4EBD9;--sonar-mare:#A9ABA6;--sonar-lamp:#F4A62A;--sonar-live:#30E060;--sonar-focus:#F4A62A}
+:root[data-scheme="light"]{--sonar-bg:#F6F5F2;--sonar-card:#FFFFFF;--sonar-line:#C4C0B7;--sonar-text:#0E1A33;--sonar-mare:#515B6E;--sonar-lamp:#F4A62A;--sonar-live:#0F6B33;--sonar-focus:#8A5A00}
 :root {
   color-scheme: dark;
   /* brand */

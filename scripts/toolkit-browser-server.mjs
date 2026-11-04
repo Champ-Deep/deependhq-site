@@ -19,7 +19,12 @@ const MODELS=[
 const GUESS=[[/e-?mail/i,'email'],[/company|account/i,'company'],[/domain|website/i,'domain'],[/title|job|role/i,'title'],[/name/i,'person_name']];
 // Fixture intake model: turn one proposes a classify plan and asks a question, turn two adds a yes or no check.
 function intakeAnswer(messages){
-  const {file}=JSON.parse(messages[messages.length-1].content);
+  const {file,question}=JSON.parse(messages[messages.length-1].content);
+  if (file.columns) {
+    const group_by=file.columns.find(c=>c.type==='text')?.name;
+    const view=/list/i.test(question)?'list':'rank';
+    return {headline:view==='list'?null:'{top} leads with {top_value} of {matched} rows',plan:{view,group_by,measure:{fn:'count'}},question:null,follow_ups:['Average by country?']};
+  }
   const first=!messages.some(m=>m.role==='assistant');
   const mapping=file.headers.map(h=>({source:h,field:(GUESS.find(([re])=>re.test(h))||[0,'other'])[1],keep:true}));
   const company=mapping.find(m=>m.field==='company')?.source||file.headers[0];
