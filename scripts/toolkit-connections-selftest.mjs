@@ -163,7 +163,7 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   check('push_campaign: a mapping with an unknown header is refused at stage time', (await post(env, { action: 'connector_act', provider: 'harbinger', op: 'push_campaign', args: { file_id: fid, mapping: [{ source: 'Ghost', field: 'email' }], name: 'x' } })).body.error === 'invalid_args');
   check('push_campaign: a mapping with no name, email or LinkedIn column is refused', (await post(env, { action: 'connector_act', provider: 'harbinger', op: 'push_campaign', args: { file_id: fid, mapping: [{ source: 'Company', field: 'company' }], name: 'x' } })).body.error === 'invalid_args');
   check('plan_campaign: a short goal is refused', (await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'x' } })).body.error === 'invalid_args');
-  check('staging wrote rows with status staged and no result', d1.query(`SELECT status, result_json FROM connector_staged`).results.every((r) => r.status === 'staged' && r.result_json === null));
+  check('staging wrote toolkit_staged rows: connector_act, pending, server-written title, no result', d1.query(`SELECT * FROM toolkit_staged`).results.every((r) => r.kind === 'connector_act' && r.source === 'user' && r.status === 'pending' && r.result_json === null && /^ChampHarbinger (plan|push)_campaign$/.test(r.title)) && plan.body.approve_url.endsWith(`#approvals/${plan.body.staged_id}`));
 
   check('approve: another user cannot approve it (404)', (await post(env, { action: 'connector_approve', staged_id: push.body.staged_id }, 'user_b')).status === 404 && post_calls().length === 0);
   const go = await post(env, { action: 'connector_approve', staged_id: push.body.staged_id });
@@ -175,16 +175,26 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   const pl = await post(env, { action: 'connector_approve', staged_id: plan.body.staged_id });
   check('approve plan_campaign: POST goal/plan with the goal', pl.body.result.id === 'plan1' && post_calls().at(-1).path === '/api/goal/plan' && post_calls().at(-1).body.goal === 'Book 10 demos in Q4');
 
+  // the same act through the Approvals window's staged_decide (docs section 10)
+  const viaWin = await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'Approve me from the window' } });
+  const nWin = post_calls().length;
+  const dec = await post(env, { action: 'staged_decide', id: viaWin.body.staged_id, decision: 'approve' });
+  check('staged_decide approve on connector_act runs the adapter approve once, item approved with its result', dec.status === 200 && dec.body.item.status === 'approved' && dec.body.item.result.id === 'plan1' && post_calls().length === nWin + 1, JSON.stringify(dec.body));
+  const toReject = await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'Reject me please' } });
+  const rj = await post(env, { action: 'staged_decide', id: toReject.body.staged_id, decision: 'reject' });
+  const late = await post(env, { action: 'connector_approve', staged_id: toReject.body.staged_id });
+  check('staged_decide reject on connector_act: rejected, and connector_approve then refuses it (409), nothing posted', rj.body.item.status === 'rejected' && late.status === 409 && post_calls().length === nWin + 1);
+
   const old = await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'A goal that expires' } });
-  d1.raw.prepare(`UPDATE connector_staged SET expires_at='2020-01-01T00:00:00.000Z' WHERE id=?`).run(old.body.staged_id);
+  d1.raw.prepare(`UPDATE toolkit_staged SET expires_at='2020-01-01T00:00:00.000Z' WHERE id=?`).run(old.body.staged_id);
   const n = post_calls().length;
   const exp = await post(env, { action: 'connector_approve', staged_id: old.body.staged_id });
-  check('approve: a stage older than an hour is refused (410) and runs nothing', exp.status === 410 && exp.body.error === 'expired' && post_calls().length === n);
+  check('approve: an expired stage is refused (410) and runs nothing', exp.status === 410 && exp.body.error === 'expired' && post_calls().length === n);
 
   const fail = await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'A goal that fails' } });
   fx.deny.add(HB_KEY);
   const failed = await post(env, { action: 'connector_approve', staged_id: fail.body.staged_id });
-  check('approve: a provider failure is reported and the stage is marked failed (not retried)', failed.status === 400 && failed.body.status === 'failed' && failed.body.error === 'invalid_key' && d1.query(`SELECT status FROM connector_staged WHERE id=?`, fail.body.staged_id).results[0].status === 'failed');
+  check('approve: a provider failure is reported and the stage is marked failed (not retried)', failed.status === 400 && failed.body.status === 'failed' && failed.body.error === 'invalid_key' && d1.query(`SELECT status FROM toolkit_staged WHERE id=?`, fail.body.staged_id).results[0].status === 'failed');
   check('approve: a malformed id -> 400, an unknown id -> 404', (await post(env, { action: 'connector_approve', staged_id: 'x' })).status === 400 && (await post(env, { action: 'connector_approve', staged_id: '11111111-1111-4111-8111-111111111111' })).status === 404);
 }
 {
@@ -214,7 +224,7 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   const staged = r.body.cards.find((c) => c.kind === 'staged');
   check('agent: pulled campaigns reach the model', toolMsgs(fx.chat[1])[0].data[0].name === 'SECRETCAMPAIGN Q4');
   check('agent: connector_act returns a staged card with the approve action; nothing was posted', r.status === 200 && staged && staged.data.status === 'staged' && staged.data.approve.action === 'connector_approve' && post_calls().length === 0, JSON.stringify(r.body).slice(0, 400));
-  check('agent: the tool list has no approve or run tool', !fx.chat[0].tools.some((t) => /approve|run|send|push/.test(t.function.name)));
+  check('agent: the tool list has no approve or run tool', !fx.chat[0].tools.some((t) => /approve|^run$|send|push/.test(t.function.name)));
   fx.script = [tool('connector_approve', { staged_id: staged.data.staged_id }), say('x')];
   await post(env, { action: 'deepbot', message: 'approve it' });
   check('agent: calling connector_approve as a tool is unknown_tool and runs nothing', toolMsgs(fx.chat.at(-1))[0].error === 'unknown_tool' && post_calls().length === 0);
@@ -238,7 +248,7 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'campaigns' });
   fx.script = [tool('connector_pull', { provider: 'harbinger', op: 'campaigns' }), say('done')];
   const dumps = [];
-  for (const t of ['toolkit_connections', 'connector_staged', 'ai_log', 'deepbot_turns', 'toolkit_events', 'toolkit_ops']) dumps.push(...d1.query(`SELECT * FROM ${t}`).results.map((x) => (t === 'toolkit_connections' ? { ...x, key_ciphertext: '' } : x)));
+  for (const t of ['toolkit_connections', 'toolkit_staged', 'ai_log', 'deepbot_turns', 'toolkit_events', 'toolkit_ops']) dumps.push(...d1.query(`SELECT * FROM ${t}`).results.map((x) => (t === 'toolkit_connections' ? { ...x, key_ciphertext: '' } : x)));
   check('logs: the key is in no console line, ai_log, event or op row (only the sealed column holds it)', !fx.errors.join('\n').includes('SECRETKEYSECRET') && !JSON.stringify(dumps).includes('SECRETKEYSECRET'));
 }
 
@@ -271,6 +281,20 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   d1.raw.prepare(`UPDATE invite_requests SET user_id='u'||rowid, status='declined'`).run();
   d1.raw.exec(`INSERT INTO invite_requests (id, user_id, created_at, status) SELECT 'x'||value, 'bulk'||value, '${new Date().toISOString()}', 'declined' FROM (WITH RECURSIVE s(value) AS (SELECT 1 UNION ALL SELECT value+1 FROM s WHERE value<50) SELECT value FROM s)`);
   check('invite: a flood across users (50 in an hour) is refused -> 429', (await post(env, { action: 'invite_request_create' }, 'user_b')).status === 429);
+}
+
+// 7. migration 0006 carries 0005's connector_staged rows into toolkit_staged and drops the old table
+{
+  const { DatabaseSync } = await import('node:sqlite');
+  const { readFileSync } = await import('node:fs');
+  const db = new DatabaseSync(':memory:');
+  const mig = (f) => db.exec(readFileSync(new URL('../migrations/' + f, import.meta.url), 'utf8'));
+  for (const f of ['0001_toolkit.sql', '0002_v4.sql', '0003_run_job_id.sql', '0004_deepbot.sql', '0005_connections.sql']) mig(f);
+  db.prepare(`INSERT INTO connector_staged (id, user_id, provider, op, args_json, preview_json, status, created_at, expires_at) VALUES ('s1', 'user_a', 'harbinger', 'plan_campaign', '{"goal":"g"}', '{"goal":"g"}', 'staged', '2026-11-05T00:00:00.000Z', '2026-11-05T01:00:00.000Z')`).run();
+  mig('0006_staged.sql');
+  const row = db.prepare(`SELECT * FROM toolkit_staged`).get();
+  const gone = db.prepare(`SELECT name FROM sqlite_master WHERE name='connector_staged'`).get();
+  check('migration 0006: the old row is a pending connector_act with its payload; connector_staged is gone', row.kind === 'connector_act' && row.status === 'pending' && JSON.parse(row.payload_json).args.goal === 'g' && JSON.parse(row.payload_json).provider === 'harbinger' && !gone, JSON.stringify(row));
 }
 
 console.error = realError;
