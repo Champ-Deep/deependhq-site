@@ -178,7 +178,7 @@ const EXPECTED_TOOLS = ['files_list', 'file_peek', 'intake_plan', 'quote', 'repo
   const r = await post(env, { action: 'deepbot', thread_id: '11111111-1111-4111-8111-111111111111', message: 'pull my campaigns' });
   const sent = fx.chat[0].messages;
   check('context: the last 20 stored turns (seq 11 to 30) plus system and the new message', sent.length === 22 && sent[1].content === 'u11' && sent[20].content === 'a30', JSON.stringify(sent.map((m) => m.content.slice?.(0, 4))));
-  check('connectors: pull is a stub that says no_connections', toolMsgs(fx.chat[1])[0].error === 'no_connections' && r.status === 200);
+  check('connectors: without a saved key the pull says not_connected (no Worker secret here: connections_not_configured)', ['not_connected', 'connections_not_configured'].includes(toolMsgs(fx.chat[1])[0].error) && r.status === 200);
   check('thread: new turns continue the sequence at 31 and 32', d1.query(`SELECT MAX(seq) m FROM deepbot_turns`).results[0].m === 32);
 
   reset();

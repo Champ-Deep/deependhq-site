@@ -67,7 +67,7 @@ A file dropped on the desktop is saved to `/` and opened in the Workbench.
 ## 4. Admin
 
 - `admin_settings_get` returns `{settings: {intake_model, research_model, ...existing caps}, models: [{id, prompt_micro_per_mtok, completion_micro_per_mtok}]}`.
-- `admin_settings_set` takes `{intake_model?, research_model?}`. The server checks the id against `https://openrouter.ai/api/v1/models` and stores its pricing with it. An unknown id returns 400.
+- `admin_settings_set` takes `{intake_model?, research_model?}`. The server checks the id against `https://openrouter.ai/api/v1/models` and stores its pricing with it. An unknown id returns 400. `intake_model` (and the one-pick `model`) must also support `tools`, because DeepBot runs on it; a model without tool calls returns 400 `model_unsupported`.
 - `admin_ai_log` takes `{page, user_id?, action?, since?}` and returns 50 rows per page. `admin_ai_log_export` takes `{since}` and returns JSONL (10k rows max).
 - User removal stays in the Clerk dashboard (link out). There's no delete in our admin.
 
@@ -110,7 +110,7 @@ Response (200):
 ```json
 {"thread_id": "uuid", "reply": "plain English, no em dashes",
  "steps": [{"op": "open|go|point|click|say", "target": "id", "say": "caption"}],
- "cards": [{"kind": "plan|quote|report|catalog", "data": {}}],
+ "cards": [{"kind": "plan|quote|report|catalog|staged", "data": {}}],
  "asks": [{"id": "q1", "question": "...", "options": ["..."]}],
  "cost_micro": 0, "model": "deepseek/deepseek-v4.1-flash"}
 ```
@@ -132,7 +132,7 @@ Errors: 400 `invalid_deepbot`, 404 `thread_not_found` (another user's thread loo
 | `report_summary {job_id}` | totals from the run ledger: chunks, rows, credits, spend, statuses | `report` card |
 | `page_steps {steps}` | validates the steps below; the latest valid call becomes `steps` | `steps` |
 | `catalog {}` | fixed JSON of apps, tools, connectors | none |
-| `connector_pull`, `connector_act` | stubs: `{"error": "no_connections"}` until the connections step | none |
+| `connector_pull {provider, op, args?}`, `connector_act {provider, op, args}` | the connector adapters (section 9). Act only stages | `staged` card for an act |
 
 `page_steps` grammar (closed, up to 8 steps): `open` takes a desktop app id (`workbench`, `enrich`, `files`, `beam`, `pdf`, `account`), `go` takes a guide stage, `point` and `click` take an id from `context.targets`, `say` takes a caption. One bad step refuses the whole call with `{"error": "step_refused", "index": n}` and the model retries; the page receives nothing. A `click` on an id ending in `.run` or `.approve` is always refused: spend and approval are the user's click.
 
@@ -140,3 +140,56 @@ Errors: 400 `invalid_deepbot`, 404 `thread_not_found` (another user's thread loo
 Migration `0004_deepbot.sql`: `deepbot_threads (id, user_id, title, created_at)` and `deepbot_turns (thread_id, seq, role, content_json, cost_micro, ts)`. The last 20 turns (user and assistant, by `seq`) are the model's context. Tool calls inside a turn are not replayed.
 
 Cell values are never stored. Sample values that `file_peek` or `intake_plan` handed to the model are replaced with `[value]` (the same `redact` as section 5) in `deepbot_turns`, the thread title and `ai_log`; the `file_peek` result is also logged with its sample rows removed. The reply the user sees is not redacted. `ai_log` gets **one record per turn** (`action: "deepbot"`, `op: "rounds=n"`, the whole tool transcript as `prompt`, tokens and cost summed), not one per model call.
+
+## 9. Connections, connectors and invite requests
+
+People connect their own work tools to the toolkit. Every connector has the same three verbs: **pull** (read), **work** (DeepBot and the user), **act**. An act never executes. It **stages** and returns a preview plus an approve action. The approve action is a separate API call that only the user's session makes, from a click in the mini window. No DeepBot tool can call it (the registry has no approve tool, and `connector_approve` as a tool name is `unknown_tool`).
+
+Connector code lives in `worker/connectors.js`: one object per provider `{id, label, prefix, base(env), test(c), pulls, acts}`. Adding HubSpot later is one object and one catalog row.
+
+### Setup (operator)
+- Migration `0005_connections.sql`: `toolkit_connections`, `connector_staged`, `invite_requests`. Apply with `npx wrangler d1 migrations apply toolkit-db --remote`.
+- Worker secret `CONNECTIONS_SECRET` (`openssl rand -base64 32`). Without it every connection action answers 503 `connections_not_configured`. Rotating it makes saved keys unreadable (`key_unreadable`); users save them again.
+- Optional vars `HARBINGER_API_URL` (default `https://champ-harbinger.deep-ae0.workers.dev`) and `BEAM_API_URL` (default `https://champbeam.com`). The base URL is never taken from a request.
+
+### Keys
+Stored as AES-GCM ciphertext under `CONNECTIONS_SECRET`, bound to `user_id:provider` (a copied row does not open under another user). Read APIs return only a masked hint (`hb_live_****1234`). A key is **tested on save** with one read call to the provider; a key the provider refuses is not stored. A key in a DeepBot message is replaced with `[key]` before the model, the stored turn and `ai_log` see it. The key appears nowhere else: not in logs, errors, `ai_log` or tool results.
+
+### Connection actions (session token)
+| Action | Request | Response |
+|--------|---------|----------|
+| `connection_list` | `{}` | `{configured, connections: [{provider, label, key_prefix, state: "connected" or "not_connected", key_hint?, account?, connected_at?, pulls: [op], acts: [op]}]}` |
+| `connection_save` | `{provider: "harbinger" or "beam", api_key}` | `{provider, state: "connected", key_hint, account}`. Errors: 400 `invalid_key_format` (wrong prefix: `hb_live_` Harbinger, `cb_live_` ChampBeam), 400 `key_rejected`, 400 `unknown_provider`, 502 `provider_down`, 503 `connections_not_configured`. Saving again replaces the key |
+| `connection_delete` | `{provider}` | `{provider, state: "not_connected"}` |
+
+### Pull, act, approve (session token)
+`connector_pull {provider, op, args?}` returns `{provider, op, data}`. `connector_act {provider, op, args}` returns the staged object:
+```json
+{"staged_id": "uuid", "provider": "harbinger", "op": "push_campaign", "status": "staged",
+ "preview": {"name": "Q4 push", "file": "leads.csv", "rows": 2, "will_import": 2, "fields": ["person_name", "email"], "note": "..."},
+ "approve": {"action": "connector_approve", "staged_id": "uuid"}, "expires_at": "ISO, one hour"}
+```
+`connector_approve {staged_id}` runs it, once. Responses: 200 `{staged_id, status: "approved", result}`; a second click 200 with `already_approved: true` and the first result, nothing runs again; 404 (not yours or unknown); 409 `not_approvable` (already approving or failed); 410 `expired`; 400 or 502 `{error, message, staged_id, status: "failed"}` when the provider fails (a failed stage is not retried: stage again).
+
+Errors for pull, act and approve: `unknown_provider`, `unknown_op`, `not_connected`, `connections_not_configured`, `key_unreadable`, `invalid_key` (provider 401: revoked, ask for a new key), `not_allowed` (provider 403: for Harbinger, no invite yet), `provider_down`, `provider_refused`, `invalid_args`, and file errors (`not_found`, `unsupported_type`). A mini window maps these to its states: no key (`not_connected`), invalid key, invite-only (`not_allowed`), provider down.
+
+| Provider | Pulls | Acts (staged, then approved) | Calls made |
+|----------|-------|------------------------------|------------|
+| `harbinger` (`X-API-Key: hb_live_...`) | `capacity_today` (sends left per mailbox), `campaigns` (`id, name, status`, 50 max), `drafts_pending` (50 max) | `plan_campaign {goal, file_id?}` approve = `POST /api/goal/plan` (spends nothing). `push_campaign {file_id, mapping, name}` approve = `POST /api/campaigns` then `POST /api/import-csv`, result `{campaign_id, imported, approve_url}` (2,000 contacts max). Sending stays inside Harbinger's own approve surface | `GET integrations/status` (test), `GET overview/today`, `GET campaigns`, `GET outreach/drafts?status=pending` |
+| `beam` (`X-API-Key: cb_live_...`) | `stats {id}` (a ChampBeam file id; `GET /api/v1/files/{id}/summary`) | `share_file {file_id}` (toolkit file, 20 MB max) approve = init, PUT, finalize, result `{file_id, share_url}` | `GET content/mine/shares` (test) |
+
+`push_campaign.mapping` is intake's mapping: `[{source: header, field, keep?}]` with `field` from the intake field list. It needs a name, email or LinkedIn column. `will_import` in the preview is the real cap.
+
+### In DeepBot
+`connector_pull` and `connector_act` replace the section 8 stubs. Pulled data goes to the model but `ai_log` records `[connector data]`. `connector_act` adds a `{kind: "staged", data: <staged object>}` card for the window to render; the reply must not claim it happened. The free catalog (`catalog` tool and "what can you do") shows each connector as `connected` or `not_connected` with its pulls and acts.
+
+### Invite requests (ChampHarbinger access)
+A user asks Deep for a Harbinger invite; Deep mints it by hand; the user then saves their own `hb_live_` key.
+
+| Action | Who | Request | Response |
+|--------|-----|---------|----------|
+| `invite_request_create` | signed-in user | `{note?}` (500 characters) | 201 `{request: {id, status: "open", created_at}, already_open: false}`. With one already open: 200, same shape, `already_open: true`, no new row. 429 `rate_limited` at 3 requests per user per 24 hours or 50 across all users per hour |
+| `admin_invite_requests` | admin | `{status?: "open" (default), "invited", "declined", "all"}` | `{requests: [{id, user_id, email, note, status, draft_to, draft_subject, draft_body, created_at, resolved_at}]}`, newest first, 200 max |
+| `admin_invite_request_resolve` | admin | `{id, status: "invited" or "declined"}` | `{id, status}`; 404 `not_open` if already resolved. Resolving lets the user ask again |
+
+**Nothing is sent.** There is no outbox in the Worker, so the email to Deep is a draft stored on the row (`draft_to` is the first `CLERK_ADMIN_EMAILS`, plus `draft_subject` and `draft_body`), shown in the admin list. Deep copies it or lets the inbox lane stage the Outlook draft from it. The user's note is stored with dashes and control characters cleaned.
