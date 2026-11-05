@@ -29,6 +29,10 @@
   "kv_namespaces": [
     { "binding": "SPOTIFY_KV", "id": "47cdfed513bd4bda86640026b2aa67a4" }
   ],
+  "//ratelimits": "Agent API burst guard (docs/toolkit-v4-api.md section 11): 60 calls a minute per API key id. Counters are per Cloudflare location, so the D1 daily cap (admin setting api_daily_calls_per_key) is the real quota.",
+  "ratelimits": [
+    { "name": "AGENT_API_RL", "namespace_id": "4101", "simple": { "limit": 60, "period": 60 } }
+  ],
   "//pipelines": "AI_LOG (Cloudflare Pipeline stream into Iceberg default.toolkit_ai_log, bucket toolkit-ai-log, catalog enabled) is NOT bound yet: the r2-data-catalog sink needs a catalog API token from Deep. Until then every AI call is logged to D1 ai_log only.",
   "//triggers": "Daily 21:17 UTC (02:47 IST): purge ai_log rows older than 180 days.",
   "triggers": { "crons": ["17 21 * * *"] },

@@ -255,3 +255,126 @@ An item, as `staged_list` and `staged_get` return it: `{id, kind, source, title,
 - Errors: 400 `invalid_decision`, 404 `not_found`, 409 `not_pending` (with `status`), 410 `expired`, 400 `unsupported_kind` (`agent_call` until slice 2), 401 without a session.
 
 `connector_approve` (section 9) keeps working and reads the same table. Once either has decided a connector act, the other answers 409, except a repeated approve, which returns the approved result again.
+
+## 11. Agent API: API keys, MCP server, OpenAI tools
+
+A user's own agent (Claude Desktop, Cursor, a script) calls the toolkit with an API key. It gets the section 10 registry entries marked `inbound` (17 tools: everything but `page_steps`), filtered by the key's scopes. Code: `worker/agent-api.js`; the tool bodies are the same `makeToolHandlers` DeepBot uses, run with `source: 'key:<key id>'`.
+
+A key can read, plan, price, save new files and stage. It can never run a job, send, move or delete, approve or reject, see or mint keys, open the admin, or talk to DeepBot. `run`, `files_delete`, `staged_decide`, `admin_*`, `api_key_*`, `deepbot` and `guide` are not tools, and `POST /api/toolkit` answers 401 to a `dhk_` token before Clerk ever sees it.
+
+### Switches (admin, `admin_settings_get` / `admin_settings_set`)
+| Setting | Default | Meaning |
+|---------|---------|---------|
+| `api_keys_open` | 0 | 0: only admins can create keys. 1: every signed-in user can |
+| `api_daily_calls_per_key` | 0 | Calls per key per UTC day. 0 means the whole agent API answers 403 `api_disabled` (fail closed). Proposed value when switched on: 2000 |
+
+`admin_settings_set {api_keys_open: 0|1}` and `{api_daily_calls_per_key: 0..1000000}` can be sent alone or with the model fields; a bad value is 400 `invalid_field`. Setting only these two does not fetch the OpenRouter models list.
+
+### Keys (session token, same origin)
+Format `dhk_live_` plus 43 base64url characters (32 random bytes). The full key is in the `api_key_create` response and nowhere else, ever. The database keeps `sha256Hex(key)` and the first 16 characters (`prefix`) for display.
+
+| Action | Request | Response |
+|--------|---------|----------|
+| `api_keys_list` | `{}` | 200 `{keys: [{id, label, prefix, scopes, created_at, last_used_at}], open}`. Active keys only. `open` is true when this user may create a key now (the switch is on, or they are an admin) |
+| `api_key_create` | `{label, scopes}` | 200 `{key, id, label, prefix, scopes}`. 400 `invalid_label` (1 to 40 characters, no control characters), 400 `invalid_scopes` (a non-empty list of distinct scopes below), 403 `api_keys_closed`, 409 `too_many_keys` (5 active per user) |
+| `api_key_revoke` | `{id}` | 200 `{ok: true}`; 404 `not_found` (another user's key or an already revoked one). Takes effect on the next call: there is no cache |
+
+Scopes, and the tools each one adds (`catalog` needs none):
+| Scope | Tools |
+|-------|-------|
+| `files:read` | `files_list`, `file_peek`, `file_read`, and `GET /api/toolkit/v1/files/<id>` |
+| `files:write` | `files_mkdir`, `files_save` |
+| `jobs:read` | `account_usage`, `run_detail`, `report_summary`, `staged_list`, `staged_get` |
+| `jobs:plan` | `intake_plan`, `quote` |
+| `jobs:stage` | `stage_run`, `stage_files_move` |
+| `connections:read` | `connector_pull` |
+| `connections:stage` | `connector_act` |
+
+The Account UI's create form should default to `files:read`, `jobs:read`, `jobs:plan`, `jobs:stage`.
+
+### Endpoints (API key only)
+| Path | Method | Does |
+|------|--------|------|
+| `/api/toolkit/mcp` | POST | MCP Streamable HTTP, stateless (no sessions), JSON responses. `initialize`, `ping`, `tools/list`, `tools/call`; any other JSON-RPC method gets the SDK's method-not-found error. One JSON-RPC message per request: a batch (a JSON array) is 400 with error code -32600, because the daily cap, the burst limit and the call log count requests. GET and every other HTTP method: 405 |
+| `/api/toolkit/v1/tools` | GET | `{tools: [{type: "function", function: {name, description, parameters}}]}`, the same names, order and schemas as `tools/list` |
+| `/api/toolkit/v1/tools/call` | POST | `{name, arguments}`. 200 `{result}`, or `{error, message}` |
+| `/api/toolkit/v1/files/<id>` | GET | The file's bytes as an attachment (`files:read`); 404 `not_found` otherwise |
+
+Every request, in this order:
+1. Wrong method: 405 (with `Allow`).
+2. An `Origin` header that is not the toolkit's own origin: 403 `forbidden_origin`. No `Origin` (any non-browser client) is fine. Browser MCP clients on other sites cannot connect, by design.
+3. `Authorization: Bearer dhk_live_...` looked up by hash. Missing, malformed, unknown or revoked: 401 `unauthorized`. A Clerk session token here is also 401.
+4. `api_daily_calls_per_key` is 0: 403 `api_disabled`. This key's calls today (UTC) at the limit: 429 `daily_limit`.
+5. Burst limit, binding `AGENT_API_RL` (60 a minute per key id; Cloudflare counts per location, so it is a burst guard, not a quota): 429 `rate_limited` with `Retry-After: 60`.
+6. Then the body is read (32 MB limit, as for actions) and the call runs.
+
+Steps 1 to 5 happen before the body is buffered. A request that passes them writes one `toolkit_api_calls` row and updates the key's `last_used_at`; rejected requests write nothing.
+
+Tool calls (both endpoints):
+- A tool outside the key's scopes does not exist for that key: it is missing from both lists, and calling it answers exactly like an unknown tool (404 `unknown_tool` on `/v1/tools/call`, the same `isError` result over MCP).
+- Arguments are checked against the tool's JSON Schema (an object, no unknown names, required ones present, types and enums): 400 `bad_arguments`.
+- A tool's own error is `{error, message}` with 400, or the status the tool gives it (404 `not_found` from `staged_get`, 429 `too_many_staged`, a file error's 404, 409 or 413). An unexpected failure is 500 `tool_failed`. Never a stack.
+- Over MCP, success is `{content: [{type: "text", text: <result JSON>}], structuredContent: <result>}`; an error is `{content: [{type: "text", text: "{\"error\", \"message\"}"}], isError: true}`.
+- MCP annotations: read tools `readOnlyHint: true`; write and stage tools `readOnlyHint: false, destructiveHint: false`; `openWorldHint` is true only for `connector_pull` and `connector_act`.
+
+Differences from DeepBot's view of the same tools:
+- `file_read` pages are 64 KB (DeepBot's are 4 KB).
+- `files_save` takes `content` (UTF-8 text of a csv, txt, md or json file, 1 MB or less) or `content_base64` (any csv, xlsx, json, txt, md or pdf file, 10 MB or less), exactly one of them; its schema says so. DeepBot keeps text only, 64 KB.
+- Staged items record `source: "key:<key id>"`, so the Approvals window can show which key staged them.
+
+### Metering and money
+`toolkit_api_calls (id, key_id, user_id, tool, status, cost_micro, ts)`, index `(key_id, ts)`, migration `0007_agent_api.sql`. `tool` is an exposed tool name, `unknown`, or the endpoint (`mcp:initialize`, `mcp:tools/list`, `v1/tools`, `v1/files`); `status` is `ok` or `error`. Never arguments or results.
+
+`intake_plan` is the only model-backed tool. It reserves and settles on the ledger exactly as in the UI (section 1); its `toolkit_runs` row has `list_name` `key:<key id>`, and its cost is copied into the call row's `cost_micro`. No other call charges anything: the price of non-model calls is an open ruling for Deep (plan note section 6, decision card t_5e6aa89a), and this ships its zero-price default.
+
+### Privacy
+- The key text is never stored, logged or returned after creation. The selftest scans every row of every table and the console output for it.
+- No argument value or cell value goes into `toolkit_api_calls`, console logs or error messages. For a key's `intake_plan`, `ai_log.goal` is `[goal]` and the goal is replaced in the logged prompt and response, on top of section 1's sample redaction.
+- Every query is keyed by the key row's `user_id`; another user's file or staged id is `not_found`.
+
+### Worked MCP call
+Request (`POST /api/toolkit/mcp`, headers `Authorization: Bearer dhk_live_...`, `Content-Type: application/json`, `Accept: application/json, text/event-stream`):
+```json
+{"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "files_list", "arguments": {"folder": "/"}}}
+```
+Response (200, `application/json`, captured from the selftest harness):
+```json
+{"result": {"content": [{"type": "text", "text": "{\"entries\":[{\"id\":\"8fac1bb5-aab1-4811-bcbd-c81bebf65d81\",\"kind\":\"file\",\"name\":\"leads.csv\",\"path\":\"/leads.csv\",\"size\":8}]}"}], "structuredContent": {"entries": [{"id": "8fac1bb5-aab1-4811-bcbd-c81bebf65d81", "kind": "file", "name": "leads.csv", "path": "/leads.csv", "size": 8}]}}, "jsonrpc": "2.0", "id": 2}
+```
+
+### OpenAI tools
+`GET /api/toolkit/v1/tools` returns entries you pass straight to `tools` in a chat completions request:
+```json
+{"type": "function", "function": {"name": "files_list", "description": "List files and folders in one folder of the user's desktop storage.", "parameters": {"type": "object", "properties": {"folder": {"type": "string", "description": "Folder path, default \"/\"."}}, "required": [], "additionalProperties": false}}}
+```
+When the model returns a tool call, post it, then append the answer as the tool message:
+```js
+const r = await fetch('https://toolkit.deependhq.com/api/toolkit/v1/tools/call', {
+  method: 'POST',
+  headers: { authorization: `Bearer ${process.env.DEEPEND_TOOLKIT_KEY}`, 'content-type': 'application/json' },
+  body: JSON.stringify({ name: call.function.name, arguments: JSON.parse(call.function.arguments) }),
+});
+const j = await r.json(); // {result} or {error, message}
+messages.push({ role: 'tool', tool_call_id: call.id, content: JSON.stringify(j.result ?? j) });
+```
+
+### Client config
+MCP clients that take a URL and headers (Claude Desktop through a remote connector config, Cursor, VS Code):
+```json
+{
+  "mcpServers": {
+    "deepend-toolkit": {
+      "url": "https://toolkit.deependhq.com/api/toolkit/mcp",
+      "headers": { "Authorization": "Bearer dhk_live_YOUR_KEY" }
+    }
+  }
+}
+```
+curl:
+```sh
+curl -s https://toolkit.deependhq.com/api/toolkit/v1/tools -H "Authorization: Bearer $DEEPEND_TOOLKIT_KEY"
+curl -s https://toolkit.deependhq.com/api/toolkit/v1/tools/call -H "Authorization: Bearer $DEEPEND_TOOLKIT_KEY" \
+  -H 'content-type: application/json' -d '{"name": "files_list", "arguments": {"folder": "/"}}'
+```
+
+Not here yet: OAuth (clients that only speak OAuth cannot connect), the 2026-07-28 MCP era (the server speaks the 2025 handshake; a client in `auto` mode falls back to it), `listChanged` notifications.
