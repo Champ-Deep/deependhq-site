@@ -32,6 +32,7 @@ TOKEN = "fixture-token-abcdefghijklmnopqrstu"
 URL_NOT_ALLOWED = "That URL is not allowed. It must be a public https address on port 443."
 READ_WARNING = "DeepBot will call this tool without asking, and may pass text from your files to it. Use Read only for tools that do not change anything."
 CHANGED_TEXT = "Your agent's tools changed. Review them before DeepBot can use them."
+RECONNECT_TEXT = "Saving reconnects your agent. Every tool goes back to Off, and a blank token field removes the saved token. Press Save and list tools again to go ahead."
 WAIT_SIGNED = "document.querySelector('#session-status')?.dataset.state === 'ok'"
 DOC_SNIPPET = re.search(r"### Verifying a delivery.*?```js\n(.*?)\n```", (ROOT / "docs/toolkit-v4-api.md").read_text(), re.S).group(1)
 audit = None
@@ -186,6 +187,26 @@ def flows(page, ctx, dialogs):
     check(modes(w) == {"search_notes": "read", "create_ticket": "ask", "weather_lookup": "off"}, "after reload the modes are read back from the server")
     check(w.get_by_label("Server URL, https only").input_value() == "https://agent.example.com/mcp" and w.locator("[data-panel=mcp] .key-hint").inner_text() == "Saved token: fixture-****rstu", "after reload the URL and masked token are shown")
 
+    # ---- re-save from the reloaded state: the first press only warns, the second reconnects ----
+    before = len(calls("agent_connect"))
+    w.get_by_role("button", name="Save and list tools").click()
+    warn = w.locator(".reconnect-warn")
+    warn.wait_for()
+    st = api({"action": "agent_status"})["mcp"]
+    check(len(calls("agent_connect")) == before and st["key_hint"] == "fixture-****rstu" and {k: v for k, v in st["modes"].items() if v != "off"} == {"search_notes": "read", "create_ticket": "ask"} and st["status"] == "active",
+          f"first Save press on a saved connection posts no agent_connect and keeps the token and modes ({st['key_hint']!r}, {st['modes']!r}, {st['status']!r})")
+    check(warn.inner_text() == RECONNECT_TEXT and modes(w) == {"search_notes": "read", "create_ticket": "ask", "weather_lookup": "off"}, "the first press shows the reconnect warning beside Save and leaves the controls alone")
+    w.get_by_role("button", name="Save and list tools").click()
+    w.locator(".reconnect-warn[hidden]").wait_for(state="attached")
+    w.locator('.state-chip[data-state="connected"]').wait_for()
+    check(len(calls("agent_connect")) == before + 1 and modes(w) == {"search_notes": "off", "create_ticket": "off", "weather_lookup": "off"}, "the second press reconnects and every tool is Off")
+    check(w.locator("[data-panel=mcp] .key-hint").inner_text() == "No token saved.", "a blank token on reconnect shows no saved token, as the warning said")
+    # Put the saved token and modes back so the changed-list flow below starts from an approved connection.
+    c = api({"action": "agent_connect", "url": "https://agent.example.com/mcp", "token": TOKEN})
+    api({"action": "agent_tools_set", "connection_id": c["connection_id"], "tools": {"search_notes": "read", "create_ticket": "ask", "weather_lookup": "off"}})
+    w = open_agent(page)
+    w.locator('.state-chip[data-state="connected"]').wait_for()
+
     # ---- the agent changes its tools: a save gets 409, amber chip, every control Off ----
     post("/fixture/agent", {"changed": 1})
     w.get_by_role("button", name="Save tool modes").click()
@@ -324,6 +345,10 @@ def shoot_widths(browser):
         shot(page, f"mcp-{width}")
         w.locator('.agent-tool[data-tool="weather_lookup"]').scroll_into_view_if_needed()
         shot(page, f"mcp-{width}-tools")
+        w.get_by_role("button", name="Save and list tools").click()
+        w.locator(".reconnect-warn").wait_for()
+        probe(page, f"reconnect-warn-{width}")
+        shot(page, f"reconnect-warn-{width}")
         w.get_by_role("tab", name="Webhooks").click()
         w.locator(".table-scroll").wait_for()
         probe(page, f"hooks-{width}")

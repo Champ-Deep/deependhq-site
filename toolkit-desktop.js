@@ -749,6 +749,7 @@ async function copyText(text, btn, done = 'Copied') { try { await navigator.clip
 const AGENT_MODES = [['off', 'Off'], ['read', 'Read'], ['ask', 'Ask me']];
 const READ_WARNING = 'DeepBot will call this tool without asking, and may pass text from your files to it. Use Read only for tools that do not change anything.';
 const CHANGED_TEXT = 'Your agent\'s tools changed. Review them before DeepBot can use them.';
+const RECONNECT_TEXT = 'Saving reconnects your agent. Every tool goes back to Off, and a blank token field removes the saved token. Press Save and list tools again to go ahead.';
 const HOOK_EVENTS = ['staged.created', 'staged.decided', 'job.completed'];
 // Verbatim from docs/toolkit-v4-api.md section 12, "Verifying a delivery"; tests/my_agent_flows.py compares the two.
 const VERIFY_SNIPPET = [
@@ -798,7 +799,9 @@ function myAgent(w) {
     const hint = el('p', undefined, 'plain key-hint');
     const save = button('Save and list tools', () => {}, 'btn btn-gold'); save.type = 'submit';
     const test = button('Test', testConn), bar = el('div', undefined, 'toolbar'); bar.append(save, test);
-    form.append(top, note, grid, hint, bar);
+    // A saved connection gets one warning press first: agent_connect replaces it, drops the token if the field is blank and resets every mode.
+    const again = el('p', RECONNECT_TEXT, 'notice warn reconnect-warn'); again.setAttribute('role', 'alert'); again.hidden = true;
+    form.append(top, note, grid, hint, bar, again);
     const list = el('div', undefined, 'agent-tools'), out = el('div', undefined, 'msg'); out.setAttribute('aria-live', 'polite');
     const saveModes = button('Save tool modes', saveTools, 'btn btn-gold'), foot = el('div', undefined, 'toolbar'); foot.append(saveModes);
     p.append(form, el('h4', 'Tools'), el('p', 'Names and descriptions come from your agent. They are shown as plain text, and DeepBot treats them as untrusted. Every tool starts Off.', 'plain'), list, foot, out);
@@ -832,7 +835,8 @@ function myAgent(w) {
       e.preventDefault(); out.replaceChildren();
       const raw = url.value.trim(), bad = outboundUrlError(raw);
       if (bad) { setChip('error', bad); url.focus(); return; }
-      busy(true); setChip('loading');
+      if (conn && again.hidden) { again.hidden = false; return; }
+      again.hidden = true; busy(true); setChip('loading');
       try { const r = await session.api('agent_connect', token.value ? {url: raw, token: token.value} : {url: raw}); token.value = ''; conn = {id: r.connection_id, status: r.status}; url.value = r.url; showHint(r.key_hint); setChip('connected'); renderTools(r.tools || []); }
       catch (err) { setChip('error', agentError(err)); } finally { busy(false); }
     });
