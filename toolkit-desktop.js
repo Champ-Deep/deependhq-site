@@ -479,6 +479,7 @@ function workbench(w) {
   w.load = load; file.addEventListener('change', () => load(file.files[0])); dropTarget(drop, load, 'workbench');
   // Approvals "Review and run": a staged file from Files and its plan, priced again here. Nothing runs until the user presses Run.
   w.reviewStaged = async (fileId, stagedPlan, started) => {
+    if (eng.busy()) return 'busy'; // load() would refuse silently; the caller says why
     let f; try { f = await session.fetchFile(fileId); } catch (e) { go(0); say(fileMsg, errorText(e), true); return false; }
     if (!(await load(new File([f], f.name || 'staged.csv', {type: f.type || 'text/csv'})))) return false;
     plan = (Array.isArray(stagedPlan) ? stagedPlan : []).slice(0, 8).map(p => wl.planItem(p, source.headers)); manual = true; reached = 2; renderAsk();
@@ -789,7 +790,8 @@ function approvals(w) {
   const say = (text, bad = false) => { msg.replaceChildren(); if (text) notice(msg, text, bad); };
   // target: a deep link still to scroll to and focus, once. outlined: the row that keeps its outline across reloads.
   let target = null, outlined = null, labels = new Map(), loaded = false;
-  w.focusItem = id => { target = id || null; if (loaded) mark(); };
+  // a warm deep link (item staged after the list loaded, e.g. an approve_url) needs a fresh list, not the cached one
+  w.focusItem = id => { target = id || null; if (loaded) target ? load() : mark(); };
   function mark() {
     const want = target || outlined; if (!want) return;
     const row = [...list.children].find(r => r.dataset.staged === want);
@@ -844,7 +846,8 @@ function approvals(w) {
         catch (e) { status('The run started, but the approval was not recorded: ' + errorText(e)); }
         if (w.node.isConnected) load(); else refreshApprovals();
       });
-      if (!ok && li.isConnected) { m.replaceChildren(); notice(m, 'Data Workbench could not load it. It says why on its first stage.', true); }
+      if (ok === 'busy' && li.isConnected) { m.replaceChildren(); notice(m, 'Data Workbench is running a job. Press Review and run again when it finishes.', true); }
+      else if (!ok && li.isConnected) { m.replaceChildren(); notice(m, 'Data Workbench could not load it. It says why on its first stage.', true); }
     }
     if (state === 'pending') {
       acts.append(it.kind === 'run' ? button('Review and run', review, 'btn btn-gold') : button('Approve', () => decide('approve'), 'btn btn-gold'), button('Reject', () => decide('reject'), 'btn btn-outline'));

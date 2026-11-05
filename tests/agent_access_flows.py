@@ -169,7 +169,16 @@ def flows(page, ctx, logs, dialogs):
     acts = [c["action"] for c in calls()[before:]]
     check("quote" in acts and "run" not in acts and "staged_decide" not in acts, f"a fresh quote, no run and no approval before Run {acts}")
     window_shot(page, "workbench", "workbench-quote-from-approvals-1440")
+    held = []  # hold the first run chunk so the Workbench stays busy while Review and run is pressed again
+    page.route("**/api/toolkit", lambda r: held.append(r) if not held and json.loads(r.request.post_data or "{}").get("action") == "run" else r.continue_())
     page.locator("#wb-run").click()
+    while not held:
+        page.wait_for_timeout(50)
+    page.evaluate("document.querySelector('[data-staged=\"stg-run-0001\"] .staged-acts button').click()")
+    w.get_by_text("Data Workbench is running a job. Press Review and run again when it finishes.").wait_for()
+    check(True, "Review and run while the Workbench is mid run says it is busy")
+    held[0].continue_()
+    page.unroute("**/api/toolkit")
     page.wait_for_function("document.querySelector('[data-staged=\"stg-run-0001\"] .pill')?.dataset.state === 'approved'", timeout=15000)
     after = calls()[before:]
     runs = [c for c in after if c["action"] == "run"]
@@ -275,7 +284,15 @@ def flows(page, ctx, logs, dialogs):
     w.get_by_text("Nothing waiting. When DeepBot or your agent prepares something, it lands here.", exact=True).wait_for()
     check(page.locator('[data-launch="approvals"] .badge').is_hidden(), "empty: no badge")
     window_shot(page, "approvals", "approvals-empty-1440")
+    post("/fixture/seed-agent")  # staged after the list loaded: the approve_url path
+    page.evaluate("location.hash = '#approvals/stg-move-0002'")
+    w.locator('.staged[data-target="true"]').wait_for()
+    check(w.locator('.staged[data-target="true"]').get_attribute("data-staged") == "stg-move-0002", "warm deep link: hashchange on an open window reloads and outlines the new row")
+    check(page.evaluate("document.activeElement.dataset.staged") == "stg-move-0002", "warm deep link: the row has focus")
+    page.wait_for_function("document.querySelector('[data-launch=approvals] .badge').textContent === '3'")
+    check(page.locator('[data-launch="approvals"] .badge').is_visible() and not w.locator(".notice.bad").count(), "warm deep link: badge reads 3, no not-found message")
     page.get_by_role("button", name="Close Approvals").click()
+    fresh(seed=False)  # back to empty for the loading state below
     def slow(route):
         body = json.loads(route.request.post_data or "{}")
         if body.get("action") == "staged_list" and body.get("status") == "all":
