@@ -14,7 +14,7 @@ import * as store from './toolkit-store.js';
 export const MCP_LIST_MS = 10000;
 export const MCP_CALL_MS = 15000;
 export const WEBHOOK_MS = 5000;
-export const OUTPUT_MAX = 8192;
+export const OUTPUT_MAX = 8000; // the whole result as JSON, so DeepBot's 8000-char tool message clip never cuts it
 export const DESC_MAX = 300;
 export const EVENTS = ['staged.created', 'staged.decided', 'job.completed'];
 const MODES = ['off', 'read', 'ask'];
@@ -74,13 +74,17 @@ async function listAll(client) {
 const listTools = (conn, ms = MCP_LIST_MS) => session(conn, ms, listAll);
 const toolView = (t, modes = {}) => ({ name: clip(t.name, 128), description: clip(t.description, DESC_MAX).replace(CTRL, ''), read_only_hint: t.annotations?.readOnlyHint === true, mode: Object.hasOwn(modes, t.name) ? modes[t.name] : 'off' });
 
-// Text of a tools/call result, control characters stripped, capped at 8 KB. Never placed in a system prompt.
+// Text of a tools/call result, control characters stripped, cut so the result serializes to OUTPUT_MAX chars at most
+// (escaping makes JSON longer than the text, so the JSON length is measured). Never placed in a system prompt.
 function agentOutput(r) {
   const parts = (Array.isArray(r.content) ? r.content : []).map((c) => (c && c.type === 'text' ? String(c.text) : c ? `[${clip(c.type, 20)}]` : ''));
   let text = parts.join('\n');
   if (!text && r.structuredContent !== undefined) text = JSON.stringify(r.structuredContent);
   text = text.replace(CTRL, '');
-  return { untrusted_agent_output: text.slice(0, OUTPUT_MAX), truncated: text.length > OUTPUT_MAX, ...(r.isError ? { is_error: true } : {}) };
+  const shape = (t) => ({ truncated: t.length < text.length, untrusted_agent_output: t, ...(r.isError ? { is_error: true } : {}) });
+  let n = text.length, len;
+  while ((len = JSON.stringify(shape(text.slice(0, n))).length) > OUTPUT_MAX) n = Math.max(0, n - (len - OUTPUT_MAX));
+  return shape(text.slice(0, n));
 }
 
 // --- rows -----------------------------------------------------------------------------

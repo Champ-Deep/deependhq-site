@@ -404,7 +404,7 @@ Both are rows in section 9's `toolkit_connections`, providers `agent_mcp` and `a
 - `redirect: 'manual'`; any 3xx is `redirect_refused`. `AbortSignal.timeout` over the whole exchange. At most 256 KB of body is read, then it aborts with `too_large`. MCP answers with a body must be `application/json` or `text/event-stream` (`bad_content_type`).
 - Error codes, never the URL, a header or a token: `url_too_long`, `bad_url`, `https_only`, `port_not_allowed`, `userinfo_not_allowed`, `ip_literal`, `host_not_allowed`, `dns_failed`, `private_address`, `redirect_refused`, `timeout`, `too_large`, `bad_content_type`, `fetch_failed`, `read_failed`.
 
-Residual: the Worker resolves the name again when it fetches, so a DNS rebind between the check and the request is not closed (a Worker cannot pin an IP). The check is defence in depth.
+Residual: the Worker resolves the name again when it fetches, so a DNS rebind between the check and the request is not closed (a Worker cannot pin an IP). The check is defence in depth. Also not refused: 6to4 (`2002::/16`, for example `2002:7f00:1::`) and SIIT (`::ffff:0:0:0/96`, for example `::ffff:0:7f00:1`) answers that embed a private IPv4; neither is in the refused list and the edge does not route them.
 
 Timeouts: `tools/list` when saving or testing 10 s; an MCP call (a re-list plus `tools/call` on one session) 15 s; a webhook 5 s. DeepBot's 45 s turn budget still bounds a turn.
 
@@ -419,7 +419,7 @@ Client: `@modelcontextprotocol/client` 2.4.0, `versionNegotiation: {mode: 'auto'
 | `agent_test` | `{connection_id}` | Lists again. 200 `{ok, connection_id, status, changed, tools}`. A list that differs from the approved one sets `changed` |
 | `agent_disconnect` | `{connection_id}` | 200 `{ok: true}`; 404 `not_found` |
 
-`status`: `pending` (connected, nothing approved), `active`, `changed`. On approval the toolkit stores the SHA-256 of the canonical `tools/list` (every tool's `name`, `description` and `inputSchema`, sorted by name, keys sorted). Before every use DeepBot lists again on the same session; a different hash sets `changed`, and every tool is off until `agent_tools_set` runs again. This stops a server from swapping a tool's meaning after the user approved it.
+`status`: `pending` (connected, nothing approved), `active`, `changed`. On approval the toolkit stores the SHA-256 of the canonical `tools/list` (every tool's `name`, `description` and `inputSchema`, sorted by name, keys sorted). Before every use DeepBot lists again on the same session; a different hash sets `changed`, and every tool is off until `agent_tools_set` runs again. This stops a server from swapping a tool's meaning after the user approved it. `annotations` are not in the hash, so flipping `readOnlyHint` does not re-pin; the hint is only shown to the user and never changes a mode.
 
 Modes: **off**, never called. **read**, DeepBot calls it inline (the arguments may include file text, so the UI should say so on this toggle). **ask**, DeepBot stages an `agent_call` item and the call happens only when the user approves it.
 
@@ -428,7 +428,7 @@ Registry entry 18, class `stage`, not inbound: an API key can never reach the us
 
 | Request | Result |
 |---------|--------|
-| `{connection_id, tool, arguments?}` | read: `{untrusted_agent_output, truncated, is_error?}`, the text parts of the result (or its `structuredContent` as JSON), control characters stripped, 8 KB at most. ask: the `stage_run` shape with kind `agent_call` and `payload: {connection_id, tool, arguments}` exactly as DeepBot sent them; `staged_decide` approve runs the call under the session (pins checked again) and stores the same capped output in `result_json`. off, unknown tool, not approved yet or `changed`: `{error: "not_allowed"}` |
+| `{connection_id, tool, arguments?}` | read: `{untrusted_agent_output, truncated, is_error?}`, the text parts of the result (or its `structuredContent` as JSON), control characters stripped, cut so the whole result is 8000 characters of JSON at most (`truncated: true` when text was dropped). ask: the `stage_run` shape with kind `agent_call` and `payload: {connection_id, tool, arguments}` exactly as DeepBot sent them; `staged_decide` approve runs the call under the session (pins checked again) and stores the same capped output in `result_json`. off, unknown tool, not approved yet or `changed`: `{error: "not_allowed"}` |
 
 DeepBot learns the approved tools from `catalog` (`my_agent: {connection_id, status, tools: [{name, mode, untrusted_description, input_schema?}]}`), a tool result. Nothing from the user's agent ever goes into the system prompt. In `ai_log` the output is logged as `[agent output]`. An API key's `catalog` has no `my_agent`.
 

@@ -38,7 +38,7 @@ async function mcpServer(request) {
   server.setRequestHandler('tools/list', async () => ({ tools: fx.tools }));
   server.setRequestHandler('tools/call', async (req) => {
     fx.calls.push({ name: req.params.name, arguments: req.params.arguments });
-    if (req.params.name === 'huge') return { content: [{ type: 'text', text: 'x'.repeat(10000) }] };
+    if (req.params.name === 'huge') return { content: [{ type: 'text', text: fx.hugeText ?? 'x'.repeat(10000) }] };
     return { content: [{ type: 'text', text: `\u0007echo\u0000 ${JSON.stringify(req.params.arguments)}\nline two` }] };
   });
   const transport = new WebStandardStreamableHTTPServerTransport({ sessionIdGenerator: undefined, enableJsonResponse: true });
@@ -233,7 +233,7 @@ const h = (over = {}) => makeToolHandlers({ db: d1, env: { ...env, waitUntil: ct
   check('agent_call read: {untrusted_agent_output, truncated}, control characters stripped, newline kept', out && out.untrusted_agent_output === 'echo {"q":"acme"}\nline two' && out.truncated === false, JSON.stringify(r));
   check('agent_call read: ai_log gets [agent output], not the text', r.log.untrusted_agent_output === '[agent output]');
   const big = (await h().agent_call({ connection_id: cid, tool: 'huge' })).result;
-  check('agent_call read: output capped at 8 KB with truncated true', big.untrusted_agent_output.length === 8192 && big.truncated === true);
+  check('agent_call read: output cut so its JSON is 8000 chars at most, truncated true', JSON.stringify(big).length <= 8000 && JSON.stringify(big).length > 7900 && big.truncated === true, String(JSON.stringify(big).length));
   const off = await h().agent_call({ connection_id: cid, tool: 'wipe' });
   const unknown = await h().agent_call({ connection_id: cid, tool: 'not_there' });
   const wrongConn = await h().agent_call({ connection_id: crypto.randomUUID(), tool: 'lookup' });
@@ -297,6 +297,19 @@ let askId;
   const keyCat = await makeToolHandlers({ db: d1, env, uid: 'user_a', source: 'key:k1' }).catalog();
   check('catalog: an API key does not see my_agent', !('my_agent' in keyCat));
   check('inbound: agent_call is not exposed to API keys', !(await import('../worker/agent-api.js')).INBOUND.some((t) => t.name === 'agent_call'));
+}
+// DeepBot turn: an output past the budget reaches the model as whole JSON that says it was truncated
+{
+  await post(env, { action: 'agent_tools_set', connection_id: cid, tools: { lookup: 'read', send_note: 'ask', huge: 'read' } });
+  for (const [label, text] of [['10,000 chars', 'x'.repeat(10000)], ['5,400 chars of newlines', 'a\n'.repeat(2700)]]) {
+    fx.hugeText = text; fx.chat = []; fx.script = [tool('agent_call', { connection_id: cid, tool: 'huge' }), say('Done.')];
+    await post(env, { action: 'deepbot', message: 'call huge', context: { targets: [] } });
+    let m = null;
+    try { m = JSON.parse(fx.chat[1].messages.at(-1).content); } catch {}
+    check(`deepbot: ${label} of agent output reach the model as valid JSON with truncated true`, m && m.truncated === true && m.untrusted_agent_output.length > 0 && text.startsWith(m.untrusted_agent_output), fx.chat[1]?.messages.at(-1).content.slice(-40));
+  }
+  delete fx.hugeText;
+  await post(env, { action: 'agent_tools_set', connection_id: cid, tools: { lookup: 'read', send_note: 'ask' } });
 }
 
 // 4. webhooks -------------------------------------------------------------------------------------------------
