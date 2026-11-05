@@ -9,6 +9,7 @@
 import * as store from './toolkit-store.js';
 import * as files from './toolkit-files.js';
 import * as staged from './staged.js';
+import * as outbound from './outbound.js';
 import { parseCsv } from '../toolkit-lib.js';
 import { validateSteps } from './deepbot-core.js';
 import { GUIDE_STAGES, readCsvFile, readRawFile, actionIntake, actionQuoteColumns, catalogFor, connPull, connStage, runResponse } from './toolkit.js';
@@ -38,7 +39,10 @@ export function makeToolHandlers({ db, env, uid, source, targets = [], out = {} 
   };
 
   return {
-    async catalog() { return catalogFor(db, uid); },
+    async catalog() { // my_agent is DeepBot's only: an API key never learns about the user's own agent
+      const c = await catalogFor(db, uid);
+      return source === 'deepbot' ? { ...c, my_agent: await outbound.agentCatalog(db, uid) } : c;
+    },
     async files_list(a) {
       if (!bucket) return { error: 'files_not_configured' };
       const r = await files.filesAction('files_list', db, bucket, uid, { folder: typeof a.folder === 'string' ? a.folder : '/' });
@@ -187,6 +191,16 @@ export function makeToolHandlers({ db, env, uid, source, targets = [], out = {} 
       if (r.error) return r;
       out.cards.push({ kind: 'staged', data: r });
       return { staged_id: r.staged_id, preview: r.preview, approve_url: r.approve_url, note: 'Staged, not done. The user approves it in the window. Never say it has happened.' };
+    },
+    async agent_call(a) { // the user's own agent: a Read tool answers inline, an Ask me tool stages, anything else is not_allowed
+      if (source !== 'deepbot') return { error: 'not_allowed' };
+      const r = await outbound.agentCall(db, env, uid, a);
+      if (r.error) return r;
+      if (!r.stage) return { result: r, log: { untrusted_agent_output: '[agent output]' } }; // the model sees it, ai_log does not
+      const s = await staged.stageItem(db, env, { uid, kind: 'agent_call', source, ...r.stage });
+      if (s.error) return s;
+      out.cards.push({ kind: 'staged', data: s });
+      return { ...s, note: 'Staged, not called. The user approves it in Approvals. Never say it ran.' };
     },
     async page_steps(a) {
       const v = validateSteps(a.steps, { targets, stages: GUIDE_STAGES });

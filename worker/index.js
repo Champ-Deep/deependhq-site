@@ -553,9 +553,9 @@ const notFound = (apiLike) =>
     },
   });
 
-async function handleToolkitHost(request, env, url) {
+async function handleToolkitHost(request, env, url, ctx) {
   const path = url.pathname;
-  if (path === '/api/toolkit' || path.startsWith('/api/toolkit/')) return handleToolkit(request, env);
+  if (path === '/api/toolkit' || path.startsWith('/api/toolkit/')) return handleToolkit(request, env, ctx);
   const shell = TOOLKIT_SHELLS[path.length > 1 ? path.replace(/\/$/, '') : path];
   if (!shell || (request.method !== 'GET' && request.method !== 'HEAD')) return notFound(path.startsWith('/api/'));
   if (!env || !env.ASSETS || typeof env.ASSETS.fetch !== 'function') return html('assets binding missing', 500);
@@ -585,7 +585,7 @@ export default {
     ctxWaitUntil = (p) => { try { ctx.waitUntil(p); } catch {} };
     const url = new URL(request.url);
 
-    if (url.hostname.toLowerCase() === String((env && env.TOOLKIT_HOST) || TOOLKIT_HOST).toLowerCase()) return handleToolkitHost(request, env, url);
+    if (url.hostname.toLowerCase() === String((env && env.TOOLKIT_HOST) || TOOLKIT_HOST).toLowerCase()) return handleToolkitHost(request, env, url, ctx);
     if (TOOLKIT_ONLY.has(url.pathname)) return notFound(false);
 
     // Redirects. /cta is the one the nav used to point at and 404'd on.
@@ -616,7 +616,7 @@ export default {
       return new Response(null, { status: 301, headers: { location: fallback, 'cache-control': 'public, max-age=3600' } });
     }
 
-    if (url.pathname === '/api/toolkit' || url.pathname.startsWith('/api/toolkit/')) return handleToolkit(request, env);
+    if (url.pathname === '/api/toolkit' || url.pathname.startsWith('/api/toolkit/')) return handleToolkit(request, env, ctx);
     if (url.pathname === '/api/collect') return handleCollect(request, env, ctx);
     if (url.pathname === '/api/now-playing' || url.pathname.startsWith('/api/spotify/')) {
       const res = await handleNowPlaying(request, env, ctx, url);

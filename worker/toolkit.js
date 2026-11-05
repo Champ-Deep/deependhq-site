@@ -25,6 +25,7 @@ import { CATALOG, CATALOG_RE, DEEPBOT_TOOLS, DEEPBOT_SYSTEM } from './deepbot-co
 import { makeToolHandlers } from './deepbot-tools.js';
 import * as staged from './staged.js';
 import * as agent from './agent-api.js';
+import * as outbound from './outbound.js';
 
 const AI_LOG_DAYS = 180;
 const INTAKE_RESERVE_MICRO = 3000;
@@ -516,6 +517,7 @@ async function actionRun(db, env, uid, body) {
       res.result_file = null; // the run is settled and its results returned either way
     }
   }
+  if (columnsMode && job.index === job.count - 1) outbound.emit(db, env, uid, 'job.completed', () => outbound.jobCompleted(db, uid, job.id || p.id, res.result_file?.id));
   return json(res);
 }
 
@@ -1104,6 +1106,7 @@ async function connApprove(db, env, uid, body) {
   else { try { out = await k.p.acts[op].approve(k.c, args, fileHost(db, env, uid)); } catch (e) { out = failure(e); } }
   const ok = !out.error;
   await db.prepare(`UPDATE toolkit_staged SET status=?2, result_json=?3, decided_at=?4 WHERE id=?1`).bind(id, ok ? 'approved' : 'failed', JSON.stringify(ok ? out.data : { error: out.error, message: out.message }), store.nowIso()).run();
+  outbound.emit(db, env, uid, 'staged.decided', { staged_id: id, kind: 'connector_act', status: ok ? 'approved' : 'failed' });
   return ok ? [{ staged_id: id, status: 'approved', result: out.data }, 200] : [{ error: out.error, message: out.message, staged_id: id, status: 'failed' }, out.error === 'provider_down' ? 502 : 400];
 }
 
@@ -1417,6 +1420,7 @@ async function handleAction(request, env, url, preAuth) {
   if (action === 'connector_approve') return json(...await connApprove(db, env, auth.uid, body));
   if (action === 'staged_list' || action === 'staged_get' || action === 'staged_decide') return json(...await staged.handle(action, db, env, auth.uid, body, { connector: (id) => connApprove(db, env, auth.uid, { staged_id: id }) }));
   if (action === 'invite_request_create') return actionInviteRequest(db, env, auth.uid, body);
+  if (action.startsWith('agent_') || action.startsWith('webhook_')) return json(...await outbound.handle(action, db, env, auth.uid, body));
   if (action === 'api_keys_list' || action === 'api_key_create' || action === 'api_key_revoke') return json(...await agent.keyAction(action, db, auth.uid, body, () => isAdmin(env, auth.uid)));
   if (action.startsWith('files_')) {
     if (!env.TOOLKIT_FILES) return json({ error: 'files_not_configured', message: 'File storage is not configured.' }, 503);
@@ -1553,8 +1557,10 @@ async function handleWebhook(request, env) {
 // ---------------------------------------------------------------------------
 // router
 // ---------------------------------------------------------------------------
-export async function handleToolkit(request, env) {
+export async function handleToolkit(request, env, ctx) {
   const url = new URL(request.url);
+  // This request's env, carrying ctx.waitUntil for webhook deliveries (worker/outbound.js emit). Bindings read through.
+  if (ctx && typeof ctx.waitUntil === 'function') env = Object.create(env, { waitUntil: { value: (p) => ctx.waitUntil(p) } });
   try {
     let auth = null;
     const isAction = url.pathname === '/api/toolkit' && request.method === 'POST';
