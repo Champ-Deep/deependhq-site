@@ -24,6 +24,7 @@ import { CONNECTORS, seal, unseal, KEY_RE, maskKey } from './connectors.js';
 import { CATALOG, CATALOG_RE, DEEPBOT_TOOLS, DEEPBOT_SYSTEM } from './deepbot-core.js';
 import { makeToolHandlers } from './deepbot-tools.js';
 import * as staged from './staged.js';
+import * as agent from './agent-api.js';
 
 const AI_LOG_DAYS = 180;
 const INTAKE_RESERVE_MICRO = 3000;
@@ -40,7 +41,7 @@ const MAX_CREDIT_CAP = 1000000000;
 const MAX_ROW_CAP = 1000000;
 const MAX_MICRO_CAP = 1000000000000;
 
-const json = (body, status = 200) =>
+export const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -55,7 +56,7 @@ const getDb = (env) => (env && (env.TOOLKIT_DB || env.toolkitDB)) || null;
 const clip = (s, n) => String(s == null ? '' : s).slice(0, n);
 const intIn = (v, max) => (Number.isSafeInteger(v) && v >= 0 && v <= max ? v : null);
 
-async function sha256Hex(s) {
+export async function sha256Hex(s) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
@@ -105,7 +106,9 @@ async function authenticate(request, url, env) {
   if (!env.CLERK_PUBLISHABLE_KEY || !env.CLERK_SECRET_KEY) {
     return { error: 'clerk_not_configured', status: 503 };
   }
-  if (!request.headers.get('authorization')) return { error: 'unauthorized', status: 401 };
+  const authz = request.headers.get('authorization');
+  if (!authz) return { error: 'unauthorized', status: 401 };
+  if (/^Bearer dhk_/.test(authz)) return { error: 'unauthorized', status: 401 }; // an agent API key is never a session, and never reaches Clerk or a log
   try {
     const res = await clerkClientFor(env).authenticateRequest(request, {
       authorizedParties: authParties(url, env),
@@ -884,18 +887,20 @@ An operation is {"column": "<header>", "op": ..., "engine": ...} plus:
 - verify_email, engine treg: column holds an email.
 Use engine deepseek unless the user asks for jev. Use at most 8 operations. Only use headers that exist. Nothing runs until the user approves the plan.`;
 
-export async function actionIntake(db, env, uid, body) {
+// opts.source 'key:<id>' (the agent API): the reservation is tagged with the key, and the goal (an argument) is kept out of ai_log.
+export async function actionIntake(db, env, uid, body, opts = {}) {
   const invalid = validateIntake(body);
   if (invalid) return json({ error: 'invalid_intake', message: invalid }, 400);
   if (!llmKey(env)) return json({ error: 'provider_not_configured', message: 'The AI provider is not configured.' }, 503);
+  const keyed = String(opts.source ?? '').startsWith('key:');
   const { headers, samples = {}, name, rows_total } = body.file;
   const history = body.history ?? [];
   const goal = body.goal ?? '';
   const llm = (await readModels(db)).intake_model;
-  const userMsg = (smp) => ({ role: 'user', content: JSON.stringify({ file: { name, rows_total, headers, samples: smp }, goal }) });
+  const userMsg = (smp, g = goal) => ({ role: 'user', content: JSON.stringify({ file: { name, rows_total, headers, samples: smp }, goal: g }) });
   const messages = [{ role: 'system', content: INTAKE_SYSTEM }, ...history.map((t) => ({ role: t.role, content: t.content })), userMsg(samples)];
   const req = { model: llm.id, temperature: 0.2, max_tokens: 1500, messages, response_format: { type: 'json_object' }, provider: cols.routing(llm) };
-  const call = await meteredChat(db, env, uid, 'intake', name, req, Math.max(INTAKE_RESERVE_MICRO, cols.deepseekReserveMicro(req, llm)));
+  const call = await meteredChat(db, env, uid, 'intake', keyed ? opts.source : name, req, Math.max(INTAKE_RESERVE_MICRO, cols.deepseekReserveMicro(req, llm)));
   if (call instanceof Response) return call;
   const { p, r } = call;
   let parsed = null;
@@ -905,10 +910,10 @@ export async function actionIntake(db, env, uid, body) {
 
   // Log: samples replaced structurally, typed text scrubbed of every sample value and its longer words.
   const vals = Object.values(samples).flat();
-  const scrub = (t) => redact(t, [...vals, ...vals.flatMap((v) => v.split(/\s+/).filter((w) => w.length >= 4))]);
+  const scrub = (t) => redact(t, [...vals, ...vals.flatMap((v) => v.split(/\s+/).filter((w) => w.length >= 4)), ...(keyed ? [goal] : [])]);
   await writeAiLog(db, env, {
-    user_id: uid, job_id: p.id, action: 'intake', engine: 'deepseek', model: llm.id, goal: scrub(goal), headers_json: JSON.stringify(headers),
-    prompt: scrub(JSON.stringify([...messages.slice(0, -1), userMsg(Object.fromEntries(Object.entries(samples).map(([k, v]) => [k, v.map(() => '[value]')])))])),
+    user_id: uid, job_id: p.id, action: 'intake', engine: 'deepseek', model: llm.id, goal: keyed ? '[goal]' : scrub(goal), headers_json: JSON.stringify(headers),
+    prompt: scrub(JSON.stringify([...messages.slice(0, -1), userMsg(Object.fromEntries(Object.entries(samples).map(([k, v]) => [k, v.map(() => '[value]')])), keyed ? '[goal]' : goal)])),
     response: scrub(r.data?.choices?.[0]?.message?.content ?? ''), tokens_in: r.data?.usage?.prompt_tokens ?? null,
     tokens_out: r.data?.usage?.completion_tokens ?? null, cost_micro: r.cost_micro, outcome: ok ? 'ok' : r.ok ? 'invalid_reply' : 'error',
   });
@@ -1289,6 +1294,8 @@ async function actionDeepbot(db, env, uid, body) {
   return json({ thread_id: threadId, reply, steps: out.steps, cards: out.cards, asks: out.asks, cost_micro: known, model: llm.id });
 }
 
+// Agent API switches (docs section 11). Both default to 0: keys closed to non-admins, and the API answers api_disabled.
+const API_SETTINGS = { api_keys_open: 1, api_daily_calls_per_key: 1000000 };
 async function actionAdminSettings(db, action, body) {
   const settings = await store.readSettings(db);
   const models = await readModels(db);
@@ -1300,17 +1307,21 @@ async function actionAdminSettings(db, action, body) {
     return json({ settings: view(), models: list });
   }
   const keys = Object.keys(body).filter((k) => k !== 'action');
-  const unknown = keys.find((k) => !['model', 'intake_model', 'research_model'].includes(k));
-  if (unknown) return json({ error: 'unknown_field', field: unknown, message: 'Only model, intake_model and research_model are set here.' }, 400);
+  const unknown = keys.find((k) => !['model', 'intake_model', 'research_model', ...Object.keys(API_SETTINGS)].includes(k));
+  if (unknown) return json({ error: 'unknown_field', field: unknown, message: 'Only model, intake_model, research_model, api_keys_open and api_daily_calls_per_key are set here.' }, 400);
   if (!keys.length) return json({ error: 'no_fields' }, 400);
+  const api = keys.filter((k) => k in API_SETTINGS);
+  const badApi = api.find((k) => intIn(body[k], API_SETTINGS[k]) === null);
+  if (badApi) return json({ error: 'invalid_field', field: badApi, message: `${badApi} is a whole number from 0 to ${API_SETTINGS[badApi]}.` }, 400);
+  keys.splice(0, keys.length, ...keys.filter((k) => !(k in API_SETTINGS)));
   // `model` is the one-pick switch: intake, the guide and every deepseek-engine operation use it.
   if (keys.includes('model')) {
     if (keys.length > 1) return json({ error: 'conflicting_fields', message: 'Send model on its own, or intake_model and research_model.' }, 400);
-    body = { intake_model: body.model, research_model: body.model };
+    body = { ...body, intake_model: body.model, research_model: body.model };
     keys.splice(0, 1, 'intake_model', 'research_model');
   }
-  let list;
-  try { list = await fetchModels(); } catch { return json({ error: 'models_unavailable', message: 'Could not reach the OpenRouter models list. Try again.' }, 503); }
+  let list = [];
+  if (keys.length) try { list = await fetchModels(); } catch { return json({ error: 'models_unavailable', message: 'Could not reach the OpenRouter models list. Try again.' }, 503); }
   // intake needs JSON mode; the deepseek engine sends strict JSON schemas.
   const needs = { intake_model: ['response_format', 'tools'], research_model: ['structured_outputs'] }; // intake_model also runs DeepBot, which needs tool calls
   const picked = {};
@@ -1322,6 +1333,7 @@ async function actionAdminSettings(db, action, body) {
     picked[k] = price(m);
   }
   for (const [k, m] of Object.entries(picked)) { await store.adminUpsertSetting(db, k, JSON.stringify(m)); models[k] = m; }
+  for (const k of api) { await store.adminUpsertSetting(db, k, body[k]); settings[k] = body[k]; }
   return json({ settings: view() });
 }
 
@@ -1405,6 +1417,7 @@ async function handleAction(request, env, url, preAuth) {
   if (action === 'connector_approve') return json(...await connApprove(db, env, auth.uid, body));
   if (action === 'staged_list' || action === 'staged_get' || action === 'staged_decide') return json(...await staged.handle(action, db, env, auth.uid, body, { connector: (id) => connApprove(db, env, auth.uid, { staged_id: id }) }));
   if (action === 'invite_request_create') return actionInviteRequest(db, env, auth.uid, body);
+  if (action === 'api_keys_list' || action === 'api_key_create' || action === 'api_key_revoke') return json(...await agent.keyAction(action, db, auth.uid, body, () => isAdmin(env, auth.uid)));
   if (action.startsWith('files_')) {
     if (!env.TOOLKIT_FILES) return json({ error: 'files_not_configured', message: 'File storage is not configured.' }, 503);
     try {
@@ -1545,6 +1558,15 @@ export async function handleToolkit(request, env) {
   try {
     let auth = null;
     const isAction = url.pathname === '/api/toolkit' && request.method === 'POST';
+    const agentMethod = agent.agentMethod(url.pathname);
+    if (agentMethod) {
+      if (request.method !== agentMethod) { const r = json({ error: 'method_not_allowed' }, 405); r.headers.set('allow', agentMethod); return r; }
+      // Same order as actions: origin, then the key, before any body is buffered.
+      if (!sameOrigin(request, url)) return json({ error: 'forbidden_origin', message: 'Browser calls from other sites are refused.' }, 403);
+      if (!getDb(env)) return json({ error: 'toolkit_db_not_configured' }, 503);
+      auth = await agent.authKey(request, env, getDb(env));
+      if (auth.error) return agent.authError(auth);
+    }
     if (isAction) {
       // Authenticate before buffering so only signed-in callers can send large bodies.
       if (!sameOrigin(request, url)) return json({ error: 'forbidden_origin' }, 403);
@@ -1553,7 +1575,7 @@ export async function handleToolkit(request, env) {
     }
     if (request.method === 'POST' && request.body) {
       // Actions carry a whole-job quote (a 5 MiB file as JSON rows) or a 10 MB file as base64 (about 13.4 MB).
-      const limit = isAction ? 32 * 1024 * 1024 : url.pathname === '/api/toolkit/webhook' ? 262144 : 65536;
+      const limit = isAction || agentMethod ? 32 * 1024 * 1024 : url.pathname === '/api/toolkit/webhook' ? 262144 : 65536;
       const reader = request.body.getReader();
       const chunks = [];
       let size = 0;
@@ -1566,6 +1588,7 @@ export async function handleToolkit(request, env) {
       }
       request = new Request(request.url, { method: request.method, headers: request.headers, body: new Blob(chunks) });
     }
+    if (agentMethod) return await agent.handleAgent(request, env, url, auth.key, getDb(env));
     if (url.pathname === '/api/toolkit/config') {
       return request.method === 'GET' ? await handleConfig(env) : json({ error: 'method_not_allowed' }, 405);
     }

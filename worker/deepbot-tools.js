@@ -21,7 +21,8 @@ const TEXT_TYPES = ['text/csv', 'text/plain', 'text/markdown', 'application/json
 export const READ_PAGE = 65536;
 // DeepBot gets each tool result clipped to 8,000 characters (toolkit.js), so its pages are smaller than an API caller's.
 const DEEPBOT_READ_PAGE = 4096;
-export const SAVE_MAX = 65536; // card B raises this for keys
+export const SAVE_MAX = 65536; // DeepBot
+export const KEY_SAVE_MAX = 1024 * 1024; // an API key's text content; content_base64 takes the 10 MB file limit
 const viaAction = async (res) => { const j = await res.json(); return res.status === 200 ? j : { error: j.error, message: j.message }; };
 
 export function makeToolHandlers({ db, env, uid, source, targets = [], out = {} }) {
@@ -112,8 +113,9 @@ export function makeToolHandlers({ db, env, uid, source, targets = [], out = {} 
       if (t.error) return t;
       const samples = Object.fromEntries(t.headers.map((h) => [h, t.rows.slice(0, 5).map((r) => clip(r[h], 200))]));
       out.seen.push(...Object.values(samples).flat());
-      const j = await viaAction(await actionIntake(db, env, uid, { file: { name: t.name, rows_total: t.rows.length, headers: t.headers, samples }, goal: clip(a.goal, 2000) }));
+      const j = await viaAction(await actionIntake(db, env, uid, { file: { name: t.name, rows_total: t.rows.length, headers: t.headers, samples }, goal: clip(a.goal, 2000) }, { source }));
       if (j.error) return j;
+      out.cost_micro = (out.cost_micro ?? 0) + (j.cost_micro ?? 0); // the agent API's call log
       out.cards.push({ kind: 'plan', data: { file_id: a.file_id, mapping: j.mapping, plan: j.plan } });
       if (j.question) out.asks.push({ id: `q${out.asks.length + 1}`, question: j.question, options: j.chips });
       return { reply: j.reply, question: j.question, mapping: j.mapping, plan: j.plan, chips: j.chips };
@@ -131,12 +133,17 @@ export function makeToolHandlers({ db, env, uid, source, targets = [], out = {} 
     },
     async files_save(a) { // a new file only: saveFile picks a free name, nothing is overwritten
       if (!bucket) return { error: 'files_not_configured' };
-      if (typeof a.content !== 'string') return { error: 'bad_content', message: 'content is text.' };
-      const bytes = new TextEncoder().encode(a.content);
-      if (bytes.length > SAVE_MAX) return { error: 'file_too_large', message: `content is ${SAVE_MAX / 1024} KB or less.` };
+      // An API key may save text up to 1 MB, or any allowed file type as content_base64 up to the 10 MB file limit.
+      const keyed = String(source).startsWith('key:');
+      const b64 = keyed && a.content_base64 !== undefined;
+      if (keyed && b64 === (a.content !== undefined)) return { error: 'bad_content', message: 'Send exactly one of content or content_base64.' };
+      if (!b64 && typeof a.content !== 'string') return { error: 'bad_content', message: 'content is text.' };
+      const max = keyed ? KEY_SAVE_MAX : SAVE_MAX;
+      const bytes = b64 ? files.decodeBase64(a.content_base64) : new TextEncoder().encode(a.content);
+      if (!b64 && bytes.length > max) return { error: 'file_too_large', message: `content is ${max / 1024} KB or less.` };
       const name = files.checkName(a.name);
       const mime = files.checkType(name, '', bytes);
-      if (!TEXT_TYPES.includes(mime)) return { error: 'bad_type', message: 'files_save writes csv, txt, md and json files.' };
+      if (!b64 && !TEXT_TYPES.includes(mime)) return { error: 'bad_type', message: 'files_save writes csv, txt, md and json files.' };
       const entry = await files.saveFile(db, bucket, uid, { folder: a.folder ?? '/', name, mime, bytes });
       return { entry, ...(entry.name !== name ? { note: `${name} was taken, so it was saved as ${entry.name}.` } : {}) };
     },
