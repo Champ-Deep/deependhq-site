@@ -334,5 +334,16 @@ const sid = (r) => r.staged_id;
   const rd = await h.run_detail({ id: runId });
   check('run_detail: the owner gets the run and its ledger; ai_log gets [results]', rd.result.id === runId && Array.isArray(rd.result.ledger) && rd.log.results === '[results]');
   check('run_detail: another user\'s run is not_found; a bad id is bad_run_id', (await makeToolHandlers({ db: d1, env, uid: 'user_b', source: 'deepbot' }).run_detail({ id: runId })).error === 'not_found' && (await h.run_detail({ id: 'x' })).error === 'bad_run_id');
+  d1.raw.prepare(`UPDATE toolkit_runs SET results=? WHERE id=?`).run(JSON.stringify([{ row: 0, out: { email: 'jane.RUNSECRET@acme.com' } }]), runId);
+  fx.script = [tool('run_detail', { id: runId }), say('The enriched email is jane.RUNSECRET@acme.com.')];
+  const rr = await post(env, { action: 'deepbot', message: 'what did the run find?' });
+  const storedR = JSON.stringify(d1.query(`SELECT * FROM deepbot_turns`).results) + JSON.stringify(d1.query(`SELECT * FROM ai_log WHERE action='deepbot'`).results);
+  check('run_detail: enriched result values the reply quotes are redacted from turns and ai_log', /RUNSECRET/.test(rr.body.reply) && /RUNSECRET/.test(JSON.stringify(toolMsgs(fx.chat.at(-1))[0])) && !/RUNSECRET/.test(storedR), storedR.slice(-400));
+  // After account_usage: each extra DeepBot turn costs a credit.
+  const quoted = await put(env, 'quoted.csv', 'Name,Title\n"Doe, QUOTESECRET",VP Sales\n');
+  fx.script = [tool('file_read', { id: quoted }), say('The first name is Doe, QUOTESECRET.')];
+  const rq = await post(env, { action: 'deepbot', message: 'read quoted.csv' });
+  const storedQ = JSON.stringify(d1.query(`SELECT * FROM deepbot_turns`).results) + JSON.stringify(d1.query(`SELECT * FROM ai_log WHERE action='deepbot'`).results);
+  check('file_read: a quoted CSV cell with a comma is redacted too', /QUOTESECRET/.test(rq.body.reply) && !/QUOTESECRET/.test(storedQ), storedQ.slice(-400));
 }
 finish('toolkit-deepbot-selftest');

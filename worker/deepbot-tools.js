@@ -9,11 +9,14 @@
 import * as store from './toolkit-store.js';
 import * as files from './toolkit-files.js';
 import * as staged from './staged.js';
+import { parseCsv } from '../toolkit-lib.js';
 import { validateSteps } from './deepbot-core.js';
 import { GUIDE_STAGES, readCsvFile, readRawFile, actionIntake, actionQuoteColumns, catalogFor, connPull, connStage, runResponse } from './toolkit.js';
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const clip = (s, n) => String(s == null ? '' : s).slice(0, n);
+// Every string inside a run's results, for redaction (numbers stay: redacting "100" would garble credit counts in the reply).
+const leaves = (v) => (v && typeof v === 'object' ? Object.values(v).flatMap(leaves) : typeof v === 'string' ? [v] : []);
 const TEXT_TYPES = ['text/csv', 'text/plain', 'text/markdown', 'application/json'];
 export const READ_PAGE = 65536;
 // DeepBot gets each tool result clipped to 8,000 characters (toolkit.js), so its pages are smaller than an API caller's.
@@ -61,7 +64,8 @@ export function makeToolHandlers({ db, env, uid, source, targets = [], out = {} 
       let end = Math.min(bytes.length, start + (source === 'deepbot' ? DEEPBOT_READ_PAGE : READ_PAGE));
       while (end < bytes.length && end > start && (bytes[end] & 0xc0) === 0x80) end--;
       const text = new TextDecoder().decode(bytes.subarray(start, end));
-      out.seen.push(...text.split(/[\r\n,]+/)); // CSV cells and text lines the model saw are redacted from turns and ai_log
+      out.seen.push(...text.split(/[\r\n,]+/)); // text lines and naive cells the model saw are redacted from turns and ai_log
+      if (f.mime === 'text/csv') { const t = parseCsv(text); out.seen.push(...t.headers, ...t.rows.flatMap(Object.values)); } // quoted cells like "Doe, X"
       return { result: { id: a.id, name: f.name, size: bytes.length, offset: start, next_offset: end < bytes.length ? end : null, untrusted_file_text: text }, log: { untrusted_file_text: '[file text]' } };
     },
     async account_usage() { // read only: actionUsage writes (account row, welcome grant, email)
@@ -85,7 +89,9 @@ export function makeToolHandlers({ db, env, uid, source, targets = [], out = {} 
       if (!UUID_RE.test(id)) return { error: 'bad_run_id' };
       const run = await store.getRunForOwner(db, id, uid);
       if (!run) return { error: 'not_found' };
-      return { result: runResponse(run, await store.listOps(db, run.id)), log: { results: '[results]' } };
+      const body = runResponse(run, await store.listOps(db, run.id));
+      out.seen.push(...leaves(body.results)); // enriched values the model saw are redacted from turns and ai_log
+      return { result: body, log: { results: '[results]' } };
     },
     async report_summary(a) { // totals from the run ledger; shortcut: no per-column review counts, add them when the report JSON is stable
       const id = String(a.job_id);
