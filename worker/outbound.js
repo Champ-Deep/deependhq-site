@@ -82,9 +82,12 @@ function agentOutput(r) {
   if (!text && r.structuredContent !== undefined) text = JSON.stringify(r.structuredContent);
   text = text.replace(CTRL, '');
   const shape = (t) => ({ truncated: t.length < text.length, untrusted_agent_output: t, ...(r.isError ? { is_error: true } : {}) });
-  let n = text.length, len;
-  while ((len = JSON.stringify(shape(text.slice(0, n))).length) > OUTPUT_MAX) n = Math.max(0, n - (len - OUTPUT_MAX));
-  return shape(text.slice(0, n));
+  const fits = (n) => JSON.stringify(shape(text.slice(0, n))).length <= OUTPUT_MAX;
+  if (fits(text.length)) return shape(text);
+  // Binary search for the longest prefix that fits; JSON length only grows with the prefix.
+  let lo = 0, hi = Math.min(text.length - 1, OUTPUT_MAX);
+  while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (fits(mid)) lo = mid; else hi = mid - 1; }
+  return shape(text.slice(0, lo));
 }
 
 // --- rows -----------------------------------------------------------------------------

@@ -301,12 +301,16 @@ let askId;
 // DeepBot turn: an output past the budget reaches the model as whole JSON that says it was truncated
 {
   await post(env, { action: 'agent_tools_set', connection_id: cid, tools: { lookup: 'read', send_note: 'ask', huge: 'read' } });
-  for (const [label, text] of [['10,000 chars', 'x'.repeat(10000)], ['5,400 chars of newlines', 'a\n'.repeat(2700)]]) {
+  const rows = Array.from({ length: 650 }, (_, i) => ({ id: i, name: `Row ${i}`, ok: i % 2 === 0 }));
+  const cases = [['10,000 chars', 'x'.repeat(10000)], ['5,400 chars of newlines', 'a\n'.repeat(2700)], ['about 40 KB of pretty JSON', JSON.stringify(rows, null, 2)], ['8,000 lines of a', 'a\n'.repeat(8000)]];
+  for (const [label, text] of cases) {
     fx.hugeText = text; fx.chat = []; fx.script = [tool('agent_call', { connection_id: cid, tool: 'huge' }), say('Done.')];
     await post(env, { action: 'deepbot', message: 'call huge', context: { targets: [] } });
     let m = null;
     try { m = JSON.parse(fx.chat[1].messages.at(-1).content); } catch {}
-    check(`deepbot: ${label} of agent output reach the model as valid JSON with truncated true`, m && m.truncated === true && m.untrusted_agent_output.length > 0 && text.startsWith(m.untrusted_agent_output), fx.chat[1]?.messages.at(-1).content.slice(-40));
+    const len = fx.chat[1]?.messages.at(-1).content.length;
+    // 6 = one escaped char: a truncated result must fill the budget, not shrink to nothing
+    check(`deepbot: ${label} of agent output reach the model as valid JSON with truncated true, filling the budget`, m && m.truncated === true && len > 7994 && len <= 8000 && text.startsWith(m.untrusted_agent_output), `len ${len}, text ${text.length}`);
   }
   delete fx.hugeText;
   await post(env, { action: 'agent_tools_set', connection_id: cid, tools: { lookup: 'read', send_note: 'ask' } });
