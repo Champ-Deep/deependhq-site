@@ -295,7 +295,7 @@ The Account UI's create form should default to `files:read`, `jobs:read`, `jobs:
 ### Endpoints (API key only)
 | Path | Method | Does |
 |------|--------|------|
-| `/api/toolkit/mcp` | POST | MCP Streamable HTTP, stateless (no sessions), JSON responses. `initialize`, `ping`, `tools/list`, `tools/call`; any other JSON-RPC method gets the SDK's method-not-found error. GET and every other HTTP method: 405 |
+| `/api/toolkit/mcp` | POST | MCP Streamable HTTP, stateless (no sessions), JSON responses. `initialize`, `ping`, `tools/list`, `tools/call`; any other JSON-RPC method gets the SDK's method-not-found error. One JSON-RPC message per request: a batch (a JSON array) is 400 with error code -32600, because the daily cap, the burst limit and the call log count requests. GET and every other HTTP method: 405 |
 | `/api/toolkit/v1/tools` | GET | `{tools: [{type: "function", function: {name, description, parameters}}]}`, the same names, order and schemas as `tools/list` |
 | `/api/toolkit/v1/tools/call` | POST | `{name, arguments}`. 200 `{result}`, or `{error, message}` |
 | `/api/toolkit/v1/files/<id>` | GET | The file's bytes as an attachment (`files:read`); 404 `not_found` otherwise |

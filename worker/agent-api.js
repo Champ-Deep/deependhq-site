@@ -110,6 +110,10 @@ async function callTool(db, env, key, name, args) {
 async function mcp(request, db, env, key) {
   const rec = { tool: 'mcp', status: 'ok', cost: 0 };
   const msg = await request.clone().json().catch(() => null);
+  // The cap, burst limit and call log count one HTTP request, so one request may carry one JSON-RPC message.
+  if (Array.isArray(msg)) {
+    return { res: json({ jsonrpc: '2.0', id: null, error: { code: -32600, message: 'Batch requests are not supported.' } }, 400), rec: { tool: 'mcp:batch', status: 'error', cost: 0 } };
+  }
   if (msg && typeof msg.method === 'string' && /^[a-z]+(\/[A-Za-z_]+){0,3}$/.test(msg.method) && msg.method.length <= 40) rec.tool = 'mcp:' + msg.method;
   const tools = toolsFor(key.scopes);
   const server = new Server({ name: 'deependhq-toolkit', version: '1.0.0' }, { capabilities: { tools: {} } });

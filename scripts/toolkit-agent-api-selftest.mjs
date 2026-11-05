@@ -137,6 +137,13 @@ check('GET /v1/tools [files:read, jobs:read]: same 9 names as tools/list', v1Rea
 const v1All = await agent('/api/toolkit/v1/tools', { key: KEY });
 check('GET /v1/tools every scope: the same 17 as tools/list, same schemas', JSON.stringify(names(v1All.body.tools)) === JSON.stringify(names(allList)) && JSON.stringify(v1All.body.tools.map((t) => t.function.parameters)) === JSON.stringify(allList.map((t) => t.inputSchema)));
 
+// 5b. a JSON-RPC batch would run many tools under one cap, burst and call-log count: refused whole
+const callsBefore = d1.query(`SELECT COUNT(*) AS n FROM toolkit_api_calls`).results[0].n;
+const batch = await agent('/api/toolkit/mcp', { key: KEY, method: 'POST', headers: MCP_HEADERS, body: ['/Batch1', '/Batch2'].map((path) => ({ jsonrpc: '2.0', id: ++rpcId, method: 'tools/call', params: { name: 'files_mkdir', arguments: { path } } })) });
+const batchRows = d1.query(`SELECT tool, status FROM toolkit_api_calls ORDER BY id DESC LIMIT 1`).results;
+const batchDirs = (await v1Call(KEY, 'files_list', { folder: '/' })).body.result.entries.filter((e) => /^Batch/.test(e.name));
+check('mcp batch: 400 with JSON-RPC -32600, no tool runs, one error row', batch.status === 400 && batch.body.error?.code === -32600 && batch.body.id === null && batchDirs.length === 0 && batchRows[0].tool === 'mcp:batch' && batchRows[0].status === 'error' && d1.query(`SELECT COUNT(*) AS n FROM toolkit_api_calls`).results[0].n === callsBefore + 2, JSON.stringify([batch.status, batch.body, batchDirs.length]));
+
 // 6. calls: files, arguments, out-of-scope = unknown
 const fileId = (await post({ action: 'files_put', folder: '/', name: 'leads.csv', mime: 'text/csv', content_base64: Buffer.from(CSV).toString('base64') })).body.entry.id;
 const fl = await mcpCall(KEY, 'files_list', { folder: '/' });
