@@ -1,0 +1,9 @@
+{
+  // SMOKE ONLY. Never deploy. Real workerd, local D1 and R2, the model answered by fixture.js.
+  "name": "deepbot-smoke",
+  "main": "worker.js",
+  "compatibility_date": "2026-05-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [{ "binding": "TOOLKIT_DB", "database_name": "toolkit-local", "database_id": "local-toolkit-only", "migrations_dir": "../../migrations" }],
+  "r2_buckets": [{ "binding": "TOOLKIT_FILES", "bucket_name": "toolkit-files-local" }]
+}
