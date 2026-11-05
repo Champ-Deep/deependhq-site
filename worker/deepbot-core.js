@@ -76,7 +76,7 @@ export const DEEPBOT_TOOLS = [
   }, ['steps']),
   fn('catalog', 'What the toolkit and DeepBot can do. Free.'),
   fn('connector_pull', 'Pull data from a connected work tool. harbinger: capacity_today, campaigns, drafts_pending. beam: stats {id}.', { provider: { type: 'string', enum: ['harbinger', 'beam'] }, op: { type: 'string' }, args: { type: 'object' } }, ['provider', 'op']),
-  fn('connector_act', 'Stage an action in a connected work tool. Nothing happens until the user approves it. harbinger: plan_campaign {goal, file_id?}, push_campaign {file_id, mapping, name}. beam: share_file {file_id}.', { provider: { type: 'string', enum: ['harbinger', 'beam'] }, op: { type: 'string' }, args: { type: 'object' } }, ['provider', 'op']),
+  fn('connector_act', 'Stage an action in a connected work tool. Nothing happens until the user approves it. harbinger: plan_campaign {goal}, push_campaign {file_id, mapping, name}. beam: share_file {file_id}.', { provider: { type: 'string', enum: ['harbinger', 'beam'] }, op: { type: 'string' }, args: { type: 'object' } }, ['provider', 'op']),
 ];
 
 export const DEEPBOT_SYSTEM = `You are DeepBot, the agent inside the Deep End Toolkit. You help people prepare data jobs and find their way around the toolkit, using only your tools.

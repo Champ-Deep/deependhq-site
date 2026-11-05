@@ -17,7 +17,7 @@ const HB_KEY_B = 'hb_live_OTHERUSERKEY99887766';
 const CB_KEY = 'cb_live_BEAMKEYBEAMKEY5555';
 const CHAT = 'https://openrouter.ai/api/v1/chat/completions';
 
-const fx = { calls: [], script: [], chat: [], deny: new Set(), down: new Set(), errors: [] };
+const fx = { calls: [], script: [], chat: [], deny: new Set(), down: new Set(), forbid: new Set(), errors: [] };
 const res = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 const usage = { prompt_tokens: 100, completion_tokens: 20, cost: 0.0005 };
 const say = (content) => ({ choices: [{ message: { content } }], usage });
@@ -36,18 +36,21 @@ globalThis.fetch = async (input, init = {}) => {
   fx.calls.push({ method, url, path, key: h['x-api-key'] ?? null, body: typeof init.body === 'string' ? JSON.parse(init.body) : init.body ?? null });
   const host = isHb ? 'harbinger' : 'beam';
   if (fx.down.has(host)) return res({ error: 'down' }, 503);
+  if (!isUp && fx.forbid.has(host)) return res({ detail: 'forbidden' }, 403);
   if (!isUp && fx.deny.has(h['x-api-key'])) return res({ error: 'bad key' }, 401);
   if (isHb) {
     if (path === '/api/integrations/status') return res({ account: { email: 'maya@acme.test' } });
     if (path === '/api/overview/today') return res({ mailboxes: [{ email: 'a@acme.test', sends_left: 40 }] });
     if (path === '/api/campaigns' && method === 'GET') return res([{ id: 'c1', name: 'SECRETCAMPAIGN Q4', status: 'active', extra: 'x' }]);
-    if (path.startsWith('/api/outreach/drafts')) return res({ drafts: [{ id: 'd1', subject: 'Hi Jane' }] });
+    if (path === '/api/outreach') return res({ sequences: [{ id: 's1', name: 'Seq 1' }, { id: 's2', name: 'Seq 2' }] });
+    if (path.startsWith('/api/outreach/drafts')) { const q = new URL(url).searchParams.get('sequence'); return q ? res({ drafts: [{ id: 'd-' + q, subject: 'Hi Jane' }] }) : res({ error: 'sequence param is required' }, 400); }
     if (path === '/api/goal/plan') return res({ id: 'plan1', capacity: 40 }, 201);
     if (path === '/api/campaigns' && method === 'POST') return res({ id: 'camp-9' }, 201);
     if (path === '/api/import-csv') return res({ imported: 2 });
   }
   if (isBeam) {
-    if (path === '/api/v1/content/mine/shares') return res([]);
+    if (path === '/api/v1/auth/me') return res({ user_id: 'u1', email: 'raj@beam.test' });
+    if (path === '/api/v1/content/mine/shares') return res({ detail: 'Select an organization' }, 403);
     if (path === '/api/v1/files/f-1/summary') return res({ view_count: 7 });
     if (path === '/api/v1/files' && method === 'POST') return res({ file_id: 'f-1', short_code: 'ab', presigned_put_url: 'https://s3.fixture/put?sig=1', headers: { 'x-amz-meta': 'a' }, serve_mode: 'x' }, 201);
     if (path === '/api/v1/files/f-1/finalize') return res({ serve_url: 'https://champbeam.com/s/ab' });
@@ -55,7 +58,7 @@ globalThis.fetch = async (input, init = {}) => {
   if (isUp) return new Response('', { status: 200 });
   return res({ error: 'not found' }, 404);
 };
-const reset = () => { fx.calls = []; fx.script = []; fx.chat = []; fx.deny = new Set(); fx.down = new Set(); fx.errors = []; resetClerkFixtures(); };
+const reset = () => { fx.calls = []; fx.script = []; fx.chat = []; fx.deny = new Set(); fx.down = new Set(); fx.forbid = new Set(); fx.errors = []; resetClerkFixtures(); };
 
 const { handleToolkit } = await import('../worker/toolkit.js');
 const baseEnv = (d1, over = {}) => ({ TOOLKIT_DB: d1, TOOLKIT_FILES: makeR2(), CLERK_PUBLISHABLE_KEY: PK, CLERK_SECRET_KEY: SK, CLERK_JWT_KEY: JWT_PUBLIC_PEM, CLERK_JS_URL, OPENROUTER_API_KEY: 'or-key', CLERK_ADMIN_IDS: 'user_admin', CLERK_ADMIN_EMAILS: 'deep1499@gmail.com', CONNECTIONS_SECRET: 'test-connections-secret-0123456789', ...over });
@@ -125,18 +128,24 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   const cap = await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'capacity_today' });
   const camps = await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'campaigns' });
   const drafts = await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'drafts_pending' });
-  check('pull: capacity_today, campaigns (id, name, status only), drafts_pending', cap.body.data.mailboxes[0].sends_left === 40 && camps.body.data.length === 1 && !('extra' in camps.body.data[0]) && drafts.body.data[0].id === 'd1', JSON.stringify([cap.body, camps.body, drafts.body]).slice(0, 400));
-  check('pull: every call used the user\'s key on the allowlisted GET routes', fx.calls.length === 3 && fx.calls.every((c) => c.method === 'GET' && c.key === HB_KEY) && fx.calls.map((c) => c.path).join() === '/api/overview/today,/api/campaigns,/api/outreach/drafts?status=pending');
+  check('pull: capacity_today, campaigns (id, name, status only), drafts_pending', cap.body.data.mailboxes[0].sends_left === 40 && camps.body.data.length === 1 && !('extra' in camps.body.data[0]) && drafts.body.data.map((d) => d.id).join() === 'd-s1,d-s2', JSON.stringify([cap.body, camps.body, drafts.body]).slice(0, 400));
+  check('pull: every call used the user\'s key on the allowlisted GET routes', fx.calls.length === 5 && fx.calls.every((c) => c.method === 'GET' && c.key === HB_KEY) && fx.calls.map((c) => c.path).join() === '/api/overview/today,/api/campaigns,/api/outreach,/api/outreach/drafts?sequence=s1,/api/outreach/drafts?sequence=s2');
   const bad = await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'delete_everything' });
-  check('pull: an op outside the adapter is refused before any call', bad.body.error === 'unknown_op' && fx.calls.length === 3);
+  check('pull: an op outside the adapter is refused before any call', bad.body.error === 'unknown_op' && fx.calls.length === 5);
   fx.deny.add(HB_KEY);
   check('pull: the provider revoked the key -> invalid_key', (await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'campaigns' })).body.error === 'invalid_key');
   fx.deny.clear(); fx.down.add('harbinger');
   check('pull: provider down -> provider_down (400 from us is the user\'s, state is in the body)', (await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'campaigns' })).body.error === 'provider_down');
   fx.down.clear();
-  await connect(env, 'beam', CB_KEY);
+  fx.calls = [];
+  const bs = await connect(env, 'beam', CB_KEY);
+  check('save: ChampBeam is tested on GET auth/me (no organization needed) and labeled with the account', bs.status === 200 && bs.body.account === 'raj@beam.test' && fx.calls.length === 1 && fx.calls[0].path === '/api/v1/auth/me', JSON.stringify([bs.body, fx.calls.map((c) => c.path)]));
   const st = await post(env, { action: 'connector_pull', provider: 'beam', op: 'stats', args: { id: 'f-1' } });
   check('pull: ChampBeam stats', st.body.data.view_count === 7);
+  fx.forbid.add('harbinger'); fx.forbid.add('beam');
+  const f1 = await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'campaigns' }), f2 = await post(env, { action: 'connector_pull', provider: 'beam', op: 'stats', args: { id: 'f-1' } });
+  check('403 copy is per provider', f1.body.error === 'not_allowed' && /ChampHarbinger is invite-only/.test(f1.body.message) && f2.body.error === 'not_allowed' && !/invite-only|Harbinger/.test(f2.body.message), JSON.stringify([f1.body, f2.body]));
+  fx.forbid.clear();
   check('pull: ChampBeam stats refuses a path-shaped id', (await post(env, { action: 'connector_pull', provider: 'beam', op: 'stats', args: { id: '../keys' } })).body.error === 'invalid_args');
 }
 
@@ -147,10 +156,10 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   await connect(env, 'harbinger', HB_KEY);
   const fid = await put(env, 'leads.csv', CSV);
   fx.calls = [];
-  const plan = await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'Book 10 demos in Q4', file_id: fid } });
-  check('plan_campaign: staged with a preview and an approve action; nothing posted', plan.status === 200 && plan.body.status === 'staged' && plan.body.preview.file.rows === 2 && plan.body.approve.action === 'connector_approve' && plan.body.approve.staged_id === plan.body.staged_id && post_calls().length === 0, JSON.stringify(plan.body));
+  const plan = await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'Book 10 demos in Q4' } });
+  check('plan_campaign: staged with a preview and an approve action; nothing posted', plan.status === 200 && plan.body.status === 'staged' && !('file' in plan.body.preview) && plan.body.preview.goal === 'Book 10 demos in Q4' && plan.body.approve.action === 'connector_approve' && plan.body.approve.staged_id === plan.body.staged_id && post_calls().length === 0, JSON.stringify(plan.body));
   const push = await post(env, { action: 'connector_act', provider: 'harbinger', op: 'push_campaign', args: { file_id: fid, mapping: MAPPING, name: 'Q4 push' } });
-  check('push_campaign: staged, preview counts rows and fields; still nothing posted', push.body.status === 'staged' && push.body.preview.will_import === 2 && push.body.preview.fields.join() === 'person_name,email,company' && post_calls().length === 0, JSON.stringify(push.body));
+  check('push_campaign: staged, preview counts rows and fields and names the enrichment cost; still nothing posted', push.body.status === 'staged' && /enriches the imported companies against your enrichment budget/.test(push.body.preview.note) && push.body.preview.will_import === 2 && push.body.preview.fields.join() === 'person_name,email,company' && post_calls().length === 0, JSON.stringify(push.body));
   check('push_campaign: a mapping with an unknown header is refused at stage time', (await post(env, { action: 'connector_act', provider: 'harbinger', op: 'push_campaign', args: { file_id: fid, mapping: [{ source: 'Ghost', field: 'email' }], name: 'x' } })).body.error === 'invalid_args');
   check('push_campaign: a mapping with no name, email or LinkedIn column is refused', (await post(env, { action: 'connector_act', provider: 'harbinger', op: 'push_campaign', args: { file_id: fid, mapping: [{ source: 'Company', field: 'company' }], name: 'x' } })).body.error === 'invalid_args');
   check('plan_campaign: a short goal is refused', (await post(env, { action: 'connector_act', provider: 'harbinger', op: 'plan_campaign', args: { goal: 'x' } })).body.error === 'invalid_args');

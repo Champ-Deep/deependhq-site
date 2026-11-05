@@ -41,7 +41,7 @@ async function call(c, method, path, body) {
   const data = await res.json().catch(() => null);
   if (res.ok) return { data };
   if (res.status === 401) return { error: 'invalid_key', message: 'The provider refused this key.' };
-  if (res.status === 403) return { error: 'not_allowed', message: 'This key is not allowed to do that. Harbinger is invite-only.' };
+  if (res.status === 403) return { error: 'not_allowed', message: c.deny403 || 'This key is not allowed to do that.' };
   if (res.status >= 500) return { error: 'provider_down', message: 'The provider is having trouble.' };
   return { error: 'provider_refused', message: scrub(data?.error || data?.detail || `HTTP ${res.status}`) };
 }
@@ -65,6 +65,7 @@ function checkMapping(mapping, headers, fields) {
 
 const harbinger = {
   id: 'harbinger', label: 'ChampHarbinger', prefix: 'hb_live_',
+  deny403: 'This key is not allowed to do that. ChampHarbinger is invite-only.',
   base: (env) => env.HARBINGER_API_URL || 'https://champ-harbinger.deep-ae0.workers.dev',
   async test(c) {
     const r = await call(c, 'GET', '/api/integrations/status');
@@ -73,16 +74,25 @@ const harbinger = {
   pulls: {
     capacity_today: { does: 'Sends available today per mailbox.', run: (c) => call(c, 'GET', '/api/overview/today') },
     campaigns: { does: 'Your campaigns.', run: async (c) => { const r = await call(c, 'GET', '/api/campaigns'); return r.error ? r : { data: list(r.data, 'campaigns').slice(0, 50).map(({ id, name, status }) => ({ id, name, status })) }; } },
-    drafts_pending: { does: 'Drafts waiting for your approval.', run: async (c) => { const r = await call(c, 'GET', '/api/outreach/drafts?status=pending'); return r.error ? r : { data: list(r.data, 'drafts').slice(0, 50) }; } },
+    // Harbinger's drafts route needs ?sequence=, so list sequences (GET /api/outreach) first; shortcut: 5 sequences max, 50 drafts max.
+    drafts_pending: {
+      does: 'Drafts waiting for your approval. args: {sequence?} (a sequence id; default is your 5 newest sequences).',
+      run: async (c, a) => {
+        let ids = [];
+        if (a.sequence !== undefined) { if (!ID_RE.test(String(a.sequence))) return bad('sequence is a ChampHarbinger sequence id.'); ids = [String(a.sequence)]; }
+        else { const s = await call(c, 'GET', '/api/outreach'); if (s.error) return s; ids = list(s.data, 'sequences').slice(0, 5).map((x) => x.id).filter((id) => ID_RE.test(String(id))); }
+        const out = [];
+        for (const id of ids) { const r = await call(c, 'GET', `/api/outreach/drafts?sequence=${encodeURIComponent(id)}`); if (r.error) return r; out.push(...list(r.data, 'drafts')); }
+        return { data: out.slice(0, 50) };
+      },
+    },
   },
   acts: {
     plan_campaign: {
-      does: 'Size a lead gen goal to your mailbox capacity. Spends nothing.',
-      async stage(c, a, h) {
+      does: 'Size a lead gen goal to your mailbox capacity. Spends nothing. args: {goal}.',
+      async stage(c, a) {
         if (!str(a.goal, 3, 500)) return bad('goal takes 3 to 500 characters.');
-        let file = null;
-        if (a.file_id !== undefined) { const t = await h.csv(a.file_id); if (t.error) return t; file = { name: t.name, rows: t.rows.length }; }
-        return { args: { goal: a.goal.trim(), file_id: a.file_id }, preview: { goal: a.goal.trim(), file, note: 'Creates a plan in ChampHarbinger. Spends nothing and sends nothing.' } };
+        return { args: { goal: a.goal.trim() }, preview: { goal: a.goal.trim(), note: 'Creates a plan in ChampHarbinger from this goal only. Spends nothing and sends nothing.' } };
       },
       approve: (c, a) => call(c, 'POST', '/api/goal/plan', { goal: a.goal }),
     },
@@ -96,7 +106,7 @@ const harbinger = {
         if (m) return bad(m);
         return {
           args: { file_id: a.file_id, mapping: a.mapping, name: a.name.trim() },
-          preview: { name: a.name.trim(), file: t.name, rows: t.rows.length, will_import: Math.min(t.rows.length, HB_MAX_CONTACTS), fields: a.mapping.filter((x) => x.keep !== false).map((x) => x.field), note: 'Imports the contacts and creates a campaign. Nothing is sent: you approve sending inside ChampHarbinger.' },
+          preview: { name: a.name.trim(), file: t.name, rows: t.rows.length, will_import: Math.min(t.rows.length, HB_MAX_CONTACTS), fields: a.mapping.filter((x) => x.keep !== false).map((x) => x.field), note: 'Imports the contacts and creates a campaign. ChampHarbinger then enriches the imported companies against your enrichment budget. Nothing is sent: you approve sending inside ChampHarbinger.' },
         };
       },
       async approve(c, a, h) {
@@ -119,10 +129,11 @@ const harbinger = {
 const ID_RE = /^[\w-]{1,64}$/;
 const beam = {
   id: 'beam', label: 'ChampBeam', prefix: 'cb_live_',
+  deny403: 'ChampBeam refused this key for that. The key may lack access, or the account has no organization selected.',
   base: (env) => env.BEAM_API_URL || 'https://champbeam.com',
   async test(c) {
-    const r = await call(c, 'GET', '/api/v1/content/mine/shares');
-    return r.error ? r : { ok: true, label: 'ChampBeam' };
+    const r = await call(c, 'GET', '/api/v1/auth/me');
+    return r.error ? r : { ok: true, label: clip(r.data?.email || 'ChampBeam', 80) };
   },
   pulls: {
     stats: { does: 'Opens and viewers of one shared file. args: {id}.', run: (c, a) => (ID_RE.test(String(a.id)) ? call(c, 'GET', `/api/v1/files/${a.id}/summary`) : bad('id is the ChampBeam file id.')) },

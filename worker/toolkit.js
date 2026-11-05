@@ -1058,7 +1058,7 @@ async function connCtx(db, env, uid, body, verb) {
   if (!env.CONNECTIONS_SECRET) return { error: 'connections_not_configured', message: 'Connections are not switched on yet.' };
   const row = await db.prepare(`SELECT key_ciphertext FROM toolkit_connections WHERE user_id=?1 AND provider=?2`).bind(uid, p.id).first();
   if (!row) return { error: 'not_connected', message: `${p.label} is not connected. Add a key under Connections.` };
-  try { return { p, c: { key: await unseal(env.CONNECTIONS_SECRET, `${uid}:${p.id}`, row.key_ciphertext), base: p.base(env), fetch: (u, i) => fetch(u, i) } }; } catch { return { error: 'key_unreadable', message: 'The saved key cannot be read. Save it again.' }; }
+  try { return { p, c: { key: await unseal(env.CONNECTIONS_SECRET, `${uid}:${p.id}`, row.key_ciphertext), base: p.base(env), deny403: p.deny403, fetch: (u, i) => fetch(u, i) } }; } catch { return { error: 'key_unreadable', message: 'The saved key cannot be read. Save it again.' }; }
 }
 
 async function connPull(db, env, uid, body) {
@@ -1115,7 +1115,7 @@ async function connectionSave(db, env, uid, body) {
   if (!env.CONNECTIONS_SECRET) return json({ error: 'connections_not_configured', message: 'Connections are not switched on yet.' }, 503);
   const key = typeof body.api_key === 'string' ? body.api_key.trim() : '';
   if (!key.startsWith(p.prefix) || key.length < p.prefix.length + 8 || key.length > 200 || /\s/.test(key)) return json({ error: 'invalid_key_format', message: `${p.label} keys start with ${p.prefix}.` }, 400);
-  const t = await p.test({ key, base: p.base(env), fetch: (u, i) => fetch(u, i) }); // tested on save: a key that does not work is not stored
+  const t = await p.test({ key, base: p.base(env), deny403: p.deny403, fetch: (u, i) => fetch(u, i) }); // tested on save: a key that does not work is not stored
   if (t.error) return json({ error: t.error === 'provider_down' ? 'provider_down' : 'key_rejected', message: t.message }, t.error === 'provider_down' ? 502 : 400);
   await db.prepare(`INSERT INTO toolkit_connections (user_id, provider, key_ciphertext, key_hint, label, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6)
     ON CONFLICT (user_id, provider) DO UPDATE SET key_ciphertext=excluded.key_ciphertext, key_hint=excluded.key_hint, label=excluded.label, created_at=excluded.created_at`)
