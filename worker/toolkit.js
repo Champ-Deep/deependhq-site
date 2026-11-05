@@ -21,7 +21,9 @@ import * as cols from './column-ops.js';
 import * as files from './toolkit-files.js';
 import { parseCsv } from '../toolkit-lib.js';
 import { CONNECTORS, seal, unseal, KEY_RE, maskKey } from './connectors.js';
-import { validateSteps, CATALOG, CATALOG_RE, DEEPBOT_TOOLS, DEEPBOT_SYSTEM } from './deepbot-core.js';
+import { CATALOG, CATALOG_RE, DEEPBOT_TOOLS, DEEPBOT_SYSTEM } from './deepbot-core.js';
+import { makeToolHandlers } from './deepbot-tools.js';
+import * as staged from './staged.js';
 
 const AI_LOG_DAYS = 180;
 const INTAKE_RESERVE_MICRO = 3000;
@@ -206,7 +208,7 @@ async function actionUsage(db, env, uid, settings) {
 // ---------------------------------------------------------------------------
 // action: quote (sign-in required for throttling, no provider spend here)
 // ---------------------------------------------------------------------------
-async function actionQuoteColumns(db, uid, body) {
+export async function actionQuoteColumns(db, uid, body) {
   let input;
   try {
     input = cols.validateColumnsInput(body, cols.MAX_JOB_ROWS);
@@ -316,7 +318,7 @@ function makeCall(db, runId) {
   };
 }
 
-function runResponse(run, ops) {
+export function runResponse(run, ops) {
   let results = [];
   try {
     results = run.results ? JSON.parse(run.results) : [];
@@ -882,7 +884,7 @@ An operation is {"column": "<header>", "op": ..., "engine": ...} plus:
 - verify_email, engine treg: column holds an email.
 Use engine deepseek unless the user asks for jev. Use at most 8 operations. Only use headers that exist. Nothing runs until the user approves the plan.`;
 
-async function actionIntake(db, env, uid, body) {
+export async function actionIntake(db, env, uid, body) {
   const invalid = validateIntake(body);
   if (invalid) return json({ error: 'invalid_intake', message: invalid }, 400);
   if (!llmKey(env)) return json({ error: 'provider_not_configured', message: 'The AI provider is not configured.' }, 503);
@@ -1026,14 +1028,14 @@ function validateDeepbot(body) {
 }
 
 // A user's file by id, for deepbot tools and connector adapters. Throws files.FileError like the Files actions.
-async function readRawFile(db, env, uid, id) {
+export async function readRawFile(db, env, uid, id) {
   if (!env.TOOLKIT_FILES) return { error: 'files_not_configured' };
   const res = await files.downloadFile(db, env.TOOLKIT_FILES, uid, String(id));
   if (!res) return { error: 'not_found', message: 'No such file.' };
   const name = decodeURIComponent((/filename\*=UTF-8''(.*)$/.exec(res.headers.get('content-disposition')) || [])[1] || 'file');
   return { name, mime: res.headers.get('content-type').split(';')[0], bytes: await res.arrayBuffer() };
 }
-async function readCsvFile(db, env, uid, id) {
+export async function readCsvFile(db, env, uid, id) {
   const f = await readRawFile(db, env, uid, id);
   if (f.error) return f;
   if (f.mime !== 'text/csv') return { error: 'unsupported_type', message: 'Only CSV files can be read here for now.' };
@@ -1044,7 +1046,6 @@ async function readCsvFile(db, env, uid, id) {
 // Connections (docs/toolkit-v4-api.md section 9). Keys are sealed with CONNECTIONS_SECRET and leave this section
 // only in the X-API-Key header of a call to that provider. Acts only stage; connector_approve is a human click.
 // ---------------------------------------------------------------------------
-const STAGE_MINUTES = 60;
 const providerOf = (id) => (typeof id === 'string' && Object.hasOwn(CONNECTORS, id) ? CONNECTORS[id] : null);
 const fileHost = (db, env, uid) => ({ csv: (id) => readCsvFile(db, env, uid, id), file: (id) => readRawFile(db, env, uid, id), fields: FIELDS });
 const failure = (e) => (e instanceof files.FileError ? { error: e.error, message: e.message } : (console.error('toolkit: connector failed:', e && e.message), { error: 'connector_failed', message: 'The connector could not do that.' }));
@@ -1061,43 +1062,44 @@ async function connCtx(db, env, uid, body, verb) {
   try { return { p, c: { key: await unseal(env.CONNECTIONS_SECRET, `${uid}:${p.id}`, row.key_ciphertext), base: p.base(env), deny403: p.deny403, fetch: (u, i) => fetch(u, i) } }; } catch { return { error: 'key_unreadable', message: 'The saved key cannot be read. Save it again.' }; }
 }
 
-async function connPull(db, env, uid, body) {
+export async function connPull(db, env, uid, body) {
   const k = await connCtx(db, env, uid, body, 'pulls');
   if (k.error) return k;
   try { const r = await k.p.pulls[body.op].run(k.c, objArgs(body.args)); return r.error ? r : { provider: k.p.id, op: body.op, data: r.data }; } catch (e) { return failure(e); }
 }
 
-async function connStage(db, env, uid, body) {
+// Stages into toolkit_staged (docs section 10); the response keeps its section 9 shape plus approve_url.
+export async function connStage(db, env, uid, body, source = 'user') {
   const k = await connCtx(db, env, uid, body, 'acts');
   if (k.error) return k;
   let s;
   try { s = await k.p.acts[body.op].stage(k.c, objArgs(body.args), fileHost(db, env, uid)); } catch (e) { return failure(e); }
   if (s.error) return s;
-  const id = crypto.randomUUID(), now = new Date();
-  const expires = store.nowIso(new Date(now.getTime() + STAGE_MINUTES * 60000));
-  await db.prepare(`INSERT INTO connector_staged (id, user_id, provider, op, args_json, preview_json, created_at, expires_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)`)
-    .bind(id, uid, k.p.id, body.op, JSON.stringify(s.args), JSON.stringify(s.preview), store.nowIso(now), expires).run();
-  return { staged_id: id, provider: k.p.id, op: body.op, status: 'staged', preview: s.preview, approve: { action: 'connector_approve', staged_id: id }, expires_at: expires };
+  const r = await staged.stageItem(db, env, { uid, kind: 'connector_act', source, title: `${k.p.label} ${body.op}`, payload: { provider: k.p.id, op: body.op, args: s.args, preview: s.preview } });
+  if (r.error) return r;
+  return { staged_id: r.staged_id, provider: k.p.id, op: body.op, status: 'staged', preview: s.preview, approve: { action: 'connector_approve', staged_id: r.staged_id }, approve_url: r.approve_url, expires_at: r.expires_at };
 }
 
 // The only code that executes a staged act. Reachable from the dispatcher (the user's session) and from no deepbot tool.
+// Returns [body, status].
 async function connApprove(db, env, uid, body) {
   const id = clip(body.staged_id, 64);
-  if (!UUID_RE.test(id)) return json({ error: 'bad_staged_id' }, 400);
-  const row = await db.prepare(`SELECT * FROM connector_staged WHERE id=?1 AND user_id=?2`).bind(id, uid).first();
-  if (!row) return json({ error: 'not_found' }, 404);
-  if (row.status === 'approved') return json({ staged_id: id, status: 'approved', already_approved: true, result: JSON.parse(row.result_json) });
-  if (row.status !== 'staged') return json({ error: 'not_approvable', status: row.status }, 409);
-  if (row.expires_at <= store.nowIso()) return json({ error: 'expired', message: 'This was staged over an hour ago. Stage it again.' }, 410);
-  const claim = await db.prepare(`UPDATE connector_staged SET status='approving' WHERE id=?1 AND user_id=?2 AND status='staged'`).bind(id, uid).run(); // a double click runs once
-  if (claim.meta.changes !== 1) return json({ error: 'not_approvable', status: 'approving' }, 409);
-  const k = await connCtx(db, env, uid, row);
+  if (!UUID_RE.test(id)) return [{ error: 'bad_staged_id' }, 400];
+  const row = await db.prepare(`SELECT * FROM toolkit_staged WHERE id=?1 AND user_id=?2 AND kind='connector_act'`).bind(id, uid).first();
+  if (!row) return [{ error: 'not_found' }, 404];
+  if (row.status === 'approved') return [{ staged_id: id, status: 'approved', already_approved: true, result: JSON.parse(row.result_json) }, 200];
+  if (row.status !== 'pending') return [{ error: 'not_approvable', status: row.status }, 409];
+  if (row.expires_at <= store.nowIso()) return [{ error: 'expired', message: 'This expired. Stage it again.' }, 410];
+  const claim = await db.prepare(`UPDATE toolkit_staged SET status='approving' WHERE id=?1 AND user_id=?2 AND status='pending'`).bind(id, uid).run(); // a double click runs once
+  if (claim.meta.changes !== 1) return [{ error: 'not_approvable', status: 'approving' }, 409];
+  const { provider, op, args } = JSON.parse(row.payload_json);
+  const k = await connCtx(db, env, uid, { provider, op });
   let out;
   if (k.error) out = k;
-  else { try { out = await k.p.acts[row.op].approve(k.c, JSON.parse(row.args_json), fileHost(db, env, uid)); } catch (e) { out = failure(e); } }
+  else { try { out = await k.p.acts[op].approve(k.c, args, fileHost(db, env, uid)); } catch (e) { out = failure(e); } }
   const ok = !out.error;
-  await db.prepare(`UPDATE connector_staged SET status=?2, result_json=?3 WHERE id=?1`).bind(id, ok ? 'approved' : 'failed', JSON.stringify(ok ? out.data : { error: out.error, message: out.message })).run();
-  return ok ? json({ staged_id: id, status: 'approved', result: out.data }) : json({ error: out.error, message: out.message, staged_id: id, status: 'failed' }, out.error === 'provider_down' ? 502 : 400);
+  await db.prepare(`UPDATE toolkit_staged SET status=?2, result_json=?3, decided_at=?4 WHERE id=?1`).bind(id, ok ? 'approved' : 'failed', JSON.stringify(ok ? out.data : { error: out.error, message: out.message }), store.nowIso()).run();
+  return ok ? [{ staged_id: id, status: 'approved', result: out.data }, 200] : [{ error: out.error, message: out.message, staged_id: id, status: 'failed' }, out.error === 'provider_down' ? 502 : 400];
 }
 
 async function connectionList(db, env, uid) {
@@ -1124,7 +1126,7 @@ async function connectionSave(db, env, uid, body) {
 }
 
 // The free catalog with this user's real connection state.
-async function catalogFor(db, uid) {
+export async function catalogFor(db, uid) {
   const have = new Set((await db.prepare(`SELECT provider FROM toolkit_connections WHERE user_id=?1`).bind(uid).all()).results.map((r) => r.provider));
   return { ...CATALOG, connectors: Object.values(CONNECTORS).map((p) => ({ id: p.id, label: p.label, status: have.has(p.id) ? 'connected' : 'not_connected', pulls: Object.keys(p.pulls), acts: Object.keys(p.acts) })) };
 }
@@ -1217,79 +1219,10 @@ async function actionDeepbot(db, env, uid, body) {
   if (p instanceof Response) return p;
   const metered = makeCall(db, p.id);
 
-  const out = { steps: [], cards: [], asks: [] };
-  const seen = [];            // cell values this turn handed to the model; scrubbed from everything stored
+  const out = { steps: [], cards: [], asks: [], seen: [] }; // seen: cell values this turn handed to the model; scrubbed from everything stored
   const logTool = new Map();  // tool_call_id -> the same result without sample rows
-  const bucket = env.TOOLKIT_FILES;
   const t0 = Date.now();
-
-  const readCsv = (id) => readCsvFile(db, env, uid, id);
-  const viaAction = async (res) => { const j = await res.json(); return res.status === 200 ? j : { error: j.error, message: j.message }; };
-
-  const tools = {
-    async files_list(a) {
-      if (!bucket) return { error: 'files_not_configured' };
-      const r = await files.filesAction('files_list', db, bucket, uid, { folder: typeof a.folder === 'string' ? a.folder : '/' });
-      return { entries: r.entries.slice(0, 100).map(({ id, kind, name, path, size }) => ({ id, kind, name, path, size })) };
-    },
-    async file_peek(a) {
-      const t = await readCsv(a.id);
-      if (t.error) return t;
-      const headers = t.headers.slice(0, 40);
-      const sample_rows = t.rows.slice(0, 5).map((r) => Object.fromEntries(headers.map((h) => [h, clip(r[h], 60)])));
-      seen.push(...sample_rows.flatMap((r) => Object.values(r)));
-      return { result: { id: a.id, name: t.name, rows: t.rows.length, columns: t.headers.length, headers, sample_rows }, log: { sample_rows: '[value]' } };
-    },
-    async intake_plan(a) { // the existing intake action: it reserves and settles its own small charge
-      const t = await readCsv(a.file_id);
-      if (t.error) return t;
-      const samples = Object.fromEntries(t.headers.map((h) => [h, t.rows.slice(0, 5).map((r) => clip(r[h], 200))]));
-      seen.push(...Object.values(samples).flat());
-      const j = await viaAction(await actionIntake(db, env, uid, { file: { name: t.name, rows_total: t.rows.length, headers: t.headers, samples }, goal: clip(a.goal, 2000) }));
-      if (j.error) return j;
-      out.cards.push({ kind: 'plan', data: { file_id: a.file_id, mapping: j.mapping, plan: j.plan } });
-      if (j.question) out.asks.push({ id: `q${out.asks.length + 1}`, question: j.question, options: j.chips });
-      return { reply: j.reply, question: j.question, mapping: j.mapping, plan: j.plan, chips: j.chips };
-    },
-    async quote(a) { // prices only. There is no path from here to actionRun.
-      const t = await readCsv(a.file_id);
-      if (t.error) return t;
-      const j = await viaAction(await actionQuoteColumns(db, uid, { rows: t.rows, columns: a.plan }));
-      if (j.error) return j;
-      out.cards.push({ kind: 'quote', data: { file_id: a.file_id, plan: a.plan, ...j } });
-      const { row_count, max_cost_micro, max_credits, can_run, reason, message } = j;
-      return { row_count, max_cost_micro, max_credits, can_run, reason, message, note: 'A quote card was shown. The user presses Run.' };
-    },
-    async report_summary(a) { // totals from the run ledger; shortcut: no per-column review counts, add them when the report JSON is stable
-      const id = String(a.job_id);
-      if (!UUID_RE.test(id)) return { error: 'bad_job_id' };
-      const runs = (await db.prepare(`SELECT status, row_count, credits_used, spent_micro FROM toolkit_runs WHERE user_id=?1 AND tool_id='data-workbench' AND (job_id=?2 OR id=?2)`).bind(uid, id).all()).results;
-      if (!runs.length) return { error: 'not_found' };
-      const sum = (k) => runs.reduce((n, r) => n + store.num(r[k]), 0);
-      const statuses = {};
-      for (const r of runs) statuses[r.status] = (statuses[r.status] || 0) + 1;
-      const data = { job_id: id, chunks: runs.length, rows: sum('row_count'), credits_used: sum('credits_used'), spent_micro: sum('spent_micro'), statuses };
-      out.cards.push({ kind: 'report', data });
-      return data;
-    },
-    async page_steps(a) {
-      const v = validateSteps(a.steps, { targets, stages: GUIDE_STAGES });
-      if (v.error) return v;
-      out.steps = v.steps;
-      return { ok: true, count: v.steps.length };
-    },
-    async catalog() { return catalogFor(db, uid); },
-    async connector_pull(a) { // pulled rows are the user's own work data: the model sees them, ai_log does not
-      const r = await connPull(db, env, uid, a);
-      return r.error ? r : { result: { provider: r.provider, op: r.op, data: r.data }, log: { data: '[connector data]' } };
-    },
-    async connector_act(a) { // stages only. The card carries the approve action for the user's click; no tool executes it.
-      const r = await connStage(db, env, uid, a);
-      if (r.error) return r;
-      out.cards.push({ kind: 'staged', data: r });
-      return { staged_id: r.staged_id, preview: r.preview, note: 'Staged, not done. The user approves it in the window. Never say it has happened.' };
-    },
-  };
+  const tools = makeToolHandlers({ db, env, uid, source: 'deepbot', targets, out });
   async function runTool(call) {
     const name = call?.function?.name;
     if (!Object.hasOwn(tools, name)) return { result: { error: 'unknown_tool' } };
@@ -1335,7 +1268,7 @@ async function actionDeepbot(db, env, uid, body) {
   await settle(db, await store.getRunForOwner(db, p.id, uid), [], failed ? 'deepbot call failed' : null);
 
   // Stored copies: cell values this turn read are replaced with [value], like the intake log.
-  const scrub = (t) => redact(t, seen);
+  const scrub = (t) => redact(t, out.seen);
   const reply = clip((final ?? DEEPBOT_BUSY).replace(DASH_RE, ', '), 1500);
   await writeAiLog(db, env, {
     user_id: uid, job_id: p.id, action: 'deepbot', op: `rounds=${rounds}`, engine: 'deepseek', model: llm.id, goal: clip(scrub(message), 500),
@@ -1468,8 +1401,9 @@ async function handleAction(request, env, url, preAuth) {
     return json({ provider: body.provider, state: 'not_connected' });
   }
   if (action === 'connector_pull') { const r = await connPull(db, env, auth.uid, body); return json(r, r.error ? 400 : 200); }
-  if (action === 'connector_act') { const r = await connStage(db, env, auth.uid, body); return json(r, r.error ? 400 : 200); }
-  if (action === 'connector_approve') return connApprove(db, env, auth.uid, body);
+  if (action === 'connector_act') { const { http_status, ...r } = await connStage(db, env, auth.uid, body); return json(r, r.error ? http_status || 400 : 200); }
+  if (action === 'connector_approve') return json(...await connApprove(db, env, auth.uid, body));
+  if (action === 'staged_list' || action === 'staged_get' || action === 'staged_decide') return json(...await staged.handle(action, db, env, auth.uid, body, { connector: (id) => connApprove(db, env, auth.uid, { staged_id: id }) }));
   if (action === 'invite_request_create') return actionInviteRequest(db, env, auth.uid, body);
   if (action.startsWith('files_')) {
     if (!env.TOOLKIT_FILES) return json({ error: 'files_not_configured', message: 'File storage is not configured.' }, 503);

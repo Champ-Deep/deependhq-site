@@ -47,7 +47,7 @@ async function post(env, body, sub = 'user_a') {
 const put = async (env, name, csv) => (await post(env, { action: 'files_put', folder: '/', name, mime: 'text/csv', content_base64: Buffer.from(csv).toString('base64') })).body.entry.id;
 const toolMsgs = (body) => body.messages.filter((m) => m.role === 'tool').map((m) => JSON.parse(m.content));
 const CSV = 'Person Name,Job,Company\nJane SAMPLESECRET Doe,VP Sales,Acme\nRaj K,head of mktg,Globex\n';
-const EXPECTED_TOOLS = ['files_list', 'file_peek', 'intake_plan', 'quote', 'report_summary', 'page_steps', 'catalog', 'connector_pull', 'connector_act'];
+const EXPECTED_TOOLS = ['catalog', 'files_list', 'file_peek', 'file_read', 'account_usage', 'run_detail', 'report_summary', 'staged_list', 'staged_get', 'intake_plan', 'quote', 'files_mkdir', 'files_save', 'stage_run', 'stage_files_move', 'connector_pull', 'connector_act', 'page_steps'];
 
 // 1. files_list, then an answer; the tool list is closed; the turn is stored
 {
@@ -59,7 +59,7 @@ const EXPECTED_TOOLS = ['files_list', 'file_peek', 'intake_plan', 'quote', 'repo
   check('turn: 200 with thread, reply, steps, cards, asks, cost, model', r.status === 200 && r.body.thread_id && /leads\.csv/.test(r.body.reply) && Array.isArray(r.body.steps) && Array.isArray(r.body.cards) && Array.isArray(r.body.asks) && r.body.cost_micro === 1000 && r.body.model === 'deepseek/deepseek-v4.1-flash', JSON.stringify(r.body));
   check('turn: em dash never reaches the user', !/[\u2014\u2013]/.test(r.body.reply), r.body.reply);
   check('turn: two model calls, the second one saw the files_list result', fx.chat.length === 2 && toolMsgs(fx.chat[1])[0].entries[0].name === 'leads.csv', JSON.stringify(fx.chat[1]?.messages.at(-1)));
-  check('turn: the closed tool list is exactly the registry', JSON.stringify(fx.chat[0].tools.map((t) => t.function.name)) === JSON.stringify(EXPECTED_TOOLS) && fx.chat[1].tools.length === 9);
+  check('turn: the closed tool list is exactly the registry', JSON.stringify(fx.chat[0].tools.map((t) => t.function.name)) === JSON.stringify(EXPECTED_TOOLS) && fx.chat[1].tools.length === 18);
   check('turn: routing capped at the admin model price', fx.chat[0].provider.max_price.prompt === 0.14 && fx.chat[0].model === 'deepseek/deepseek-v4.1-flash');
   const turns = d1.query(`SELECT seq, role FROM deepbot_turns WHERE thread_id=?`, r.body.thread_id).results;
   check('thread: one thread row, user then assistant turn stored', turns.length === 2 && turns[0].role === 'user' && turns[1].seq === 2 && d1.query(`SELECT * FROM deepbot_threads WHERE user_id='user_a'`).results.length === 1);
@@ -119,7 +119,8 @@ const EXPECTED_TOOLS = ['files_list', 'file_peek', 'intake_plan', 'quote', 'repo
   check('rounds: 6 tool rounds then one tool-less call; the turn still replies', r.status === 200 && r.body.reply === 'Here is what I found so far.' && fx.chat.length === 7 && fx.chat[6].tools === undefined && toolMsgs(fx.chat[6]).length === 6, `${r.status} calls=${fx.chat.length}`);
   check('rounds: the whole turn is one reservation', d1.query(`SELECT * FROM toolkit_runs WHERE tool_id='deepbot'`).results.length === 1 && d1.query(`SELECT * FROM toolkit_ops`).results.length === 7);
   reset();
-  setSetting(d1, 'intake_model', JSON.stringify({ id: 'acme/pricey', prompt_micro_per_mtok: 4000000, completion_micro_per_mtok: 8000000 }));
+  // Priced so one call fits the 20,000 reservation and a second cannot (18 tool schemas ride on every call).
+  setSetting(d1, 'intake_model', JSON.stringify({ id: 'acme/pricey', prompt_micro_per_mtok: 2000000, completion_micro_per_mtok: 8000000 }));
   fx.model = (body) => (body.tools ? tool('files_list', {}, 0.006) : say('late'));
   const pricey = await post(env, { action: 'deepbot', message: 'costly loop' });
   const run = d1.query(`SELECT * FROM toolkit_runs WHERE tool_id='deepbot' ORDER BY created_at DESC, rowid DESC`).results[0];
@@ -188,5 +189,161 @@ const EXPECTED_TOOLS = ['files_list', 'file_peek', 'intake_plan', 'quote', 'repo
   const p = await post(env, { action: 'deepbot', message: 'plan it' });
   check('intake_plan: plan card and an ask come from the existing intake action', p.body.cards[0].kind === 'plan' && p.body.cards[0].data.plan.length === 1 && p.body.asks[0].question === 'Keep Person Name?' && p.body.asks[0].options.length === 2, JSON.stringify(p.body));
   check('intake_plan: intake settles its own small charge next to the turn', d1.query(`SELECT tool_id, spent_micro FROM toolkit_runs WHERE tool_id IN ('intake','deepbot') AND created_at > ''`).results.some((x) => x.tool_id === 'intake' && x.spent_micro === 200));
+}
+
+// 8. the registry (docs section 10): one list, 18 tools, 17 inbound, no human-only action
+const core = await import('../worker/deepbot-core.js');
+const { makeToolHandlers } = await import('../worker/deepbot-tools.js');
+{
+  const names = core.REGISTRY.map((t) => t.name);
+  check('registry: 18 entries in the fixed order', names.length === 18 && JSON.stringify(names) === JSON.stringify(EXPECTED_TOOLS), names.join());
+  check('registry: DEEPBOT_TOOLS names equal REGISTRY names', JSON.stringify(core.DEEPBOT_TOOLS.map((t) => t.function.name)) === JSON.stringify(names));
+  check('registry: no run, files_delete, staged_decide or admin_* tool', !names.some((n) => ['run', 'files_delete', 'staged_decide'].includes(n) || n.startsWith('admin_')));
+  check('registry: 17 inbound, page_steps is DeepBot only', core.REGISTRY.filter((t) => t.inbound).length === 17 && core.REGISTRY.find((t) => t.name === 'page_steps').inbound === false);
+  const SCOPES = { catalog: null, files_list: 'files:read', file_peek: 'files:read', file_read: 'files:read', account_usage: 'jobs:read', run_detail: 'jobs:read', report_summary: 'jobs:read', staged_list: 'jobs:read', staged_get: 'jobs:read', intake_plan: 'jobs:plan', quote: 'jobs:plan', files_mkdir: 'files:write', files_save: 'files:write', stage_run: 'jobs:stage', stage_files_move: 'jobs:stage', connector_pull: 'connections:read', connector_act: 'connections:stage', page_steps: null };
+  check('registry: scopes and classes as specified', core.REGISTRY.every((t) => t.scope === SCOPES[t.name] && ['read', 'write', 'stage'].includes(t.cls)) && core.REGISTRY.filter((t) => t.cls === 'stage').map((t) => t.name).join() === 'stage_run,stage_files_move,connector_act');
+  check('registry: CATALOG.deepbot is derived from it', JSON.stringify(core.CATALOG.deepbot.map((x) => x.id)) === JSON.stringify(names));
+  const h = makeToolHandlers({ db: makeD1(), env: {}, uid: 'u', source: 'deepbot' });
+  check('registry: exactly one handler per name, nothing else', JSON.stringify(Object.keys(h).sort()) === JSON.stringify([...names].sort()));
+  check('desktop: approvals is an app page_steps can open', core.DESKTOP_APPS.includes('approvals') && core.validateSteps([{ op: 'open', target: 'approvals' }], { targets: [], stages: [] }).steps);
+  check('system prompt: names Approvals and staged_get, no dashes', /Approvals/.test(core.DEEPBOT_SYSTEM) && /staged_get/.test(core.DEEPBOT_SYSTEM) && !/[\u2014\u2013]/.test(core.DEEPBOT_SYSTEM + JSON.stringify(core.REGISTRY) + JSON.stringify(core.CATALOG)));
+  const { readFileSync } = await import('node:fs');
+  const src = ['deepbot-tools.js', 'staged.js'].map((f) => readFileSync(new URL(`../worker/${f}`, import.meta.url), 'utf8').replace(/\/\/.*$/gm, '')).join('\n');
+  check('registry: no code path from the tool handlers reaches actionRun or files_delete', !/actionRun|files_delete|handleAction|action: *'run'/.test(src));
+}
+
+// 9. stage_run: one pending row, zero runs; the cap; owner-only reads
+const sid = (r) => r.staged_id;
+{
+  reset(); resetClerkFixtures();
+  const { env, d1 } = fresh();
+  const id = await put(env, 'leads.csv', CSV);
+  const PLAN = [{ column: 'Job', op: 'normalize_title', engine: 'jev' }];
+  fx.script = [tool('stage_run', { file_id: id, plan: PLAN, note: 'Titles look messy.' }), say('Staged. Approve it in Approvals and press Run.')];
+  const r = await post(env, { action: 'deepbot', message: 'clean the titles and run it' });
+  const t = toolMsgs(fx.chat[1])[0];
+  const rows = d1.query(`SELECT * FROM toolkit_staged`).results;
+  check('stage_run: exactly one toolkit_staged row, pending, kind run, source deepbot', rows.length === 1 && rows[0].status === 'pending' && rows[0].kind === 'run' && rows[0].source === 'deepbot' && rows[0].note === 'Titles look messy.', JSON.stringify(rows));
+  check('stage_run: zero data-workbench runs, no provider spend', d1.query(`SELECT * FROM toolkit_runs WHERE tool_id='data-workbench'`).results.length === 0 && fx.spend.length === 0);
+  check('stage_run: returns pending_approval and an approve_url ending #approvals/<id>', t.status === 'pending_approval' && t.staged_id === rows[0].id && t.approve_url.endsWith(`#approvals/${rows[0].id}`) && t.approve_url.startsWith('https://toolkit.deependhq.com/'), JSON.stringify(t));
+  const pl = JSON.parse(rows[0].payload_json);
+  check('stage_run: server-written title and payload {file_id, plan, quote}', rows[0].title === `Run 1 operation on leads.csv, up to ${pl.quote.max_credits} credits` && pl.file_id === id && pl.plan[0].op === 'normalize_title' && pl.quote.row_count === 2 && pl.quote.can_run === true, rows[0].title + rows[0].payload_json);
+  check('stage_run: a staged card for the page', r.body.cards.some((c) => c.kind === 'staged' && c.data.staged_id === rows[0].id));
+  fx.script = [tool('stage_run', { file_id: id, plan: [{ column: 'Ghost', op: 'verify', instruction: 'y?' }] }), say('x')];
+  await post(env, { action: 'deepbot', message: 'x' });
+  check('stage_run: a plan the quote refuses stages nothing', toolMsgs(fx.chat.at(-1))[0].error === 'invalid_columns' && d1.query(`SELECT * FROM toolkit_staged`).results.length === 1);
+  fx.script = [tool('staged_decide', { id: rows[0].id, decision: 'approve' }), say('x')];
+  await post(env, { action: 'deepbot', message: 'approve it' });
+  check('agent: staged_decide is not a tool', toolMsgs(fx.chat.at(-1))[0].error === 'unknown_tool' && d1.query(`SELECT status FROM toolkit_staged`).results[0].status === 'pending');
+
+  const h = makeToolHandlers({ db: d1, env, uid: 'user_a', source: 'deepbot' });
+  check('stage_run: note over 280 characters is refused', (await h.stage_run({ file_id: id, plan: PLAN, note: 'x'.repeat(281) })).error === 'invalid_note');
+  for (let i = 2; i <= 50; i++) await h.stage_run({ file_id: id, plan: PLAN });
+  const n50 = d1.query(`SELECT COUNT(*) n FROM toolkit_staged WHERE user_id='user_a' AND status='pending'`).results[0].n;
+  const over = await h.stage_run({ file_id: id, plan: PLAN });
+  check('cap: the 51st pending stage is 429 too_many_staged and adds no row', n50 === 50 && over.error === 'too_many_staged' && over.http_status === 429 && d1.query(`SELECT COUNT(*) n FROM toolkit_staged`).results[0].n === 50, JSON.stringify(over));
+  d1.raw.prepare(`UPDATE toolkit_staged SET expires_at='2020-01-01T00:00:00.000Z' WHERE id=?`).run(rows[0].id);
+  const again = await h.stage_run({ file_id: id, plan: PLAN });
+  check('cap: an expired item does not count, so the next stage goes through', again.status === 'pending_approval');
+  const exp = await h.staged_get({ id: rows[0].id });
+  check('staged_get: expired is computed (pending and past expires_at)', exp.item.status === 'pending' && exp.item.expired === true && exp.item.payload.file_id === id);
+  check('staged_list: pending excludes the expired one; expired lists it', (await h.staged_list({})).items.length === 50 && (await h.staged_list({ status: 'expired' })).items[0].id === rows[0].id && (await h.staged_list({ status: 'nope' })).error === 'invalid_status');
+  const hb = makeToolHandlers({ db: d1, env, uid: 'user_b', source: 'deepbot' });
+  check('staged_get: another user\'s id is not_found; their list is empty', (await hb.staged_get({ id: sid(again) })).error === 'not_found' && (await hb.staged_list({ status: 'all' })).items.length === 0);
+  const http = await post(env, { action: 'staged_get', id: sid(again) }, 'user_b');
+  check('staged_get action: another user gets 404 not_found', http.status === 404 && http.body.error === 'not_found' && !('http_status' in http.body));
+  const mine = await post(env, { action: 'staged_list' });
+  check('staged_list action: the owner sees pending items with approve_url', mine.status === 200 && mine.body.items.length === 50 && mine.body.items.every((x) => x.approve_url.endsWith(`#approvals/${x.id}`)));
+}
+
+// 10. staged_decide: run approval needs the user's job_id; reject; moves execute on approve under the session
+{
+  reset(); resetClerkFixtures();
+  const { env, d1 } = fresh();
+  const id = await put(env, 'leads.csv', CSV);
+  const h = makeToolHandlers({ db: d1, env, uid: 'user_a', source: 'deepbot' });
+  const s = await h.stage_run({ file_id: id, plan: [{ column: 'Job', op: 'normalize_title', engine: 'jev' }] });
+  const seed = (uid, job) => d1.raw.prepare(`INSERT INTO toolkit_runs (id, user_id, request_id, tool_id, payload_hash, status, row_count, max_credits, reserve_micro, credits_held, created_at, job_id) VALUES (?, ?, ?, 'data-workbench', 'h', 'completed', 2, 1, 0, 0, ?, ?)`).run(crypto.randomUUID(), uid, crypto.randomUUID(), new Date().toISOString(), job);
+  const JOB_A = crypto.randomUUID(), JOB_B = crypto.randomUUID();
+  seed('user_a', JOB_A); seed('user_b', JOB_B);
+  const none = await post(env, { action: 'staged_decide', id: sid(s), decision: 'approve' });
+  const bogus = await post(env, { action: 'staged_decide', id: sid(s), decision: 'approve', job_id: crypto.randomUUID() });
+  const theirs = await post(env, { action: 'staged_decide', id: sid(s), decision: 'approve', job_id: JOB_B });
+  check('decide run: no job_id, an unknown one, or another user\'s -> 400 invalid_job_id, still pending', [none, bogus, theirs].every((x) => x.status === 400 && x.body.error === 'invalid_job_id') && d1.query(`SELECT status FROM toolkit_staged`).results[0].status === 'pending', JSON.stringify([none.body, theirs.body]));
+  check('decide: another user cannot decide it (404)', (await post(env, { action: 'staged_decide', id: sid(s), decision: 'approve', job_id: JOB_B }, 'user_b')).status === 404);
+  check('decide: a bad decision -> 400', (await post(env, { action: 'staged_decide', id: sid(s), decision: 'maybe' })).status === 400);
+  const ok = await post(env, { action: 'staged_decide', id: sid(s), decision: 'approve', job_id: JOB_A });
+  const row = d1.query(`SELECT * FROM toolkit_staged WHERE id=?`, sid(s)).results[0];
+  check('decide run: with the user\'s job_id -> approved, result_json.job_id, decided_at; the server ran nothing', ok.status === 200 && ok.body.item.status === 'approved' && JSON.parse(row.result_json).job_id === JOB_A && row.decided_at && d1.query(`SELECT COUNT(*) n FROM toolkit_runs WHERE tool_id='data-workbench'`).results[0].n === 2, JSON.stringify(ok.body));
+  check('decide: deciding twice -> 409 not_pending', (await post(env, { action: 'staged_decide', id: sid(s), decision: 'reject' })).status === 409);
+  check('agent: staged_get shows it approved', (await h.staged_get({ id: sid(s) })).item.status === 'approved');
+  const s2 = await h.stage_run({ file_id: id, plan: [{ column: 'Job', op: 'normalize_title', engine: 'jev' }] });
+  const rej = await post(env, { action: 'staged_decide', id: sid(s2), decision: 'reject' });
+  check('decide: reject -> rejected', rej.status === 200 && rej.body.item.status === 'rejected');
+  check('decide: needs a session', (await handleToolkit(apiRequest({ action: 'staged_decide', id: sid(s2), decision: 'reject' }, { token: null }), env)).status === 401);
+
+  const mv = await h.stage_files_move({ id, folder: '/Done', name: 'leads-clean.csv', note: 'Tidy up.' });
+  const before = d1.query(`SELECT path FROM files WHERE id=?`, id).results[0].path;
+  check('stage_files_move: staged, nothing moved yet, server-written title', mv.status === 'pending_approval' && before === '/leads.csv' && mv.title === 'Move /leads.csv to /Done/leads-clean.csv', JSON.stringify(mv));
+  const hb = makeToolHandlers({ db: d1, env, uid: 'user_b', source: 'deepbot' });
+  check('stage_files_move: another user\'s file is not_found', (await hb.stage_files_move({ id, name: 'x.csv' })).error === 'not_found');
+  check('stage_files_move: no folder and no name is refused', (await h.stage_files_move({ id })).error === 'invalid_move');
+  const go = await post(env, { action: 'staged_decide', id: sid(mv), decision: 'approve' });
+  check('decide files_move: approve moves it under the session and records the entry', go.status === 200 && go.body.item.status === 'approved' && d1.query(`SELECT path FROM files WHERE id=?`, id).results[0].path === '/Done/leads-clean.csv' && go.body.item.result.entry.path === '/Done/leads-clean.csv', JSON.stringify(go.body));
+  const other = await put(env, 'b.csv', CSV);
+  const clash = await h.stage_files_move({ id: other, folder: '/Done', name: 'leads-clean.csv' });
+  const failed = await post(env, { action: 'staged_decide', id: sid(clash), decision: 'approve' });
+  check('decide files_move: a move that cannot happen is marked failed, nothing overwritten', failed.status === 409 && failed.body.error === 'name_taken' && failed.body.item.status === 'failed' && d1.query(`SELECT path FROM files WHERE id=?`, other).results[0].path === '/b.csv');
+}
+
+// 11. read and write tools
+{
+  reset(); resetClerkFixtures();
+  const { env, d1 } = fresh();
+  const h = makeToolHandlers({ db: d1, env, uid: 'user_a', source: 'deepbot' });
+  const key = makeToolHandlers({ db: d1, env, uid: 'user_a', source: 'key:k1' });
+  const big = 'é'.repeat(3000) + '\n' + 'line two\n'; // 6,009 bytes, multibyte
+  const txt = (await post(env, { action: 'files_put', folder: '/', name: 'notes.txt', mime: 'text/plain', content_base64: Buffer.from(big).toString('base64') })).body.entry.id;
+  const p1 = (await h.file_read({ id: txt })).result;
+  const p2 = (await h.file_read({ id: txt, offset: p1.next_offset })).result;
+  check('file_read: DeepBot pages fit its 8,000 character tool result, on character boundaries, and join back', p1.offset === 0 && p1.next_offset > 0 && p1.next_offset <= 4096 && p2.next_offset === null && p1.untrusted_file_text + p2.untrusted_file_text === big && p1.size === Buffer.byteLength(big), JSON.stringify([p1.next_offset, p2.offset, p2.next_offset]));
+  const whole = (await key.file_read({ id: txt })).result;
+  check('file_read: an API caller gets 64 KB pages', whole.untrusted_file_text === big && whole.next_offset === null);
+  const pdf = (await post(env, { action: 'files_put', folder: '/', name: 'a.pdf', mime: 'application/pdf', content_base64: Buffer.from('%PDF-1.4 x').toString('base64') })).body.entry.id;
+  check('file_read: a pdf is unsupported_type; a bad offset is refused; another user\'s file is not_found', (await h.file_read({ id: pdf })).error === 'unsupported_type' && (await h.file_read({ id: txt, offset: -1 })).error === 'invalid_offset' && (await makeToolHandlers({ db: d1, env, uid: 'user_b', source: 'deepbot' }).file_read({ id: txt })).error === 'not_found');
+
+  const csvId = await put(env, 'leads.csv', CSV);
+  fx.script = [tool('file_read', { id: csvId }), say('Row one is Jane SAMPLESECRET Doe, VP Sales.')];
+  const r = await post(env, { action: 'deepbot', message: 'read leads.csv' });
+  check('file_read: the model saw the text as untrusted_file_text', /SAMPLESECRET/.test(toolMsgs(fx.chat[1])[0].untrusted_file_text) && /SAMPLESECRET/.test(r.body.reply));
+  const stored = JSON.stringify(d1.query(`SELECT * FROM deepbot_turns`).results) + JSON.stringify(d1.query(`SELECT * FROM ai_log WHERE action='deepbot'`).results);
+  check('file_read: cell text is redacted from turns and ai_log', !/SAMPLESECRET|VP Sales|Globex/.test(stored) && /\[file text\]/.test(stored) && /\[value\]/.test(stored), stored.slice(0, 300));
+
+  const s1 = await h.files_save({ folder: '/Out', name: 'summary.md', content: '# Hi' });
+  const s2 = await h.files_save({ folder: '/Out', name: 'summary.md', content: '# Again' });
+  check('files_save: creates the folder, never overwrites (a taken name gets a number)', s1.entry.path === '/Out/summary.md' && s2.entry.name === 'summary (2).md' && /was taken/.test(s2.note) && d1.query(`SELECT COUNT(*) n FROM files WHERE parent='/Out'`).results[0].n === 2);
+  check('files_save: over 64 KB, a non-text type, or a bad name is refused', (await h.files_save({ name: 'x.txt', content: 'x'.repeat(65537) })).error === 'file_too_large' && (await h.files_save({ name: 'x.xlsx', content: 'x' }).catch((e) => e)).error === 'bad_type' && (await h.files_save({ name: 'a/b.txt', content: 'x' }).catch((e) => e)).error === 'invalid_path');
+  const mk = await h.files_mkdir({ path: '/Leads/Q4' });
+  check('files_mkdir: makes the folder and its parent; again returns the same entry', mk.entry.path === '/Leads/Q4' && (await h.files_mkdir({ path: '/Leads/Q4' })).entry.id === mk.entry.id);
+
+  const before = JSON.stringify(['toolkit_accounts', 'toolkit_events', 'toolkit_runs'].map((t) => d1.query(`SELECT * FROM ${t}`).results));
+  const u = await h.account_usage({});
+  const fresher = await makeToolHandlers({ db: d1, env, uid: 'user_nobody', source: 'deepbot' }).account_usage({});
+  check('account_usage: balance, caps and runs, and it writes nothing (not even for a user with no account)', u.usage.credits_available === 5000 - 1 && u.usage.daily_credit_cap === 1000 && Array.isArray(u.runs) && u.runs.length >= 1 && fresher.usage.credits_available === 0 && JSON.stringify(['toolkit_accounts', 'toolkit_events', 'toolkit_runs'].map((t) => d1.query(`SELECT * FROM ${t}`).results)) === before, JSON.stringify(u.usage));
+  const runId = u.runs[0].id;
+  const rd = await h.run_detail({ id: runId });
+  check('run_detail: the owner gets the run and its ledger; ai_log gets [results]', rd.result.id === runId && Array.isArray(rd.result.ledger) && rd.log.results === '[results]');
+  check('run_detail: another user\'s run is not_found; a bad id is bad_run_id', (await makeToolHandlers({ db: d1, env, uid: 'user_b', source: 'deepbot' }).run_detail({ id: runId })).error === 'not_found' && (await h.run_detail({ id: 'x' })).error === 'bad_run_id');
+  d1.raw.prepare(`UPDATE toolkit_runs SET results=? WHERE id=?`).run(JSON.stringify([{ row: 0, out: { email: 'jane.RUNSECRET@acme.com' } }]), runId);
+  fx.script = [tool('run_detail', { id: runId }), say('The enriched email is jane.RUNSECRET@acme.com.')];
+  const rr = await post(env, { action: 'deepbot', message: 'what did the run find?' });
+  const storedR = JSON.stringify(d1.query(`SELECT * FROM deepbot_turns`).results) + JSON.stringify(d1.query(`SELECT * FROM ai_log WHERE action='deepbot'`).results);
+  check('run_detail: enriched result values the reply quotes are redacted from turns and ai_log', /RUNSECRET/.test(rr.body.reply) && /RUNSECRET/.test(JSON.stringify(toolMsgs(fx.chat.at(-1))[0])) && !/RUNSECRET/.test(storedR), storedR.slice(-400));
+  // After account_usage: each extra DeepBot turn costs a credit.
+  const quoted = await put(env, 'quoted.csv', 'Name,Title\n"Doe, QUOTESECRET",VP Sales\n');
+  fx.script = [tool('file_read', { id: quoted }), say('The first name is Doe, QUOTESECRET.')];
+  const rq = await post(env, { action: 'deepbot', message: 'read quoted.csv' });
+  const storedQ = JSON.stringify(d1.query(`SELECT * FROM deepbot_turns`).results) + JSON.stringify(d1.query(`SELECT * FROM ai_log WHERE action='deepbot'`).results);
+  check('file_read: a quoted CSV cell with a comma is redacted too', /QUOTESECRET/.test(rq.body.reply) && !/QUOTESECRET/.test(storedQ), storedQ.slice(-400));
 }
 finish('toolkit-deepbot-selftest');

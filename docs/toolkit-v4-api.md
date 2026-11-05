@@ -123,6 +123,7 @@ Errors: 400 `invalid_deepbot`, 404 `thread_not_found` (another user's thread loo
 - **Free answers.** "What can you do?" (and `help`) returns the catalog card with no model call, no charge and no stored turn; `thread_id` is echoed or `null`.
 
 ### Tools (closed list, server side)
+The full list is the registry in section 10 (18 tools). The first nine:
 | Tool | Does | Output to the page |
 |------|------|--------------------|
 | `files_list {folder?}` | the Files `files_list` action | none |
@@ -134,7 +135,7 @@ Errors: 400 `invalid_deepbot`, 404 `thread_not_found` (another user's thread loo
 | `catalog {}` | fixed JSON of apps, tools, connectors | none |
 | `connector_pull {provider, op, args?}`, `connector_act {provider, op, args}` | the connector adapters (section 9). Act only stages | `staged` card for an act |
 
-`page_steps` grammar (closed, up to 8 steps): `open` takes a desktop app id (`workbench`, `enrich`, `files`, `beam`, `pdf`, `account`), `go` takes a guide stage, `point` and `click` take an id from `context.targets`, `say` takes a caption. One bad step refuses the whole call with `{"error": "step_refused", "index": n}` and the model retries; the page receives nothing. A `click` on an id ending in `.run` or `.approve` is always refused: spend and approval are the user's click.
+`page_steps` grammar (closed, up to 8 steps): `open` takes a desktop app id (`workbench`, `enrich`, `files`, `beam`, `pdf`, `account`, `approvals`), `go` takes a guide stage, `point` and `click` take an id from `context.targets`, `say` takes a caption. One bad step refuses the whole call with `{"error": "step_refused", "index": n}` and the model retries; the page receives nothing. A `click` on an id ending in `.run` or `.approve` is always refused: spend and approval are the user's click.
 
 ### Storage and privacy
 Migration `0004_deepbot.sql`: `deepbot_threads (id, user_id, title, created_at)` and `deepbot_turns (thread_id, seq, role, content_json, cost_micro, ts)`. The last 20 turns (user and assistant, by `seq`) are the model's context. Tool calls inside a turn are not replayed.
@@ -148,7 +149,7 @@ People connect their own work tools to the toolkit. Every connector has the same
 Connector code lives in `worker/connectors.js`: one object per provider `{id, label, prefix, base(env), test(c), pulls, acts}`. Adding HubSpot later is one object and one catalog row.
 
 ### Setup (operator)
-- Migration `0005_connections.sql`: `toolkit_connections`, `connector_staged`, `invite_requests`. Apply with `npx wrangler d1 migrations apply toolkit-db --remote`.
+- Migration `0005_connections.sql`: `toolkit_connections`, `connector_staged`, `invite_requests`. Migration `0006_staged.sql` moves staged acts into `toolkit_staged` (section 10) and drops `connector_staged`. Apply with `npx wrangler d1 migrations apply toolkit-db --remote`.
 - Worker secret `CONNECTIONS_SECRET` (`openssl rand -base64 32`). Without it every connection action answers 503 `connections_not_configured`. Rotating it makes saved keys unreadable (`key_unreadable`); users save them again.
 - Optional vars `HARBINGER_API_URL` (default `https://champ-harbinger.deep-ae0.workers.dev`) and `BEAM_API_URL` (default `https://champbeam.com`). The base URL is never taken from a request.
 
@@ -167,7 +168,8 @@ Stored as AES-GCM ciphertext under `CONNECTIONS_SECRET`, bound to `user_id:provi
 ```json
 {"staged_id": "uuid", "provider": "harbinger", "op": "push_campaign", "status": "staged",
  "preview": {"name": "Q4 push", "file": "leads.csv", "rows": 2, "will_import": 2, "fields": ["person_name", "email"], "note": "..."},
- "approve": {"action": "connector_approve", "staged_id": "uuid"}, "expires_at": "ISO, one hour"}
+ "approve": {"action": "connector_approve", "staged_id": "uuid"},
+ "approve_url": "https://toolkit.deependhq.com/#approvals/uuid", "expires_at": "ISO, 7 days"}
 ```
 `connector_approve {staged_id}` runs it, once. Responses: 200 `{staged_id, status: "approved", result}`; a second click 200 with `already_approved: true` and the first result, nothing runs again; 404 (not yours or unknown); 409 `not_approvable` (already approving or failed); 410 `expired`; 400 or 502 `{error, message, staged_id, status: "failed"}` when the provider fails (a failed stage is not retried: stage again).
 
@@ -193,3 +195,63 @@ A user asks Deep for a Harbinger invite; Deep mints it by hand; the user then sa
 | `admin_invite_request_resolve` | admin | `{id, status: "invited" or "declined"}` | `{id, status}`; 404 `not_open` if already resolved. Resolving lets the user ask again |
 
 **Nothing is sent.** There is no outbox in the Worker, so the email to Deep is a draft stored on the row (`draft_to` is the first `CLERK_ADMIN_EMAILS`, plus `draft_subject` and `draft_body`), shown in the admin list. Deep copies it or lets the inbox lane stage the Outlook draft from it. The user's note is stored with dashes and control characters cleaned.
+
+## 10. Tool registry, staged items and approvals
+
+### One registry
+`REGISTRY` in `worker/deepbot-core.js` is the only tool list. Each entry is `{name, cls, scope, inbound, description, parameters}`. DeepBot sends `DEEPBOT_TOOLS = REGISTRY.map(fn)` to the model, `CATALOG.deepbot` is derived from it, and the inbound MCP and OpenAI tool endpoints (card B) read the same entries. `worker/deepbot-tools.js` `makeToolHandlers({db, env, uid, source, targets, out})` returns exactly one handler per name; `source` is `deepbot` or `key:<key id>`, `out` collects DeepBot's `steps`, `cards`, `asks` and the cell text the model saw (`seen`, redacted from storage).
+
+Classes: **read** has no side effect. **write** only adds to the user's own storage and never overwrites. **stage** writes one pending `toolkit_staged` row and nothing else. No entry is `run`, `files_delete`, `staged_decide`, an `admin_*` action, key or connection management: those stay human clicks in a Clerk session.
+
+| # | Tool | Class | Scope (inbound) | Request | Result |
+|---|------|-------|-----------------|---------|--------|
+| 1 | `catalog` | read | none | `{}` | the free catalog (apps, tools, connectors) |
+| 2 | `files_list` | read | `files:read` | `{folder?}` | `{entries: [{id, kind, name, path, size}]}` (100 max) |
+| 3 | `file_peek` | read | `files:read` | `{id}` | CSV only: `{id, name, rows, columns, headers, sample_rows}` |
+| 4 | `file_read` | read | `files:read` | `{id, offset?}` | csv, txt, md, json: `{id, name, size, offset, next_offset, untrusted_file_text}`. `next_offset` is `null` on the last page. Pages are 64 KB for API callers and 4 KB for DeepBot (its tool results are clipped at 8,000 characters). Pages end on UTF-8 character boundaries |
+| 5 | `account_usage` | read | `jobs:read` | `{}` | `{usage: {day, credits_available, credits_held, credits_used, spent_micro, held_micro, rows, daily_credit_cap, daily_row_cap, disabled}, runs: [30 newest]}`. Read only: unlike the `usage` action it creates no account and grants nothing |
+| 6 | `run_detail` | read | `jobs:read` | `{id}` | the `run_detail` action's body, owner only |
+| 7 | `report_summary` | read | `jobs:read` | `{job_id}` | section 8 |
+| 8 | `staged_list` | read | `jobs:read` | `{status?: pending (default), approved, rejected, expired, all}` | `{items: [item]}`, newest first, 50 max |
+| 9 | `staged_get` | read | `jobs:read` | `{id}` | `{item}` |
+| 10 | `intake_plan` | read, metered model | `jobs:plan` | `{file_id, goal}` | section 8 |
+| 11 | `quote` | read | `jobs:plan` | `{file_id, plan}` | section 8 |
+| 12 | `files_mkdir` | write | `files:write` | `{path}` | `{entry}`; an existing folder comes back as it is |
+| 13 | `files_save` | write | `files:write` | `{folder?, name, content}` | `{entry, note?}`. UTF-8 text, 64 KB max, csv, txt, md or json. A taken name is saved as `name (2).ext` and `note` says so |
+| 14 | `stage_run` | stage | `jobs:stage` | `{file_id, plan, note?}` | runs the same quote as `quote` and refuses with its error if the quote fails; then `{staged_id, status: "pending_approval", kind: "run", title, approve_url, expires_at, can_run}`. Never runs anything |
+| 15 | `stage_files_move` | stage | `jobs:stage` | `{id, folder?, name?, note?}` (one of folder or name) | same shape, kind `files_move`. The file or folder must exist and be the user's |
+| 16 | `connector_pull` | read | `connections:read` | section 9 | section 9 |
+| 17 | `connector_act` | stage | `connections:stage` | section 9 | section 9; writes a `toolkit_staged` row, kind `connector_act` |
+| 18 | `page_steps` | DeepBot only | not exposed | section 8 | section 8 |
+
+`approve_url` is `https://toolkit.deependhq.com/#approvals/<id>` (the `TOOLKIT_HOST` var overrides the host). DeepBot adds a `{kind: "staged", data}` card for each stage. Tool errors are `{error, message?}`; a few carry `http_status` for the API endpoints to use (429 `too_many_staged`, 404 `not_found` from `staged_get`). Errors by tool: `file_read` `unsupported_type`, `invalid_offset`, `not_found`; `run_detail` `bad_run_id`, `not_found`; `files_save` `file_too_large`, `bad_content`, `bad_type`, `invalid_path`, `quota_exceeded`, `files_not_configured`; `files_mkdir` `invalid_path`, `name_taken`, `quota_exceeded`; `stage_run` the quote's errors (`invalid_columns`, file errors), `invalid_note`, `too_many_staged`; `stage_files_move` `invalid_move`, `not_found`, `invalid_path`, `invalid_note`, `too_many_staged`; `staged_list` `invalid_status`; `staged_get` `not_found`.
+
+File text and cell values the model saw through `file_read` (for CSV, the parsed cells, so a quoted `"Doe, X"` counts as one value) and the string values inside `run_detail` results are replaced with `[value]` in `deepbot_turns`, the thread title and `ai_log`. The `file_read` result is logged as `[file text]` and `run_detail` results as `[results]`. Redaction is exact match (case-insensitive, values of 3 characters or more): a paraphrase or a reformatted value in the reply is not caught, and numbers in run results are not redacted.
+
+### Table
+Migration `0006_staged.sql`: `toolkit_staged (id, user_id, kind, source, title, payload_json, note, status, result_json, created_at, decided_at, expires_at)`, index `(user_id, status, created_at)`. It copies 0005's `connector_staged` rows in (status `staged` becomes `pending`) and drops that table, so there is one approval table.
+- `kind`: `run`, `files_move`, `connector_act` (`agent_call` in slice 2).
+- `source`: `deepbot`, `key:<key id>`, or `user` for a connector act staged from the user's own mini window.
+- `title` is written by the server: `Run <n> operations on <file name>, up to <max_credits> credits`; `Move <from> to <to>` or `Rename <from> to <name>`; `<provider label> <op>` for a connector act. Never model or agent text.
+- `payload_json`: run `{file_id, plan, quote: {row_count, max_credits, can_run}}`; files_move `{id, folder?, name?, from, to}`; connector_act `{provider, op, args, preview}`.
+- `note`: the agent's reason, text, 280 characters max (`invalid_note` past that). The window shows it as text labelled as a note from the agent.
+- `status`: `pending`, `approved`, `rejected`. Items the server executes on approval (files_move, connector_act) pass through `approving` and end `approved` or `failed`; a failed item is not retried, stage it again.
+- At most **50 pending** per user (expired ones do not count); the 51st stage is 429 `too_many_staged`. `expires_at` is created plus **7 days**. `expired` is computed on read (pending and `expires_at` in the past); no cron.
+
+An item, as `staged_list` and `staged_get` return it: `{id, kind, source, title, note, status, expired, payload, result, created_at, decided_at, expires_at, approve_url}`.
+
+### Actions (session token, same origin)
+| Action | Request | Response |
+|--------|---------|----------|
+| `staged_list` | `{status?}` as the tool | 200 `{items}`; 400 `invalid_status` |
+| `staged_get` | `{id}` | 200 `{item}`; 404 `not_found` (another user's id looks the same) |
+| `staged_decide` | `{id, decision: "approve" or "reject", job_id?}` | 200 `{item}` with the new status |
+
+`staged_decide`:
+- **reject**: any pending item becomes `rejected`.
+- **approve, run**: the server never runs anything. The Approvals window opens the Workbench at Quote with the file and plan, the browser re-quotes, the user presses Run, then the browser posts `staged_decide` with the `job_id` of that run. The `job_id` must be a Workbench run of this user (`toolkit_runs.job_id`, or the run id for a one-chunk job). Missing or not theirs: 400 `invalid_job_id`, still pending. Success records `result: {job_id}`.
+- **approve, files_move**: runs `files_move` under the session. 200 with `result: {entry}`; a move that cannot happen (for example 409 `name_taken`) returns that error with the item, now `failed`.
+- **approve, connector_act**: runs the section 9 `connector_approve` (same claim, expiry and failure rules) and returns `{item}`; its errors pass through.
+- Errors: 400 `invalid_decision`, 404 `not_found`, 409 `not_pending` (with `status`), 410 `expired`, 400 `unsupported_kind` (`agent_call` until slice 2), 401 without a session.
+
+`connector_approve` (section 9) keeps working and reads the same table. Once either has decided a connector act, the other answers 409, except a repeated approve, which returns the approved result again.
