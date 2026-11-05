@@ -15,9 +15,10 @@ const fx = {};
 const reset = () => Object.assign(fx, {
   calls: [], intake: null, intakeRaw: null, modelsFail: false, spotify: null, psnFail: true,
   models: [
-    { id: 'deepseek/deepseek-v4.1-flash', pricing: { prompt: '0.00000014', completion: '0.00000042' }, supported_parameters: ['response_format', 'structured_outputs'] },
-    { id: 'acme/pricey', pricing: { prompt: '0.000002', completion: '0.000008', overrides: [{ prompt: '0.000004', completion: '0.000008' }] }, supported_parameters: ['response_format', 'structured_outputs'] },
+    { id: 'deepseek/deepseek-v4.1-flash', pricing: { prompt: '0.00000014', completion: '0.00000042' }, supported_parameters: ['response_format', 'structured_outputs', 'tools'] },
+    { id: 'acme/pricey', pricing: { prompt: '0.000002', completion: '0.000008', overrides: [{ prompt: '0.000004', completion: '0.000008' }] }, supported_parameters: ['response_format', 'structured_outputs', 'tools'] },
     { id: 'acme/plain', pricing: { prompt: '0.000001', completion: '0.000001' }, supported_parameters: ['temperature'] },
+    { id: 'acme/notools', pricing: { prompt: '0.000001', completion: '0.000001' }, supported_parameters: ['response_format', 'structured_outputs'] },
   ],
 });
 reset();
@@ -516,6 +517,8 @@ check('no unexpected network calls (v4)', clerkFixtures.unexpected.length === 0,
   const both = await post(env, { action: 'admin_settings_set', model: 'acme/pricey', intake_model: 'acme/pricey' }, 'user_admin');
   check('settings set model: combined with a per-purpose key -> 400', both.status === 400 && both.body.error === 'conflicting_fields');
   const plain = await post(env, { action: 'admin_settings_set', model: 'acme/plain' }, 'user_admin');
+  const notools = await post(env, { action: 'admin_settings_set', model: 'acme/notools' }, 'user_admin');
+  check('settings set model: a model without tool calls is refused (DeepBot needs them), nothing changes', notools.status === 400 && notools.body.error === 'model_unsupported' && /tools/.test(notools.body.message) && JSON.parse(d1.query(`SELECT value FROM toolkit_settings WHERE key='intake_model'`).results[0].value).id === 'acme/pricey', JSON.stringify(notools.body));
   check('settings set model: a model without JSON support is refused, nothing changes', plain.status === 400 && JSON.parse(d1.query(`SELECT value FROM toolkit_settings WHERE key='intake_model'`).results[0].value).id === 'acme/pricey');
 }
 {

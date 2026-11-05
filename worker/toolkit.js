@@ -20,6 +20,7 @@ import * as store from './toolkit-store.js';
 import * as cols from './column-ops.js';
 import * as files from './toolkit-files.js';
 import { parseCsv } from '../toolkit-lib.js';
+import { CONNECTORS, seal, unseal, KEY_RE, maskKey } from './connectors.js';
 import { validateSteps, CATALOG, CATALOG_RE, DEEPBOT_TOOLS, DEEPBOT_SYSTEM } from './deepbot-core.js';
 
 const AI_LOG_DAYS = 180;
@@ -1024,14 +1025,169 @@ function validateDeepbot(body) {
   return null;
 }
 
+// A user's file by id, for deepbot tools and connector adapters. Throws files.FileError like the Files actions.
+async function readRawFile(db, env, uid, id) {
+  if (!env.TOOLKIT_FILES) return { error: 'files_not_configured' };
+  const res = await files.downloadFile(db, env.TOOLKIT_FILES, uid, String(id));
+  if (!res) return { error: 'not_found', message: 'No such file.' };
+  const name = decodeURIComponent((/filename\*=UTF-8''(.*)$/.exec(res.headers.get('content-disposition')) || [])[1] || 'file');
+  return { name, mime: res.headers.get('content-type').split(';')[0], bytes: await res.arrayBuffer() };
+}
+async function readCsvFile(db, env, uid, id) {
+  const f = await readRawFile(db, env, uid, id);
+  if (f.error) return f;
+  if (f.mime !== 'text/csv') return { error: 'unsupported_type', message: 'Only CSV files can be read here for now.' };
+  return { name: f.name, ...parseCsv(new TextDecoder().decode(f.bytes)) };
+}
+
+// ---------------------------------------------------------------------------
+// Connections (docs/toolkit-v4-api.md section 9). Keys are sealed with CONNECTIONS_SECRET and leave this section
+// only in the X-API-Key header of a call to that provider. Acts only stage; connector_approve is a human click.
+// ---------------------------------------------------------------------------
+const STAGE_MINUTES = 60;
+const providerOf = (id) => (typeof id === 'string' && Object.hasOwn(CONNECTORS, id) ? CONNECTORS[id] : null);
+const fileHost = (db, env, uid) => ({ csv: (id) => readCsvFile(db, env, uid, id), file: (id) => readRawFile(db, env, uid, id), fields: FIELDS });
+const failure = (e) => (e instanceof files.FileError ? { error: e.error, message: e.message } : (console.error('toolkit: connector failed:', e && e.message), { error: 'connector_failed', message: 'The connector could not do that.' }));
+const objArgs = (a) => (a && typeof a === 'object' && !Array.isArray(a) ? a : {});
+
+// Resolve provider + op + this user's key. {p, c} on success.
+async function connCtx(db, env, uid, body, verb) {
+  const p = providerOf(body.provider);
+  if (!p) return { error: 'unknown_provider', message: `provider is one of ${Object.keys(CONNECTORS).join(', ')}.` };
+  if (verb && !Object.hasOwn(p[verb], body.op)) return { error: 'unknown_op', message: `${p.id} ${verb}: ${Object.keys(p[verb]).join(', ')}.` };
+  if (!env.CONNECTIONS_SECRET) return { error: 'connections_not_configured', message: 'Connections are not switched on yet.' };
+  const row = await db.prepare(`SELECT key_ciphertext FROM toolkit_connections WHERE user_id=?1 AND provider=?2`).bind(uid, p.id).first();
+  if (!row) return { error: 'not_connected', message: `${p.label} is not connected. Add a key under Connections.` };
+  try { return { p, c: { key: await unseal(env.CONNECTIONS_SECRET, `${uid}:${p.id}`, row.key_ciphertext), base: p.base(env), deny403: p.deny403, fetch: (u, i) => fetch(u, i) } }; } catch { return { error: 'key_unreadable', message: 'The saved key cannot be read. Save it again.' }; }
+}
+
+async function connPull(db, env, uid, body) {
+  const k = await connCtx(db, env, uid, body, 'pulls');
+  if (k.error) return k;
+  try { const r = await k.p.pulls[body.op].run(k.c, objArgs(body.args)); return r.error ? r : { provider: k.p.id, op: body.op, data: r.data }; } catch (e) { return failure(e); }
+}
+
+async function connStage(db, env, uid, body) {
+  const k = await connCtx(db, env, uid, body, 'acts');
+  if (k.error) return k;
+  let s;
+  try { s = await k.p.acts[body.op].stage(k.c, objArgs(body.args), fileHost(db, env, uid)); } catch (e) { return failure(e); }
+  if (s.error) return s;
+  const id = crypto.randomUUID(), now = new Date();
+  const expires = store.nowIso(new Date(now.getTime() + STAGE_MINUTES * 60000));
+  await db.prepare(`INSERT INTO connector_staged (id, user_id, provider, op, args_json, preview_json, created_at, expires_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)`)
+    .bind(id, uid, k.p.id, body.op, JSON.stringify(s.args), JSON.stringify(s.preview), store.nowIso(now), expires).run();
+  return { staged_id: id, provider: k.p.id, op: body.op, status: 'staged', preview: s.preview, approve: { action: 'connector_approve', staged_id: id }, expires_at: expires };
+}
+
+// The only code that executes a staged act. Reachable from the dispatcher (the user's session) and from no deepbot tool.
+async function connApprove(db, env, uid, body) {
+  const id = clip(body.staged_id, 64);
+  if (!UUID_RE.test(id)) return json({ error: 'bad_staged_id' }, 400);
+  const row = await db.prepare(`SELECT * FROM connector_staged WHERE id=?1 AND user_id=?2`).bind(id, uid).first();
+  if (!row) return json({ error: 'not_found' }, 404);
+  if (row.status === 'approved') return json({ staged_id: id, status: 'approved', already_approved: true, result: JSON.parse(row.result_json) });
+  if (row.status !== 'staged') return json({ error: 'not_approvable', status: row.status }, 409);
+  if (row.expires_at <= store.nowIso()) return json({ error: 'expired', message: 'This was staged over an hour ago. Stage it again.' }, 410);
+  const claim = await db.prepare(`UPDATE connector_staged SET status='approving' WHERE id=?1 AND user_id=?2 AND status='staged'`).bind(id, uid).run(); // a double click runs once
+  if (claim.meta.changes !== 1) return json({ error: 'not_approvable', status: 'approving' }, 409);
+  const k = await connCtx(db, env, uid, row);
+  let out;
+  if (k.error) out = k;
+  else { try { out = await k.p.acts[row.op].approve(k.c, JSON.parse(row.args_json), fileHost(db, env, uid)); } catch (e) { out = failure(e); } }
+  const ok = !out.error;
+  await db.prepare(`UPDATE connector_staged SET status=?2, result_json=?3 WHERE id=?1`).bind(id, ok ? 'approved' : 'failed', JSON.stringify(ok ? out.data : { error: out.error, message: out.message })).run();
+  return ok ? json({ staged_id: id, status: 'approved', result: out.data }) : json({ error: out.error, message: out.message, staged_id: id, status: 'failed' }, out.error === 'provider_down' ? 502 : 400);
+}
+
+async function connectionList(db, env, uid) {
+  const rows = (await db.prepare(`SELECT provider, key_hint, label, created_at FROM toolkit_connections WHERE user_id=?1`).bind(uid).all()).results;
+  const by = Object.fromEntries(rows.map((r) => [r.provider, r]));
+  return {
+    configured: Boolean(env.CONNECTIONS_SECRET),
+    connections: Object.values(CONNECTORS).map((p) => ({ provider: p.id, label: p.label, key_prefix: p.prefix, state: by[p.id] ? 'connected' : 'not_connected', ...(by[p.id] ? { key_hint: by[p.id].key_hint, account: by[p.id].label, connected_at: by[p.id].created_at } : {}), pulls: Object.keys(p.pulls), acts: Object.keys(p.acts) })),
+  };
+}
+
+async function connectionSave(db, env, uid, body) {
+  const p = providerOf(body.provider);
+  if (!p) return json({ error: 'unknown_provider' }, 400);
+  if (!env.CONNECTIONS_SECRET) return json({ error: 'connections_not_configured', message: 'Connections are not switched on yet.' }, 503);
+  const key = typeof body.api_key === 'string' ? body.api_key.trim() : '';
+  if (!key.startsWith(p.prefix) || key.length < p.prefix.length + 8 || key.length > 200 || /\s/.test(key)) return json({ error: 'invalid_key_format', message: `${p.label} keys start with ${p.prefix}.` }, 400);
+  const t = await p.test({ key, base: p.base(env), deny403: p.deny403, fetch: (u, i) => fetch(u, i) }); // tested on save: a key that does not work is not stored
+  if (t.error) return json({ error: t.error === 'provider_down' ? 'provider_down' : 'key_rejected', message: t.message }, t.error === 'provider_down' ? 502 : 400);
+  await db.prepare(`INSERT INTO toolkit_connections (user_id, provider, key_ciphertext, key_hint, label, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6)
+    ON CONFLICT (user_id, provider) DO UPDATE SET key_ciphertext=excluded.key_ciphertext, key_hint=excluded.key_hint, label=excluded.label, created_at=excluded.created_at`)
+    .bind(uid, p.id, await seal(env.CONNECTIONS_SECRET, `${uid}:${p.id}`, key), maskKey(key), t.label, store.nowIso()).run();
+  return json({ provider: p.id, state: 'connected', key_hint: maskKey(key), account: t.label });
+}
+
+// The free catalog with this user's real connection state.
+async function catalogFor(db, uid) {
+  const have = new Set((await db.prepare(`SELECT provider FROM toolkit_connections WHERE user_id=?1`).bind(uid).all()).results.map((r) => r.provider));
+  return { ...CATALOG, connectors: Object.values(CONNECTORS).map((p) => ({ id: p.id, label: p.label, status: have.has(p.id) ? 'connected' : 'not_connected', pulls: Object.keys(p.pulls), acts: Object.keys(p.acts) })) };
+}
+
+// ---------------------------------------------------------------------------
+// Invite requests: a user asks Deep for a ChampHarbinger invite. The email is a draft kept on the row. Nothing is sent.
+// ---------------------------------------------------------------------------
+const INVITE_PER_DAY = 3;
+const INVITE_PER_HOUR_ALL = 50;
+const plain = (t) => String(t ?? '').replace(DASH_RE, ', ').replace(/[\u0000-\u001f\u007f]+/g, ' ').trim();
+
+async function actionInviteRequest(db, env, uid, body) {
+  const openSql = `SELECT id, status, created_at FROM invite_requests WHERE user_id=?1 AND status='open'`;
+  const open = await db.prepare(openSql).bind(uid).first();
+  if (open) return json({ request: open, already_open: true });
+  const note = body.note === undefined ? '' : body.note;
+  if (typeof note !== 'string' || note.length > 500) return json({ error: 'invalid_note', message: 'note is 500 characters or less.' }, 400);
+  const now = Date.now();
+  const since = (ms) => store.nowIso(new Date(now - ms));
+  const mine = await db.prepare(`SELECT COUNT(*) AS n FROM invite_requests WHERE user_id=?1 AND created_at >= ?2`).bind(uid, since(86400000)).first();
+  const all = await db.prepare(`SELECT COUNT(*) AS n FROM invite_requests WHERE created_at >= ?1`).bind(since(3600000)).first();
+  if (mine.n >= INVITE_PER_DAY || all.n >= INVITE_PER_HOUR_ALL) return json({ error: 'rate_limited', message: 'Too many invite requests. Try again later.' }, 429);
+  await fetchEmailIfEmpty(db, env, uid);
+  const email = (await db.prepare(`SELECT email FROM toolkit_accounts WHERE user_id=?1`).bind(uid).first())?.email || '';
+  const id = crypto.randomUUID(), created = store.nowIso(new Date(now));
+  const draft = [
+    'Hi Deep,', '',
+    `${email || 'A toolkit user'} (toolkit id ${uid}) asked for a ChampHarbinger invite from the Deep End Toolkit.`,
+    ...(note.trim() ? ['', `Their note: ${plain(note)}`] : []),
+    '', 'To approve: mint the invite in ChampHarbinger, then mark this request invited in the admin panel. They then paste their own hb_live_ key under Connections.',
+  ].join('\n');
+  try {
+    await db.prepare(`INSERT INTO invite_requests (id, user_id, email, note, draft_to, draft_subject, draft_body, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)`)
+      .bind(id, uid, email, plain(note), csv(env.CLERK_ADMIN_EMAILS)[0] || '', `ChampHarbinger invite request: ${email || uid}`, draft, created).run();
+  } catch (e) { // the one-open unique index: a parallel request won the race
+    const again = await db.prepare(openSql).bind(uid).first();
+    if (again) return json({ request: again, already_open: true });
+    throw e;
+  }
+  return json({ request: { id, status: 'open', created_at: created }, already_open: false }, 201);
+}
+
+async function actionAdminInvites(db, action, body) {
+  if (action === 'admin_invite_request_resolve') {
+    const id = clip(body.id, 64);
+    if (!UUID_RE.test(id) || !['invited', 'declined'].includes(body.status)) return json({ error: 'invalid_resolve', message: 'id and status (invited or declined) are required.' }, 400);
+    const r = await db.prepare(`UPDATE invite_requests SET status=?2, resolved_at=?3 WHERE id=?1 AND status='open'`).bind(id, body.status, store.nowIso()).run();
+    return r.meta.changes === 1 ? json({ id, status: body.status }) : json({ error: 'not_open' }, 404);
+  }
+  const status = body.status === undefined ? 'open' : body.status;
+  if (!['open', 'invited', 'declined', 'all'].includes(status)) return json({ error: 'invalid_status' }, 400);
+  const rows = (await db.prepare(`SELECT id, user_id, email, note, status, draft_to, draft_subject, draft_body, created_at, resolved_at FROM invite_requests ${status === 'all' ? '' : 'WHERE status=?1'} ORDER BY created_at DESC LIMIT 200`).bind(...(status === 'all' ? [] : [status])).all()).results;
+  return json({ requests: rows });
+}
+
 async function actionDeepbot(db, env, uid, body) {
   const invalid = validateDeepbot(body);
   if (invalid) return json({ error: 'invalid_deepbot', message: invalid }, 400);
-  const message = body.message.trim();
+  const message = body.message.trim().replace(KEY_RE, '[key]'); // a pasted API key never reaches the model, a turn or ai_log
   const ctx = body.context ?? {};
   const targets = ctx.targets ?? [];
   if (CATALOG_RE.test(message)) { // fixed answer, no model, no charge, nothing stored
-    return json({ thread_id: body.thread_id ?? null, reply: 'Here is what I can do.', steps: [], cards: [{ kind: 'catalog', data: CATALOG }], asks: [], cost_micro: 0, model: null });
+    return json({ thread_id: body.thread_id ?? null, reply: 'Here is what I can do.', steps: [], cards: [{ kind: 'catalog', data: await catalogFor(db, uid) }], asks: [], cost_micro: 0, model: null });
   }
   if (!llmKey(env)) return json({ error: 'provider_not_configured', message: 'The AI provider is not configured.' }, 503);
 
@@ -1067,14 +1223,7 @@ async function actionDeepbot(db, env, uid, body) {
   const bucket = env.TOOLKIT_FILES;
   const t0 = Date.now();
 
-  async function readCsv(id) {
-    if (!bucket) return { error: 'files_not_configured' };
-    const res = await files.downloadFile(db, bucket, uid, String(id));
-    if (!res) return { error: 'not_found', message: 'No such file.' };
-    if (!res.headers.get('content-type').startsWith('text/csv')) return { error: 'unsupported_type', message: 'Only CSV files can be read here for now.' };
-    const name = decodeURIComponent((/filename\*=UTF-8''(.*)$/.exec(res.headers.get('content-disposition')) || [])[1] || 'file.csv');
-    return { name, ...parseCsv(await res.text()) };
-  }
+  const readCsv = (id) => readCsvFile(db, env, uid, id);
   const viaAction = async (res) => { const j = await res.json(); return res.status === 200 ? j : { error: j.error, message: j.message }; };
 
   const tools = {
@@ -1129,9 +1278,17 @@ async function actionDeepbot(db, env, uid, body) {
       out.steps = v.steps;
       return { ok: true, count: v.steps.length };
     },
-    async catalog() { return CATALOG; },
-    async connector_pull() { return { error: 'no_connections' }; }, // step 3
-    async connector_act() { return { error: 'no_connections' }; },
+    async catalog() { return catalogFor(db, uid); },
+    async connector_pull(a) { // pulled rows are the user's own work data: the model sees them, ai_log does not
+      const r = await connPull(db, env, uid, a);
+      return r.error ? r : { result: { provider: r.provider, op: r.op, data: r.data }, log: { data: '[connector data]' } };
+    },
+    async connector_act(a) { // stages only. The card carries the approve action for the user's click; no tool executes it.
+      const r = await connStage(db, env, uid, a);
+      if (r.error) return r;
+      out.cards.push({ kind: 'staged', data: r });
+      return { staged_id: r.staged_id, preview: r.preview, note: 'Staged, not done. The user approves it in the window. Never say it has happened.' };
+    },
   };
   async function runTool(call) {
     const name = call?.function?.name;
@@ -1222,12 +1379,13 @@ async function actionAdminSettings(db, action, body) {
   let list;
   try { list = await fetchModels(); } catch { return json({ error: 'models_unavailable', message: 'Could not reach the OpenRouter models list. Try again.' }, 503); }
   // intake needs JSON mode; the deepseek engine sends strict JSON schemas.
-  const needs = { intake_model: 'response_format', research_model: 'structured_outputs' };
+  const needs = { intake_model: ['response_format', 'tools'], research_model: ['structured_outputs'] }; // intake_model also runs DeepBot, which needs tool calls
   const picked = {};
   for (const k of keys) {
     const m = typeof body[k] === 'string' && list.find((x) => x.id === body[k]);
     if (!m) return json({ error: 'unknown_model', field: k, message: `${clip(body[k], 100)} is not on OpenRouter.` }, 400);
-    if (!m.params.includes(needs[k]) || m.prompt_micro_per_mtok === null || m.completion_micro_per_mtok === null) return json({ error: 'model_unsupported', field: k, message: `${m.id} does not support ${needs[k]} at a fixed price.` }, 400);
+    const missing = needs[k].filter((x) => !m.params.includes(x));
+    if (missing.length || m.prompt_micro_per_mtok === null || m.completion_micro_per_mtok === null) return json({ error: 'model_unsupported', field: k, message: `${m.id} does not support ${(missing.length ? missing : needs[k]).join(' and ')} at a fixed price.` }, 400);
     picked[k] = price(m);
   }
   for (const [k, m] of Object.entries(picked)) { await store.adminUpsertSetting(db, k, JSON.stringify(m)); models[k] = m; }
@@ -1302,6 +1460,17 @@ async function handleAction(request, env, url, preAuth) {
   if (action === 'intake') return actionIntake(db, env, auth.uid, body);
   if (action === 'guide') return actionGuide(db, env, auth.uid, body);
   if (action === 'deepbot') return actionDeepbot(db, env, auth.uid, body);
+  if (action === 'connection_list') return json(await connectionList(db, env, auth.uid));
+  if (action === 'connection_save') return connectionSave(db, env, auth.uid, body);
+  if (action === 'connection_delete') {
+    if (!providerOf(body.provider)) return json({ error: 'unknown_provider' }, 400);
+    await db.prepare(`DELETE FROM toolkit_connections WHERE user_id=?1 AND provider=?2`).bind(auth.uid, body.provider).run();
+    return json({ provider: body.provider, state: 'not_connected' });
+  }
+  if (action === 'connector_pull') { const r = await connPull(db, env, auth.uid, body); return json(r, r.error ? 400 : 200); }
+  if (action === 'connector_act') { const r = await connStage(db, env, auth.uid, body); return json(r, r.error ? 400 : 200); }
+  if (action === 'connector_approve') return connApprove(db, env, auth.uid, body);
+  if (action === 'invite_request_create') return actionInviteRequest(db, env, auth.uid, body);
   if (action.startsWith('files_')) {
     if (!env.TOOLKIT_FILES) return json({ error: 'files_not_configured', message: 'File storage is not configured.' }, 503);
     try {
@@ -1312,8 +1481,9 @@ async function handleAction(request, env, url, preAuth) {
       throw e;
     }
   }
-  if (['admin_usage', 'admin_update', 'admin_users', 'admin_grant', 'admin_settings_get', 'admin_settings_set', 'admin_ai_log', 'admin_ai_log_export'].includes(action)) {
+  if (['admin_usage', 'admin_update', 'admin_users', 'admin_grant', 'admin_settings_get', 'admin_settings_set', 'admin_ai_log', 'admin_ai_log_export', 'admin_invite_requests', 'admin_invite_request_resolve'].includes(action)) {
     if (!(await isAdmin(env, auth.uid))) return json({ error: 'forbidden' }, 403);
+    if (action.startsWith('admin_invite_request')) return actionAdminInvites(db, action, body);
     if (action.startsWith('admin_settings_')) return actionAdminSettings(db, action, body);
     if (action.startsWith('admin_ai_log')) return actionAdminAiLog(db, action, body);
     const settings = await store.readSettings(db);
