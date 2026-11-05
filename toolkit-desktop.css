@@ -449,3 +449,57 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
   .signin-story{padding:28px 20px;border-left:0;border-top:1px solid var(--line)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.sr-line::after{display:none}.dock-symbol{transform:none!important}}
+
+/* ---- My agent (card t_2fa771e9). Mode control: the 21st.dev 43311 pill radiogroup pattern on native radios. ---- */
+.window[data-app=myagent] .mono{font-family:var(--font-mono);font-size:13px}
+.conn-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.conn-head h4{margin:0}
+.state-chip{display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:0 12px;border:1px solid var(--line-2);border-radius:var(--r-pill);font:600 13px var(--font-ui);color:var(--muted);white-space:nowrap}
+.state-chip::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+.state-chip[data-state=connected]{color:var(--build);border-color:color-mix(in srgb,var(--build) 45%,var(--card))}
+.state-chip[data-state=changed]{color:var(--win);border-color:var(--win);background:color-mix(in srgb,var(--win) 12%,var(--card))}
+.state-chip[data-state=error]{color:var(--danger-text);border-color:var(--danger)}
+.state-chip[data-state=loading]::before{animation:tk-pulse 1s var(--ease-out) infinite alternate}
+.chip-note{margin:0;max-width:65ch;color:var(--text);overflow-wrap:anywhere}
+.key-hint{margin:0;font-size:13px}
+.agent-tools{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card)}
+.agent-tool{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 24px;padding:14px 16px;border-top:1px solid var(--line)}
+.agent-tool:first-child{border-top:0}
+.tool-name{margin:0;font:600 14px/1.4 var(--font-mono);color:var(--text);overflow-wrap:anywhere}
+.tool-desc{margin:4px 0 0;max-width:65ch;color:var(--muted);font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.tool-hint{margin:6px 0 0;font-size:12px;color:var(--dim)}
+.read-warning{grid-column:1/-1;margin:0;padding:10px 12px;border-radius:var(--r-md);background:color-mix(in srgb,var(--win) 12%,var(--card));color:var(--text);font-size:13px;line-height:1.5}
+.seg{display:inline-flex;gap:2px;margin:0;padding:3px;border:1px solid var(--line-2);border-radius:var(--r-pill);background:var(--bg)}
+.seg-opt{position:relative;display:inline-flex}
+.seg-opt input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.seg-opt span{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:var(--r-pill);font:600 13px var(--font-ui);color:var(--muted);white-space:nowrap;transition:background var(--dur-1) var(--ease-out),color var(--dur-1) var(--ease-out)}
+.seg-opt:hover span{color:var(--text)}
+.seg-opt input:checked+span{background:var(--win);color:var(--navy)}
+.seg-opt input:focus-visible+span{outline:2px solid var(--win);outline-offset:2px}
+.notice.warn{border-color:var(--win);background:color-mix(in srgb,var(--win) 10%,var(--card))}
+.agent-tools:has(> .empty-line){border-style:dashed;background:transparent}
+.empty-line{margin:0;padding:14px 16px;color:var(--muted)}
+.hook-events{display:flex;flex-wrap:wrap;gap:4px 18px}
+.secret-reveal{margin:12px 0;padding:16px;border:1px solid var(--win);border-radius:var(--r-lg);background:color-mix(in srgb,var(--win) 8%,var(--card))}
+.secret-reveal h4{margin:0 0 6px}
+.reveal-warn{margin:0 0 10px;color:var(--text);font-weight:600}
+.secret-value,.snippet-code{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg);color:var(--text);font:500 13px/1.6 var(--font-mono)}
+.secret-value{overflow-wrap:anywhere}
+.snippet-code{margin:12px 0 0;white-space:pre;overflow:auto;max-width:100%}
+.code-chip{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid var(--danger);border-radius:var(--r-pill);color:var(--danger-text);font:600 12px var(--font-mono);white-space:nowrap}
+.code-chip[data-ok=true]{border-color:color-mix(in srgb,var(--build) 45%,var(--card));color:var(--build)}
+.delivery-log .mono{white-space:nowrap}
+@media (max-width:48rem){
+  .agent-tool{grid-template-columns:minmax(0,1fr)}.seg{justify-self:start}.seg-opt span{min-height:44px}
+  /* the guide launcher (.tg-launcher) floats over full screen windows on phones; leave room to scroll the last row clear of it */
+  .window[data-app=myagent] .window-body{padding-bottom:96px}
+  /* Phones: each delivery stacks to event and status, then time and age, then Resend, so nothing hides off to the side. */
+  .delivery-log thead{display:none}
+  .delivery-log table,.delivery-log tbody{display:block}
+  .delivery-log tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 12px;padding:12px;border-bottom:1px solid var(--line)}
+  .delivery-log tbody tr:last-child{border-bottom:0}
+  .delivery-log td{display:block;min-width:0;max-width:none;padding:0;border:0}
+  .delivery-log td:nth-child(3),.delivery-log td:nth-child(4){color:var(--muted);font-size:12px}
+  .delivery-log td:nth-child(5){grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){.state-chip[data-state=loading]::before{animation:none}}
