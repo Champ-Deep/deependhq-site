@@ -802,7 +802,7 @@ function approvals(w) {
   }
   const sourceName = s => s === 'deepbot' ? 'DeepBot' : s === 'user' ? 'You' : String(s).startsWith('key:') ? labels.get(String(s).slice(4)) || 'A revoked agent key' : 'Unknown source';
   async function load() {
-    refresh.disabled = true; loaded = false;
+    say(''); refresh.disabled = true; loaded = false; // a retry or a later link starts clean; mark() re-reports a real not-found
     const wait = el('li', 'Loading what is waiting for you...', 'empty'); list.replaceChildren(wait);
     try {
       const [r, k] = await Promise.all([session.api('staged_list', {status: 'all'}), session.api('api_keys_list', {}).catch(() => ({keys: []})), refreshUsage().catch(() => {})]);

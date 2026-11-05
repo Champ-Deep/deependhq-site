@@ -284,13 +284,15 @@ def flows(page, ctx, logs, dialogs):
     w.get_by_text("Nothing waiting. When DeepBot or your agent prepares something, it lands here.", exact=True).wait_for()
     check(page.locator('[data-launch="approvals"] .badge').is_hidden(), "empty: no badge")
     window_shot(page, "approvals", "approvals-empty-1440")
+    page.evaluate("location.hash = '#approvals/stg-nope'")
+    w.get_by_text("That item is not in your newest 50.", exact=False).wait_for()
     post("/fixture/seed-agent")  # staged after the list loaded: the approve_url path
     page.evaluate("location.hash = '#approvals/stg-move-0002'")
     w.locator('.staged[data-target="true"]').wait_for()
     check(w.locator('.staged[data-target="true"]').get_attribute("data-staged") == "stg-move-0002", "warm deep link: hashchange on an open window reloads and outlines the new row")
     check(page.evaluate("document.activeElement.dataset.staged") == "stg-move-0002", "warm deep link: the row has focus")
     page.wait_for_function("document.querySelector('[data-launch=approvals] .badge').textContent === '3'")
-    check(page.locator('[data-launch="approvals"] .badge').is_visible() and not w.locator(".notice.bad").count(), "warm deep link: badge reads 3, no not-found message")
+    check(page.locator('[data-launch="approvals"] .badge').is_visible() and not w.locator(".notice.bad").count(), "warm deep link after an unknown id: badge reads 3, the earlier not-found notice is gone")
     page.get_by_role("button", name="Close Approvals").click()
     fresh(seed=False)  # back to empty for the loading state below
     def slow(route):
@@ -312,6 +314,9 @@ def flows(page, ctx, logs, dialogs):
     check("Approvals did not load: The toolkit had a problem. Try again in a minute." in w.locator(".notice.bad").inner_text() and w.get_by_role("button", name="Try again").is_visible(), "error state names the problem and offers Try again")
     window_shot(page, "approvals", "approvals-error-1440")
     page.unroute("**/api/toolkit")
+    w.get_by_role("button", name="Try again").click()
+    w.get_by_text("Nothing waiting.", exact=False).wait_for()
+    check(w.locator(".notice.bad").count() == 0, "Try again that succeeds clears the error notice")
 
 
 def shoot_widths(browser):
