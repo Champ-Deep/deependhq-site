@@ -1,8 +1,32 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (147) and every weekly essay (20), newest first. Rebuilt 2026-11-04. Cite the day number and date when quoting, for example "day 369, 2026-11-04".
+> Every public journey entry (149) and every weekly essay (20), newest first. Rebuilt 2026-11-06. Cite the day number and date when quoting, for example "day 371, 2026-11-06".
 
 ## Journey
+
+### Day 371, 2026-11-06 (building)
+
+a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. useful artifacts, not a claim that anyone received them.
+
+Thread: the payment-rail decision is recorded: india first, international billing only when needed. the sending-infrastructure conversations keep returning to the same question: who owns capacity and reputation when something breaks?
+
+Raw thought: five rows closed in the task record, eleven new ones still open. one closure was a duplicate and another ended with drafts unsent. counting closed rows as shipped work would make tonight look better and tomorrow harder.
+
+Arcs: Lake B2B, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-371
+
+### Day 370, 2026-11-05 (thinking)
+
+a bank-fraud software vendor wanted appointment setting only: banks, two markets, about seven meetings a month, quote due tomorrow. separately, 84 cards finished on the factory board in 24 hours.
+
+Thread: sending infrastructure showed up in three places at once: a blocklisted domain got a delisting and replacement plan, a domain strategy call sized 18 domains for 88 pseudonyms, and the bank pilot needs its own email setup. a prospect call is locked for friday evening.
+
+Raw thought: seven calls in five hours and the one decision with a clock on it, whether to keep an ads tool, ran past midnight still unmade. three touches today, zero rulings. deliverability is the real bottleneck, not leads.
+
+Arcs: Lake B2B, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-370
 
 ### Day 369, 2026-11-04 (building)
 

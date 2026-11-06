@@ -1,6 +1,6 @@
 # deep >_ (deependhq.com)
 
-> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 369, 147 entries since 2026-05-04.
+> Sreedeep Surapaneni ("Deep") builds in public from Bangalore. Group CMO at Champions Group and CEO of Champions Accelerator. Twelve companies, one Obsidian vault. One log entry every weekday, written from the day's note and published nightly by an agent. Day 371, 149 entries since 2026-05-04.
 
 ```
      █████                                ███
@@ -16,7 +16,7 @@
                             ░░░░░
 ```
 
-Rebuilt 2026-11-04 19:36 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
+Rebuilt 2026-11-06 20:06 UTC. Every number on the site is derived from one source file at build time. Team members are never named and clients in active deals are described by role, on purpose.
 
 ## Read
 - [Home](https://deependhq.com/): the working window, 3 PM to 2 AM IST, and how a day becomes an entry
@@ -27,13 +27,13 @@ Rebuilt 2026-11-04 19:36 UTC. Every number on the site is derived from one sourc
 - [Now](https://deependhq.com/now.html): what has attention right now
 
 ## Latest entries
+- [Day 371, 2026-11-06](https://deependhq.com/journey.html#day-371): a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. useful artifacts, not a claim that anyone received them.
+- [Day 370, 2026-11-05](https://deependhq.com/journey.html#day-370): a bank-fraud software vendor wanted appointment setting only: banks, two markets, about seven meetings a month, quote due tomorrow. separately, 84 cards...
 - [Day 369, 2026-11-04](https://deependhq.com/journey.html#day-369): a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a bank-focused lead gen pitch got its pricing shape...
 - [Day 368, 2026-11-03](https://deependhq.com/journey.html#day-368): closed two blockers that had been sitting for a week, in one evening. a five day overdue hold note finally went out to a stalled counterparty, and a platform...
 - [Day 367, 2026-11-02](https://deependhq.com/journey.html#day-367): shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in the inbox in under 30 seconds. then i replied to...
 - [Day 366, 2026-11-01](https://deependhq.com/journey.html#day-366): spent today turning a cup design idea into a vendor-ready package: spec, three ai concept renders, two production dielines, an rfq pdf, a vendor shortlist....
 - [Day 365, 2026-10-31](https://deependhq.com/journey.html#day-365): sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time. roughly two thirds of it...
-- [Day 364, 2026-10-30](https://deependhq.com/journey.html#day-364): cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what gets ignored when the days...
-- [Day 363, 2026-10-29](https://deependhq.com/journey.html#day-363): broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team...
 
 ## Essays
 - [Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.](https://deependhq.com/post.html?slug=week-50-the-million-dollar-week): 2026-11-01, 5 min
@@ -71,4 +71,4 @@ Rebuilt 2026-11-04 19:36 UTC. Every number on the site is derived from one sourc
 
 ## Optional
 - [humans.txt](https://deependhq.com/humans.txt): who made this, and a gray mare
-- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 369, 2026-11-04.
+- Freshness: if the newest entry is more than two weekdays old, the site says so at the top. Newest entry right now: day 371, 2026-11-06.
