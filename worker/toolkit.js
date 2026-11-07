@@ -19,6 +19,8 @@ import { verifyWebhook } from '@clerk/backend/webhooks';
 import * as store from './toolkit-store.js';
 import * as cols from './column-ops.js';
 import * as files from './toolkit-files.js';
+import { parseCsv } from '../toolkit-lib.js';
+import { validateSteps, CATALOG, CATALOG_RE, DEEPBOT_TOOLS, DEEPBOT_SYSTEM } from './deepbot-core.js';
 
 const AI_LOG_DAYS = 180;
 const INTAKE_RESERVE_MICRO = 3000;
@@ -821,6 +823,15 @@ export async function purgeAiLog(env) {
 
 // Reserve on the shared ledger, make one chat call, leave settlement to the caller (it knows if the reply was usable).
 async function meteredChat(db, env, uid, toolId, listName, req, reserve) {
+  const p = await reserveChat(db, uid, toolId, listName, req, reserve);
+  if (p instanceof Response) return p;
+  const r = await makeCall(db, p.id)({ provider: 'deepseek', endpoint: 'chat.completions', reserve_micro: reserve },
+    () => cols.openRouterPost(fetch, cols.CHAT_URL, llmKey(env), req, 'deepseek'));
+  return { p, r };
+}
+
+// The reservation alone, for callers that make several calls under one hold (deepbot).
+async function reserveChat(db, uid, toolId, listName, req, reserve) {
   const p = {
     id: crypto.randomUUID(), uid, requestId: crypto.randomUUID(), toolId, listName: clip(listName, MAX_LIST_NAME),
     payloadHash: await sha256Hex(JSON.stringify(req)), rowCount: 0, maxCredits: store.ceilCredits(reserve),
@@ -831,9 +842,7 @@ async function meteredChat(db, env, uid, toolId, listName, req, reserve) {
     const why = await store.diagnoseReserve(db, p);
     return json({ error: why.error, message: 'Your daily AI allowance does not cover this.' }, why.status);
   }
-  const r = await makeCall(db, p.id)({ provider: 'deepseek', endpoint: 'chat.completions', reserve_micro: reserve },
-    () => cols.openRouterPost(fetch, cols.CHAT_URL, llmKey(env), req, 'deepseek'));
-  return { p, r };
+  return p;
 }
 
 function validateIntake(body) {
@@ -988,6 +997,208 @@ async function actionGuide(db, env, uid, body) {
   });
 }
 
+// ---------------------------------------------------------------------------
+// deepbot: the toolkit agent (docs/toolkit-v4-api.md section 8). A tool loop over the same
+// OpenRouter path, under ONE reservation per turn. The model proposes; it can quote but never run.
+// ---------------------------------------------------------------------------
+const DEEPBOT_RESERVE_MICRO = 20000;
+const DEEPBOT_ROUNDS = 6;
+const DEEPBOT_CONTEXT_TURNS = 20;
+const DEEPBOT_CALL_MICRO = Math.floor(DEEPBOT_RESERVE_MICRO / (DEEPBOT_ROUNDS + 1)); // each call's slice if its cost comes back unknown
+const DEEPBOT_START_MS = 45000; // no new model call after this; a call can take 15 s, so a turn ends inside 60 s
+const DEEPBOT_CALLS_PER_ROUND = 4;
+const DEEPBOT_BUSY = 'I ran out of room for this turn. Ask me again and I will pick it up.';
+const TARGET_RE = /^[\w.-]{1,80}$/;
+const DASH_RE = /\s*[\u2014\u2013]\s*/g;
+const safeJson = (s) => { try { return JSON.parse(s); } catch { return null; } };
+
+function validateDeepbot(body) {
+  if (typeof body.message !== 'string' || !body.message.trim() || body.message.length > 2000) return 'message must be 1 to 2000 characters.';
+  if (body.thread_id !== undefined && !UUID_RE.test(String(body.thread_id))) return 'thread_id is not valid.';
+  const c = body.context ?? {};
+  if (!c || typeof c !== 'object' || Array.isArray(c)) return 'context must be an object.';
+  if (c.stage !== undefined && !GUIDE_STAGES.includes(c.stage)) return `stage is one of ${GUIDE_STAGES.join(', ')}.`;
+  if (c.window !== undefined && (typeof c.window !== 'string' || c.window.length > 40)) return 'window must be 40 characters or less.';
+  if (c.targets !== undefined && (!Array.isArray(c.targets) || c.targets.length > 200 || c.targets.some((t) => typeof t !== 'string' || !TARGET_RE.test(t)))) return 'targets takes up to 200 ids of letters, digits, dots, dashes and underscores.';
+  if (c.selection !== undefined && (!c.selection || typeof c.selection !== 'object' || JSON.stringify(c.selection).length > 1000)) return 'selection must be an object under 1000 characters.';
+  return null;
+}
+
+async function actionDeepbot(db, env, uid, body) {
+  const invalid = validateDeepbot(body);
+  if (invalid) return json({ error: 'invalid_deepbot', message: invalid }, 400);
+  const message = body.message.trim();
+  const ctx = body.context ?? {};
+  const targets = ctx.targets ?? [];
+  if (CATALOG_RE.test(message)) { // fixed answer, no model, no charge, nothing stored
+    return json({ thread_id: body.thread_id ?? null, reply: 'Here is what I can do.', steps: [], cards: [{ kind: 'catalog', data: CATALOG }], asks: [], cost_micro: 0, model: null });
+  }
+  if (!llmKey(env)) return json({ error: 'provider_not_configured', message: 'The AI provider is not configured.' }, 503);
+
+  let threadId = body.thread_id;
+  const isNew = !threadId;
+  let history = [], lastSeq = 0;
+  if (isNew) threadId = crypto.randomUUID();
+  else {
+    if (!(await db.prepare(`SELECT id FROM deepbot_threads WHERE id=?1 AND user_id=?2`).bind(threadId, uid).first())) return json({ error: 'thread_not_found' }, 404);
+    const rows = (await db.prepare(`SELECT seq, role, content_json FROM deepbot_turns WHERE thread_id=?1 ORDER BY seq DESC LIMIT ?2`).bind(threadId, DEEPBOT_CONTEXT_TURNS).all()).results.reverse();
+    lastSeq = rows.length ? rows[rows.length - 1].seq : 0;
+    history = rows.map((r) => ({ role: r.role, content: String((safeJson(r.content_json) || {}).text ?? (safeJson(r.content_json) || {}).reply ?? '') }));
+    while (history.length && history[0].role !== 'user') history.shift();
+  }
+
+  const llm = (await readModels(db)).intake_model;
+  const messages = [
+    { role: 'system', content: DEEPBOT_SYSTEM }, ...history,
+    { role: 'user', content: JSON.stringify({ context: { stage: ctx.stage ?? null, window: ctx.window ?? null, selection: ctx.selection ?? null, targets }, message }) },
+  ];
+  const request = (withTools) => ({ model: llm.id, temperature: 0.2, max_tokens: 800, messages, ...(withTools ? { tools: DEEPBOT_TOOLS, tool_choice: 'auto' } : {}), provider: cols.routing(llm) });
+  // Upper bound for one call at the admin model's price: the same function that prices every other model call.
+  const bound = (req) => cols.deepseekReserveMicro({ messages: [req.messages, req.tools ?? []], max_tokens: req.max_tokens }, llm);
+  if (bound(request(true)) > DEEPBOT_RESERVE_MICRO) return json({ error: 'turn_too_large', message: 'This conversation is too long for one turn. Start a new thread.' }, 413);
+
+  const p = await reserveChat(db, uid, 'deepbot', 'deepbot', request(true), DEEPBOT_RESERVE_MICRO);
+  if (p instanceof Response) return p;
+  const metered = makeCall(db, p.id);
+
+  const out = { steps: [], cards: [], asks: [] };
+  const seen = [];            // cell values this turn handed to the model; scrubbed from everything stored
+  const logTool = new Map();  // tool_call_id -> the same result without sample rows
+  const bucket = env.TOOLKIT_FILES;
+  const t0 = Date.now();
+
+  async function readCsv(id) {
+    if (!bucket) return { error: 'files_not_configured' };
+    const res = await files.downloadFile(db, bucket, uid, String(id));
+    if (!res) return { error: 'not_found', message: 'No such file.' };
+    if (!res.headers.get('content-type').startsWith('text/csv')) return { error: 'unsupported_type', message: 'Only CSV files can be read here for now.' };
+    const name = decodeURIComponent((/filename\*=UTF-8''(.*)$/.exec(res.headers.get('content-disposition')) || [])[1] || 'file.csv');
+    return { name, ...parseCsv(await res.text()) };
+  }
+  const viaAction = async (res) => { const j = await res.json(); return res.status === 200 ? j : { error: j.error, message: j.message }; };
+
+  const tools = {
+    async files_list(a) {
+      if (!bucket) return { error: 'files_not_configured' };
+      const r = await files.filesAction('files_list', db, bucket, uid, { folder: typeof a.folder === 'string' ? a.folder : '/' });
+      return { entries: r.entries.slice(0, 100).map(({ id, kind, name, path, size }) => ({ id, kind, name, path, size })) };
+    },
+    async file_peek(a) {
+      const t = await readCsv(a.id);
+      if (t.error) return t;
+      const headers = t.headers.slice(0, 40);
+      const sample_rows = t.rows.slice(0, 5).map((r) => Object.fromEntries(headers.map((h) => [h, clip(r[h], 60)])));
+      seen.push(...sample_rows.flatMap((r) => Object.values(r)));
+      return { result: { id: a.id, name: t.name, rows: t.rows.length, columns: t.headers.length, headers, sample_rows }, log: { sample_rows: '[value]' } };
+    },
+    async intake_plan(a) { // the existing intake action: it reserves and settles its own small charge
+      const t = await readCsv(a.file_id);
+      if (t.error) return t;
+      const samples = Object.fromEntries(t.headers.map((h) => [h, t.rows.slice(0, 5).map((r) => clip(r[h], 200))]));
+      seen.push(...Object.values(samples).flat());
+      const j = await viaAction(await actionIntake(db, env, uid, { file: { name: t.name, rows_total: t.rows.length, headers: t.headers, samples }, goal: clip(a.goal, 2000) }));
+      if (j.error) return j;
+      out.cards.push({ kind: 'plan', data: { file_id: a.file_id, mapping: j.mapping, plan: j.plan } });
+      if (j.question) out.asks.push({ id: `q${out.asks.length + 1}`, question: j.question, options: j.chips });
+      return { reply: j.reply, question: j.question, mapping: j.mapping, plan: j.plan, chips: j.chips };
+    },
+    async quote(a) { // prices only. There is no path from here to actionRun.
+      const t = await readCsv(a.file_id);
+      if (t.error) return t;
+      const j = await viaAction(await actionQuoteColumns(db, uid, { rows: t.rows, columns: a.plan }));
+      if (j.error) return j;
+      out.cards.push({ kind: 'quote', data: { file_id: a.file_id, plan: a.plan, ...j } });
+      const { row_count, max_cost_micro, max_credits, can_run, reason, message } = j;
+      return { row_count, max_cost_micro, max_credits, can_run, reason, message, note: 'A quote card was shown. The user presses Run.' };
+    },
+    async report_summary(a) { // totals from the run ledger; shortcut: no per-column review counts, add them when the report JSON is stable
+      const id = String(a.job_id);
+      if (!UUID_RE.test(id)) return { error: 'bad_job_id' };
+      const runs = (await db.prepare(`SELECT status, row_count, credits_used, spent_micro FROM toolkit_runs WHERE user_id=?1 AND tool_id='data-workbench' AND (job_id=?2 OR id=?2)`).bind(uid, id).all()).results;
+      if (!runs.length) return { error: 'not_found' };
+      const sum = (k) => runs.reduce((n, r) => n + store.num(r[k]), 0);
+      const statuses = {};
+      for (const r of runs) statuses[r.status] = (statuses[r.status] || 0) + 1;
+      const data = { job_id: id, chunks: runs.length, rows: sum('row_count'), credits_used: sum('credits_used'), spent_micro: sum('spent_micro'), statuses };
+      out.cards.push({ kind: 'report', data });
+      return data;
+    },
+    async page_steps(a) {
+      const v = validateSteps(a.steps, { targets, stages: GUIDE_STAGES });
+      if (v.error) return v;
+      out.steps = v.steps;
+      return { ok: true, count: v.steps.length };
+    },
+    async catalog() { return CATALOG; },
+    async connector_pull() { return { error: 'no_connections' }; }, // step 3
+    async connector_act() { return { error: 'no_connections' }; },
+  };
+  async function runTool(call) {
+    const name = call?.function?.name;
+    if (!Object.hasOwn(tools, name)) return { result: { error: 'unknown_tool' } };
+    const args = safeJson(call.function.arguments || '{}');
+    if (!args || typeof args !== 'object' || Array.isArray(args)) return { result: { error: 'bad_arguments' } };
+    try {
+      const r = await tools[name](args);
+      return r && r.result ? r : { result: r };
+    } catch (e) {
+      if (e instanceof files.FileError) return { result: { error: e.error, message: e.message } };
+      console.error('toolkit: deepbot tool failed:', name, e && e.message);
+      return { result: { error: 'tool_failed' } };
+    }
+  }
+
+  let spent = 0, tokensIn = 0, tokensOut = 0, rounds = 0, final = null, failed = false, limit = false;
+  for (let round = 0; round <= DEEPBOT_ROUNDS && final === null && !failed; round++) {
+    const withTools = round < DEEPBOT_ROUNDS; // the last call has no tools: answer with what you have
+    const req = request(withTools);
+    const cost = bound(req);
+    if (Date.now() - t0 > DEEPBOT_START_MS || spent + cost > DEEPBOT_RESERVE_MICRO) { limit = true; break; }
+    const r = await metered({ provider: 'deepseek', endpoint: 'chat.completions', reserve_micro: DEEPBOT_CALL_MICRO }, () => cols.openRouterPost(fetch, cols.CHAT_URL, llmKey(env), req, 'deepseek'));
+    spent += r.cost_micro ?? cost;
+    tokensIn += r.data?.usage?.prompt_tokens ?? 0;
+    tokensOut += r.data?.usage?.completion_tokens ?? 0;
+    const msg = r.data?.choices?.[0]?.message;
+    if (!r.ok || !msg) { failed = true; break; }
+    const calls = withTools && Array.isArray(msg.tool_calls) ? msg.tool_calls : [];
+    if (!calls.length) {
+      if (typeof msg.content === 'string' && msg.content.trim()) final = msg.content.trim(); else failed = true;
+      break;
+    }
+    rounds += 1;
+    messages.push({ role: 'assistant', content: msg.content ?? null, tool_calls: calls });
+    for (const [i, c] of calls.entries()) {
+      const id = typeof c.id === 'string' && c.id ? c.id : `call_${round}_${i}`;
+      const { result, log } = i < DEEPBOT_CALLS_PER_ROUND ? await runTool(c) : { result: { error: 'too_many_calls' } };
+      messages.push({ role: 'tool', tool_call_id: id, content: clip(JSON.stringify(result), 8000) });
+      if (log) logTool.set(id, clip(JSON.stringify({ ...result, ...log }), 8000));
+    }
+  }
+  const known = (await store.listOps(db, p.id)).reduce((n, o) => n + store.num(o.cost_micro), 0);
+  await settle(db, await store.getRunForOwner(db, p.id, uid), [], failed ? 'deepbot call failed' : null);
+
+  // Stored copies: cell values this turn read are replaced with [value], like the intake log.
+  const scrub = (t) => redact(t, seen);
+  const reply = clip((final ?? DEEPBOT_BUSY).replace(DASH_RE, ', '), 1500);
+  await writeAiLog(db, env, {
+    user_id: uid, job_id: p.id, action: 'deepbot', op: `rounds=${rounds}`, engine: 'deepseek', model: llm.id, goal: clip(scrub(message), 500),
+    prompt: scrub(JSON.stringify(messages.slice(1).map((m) => (m.role === 'tool' && logTool.has(m.tool_call_id) ? { ...m, content: logTool.get(m.tool_call_id) } : m)))),
+    response: scrub(final ?? ''), tokens_in: tokensIn, tokens_out: tokensOut, cost_micro: known, outcome: failed ? 'error' : limit ? 'limit' : 'ok',
+  });
+  if (failed) return json({ error: 'deepbot_failed', message: 'DeepBot could not answer that. Try again or rephrase.' }, 502);
+
+  const now = store.nowIso();
+  const turn = (seq, role, content, cost) => db.prepare(`INSERT INTO deepbot_turns (thread_id, seq, role, content_json, cost_micro, ts) VALUES (?1, ?2, ?3, ?4, ?5, ?6)`).bind(threadId, seq, role, scrub(JSON.stringify(content)), cost, now);
+  try {
+    await db.batch([
+      ...(isNew ? [db.prepare(`INSERT INTO deepbot_threads (id, user_id, title, created_at) VALUES (?1, ?2, ?3, ?4)`).bind(threadId, uid, clip(scrub(message), 80), now)] : []),
+      turn(lastSeq + 1, 'user', { text: message }, 0),
+      turn(lastSeq + 2, 'assistant', { reply, steps: out.steps, cards: out.cards, asks: out.asks }, known),
+    ]);
+  } catch (e) { console.error('toolkit: deepbot turn write failed:', e && e.message); } // the user still gets the answer
+  return json({ thread_id: threadId, reply, steps: out.steps, cards: out.cards, asks: out.asks, cost_micro: known, model: llm.id });
+}
+
 async function actionAdminSettings(db, action, body) {
   const settings = await store.readSettings(db);
   const models = await readModels(db);
@@ -1090,6 +1301,7 @@ async function handleAction(request, env, url, preAuth) {
   }
   if (action === 'intake') return actionIntake(db, env, auth.uid, body);
   if (action === 'guide') return actionGuide(db, env, auth.uid, body);
+  if (action === 'deepbot') return actionDeepbot(db, env, auth.uid, body);
   if (action.startsWith('files_')) {
     if (!env.TOOLKIT_FILES) return json({ error: 'files_not_configured', message: 'File storage is not configured.' }, 503);
     try {

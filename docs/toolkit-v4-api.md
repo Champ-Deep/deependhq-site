@@ -94,3 +94,49 @@ Privacy rule (decided, do not relax without Deep): **cell values are never logge
 
 ## 7. Later (not in V4)
 ChampBeam "Save to toolkit desktop" (postMessage from the ChampBeam iframe to `files_put`) comes after ChampBeam's Clerk cutover.
+
+## 8. DeepBot (the toolkit agent)
+
+One action, `deepbot`, on `POST /api/toolkit`. Bearer session token like every other action. It runs a tool loop over the same OpenRouter path as `intake` and `guide`, with the admin `intake_model` (the one-pick `model` setting sets it) and `OPENROUTER_API_KEY`. The model must support tool calls; routing sends `require_parameters: true`, so a model that does not fails the call (502) instead of ignoring `tools`.
+
+Request:
+```json
+{"action": "deepbot", "thread_id": "uuid, omit to start a thread", "message": "1 to 2000 characters",
+ "context": {"stage": "one of the guide stages", "window": "desktop app id, 40 chars", "targets": ["workbench.file.drop"], "selection": {"file_id": "uuid"}}}
+```
+`context` is optional. `targets` is the list of ids the page says it has (up to 200, letters, digits, dots, dashes, underscores). The model never sees the DOM and never emits a selector.
+
+Response (200):
+```json
+{"thread_id": "uuid", "reply": "plain English, no em dashes",
+ "steps": [{"op": "open|go|point|click|say", "target": "id", "say": "caption"}],
+ "cards": [{"kind": "plan|quote|report|catalog", "data": {}}],
+ "asks": [{"id": "q1", "question": "...", "options": ["..."]}],
+ "cost_micro": 0, "model": "deepseek/deepseek-v4.1-flash"}
+```
+Errors: 400 `invalid_deepbot`, 404 `thread_not_found` (another user's thread looks the same), 413 `turn_too_large`, 429 or 403 from the shared reservation (daily caps, balance), 502 `deepbot_failed` (provider down or empty reply; nothing is stored, the cost is settled), 503 `provider_not_configured`.
+
+### Loop and limits
+- Up to **6 tool rounds**, then one last call with no tools, so a turn always ends in a reply. A round may carry up to 4 tool calls.
+- **60 s budget.** No new model call starts after 45 s (each call can take 15 s). Past a limit the reply is a fixed "I ran out of room" line and `ai_log.outcome` is `limit`.
+- **Metering.** One reservation per turn on the shared ledger: `toolkit_runs.tool_id = 'deepbot'`, reserve **20,000 micro**, settled at the sum of the real call costs. Each model call is one `toolkit_ops` row. Before every call the loop prices it at the model's rates with the same upper bound the Workbench quote uses and stops if it could pass the reservation. Same daily caps as runs. `intake_plan` runs the existing intake action, which reserves and settles its own 3,000 micro as a separate `intake` run.
+- **Free answers.** "What can you do?" (and `help`) returns the catalog card with no model call, no charge and no stored turn; `thread_id` is echoed or `null`.
+
+### Tools (closed list, server side)
+| Tool | Does | Output to the page |
+|------|------|--------------------|
+| `files_list {folder?}` | the Files `files_list` action | none |
+| `file_peek {id}` | CSV only: headers (40 max), 5 sample rows, row and column counts | none |
+| `intake_plan {file_id, goal}` | the `intake` action on that file's headers and samples | `plan` card, and an `ask` when intake has a question |
+| `quote {file_id, plan}` | the `quote` action for column operations | `quote` card. **Never runs.** There is no tool that calls `run` |
+| `report_summary {job_id}` | totals from the run ledger: chunks, rows, credits, spend, statuses | `report` card |
+| `page_steps {steps}` | validates the steps below; the latest valid call becomes `steps` | `steps` |
+| `catalog {}` | fixed JSON of apps, tools, connectors | none |
+| `connector_pull`, `connector_act` | stubs: `{"error": "no_connections"}` until the connections step | none |
+
+`page_steps` grammar (closed, up to 8 steps): `open` takes a desktop app id (`workbench`, `enrich`, `files`, `beam`, `pdf`, `account`), `go` takes a guide stage, `point` and `click` take an id from `context.targets`, `say` takes a caption. One bad step refuses the whole call with `{"error": "step_refused", "index": n}` and the model retries; the page receives nothing. A `click` on an id ending in `.run` or `.approve` is always refused: spend and approval are the user's click.
+
+### Storage and privacy
+Migration `0004_deepbot.sql`: `deepbot_threads (id, user_id, title, created_at)` and `deepbot_turns (thread_id, seq, role, content_json, cost_micro, ts)`. The last 20 turns (user and assistant, by `seq`) are the model's context. Tool calls inside a turn are not replayed.
+
+Cell values are never stored. Sample values that `file_peek` or `intake_plan` handed to the model are replaced with `[value]` (the same `redact` as section 5) in `deepbot_turns`, the thread title and `ai_log`; the `file_peek` result is also logged with its sample rows removed. The reply the user sees is not redacted. `ai_log` gets **one record per turn** (`action: "deepbot"`, `op: "rounds=n"`, the whole tool transcript as `prompt`, tokens and cost summed), not one per model call.
