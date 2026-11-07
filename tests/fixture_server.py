@@ -17,6 +17,10 @@ V4 (docs/toolkit-v4-api.md), deterministic and in memory:
   POST /api/toolkit files_*              one fixture user's desktop; GET /api/toolkit/files/<id>
   POST /api/toolkit admin_settings_*     two fixture models
   POST /api/toolkit admin_ai_log(_export) the intake calls made so far, values already [value]
+  POST /api/toolkit quote {columns} / run {tool_id: data-workbench}   Workbench job shape, flat fixture price
+  POST /api/toolkit staged_list/get/decide   section 10 staged items (seed with POST /fixture/seed-agent)
+  POST /api/toolkit api_keys_list, api_key_create, api_key_revoke   section 11 keys; the key is returned once, never stored
+  POST /fixture/config {"admin":0|1, "api_keys_open":0|1, "decide_fail":0|1}   flip the agent access switches
   GET  /api/now-playing                  the launch state (no Spotify, favorites)
 
 No live keys, no provider calls, no real people. Run a port and point a
@@ -35,7 +39,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -53,6 +57,11 @@ STATE = {
     "files": {},         # id -> {entry..., "bytes": b""}
     "ai_log": [],
     "models": {"intake_model": "deepseek/deepseek-v4.1-flash", "research_model": "deepseek/deepseek-v4.1-flash"},
+    "staged": [],        # section 10 items, newest first by created_at
+    "keys": [],          # section 11 key rows: never the key text
+    "wb_jobs": set(),    # Workbench job ids seen by run, for staged_decide approve on a run
+    "api_keys_open": 0,
+    "decide_fail": 0,
 }
 
 FIXTURE_MODELS = [
@@ -170,6 +179,153 @@ def files_action(action, body):
     except ValueError as err:
         return 400, {"error": "invalid_path", "message": str(err)}
     return 400, {"error": "fixture: unknown action " + str(action)}
+
+# ---- Workbench job shape (quote {columns}, run {tool_id: data-workbench}) ----
+CELL_MICRO = 400
+
+
+def wb_quote(body):
+    rows, cols = body.get("rows") or [], body.get("columns") or []
+    if not rows or len(rows) > 20000 or not isinstance(cols, list) or not cols:
+        return 400, {"error": "invalid_columns", "message": "fixture: rows and columns are required"}
+    per = [CELL_MICRO * len(rows) for _ in cols]
+    micro = sum(per)
+    u = usage_payload()["usage"]
+    left = max(0, u["daily_credit_cap"] - u["credits_used"] - u["credits_held"])
+    return 200, {"row_count": len(rows), "max_cost_micro": micro, "max_credits": int(math.ceil(micro / 1000)),
+                 "max_chunk_micro": CELL_MICRO * min(100, len(rows)) * len(cols), "columns": [{"max_cost_micro": x} for x in per],
+                 "allowance": {"credits_available": u["credits_available"], "daily_credit_cap": u["daily_credit_cap"],
+                               "remaining_daily_credits": left, "remaining_daily_micro": left * 1000}, "can_run": True}
+
+
+def wb_run(body):
+    rows, cols = body.get("rows") or [], body.get("columns") or []
+    if not rows or len(rows) > 100 or not cols:
+        return 400, {"error": "fixture: run takes 1 to 100 rows and the columns"}
+    with LOCK:
+        STATE["wb_jobs"].add(str(body.get("job_id") or "").lower())
+    item = lambda c: {"label": "Fixture " + str(c.get("op")), "title_normalized": "Fixture title", "seniority": "Senior", "function": "Operations",
+                      "confidence": 0.9, "review": False, "source": "fixture"}
+    out = {"id": "run_" + uuid.uuid4().hex[:12], "status": "completed", "spent_micro": CELL_MICRO * len(rows) * len(cols),
+           "results": [{"row_map": list(range(len(rows))), "items": [item(c) for _ in rows]} for c in cols]}
+    if body.get("chunk_index") == (body.get("chunk_count") or 1) - 1:
+        out["result_file"] = {"path": "/Workbench results/%s fixture.csv" % body.get("source_name", "results")}
+    return 200, out
+
+
+# ---- Section 10 staged items and section 11 API keys ----
+KEY_SCOPES = ["files:read", "files:write", "jobs:read", "jobs:plan", "jobs:stage", "connections:read", "connections:stage"]
+
+
+def staged_view(r, now):
+    return {"id": r["id"], "kind": r["kind"], "source": r["source"], "title": r["title"], "note": r["note"], "status": r["status"],
+            "expired": r["status"] == "pending" and r["expires_at"] < now, "payload": r["payload"], "result": r.get("result"),
+            "created_at": r["created_at"], "decided_at": r.get("decided_at"), "expires_at": r["expires_at"],
+            "approve_url": "https://toolkit.deependhq.com/#approvals/" + r["id"]}
+
+
+def staged_action(action, body):
+    now = iso(datetime.now(timezone.utc))
+    rows = sorted(STATE["staged"], key=lambda r: r["created_at"], reverse=True)
+    if action == "staged_list":
+        st = body.get("status", "pending")
+        keep = {"pending": lambda r: r["status"] == "pending" and r["expires_at"] >= now,
+                "expired": lambda r: r["status"] == "pending" and r["expires_at"] < now,
+                "approved": lambda r: r["status"] == "approved", "rejected": lambda r: r["status"] == "rejected",
+                "all": lambda r: True}.get(st)
+        if not keep:
+            return 400, {"error": "invalid_status", "message": "status is one of pending, approved, rejected, expired, all."}
+        return 200, {"items": [staged_view(r, now) for r in rows if keep(r)][:50]}
+    row = next((r for r in rows if r["id"] == body.get("id")), None)
+    if not row:
+        return 404, {"error": "not_found", "message": "No such staged item."}
+    if action == "staged_get":
+        return 200, {"item": staged_view(row, now)}
+    decision = body.get("decision")
+    if decision not in ("approve", "reject"):
+        return 400, {"error": "invalid_decision", "message": "decision is approve or reject."}
+    if row["status"] != "pending":
+        return 409, {"error": "not_pending", "status": row["status"]}
+    if row["expires_at"] < now:
+        return 410, {"error": "expired", "message": "This expired. Stage it again."}
+    if decision == "reject":
+        row.update(status="rejected", decided_at=now)
+        return 200, {"item": staged_view(row, now)}
+    if row["kind"] == "run":
+        job = str(body.get("job_id") or "").lower()
+        if not job or job not in STATE["wb_jobs"]:
+            return 400, {"error": "invalid_job_id", "message": "Approve a staged run with the job_id of the run you started from it."}
+        row.update(status="approved", decided_at=now, result={"job_id": job})
+        return 200, {"item": staged_view(row, now)}
+    if row["kind"] == "connector_act" and STATE["decide_fail"]:
+        return 502, {"error": "provider_down", "message": "ChampHarbinger did not answer. Nothing was sent. Try again later."}
+    if row["kind"] == "files_move":
+        code, out = files_action("files_move", {k: v for k, v in row["payload"].items() if k in ("id", "folder", "name")})
+        if code != 200:
+            row.update(status="failed", decided_at=now, result=out)
+            return code, dict(out, item=staged_view(row, now))
+        row.update(status="approved", decided_at=now, result=out)
+        return 200, {"item": staged_view(row, now)}
+    row.update(status="approved", decided_at=now, result={"ok": True, "fixture": True})
+    return 200, {"item": staged_view(row, now)}
+
+
+def keys_action(action, body):
+    open_ = bool(STATE["api_keys_open"]) or bool(STATE["admin"])
+    active = STATE["keys"]
+    if action == "api_keys_list":
+        return 200, {"keys": [dict(k) for k in active], "open": open_}
+    if action == "api_key_revoke":
+        k = next((k for k in active if k["id"] == body.get("id")), None)
+        if not k:
+            return 404, {"error": "not_found"}
+        active.remove(k)
+        return 200, {"ok": True}
+    if not open_:
+        return 403, {"error": "api_keys_closed", "message": "Agent access is not switched on yet."}
+    label, scopes = body.get("label"), body.get("scopes")
+    if not isinstance(label, str) or not 1 <= len(label) <= 40 or any(ord(c) < 32 or ord(c) == 127 for c in label):
+        return 400, {"error": "invalid_label", "message": "label is 1 to 40 characters, no control characters."}
+    if not isinstance(scopes, list) or not scopes or len(set(scopes)) != len(scopes) or any(x not in KEY_SCOPES for x in scopes):
+        return 400, {"error": "invalid_scopes", "message": "scopes is a non-empty list of distinct scopes."}
+    if len(active) >= 5:
+        return 409, {"error": "too_many_keys", "message": "Five keys is the limit. Revoke one to add another."}
+    key = "dhk_live_" + base64.urlsafe_b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes).decode().rstrip("=")
+    row = {"id": str(uuid.uuid4()), "label": label, "prefix": key[:16], "scopes": scopes,
+           "created_at": iso(datetime.now(timezone.utc)), "last_used_at": None}
+    active.append(row)
+    return 200, dict(row, key=key)
+
+
+def seed_agent():
+    """One CSV in /Leads, one key and five staged items covering every state. FIXTURE data only."""
+    now = datetime.now(timezone.utc)
+    files_action("files_mkdir", {"path": "/Leads"})
+    folder = next(e for e in STATE["files"].values() if e["path"] == "/Leads")
+    data = (ROOT / "tests" / "fixtures" / "leads.csv").read_bytes()
+    fid = str(uuid.uuid4())
+    STATE["files"][fid] = {"id": fid, "kind": "file", "name": "leads.csv", "path": "/Leads/leads.csv", "size": len(data), "mime": "text/csv",
+                           "updated": iso(now), "bytes": data}
+    STATE["keys"] = [{"id": "key_fixture_agent", "label": "Claude Desktop", "prefix": "dhk_live_AbCdEfG", "scopes": ["files:read", "jobs:read", "jobs:plan", "jobs:stage"],
+                      "created_at": iso(now - timedelta(days=2)), "last_used_at": iso(now - timedelta(minutes=5))}]
+    week = timedelta(days=7)
+    def item(i, kind, source, title, note, payload, ago, status="pending", decided=None):
+        created = now - ago
+        return {"id": i, "kind": kind, "source": source, "title": title, "note": note, "payload": payload, "status": status,
+                "created_at": iso(created), "expires_at": iso(created + week), "decided_at": iso(decided) if decided else None}
+    STATE["staged"] = [
+        item("stg-run-0001", "run", "deepbot", "Run 1 operation on leads.csv, up to 5 credits", "You asked for clean titles before Thursday's send.",
+             {"file_id": fid, "plan": [{"column": "Title", "op": "normalize_title", "engine": "jev"}], "quote": {"row_count": 12, "max_credits": 5, "can_run": True}}, timedelta(minutes=5)),
+        item("stg-move-0002", "files_move", "key:key_fixture_agent", "Move /Leads/leads.csv to /Archive", "<img src=x onerror=alert(1)> Moving it out of the way.",
+             {"id": fid, "folder": "/Archive", "from": "/Leads/leads.csv", "to": "/Archive/leads.csv"}, timedelta(minutes=40)),
+        item("stg-conn-0003", "connector_act", "user", "ChampHarbinger push_campaign", "",
+             {"provider": "harbinger", "op": "push_campaign", "args": {"file_id": fid, "name": "Q4 push"}, "preview": {"name": "Q4 push", "rows": 12}}, timedelta(hours=3)),
+        item("stg-run-0004", "run", "key:key_revoked_long_ago", "Run 2 operations on old-list.csv, up to 9000 credits", "This is the big list from last month.",
+             {"file_id": str(uuid.uuid4()), "plan": [], "quote": {"row_count": 900, "max_credits": 9000, "can_run": False}}, timedelta(days=8)),
+        item("stg-move-0005", "files_move", "deepbot", "Rename /Leads/a.csv to b.csv", "",
+             {"id": str(uuid.uuid4()), "name": "b.csv", "from": "/Leads/a.csv", "to": "/Leads/b.csv"}, timedelta(days=2), "rejected", now - timedelta(days=1)),
+    ]
+
 
 FIXTURE_TOKEN = "FIXTURE_SESSION_TOKEN"
 PK = "pk_test_" + base64.b64encode(b"fixture.example.accounts.dev$").decode()
@@ -332,13 +488,27 @@ def handle_toolkit(body, auth_ok):
             "request_id": body.get("request_id"),
             "t": time.time(),
         }
-        if action in ("admin_update",):
+        if action in ("admin_update", "staged_decide", "api_key_revoke"):
             rec["payload"] = {k: v for k, v in body.items() if k != "rows"}
+        if action == "api_key_create":
+            rec["payload"] = {"label": body.get("label"), "scopes": body.get("scopes")}
+        if action == "run":
+            rec["job_id"] = body.get("job_id")
         STATE["calls"].append(rec)
     if not auth_ok:
         return 401, {"error": "fixture: missing or invalid session token"}
     if action == "usage":
         return 200, usage_payload()
+    if action == "quote" and body.get("columns") is not None:
+        return wb_quote(body)
+    if action == "run" and body.get("tool_id") == "data-workbench":
+        return wb_run(body)
+    if action in ("staged_list", "staged_get", "staged_decide"):
+        with LOCK:
+            return staged_action(action, body)
+    if action in ("api_keys_list", "api_key_create", "api_key_revoke"):
+        with LOCK:
+            return keys_action(action, body)
     if action == "quote":
         try:
             q = quote_math(body)
@@ -647,10 +817,12 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass
 
-    def _send(self, code, body, ctype="application/json"):
+    def _send(self, code, body, ctype="application/json", extra=None):
         data = body if isinstance(body, bytes) else json.dumps(body).encode()
         self.send_response(code)
         self.send_header("Content-Type", ctype)
+        for k, v in (extra or {}).items():
+            self.send_header(k, v)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
@@ -693,7 +865,8 @@ class Handler(BaseHTTPRequestHandler):
             e = STATE["files"].get(path.rsplit("/", 1)[-1])
             if not e or e["kind"] != "file":
                 return self._send(404, {"error": "not_found"})
-            return self._send(200, e["bytes"], "application/octet-stream")
+            return self._send(200, e["bytes"], "application/octet-stream",
+                              {"Content-Disposition": "attachment; filename*=UTF-8''" + quote(e["name"])})
         return self._static(path)
 
     def do_POST(self):
@@ -707,12 +880,21 @@ class Handler(BaseHTTPRequestHandler):
                 STATE["run_delay_ms"] = 0
                 STATE["files"] = {}
                 STATE["ai_log"] = []
+                STATE["staged"], STATE["keys"], STATE["wb_jobs"] = [], [], set()
+                STATE["admin"], STATE["api_keys_open"], STATE["decide_fail"] = 1, 0, 0
+            return self._send(200, {"ok": True})
+        if path == "/fixture/seed-agent":
+            with LOCK:
+                seed_agent()
             return self._send(200, {"ok": True})
         if path == "/fixture/delay":
             STATE["run_delay_ms"] = int(body.get("ms") or 0)
             return self._send(200, {"ok": True, "ms": STATE["run_delay_ms"]})
         if path == "/fixture/config":
             STATE["configured"] = 1 if int(body.get("configured", 1)) else 0
+            for k in ("admin", "api_keys_open", "decide_fail"):
+                if k in body:
+                    STATE[k] = 1 if int(body[k]) else 0
             return self._send(200, {"ok": True})
         if path == "/api/toolkit":
             auth = self.headers.get("Authorization") or ""

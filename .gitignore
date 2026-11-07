@@ -36,3 +36,6 @@ scripts/.shots/
 __pycache__/
 *.pyc
 .release/
+
+# Local QA screenshots (card t_0281e09b), never committed
+qa/screenshots/
