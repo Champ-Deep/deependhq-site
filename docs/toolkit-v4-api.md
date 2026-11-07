@@ -123,7 +123,7 @@ Errors: 400 `invalid_deepbot`, 404 `thread_not_found` (another user's thread loo
 - **Free answers.** "What can you do?" (and `help`) returns the catalog card with no model call, no charge and no stored turn; `thread_id` is echoed or `null`.
 
 ### Tools (closed list, server side)
-The full list is the registry in section 10 (18 tools). The first nine:
+The full list is the registry in section 10 (19 tools). The first nine:
 | Tool | Does | Output to the page |
 |------|------|--------------------|
 | `files_list {folder?}` | the Files `files_list` action | none |
@@ -222,7 +222,8 @@ Classes: **read** has no side effect. **write** only adds to the user's own stor
 | 15 | `stage_files_move` | stage | `jobs:stage` | `{id, folder?, name?, note?}` (one of folder or name) | same shape, kind `files_move`. The file or folder must exist and be the user's |
 | 16 | `connector_pull` | read | `connections:read` | section 9 | section 9 |
 | 17 | `connector_act` | stage | `connections:stage` | section 9 | section 9; writes a `toolkit_staged` row, kind `connector_act` |
-| 18 | `page_steps` | DeepBot only | not exposed | section 8 | section 8 |
+| 18 | `agent_call` | stage | not exposed (DeepBot only) | section 12 | section 12 |
+| 19 | `page_steps` | DeepBot only | not exposed | section 8 | section 8 |
 
 `approve_url` is `https://toolkit.deependhq.com/#approvals/<id>` (the `TOOLKIT_HOST` var overrides the host). DeepBot adds a `{kind: "staged", data}` card for each stage. Tool errors are `{error, message?}`; a few carry `http_status` for the API endpoints to use (429 `too_many_staged`, 404 `not_found` from `staged_get`). Errors by tool: `file_read` `unsupported_type`, `invalid_offset`, `not_found`; `run_detail` `bad_run_id`, `not_found`; `files_save` `file_too_large`, `bad_content`, `bad_type`, `invalid_path`, `quota_exceeded`, `files_not_configured`; `files_mkdir` `invalid_path`, `name_taken`, `quota_exceeded`; `stage_run` the quote's errors (`invalid_columns`, file errors), `invalid_note`, `too_many_staged`; `stage_files_move` `invalid_move`, `not_found`, `invalid_path`, `invalid_note`, `too_many_staged`; `staged_list` `invalid_status`; `staged_get` `not_found`.
 
@@ -230,7 +231,7 @@ File text and cell values the model saw through `file_read` (for CSV, the parsed
 
 ### Table
 Migration `0006_staged.sql`: `toolkit_staged (id, user_id, kind, source, title, payload_json, note, status, result_json, created_at, decided_at, expires_at)`, index `(user_id, status, created_at)`. It copies 0005's `connector_staged` rows in (status `staged` becomes `pending`) and drops that table, so there is one approval table.
-- `kind`: `run`, `files_move`, `connector_act` (`agent_call` in slice 2).
+- `kind`: `run`, `files_move`, `connector_act`, `agent_call` (section 12).
 - `source`: `deepbot`, `key:<key id>`, or `user` for a connector act staged from the user's own mini window.
 - `title` is written by the server: `Run <n> operations on <file name>, up to <max_credits> credits`; `Move <from> to <to>` or `Rename <from> to <name>`; `<provider label> <op>` for a connector act. Never model or agent text.
 - `payload_json`: run `{file_id, plan, quote: {row_count, max_credits, can_run}}`; files_move `{id, folder?, name?, from, to}`; connector_act `{provider, op, args, preview}`.
@@ -252,13 +253,13 @@ An item, as `staged_list` and `staged_get` return it: `{id, kind, source, title,
 - **approve, run**: the server never runs anything. The Approvals window opens the Workbench at Quote with the file and plan, the browser re-quotes, the user presses Run, then the browser posts `staged_decide` with the `job_id` of that run. The `job_id` must be a Workbench run of this user (`toolkit_runs.job_id`, or the run id for a one-chunk job). Missing or not theirs: 400 `invalid_job_id`, still pending. Success records `result: {job_id}`.
 - **approve, files_move**: runs `files_move` under the session. 200 with `result: {entry}`; a move that cannot happen (for example 409 `name_taken`) returns that error with the item, now `failed`.
 - **approve, connector_act**: runs the section 9 `connector_approve` (same claim, expiry and failure rules) and returns `{item}`; its errors pass through.
-- Errors: 400 `invalid_decision`, 404 `not_found`, 409 `not_pending` (with `status`), 410 `expired`, 400 `unsupported_kind` (`agent_call` until slice 2), 401 without a session.
+- Errors: 400 `invalid_decision`, 404 `not_found`, 409 `not_pending` (with `status`), 410 `expired`, 400 `unsupported_kind`, 401 without a session. Approving an `agent_call` item calls the user's agent under the session (section 12); a failed call sets `failed` and answers 502 with the item.
 
 `connector_approve` (section 9) keeps working and reads the same table. Once either has decided a connector act, the other answers 409, except a repeated approve, which returns the approved result again.
 
 ## 11. Agent API: API keys, MCP server, OpenAI tools
 
-A user's own agent (Claude Desktop, Cursor, a script) calls the toolkit with an API key. It gets the section 10 registry entries marked `inbound` (17 tools: everything but `page_steps`), filtered by the key's scopes. Code: `worker/agent-api.js`; the tool bodies are the same `makeToolHandlers` DeepBot uses, run with `source: 'key:<key id>'`.
+A user's own agent (Claude Desktop, Cursor, a script) calls the toolkit with an API key. It gets the section 10 registry entries marked `inbound` (17 tools: everything but `page_steps` and `agent_call`), filtered by the key's scopes. Code: `worker/agent-api.js`; the tool bodies are the same `makeToolHandlers` DeepBot uses, run with `source: 'key:<key id>'`.
 
 A key can read, plan, price, save new files and stage. It can never run a job, send, move or delete, approve or reject, see or mint keys, open the admin, or talk to DeepBot. `run`, `files_delete`, `staged_decide`, `admin_*`, `api_key_*`, `deepbot` and `guide` are not tools, and `POST /api/toolkit` answers 401 to a `dhk_` token before Clerk ever sees it.
 
@@ -378,3 +379,95 @@ curl -s https://toolkit.deependhq.com/api/toolkit/v1/tools/call -H "Authorizatio
 ```
 
 Not here yet: OAuth (clients that only speak OAuth cannot connect), the 2026-07-28 MCP era (the server speaks the 2025 handshake; a client in `auto` mode falls back to it), `listChanged` notifications.
+
+## 12. Outbound: the toolkit calls the user's own agent
+
+Section 11 is the user's agent calling the toolkit. This is the other direction, two ways:
+- **A. Their MCP server as a DeepBot tool.** DeepBot gets one registry entry, `agent_call`, for the tools the user approved.
+- **B. Signed webhooks** on `staged.created`, `staged.decided` and `job.completed`.
+
+Code: `worker/outbound.js` (client, storage, actions, webhooks) and `worker/outbound-guard.js` (every outbound request). Migration `0008_agent_outbound.sql`. Needs the Worker secret `CONNECTIONS_SECRET` (section 9); without it every action below except `agent_status`, `webhook_deliveries`, `agent_disconnect` and `webhook_remove` answers 503 `connections_not_configured`.
+
+### Storage
+Both are rows in section 9's `toolkit_connections`, providers `agent_mcp` and `agent_webhook`, one of each per user. The Bearer token (optional) and the webhook signing secret are sealed in `key_ciphertext` with the same AES-GCM helper, bound to `user_id:provider`; `key_hint` is the masked form (`****` for a token under 24 characters, so a short token shows nothing). The non-secret fields are a JSON column on the same row, `meta_json`:
+- `agent_mcp`: `{id, url, status, seen_hash, approved_hash, modes: {tool: "off" | "read" | "ask"}, tools: [{name, untrusted_description, input_schema?}]}` (approved tools only, for DeepBot's catalog).
+- `agent_webhook`: `{id, url, events}`.
+
+`toolkit_deliveries (id, user_id, event_id, event, body_json, status_code, error, ms, ts)` keeps the last 50 attempts per user. `body_json` is the event as sent, so Resend can send it again; it never holds the secret, the signature header or what the receiver answered.
+
+### Outbound guard (`worker/outbound-guard.js`)
+`checkOutboundUrl(url)` and `guardedFetch(url, init, {timeoutMs, maxBytes, accept})`. Nothing in the toolkit fetches a user-supplied URL any other way, including every request the MCP client SDK makes.
+- `https` only, port 443 only, no `user:pass@`, 2,048 characters or less.
+- No IP literal in any notation: dotted, decimal (`2130706433`), hex (`0x7f000001`), octal, IPv6, IPv4-mapped IPv6. The URL parser normalises the first four to dotted IPv4, which is then refused.
+- No single-label host, and none of: `localhost`, `*.localhost`, `*.local`, `*.internal`, `deependhq.com` and its subdomains, `deep-ae0.workers.dev` and its subdomains (this covers the ChampHarbinger Worker), `champbeam.com` and its subdomains. A trailing dot does not get around it.
+- A and AAAA resolved over DoH (`https://cloudflare-dns.com/dns-query`, `accept: application/dns-json`). Refused if there is no answer, if a CNAME points at a refused name, or if any answer is in 10/8, 172.16/12, 192.168/16, 127/8, 0/8, 169.254/16, 100.64/10, 224/4, 240/4, `::`, `::1`, fc00::/7, fe80::/10, ff00::/8, or is an IPv4-mapped or NAT64 address of one of those.
+- `redirect: 'manual'`; any 3xx is `redirect_refused`. `AbortSignal.timeout` over the whole exchange. At most 256 KB of body is read, then it aborts with `too_large`. MCP answers with a body must be `application/json` or `text/event-stream` (`bad_content_type`).
+- Error codes, never the URL, a header or a token: `url_too_long`, `bad_url`, `https_only`, `port_not_allowed`, `userinfo_not_allowed`, `ip_literal`, `host_not_allowed`, `dns_failed`, `private_address`, `redirect_refused`, `timeout`, `too_large`, `bad_content_type`, `fetch_failed`, `read_failed`.
+
+Residual: the Worker resolves the name again when it fetches, so a DNS rebind between the check and the request is not closed (a Worker cannot pin an IP). The check is defence in depth. Also not refused: 6to4 (`2002::/16`, for example `2002:7f00:1::`) and SIIT (`::ffff:0:0:0/96`, for example `::ffff:0:7f00:1`) answers that embed a private IPv4; neither is in the refused list and the edge does not route them.
+
+Timeouts: `tools/list` when saving or testing 10 s; an MCP call (a re-list plus `tools/call` on one session) 15 s; a webhook 5 s. DeepBot's 45 s turn budget still bounds a turn.
+
+### A. Your MCP server (session token, same origin)
+Client: `@modelcontextprotocol/client` 2.4.0, `versionNegotiation: {mode: 'auto'}`. Its `StreamableHTTPClientTransport` takes an injected `fetch`, and that fetch is `guardedFetch`, so `initialize`, `tools/list`, `tools/call`, a legacy GET stream and the session close all pass the guard. The token goes in `Authorization: Bearer` and nowhere else.
+
+| Action | Request | Response |
+|--------|---------|----------|
+| `agent_status` | `{}` | 200 `{configured, mcp: {connection_id, url, status, key_hint, modes, connected_at} \| null, webhook: {webhook_id, url, events, key_hint, created_at} \| null}` |
+| `agent_connect` | `{url, token?}` | Runs `tools/list` through the guard. 200 `{connection_id, url, status: "pending", key_hint, tools: [{name, description, read_only_hint, mode: "off"}]}`, descriptions cut to 300 characters. Approves nothing. Replaces an earlier connection (new id, every tool off). 400 a guard code or `invalid_token`; 502 the guard code or `agent_failed` when the server does not answer |
+| `agent_tools_set` | `{connection_id, tools: {name: "off" \| "read" \| "ask"}}` | Lists again. 200 `{connection_id, status: "active", tools}`; a tool left out is off. 409 `tools_changed` with the new `tools` if the list is not the one the user last saw (approve again from that); 400 `unknown_tool`, `invalid_tools`; 404 `not_found` |
+| `agent_test` | `{connection_id}` | Lists again. 200 `{ok, connection_id, status, changed, tools}`. A list that differs from the approved one sets `changed` |
+| `agent_disconnect` | `{connection_id}` | 200 `{ok: true}`; 404 `not_found` |
+
+`status`: `pending` (connected, nothing approved), `active`, `changed`. On approval the toolkit stores the SHA-256 of the canonical `tools/list` (every tool's `name`, `description` and `inputSchema`, sorted by name, keys sorted). Before every use DeepBot lists again on the same session; a different hash sets `changed`, and every tool is off until `agent_tools_set` runs again. This stops a server from swapping a tool's meaning after the user approved it. `annotations` are not in the hash, so flipping `readOnlyHint` does not re-pin; the hint is only shown to the user and never changes a mode.
+
+Modes: **off**, never called. **read**, DeepBot calls it inline (the arguments may include file text, so the UI should say so on this toggle). **ask**, DeepBot stages an `agent_call` item and the call happens only when the user approves it.
+
+### `agent_call` (DeepBot only)
+Registry entry 18, class `stage`, not inbound: an API key can never reach the user's own agent, so there is no agent to agent loop. DeepBot has 19 tools; the inbound API still exposes 17.
+
+| Request | Result |
+|---------|--------|
+| `{connection_id, tool, arguments?}` | read: `{untrusted_agent_output, truncated, is_error?}`, the text parts of the result (or its `structuredContent` as JSON), control characters stripped, cut so the whole result is 8000 characters of JSON at most (`truncated: true` when text was dropped). ask: the `stage_run` shape with kind `agent_call` and `payload: {connection_id, tool, arguments}` exactly as DeepBot sent them; `staged_decide` approve runs the call under the session (pins checked again) and stores the same capped output in `result_json`. off, unknown tool, not approved yet or `changed`: `{error: "not_allowed"}` |
+
+DeepBot learns the approved tools from `catalog` (`my_agent: {connection_id, status, tools: [{name, mode, untrusted_description, input_schema?}]}`), a tool result. Nothing from the user's agent ever goes into the system prompt. In `ai_log` the output is logged as `[agent output]`. An API key's `catalog` has no `my_agent`.
+
+### B. Webhooks (session token, same origin)
+| Action | Request | Response |
+|--------|---------|----------|
+| `webhook_set` | `{url, events}` | `events` from `staged.created`, `staged.decided`, `job.completed`. 200 `{webhook_id, url, events, secret, key_hint}`. The `secret` (`whsec_` plus 43 base64url characters, 32 random bytes) is in this response and `webhook_rotate`'s, nowhere else. Setting again replaces the URL, the events and the secret |
+| `webhook_rotate` | `{}` | 200 `{webhook_id, secret, key_hint}`. The old secret stops working at once |
+| `webhook_remove` | `{}` | 200 `{ok: true}`. Deletes the delivery log too |
+| `webhook_deliveries` | `{}` | 200 `{deliveries: [{id, event_id, event, status_code, error, ms, ts}]}`, newest first, 50 at most |
+| `webhook_resend` | `{delivery_id}` | Sends that event again now (same event `id`, new timestamp and signature) and answers 200 `{delivery}` |
+
+Delivery: one `POST` per event inside `ctx.waitUntil`, 5 s, logged; no automatic retry. Polling `staged_get` is the reliable path; a webhook is a nudge.
+
+Headers: `Content-Type: application/json`, `X-Toolkit-Event: <type>`, `X-Toolkit-Signature: t=<unix seconds>,v1=<hex HMAC-SHA256(secret, t + "." + body)>`. The HMAC key is the whole secret string, `whsec_` included.
+
+Body `{id: "evt_<uuid>", type, created: <unix seconds>, data}`. `data` holds ids, counts, status and credits only, never a cell value, a file name or a note:
+- `staged.created`: `{staged_id, kind, source, status: "pending", expires_at}`
+- `staged.decided`: `{staged_id, kind, status}` (`approved`, `rejected` or `failed`)
+- `job.completed` (after the last chunk of a Workbench job settles): `{job_id, chunks, rows, credits_used, status: "completed" | "partial", statuses, result_file_id}`
+
+### Verifying a delivery (your side, Node 18 or later)
+Pass the raw request body exactly as received, before any JSON parsing.
+```js
+import { createHmac, timingSafeEqual } from 'node:crypto';
+// secret: your whsec_ value. header: the X-Toolkit-Signature header. body: the raw body as a string.
+export function verifyToolkitSignature(secret, header, body, toleranceSec = 300) {
+  const parts = Object.fromEntries(String(header).split(',').map((p) => p.split('=', 2)));
+  const t = Number(parts.t);
+  if (!parts.v1 || !Number.isInteger(t) || Math.abs(Date.now() / 1000 - t) > toleranceSec) return false;
+  const want = Buffer.from(createHmac('sha256', secret).update(`${t}.${body}`).digest('hex'));
+  const got = Buffer.from(parts.v1);
+  return got.length === want.length && timingSafeEqual(got, want);
+}
+```
+The selftest runs this exact block against a real delivery.
+
+### Privacy
+- The MCP token and the webhook secret are opened only inside the request that uses them. They are never in a log line, `ai_log`, `deepbot_turns`, a delivery row, an error or any response after `webhook_set` / `webhook_rotate`. The selftest scans every row of every table and the console output for both.
+- An error from the user's server is reported as a fixed code (`agent_failed`, or a guard code), never its message.
+
+Not here yet: more than one MCP server or webhook per user, OAuth to the user's server, retries (Cloudflare Queues), the user's agent as an OpenAI-compatible chat endpoint, the My agent window (card E).

@@ -47,7 +47,7 @@ async function post(env, body, sub = 'user_a') {
 const put = async (env, name, csv) => (await post(env, { action: 'files_put', folder: '/', name, mime: 'text/csv', content_base64: Buffer.from(csv).toString('base64') })).body.entry.id;
 const toolMsgs = (body) => body.messages.filter((m) => m.role === 'tool').map((m) => JSON.parse(m.content));
 const CSV = 'Person Name,Job,Company\nJane SAMPLESECRET Doe,VP Sales,Acme\nRaj K,head of mktg,Globex\n';
-const EXPECTED_TOOLS = ['catalog', 'files_list', 'file_peek', 'file_read', 'account_usage', 'run_detail', 'report_summary', 'staged_list', 'staged_get', 'intake_plan', 'quote', 'files_mkdir', 'files_save', 'stage_run', 'stage_files_move', 'connector_pull', 'connector_act', 'page_steps'];
+const EXPECTED_TOOLS = ['catalog', 'files_list', 'file_peek', 'file_read', 'account_usage', 'run_detail', 'report_summary', 'staged_list', 'staged_get', 'intake_plan', 'quote', 'files_mkdir', 'files_save', 'stage_run', 'stage_files_move', 'connector_pull', 'connector_act', 'agent_call', 'page_steps'];
 
 // 1. files_list, then an answer; the tool list is closed; the turn is stored
 {
@@ -59,7 +59,7 @@ const EXPECTED_TOOLS = ['catalog', 'files_list', 'file_peek', 'file_read', 'acco
   check('turn: 200 with thread, reply, steps, cards, asks, cost, model', r.status === 200 && r.body.thread_id && /leads\.csv/.test(r.body.reply) && Array.isArray(r.body.steps) && Array.isArray(r.body.cards) && Array.isArray(r.body.asks) && r.body.cost_micro === 1000 && r.body.model === 'deepseek/deepseek-v4.1-flash', JSON.stringify(r.body));
   check('turn: em dash never reaches the user', !/[\u2014\u2013]/.test(r.body.reply), r.body.reply);
   check('turn: two model calls, the second one saw the files_list result', fx.chat.length === 2 && toolMsgs(fx.chat[1])[0].entries[0].name === 'leads.csv', JSON.stringify(fx.chat[1]?.messages.at(-1)));
-  check('turn: the closed tool list is exactly the registry', JSON.stringify(fx.chat[0].tools.map((t) => t.function.name)) === JSON.stringify(EXPECTED_TOOLS) && fx.chat[1].tools.length === 18);
+  check('turn: the closed tool list is exactly the registry', JSON.stringify(fx.chat[0].tools.map((t) => t.function.name)) === JSON.stringify(EXPECTED_TOOLS) && fx.chat[1].tools.length === 19);
   check('turn: routing capped at the admin model price', fx.chat[0].provider.max_price.prompt === 0.14 && fx.chat[0].model === 'deepseek/deepseek-v4.1-flash');
   const turns = d1.query(`SELECT seq, role FROM deepbot_turns WHERE thread_id=?`, r.body.thread_id).results;
   check('thread: one thread row, user then assistant turn stored', turns.length === 2 && turns[0].role === 'user' && turns[1].seq === 2 && d1.query(`SELECT * FROM deepbot_threads WHERE user_id='user_a'`).results.length === 1);
@@ -191,17 +191,17 @@ const EXPECTED_TOOLS = ['catalog', 'files_list', 'file_peek', 'file_read', 'acco
   check('intake_plan: intake settles its own small charge next to the turn', d1.query(`SELECT tool_id, spent_micro FROM toolkit_runs WHERE tool_id IN ('intake','deepbot') AND created_at > ''`).results.some((x) => x.tool_id === 'intake' && x.spent_micro === 200));
 }
 
-// 8. the registry (docs section 10): one list, 18 tools, 17 inbound, no human-only action
+// 8. the registry (docs sections 10 and 12): one list, 19 tools, 17 inbound, no human-only action
 const core = await import('../worker/deepbot-core.js');
 const { makeToolHandlers } = await import('../worker/deepbot-tools.js');
 {
   const names = core.REGISTRY.map((t) => t.name);
-  check('registry: 18 entries in the fixed order', names.length === 18 && JSON.stringify(names) === JSON.stringify(EXPECTED_TOOLS), names.join());
+  check('registry: 19 entries in the fixed order', names.length === 19 && JSON.stringify(names) === JSON.stringify(EXPECTED_TOOLS), names.join());
   check('registry: DEEPBOT_TOOLS names equal REGISTRY names', JSON.stringify(core.DEEPBOT_TOOLS.map((t) => t.function.name)) === JSON.stringify(names));
   check('registry: no run, files_delete, staged_decide or admin_* tool', !names.some((n) => ['run', 'files_delete', 'staged_decide'].includes(n) || n.startsWith('admin_')));
-  check('registry: 17 inbound, page_steps is DeepBot only', core.REGISTRY.filter((t) => t.inbound).length === 17 && core.REGISTRY.find((t) => t.name === 'page_steps').inbound === false);
-  const SCOPES = { catalog: null, files_list: 'files:read', file_peek: 'files:read', file_read: 'files:read', account_usage: 'jobs:read', run_detail: 'jobs:read', report_summary: 'jobs:read', staged_list: 'jobs:read', staged_get: 'jobs:read', intake_plan: 'jobs:plan', quote: 'jobs:plan', files_mkdir: 'files:write', files_save: 'files:write', stage_run: 'jobs:stage', stage_files_move: 'jobs:stage', connector_pull: 'connections:read', connector_act: 'connections:stage', page_steps: null };
-  check('registry: scopes and classes as specified', core.REGISTRY.every((t) => t.scope === SCOPES[t.name] && ['read', 'write', 'stage'].includes(t.cls)) && core.REGISTRY.filter((t) => t.cls === 'stage').map((t) => t.name).join() === 'stage_run,stage_files_move,connector_act');
+  check('registry: 17 inbound, page_steps and agent_call are DeepBot only', core.REGISTRY.filter((t) => t.inbound).length === 17 && core.REGISTRY.filter((t) => !t.inbound).map((t) => t.name).join() === 'agent_call,page_steps');
+  const SCOPES = { catalog: null, files_list: 'files:read', file_peek: 'files:read', file_read: 'files:read', account_usage: 'jobs:read', run_detail: 'jobs:read', report_summary: 'jobs:read', staged_list: 'jobs:read', staged_get: 'jobs:read', intake_plan: 'jobs:plan', quote: 'jobs:plan', files_mkdir: 'files:write', files_save: 'files:write', stage_run: 'jobs:stage', stage_files_move: 'jobs:stage', connector_pull: 'connections:read', connector_act: 'connections:stage', agent_call: null, page_steps: null };
+  check('registry: scopes and classes as specified', core.REGISTRY.every((t) => t.scope === SCOPES[t.name] && ['read', 'write', 'stage'].includes(t.cls)) && core.REGISTRY.filter((t) => t.cls === 'stage').map((t) => t.name).join() === 'stage_run,stage_files_move,connector_act,agent_call');
   check('registry: CATALOG.deepbot is derived from it', JSON.stringify(core.CATALOG.deepbot.map((x) => x.id)) === JSON.stringify(names));
   const h = makeToolHandlers({ db: makeD1(), env: {}, uid: 'u', source: 'deepbot' });
   check('registry: exactly one handler per name, nothing else', JSON.stringify(Object.keys(h).sort()) === JSON.stringify([...names].sort()));

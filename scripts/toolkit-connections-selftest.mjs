@@ -111,7 +111,7 @@ const MAPPING = [{ source: 'Name', field: 'person_name' }, { source: 'Email', fi
   const resave = await connect(env, 'harbinger', HB_KEY_B);
   check('save: saving again replaces the key (one row)', resave.status === 200 && d1.query('SELECT * FROM toolkit_connections').results.length === 1 && resave.body.key_hint.endsWith('7766'));
   // ciphertext is bound to its row: copied to another user it does not open
-  d1.raw.prepare(`INSERT INTO toolkit_connections SELECT 'user_b', provider, key_ciphertext, key_hint, label, created_at FROM toolkit_connections WHERE user_id='user_a'`).run();
+  d1.raw.prepare(`INSERT INTO toolkit_connections SELECT 'user_b', provider, key_ciphertext, key_hint, label, created_at, meta_json FROM toolkit_connections WHERE user_id='user_a'`).run();
   const stolen = await post(env, { action: 'connector_pull', provider: 'harbinger', op: 'campaigns' }, 'user_b');
   check('crypto: a ciphertext copied to another user does not decrypt', stolen.body.error === 'key_unreadable', JSON.stringify(stolen.body));
   check('delete: removes only the caller\'s row', (await post(env, { action: 'connection_delete', provider: 'harbinger' })).body.state === 'not_connected' && d1.query('SELECT user_id FROM toolkit_connections').results.length === 1);

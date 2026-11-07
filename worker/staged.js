@@ -5,6 +5,7 @@
 
 import * as store from './toolkit-store.js';
 import * as files from './toolkit-files.js';
+import * as outbound from './outbound.js';
 
 export const MAX_PENDING = 50;
 export const STAGED_DAYS = 7;
@@ -25,6 +26,7 @@ export async function stageItem(db, env, { uid, kind, source, title, payload, no
     WHERE (SELECT COUNT(*) FROM toolkit_staged WHERE user_id=?2 AND status='pending' AND expires_at > ?8) < ?10`)
     .bind(id, uid, kind, source, title, JSON.stringify(payload), note ?? '', created, expires, MAX_PENDING).run();
   if (r.meta.changes !== 1) return { error: 'too_many_staged', message: `${MAX_PENDING} items are already waiting for approval. Approve or reject some first.`, http_status: 429 };
+  outbound.emit(db, env, uid, 'staged.created', { staged_id: id, kind, source, status: 'pending', expires_at: expires });
   return { staged_id: id, status: 'pending_approval', kind, title, approve_url: approveUrl(env, id), expires_at: expires };
 }
 
@@ -67,6 +69,7 @@ export async function decide(db, env, uid, body, hooks) {
   const finish = async (status, result, from = 'pending') => {
     const r = await db.prepare(`UPDATE toolkit_staged SET status=?3, result_json=?4, decided_at=?5 WHERE id=?1 AND user_id=?2 AND status=?6`)
       .bind(row.id, uid, status, result === undefined ? null : JSON.stringify(result), store.nowIso(), from).run();
+    if (r.meta.changes === 1) outbound.emit(db, env, uid, 'staged.decided', { staged_id: row.id, kind: row.kind, status });
     return r.meta.changes === 1;
   };
   if (body.decision === 'reject') return (await finish('rejected')) ? [await reread(), 200] : [{ error: 'not_pending' }, 409];
@@ -78,11 +81,16 @@ export async function decide(db, env, uid, body, hooks) {
     if (!ran) return [{ error: 'invalid_job_id', message: 'Approve a staged run with the job_id of the run you started from it.' }, 400];
     return (await finish('approved', { job_id: jobId.toLowerCase() })) ? [await reread(), 200] : [{ error: 'not_pending' }, 409];
   }
-  if (row.kind === 'files_move') {
-    if (!env.TOOLKIT_FILES) return [{ error: 'files_not_configured' }, 503];
-    // Claim first so a double click moves once.
+  if (row.kind === 'files_move' || row.kind === 'agent_call') {
+    if (row.kind === 'files_move' && !env.TOOLKIT_FILES) return [{ error: 'files_not_configured' }, 503];
+    // Claim first so a double click moves (or calls the agent) once.
     const claim = await db.prepare(`UPDATE toolkit_staged SET status='approving' WHERE id=?1 AND user_id=?2 AND status='pending'`).bind(row.id, uid).run();
     if (claim.meta.changes !== 1) return [{ error: 'not_pending' }, 409];
+    if (row.kind === 'agent_call') { // the user's agent, under this session; the tool pins are checked again now
+      const out = await outbound.runStagedCall(db, env, uid, payload);
+      await finish(out.error ? 'failed' : 'approved', out, 'approving');
+      return out.error ? [{ error: out.error, message: out.message, ...(await reread()) }, 502] : [await reread(), 200];
+    }
     const move = { id: payload.id, ...(payload.folder !== undefined ? { folder: payload.folder } : {}), ...(payload.name !== undefined ? { name: payload.name } : {}) };
     try {
       const out = await files.filesAction('files_move', db, env.TOOLKIT_FILES, uid, move);
