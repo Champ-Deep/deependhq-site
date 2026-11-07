@@ -33,6 +33,35 @@ Response:
 - Model is the admin setting `intake_model` (default `deepseek/deepseek-v4.1-flash`), via OpenRouter with `response_format: json_object`. Billing is the actual token cost: reserve 3000 micro, then settle. It counts against the same daily cap as runs.
 - Starter chips the UI shows before the first turn: Enrichment, Title normalization, Categorization, Classification, Email verification, Company research.
 
+## 1b. Sonar: `sonar` (ask the file a question)
+
+The user asks a plain-English question about a file already parsed in the browser. The server never sees rows. The browser builds a column profile with `profileColumns(headers, rows)` from `/sonar-core.js`, the model returns a plan, the browser validates it again with `validatePlan`, runs it with `runPlan(rows, plan)` and draws the result. Every number on screen comes from `runPlan`.
+
+Request:
+```json
+{"action": "sonar",
+ "file": {"name": "leads.csv", "rows_total": 50, "headers": ["Company", "Country", "Employees"],
+          "profile": [{"name": "Company", "type": "text", "filled": 50, "distinct": 50, "samples": ["Acme Ltd"]},
+                      {"name": "Country", "type": "text", "filled": 48, "distinct": 6, "samples": ["India", "USA"]},
+                      {"name": "Employees", "type": "number", "filled": 45, "distinct": 30, "samples": [], "min": 4, "max": 9000}]},
+ "question": "Which countries have the most companies?",
+ "history": [{"role": "user", "content": "..."}, {"role": "assistant", "content": "..."}]}
+```
+Limits: same file, headers and history rules as `intake`; `profile` has one entry per header in order, type `number | date | text`, at most 5 samples of 60 chars. Question 1 to 2000 chars.
+
+Response:
+```json
+{"headline": "{top} leads with {top_value} of {matched} companies",
+ "plan": {"view": "rank", "filters": [], "group_by": "Country", "bucket": "none", "measure": {"fn": "count"}, "sort": "desc", "limit": 12},
+ "question": null,
+ "follow_ups": ["Average employees by country?", "Which companies are in India?"],
+ "model": "deepseek/deepseek-v4.1-flash", "cost_micro": 300}
+```
+- `view` is one of `number rank share trend compare list`; `filters` ops `eq neq contains starts gt gte lt lte empty not_empty in` (at most 6); `measure.fn` is `count distinct sum avg min max`; `limit` 1 to 50; `columns` (list view) at most 8 headers. The grammar, validator and executor live in `sonar-core.js`, shared by browser and worker.
+- `headline` is a template: placeholders `{value} {matched} {total} {top} {top_value} {groups}`, filled by the browser with `fillHeadline`. A headline containing a digit is dropped to `null` (the model may not state numbers); the browser then shows `describePlan(plan, result)`.
+- A plan that fails validation is returned as `plan: null` with a `question` asking for the column, and the ai_log outcome is `invalid_plan`. `plan: null` with a `question` also means the model needs clarification. Nothing runs server-side.
+- Model is the admin setting `intake_model`; billing like `intake`: reserve 3000 micro, settle at the real cost, counts against the daily cap. Logged to `ai_log` as action `sonar` with sample values scrubbed.
+
 ## 2. Operations (quote and run)
 
 | op | engines | notes |

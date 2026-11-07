@@ -387,6 +387,14 @@ def handle_toolkit(body, auth_ok):
         if not STATE["admin"]:
             return 403, {"error": "fixture: not an admin"}
         return admin_update(body)
+    if action == "sonar":
+        time.sleep(STATE["run_delay_ms"] / 1000.0)
+        profile = body.get("file", {}).get("profile", [])
+        group = next((c["name"] for c in profile if c.get("type") == "text"), None)
+        view = "list" if "list" in body.get("question", "").lower() else "rank"
+        return 200, {"headline": None if view == "list" else "{top} leads with {top_value} of {matched} rows",
+                     "plan": {"view": view, "group_by": group, "measure": {"fn": "count"}},
+                     "question": None, "follow_ups": ["Average by country?"], "cost_micro": 300}
     if action == "intake":
         return intake_reply(body)
     if str(action).startswith("files_"):

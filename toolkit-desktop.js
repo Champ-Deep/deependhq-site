@@ -3,6 +3,7 @@
 import * as session from './toolkit-session.js';
 import {parseCsv,parseXlsx,chunk,toCsv,MAX_FILE_BYTES} from './toolkit-lib.js';
 import * as wl from './toolkit-workbench-lib.js';
+import {sonar} from './toolkit-sonar.js';
 const {money} = wl;
 const $ = s => document.querySelector(s);
 function el(tag, text, cls) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; }
@@ -29,13 +30,14 @@ function size(bytes) { const n = Number(bytes) || 0; return n < 1024 ? n + ' B' 
 function metrics(values) { const n = el('dl', undefined, 'metrics'); for (const [label, value] of values) { const d = el('div'); d.append(el('dt', label), el('dd', value, 'money')); n.append(d); } return n; }
 
 const ICON = {
+  sonar: 'M5 25h.1 M5 19a6 6 0 0 1 6 6 M5 12a13 13 0 0 1 13 13 M5 5a20 20 0 0 1 20 20',
   workbench: 'M4 5h24v22H4z M4 12h24 M12 12v15', enrich: 'M16 3l3.2 8.8L28 15l-8.8 3.2L16 27l-3.2-8.8L4 15l8.8-3.2z',
   files: 'M3 8h10l3 3h13v16H3z', beam: 'M4 16h24 M18 6l10 10-10 10', pdf: 'M8 3h11l6 6v20H8z M18 3v8h7 M12 17h9 M12 22h9',
   account: 'M21 10a5 5 0 1 1-10 0a5 5 0 1 1 10 0 M6 29v-5a10 10 0 0 1 20 0v5', admin: 'M4 8h24 M4 16h24 M4 24h24 M11 4v8 M21 12v8 M14 20v8',
   file: 'M8 3h11l6 6v20H8z M18 3v8h7', folder: 'M3 8h10l3 3h13v16H3z',
 };
 // Deep Enrich sits right after Data Workbench, in the dock and on the desktop.
-const APPS = [['workbench', 'Data Workbench'], ['enrich', 'Deep Enrich'], ['files', 'Files'], ['beam', 'ChampBeam'], ['pdf', 'ChamPDF'], ['account', 'Account'], ['admin', 'Admin']];
+const APPS = [['workbench', 'Data Workbench'], ['enrich', 'Deep Enrich'], ['sonar', 'Sonar'], ['files', 'Files'], ['beam', 'ChampBeam'], ['pdf', 'ChamPDF'], ['account', 'Account'], ['admin', 'Admin']];
 const NAME = Object.fromEntries(APPS);
 function icon(path) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', '0 0 32 32'); svg.setAttribute('aria-hidden', 'true');
@@ -91,7 +93,7 @@ function openApp(id) {
   node.addEventListener('pointerdown', () => setActive(id)); node.addEventListener('focusin', () => setActive(id));
   dragWindow(w, header); resizeWindow(w);
   header.addEventListener('dblclick', e => { if (!e.target.closest('button') && !mobile()) toggleMax(w); });
-  ({workbench, enrich: enrichApp, files: filesApp, beam: embedded, pdf: embedded, account, admin})[id](w);
+  ({workbench, enrich: enrichApp, sonar: w => sonar(w, {readTable, dropTarget, refreshUsage}), files: filesApp, beam: embedded, pdf: embedded, account, admin})[id](w);
   close.focus();
   return w;
 }
@@ -163,8 +165,10 @@ function dragIcon(d, entry) {
   const end = e => {
     if (!drag?.moved) { drag = null; return; }
     delete d.dataset.dragging;
+    const sonarIcon = document.elementsFromPoint(e.clientX, e.clientY).find(n => n !== d && (n.dataset?.desktop === 'sonar' || n.dataset?.launch === 'sonar'));
+    if (sonarIcon && entry?.kind === 'file') { setCell(d, drag.from); openFileIn(entry, 'sonar'); drag = null; return; }
     const target = document.elementsFromPoint(e.clientX, e.clientY).find(n => n.classList?.contains('window'));
-    if (target && entry?.kind === 'file' && ['workbench', 'enrich'].includes(target.dataset.app)) { setCell(d, drag.from); openFileIn(entry, target.dataset.app); drag = null; return; }
+    if (target && entry?.kind === 'file' && ['workbench', 'enrich', 'sonar'].includes(target.dataset.app)) { setCell(d, drag.from); openFileIn(entry, target.dataset.app); drag = null; return; }
     if (target && entry && target.dataset.app === 'files') { setCell(d, drag.from); drag = null; return; }
     const {cols, rows} = gridSize(), taken = new Set([...desktopIcons.values()].filter(x => x !== d && !x.hidden).map(x => x.dataset.cell));
     setCell(d, wl.nearestFreeCell([(parseFloat(d.style.left) || 0) / CELL.w, (parseFloat(d.style.top) || 0) / CELL.h], cols, rows, taken) || drag.from);
@@ -176,7 +180,8 @@ for (const [id, name] of APPS) {
   const b = button('', () => openApp(id), 'dock-app'); b.dataset.launch = id; b.dataset.open = 'false'; b.setAttribute('aria-label', name);
   const sym = el('span', undefined, 'dock-symbol'); sym.append(icon(ICON[id])); b.append(sym, el('span', name, 'dock-label'));
   if (id === 'admin') b.hidden = true; $('#app-launcher').append(b); launchers.set(id, b);
-  addDesktopIcon(id, name, ICON[id], () => openApp(id)).hidden = id === 'admin';
+  const desktopIcon = addDesktopIcon(id, name, ICON[id], () => openApp(id)); desktopIcon.hidden = id === 'admin';
+  if (id === 'sonar') for (const target of [b, desktopIcon]) dropTarget(target, f => openApp('sonar')?.load(f), 'sonar');
 }
 // 21st.dev 2572 cosine magnification (vanilla port), native buttons and no perpetual RAF loop.
 $('#app-launcher').addEventListener('pointermove', e => { if (mobile() || matchMedia('(prefers-reduced-motion: reduce)').matches) return; for (const b of launchers.values()) { const r = b.getBoundingClientRect(); const distance = Math.abs(e.clientX - r.x - r.width / 2); b.style.setProperty('--scale', String(distance < 120 ? 1 + .12 * (1 + Math.cos(distance / 120 * Math.PI)) : 1)); } });
@@ -363,6 +368,7 @@ function jobEngine(w, box, runId, ui = {}) {
     const headers = Object.keys(outputs[0]), csv = toCsv(headers, outputs), base = (job?.name || 'results').replace(/\.(csv|xlsx)$/i, '');
     const actions = el('div', undefined, 'toolbar'); wrap.append(actions);
     actions.append(button('Download CSV', () => saveBlob(new Blob([csv], {type: 'text/csv;charset=utf-8'}), base + ' results.csv'), 'btn btn-gold'));
+    actions.append(button('Ask Sonar about this', () => openApp('sonar')?.load(outputs, base + ' results.csv')));
     const saved = el('p', 'Saving to Files...', 'saved-line'); wrap.append(saved);
     ui.report?.(outputs, wrap, actions, base);
     wrap.append(table(headers, outputs.slice(0, 100).map(r => headers.map(h => r[h])), 'Results table'));
@@ -691,6 +697,7 @@ function filesApp(w) {
       const acts = el('span', undefined, 'file-acts');
       acts.append(button('Rename', () => rename(li, entry), 'btn btn-ghost'));
       if (entry.kind === 'file') acts.append(button('Download', () => download(entry), 'btn btn-ghost'));
+      if (entry.kind === 'file' && tabular(entry.name)) acts.append(button('Ask Sonar about this', () => openFileIn(entry, 'sonar'), 'btn btn-ghost'));
       acts.append(button('Delete', () => confirmDelete(li, entry), 'btn btn-ghost danger'));
       for (const b of acts.children) b.setAttribute('aria-label', b.textContent + ' ' + entry.name);
       li.append(sym, open, meta, acts); listBox.append(li);
