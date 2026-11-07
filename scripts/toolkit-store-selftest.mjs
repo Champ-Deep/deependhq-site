@@ -31,7 +31,9 @@ const reserve = (d1, p) => store.reserveStmt(d1, p).run();
 {
   const d1 = makeD1();
   const tables = d1.query("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'toolkit_%' ORDER BY name").results;
-  check('migration creates 5 toolkit tables', tables.length === 5, JSON.stringify(tables));
+  // By name, not count: 0004 to 0008 add the connection, staged-item, agent API and delivery tables.
+  const want = ['toolkit_accounts', 'toolkit_api_calls', 'toolkit_api_keys', 'toolkit_connections', 'toolkit_deliveries', 'toolkit_events', 'toolkit_ops', 'toolkit_runs', 'toolkit_settings', 'toolkit_staged'];
+  check('migrations create the 10 toolkit tables by name', JSON.stringify(tables.map(t => t.name)) === JSON.stringify(want), JSON.stringify(tables));
   const s = await store.readSettings(d1);
   check('absent settings read as 0 (fail closed)', s.global_daily_cap_micro === 0 && s.welcome_credits === 0 && s.default_daily_credit_cap === 0 && s.paid_allowance_credits === 0);
 }

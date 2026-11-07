@@ -362,6 +362,79 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
 .embed-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px}
 .embed iframe{flex:1;width:100%;min-height:320px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg)}
 
+/* approvals: one row per staged item. Status is a word on a pill, never colour alone; expired is hatched grey. */
+.dock-symbol{position:relative}
+.badge{position:absolute;top:-7px;right:-11px;min-width:18px;height:18px;padding:0 5px;border-radius:var(--r-pill);background:var(--win);color:var(--navy);font:700 11px/18px var(--font-mono);text-align:center;box-shadow:0 0 0 2px var(--surface)}
+.app-icon .badge{top:-8px;right:-8px;box-shadow:0 0 0 2px var(--bg)}
+.staged-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.staged-list>.empty{padding:20px;border:1px dashed var(--line-2);border-radius:var(--r-lg);color:var(--muted)}
+.staged{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);scroll-margin:16px}
+.staged:focus{outline:none}
+.staged[data-target=true]{outline:2px solid var(--win);outline-offset:2px}
+.staged[data-state=rejected],.staged[data-state=expired]{background:var(--surface)}
+.kind-glyph{display:grid;place-items:center;width:36px;height:36px;border-radius:var(--r-md);background:var(--card-2);color:var(--win-text)}
+.kind-glyph svg{width:20px;height:20px}
+.kind-glyph[data-kind=unknown] path{fill:currentColor}
+.staged[data-state=rejected] .kind-glyph,.staged[data-state=expired] .kind-glyph{color:var(--muted)}
+.staged-main{min-width:0}
+.staged-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:12px/1.5 var(--font-mono);color:var(--muted)}
+.source-chip{padding:2px 9px;border-radius:var(--r-pill);border:1px solid var(--line-2);background:var(--card-2);color:var(--text);font:600 12px/1.5 var(--font-ui);overflow-wrap:anywhere}
+.pill{margin-left:auto;padding:2px 10px;border-radius:var(--r-pill);border:1px solid var(--line-2);font:600 12px/1.5 var(--font-ui);white-space:nowrap;color:var(--text);background:var(--card)}
+.pill[data-state=pending],.pill[data-state=approving]{border-color:var(--win);color:var(--win-text);background:color-mix(in srgb,var(--win) 12%,var(--card))}
+.pill[data-state=approved]{border-color:var(--build);color:var(--build-text);background:color-mix(in srgb,var(--build) 10%,var(--card))}
+.pill[data-state=rejected]{color:var(--muted)}
+.pill[data-state=expired]{color:var(--text);background:var(--card-2) repeating-linear-gradient(135deg,var(--card-2) 0 3px,var(--line-2) 3px 6px)}
+.pill[data-state=failed]{border-color:var(--danger);color:var(--danger-text)}
+.window-body .staged-title{margin:6px 0 0;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+.credit-meter{display:grid;grid-template-columns:auto minmax(80px,220px) auto;align-items:center;justify-content:start;gap:6px 10px;margin:10px 0 0;font:12px/1.4 var(--font-mono);color:var(--muted)}
+.cm-max{color:var(--text);font-weight:600}
+.cm-bar{position:relative;height:6px;border-radius:3px;background:var(--card-2);overflow:hidden}
+.cm-bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(var(--w,0));background:var(--win)}
+.credit-meter[data-over=true] .cm-bar i{background:var(--danger)}
+.credit-meter[data-over=true] .cm-of{color:var(--danger-text)}
+@container (max-width:520px){.credit-meter{grid-template-columns:minmax(0,1fr)}.credit-meter .cm-bar{max-width:240px}}
+.window-body .agent-note{margin:10px 0 0;padding:10px 14px;border-radius:var(--r-md);background:var(--surface);border:1px solid var(--line)}
+.agent-note figcaption{font:600 11px/1.4 var(--font-ui);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.agent-note blockquote{margin:0;font-size:14px;line-height:1.5;color:var(--text);white-space:pre-wrap;overflow-wrap:anywhere}
+.agent-note blockquote::before{content:open-quote}.agent-note blockquote::after{content:close-quote}
+.staged-line{margin-top:8px;font-size:13px;color:var(--muted)}
+.staged-line.bad{color:var(--danger-text)}
+.staged-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.staged .msg .notice{margin:10px 0 0}
+
+/* agent access: 21st.dev Environment Variables (36559), vanilla port. Key rows, mono prefix, scope chips, one time reveal. */
+.window-body .agent-access{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.agent-access h3:focus{outline:none}
+.key-list{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card)}
+.key-list>.empty{padding:16px;color:var(--muted)}
+.key-row{position:relative;display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 8px 12px 16px}
+.key-row+.key-row::before{content:'';position:absolute;top:0;left:16px;right:16px;border-top:1px solid var(--line)}
+.key-sym svg{display:block;width:20px;height:20px;color:var(--muted)}
+.key-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.key-label{font:600 14px/1.4 var(--font-ui);overflow-wrap:anywhere}
+.scope-chips{display:flex;flex-wrap:wrap;gap:4px}
+.scope-chip{padding:1px 7px;border-radius:var(--r-sm);background:var(--card-2);font:12px/1.6 var(--font-mono);color:var(--muted)}
+.key-prefix{display:block;margin-top:4px;font:13px/1.4 var(--font-mono);color:var(--text);overflow-wrap:anywhere}
+.key-meta{display:block;font-size:12px;color:var(--muted)}
+.key-row .confirm{grid-column:1/-1}
+.key-form>fieldset{border:0;padding:0;margin:0;display:grid;gap:14px}
+.scope-picks{display:grid;gap:0;margin:0}
+.scope-pick{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px;min-height:44px;cursor:pointer}
+.scope-pick code{display:inline-block;min-width:16ch;margin-right:10px;font:600 13px var(--font-mono);color:var(--text)}
+.scope-pick span span{color:var(--muted);font-size:14px}
+.key-form>fieldset>.btn{justify-self:start}
+.window-body .key-reveal{margin:16px 0;padding:16px;display:grid;gap:10px;border:1px solid var(--win);border-radius:var(--r-lg);background:color-mix(in srgb,var(--win) 8%,var(--card))}
+.window-body .key-reveal h4{margin:0}
+.kr-warn{font-weight:600;color:var(--text)}
+.kr-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.key-secret{flex:1 1 280px;min-width:0;padding:10px 12px;border-radius:var(--r-md);background:var(--bg);border:1px solid var(--line-2);font:14px/1.5 var(--font-mono);color:var(--text);overflow-wrap:anywhere;user-select:all}
+.key-reveal>.btn{justify-self:start}
+.copy-swap{display:grid}
+.copy-swap svg{grid-area:1/1;width:16px;height:16px;transition:opacity var(--dur-1) var(--ease-out),transform var(--dur-1) var(--ease-out)}
+.copy-btn[data-copied=false] .copy-swap svg:last-child,.copy-btn[data-copied=true] .copy-swap svg:first-child{opacity:0;transform:scale(.75)}
+.copy-btn[data-copied=true]{border-color:var(--build);color:var(--build-text)}
+.snippet pre{margin:10px 0;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg);font:13px/1.55 var(--font-mono);color:var(--text);white-space:pre-wrap;overflow-wrap:anywhere}
+
 /* sign-in: a page of deependhq.com. 21st.dev 2034 Modern Animated Sign In, ported: two-pane card shell on a
    radial ground (navy, Lamp glow at 12 percent, never the source's blue), BoxReveal headline lines as CSS
    keyframes, the pointer-following input glow. Clerk renders the fields. */
@@ -421,8 +494,9 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
   .desktop-icons{position:static;display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:4px;margin-bottom:16px}
   .desk-icon{position:static;width:auto;margin:0}
   .desktop-widgets{position:static;width:auto;max-height:none;overflow:visible}
-  .dock{bottom:max(12px,env(safe-area-inset-bottom));max-width:calc(100% - 16px);padding:6px;gap:0;overflow-x:auto}
-  .dock-app{min-width:46px;min-height:52px;padding:4px 2px 8px}
+  /* eight 44px apps (Approvals made it eight) still fit a 375px phone without scrolling the dock */
+  .dock{bottom:max(12px,env(safe-area-inset-bottom));max-width:calc(100% - 12px);padding:4px;gap:0;overflow-x:auto}
+  .dock-app{min-width:44px;min-height:52px;padding:4px 0 8px}
   .dock-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   #windows{z-index:960}
   .window{position:fixed;inset:0!important;width:auto!important;height:auto!important;border-radius:0;border:0}
@@ -449,3 +523,57 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
   .signin-story{padding:28px 20px;border-left:0;border-top:1px solid var(--line)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.sr-line::after{display:none}.dock-symbol{transform:none!important}}
+
+/* ---- My agent (card t_2fa771e9). Mode control: the 21st.dev 43311 pill radiogroup pattern on native radios. ---- */
+.window[data-app=myagent] .mono{font-family:var(--font-mono);font-size:13px}
+.conn-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.conn-head h4{margin:0}
+.state-chip{display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:0 12px;border:1px solid var(--line-2);border-radius:var(--r-pill);font:600 13px var(--font-ui);color:var(--muted);white-space:nowrap}
+.state-chip::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+.state-chip[data-state=connected]{color:var(--build);border-color:color-mix(in srgb,var(--build) 45%,var(--card))}
+.state-chip[data-state=changed]{color:var(--win);border-color:var(--win);background:color-mix(in srgb,var(--win) 12%,var(--card))}
+.state-chip[data-state=error]{color:var(--danger-text);border-color:var(--danger)}
+.state-chip[data-state=loading]::before{animation:tk-pulse 1s var(--ease-out) infinite alternate}
+.chip-note{margin:0;max-width:65ch;color:var(--text);overflow-wrap:anywhere}
+.key-hint{margin:0;font-size:13px}
+.agent-tools{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card)}
+.agent-tool{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 24px;padding:14px 16px;border-top:1px solid var(--line)}
+.agent-tool:first-child{border-top:0}
+.tool-name{margin:0;font:600 14px/1.4 var(--font-mono);color:var(--text);overflow-wrap:anywhere}
+.tool-desc{margin:4px 0 0;max-width:65ch;color:var(--muted);font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.tool-hint{margin:6px 0 0;font-size:12px;color:var(--dim)}
+.read-warning{grid-column:1/-1;margin:0;padding:10px 12px;border-radius:var(--r-md);background:color-mix(in srgb,var(--win) 12%,var(--card));color:var(--text);font-size:13px;line-height:1.5}
+.seg{display:inline-flex;gap:2px;margin:0;padding:3px;border:1px solid var(--line-2);border-radius:var(--r-pill);background:var(--bg)}
+.seg-opt{position:relative;display:inline-flex}
+.seg-opt input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.seg-opt span{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:var(--r-pill);font:600 13px var(--font-ui);color:var(--muted);white-space:nowrap;transition:background var(--dur-1) var(--ease-out),color var(--dur-1) var(--ease-out)}
+.seg-opt:hover span{color:var(--text)}
+.seg-opt input:checked+span{background:var(--win);color:var(--navy)}
+.seg-opt input:focus-visible+span{outline:2px solid var(--win);outline-offset:2px}
+.notice.warn{border-color:var(--win);background:color-mix(in srgb,var(--win) 10%,var(--card))}
+.agent-tools:has(> .empty-line){border-style:dashed;background:transparent}
+.empty-line{margin:0;padding:14px 16px;color:var(--muted)}
+.hook-events{display:flex;flex-wrap:wrap;gap:4px 18px}
+.secret-reveal{margin:12px 0;padding:16px;border:1px solid var(--win);border-radius:var(--r-lg);background:color-mix(in srgb,var(--win) 8%,var(--card))}
+.secret-reveal h4{margin:0 0 6px}
+.reveal-warn{margin:0 0 10px;color:var(--text);font-weight:600}
+.secret-value,.snippet-code{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg);color:var(--text);font:500 13px/1.6 var(--font-mono)}
+.secret-value{overflow-wrap:anywhere}
+.snippet-code{margin:12px 0 0;white-space:pre;overflow:auto;max-width:100%}
+.code-chip{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid var(--danger);border-radius:var(--r-pill);color:var(--danger-text);font:600 12px var(--font-mono);white-space:nowrap}
+.code-chip[data-ok=true]{border-color:color-mix(in srgb,var(--build) 45%,var(--card));color:var(--build)}
+.delivery-log .mono{white-space:nowrap}
+@media (max-width:48rem){
+  .agent-tool{grid-template-columns:minmax(0,1fr)}.seg{justify-self:start}.seg-opt span{min-height:44px}
+  /* the guide launcher (.tg-launcher) floats over full screen windows on phones; leave room to scroll the last row clear of it */
+  .window[data-app=myagent] .window-body{padding-bottom:96px}
+  /* Phones: each delivery stacks to event and status, then time and age, then Resend, so nothing hides off to the side. */
+  .delivery-log thead{display:none}
+  .delivery-log table,.delivery-log tbody{display:block}
+  .delivery-log tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 12px;padding:12px;border-bottom:1px solid var(--line)}
+  .delivery-log tbody tr:last-child{border-bottom:0}
+  .delivery-log td{display:block;min-width:0;max-width:none;padding:0;border:0}
+  .delivery-log td:nth-child(3),.delivery-log td:nth-child(4){color:var(--muted);font-size:12px}
+  .delivery-log td:nth-child(5){grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){.state-chip[data-state=loading]::before{animation:none}}

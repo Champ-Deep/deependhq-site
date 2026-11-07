@@ -12,9 +12,9 @@ const env={TOOLKIT_DB:db,TOOLKIT_FILES:makeR2(),CLERK_PUBLISHABLE_KEY:PK,CLERK_S
 let mode='ok';
 const providerCalls=[];
 const MODELS=[
-  {id:'deepseek/deepseek-v4.1-flash',pricing:{prompt:'0.00000014',completion:'0.00000028'},supported_parameters:['response_format','structured_outputs']},
-  {id:'deepseek/deepseek-v4.1',pricing:{prompt:'0.00000055',completion:'0.00000219'},supported_parameters:['response_format','structured_outputs']},
-  {id:'openai/gpt-5-mini',pricing:{prompt:'0.00000025',completion:'0.000002'},supported_parameters:['response_format','structured_outputs']},
+  {id:'deepseek/deepseek-v4.1-flash',pricing:{prompt:'0.00000014',completion:'0.00000028'},supported_parameters:['response_format','structured_outputs','tools']},
+  {id:'deepseek/deepseek-v4.1',pricing:{prompt:'0.00000055',completion:'0.00000219'},supported_parameters:['response_format','structured_outputs','tools']},
+  {id:'openai/gpt-5-mini',pricing:{prompt:'0.00000025',completion:'0.000002'},supported_parameters:['response_format','structured_outputs','tools']},
 ];
 const GUESS=[[/e-?mail/i,'email'],[/company|account/i,'company'],[/domain|website/i,'domain'],[/title|job|role/i,'title'],[/name/i,'person_name']];
 // Fixture intake model: turn one proposes a classify plan and asks a question, turn two adds a yes or no check.
