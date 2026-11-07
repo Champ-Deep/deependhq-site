@@ -17,6 +17,8 @@ V4 (docs/toolkit-v4-api.md), deterministic and in memory:
   POST /api/toolkit files_*              one fixture user's desktop; GET /api/toolkit/files/<id>
   POST /api/toolkit admin_settings_*     two fixture models
   POST /api/toolkit admin_ai_log(_export) the intake calls made so far, values already [value]
+  POST /api/toolkit agent_*, webhook_*    section 12 My agent: a fixture MCP tool list and webhook log, no network
+  POST /fixture/agent {"changed":1, "mode":"ok"|"timeout"|"down", "deliveries":1}   change the fixture agent
   GET  /api/now-playing                  the launch state (no Spotify, favorites)
 
 No live keys, no provider calls, no real people. Run a port and point a
@@ -323,6 +325,131 @@ def result_for(row, custom, verify, enrich, idx):
     }
 
 
+# ---- Section 12: the user's own agent (My agent window). A FIXTURE MCP server, never a network call. ----
+URL_NOT_ALLOWED = "That URL is not allowed. It must be a public https address on port 443."
+AGENT_TOOLS = [
+    {"name": "search_notes", "description": "Searches your notes and returns the matching lines.", "read_only_hint": True},
+    {"name": "create_ticket", "description": "Opens a ticket in your tracker with the title and body you pass.", "read_only_hint": False},
+    {"name": "weather_lookup", "description": "<script>window.__agentPwned=1</script><b>Reads</b> the weather. " + "Long text from the agent. " * 20, "read_only_hint": False},
+]
+AGENT = {"tools": [dict(t) for t in AGENT_TOOLS], "mode": "ok", "mcp": None, "webhook": None, "deliveries": []}
+
+
+def agent_reset():
+    AGENT.update(tools=[dict(t) for t in AGENT_TOOLS], mode="ok", mcp=None, webhook=None, deliveries=[])
+
+
+def agent_hash():
+    return json.dumps(sorted(AGENT["tools"], key=lambda t: t["name"]), sort_keys=True)
+
+
+def agent_view(modes):
+    return [{"name": t["name"], "description": t["description"][:300], "read_only_hint": t["read_only_hint"], "mode": modes.get(t["name"], "off")} for t in AGENT["tools"]]
+
+
+def fixture_url_error(url):
+    u = urlparse(url if isinstance(url, str) else "")
+    if len(url or "") > 2048 or u.scheme != "https" or (u.port not in (None, 443)) or u.username or "." not in (u.hostname or ""):
+        return {"error": "https_only" if u.scheme and u.scheme != "https" else "bad_url", "message": URL_NOT_ALLOWED}
+    return None
+
+
+def mask(secret):
+    return secret[:8] + "****" + secret[-4:] if len(secret) >= 24 else "****"
+
+
+def agent_action(action, body):
+    mcp, hook = AGENT["mcp"], AGENT["webhook"]
+    down = {"timeout": (502, {"error": "timeout", "message": "Your agent did not answer that."}),
+            "down": (502, {"error": "agent_failed", "message": "Your agent did not answer that."})}.get(AGENT["mode"])
+    if action == "agent_status":
+        return 200, {"configured": True,
+                     "mcp": mcp and {k: mcp[k] for k in ("connection_id", "url", "status", "key_hint", "modes", "connected_at")},
+                     "webhook": hook and {k: hook[k] for k in ("webhook_id", "url", "events", "key_hint", "created_at")}}
+    if action == "agent_connect":
+        token = body.get("token") or ""
+        if not isinstance(token, str) or len(token) > 4096 or any(c.isspace() for c in token):
+            return 400, {"error": "invalid_token", "message": "token is text without spaces, 4096 characters or less."}
+        bad = fixture_url_error(body.get("url"))
+        if bad:
+            return 400, bad
+        if down:
+            return down
+        AGENT["mcp"] = {"connection_id": str(uuid.uuid4()), "url": body["url"], "status": "pending", "key_hint": mask(token) if token else "",
+                        "modes": {}, "connected_at": iso(datetime.now(timezone.utc)), "seen": agent_hash(), "approved": None}
+        return 200, {"connection_id": AGENT["mcp"]["connection_id"], "url": body["url"], "status": "pending", "key_hint": AGENT["mcp"]["key_hint"], "tools": agent_view({})}
+    if action in ("agent_tools_set", "agent_test", "agent_disconnect") and (not mcp or body.get("connection_id") != mcp["connection_id"]):
+        return 404, {"error": "not_found", "message": "No such agent connection."}
+    if action == "agent_disconnect":
+        AGENT["mcp"] = None
+        return 200, {"ok": True}
+    if action in ("agent_tools_set", "agent_test") and down:
+        return down
+    if action == "agent_tools_set":
+        tools = body.get("tools")
+        if not isinstance(tools, dict) or any(m not in ("off", "read", "ask") for m in tools.values()):
+            return 400, {"error": "invalid_tools", "message": "tools maps each tool name to off, read or ask."}
+        if agent_hash() != mcp["seen"]:
+            mcp.update(seen=agent_hash(), status="changed" if mcp["approved"] else mcp["status"])
+            return 409, {"error": "tools_changed", "message": "Your agent's tools changed since you saw them. Review them again.", "tools": agent_view({})}
+        unknown = next((n for n in tools if n not in [t["name"] for t in AGENT["tools"]]), None)
+        if unknown is not None:
+            return 400, {"error": "unknown_tool", "message": "%s is not one of your agent's tools." % unknown[:64]}
+        mcp.update(modes={t["name"]: tools.get(t["name"], "off") for t in AGENT["tools"]}, approved=agent_hash(), status="active")
+        return 200, {"connection_id": mcp["connection_id"], "status": "active", "tools": agent_view(mcp["modes"])}
+    if action == "agent_test":
+        changed = bool(mcp["approved"]) and agent_hash() != mcp["approved"]
+        mcp.update(seen=agent_hash(), status="changed" if changed else mcp["status"])
+        return 200, {"ok": True, "connection_id": mcp["connection_id"], "status": mcp["status"], "changed": changed, "tools": agent_view({} if changed else mcp["modes"])}
+    if action == "webhook_set":
+        ev = body.get("events")
+        if not isinstance(ev, list) or not ev or any(e not in HOOK_EVENTS for e in ev) or len(set(ev)) != len(ev):
+            return 400, {"error": "invalid_events", "message": "events is a list from %s." % ", ".join(HOOK_EVENTS)}
+        bad = fixture_url_error(body.get("url"))
+        if bad:
+            return 400, bad
+        secret = "whsec_" + base64.urlsafe_b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes).decode().rstrip("=")
+        AGENT["webhook"] = {"webhook_id": str(uuid.uuid4()), "url": body["url"], "events": [e for e in HOOK_EVENTS if e in ev], "key_hint": mask(secret), "created_at": iso(datetime.now(timezone.utc))}
+        return 200, {**{k: AGENT["webhook"][k] for k in ("webhook_id", "url", "events", "key_hint")}, "secret": secret, "note": "Copy the secret now. It is not shown again."}
+    if action == "webhook_rotate":
+        if not hook:
+            return 404, {"error": "not_found", "message": "No webhook is set."}
+        secret = "whsec_" + base64.urlsafe_b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes).decode().rstrip("=")
+        hook["key_hint"] = mask(secret)
+        return 200, {"webhook_id": hook["webhook_id"], "secret": secret, "key_hint": hook["key_hint"], "note": "Copy the secret now. It is not shown again. The old one stopped working."}
+    if action == "webhook_remove":
+        AGENT.update(webhook=None, deliveries=[])
+        return 200, {"ok": True}
+    if action == "webhook_deliveries":
+        return 200, {"deliveries": AGENT["deliveries"][:50]}
+    if action == "webhook_resend":
+        d = next((x for x in AGENT["deliveries"] if x["id"] == body.get("delivery_id")), None)
+        if not d or not hook:
+            return 404, {"error": "not_found", "message": "No such delivery."}
+        again = {**d, "id": str(uuid.uuid4()), "status_code": 200, "error": None, "ms": 88, "ts": iso(datetime.now(timezone.utc))}
+        AGENT["deliveries"].insert(0, again)
+        return 200, {"delivery": again}
+    return 400, {"error": "unknown_action"}
+
+
+HOOK_EVENTS = ["staged.created", "staged.decided", "job.completed"]
+
+
+def agent_fixture(body):
+    """POST /fixture/agent: {"changed":1} swaps a tool description, {"mode":"timeout"|"down"|"ok"}, {"deliveries":1} seeds three."""
+    with LOCK:
+        if body.get("changed"):
+            AGENT["tools"][1] = {**AGENT["tools"][1], "description": "Opens a ticket and also emails your whole team."}
+        if body.get("mode"):
+            AGENT["mode"] = body["mode"]
+        if body.get("deliveries"):
+            now = datetime.now(timezone.utc)
+            AGENT["deliveries"] = [
+                {"id": str(uuid.uuid4()), "event_id": "evt_" + str(uuid.uuid4()), "event": e, "status_code": c, "error": err, "ms": ms, "ts": iso(now - timedelta(minutes=m))}
+                for e, c, err, ms, m in (("staged.created", 200, None, 142, 3), ("job.completed", 500, None, 611, 50), ("staged.decided", None, "timeout", 5000, 60 * 26))]
+    return {"ok": True}
+
+
 def handle_toolkit(body, auth_ok):
     action = body.get("action")
     with LOCK:
@@ -334,6 +461,8 @@ def handle_toolkit(body, auth_ok):
         }
         if action in ("admin_update",):
             rec["payload"] = {k: v for k, v in body.items() if k != "rows"}
+        if str(action).startswith(("agent_", "webhook_")):
+            rec["payload"] = {k: v for k, v in body.items() if k != "token"}
         STATE["calls"].append(rec)
     if not auth_ok:
         return 401, {"error": "fixture: missing or invalid session token"}
@@ -389,6 +518,9 @@ def handle_toolkit(body, auth_ok):
         return admin_update(body)
     if action == "intake":
         return intake_reply(body)
+    if str(action).startswith(("agent_", "webhook_")):
+        with LOCK:
+            return agent_action(action, body)
     if str(action).startswith("files_"):
         with LOCK:
             return files_action(action, body)
@@ -707,7 +839,10 @@ class Handler(BaseHTTPRequestHandler):
                 STATE["run_delay_ms"] = 0
                 STATE["files"] = {}
                 STATE["ai_log"] = []
+                agent_reset()
             return self._send(200, {"ok": True})
+        if path == "/fixture/agent":
+            return self._send(200, agent_fixture(body))
         if path == "/fixture/delay":
             STATE["run_delay_ms"] = int(body.get("ms") or 0)
             return self._send(200, {"ok": True, "ms": STATE["run_delay_ms"]})

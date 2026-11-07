@@ -32,10 +32,11 @@ const ICON = {
   workbench: 'M4 5h24v22H4z M4 12h24 M12 12v15', enrich: 'M16 3l3.2 8.8L28 15l-8.8 3.2L16 27l-3.2-8.8L4 15l8.8-3.2z',
   files: 'M3 8h10l3 3h13v16H3z', beam: 'M4 16h24 M18 6l10 10-10 10', pdf: 'M8 3h11l6 6v20H8z M18 3v8h7 M12 17h9 M12 22h9',
   account: 'M21 10a5 5 0 1 1-10 0a5 5 0 1 1 10 0 M6 29v-5a10 10 0 0 1 20 0v5', admin: 'M4 8h24 M4 16h24 M4 24h24 M11 4v8 M21 12v8 M14 20v8',
+  myagent: 'M11 4v7 M21 4v7 M7 11h18v5a9 9 0 0 1-18 0z M16 25v4',
   file: 'M8 3h11l6 6v20H8z M18 3v8h7', folder: 'M3 8h10l3 3h13v16H3z',
 };
 // Deep Enrich sits right after Data Workbench, in the dock and on the desktop.
-const APPS = [['workbench', 'Data Workbench'], ['enrich', 'Deep Enrich'], ['files', 'Files'], ['beam', 'ChampBeam'], ['pdf', 'ChamPDF'], ['account', 'Account'], ['admin', 'Admin']];
+const APPS = [['workbench', 'Data Workbench'], ['enrich', 'Deep Enrich'], ['files', 'Files'], ['beam', 'ChampBeam'], ['pdf', 'ChamPDF'], ['myagent', 'My agent'], ['account', 'Account'], ['admin', 'Admin']];
 const NAME = Object.fromEntries(APPS);
 function icon(path) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', '0 0 32 32'); svg.setAttribute('aria-hidden', 'true');
@@ -91,7 +92,7 @@ function openApp(id) {
   node.addEventListener('pointerdown', () => setActive(id)); node.addEventListener('focusin', () => setActive(id));
   dragWindow(w, header); resizeWindow(w);
   header.addEventListener('dblclick', e => { if (!e.target.closest('button') && !mobile()) toggleMax(w); });
-  ({workbench, enrich: enrichApp, files: filesApp, beam: embedded, pdf: embedded, account, admin})[id](w);
+  ({workbench, enrich: enrichApp, files: filesApp, beam: embedded, pdf: embedded, myagent: myAgent, account, admin})[id](w);
   close.focus();
   return w;
 }
@@ -732,6 +733,197 @@ function account(w) {
     } catch (e) { notice(content, errorText(e), true); } finally { refresh.disabled = false; }
   }
   load();
+}
+
+// ---------------- My agent: the user's own MCP server and webhooks (docs/toolkit-v4-api.md section 12) ----------------
+const URL_NOT_ALLOWED = 'That URL is not allowed. It must be a public https address on port 443.';
+// Mirrors the parse-time checks of checkOutboundUrl (worker/outbound-guard.js) and its one message; the server, which also resolves DNS, decides.
+function outboundUrlError(raw) {
+  let u; try { u = new URL(raw); } catch { return URL_NOT_ALLOWED; }
+  const host = u.hostname.replace(/\.$/, '');
+  return raw.length > 2048 || u.protocol !== 'https:' || (u.port && u.port !== '443') || u.username || u.password || host.startsWith('[') || /^[\d.]+$/.test(host) || /(^|\.)0x[0-9a-f]*$/i.test(host) || !host.includes('.') ? URL_NOT_ALLOWED : '';
+}
+const agentError = e => e.message === 'timeout' ? 'Your agent did not answer in time.' : errorText(e);
+function ago(iso) { const s = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 1000)); return !Number.isFinite(s) ? 'Date unavailable' : s < 60 ? 'just now' : s < 3600 ? Math.floor(s / 60) + ' min ago' : s < 86400 ? Math.floor(s / 3600) + ' h ago' : age(iso); }
+async function copyText(text, btn, done = 'Copied') { try { await navigator.clipboard.writeText(text); btn.textContent = done; return true; } catch { btn.textContent = 'Copy blocked. Select and copy by hand'; return false; } }
+const AGENT_MODES = [['off', 'Off'], ['read', 'Read'], ['ask', 'Ask me']];
+const READ_WARNING = 'DeepBot will call this tool without asking, and may pass text from your files to it. Use Read only for tools that do not change anything.';
+const CHANGED_TEXT = 'Your agent\'s tools changed. Review them before DeepBot can use them.';
+const RECONNECT_TEXT = 'Saving reconnects your agent. Every tool goes back to Off, and a blank token field removes the saved token. Press Save and list tools again to go ahead.';
+const HOOK_EVENTS = ['staged.created', 'staged.decided', 'job.completed'];
+// Verbatim from docs/toolkit-v4-api.md section 12, "Verifying a delivery"; tests/my_agent_flows.py compares the two.
+const VERIFY_SNIPPET = [
+  'import { createHmac, timingSafeEqual } from \'node:crypto\';',
+  '// secret: your whsec_ value. header: the X-Toolkit-Signature header. body: the raw body as a string.',
+  'export function verifyToolkitSignature(secret, header, body, toleranceSec = 300) {',
+  '  const parts = Object.fromEntries(String(header).split(\',\').map((p) => p.split(\'=\', 2)));',
+  '  const t = Number(parts.t);',
+  '  if (!parts.v1 || !Number.isInteger(t) || Math.abs(Date.now() / 1000 - t) > toleranceSec) return false;',
+  '  const want = Buffer.from(createHmac(\'sha256\', secret).update(`${t}.${body}`).digest(\'hex\'));',
+  '  const got = Buffer.from(parts.v1);',
+  '  return got.length === want.length && timingSafeEqual(got, want);',
+  '}',
+].join('\n');
+
+function myAgent(w) {
+  const b = w.body; if (!requireSignIn(b)) return;
+  const head = el('div', undefined, 'app-head'); head.append(el('h3', 'Connect your own agent', 'app-title'), el('p', 'Two directions. DeepBot can call the tools you approve on your MCP server, and the toolkit can notify your agent when something happens here.', 'plain'));
+  const wait = el('p', 'Loading your agent connection...', 'notice loading'); wait.setAttribute('role', 'status');
+  b.append(head, wait);
+  (async function load() {
+    let st;
+    try { st = await session.api('agent_status', {}); }
+    catch (e) { if (!w.node.isConnected) return; wait.remove(); const n = notice(b, 'My agent did not load: ' + errorText(e), true); n.append(' ', button('Try again', () => { n.remove(); b.append(wait); load(); }, 'btn btn-text')); return; }
+    if (!w.node.isConnected) return; wait.remove();
+    if (!st.configured) { notice(b, 'Connections are not switched on yet.'); return; }
+    const tabs = el('div', undefined, 'tabs'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'My agent sections'); b.append(tabs);
+    const sections = [['mcp', 'MCP server', p => mcpPanel(p, st.mcp)], ['hooks', 'Webhooks', p => hooksPanel(p, st.webhook)], ['verify', 'Verify deliveries', verifyPanel]], panels = {};
+    for (const [key, label, render] of sections) {
+      const t = button(label, () => show(key), 'tab'); t.setAttribute('role', 'tab'); t.id = 'myagent-tab-' + key; t.dataset.tab = key; tabs.append(t);
+      const p = el('div', undefined, 'tab-panel'); p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', t.id); p.dataset.panel = key; p.hidden = true; panels[key] = {p, t}; b.append(p); render(p);
+    }
+    // Each panel renders once and keeps its state, so switching tabs never refetches or drops a typed URL.
+    function show(key) { for (const [k, x] of Object.entries(panels)) { x.p.hidden = k !== key; x.t.setAttribute('aria-selected', String(k === key)); x.t.tabIndex = k === key ? 0 : -1; } }
+    tabs.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; const keys = sections.map(s => s[0]), next = keys[(keys.indexOf(document.activeElement.dataset.tab) + d + keys.length) % keys.length]; show(next); panels[next].t.focus(); });
+    show('mcp');
+  })();
+
+  function mcpPanel(p, saved) {
+    let conn = saved && {id: saved.connection_id, status: saved.status}, modes = {};
+    const warned = new Set();
+    const form = el('form', undefined, 'card-form agent-conn'); form.noValidate = true;
+    const top = el('div', undefined, 'conn-head'), chip = el('span', undefined, 'state-chip'), note = el('p', undefined, 'chip-note'); note.setAttribute('role', 'status');
+    top.append(el('h4', 'Your MCP server'), chip);
+    const url = input(saved?.url || '', 'url'), token = input('', 'password'); url.placeholder = 'https://agent.example.com/mcp'; url.spellcheck = false; url.autocomplete = 'off'; token.autocomplete = 'new-password';
+    const grid = el('div', undefined, 'form-grid'); grid.append(field('Server URL, https only', url, 'wide'), field('Bearer token, optional. Saving replaces the saved one.', token, 'wide'));
+    const hint = el('p', undefined, 'plain key-hint');
+    const save = button('Save and list tools', () => {}, 'btn btn-gold'); save.type = 'submit';
+    const test = button('Test', testConn), bar = el('div', undefined, 'toolbar'); bar.append(save, test);
+    // A saved connection gets one warning press first: agent_connect replaces it, drops the token if the field is blank and resets every mode.
+    const again = el('p', RECONNECT_TEXT, 'notice warn reconnect-warn'); again.setAttribute('role', 'alert'); again.hidden = true;
+    form.append(top, note, grid, hint, bar, again);
+    const list = el('div', undefined, 'agent-tools'), out = el('div', undefined, 'msg'); out.setAttribute('aria-live', 'polite');
+    const saveModes = button('Save tool modes', saveTools, 'btn btn-gold'), foot = el('div', undefined, 'toolbar'); foot.append(saveModes);
+    p.append(form, el('h4', 'Tools'), el('p', 'Names and descriptions come from your agent. They are shown as plain text, and DeepBot treats them as untrusted. Every tool starts Off.', 'plain'), list, foot, out);
+    const showHint = h => { hint.textContent = h ? 'Saved token: ' + h : 'No token saved.'; };
+    function setChip(state, text) {
+      chip.dataset.state = state;
+      chip.textContent = {off: 'Not connected', loading: 'Checking', connected: 'Connected', changed: 'Tools changed', error: 'Error'}[state];
+      note.textContent = text ?? {off: 'Connect an MCP server and DeepBot can call the tools you approve.', loading: 'Asking your agent for its tools...', changed: CHANGED_TEXT, connected: conn?.status === 'pending' ? 'Nothing is approved yet. Choose a mode for each tool and save.' : 'DeepBot can use the tools you set to Read or Ask me.'}[state] ?? '';
+    }
+    const busy = on => { save.disabled = saveModes.disabled = on; test.disabled = on || !conn; };
+    const emptyList = text => { list.replaceChildren(el('p', text, 'empty-line')); foot.hidden = true; };
+    function renderTools(tools) {
+      modes = Object.fromEntries(tools.map(t => [t.name, t.mode || 'off']));
+      if (!tools.length) return emptyList('Your agent lists no tools.');
+      list.replaceChildren(...tools.map(row)); foot.hidden = false;
+    }
+    function row(t, i) {
+      const r = el('div', undefined, 'agent-tool'); r.dataset.tool = t.name;
+      const text = el('div', undefined, 'agent-tool-text'); text.append(el('p', t.name, 'tool-name'), el('p', String(t.description ?? '').slice(0, 300), 'tool-desc'));
+      if (String(t.description ?? '').length >= 300) text.append(el('p', 'Your agent\'s description may go on. The toolkit shows its first 300 characters.', 'tool-hint'));
+      if (t.read_only_hint) text.append(el('p', 'Your agent says this tool only reads. DeepBot does not rely on that.', 'tool-hint'));
+      const seg = el('fieldset', undefined, 'seg'); seg.setAttribute('aria-label', 'Mode for ' + t.name);
+      for (const [v, label] of AGENT_MODES) {
+        const radio = input(v, 'radio'); radio.name = 'agent-mode-' + i; radio.checked = modes[t.name] === v;
+        radio.addEventListener('change', () => { modes[t.name] = v; if (v === 'read' && !warned.has(t.name)) { warned.add(t.name); const n = el('p', READ_WARNING, 'read-warning'); n.setAttribute('role', 'note'); r.append(n); } });
+        const l = el('label', undefined, 'seg-opt'); l.append(radio, el('span', label)); seg.append(l);
+      }
+      r.append(text, seg); return r;
+    }
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); out.replaceChildren();
+      const raw = url.value.trim(), bad = outboundUrlError(raw);
+      if (bad) { setChip('error', bad); url.focus(); return; }
+      if (conn && again.hidden) { again.hidden = false; return; }
+      again.hidden = true; busy(true); setChip('loading');
+      try { const r = await session.api('agent_connect', token.value ? {url: raw, token: token.value} : {url: raw}); token.value = ''; conn = {id: r.connection_id, status: r.status}; url.value = r.url; showHint(r.key_hint); setChip('connected'); renderTools(r.tools || []); }
+      catch (err) { setChip('error', agentError(err)); } finally { busy(false); }
+    });
+    async function testConn() {
+      if (!conn) return; busy(true); setChip('loading'); out.replaceChildren();
+      try { const r = await session.api('agent_test', {connection_id: conn.id}); conn.status = r.status; setChip(r.changed || r.status === 'changed' ? 'changed' : 'connected'); renderTools(r.tools || []); }
+      catch (err) { setChip('error', agentError(err)); emptyList('Tools did not load. Press Test to try again.'); } finally { busy(false); }
+    }
+    async function saveTools() {
+      busy(true); out.replaceChildren();
+      try {
+        const r = await session.api('agent_tools_set', {connection_id: conn.id, tools: modes}); conn.status = r.status; setChip('connected'); renderTools(r.tools || []);
+        const n = m => (r.tools || []).filter(t => t.mode === m).length, msg = notice(out, `Saved. Read: ${n('read')}. Ask me: ${n('ask')}. Off: ${n('off')}.` + (n('ask') ? ' DeepBot puts each Ask me call in Approvals and runs it only after you approve it.' : ''));
+        if (n('ask') && NAME.approvals) msg.append(' ', button('Open Approvals', () => openApp('approvals'), 'btn btn-text'));
+      } catch (err) {
+        // The chip sits at the top of the form; the same line goes beside the Save button the user just pressed.
+        if (err.message === 'tools_changed') { conn.status = 'changed'; setChip('changed'); renderTools(err.data?.tools || []); const n = notice(out, CHANGED_TEXT); n.classList.add('warn'); n.scrollIntoView({block: 'nearest'}); }
+        else notice(out, agentError(err), true);
+      } finally { busy(false); }
+    }
+    showHint(saved?.key_hint); emptyList(conn ? 'Loading tools from your agent...' : 'No tools yet. Save your server URL to list them.'); busy(false);
+    if (conn) testConn(); else setChip('off');
+  }
+
+  function hooksPanel(p, saved) {
+    let hook = saved;
+    const events = new Set(hook?.events || HOOK_EVENTS);
+    const form = el('form', undefined, 'card-form'); form.noValidate = true;
+    const url = input(hook?.url || '', 'url'); url.placeholder = 'https://agent.example.com/toolkit-events'; url.spellcheck = false; url.autocomplete = 'off';
+    const evBox = el('fieldset', undefined, 'hook-events'); evBox.append(el('legend', 'Send these events'));
+    for (const e of HOOK_EVENTS) { const c = check(e, events.has(e), on => on ? events.add(e) : events.delete(e)); c.querySelector('span').className = 'mono'; evBox.append(c); }
+    const hint = el('p', undefined, 'plain key-hint'), save = button('Save webhook', () => {}, 'btn btn-gold'); save.type = 'submit';
+    const rotate = button('Rotate secret', rotateSecret), bar = el('div', undefined, 'toolbar'); bar.append(save, rotate);
+    const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
+    const slot = el('div');
+    form.append(el('h4', 'Webhook'), el('p', 'The toolkit posts a signed event to this URL. Events carry ids, counts and status, never a cell value, a file name or a note. One attempt each, so poll Approvals when it matters.', 'plain'), field('Webhook URL, https only', url), evBox, hint, bar, msg);
+    const logHead = el('div', undefined, 'app-head row'), logBox = el('div'), logMsg = el('div', undefined, 'msg'); logMsg.setAttribute('aria-live', 'polite');
+    logHead.append(el('h4', 'Delivery log'), button('Refresh log', loadLog));
+    p.append(form, slot, logHead, logMsg, logBox);
+    // The signing secret's masked form starts with whsec_; only its last four characters are shown here.
+    function paint() { hint.textContent = hook ? 'Signing secret ends in ' + String(hook.key_hint || '').slice(-4) + '. Saving again or rotating makes a new one, and the old one stops working at once.' : 'No webhook yet. Saving shows the signing secret once.'; rotate.hidden = !hook; }
+    function reveal(secret) {
+      // The one copy of the secret lives in this closure and the code element; Close drops both.
+      const panel = el('div', undefined, 'secret-reveal'); panel.setAttribute('role', 'group'); panel.setAttribute('aria-label', 'New signing secret');
+      const code = el('code', secret, 'secret-value'), copy = button('Copy', () => copyText(secret, copy));
+      const close = button('I saved it, close', () => { secret = null; code.textContent = ''; panel.remove(); save.focus(); }, 'btn btn-gold');
+      const acts = el('div', undefined, 'toolbar'); acts.append(copy, close);
+      panel.append(el('h4', 'Your signing secret'), el('p', 'You will not see this again. Put it in your agent now: it checks that each delivery came from the toolkit.', 'reveal-warn'), code, acts);
+      slot.replaceChildren(panel); copy.focus();
+    }
+    const keep = r => ({webhook_id: r.webhook_id, url: r.url ?? hook?.url, events: r.events ?? hook?.events, key_hint: r.key_hint});
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); msg.replaceChildren();
+      const raw = url.value.trim(), bad = outboundUrlError(raw);
+      if (bad) { notice(msg, bad, true); url.focus(); return; }
+      if (!events.size) { notice(msg, 'Pick at least one event.', true); return; }
+      save.disabled = true;
+      try { const r = await session.api('webhook_set', {url: raw, events: HOOK_EVENTS.filter(x => events.has(x))}); hook = keep(r); paint(); reveal(r.secret); loadLog(); }
+      catch (err) { notice(msg, errorText(err), true); } finally { save.disabled = false; }
+    });
+    async function rotateSecret() {
+      rotate.disabled = true; msg.replaceChildren();
+      try { const r = await session.api('webhook_rotate', {}); hook = keep(r); paint(); reveal(r.secret); }
+      catch (err) { notice(msg, errorText(err), true); } finally { rotate.disabled = false; }
+    }
+    async function loadLog() {
+      logBox.replaceChildren(el('p', 'Loading deliveries...', 'notice loading'));
+      try {
+        const ds = (await session.api('webhook_deliveries', {})).deliveries || []; if (!w.node.isConnected) return;
+        const log = ds.length && table(['Event', 'Status', 'Time', 'When', 'Action'], ds.map(d => {
+          const ok = d.status_code >= 200 && d.status_code < 300, c = el('span', d.status_code ? String(d.status_code) : d.error || 'No answer', 'code-chip'); c.dataset.ok = String(ok);
+          const again = button('Resend', async () => { again.disabled = true; logMsg.replaceChildren(); try { const r = await session.api('webhook_resend', {delivery_id: d.id}); notice(logMsg, 'Sent ' + d.event + ' again: ' + (r.delivery?.status_code || r.delivery?.error || 'no answer') + '.'); await loadLog(); } catch (err) { notice(logMsg, errorText(err), true); again.disabled = false; } }, 'btn btn-outline');
+          again.setAttribute('aria-label', 'Resend ' + d.event + ' from ' + ago(d.ts));
+          return [el('span', d.event, 'mono'), c, (d.ms ?? 0) + ' ms', ago(d.ts), again];
+        }), 'Webhook deliveries');
+        if (log) log.classList.add('delivery-log');
+        logBox.replaceChildren(log || el('p', hook ? 'No deliveries yet. Each event the toolkit sends shows here.' : 'Set a webhook to see deliveries here.', 'empty-line'));
+      } catch (e) { logBox.replaceChildren(); notice(logBox, 'Deliveries did not load: ' + errorText(e), true); }
+    }
+    paint(); loadLog();
+  }
+
+  function verifyPanel(p) {
+    const pre = el('pre', VERIFY_SNIPPET, 'snippet-code'); pre.tabIndex = 0; pre.setAttribute('aria-label', 'Signature check in JavaScript');
+    const copy = button('Copy code', () => copyText(VERIFY_SNIPPET, copy)), bar = el('div', undefined, 'toolbar'); bar.append(copy);
+    p.append(el('h4', 'Check the signature on your side'), el('p', 'Node 18 or later. Pass the raw request body exactly as received, before any JSON parsing. Each delivery carries X-Toolkit-Signature: t=<unix seconds>,v1=<hex HMAC-SHA256 of t, a dot and the body>.', 'plain'), pre, bar);
+  }
 }
 
 function admin(w) {
