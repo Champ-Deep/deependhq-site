@@ -231,20 +231,20 @@ async function main() {
   ].join('\n');
   writeFileSync(join(root, 'feed.xml'), rss, 'utf8');
 
-  const staticPages = ['', 'command', 'now', 'journey', 'writing', 'field-notes', 'toolkit', 'privacy'];
+  const staticPages = ['', 'now', 'journey', 'writing', 'toolkit', 'privacy'];
   // Entity URLs are the real static paths the prerenderer now emits, one file
   // per document at post/<slug>/ and company/<slug>/. Listing the old
   // query-string form here pointed Google at a redirect for every essay, which
   // is the same duplicate-page problem wearing a different hat.
   const urls = [
-    ...staticPages.map((p) => `${SITE}/${p}`),
-    ...companies.map((c) => `${SITE}/company/${c.slug}`),
-    ...posts.map((p) => `${SITE}/post/${p.slug}`),
+    ...staticPages.map((p) => ({ loc: `${SITE}/${p}`, lastmod: p === '' || p === 'journey' ? data.brand.today_date : undefined })),
+    ...companies.map((c) => ({ loc: `${SITE}/company/${c.slug}` })),
+    ...posts.map((p) => ({ loc: `${SITE}/post/${p.slug}`, lastmod: p.date })),
   ];
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map((u) => `  <url><loc>${esc(u)}</loc></url>`),
+    ...urls.map((u) => `  <url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${esc(u.lastmod)}</lastmod>` : ''}</url>`),
     '</urlset>',
     '',
   ].join('\n');
