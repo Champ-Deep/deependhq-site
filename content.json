@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 372,
-    "today_date": "2026-11-07",
+    "today_day": 373,
+    "today_date": "2026-11-08",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,18 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-08",
+      "day": 373,
+      "mood": "🧭",
+      "shipping_now": "one support review now has a source digest. the ownership, schema and logging requirements are in one place. the original recording and the forwarded request are still missing. naming those gaps is more useful than another confident summary.",
+      "yesterday_thread": "next week's brief is written. the calendar conflicts are explicit, and the choices still belong to me. a planning document does not move an appointment.",
+      "raw_thought": "five cards closed: four verification checks and one evidence pack. none is a product launch. the system is only useful if a completed check and a completed business action keep different names.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-11-07",
       "day": 372,
@@ -2404,6 +2416,10 @@
     ],
     "recently": [
       {
+        "text": "one support review now has a source digest. the ownership, schema and logging requireme...",
+        "tag": "shipped d373"
+      },
+      {
         "text": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the ne...",
         "tag": "shipped d372"
       },
@@ -2414,10 +2430,6 @@
       {
         "text": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about...",
         "tag": "shipped d370"
-      },
-      {
-        "text": "a day of calls that turned into structure. a partnership discovery call opened a data a...",
-        "tag": "shipped d369"
       }
     ],
     "soon": [

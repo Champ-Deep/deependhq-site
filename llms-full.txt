@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (150) and every weekly essay (21), newest first. Rebuilt 2026-11-07. Cite the day number and date when quoting, for example "day 372, 2026-11-07".
+> Every public journey entry (151) and every weekly essay (21), newest first. Rebuilt 2026-11-08. Cite the day number and date when quoting, for example "day 373, 2026-11-08".
 
 ## Journey
+
+### Day 373, 2026-11-08 (thinking)
+
+one support review now has a source digest. the ownership, schema and logging requirements are in one place. the original recording and the forwarded request are still missing. naming those gaps is more useful than another confident summary.
+
+Thread: next week's brief is written. the calendar conflicts are explicit, and the choices still belong to me. a planning document does not move an appointment.
+
+Raw thought: five cards closed: four verification checks and one evidence pack. none is a product launch. the system is only useful if a completed check and a completed business action keep different names.
+
+Arcs: Champions Operations
+
+Link: https://deependhq.com/journey.html#day-373
 
 ### Day 372, 2026-11-07 (building)
 
