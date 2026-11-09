@@ -7,6 +7,7 @@
   },
   "//main": "Adds worker/index.js to what was a static assets-only deployment. Assets still serve every file; the Worker adds /cta, the /field-notes and /companies redirects, POST /api/decide, GET /showcase, and the HTMLRewriter pass.",
   "main": "worker/index.js",
+  "vars": { "ORACLE_URL": "https://champoracle.deep-ae0.workers.dev" },
   "assets": {
     "//binding": "MUST be declared. Local wrangler does not auto-inject the ASSETS binding, so env.ASSETS was undefined and every page 500'd. Declaring it explicitly is correct on deployed Workers too.",
     "directory": ".",
