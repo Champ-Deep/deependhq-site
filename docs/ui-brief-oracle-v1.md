@@ -46,7 +46,7 @@ A tool page on deependhq.com where Deep (or the team, with the passcode) pastes 
 2. Playwright (`playwright-core` is in devDependencies): fill the form, intercept `/api/oracle/reports` with a fake `running` then `done` response, assert the stepper reaches "report ready", the share input holds the `share_url`, and the open button targets `_blank` with `rel=noopener`. A second test asserts 401 clears the stored passcode and shows the alert.
 3. `/oracle` appears on `/toolkit` from the regenerated `data.js`, with the `tool` filter.
 4. Screenshots at the four widths, `scrollWidth == innerWidth`.
-5. No `—` or `–` in `oracle.html` or in rendered `innerText`.
+5. No em dash (U+2014) or en dash (U+2013) in `oracle.html` or in rendered `innerText`.
 6. Handover lists the 21st.dev components used; then `kanban_request_review(reviewer="reviewer")`. Preview: `PREVIEW:` comment per the frontend lane rule, but with the form empty (no client copy on a public preview).
 
 ## Out of scope
