@@ -330,6 +330,37 @@ async function handleDecide(request, env) {
 }
 
 // ---------------------------------------------------------------------------
+// /api/oracle/reports            POST: queue a ChampOracle client messaging report
+// /api/oracle/reports/<id>       GET: poll it; `share_url` is absolute once done
+//
+// A thin proxy to the hosted champoracle-agent (ORACLE_URL + ORACLE_KEY), gated by
+// the team passcode (ORACLE_PASSCODE, header x-passcode). The toolkit page never
+// sees the workspace key, and a run costs real LLM money, so no passcode, no run.
+// ---------------------------------------------------------------------------
+
+async function handleOracle(request, env, url) {
+  if (!env.ORACLE_URL || !env.ORACLE_KEY || !env.ORACLE_PASSCODE) {
+    return json({ error: 'not_configured', message: 'the oracle endpoint is not wired yet.' }, 503);
+  }
+  if (request.headers.get('x-passcode') !== env.ORACLE_PASSCODE) {
+    return json({ error: 'unauthorized', message: 'team passcode needed.' }, 401);
+  }
+  const m = url.pathname.match(/^\/api\/oracle\/reports(?:\/(rep_[a-f0-9]{12}))?$/);
+  if (!m || (m[1] ? request.method !== 'GET' : request.method !== 'POST')) {
+    return json({ error: 'not_found', message: 'post /api/oracle/reports or get /api/oracle/reports/<id>.' }, 404);
+  }
+  const base = env.ORACLE_URL.replace(/\/$/, '');
+  const res = await fetch(`${base}/v1/reports${m[1] ? '/' + m[1] : ''}`, {
+    method: request.method,
+    headers: { 'x-api-key': env.ORACLE_KEY, 'content-type': 'application/json' },
+    body: m[1] ? undefined : await request.text(),
+  });
+  const data = await res.json().catch(() => ({ error: 'bad_upstream', message: 'oracle answered without json.' }));
+  if (data && data.share_path) data.share_url = base + data.share_path;
+  return json(data, res.status);
+}
+
+// ---------------------------------------------------------------------------
 // GET /showcase?d=<domain>
 //
 // One page, one domain, rendered at the edge and cached a day. It reports back
@@ -530,6 +561,7 @@ export default {
 
     if (url.pathname === '/api/collect') return handleCollect(request, env, ctx);
     if (url.pathname === '/api/decide') return handleDecide(request, env);
+    if (url.pathname.startsWith('/api/oracle/')) return handleOracle(request, env, url);
     if (url.pathname === '/showcase') return handleShowcase(request, env, url);
 
     // Everything else: assets, or HTML with hints stamped on <html>.
