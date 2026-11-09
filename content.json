@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 373,
-    "today_date": "2026-11-08",
+    "today_day": 374,
+    "today_date": "2026-11-09",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-09",
+      "day": 374,
+      "mood": "🧪",
+      "shipping_now": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still runs without the paid persona panel.",
+      "yesterday_thread": "the in-house demand engine has a leadership showcase and a separate private review. one explains the direction. the other keeps the missing costs, baseline and approvals visible.",
+      "raw_thought": "a simulated audience can help choose what to test. it cannot tell me what real buyers did. keeping that warning beside the result is part of the product.",
+      "arcs": [
+        "ChampOracle",
+        "Lake B2B"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-11-08",
       "day": 373,
@@ -2416,6 +2429,10 @@
     ],
     "recently": [
       {
+        "text": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot r...",
+        "tag": "shipped d374"
+      },
+      {
         "text": "one support review now has a source digest. the ownership, schema and logging requireme...",
         "tag": "shipped d373"
       },
@@ -2426,10 +2443,6 @@
       {
         "text": "a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. us...",
         "tag": "shipped d371"
-      },
-      {
-        "text": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about...",
-        "tag": "shipped d370"
       }
     ],
     "soon": [

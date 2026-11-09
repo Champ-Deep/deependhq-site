@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-11-08T19:45:35.473Z
+// Built 2026-11-09T19:44:30.532Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 373,
-    "today_date": "2026-11-08",
+    "today_day": 374,
+    "today_date": "2026-11-09",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -250,6 +250,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 374,
+          "date": "2026-11-09",
+          "shipping_now": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still…",
+          "arc_color": "green"
+        },
+        {
           "day": 372,
           "date": "2026-11-07",
           "shipping_now": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine: send it. a file…",
@@ -313,12 +319,6 @@ window.DH_DATA = {
           "day": 348,
           "date": "2026-10-14",
           "shipping_now": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live…",
-          "arc_color": "green"
-        },
-        {
-          "day": 347,
-          "date": "2026-10-13",
-          "shipping_now": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle…",
           "arc_color": "green"
         }
       ],
@@ -590,7 +590,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-11-02",
       "last_ship_day": 367,
-      "days_since": 7,
+      "days_since": 8,
       "entries_30d": 3,
       "recent": [
         {
@@ -659,7 +659,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 33,
+      "days_since": 34,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -715,11 +715,16 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-11-07",
-      "last_ship_day": 372,
-      "days_since": 2,
-      "entries_30d": 13,
+      "last_ship": "2026-11-09",
+      "last_ship_day": 374,
+      "days_since": 1,
+      "entries_30d": 14,
       "recent": [
+        {
+          "day": 374,
+          "date": "2026-11-09",
+          "ship": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the h"
+        },
         {
           "day": 372,
           "date": "2026-11-07",
@@ -734,11 +739,6 @@ window.DH_DATA = {
           "day": 370,
           "date": "2026-11-05",
           "ship": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about seven meetings a month"
-        },
-        {
-          "day": 369,
-          "date": "2026-11-04",
-          "ship": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a b"
         }
       ],
       "company_slugs": [
@@ -787,7 +787,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 34,
+      "days_since": 35,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -847,6 +847,34 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-09",
+      "day": 374,
+      "mood": "🧪",
+      "shipping_now": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still runs without the paid persona panel.",
+      "yesterday_thread": "the in-house demand engine has a leadership showcase and a separate private review. one explains the direction. the other keeps the missing costs, baseline and approvals visible.",
+      "raw_thought": "a simulated audience can help choose what to test. it cannot tell me what real buyers did. keeping that warning beside the result is part of the product.",
+      "arcs": [
+        "ChampOracle",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOracle",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
     {
       "date": "2026-11-08",
       "day": 373,
@@ -4983,7 +5011,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 373 · Nov 8",
+    "last_ship": "day 374 · Nov 9",
     "state": "shipping"
   },
   "status_board": {
@@ -5007,6 +5035,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot r...",
+        "tag": "shipped d374"
+      },
+      {
         "text": "one support review now has a source digest. the ownership, schema and logging requireme...",
         "tag": "shipped d373"
       },
@@ -5017,10 +5049,6 @@ window.DH_DATA = {
       {
         "text": "a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. us...",
         "tag": "shipped d371"
-      },
-      {
-        "text": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about...",
-        "tag": "shipped d370"
       }
     ],
     "soon": [
@@ -11245,33 +11273,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-11-08T19:45:35.446Z",
-    "built_date": "2026-11-09",
+    "built": "2026-11-09T19:44:30.504Z",
+    "built_date": "2026-11-10",
     "newest_entry": {
-      "date": "2026-11-08",
-      "day": 373
+      "date": "2026-11-09",
+      "day": 374
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 150,
+        "days_old": 151,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 138,
+        "days_old": 139,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 138,
+        "days_old": 139,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 374,
+      "date": "2026-11-09",
+      "mood": "🧪",
+      "arc_color": "green",
+      "arcs": [
+        "ChampOracle",
+        "Lake B2B"
+      ],
+      "ship": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still runs without the paid persona panel."
+    },
     {
       "day": 373,
       "date": "2026-11-08",
@@ -11412,17 +11451,6 @@ window.DH_DATA = {
         "Data Products"
       ],
       "ship": "ran a live security, sample and ux review on the data-product agent we have been building all month. clean pass, zero deployment risk taken. handed the whole thing over to two engineers on the team today, first standup wednesday, first demo friday."
-    },
-    {
-      "day": 360,
-      "date": "2026-10-26",
-      "mood": "😅",
-      "arc_color": "green",
-      "arcs": [
-        "ChampOps",
-        "Champ Harbinger"
-      ],
-      "ship": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot voice product, a client landing page rebuilt six times over until it stopped looking like a wireframe, and a direction finally picked for one of our longevity sites."
     }
   ],
   "heatmap": {
@@ -12274,13 +12302,13 @@ window.DH_DATA = {
         "date": "2026-11-09",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 374,
+        "arc_color": "green",
+        "ship": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the h"
       },
       {
         "date": "2026-11-10",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -12329,11 +12357,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 373,
-    "entries": 151,
+    "days_public": 374,
+    "entries": 152,
     "entries_30d": 30,
-    "entries_this_month": 8,
-    "streak_weekdays": 102,
+    "entries_this_month": 9,
+    "streak_weekdays": 103,
     "essays": 21,
     "companies": 12,
     "companies_active_90d": 4,
@@ -12345,12 +12373,12 @@ window.DH_DATA = {
         "n": 15
       },
       {
-        "arc": "ChampOps",
-        "n": 15
+        "arc": "Lake B2B",
+        "n": 14
       },
       {
-        "arc": "Lake B2B",
-        "n": 13
+        "arc": "ChampOps",
+        "n": 14
       },
       {
         "arc": "TheDeepEndHQ",
@@ -12365,11 +12393,11 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "Dopamine Sites",
+        "arc": "ChampOracle",
         "n": 1
       },
       {
-        "arc": "Data Products",
+        "arc": "Dopamine Sites",
         "n": 1
       }
     ],
@@ -12416,7 +12444,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-11-07",
         "mentions_90d": 30,
-        "days_since": 2
+        "days_since": 3
       },
       {
         "name": "Cloudflare",
@@ -12426,7 +12454,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-10-28",
         "mentions_90d": 4,
-        "days_since": 12
+        "days_since": 13
       },
       {
         "name": "ChampBeam",
@@ -12439,7 +12467,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 1,
-        "days_since": 28
+        "days_since": 29
       },
       {
         "name": "Obsidian + Celsus",
@@ -12449,7 +12477,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 29
+        "days_since": 30
       },
       {
         "name": "Claude + Cowork",
@@ -12459,7 +12487,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 30
+        "days_since": 31
       },
       {
         "name": "Event Scout",
@@ -12472,7 +12500,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 56
+        "days_since": 57
       },
       {
         "name": "ChampUTM",
@@ -12485,7 +12513,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 58
+        "days_since": 59
       },
       {
         "name": "LakeStream",
@@ -12498,7 +12526,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 97
+        "days_since": 98
       },
       {
         "name": "ChamPDF",
@@ -12511,7 +12539,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 97
+        "days_since": 98
       },
       {
         "name": "ChampMail",
@@ -12524,7 +12552,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 0,
-        "days_since": 99
+        "days_since": 100
       },
       {
         "name": "Supabase",
@@ -12535,7 +12563,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 131
+        "days_since": 132
       },
       {
         "name": "ChampGraph",
@@ -12548,7 +12576,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 139
+        "days_since": 140
       },
       {
         "name": "ChampQuest",
@@ -12561,7 +12589,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 159
+        "days_since": 160
       },
       {
         "name": "Deep Scanner",
@@ -13041,11 +13069,11 @@ window.DH_DATA = {
       "watching": 5,
       "skill": 8
     },
-    "active_30d": 5,
+    "active_30d": 4,
     "mined_from": {
-      "entries": 151,
+      "entries": 152,
       "essays": 21
     }
   },
-  "built": "2026-11-08T19:45:35.473Z"
+  "built": "2026-11-09T19:44:30.532Z"
 };

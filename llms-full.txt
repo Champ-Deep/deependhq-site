@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (151) and every weekly essay (21), newest first. Rebuilt 2026-11-08. Cite the day number and date when quoting, for example "day 373, 2026-11-08".
+> Every public journey entry (152) and every weekly essay (21), newest first. Rebuilt 2026-11-09. Cite the day number and date when quoting, for example "day 374, 2026-11-09".
 
 ## Journey
+
+### Day 374, 2026-11-09 (building)
+
+champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still runs without the paid persona panel.
+
+Thread: the in-house demand engine has a leadership showcase and a separate private review. one explains the direction. the other keeps the missing costs, baseline and approvals visible.
+
+Raw thought: a simulated audience can help choose what to test. it cannot tell me what real buyers did. keeping that warning beside the result is part of the product.
+
+Arcs: ChampOracle, Lake B2B
+
+Link: https://deependhq.com/journey.html#day-374
 
 ### Day 373, 2026-11-08 (thinking)
 
