@@ -1,8 +1,20 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (152) and every weekly essay (21), newest first. Rebuilt 2026-11-09. Cite the day number and date when quoting, for example "day 374, 2026-11-09".
+> Every public journey entry (153) and every weekly essay (21), newest first. Rebuilt 2026-11-10. Cite the day number and date when quoting, for example "day 375, 2026-11-10".
 
 ## Journey
+
+### Day 375, 2026-11-10 (building)
+
+signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid signal providers are still off.
+
+Thread: the meeting pack now has an executive one-pager, a private speaking script and a battle-test appendix. the pilot remains a proposal, not a delivery promise.
+
+Raw thought: shipping a cockpit is not proof that its rankings are useful. that still needs a controlled comparison against the simple baseline.
+
+Arcs: Signal Desk, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-375
 
 ### Day 374, 2026-11-09 (building)
 

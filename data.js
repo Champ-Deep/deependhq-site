@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-11-09T19:44:30.532Z
+// Built 2026-11-10T20:05:30.461Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 374,
-    "today_date": "2026-11-09",
+    "today_day": 375,
+    "today_date": "2026-11-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,12 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 375,
+          "date": "2026-11-10",
+          "shipping_now": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid…",
+          "arc_color": "green"
+        },
         {
           "day": 373,
           "date": "2026-11-08",
@@ -89,12 +95,6 @@ window.DH_DATA = {
           "date": "2026-10-28",
           "shipping_now": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel…",
           "arc_color": "gold"
-        },
-        {
-          "day": 361,
-          "date": "2026-10-27",
-          "shipping_now": "ran a live security, sample and ux review on the data-product agent we have been building all month. clean pass, zero deployment…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -590,7 +590,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-11-02",
       "last_ship_day": 367,
-      "days_since": 8,
+      "days_since": 9,
       "entries_30d": 3,
       "recent": [
         {
@@ -659,7 +659,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 34,
+      "days_since": 35,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -717,7 +717,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-11-09",
       "last_ship_day": 374,
-      "days_since": 1,
+      "days_since": 2,
       "entries_30d": 14,
       "recent": [
         {
@@ -787,7 +787,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 35,
+      "days_since": 36,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -847,6 +847,31 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-10",
+      "day": 375,
+      "mood": "🛠️",
+      "shipping_now": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid signal providers are still off.",
+      "yesterday_thread": "the meeting pack now has an executive one-pager, a private speaking script and a battle-test appendix. the pilot remains a proposal, not a delivery promise.",
+      "raw_thought": "shipping a cockpit is not proof that its rankings are useful. that still needs a controlled comparison against the simple baseline.",
+      "arcs": [
+        "Signal Desk",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Signal Desk",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-11-09",
       "day": 374,
@@ -5011,7 +5036,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 374 · Nov 9",
+    "last_ship": "day 375 · Nov 10",
     "state": "shipping"
   },
   "status_board": {
@@ -5035,6 +5060,10 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today....",
+        "tag": "shipped d375"
+      },
+      {
         "text": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot r...",
         "tag": "shipped d374"
       },
@@ -5045,10 +5074,6 @@ window.DH_DATA = {
       {
         "text": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the ne...",
         "tag": "shipped d372"
-      },
-      {
-        "text": "a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. us...",
-        "tag": "shipped d371"
       }
     ],
     "soon": [
@@ -11273,33 +11298,44 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-11-09T19:44:30.504Z",
-    "built_date": "2026-11-10",
+    "built": "2026-11-10T20:05:30.427Z",
+    "built_date": "2026-11-11",
     "newest_entry": {
-      "date": "2026-11-09",
-      "day": 374
+      "date": "2026-11-10",
+      "day": 375
     },
     "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 151,
+        "days_old": 152,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 139,
+        "days_old": 140,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 139,
+        "days_old": 140,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 375,
+      "date": "2026-11-10",
+      "mood": "🛠️",
+      "arc_color": "green",
+      "arcs": [
+        "Signal Desk",
+        "Champions Operations"
+      ],
+      "ship": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid signal providers are still off."
+    },
     {
       "day": 374,
       "date": "2026-11-09",
@@ -11440,17 +11476,6 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel like homework. rebuilt from zero as five tiny one-interaction toys, one per brand, no instructions beyond about four words each. all five live on workers.dev tonight."
-    },
-    {
-      "day": 361,
-      "date": "2026-10-27",
-      "mood": "🛠️",
-      "arc_color": "green",
-      "arcs": [
-        "ChampOps",
-        "Data Products"
-      ],
-      "ship": "ran a live security, sample and ux review on the data-product agent we have been building all month. clean pass, zero deployment risk taken. handed the whole thing over to two engineers on the team today, first standup wednesday, first demo friday."
     }
   ],
   "heatmap": {
@@ -12310,13 +12335,13 @@ window.DH_DATA = {
         "date": "2026-11-10",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 375,
+        "arc_color": "green",
+        "ship": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a"
       },
       {
         "date": "2026-11-11",
-        "future": true,
+        "future": false,
         "weekend": false,
         "day": null,
         "arc_color": null,
@@ -12357,11 +12382,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 374,
-    "entries": 152,
+    "days_public": 375,
+    "entries": 153,
     "entries_30d": 30,
-    "entries_this_month": 9,
-    "streak_weekdays": 103,
+    "entries_this_month": 10,
+    "streak_weekdays": 104,
     "essays": 21,
     "companies": 12,
     "companies_active_90d": 4,
@@ -12370,7 +12395,7 @@ window.DH_DATA = {
     "arcs_30d": [
       {
         "arc": "Champions Operations",
-        "n": 15
+        "n": 16
       },
       {
         "arc": "Lake B2B",
@@ -12393,11 +12418,11 @@ window.DH_DATA = {
         "n": 2
       },
       {
-        "arc": "ChampOracle",
+        "arc": "Signal Desk",
         "n": 1
       },
       {
-        "arc": "Dopamine Sites",
+        "arc": "ChampOracle",
         "n": 1
       }
     ],
@@ -12444,7 +12469,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-11-07",
         "mentions_90d": 30,
-        "days_since": 3
+        "days_since": 4
       },
       {
         "name": "Cloudflare",
@@ -12454,7 +12479,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-10-28",
         "mentions_90d": 4,
-        "days_since": 13
+        "days_since": 14
       },
       {
         "name": "ChampBeam",
@@ -12467,7 +12492,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 1,
-        "days_since": 29
+        "days_since": 30
       },
       {
         "name": "Obsidian + Celsus",
@@ -12477,7 +12502,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 30
+        "days_since": 31
       },
       {
         "name": "Claude + Cowork",
@@ -12487,7 +12512,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 31
+        "days_since": 32
       },
       {
         "name": "Event Scout",
@@ -12500,7 +12525,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 57
+        "days_since": 58
       },
       {
         "name": "ChampUTM",
@@ -12513,7 +12538,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 59
+        "days_since": 60
       },
       {
         "name": "LakeStream",
@@ -12526,7 +12551,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 98
+        "days_since": 99
       },
       {
         "name": "ChamPDF",
@@ -12539,7 +12564,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 98
+        "days_since": 99
       },
       {
         "name": "ChampMail",
@@ -12552,7 +12577,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 0,
-        "days_since": 100
+        "days_since": 101
       },
       {
         "name": "Supabase",
@@ -12563,7 +12588,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 132
+        "days_since": 133
       },
       {
         "name": "ChampGraph",
@@ -12576,7 +12601,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 140
+        "days_since": 141
       },
       {
         "name": "ChampQuest",
@@ -12589,7 +12614,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 160
+        "days_since": 161
       },
       {
         "name": "Deep Scanner",
@@ -13069,11 +13094,11 @@ window.DH_DATA = {
       "watching": 5,
       "skill": 8
     },
-    "active_30d": 4,
+    "active_30d": 3,
     "mined_from": {
-      "entries": 152,
+      "entries": 153,
       "essays": 21
     }
   },
-  "built": "2026-11-09T19:44:30.532Z"
+  "built": "2026-11-10T20:05:30.461Z"
 };
