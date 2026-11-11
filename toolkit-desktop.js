@@ -73,7 +73,9 @@ function setActive(id) {
   for (const n of document.querySelectorAll('.menubar,.desktop,#app-launcher')) n.inert = mobile() && !!id;
 }
 const topWindow = () => [...windows].reverse().find(([, v]) => !v.node.hidden)?.[0] || null;
-function closeWindow(id) { const w = windows.get(id); w?.cleanup?.(); w?.node.remove(); windows.delete(id); launchers.get(id).dataset.open = 'false'; setActive(topWindow()); launchers.get(id).focus(); }
+// Connector mini windows have no dock launcher; focus goes back to the Account window that opened them.
+const opener = id => launchers.get(id) || launchers.get('account');
+function closeWindow(id) { const w = windows.get(id); w?.cleanup?.(); w?.node.remove(); windows.delete(id); if (launchers.has(id)) launchers.get(id).dataset.open = 'false'; setActive(topWindow()); (windows.get('account')?.node.querySelector(`[data-opens="${id}"]`) || opener(id)).focus(); }
 function preview(rect) { const p = $('#snap-preview'); p.hidden = !rect; if (rect) Object.assign(p.style, {left: rect.x + 'px', top: rect.y + 'px', width: rect.w + 'px', height: rect.h + 'px'}); }
 function openApp(id) {
   if (id === 'admin' && !usage?.user.is_admin) return null;
@@ -82,7 +84,7 @@ function openApp(id) {
   const header = el('div', undefined, 'window-header'), title = el('h2', NAME[id], 'window-title'), controls = el('div', undefined, 'window-controls');
   const body = el('div', undefined, 'window-body');
   const w = {id, node, body, zone: null, rect: null};
-  const min = button('−', () => { node.hidden = true; setActive(topWindow()); launchers.get(id).focus(); }, 'wc'); min.setAttribute('aria-label', 'Minimize ' + NAME[id]);
+  const min = button('−', () => { node.hidden = true; setActive(topWindow()); opener(id).focus(); }, 'wc'); min.setAttribute('aria-label', 'Minimize ' + NAME[id]);
   w.maxButton = button('□', () => toggleMax(w), 'wc');
   const close = button('×', () => closeWindow(id), 'wc wc-close'); close.setAttribute('aria-label', 'Close ' + NAME[id]);
   controls.append(min, w.maxButton, close); header.append(title, controls); node.append(header, body);
@@ -92,11 +94,11 @@ function openApp(id) {
   const ww = Math.min(940, a.w - 48), wh = Math.min(700, a.h - 24);
   w.rect = saved?.w ? {x: saved.x, y: saved.y, w: saved.w, h: saved.h} : {x: Math.round((a.w - ww) / 2) + n * 28, y: a.y + 12 + n * 28, w: ww, h: wh};
   w.zone = wl.zoneRect(saved?.zone, a) ? saved.zone : null;
-  place(w); setActive(id); launchers.get(id).dataset.open = 'true';
+  place(w); setActive(id); if (launchers.has(id)) launchers.get(id).dataset.open = 'true';
   node.addEventListener('pointerdown', () => setActive(id)); node.addEventListener('focusin', () => setActive(id));
   dragWindow(w, header); resizeWindow(w);
   header.addEventListener('dblclick', e => { if (!e.target.closest('button') && !mobile()) toggleMax(w); });
-  ({workbench, enrich: enrichApp, files: filesApp, approvals, beam: embedded, pdf: embedded, myagent: myAgent, account, admin})[id](w);
+  ({workbench, enrich: enrichApp, files: filesApp, approvals, beam: embedded, pdf: embedded, myagent: myAgent, account, admin, 'conn-harbinger': connWindow, 'conn-beam': connWindow})[id](w);
   close.focus();
   return w;
 }
@@ -208,6 +210,7 @@ function deepLink() {
   if (m && signedIn()) openApp('approvals')?.focusItem(m[1]);
 }
 addEventListener('hashchange', deepLink);
+addEventListener('dh:staged', refreshApprovals); // Deepbot staged or decided something: repaint the dock badge
 
 // ---------------- Files on the desktop ----------------
 async function refreshDesktopFiles() {
@@ -350,7 +353,7 @@ function jobEngine(w, box, runId, ui = {}) {
     box.append(el('p', `${q.rows} rows in ${k} ${k === 1 ? 'chunk' : 'chunks'} of up to 100, run one after another. ${money(left, 'down')} left today before this job. Duplicate values in a chunk are billed once, and you pay what the providers actually charge, never more than this.`, 'plain'));
     box.append(table(['What happens', 'Column', 'Engine', 'Up to'], job.columns.map((c, i) => [wl.OP_LABEL[c.op] || c.op, c.column, wl.ENGINE_LABEL[c.engine] || c.engine, money(quotes.reduce((s, x) => s + (x.columns?.[i]?.max_cost_micro || 0), 0))]), 'Quote by operation'));
     if (q.reasons.length) { const n = notice(box, 'This job cannot run yet. ', true); n.append(q.reasons.join(' ')); }
-    const run = button('Approve up to ' + money(q.micro) + ' and run', runAll, ui.stage ? 'btn btn-gold' : 'btn btn-green'); run.id = runId; run.disabled = q.reasons.length > 0; box.append(run);
+    const run = button('Approve up to ' + money(q.micro) + ' and run', runAll, ui.stage ? 'btn btn-gold' : 'btn btn-green'); run.id = runId; run.dataset.guide = runId.replace('wb-', 'workbench.').replace('en-', 'enrich.'); run.disabled = q.reasons.length > 0; box.append(run);
     run.scrollIntoView({block: 'nearest'});
   }
   async function runAll() {
@@ -410,7 +413,7 @@ const CHECK = 'M7 16.5l6 6L25 10';
 function stepper(names, onPick) {
   const ol = el('ol', undefined, 'stepper'); ol.setAttribute('aria-label', 'Workbench stages');
   const items = names.map((name, i) => {
-    const li = el('li'), b = button('', () => { if (b.getAttribute('aria-disabled') !== 'true') onPick(i); }, 'step-btn');
+    const li = el('li'), b = button('', () => { if (b.getAttribute('aria-disabled') !== 'true') onPick(i); }, 'step-btn'); b.dataset.guide = 'workbench.stage.' + name.toLowerCase();
     const dot = el('span', String(i + 1), 'step-dot'); dot.setAttribute('aria-hidden', 'true');
     b.append(dot, el('span', name, 'step-name')); li.append(b); ol.append(li); return {li, b, dot};
   });
@@ -456,13 +459,13 @@ function workbench(w) {
   function changed() { eng.reset(); reached = Math.min(reached, current); steps.at(current, reached); }
 
   // ---- 1. File ----
-  const {drop, file} = fileDrop('wb-file', 'Any CSV or XLSX up to 5 MiB. You see the price before anything runs.');
+  const {drop, file} = fileDrop('wb-file', 'Any CSV or XLSX up to 5 MiB. You see the price before anything runs.'); drop.dataset.guide = 'workbench.file.drop';
   const fileMsg = msgUnder(), fileInfo = el('div', undefined, 'file-info');
   const sample = button('Try the sample', async () => {
     try { const r = await fetch('/toolkit-sample-leads.csv'); if (!r.ok) throw new Error('HTTP ' + r.status); load(new File([await r.blob()], 'sample-leads.csv', {type: 'text/csv'})); }
     catch (e) { say(fileMsg, 'The sample did not load (' + e.message + '). Drop your own file instead.', true); }
-  }, 'btn btn-outline'); sample.id = 'wb-sample';
-  const toCols = button('Map the columns', () => go(1), 'btn btn-gold'); toCols.id = 'wb-to-columns';
+  }, 'btn btn-outline'); sample.id = 'wb-sample'; sample.dataset.guide = 'workbench.file.sample';
+  const toCols = button('Map the columns', () => go(1), 'btn btn-gold'); toCols.id = 'wb-to-columns'; toCols.dataset.guide = 'workbench.file.next';
   const fileFoot = foot(toCols); fileFoot.hidden = true;
   S[0].append(drop, fileMsg, el('div', undefined, 'or-row'), fileInfo, fileFoot); S[0].querySelector('.or-row').append(el('span', 'No file handy?'), sample);
   async function load(f) {
@@ -511,7 +514,7 @@ function workbench(w) {
       bay.append(row);
     }
     const unsure = mapping.filter(m => !m.sure).map(m => m.source);
-    const confirm = button('Confirm columns', () => { for (const m of mapping) m.sure = true; bay.querySelectorAll('.map-row').forEach(r => { r.dataset.sure = 'true'; }); go(2); S[2].querySelector('#wb-goal')?.focus(); }, 'btn btn-gold'); confirm.id = 'wb-confirm';
+    const confirm = button('Confirm columns', () => { for (const m of mapping) m.sure = true; bay.querySelectorAll('.map-row').forEach(r => { r.dataset.sure = 'true'; }); go(2); S[2].querySelector('#wb-goal')?.focus(); }, 'btn btn-gold'); confirm.id = 'wb-confirm'; confirm.dataset.guide = 'workbench.columns.confirm';
     S[1].replaceChildren(el('h3', 'Check how your columns line up'),
       el('p', `${mapping.length} columns. ${unsure.length ? 'Dashed means not sure, check: ' + unsure.join(', ') + '. ' : ''}Untick Keep for anything that should never leave your browser.`, 'plain'),
       bay, foot(back(0), confirm));
@@ -532,7 +535,7 @@ function workbench(w) {
     const chips = el('div', undefined, 'chips'); chips.setAttribute('aria-label', 'Suggestions');
     const lastAi = [...turns].reverse().find(t => t.role === 'assistant');
     for (const c of (turns.length ? lastAi?.chips || [] : wl.STARTER_CHIPS)) chips.append(button(c, () => send(c), 'chip'));
-    const form = el('form', undefined, 'promptbox'), box = el('textarea'); box.id = 'wb-goal'; box.rows = 1; box.maxLength = 2000;
+    const form = el('form', undefined, 'promptbox'), box = el('textarea'); box.id = 'wb-goal'; box.dataset.guide = 'workbench.ask.goal'; box.rows = 1; box.maxLength = 2000;
     box.placeholder = turns.length ? 'Answer, or ask for a change' : 'For example: clean up the job titles and tell me which companies are SaaS';
     box.setAttribute('aria-label', turns.length ? 'Your reply' : 'Describe the job in your own words');
     const grow = () => { box.style.height = 'auto'; box.style.height = Math.min(box.scrollHeight, 240) + 'px'; }; box.addEventListener('input', grow);
@@ -552,7 +555,7 @@ function workbench(w) {
       const add = button('Add operation', () => { plan.push(wl.planItem({}, source.headers.filter(h => mapping.find(m => m.source === h)?.keep))); changed(); renderAsk(); }); add.disabled = plan.length >= 8;
       planBox.append(ops, el('div', undefined, 'toolbar'), planMsg); planBox.querySelector('.toolbar').append(add);
     } else planBox.append(button('Skip the assistant and set it up by hand', () => { manual = true; renderAsk(); }, 'btn btn-ghost link-btn'));
-    const quote = button('Looks right, get the quote', getQuote, 'btn btn-gold'); quote.id = 'wb-quote';
+    const quote = button('Looks right, get the quote', getQuote, 'btn btn-gold'); quote.id = 'wb-quote'; quote.dataset.guide = 'workbench.ask.quote';
     // The plan sits right under the conversation so the cards being approved stay next to the quote button.
     S[2].replaceChildren(el('h3', 'What should happen to this file?'), log, planBox, chips, form, meta, askMsg, el('p', wl.PRIVACY_LINE, 'privacy'), plan.length || manual ? foot(back(1), quote) : foot(back(1)));
     requestAnimationFrame(grow);
@@ -682,7 +685,7 @@ function enrichApp(w) {
         if (!plan.length) throw new Error('Choose at least one contact field or write a research question.');
         await eng.quote({name: filename, rows: source.rows, columns: wl.planToSpecs(plan, mapping, source.headers)});
       } catch (e) { message(e.message, true); }
-    }, 'btn btn-gold'); go.id = 'en-quote';
+    }, 'btn btn-gold'); go.id = 'en-quote'; go.dataset.guide = 'enrich.quote';
     form.append(el('h4', 'Columns'), grid, treg, ds, go);
   }
 }
@@ -695,7 +698,9 @@ function filesApp(w) {
   crumbs.setAttribute('aria-label', 'Folder path');
   const upload = input('', 'file'); upload.id = 'files-upload'; upload.accept = '.csv,.xlsx,.json,.txt,.md,.pdf';
   const uploadLabel = el('label', undefined, 'btn btn-outline file-btn'); uploadLabel.append('Upload', upload);
-  tools.append(button('New folder', newFolder, 'btn btn-outline'), uploadLabel);
+  uploadLabel.dataset.guide = 'files.upload';
+  const mk = button('New folder', newFolder, 'btn btn-outline'); mk.dataset.guide = 'files.new_folder';
+  tools.append(mk, uploadLabel);
   bar.append(crumbs, tools);
   const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
   const form = el('div'), listBox = el('ul', undefined, 'files-list'), quota = el('p', undefined, 'quota');
@@ -758,8 +763,9 @@ function filesApp(w) {
 function account(w) {
   const b = w.body; if (!requireSignIn(b)) return;
   const head = el('div', undefined, 'app-head row'); head.append(el('h3', 'Balance and runs', 'app-title'));
-  const refresh = button('Refresh account', load); head.append(refresh); b.append(head);
+  const refresh = button('Refresh account', load); refresh.dataset.guide = 'account.refresh'; head.append(refresh); b.append(head);
   const content = el('div'); b.append(content);
+  connections(b);
   agentAccess(b);
   async function load() {
     refresh.disabled = true;
@@ -773,6 +779,179 @@ function account(w) {
     } catch (e) { notice(content, errorText(e), true); } finally { refresh.disabled = false; }
   }
   load();
+}
+
+// ---------------- Connections: the user's own work tools (docs/toolkit-v4-api.md section 9) ----------------
+// Pull reads, act stages, and the one Approve here is the human click. Keys go in once and come back only as a masked hint.
+const CONN = {
+  harbinger: {label: 'ChampHarbinger', prefix: 'hb_live_', url: 'https://champ-harbinger.deep-ae0.workers.dev', win: 'conn-harbinger', invite: true, line: 'Send capacity, campaigns and drafts.'},
+  beam: {label: 'ChampBeam', prefix: 'cb_live_', url: 'https://www.champbeam.com', win: 'conn-beam', line: 'Share files and see who opened them.'},
+};
+NAME['conn-harbinger'] = 'ChampHarbinger'; NAME['conn-beam'] = 'ChampBeam';
+const CONN_WORD = {connected: 'Connected', not_connected: 'No key', invalid: 'Invalid key', invite: 'Invite only', down: 'Provider down', off: 'Setup needed', loading: 'Checking'};
+const connState = code => ({invalid_key: 'invalid', key_rejected: 'invalid', invalid_key_format: 'invalid', key_unreadable: 'invalid', not_allowed: 'invite', provider_down: 'down', not_connected: 'not_connected', connections_not_configured: 'off'})[code] || null;
+const PULL_NAME = {capacity_today: 'Sends left today', campaigns: 'Campaigns', drafts_pending: 'Drafts waiting', stats: 'File stats'};
+function connChip(state) { const c = el('span', CONN_WORD[state] || state, 'conn-chip'); c.dataset.state = state; return c; }
+const connChanged = () => dispatchEvent(new Event('dh:connections'));
+// A pasted key: checked for its prefix here, tested by the provider on the server, stored only if it works.
+function keyForm(id, onSaved, guide) {
+  const p = CONN[id], f = el('form', undefined, 'conn-key'), k = input('', 'password');
+  k.autocomplete = 'off'; k.spellcheck = false; k.dataset.guide = guide + '.key'; k.placeholder = p.prefix + '...';
+  const save = button('Save key', () => {}, 'btn btn-outline'); save.type = 'submit'; save.dataset.guide = guide + '.save';
+  const m = el('div', undefined, 'msg'); m.setAttribute('aria-live', 'polite');
+  const row = el('div', undefined, 'conn-key-row'); row.append(field(`${p.label} API key, starts with ${p.prefix}`, k), save);
+  f.append(row, m);
+  f.addEventListener('submit', async e => {
+    e.preventDefault(); m.replaceChildren(); const v = k.value.trim();
+    if (!v.startsWith(p.prefix)) { notice(m, `${p.label} keys start with ${p.prefix}. Nothing was saved.`, true); k.focus(); return; }
+    save.disabled = true; notice(m, 'Testing the key with ' + p.label + '...').classList.add('loading');
+    try { const r = await session.api('connection_save', {provider: id, api_key: v}); k.value = ''; m.replaceChildren(); connChanged(); onSaved?.(r); }
+    catch (err) { m.replaceChildren(); notice(m, (connState(err.data?.error) === 'down' ? p.label + ' is not answering. The key was not saved. ' : '') + errorText(err), true); f.dataset.state = connState(err.data?.error) || 'error'; }
+    finally { save.disabled = false; }
+  });
+  return f;
+}
+function inviteButton(box, guide) {
+  const b = button('Request an invite', async () => {
+    b.disabled = true; box.replaceChildren();
+    try { const r = await session.api('invite_request_create', {}); notice(box, r.already_open ? 'Your invite request is already with Deep. He mints invites by hand.' : 'Request sent to Deep. He mints invites by hand, then you paste your own key here.'); }
+    catch (e) { notice(box, errorText(e), true); b.disabled = false; }
+  }, 'btn btn-outline');
+  b.dataset.guide = guide + '.invite'; return b;
+}
+function connections(root) {
+  const sec = el('section', undefined, 'connections'), h = el('h3', 'Connections'); h.id = 'conn-title'; sec.setAttribute('aria-labelledby', h.id); sec.dataset.guide = 'account.connections';
+  const list = el('ul', undefined, 'conn-list'), msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
+  sec.append(h, el('p', 'Connect your own work tools. Deepbot reads from them and stages actions. Nothing happens until you approve it.', 'plain'), msg, list);
+  root.append(sec);
+  async function load() {
+    msg.replaceChildren(); list.replaceChildren(el('li', 'Checking your connections...', 'empty'));
+    try {
+      const r = await session.api('connection_list', {}); if (!sec.isConnected) return;
+      if (!r.configured) { list.replaceChildren(); notice(msg, 'Setup needed. Connections are not switched on yet. Nothing can be connected until they are.'); return; }
+      list.replaceChildren(...r.connections.filter(c => CONN[c.provider]).map(row));
+    } catch (e) { list.replaceChildren(); notice(msg, 'Connections did not load: ' + errorText(e), true).append(' ', button('Try again', load, 'btn btn-outline')); }
+  }
+  function row(c) {
+    const p = CONN[c.provider], g = 'account.connections.' + c.provider, li = el('li', undefined, 'conn-row'); li.dataset.provider = c.provider;
+    const top = el('div', undefined, 'conn-top'), name = el('strong', p.label, 'conn-name');
+    const open = button('Open ' + p.label, () => openApp(p.win), 'btn btn-outline'); open.dataset.opens = p.win; open.dataset.guide = g + '.open';
+    top.append(name, connChip(c.state), open); li.append(top);
+    if (c.state === 'connected') {
+      li.append(el('p', `${c.account || p.label} / key ${c.key_hint}` + (c.connected_at ? ' / saved ' + age(c.connected_at) : ''), 'conn-meta mono'));
+      const box = el('div', undefined, 'msg'), rm = button('Remove key', async () => {
+        if (rm.dataset.confirm !== 'true') { rm.dataset.confirm = 'true'; rm.textContent = 'Remove for good'; box.replaceChildren(); notice(box, 'Deepbot loses access to ' + p.label + ' until you add a key again. Press again to remove.'); return; }
+        rm.disabled = true;
+        try { await session.api('connection_delete', {provider: c.provider}); connChanged(); } catch (e) { box.replaceChildren(); notice(box, errorText(e), true); rm.disabled = false; }
+      }, 'btn btn-ghost danger'); rm.dataset.guide = g + '.remove';
+      li.append(rm, box);
+    } else {
+      li.append(keyForm(c.provider, null, g));
+      if (p.invite) { const box = el('div', undefined, 'msg'), line = el('p', 'No ' + p.label + ' account yet? It is invite only. ', 'conn-meta'); line.append(inviteButton(box, g)); li.append(line, box); }
+    }
+    return li;
+  }
+  addEventListener('dh:connections', () => { if (sec.isConnected) load(); }); // shortcut: one stale listener per closed Account window, each a no-op
+  load();
+}
+
+// A connector mini window: provider and state up top, pulls on the left, acts on the right, the one Approve, a way out.
+function connWindow(w) {
+  const id = w.id.slice(5), p = CONN[id], b = w.body; b.classList.add('conn-win');
+  if (!requireSignIn(b)) return;
+  const head = el('div', undefined, 'app-head row'), ht = el('div'); let chip = connChip('loading');
+  const out = el('a', 'Open in ' + p.label, 'btn btn-outline'); out.href = p.url; out.target = '_blank'; out.rel = 'noopener noreferrer'; out.dataset.guide = id + '.open_product';
+  ht.append(eyebrow(p.label + ' connection'), el('h3', p.line, 'app-title')); head.append(ht, chip, out);
+  const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
+  const grid = el('div', undefined, 'conn-grid'), left = el('section', undefined, 'conn-pulls'), right = el('section', undefined, 'conn-acts');
+  left.setAttribute('aria-label', 'From ' + p.label); right.setAttribute('aria-label', 'Do in ' + p.label);
+  b.append(head, msg, grid);
+  const setState = s => { chip.replaceWith(chip = connChip(s)); w.node.dataset.state = s; };
+  const say = (text, bad) => { msg.replaceChildren(); if (text) return notice(msg, text, bad); };
+  async function load() {
+    setState('loading'); say(''); grid.replaceChildren(el('p', 'Checking ' + p.label + '...', 'empty'));
+    let c;
+    try { const r = await session.api('connection_list', {}); if (!r.configured) { setState('off'); grid.replaceChildren(); say('Setup needed. Connections are not switched on yet.'); return; } c = r.connections.find(x => x.provider === id); }
+    catch (e) { setState('down'); grid.replaceChildren(); say('Connections did not load: ' + errorText(e), true)?.append(' ', button('Try again', load, 'btn btn-outline')); return; }
+    if (!c || c.state !== 'connected') { noKey('not_connected'); return; }
+    const pulls = c.pulls.filter(op => op !== 'stats'), got = [];
+    for (const op of pulls) {
+      try { got.push([op, (await session.api('connector_pull', {provider: id, op})).data]); }
+      catch (e) { const s = connState(e.data?.error); if (s === 'invalid' || s === 'not_connected') return noKey(s); if (s === 'invite') return invite(); if (s === 'down') return down(); got.push([op, null, errorText(e)]); }
+    }
+    if (!w.node.isConnected) return;
+    setState('connected'); left.replaceChildren(el('p', `${c.account || p.label} / key ${c.key_hint}`, 'conn-meta mono'));
+    for (const [op, data, err] of got) { const s = el('div', undefined, 'conn-pull'); s.dataset.guide = id + '.pull.' + op; s.append(el('h4', PULL_NAME[op] || op), err ? el('p', err, 'staged-line bad') : dataList(data)); left.append(s); }
+    if (c.pulls.includes('stats')) left.append(statsForm());
+    right.replaceChildren(...c.acts.map(actForm)); grid.replaceChildren(left, right);
+  }
+  function noKey(s) {
+    setState(s); grid.replaceChildren();
+    const box = el('div', undefined, 'conn-empty'); box.append(el('p', s === 'invalid' ? 'That key no longer works. It may have been revoked. Paste a new one.' : `No key yet. Paste your ${p.label} key to connect it. It is tested before it is saved.`, 'plain'), keyForm(id, load, id));
+    if (p.invite) { const m = el('div', undefined, 'msg'), line = el('p', 'No account yet? ' + p.label + ' is invite only. ', 'conn-meta'); line.append(inviteButton(m, id)); box.append(line, m); }
+    grid.append(box);
+  }
+  function invite() {
+    setState('invite'); grid.replaceChildren(); const box = el('div', undefined, 'conn-empty'), m = el('div', undefined, 'msg');
+    box.append(el('p', `${p.label} accepted the key but this account is not allowed in yet. ${p.label} is invite only.`, 'plain'), inviteButton(m, id), m); grid.append(box);
+  }
+  function down() {
+    setState('down'); grid.replaceChildren(); const box = el('div', undefined, 'conn-empty');
+    box.append(el('p', `${p.label} is not answering right now. Nothing was changed.`, 'plain'), button('Try again', load, 'btn btn-outline')); grid.append(box);
+  }
+  function statsForm() {
+    const f = el('form', undefined, 'conn-pull'), k = input(''); k.dataset.guide = id + '.pull.stats.id';
+    const go = button('Get stats', () => {}, 'btn btn-outline'); go.type = 'submit'; const res = el('div');
+    f.append(el('h4', PULL_NAME.stats), field('A ' + p.label + ' file id', k), go, res);
+    f.addEventListener('submit', async e => { e.preventDefault(); res.replaceChildren(); try { res.append(dataList((await session.api('connector_pull', {provider: id, op: 'stats', args: {id: k.value.trim()}})).data)); } catch (err) { notice(res, errorText(err), true); } });
+    return f;
+  }
+  // One form per act. Stage writes a pending item; the preview then carries the single Approve.
+  function actForm(op) {
+    const f = el('form', undefined, 'conn-act'); f.dataset.guide = id + '.act.' + op; const res = el('div'); res.setAttribute('aria-live', 'polite');
+    let args = () => ({});
+    if (op === 'plan_campaign') { const g = el('textarea'); g.rows = 2; g.maxLength = 500; g.dataset.guide = id + '.act.plan_campaign.goal'; f.append(el('h4', 'Plan a campaign'), field('Your goal, for example 300 meetings with CFOs this quarter', g)); args = () => ({goal: g.value.trim()}); }
+    else if (op === 'share_file') {
+      const s = select([['', 'Choose a file on your desktop']].concat(rootFiles.filter(e => e.kind === 'file').map(e => [e.id, e.name]))); s.dataset.guide = id + '.act.share_file.file';
+      f.append(el('h4', 'Share a file'), field('File to share', s)); args = () => ({file_id: s.value});
+    } else { f.append(el('h4', op === 'push_campaign' ? 'Push a list as a campaign' : op), el('p', 'Ask Deepbot to prepare this one. It maps your file first, then stages it here for you to approve.', 'plain')); return f; }
+    const stage = button('Stage it', () => {}, 'btn btn-outline'); stage.type = 'submit'; stage.dataset.guide = id + '.act.' + op + '.stage';
+    f.append(stage, res);
+    f.addEventListener('submit', async e => {
+      e.preventDefault(); res.replaceChildren(); stage.disabled = true;
+      try { const r = await session.api('connector_act', {provider: id, op, args: args()}); dispatchEvent(new Event('dh:staged')); res.append(stagedPreview(r)); }
+      catch (err) { notice(res, errorText(err), true); } finally { stage.disabled = false; }
+    });
+    return f;
+  }
+  function stagedPreview(r) {
+    const box = el('div', undefined, 'conn-staged'); box.append(el('p', 'Staged. Nothing has happened yet.', 'eyebrow'), dataList(r.preview || {}));
+    const acts = el('div', undefined, 'staged-acts'), m = el('div', undefined, 'msg'); m.setAttribute('aria-live', 'polite');
+    const decide = async decision => {
+      acts.querySelectorAll('button').forEach(x => { x.disabled = true; });
+      try { const d = await session.api('staged_decide', {id: r.staged_id, decision}); dispatchEvent(new Event('dh:staged')); acts.remove(); notice(m, decision === 'reject' ? 'Rejected. Nothing was done.' : 'Approved. ' + p.label + ' did it.'); const u = d.item?.result?.approve_url || d.item?.result?.share_url; if (u) { const a = el('a', 'Open it in ' + p.label, 'btn btn-outline'); a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer'; m.append(a); } }
+      catch (e) { notice(m, errorText(e), true); acts.querySelectorAll('button').forEach(x => { x.disabled = false; }); }
+    };
+    const ok = button('Approve', () => decide('approve'), 'btn btn-gold'); ok.dataset.guide = id + '.approve';
+    acts.append(ok, button('Reject', () => decide('reject'), 'btn btn-outline')); box.append(acts, m); return box;
+  }
+  const again = () => { if (w.node.isConnected) load(); }; addEventListener('dh:connections', again);
+  const prior = w.cleanup; w.cleanup = () => { removeEventListener('dh:connections', again); prior?.(); };
+  load();
+}
+// Provider data as a short list: arrays of records name their first useful field, objects show their plain values.
+function dataList(data) {
+  if (Array.isArray(data)) {
+    if (!data.length) return el('p', 'Nothing here yet.', 'empty');
+    const ul = el('ul', undefined, 'conn-items');
+    for (const x of data.slice(0, 20)) { const v = x && typeof x === 'object' ? x : {name: x}; const li = el('li'); li.append(el('span', String(v.name ?? v.subject ?? v.email ?? v.mailbox ?? v.id ?? ''), 'ci-name')); const side = v.status ?? v.remaining ?? v.sends_left; if (side !== undefined) li.append(el('span', String(side), 'ci-side mono')); ul.append(li); }
+    if (data.length > 20) ul.append(el('li', `and ${data.length - 20} more`, 'empty'));
+    return ul;
+  }
+  if (!data || typeof data !== 'object') return el('p', data == null ? 'Nothing here yet.' : String(data), 'plain');
+  const dl = el('dl', undefined, 'conn-kv');
+  for (const [k, v] of Object.entries(data).slice(0, 12)) { const d = el('div'); d.append(el('dt', k.replace(/_/g, ' ')), Array.isArray(v) ? dataList(v) : el('dd', v && typeof v === 'object' ? Object.values(v).filter(x => typeof x !== 'object').join(' / ') : String(v), 'mono')); dl.append(d); }
+  return dl;
 }
 
 // ---------------- My agent: the user's own MCP server and webhooks (docs/toolkit-v4-api.md section 12) ----------------
@@ -974,7 +1153,7 @@ function approvals(w) {
   if (!requireSignIn(b)) return;
   const head = el('div', undefined, 'app-head row'), ht = el('div');
   ht.append(eyebrow('Approvals'), el('h3', 'Nothing runs, moves or sends until you say yes.', 'app-title'));
-  const refresh = button('Refresh', () => load()); head.append(ht, refresh);
+  const refresh = button('Refresh', () => load()); refresh.dataset.guide = 'approvals.refresh'; head.append(ht, refresh);
   const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
   const list = el('ol', undefined, 'staged-list'); list.setAttribute('aria-label', 'Staged items, newest first');
   b.append(head, msg, list);

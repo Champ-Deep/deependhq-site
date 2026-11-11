@@ -349,4 +349,22 @@ const sid = (r) => r.staged_id;
   const storedQ = JSON.stringify(d1.query(`SELECT * FROM deepbot_turns`).results) + JSON.stringify(d1.query(`SELECT * FROM ai_log WHERE action='deepbot'`).results);
   check('file_read: a quoted CSV cell with a comma is redacted too', /QUOTESECRET/.test(rq.body.reply) && !/QUOTESECRET/.test(storedQ), storedQ.slice(-400));
 }
+
+// deepbot_threads and deepbot_thread: the panel's thread list, owner only, redacted turns as stored
+{
+  reset(); resetClerkFixtures();
+  const { env } = fresh();
+  fx.script = [say('Hello there.')];
+  const a = await post(env, { action: 'deepbot', message: 'first thread' });
+  fx.script = [say('Second one.')];
+  const b = await post(env, { action: 'deepbot', message: 'second thread' });
+  const list = await post(env, { action: 'deepbot_threads' });
+  check('threads: newest first, with titles', list.status === 200 && list.body.threads.length === 2 && list.body.threads.map((t) => t.title).sort().join() === 'first thread,second thread' && list.body.threads.every((t) => t.last_ts), JSON.stringify(list.body));
+  const one = await post(env, { action: 'deepbot_thread', thread_id: a.body.thread_id });
+  check('thread: turns in order with parsed content', one.status === 200 && one.body.turns.length === 2 && one.body.turns[0].content.text === 'first thread' && one.body.turns[1].content.reply === 'Hello there.' && Array.isArray(one.body.turns[1].content.cards), JSON.stringify(one.body));
+  const theirs = await post(env, { action: 'deepbot_thread', thread_id: b.body.thread_id }, 'user_b');
+  const none = await post(env, { action: 'deepbot_threads' }, 'user_b');
+  check('thread: another user gets 404 and an empty list', theirs.status === 404 && theirs.body.error === 'thread_not_found' && none.body.threads.length === 0);
+  check('thread: a bad id is 400', (await post(env, { action: 'deepbot_thread', thread_id: 'nope' })).status === 400);
+}
 finish('toolkit-deepbot-selftest');
