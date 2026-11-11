@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 375,
-    "today_date": "2026-11-10",
+    "today_day": 376,
+    "today_date": "2026-11-11",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,19 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-11",
+      "day": 376,
+      "mood": "🔬",
+      "shipping_now": "ran a 96-round messaging stress test with six simulated agents and finished the comparison report. useful objections, not six customers or proof of demand.",
+      "yesterday_thread": "deepbot v2 reached production with the database migrations in place. public auth checks passed; the signed-in acceptance pass is still open.",
+      "raw_thought": "the generated report said the narrative was spreading. the saved frames showed the conversation fading. run the tool, then check whether its story survives its own evidence.",
+      "arcs": [
+        "Champions Operations",
+        "TheDeepEndHQ"
+      ],
+      "arc_color": "green"
+    },
     {
       "date": "2026-11-10",
       "day": 375,
@@ -2442,6 +2455,10 @@
     ],
     "recently": [
       {
+        "text": "ran a 96-round messaging stress test with six simulated agents and finished the compari...",
+        "tag": "shipped d376"
+      },
+      {
         "text": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today....",
         "tag": "shipped d375"
       },
@@ -2452,10 +2469,6 @@
       {
         "text": "one support review now has a source digest. the ownership, schema and logging requireme...",
         "tag": "shipped d373"
-      },
-      {
-        "text": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the ne...",
-        "tag": "shipped d372"
       }
     ],
     "soon": [
