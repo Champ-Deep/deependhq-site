@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-11-06T20:06:00.257Z
+// Built 2026-11-10T20:05:30.461Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 371,
-    "today_date": "2026-11-06",
+    "today_day": 375,
+    "today_date": "2026-11-10",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,24 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 375,
+          "date": "2026-11-10",
+          "shipping_now": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid…",
+          "arc_color": "green"
+        },
+        {
+          "day": 373,
+          "date": "2026-11-08",
+          "shipping_now": "one support review now has a source digest. the ownership, schema and logging requirements are in one place. the original…",
+          "arc_color": "blue"
+        },
+        {
+          "day": 372,
+          "date": "2026-11-07",
+          "shipping_now": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine: send it. a file…",
+          "arc_color": "green"
+        },
         {
           "day": 371,
           "date": "2026-11-06",
@@ -77,27 +95,15 @@ window.DH_DATA = {
           "date": "2026-10-28",
           "shipping_now": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel…",
           "arc_color": "gold"
-        },
-        {
-          "day": 361,
-          "date": "2026-10-27",
-          "shipping_now": "ran a live security, sample and ux review on the data-product agent we have been building all month. clean pass, zero deployment…",
-          "arc_color": "green"
-        },
-        {
-          "day": 360,
-          "date": "2026-10-26",
-          "shipping_now": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot…",
-          "arc_color": "green"
-        },
-        {
-          "day": 359,
-          "date": "2026-10-25",
-          "shipping_now": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-51-the-proof-arc",
+          "title": "The file is finished. The work isn't.",
+          "date": "2026-11-07",
+          "read": "4 min"
+        },
         {
           "slug": "week-50-the-million-dollar-week",
           "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
@@ -244,6 +250,18 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 374,
+          "date": "2026-11-09",
+          "shipping_now": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still…",
+          "arc_color": "green"
+        },
+        {
+          "day": 372,
+          "date": "2026-11-07",
+          "shipping_now": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine: send it. a file…",
+          "arc_color": "green"
+        },
+        {
           "day": 371,
           "date": "2026-11-06",
           "shipping_now": "a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. useful artifacts, not a claim that anyone…",
@@ -302,21 +320,15 @@ window.DH_DATA = {
           "date": "2026-10-14",
           "shipping_now": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live…",
           "arc_color": "green"
-        },
-        {
-          "day": 347,
-          "date": "2026-10-13",
-          "shipping_now": "Built a full creative kit in a day for an enterprise prospect: a 5 panel LinkedIn carousel, a motion video, and two pitch angle…",
-          "arc_color": "green"
-        },
-        {
-          "day": 346,
-          "date": "2026-10-12",
-          "shipping_now": "a 5:30pm slot booked as a routine lakeb2b demo turned out to be nodguard auditing our own data ops against india's dpdp act.…",
-          "arc_color": "gold"
         }
       ],
       "related_writing": [
+        {
+          "slug": "week-51-the-proof-arc",
+          "title": "The file is finished. The work isn't.",
+          "date": "2026-11-07",
+          "read": "4 min"
+        },
         {
           "slug": "week-50-the-million-dollar-week",
           "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
@@ -578,7 +590,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-11-02",
       "last_ship_day": 367,
-      "days_since": 5,
+      "days_since": 9,
       "entries_30d": 3,
       "recent": [
         {
@@ -647,7 +659,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 31,
+      "days_since": 35,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -703,11 +715,21 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-11-06",
-      "last_ship_day": 371,
-      "days_since": 1,
-      "entries_30d": 12,
+      "last_ship": "2026-11-09",
+      "last_ship_day": 374,
+      "days_since": 2,
+      "entries_30d": 14,
       "recent": [
+        {
+          "day": 374,
+          "date": "2026-11-09",
+          "ship": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the h"
+        },
+        {
+          "day": 372,
+          "date": "2026-11-07",
+          "ship": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine"
+        },
         {
           "day": 371,
           "date": "2026-11-06",
@@ -717,16 +739,6 @@ window.DH_DATA = {
           "day": 370,
           "date": "2026-11-05",
           "ship": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about seven meetings a month"
-        },
-        {
-          "day": 369,
-          "date": "2026-11-04",
-          "ship": "a day of calls that turned into structure. a partnership discovery call opened a data and referral thread, a b"
-        },
-        {
-          "day": 365,
-          "date": "2026-10-31",
-          "ship": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month "
         }
       ],
       "company_slugs": [
@@ -775,7 +787,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 32,
+      "days_since": 36,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -835,6 +847,106 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-10",
+      "day": 375,
+      "mood": "🛠️",
+      "shipping_now": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid signal providers are still off.",
+      "yesterday_thread": "the meeting pack now has an executive one-pager, a private speaking script and a battle-test appendix. the pilot remains a proposal, not a delivery promise.",
+      "raw_thought": "shipping a cockpit is not proof that its rankings are useful. that still needs a controlled comparison against the simple baseline.",
+      "arcs": [
+        "Signal Desk",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Signal Desk",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "day": 374,
+      "mood": "🧪",
+      "shipping_now": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still runs without the paid persona panel.",
+      "yesterday_thread": "the in-house demand engine has a leadership showcase and a separate private review. one explains the direction. the other keeps the missing costs, baseline and approvals visible.",
+      "raw_thought": "a simulated audience can help choose what to test. it cannot tell me what real buyers did. keeping that warning beside the result is part of the product.",
+      "arcs": [
+        "ChampOracle",
+        "Lake B2B"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "ChampOracle",
+          "company_name": null,
+          "slug": null
+        },
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "day": 373,
+      "mood": "🧭",
+      "shipping_now": "one support review now has a source digest. the ownership, schema and logging requirements are in one place. the original recording and the forwarded request are still missing. naming those gaps is more useful than another confident summary.",
+      "yesterday_thread": "next week's brief is written. the calendar conflicts are explicit, and the choices still belong to me. a planning document does not move an appointment.",
+      "raw_thought": "five cards closed: four verification checks and one evidence pack. none is a product launch. the system is only useful if a completed check and a completed business action keep different names.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "day": 372,
+      "mood": "🧭",
+      "shipping_now": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine: send it. a file ready to leave is not the same as a conversation moved forward.",
+      "yesterday_thread": "a demand-generation proposal now has a costed-pilot scorecard and a leadership brief. the question is no longer whether the deck looks convincing. it is what one controlled pilot would cost, and what result would stop it.",
+      "raw_thought": "three dated task closures: one dropped, one handed over, one accepted as a wireframe. all real state changes. none is evidence that a new product went live. the label has to say what actually changed.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
     {
       "date": "2026-11-06",
       "day": 371,
@@ -4912,19 +5024,19 @@ window.DH_DATA = {
     "Built an AI SDR stack that books meetings while the sales team sleeps. 90-day experiment, live pipeline.",
     "Took Lake B2B from \"we sell data\" to \"we are the B2B growth stack.\" Category creation, not product marketing."
   ],
-  "weekly_narratives_count": 35,
+  "weekly_narratives_count": 21,
   "latest_narrative": {
-    "week": 50,
-    "title": "Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.",
-    "body": "A million-dollar sales review, a cup design that went vendor-ready in a day, and a set of exposed keys that outlasted the whole week unrotated.",
-    "day_range": "Oct 26 - Nov 1",
-    "date": "2026-11-01",
-    "read": "5 min",
-    "slug": "week-50-the-million-dollar-week"
+    "week": 51,
+    "title": "The file is finished. The work isn't.",
+    "body": "A real delivery test, a local sales kit, and a signed document that still has not left the desk. This week was about naming the state correctly.",
+    "day_range": "Nov 2 - Nov 7",
+    "date": "2026-11-07",
+    "read": "4 min",
+    "slug": "week-51-the-proof-arc"
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 371 · Nov 6",
+    "last_ship": "day 375 · Nov 10",
     "state": "shipping"
   },
   "status_board": {
@@ -4948,20 +5060,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
-        "text": "a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. us...",
-        "tag": "shipped d371"
+        "text": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today....",
+        "tag": "shipped d375"
       },
       {
-        "text": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about...",
-        "tag": "shipped d370"
+        "text": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot r...",
+        "tag": "shipped d374"
       },
       {
-        "text": "a day of calls that turned into structure. a partnership discovery call opened a data a...",
-        "tag": "shipped d369"
+        "text": "one support review now has a source digest. the ownership, schema and logging requireme...",
+        "tag": "shipped d373"
       },
       {
-        "text": "closed two blockers that had been sitting for a week, in one evening. a five day overdu...",
-        "tag": "shipped d368"
+        "text": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the ne...",
+        "tag": "shipped d372"
       }
     ],
     "soon": [
@@ -5480,6 +5592,244 @@ window.DH_DATA = {
     }
   ],
   "posts": [
+    {
+      "slug": "week-51-the-proof-arc",
+      "kind": "weekly",
+      "week": 51,
+      "eyebrow": ">_ week 51 - the proof arc",
+      "title": "The file is finished. The work isn't.",
+      "deck": "A real delivery test, a local sales kit, and a signed document that still has not left the desk. This week was about naming the state correctly.",
+      "date": "2026-11-07",
+      "day_range": "Nov 2 - Nov 7",
+      "read": "4 min",
+      "arc": "Champions Operations",
+      "arc_color": "green",
+      "tags": [
+        "ChampOps",
+        "Lake B2B",
+        "TheDeepEndHQ"
+      ],
+      "body": [
+        {
+          "type": "lede",
+          "text": "Monday I sent a test email through the outreach system and watched it land in an inbox. Find, enrich, draft, approve, send. The whole path worked. Then I replied to my own message and the system did not see the answer. That second test told me more than the first one. A working send path was real progress. Calling it a working conversation would have been wrong."
+        },
+        {
+          "type": "p",
+          "text": "That distinction kept showing up all week. A board can close a card when an artifact is accepted. A document can carry a signature while it is still on my machine. A branch can be merged without anyone proving which deployment a user sees. Each is a useful state. None means the next state happened automatically. I need the system to preserve the boundary instead of smoothing it away."
+        },
+        {
+          "type": "h2",
+          "text": "the test after the test"
+        },
+        {
+          "type": "p",
+          "text": "The site gave me another version of the same lesson. The public log was behind the local content. A later publish caught it up, but the useful part was checking what the live page actually served rather than trusting the local file or a successful command. On another night the publish could not reach its security gate from the environment it was running in. The entry existed. Production had not changed. Those are two separate facts, and the log needed both."
+        },
+        {
+          "type": "p",
+          "text": "There is no clever fix hidden in that story. Fetch the public output. Compare its date with the intended date. Check the body, not just a status code. It sounds too small to count as engineering until you notice how much confidence can collect around a command that ran successfully in the wrong place. Evidence has to come from the surface the person on the other end will use."
+        },
+        {
+          "type": "h2",
+          "text": "artifacts that earned their place"
+        },
+        {
+          "type": "p",
+          "text": "By Friday there was a capability deck, five solution one-pagers and a lead tracker on disk. That is a useful sales kit. It gives the next conversation something concrete to work from. It is not evidence that anybody received the files, understood the offer or moved to the next stage. Calling the kit staged does not diminish the work. It tells me exactly what still needs doing."
+        },
+        {
+          "type": "p",
+          "text": "Saturday ended with a five-page pilot memo pre-signed and a cover message beside it. Another proposal had a scorecard and a leadership brief. The scorecard is there to force numbers into the next round: the cost, the acceptance measure, the boundary of the pilot and the condition for stopping. A polished roadmap is easy to agree with when no result can disprove it. One controlled test is more useful than agreement with the whole roadmap."
+        },
+        {
+          "type": "pull",
+          "text": "Staged is progress. Staged is not sent."
+        },
+        {
+          "type": "h2",
+          "text": "what the counter hides"
+        },
+        {
+          "type": "p",
+          "text": "Saturday's dated task record had three explicit closures. One was dropped without a reply. One was handed to the responsible owner. One accepted a wireframe. Those changes matter, but adding them up as three shipped outcomes would tell the wrong story. The acceptance still has a handoff behind it. The handoff still has an owner who must finish the work. A dropped item has become a decision, not a delivered result."
+        },
+        {
+          "type": "p",
+          "text": "The opposite mistake is pretending none of this counts until the final outcome arrives. That makes preparation invisible and encourages people to skip it. I want both facts: what became usable today, and what the next person is still waiting for. The artifact can be complete while the obligation stays open. A system that keeps those separate is less flattering and much easier to operate."
+        },
+        {
+          "type": "callout",
+          "head": "the next check",
+          "lines": [
+            "For an email flow, prove the reply is seen, not only that the send landed.",
+            "For a document, name whether it is staged, sent or accepted.",
+            "For a release, read the output the user actually receives."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The point is not another status vocabulary. It is making the existing words expensive enough to trust. Done should answer a specific question. If it means the file is ready, say that. If it means the other person has it, show that evidence. This week produced useful artifacts and a few real proofs. The work left over is smaller when I stop giving it the wrong name."
+        }
+      ],
+      "related_companies": [
+        {
+          "name": "Champions Accelerator",
+          "slug": "champions-accelerator",
+          "tag": "Accelerator"
+        },
+        {
+          "name": "Lake B2B",
+          "slug": "lake-b2b",
+          "tag": "Data & Services"
+        }
+      ],
+      "viz": {
+        "window": {
+          "start": "2026-11-02",
+          "end": "2026-11-07"
+        },
+        "days": [
+          {
+            "date": "2026-11-02",
+            "dow": "mon",
+            "day": 367,
+            "arc_color": "green",
+            "arcs": [
+              "Champ Harbinger",
+              "Software Factory"
+            ],
+            "ship": "shipped the first full send-to-reply proof for champ harbinger: find, enrich, draft, approve, send, landed in the inbox in under 30 seconds."
+          },
+          {
+            "date": "2026-11-03",
+            "dow": "tue",
+            "day": 368,
+            "arc_color": "gold",
+            "arcs": [
+              "ChampOps",
+              "TheDeepEndHQ"
+            ],
+            "ship": "closed two blockers that had been sitting for a week, in one evening."
+          },
+          {
+            "date": "2026-11-04",
+            "dow": "wed",
+            "day": 369,
+            "arc_color": "green",
+            "arcs": [
+              "ChampOps",
+              "Lake B2B"
+            ],
+            "ship": "a day of calls that turned into structure."
+          },
+          {
+            "date": "2026-11-05",
+            "dow": "thu",
+            "day": 370,
+            "arc_color": "blue",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about seven meetings a month, quote due tomorrow."
+          },
+          {
+            "date": "2026-11-06",
+            "dow": "fri",
+            "day": 371,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker."
+          },
+          {
+            "date": "2026-11-07",
+            "dow": "sat",
+            "day": 372,
+            "arc_color": "green",
+            "arcs": [
+              "Lake B2B",
+              "Champions Operations"
+            ],
+            "ship": "a five-page outbound pilot memo is pre-signed, with the cover message beside it."
+          }
+        ],
+        "para_days": [
+          [
+            "2026-11-02"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "2026-11-06"
+          ],
+          [
+            "2026-11-07"
+          ],
+          [],
+          [],
+          [
+            "2026-11-07"
+          ],
+          [],
+          [],
+          [
+            "2026-11-07"
+          ]
+        ],
+        "nodes": [
+          {
+            "kind": "arc",
+            "name": "Lake B2B",
+            "n": 4,
+            "paras": [
+              6,
+              7,
+              10,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champions Operations",
+            "n": 3,
+            "paras": [
+              6,
+              7,
+              10,
+              13
+            ],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "ChampOps",
+            "n": 2,
+            "paras": [],
+            "href": "journey.html"
+          },
+          {
+            "kind": "arc",
+            "name": "Champ Harbinger",
+            "n": 1,
+            "paras": [
+              0
+            ],
+            "href": "journey.html"
+          }
+        ],
+        "words": 691,
+        "entries": 6,
+        "listen_min": 4
+      }
+    },
     {
       "slug": "week-50-the-million-dollar-week",
       "kind": "weekly",
@@ -10948,33 +11298,76 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-11-06T20:06:00.223Z",
-    "built_date": "2026-11-07",
+    "built": "2026-11-10T20:05:30.427Z",
+    "built_date": "2026-11-11",
     "newest_entry": {
-      "date": "2026-11-06",
-      "day": 371
+      "date": "2026-11-10",
+      "day": 375
     },
-    "weekdays_stale": 0,
+    "weekdays_stale": 1,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 148,
+        "days_old": 152,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 136,
+        "days_old": 140,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 136,
+        "days_old": 140,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 375,
+      "date": "2026-11-10",
+      "mood": "🛠️",
+      "arc_color": "green",
+      "arcs": [
+        "Signal Desk",
+        "Champions Operations"
+      ],
+      "ship": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid signal providers are still off."
+    },
+    {
+      "day": 374,
+      "date": "2026-11-09",
+      "mood": "🧪",
+      "arc_color": "green",
+      "arcs": [
+        "ChampOracle",
+        "Lake B2B"
+      ],
+      "ship": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still runs without the paid persona panel."
+    },
+    {
+      "day": 373,
+      "date": "2026-11-08",
+      "mood": "🧭",
+      "arc_color": "blue",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "ship": "one support review now has a source digest. the ownership, schema and logging requirements are in one place. the original recording and the forwarded request are still missing. naming those gaps is more useful than another confident summary."
+    },
+    {
+      "day": 372,
+      "date": "2026-11-07",
+      "mood": "🧭",
+      "arc_color": "green",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "ship": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine: send it. a file ready to leave is not the same as a conversation moved forward."
+    },
     {
       "day": 371,
       "date": "2026-11-06",
@@ -11083,113 +11476,13 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "killed the first version of our dopamine sites today. v1 had rules, scores, onboarding copy, all the stuff that makes a toy feel like homework. rebuilt from zero as five tiny one-interaction toys, one per brand, no instructions beyond about four words each. all five live on workers.dev tonight."
-    },
-    {
-      "day": 361,
-      "date": "2026-10-27",
-      "mood": "🛠️",
-      "arc_color": "green",
-      "arcs": [
-        "ChampOps",
-        "Data Products"
-      ],
-      "ship": "ran a live security, sample and ux review on the data-product agent we have been building all month. clean pass, zero deployment risk taken. handed the whole thing over to two engineers on the team today, first standup wednesday, first demo friday."
-    },
-    {
-      "day": 360,
-      "date": "2026-10-26",
-      "mood": "😅",
-      "arc_color": "green",
-      "arcs": [
-        "ChampOps",
-        "Champ Harbinger"
-      ],
-      "ship": "best day of the sprint from the factory: 49 cards closed in 24 hours, up from 14 the day before. a security gate for our pilot voice product, a client landing page rebuilt six times over until it stopped looking like a wireframe, and a direction finally picked for one of our longevity sites."
-    },
-    {
-      "day": 359,
-      "date": "2026-10-25",
-      "mood": "🔥",
-      "arc_color": "green",
-      "arcs": [
-        "ChampOps",
-        "Champions Operations"
-      ],
-      "ship": "finally pulled the trigger: champ harbinger is leaving railway for good, moving onto our own cloudflare account. containers, one env file, one deploy command. shipped five pieces of the migration today, oauth mailbox connectors, the mailboxes ui, an outbound regression suite, the deploy script itself. also rotated secrets across the 19 railway projects we actually own."
-    },
-    {
-      "day": 358,
-      "date": "2026-10-24",
-      "mood": "🤝",
-      "arc_color": "gold",
-      "arcs": [
-        "Lake B2B",
-        "ChampOps"
-      ],
-      "ship": "closed our first call with a facility management prospect today and walked away with an actual plan, not a maybe. they send their list, we dedupe it, then we price it. simple is the point. factory also shipped 58 cards in 24 hours, including two versions of the 100x longevity site."
     }
   ],
   "heatmap": {
-    "start": "2026-07-20",
-    "end": "2026-11-08",
+    "start": "2026-07-27",
+    "end": "2026-11-15",
     "weeks": 16,
     "cells": [
-      {
-        "date": "2026-07-20",
-        "future": false,
-        "weekend": false,
-        "day": 262,
-        "arc_color": "blue",
-        "ship": "built a full client profile and commercial call prep note from scratch for tomorrows data partnership call. fo"
-      },
-      {
-        "date": "2026-07-21",
-        "future": false,
-        "weekend": false,
-        "day": 263,
-        "arc_color": "blue",
-        "ship": "first direct call with a US oncology AI company. digital twin, epic/cerner integration, johns hopkins MOU in p"
-      },
-      {
-        "date": "2026-07-22",
-        "future": false,
-        "weekend": false,
-        "day": 264,
-        "arc_color": "blue",
-        "ship": "aligned on splitting lakeb2b.com into two navigation tracks: Data Services and Marketing Solutions. kicked off"
-      },
-      {
-        "date": "2026-07-23",
-        "future": false,
-        "weekend": false,
-        "day": 265,
-        "arc_color": "green",
-        "ship": "champbeam is live on deepify. found a fun one during the deploy: coolify re-escapes backslashes in env vars, s"
-      },
-      {
-        "date": "2026-07-24",
-        "future": false,
-        "weekend": false,
-        "day": 266,
-        "arc_color": "blue",
-        "ship": "Weekly scoreboard filed: 6 external meetings, 3 fully covered, 9 still open. Built a client brief for a high-s"
-      },
-      {
-        "date": "2026-07-25",
-        "future": false,
-        "weekend": true,
-        "day": 267,
-        "arc_color": "blue",
-        "ship": "took bucket 3 on a live strategy call with a health-tech company pursuing a $20M raise: marketing and fundrais"
-      },
-      {
-        "date": "2026-07-26",
-        "future": false,
-        "weekend": true,
-        "day": 268,
-        "arc_color": "green",
-        "ship": "sunday filing day: processed the full strategic brief from saturday's health-tech call, clocked five commitmen"
-      },
       {
         "date": "2026-07-27",
         "future": false,
@@ -12018,12 +12311,68 @@ window.DH_DATA = {
         "date": "2026-11-07",
         "future": false,
         "weekend": true,
+        "day": 372,
+        "arc_color": "green",
+        "ship": "a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine"
+      },
+      {
+        "date": "2026-11-08",
+        "future": false,
+        "weekend": true,
+        "day": 373,
+        "arc_color": "blue",
+        "ship": "one support review now has a source digest. the ownership, schema and logging requirements are in one place. t"
+      },
+      {
+        "date": "2026-11-09",
+        "future": false,
+        "weekend": false,
+        "day": 374,
+        "arc_color": "green",
+        "ship": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the h"
+      },
+      {
+        "date": "2026-11-10",
+        "future": false,
+        "weekend": false,
+        "day": 375,
+        "arc_color": "green",
+        "ship": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a"
+      },
+      {
+        "date": "2026-11-11",
+        "future": false,
+        "weekend": false,
         "day": null,
         "arc_color": null,
         "ship": null
       },
       {
-        "date": "2026-11-08",
+        "date": "2026-11-12",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-11-13",
+        "future": true,
+        "weekend": false,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-11-14",
+        "future": true,
+        "weekend": true,
+        "day": null,
+        "arc_color": null,
+        "ship": null
+      },
+      {
+        "date": "2026-11-15",
         "future": true,
         "weekend": true,
         "day": null,
@@ -12033,28 +12382,28 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 371,
-    "entries": 149,
+    "days_public": 375,
+    "entries": 153,
     "entries_30d": 30,
-    "entries_this_month": 6,
-    "streak_weekdays": 102,
-    "essays": 20,
+    "entries_this_month": 10,
+    "streak_weekdays": 104,
+    "essays": 21,
     "companies": 12,
     "companies_active_90d": 4,
     "first_entry": "2026-05-04",
     "day_one": null,
     "arcs_30d": [
       {
-        "arc": "ChampOps",
-        "n": 17
-      },
-      {
         "arc": "Champions Operations",
-        "n": 13
+        "n": 16
       },
       {
         "arc": "Lake B2B",
-        "n": 12
+        "n": 14
+      },
+      {
+        "arc": "ChampOps",
+        "n": 14
       },
       {
         "arc": "TheDeepEndHQ",
@@ -12065,15 +12414,15 @@ window.DH_DATA = {
         "n": 3
       },
       {
-        "arc": "Celsus OS",
-        "n": 3
-      },
-      {
         "arc": "Software Factory",
         "n": 2
       },
       {
-        "arc": "Dopamine Sites",
+        "arc": "Signal Desk",
+        "n": 1
+      },
+      {
+        "arc": "ChampOracle",
         "n": 1
       }
     ],
@@ -12118,9 +12467,9 @@ window.DH_DATA = {
         "kind": "using",
         "category": "tool",
         "featured": true,
-        "last_seen": "2026-11-04",
-        "mentions_90d": 29,
-        "days_since": 3
+        "last_seen": "2026-11-07",
+        "mentions_90d": 30,
+        "days_since": 4
       },
       {
         "name": "Cloudflare",
@@ -12130,7 +12479,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-10-28",
         "mentions_90d": 4,
-        "days_since": 10
+        "days_since": 14
       },
       {
         "name": "ChampBeam",
@@ -12143,7 +12492,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-10-12",
         "mentions_90d": 1,
-        "days_since": 26
+        "days_since": 30
       },
       {
         "name": "Obsidian + Celsus",
@@ -12153,7 +12502,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 27
+        "days_since": 31
       },
       {
         "name": "Claude + Cowork",
@@ -12163,7 +12512,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 28
+        "days_since": 32
       },
       {
         "name": "Event Scout",
@@ -12176,7 +12525,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 54
+        "days_since": 58
       },
       {
         "name": "ChampUTM",
@@ -12189,7 +12538,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 56
+        "days_since": 60
       },
       {
         "name": "LakeStream",
@@ -12202,7 +12551,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 95
+        "days_since": 99
       },
       {
         "name": "ChamPDF",
@@ -12215,7 +12564,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 95
+        "days_since": 99
       },
       {
         "name": "ChampMail",
@@ -12228,7 +12577,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 0,
-        "days_since": 97
+        "days_since": 101
       },
       {
         "name": "Supabase",
@@ -12239,7 +12588,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 129
+        "days_since": 133
       },
       {
         "name": "ChampGraph",
@@ -12252,7 +12601,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 137
+        "days_since": 141
       },
       {
         "name": "ChampQuest",
@@ -12265,7 +12614,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 157
+        "days_since": 161
       },
       {
         "name": "Deep Scanner",
@@ -12745,11 +13094,11 @@ window.DH_DATA = {
       "watching": 5,
       "skill": 8
     },
-    "active_30d": 5,
+    "active_30d": 3,
     "mined_from": {
-      "entries": 149,
-      "essays": 20
+      "entries": 153,
+      "essays": 21
     }
   },
-  "built": "2026-11-06T20:06:00.257Z"
+  "built": "2026-11-10T20:05:30.461Z"
 };

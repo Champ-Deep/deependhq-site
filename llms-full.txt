@@ -1,8 +1,56 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (149) and every weekly essay (20), newest first. Rebuilt 2026-11-06. Cite the day number and date when quoting, for example "day 371, 2026-11-06".
+> Every public journey entry (153) and every weekly essay (21), newest first. Rebuilt 2026-11-10. Cite the day number and date when quoting, for example "day 375, 2026-11-10".
 
 ## Journey
+
+### Day 375, 2026-11-10 (building)
+
+signal desk went from a local prototype to a cloud-hosted account-signal cockpit today. saved state survived a restart; paid signal providers are still off.
+
+Thread: the meeting pack now has an executive one-pager, a private speaking script and a battle-test appendix. the pilot remains a proposal, not a delivery promise.
+
+Raw thought: shipping a cockpit is not proof that its rankings are useful. that still needs a controlled comparison against the simple baseline.
+
+Arcs: Signal Desk, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-375
+
+### Day 374, 2026-11-09 (building)
+
+champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still runs without the paid persona panel.
+
+Thread: the in-house demand engine has a leadership showcase and a separate private review. one explains the direction. the other keeps the missing costs, baseline and approvals visible.
+
+Raw thought: a simulated audience can help choose what to test. it cannot tell me what real buyers did. keeping that warning beside the result is part of the product.
+
+Arcs: ChampOracle, Lake B2B
+
+Link: https://deependhq.com/journey.html#day-374
+
+### Day 373, 2026-11-08 (thinking)
+
+one support review now has a source digest. the ownership, schema and logging requirements are in one place. the original recording and the forwarded request are still missing. naming those gaps is more useful than another confident summary.
+
+Thread: next week's brief is written. the calendar conflicts are explicit, and the choices still belong to me. a planning document does not move an appointment.
+
+Raw thought: five cards closed: four verification checks and one evidence pack. none is a product launch. the system is only useful if a completed check and a completed business action keep different names.
+
+Arcs: Champions Operations
+
+Link: https://deependhq.com/journey.html#day-373
+
+### Day 372, 2026-11-07 (building)
+
+a five-page outbound pilot memo is pre-signed, with the cover message beside it. the next action is still mine: send it. a file ready to leave is not the same as a conversation moved forward.
+
+Thread: a demand-generation proposal now has a costed-pilot scorecard and a leadership brief. the question is no longer whether the deck looks convincing. it is what one controlled pilot would cost, and what result would stop it.
+
+Raw thought: three dated task closures: one dropped, one handed over, one accepted as a wireframe. all real state changes. none is evidence that a new product went live. the label has to say what actually changed.
+
+Arcs: Lake B2B, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-372
 
 ### Day 371, 2026-11-06 (building)
 
@@ -1775,6 +1823,38 @@ Arcs: InfraTech, Champions Operations
 Link: https://deependhq.com/journey.html#day-184
 
 ## Essays
+
+### The file is finished. The work isn't.
+
+2026-11-07, 4 min, Champions Operations. https://deependhq.com/post.html?slug=week-51-the-proof-arc
+
+A real delivery test, a local sales kit, and a signed document that still has not left the desk. This week was about naming the state correctly.
+
+Monday I sent a test email through the outreach system and watched it land in an inbox. Find, enrich, draft, approve, send. The whole path worked. Then I replied to my own message and the system did not see the answer. That second test told me more than the first one. A working send path was real progress. Calling it a working conversation would have been wrong.
+
+That distinction kept showing up all week. A board can close a card when an artifact is accepted. A document can carry a signature while it is still on my machine. A branch can be merged without anyone proving which deployment a user sees. Each is a useful state. None means the next state happened automatically. I need the system to preserve the boundary instead of smoothing it away.
+
+the test after the test
+
+The site gave me another version of the same lesson. The public log was behind the local content. A later publish caught it up, but the useful part was checking what the live page actually served rather than trusting the local file or a successful command. On another night the publish could not reach its security gate from the environment it was running in. The entry existed. Production had not changed. Those are two separate facts, and the log needed both.
+
+There is no clever fix hidden in that story. Fetch the public output. Compare its date with the intended date. Check the body, not just a status code. It sounds too small to count as engineering until you notice how much confidence can collect around a command that ran successfully in the wrong place. Evidence has to come from the surface the person on the other end will use.
+
+artifacts that earned their place
+
+By Friday there was a capability deck, five solution one-pagers and a lead tracker on disk. That is a useful sales kit. It gives the next conversation something concrete to work from. It is not evidence that anybody received the files, understood the offer or moved to the next stage. Calling the kit staged does not diminish the work. It tells me exactly what still needs doing.
+
+Saturday ended with a five-page pilot memo pre-signed and a cover message beside it. Another proposal had a scorecard and a leadership brief. The scorecard is there to force numbers into the next round: the cost, the acceptance measure, the boundary of the pilot and the condition for stopping. A polished roadmap is easy to agree with when no result can disprove it. One controlled test is more useful than agreement with the whole roadmap.
+
+Staged is progress. Staged is not sent.
+
+what the counter hides
+
+Saturday's dated task record had three explicit closures. One was dropped without a reply. One was handed to the responsible owner. One accepted a wireframe. Those changes matter, but adding them up as three shipped outcomes would tell the wrong story. The acceptance still has a handoff behind it. The handoff still has an owner who must finish the work. A dropped item has become a decision, not a delivered result.
+
+The opposite mistake is pretending none of this counts until the final outcome arrives. That makes preparation invisible and encourages people to skip it. I want both facts: what became usable today, and what the next person is still waiting for. The artifact can be complete while the obligation stays open. A system that keeps those separate is less flattering and much easier to operate.
+
+The point is not another status vocabulary. It is making the existing words expensive enough to trust. Done should answer a specific question. If it means the file is ready, say that. If it means the other person has it, show that evidence. This week produced useful artifacts and a few real proofs. The work left over is smaller when I stop giving it the wrong name.
 
 ### Lake B2B crossed a million dollars in a single month for the first time, and I still haven't sent the one email that's been waiting the longest.
 
