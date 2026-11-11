@@ -28,6 +28,8 @@ export const SETTING_KEYS = [
   'default_daily_row_cap',
   'paid_plan_id',
   'paid_allowance_credits',
+  'api_keys_open',
+  'api_daily_calls_per_key',
 ];
 
 export const num = (v) => {
@@ -58,6 +60,8 @@ export async function readSettings(db) {
     default_daily_row_cap: num(out.default_daily_row_cap),
     paid_plan_id: String(out.paid_plan_id || ''),
     paid_allowance_credits: num(out.paid_allowance_credits),
+    api_keys_open: num(out.api_keys_open),
+    api_daily_calls_per_key: num(out.api_daily_calls_per_key),
   };
 }
 

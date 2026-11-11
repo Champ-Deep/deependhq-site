@@ -23,8 +23,10 @@ function eyebrow(text) { return el('p', text, 'eyebrow'); }
 function saveBlob(blob, name) { const url = URL.createObjectURL(blob), a = el('a'); a.href = url; a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
 const signedIn = () => session.authState().signedIn;
 const mobile = () => innerWidth <= 768;
-const errorText = e => e.data?.message || ({provider_not_configured: 'Setup needed. The selected provider is not configured. Nothing was sent to that provider.', insufficient_credits: 'Your balance is too low. Ask an administrator for credits.', daily_credit_cap: 'Daily spending allowance reached. Return after the UTC day resets.', global_daily_cap: 'The shared daily budget is exhausted. Ask an administrator.', batch_ceiling: 'A chunk is over the $0.25 limit. Use fewer operations.'}[e.message] || e.message);
+const errorText = e => e.data?.message || ({provider_not_configured: 'Setup needed. The selected provider is not configured. Nothing was sent to that provider.', insufficient_credits: 'Your balance is too low. Ask an administrator for credits.', daily_credit_cap: 'Daily spending allowance reached. Return after the UTC day resets.', global_daily_cap: 'The shared daily budget is exhausted. Ask an administrator.', batch_ceiling: 'A chunk is over the $0.25 limit. Use fewer operations.',
+  not_pending: 'This was already decided. Refresh to see where it stands.', not_found: 'That item is not in your list any more.', invalid_label: 'Give the key a name of 1 to 40 characters.', invalid_scopes: 'Pick at least one thing the agent may do.', api_keys_closed: 'Agent access is not switched on yet.', too_many_keys: 'Five keys is the limit. Revoke one to add another.'}[e.message] || e.message);
 function age(iso) { const ms = Date.now() - Date.parse(iso); if (!Number.isFinite(ms)) return 'Date unavailable'; const d = Math.floor(ms / 86400000); return d < 1 ? 'today' : d === 1 ? '1 day ago' : d + ' days ago'; }
+function ago(iso) { const s = (Date.now() - Date.parse(iso)) / 1000; if (!Number.isFinite(s)) return 'Date unavailable'; const m = Math.floor(s / 60), h = Math.floor(m / 60); return s < 60 ? 'just now' : m < 60 ? m + ' min ago' : h < 24 ? h + (h === 1 ? ' hour ago' : ' hours ago') : age(iso); }
 function size(bytes) { const n = Number(bytes) || 0; return n < 1024 ? n + ' B' : n < 1048576 ? (n / 1024).toFixed(1) + ' KB' : (n / 1048576).toFixed(1) + ' MB'; }
 function metrics(values) { const n = el('dl', undefined, 'metrics'); for (const [label, value] of values) { const d = el('div'); d.append(el('dt', label), el('dd', value, 'money')); n.append(d); } return n; }
 
@@ -32,10 +34,13 @@ const ICON = {
   workbench: 'M4 5h24v22H4z M4 12h24 M12 12v15', enrich: 'M16 3l3.2 8.8L28 15l-8.8 3.2L16 27l-3.2-8.8L4 15l8.8-3.2z',
   files: 'M3 8h10l3 3h13v16H3z', beam: 'M4 16h24 M18 6l10 10-10 10', pdf: 'M8 3h11l6 6v20H8z M18 3v8h7 M12 17h9 M12 22h9',
   account: 'M21 10a5 5 0 1 1-10 0a5 5 0 1 1 10 0 M6 29v-5a10 10 0 0 1 20 0v5', admin: 'M4 8h24 M4 16h24 M4 24h24 M11 4v8 M21 12v8 M14 20v8',
+  myagent: 'M11 4v7 M21 4v7 M7 11h18v5a9 9 0 0 1-18 0z M16 25v4',
   file: 'M8 3h11l6 6v20H8z M18 3v8h7', folder: 'M3 8h10l3 3h13v16H3z',
+  approvals: 'M4 18l4-11h16l4 11v8H4z M4 18h7l2 3h6l2-3h7 M12 11l3 3 5-5', key: 'M21 4a7 7 0 1 1-6.7 9L4 23.3V28h5v-3h3v-3h3l1.3-1.3A7 7 0 0 1 21 4z M23 10.5v.01', copy: 'M11 11h15v15H11z M6 21V6h15',
+  run: 'M10 7l15 9-15 9z', files_move: 'M5 16h20 M18 9l7 7-7 7', connector_act: 'M12 4v7 M20 4v7 M8 11h16v5a8 8 0 0 1-16 0z M16 24v5', unknown: 'M16 13a3 3 0 1 1 0 6a3 3 0 1 1 0-6z',
 };
 // Deep Enrich sits right after Data Workbench, in the dock and on the desktop.
-const APPS = [['workbench', 'Data Workbench'], ['enrich', 'Deep Enrich'], ['files', 'Files'], ['beam', 'ChampBeam'], ['pdf', 'ChamPDF'], ['account', 'Account'], ['admin', 'Admin']];
+const APPS = [['workbench', 'Data Workbench'], ['enrich', 'Deep Enrich'], ['files', 'Files'], ['approvals', 'Approvals'], ['beam', 'ChampBeam'], ['pdf', 'ChamPDF'], ['myagent', 'My agent'], ['account', 'Account'], ['admin', 'Admin']];
 const NAME = Object.fromEntries(APPS);
 function icon(path) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', '0 0 32 32'); svg.setAttribute('aria-hidden', 'true');
@@ -91,7 +96,7 @@ function openApp(id) {
   node.addEventListener('pointerdown', () => setActive(id)); node.addEventListener('focusin', () => setActive(id));
   dragWindow(w, header); resizeWindow(w);
   header.addEventListener('dblclick', e => { if (!e.target.closest('button') && !mobile()) toggleMax(w); });
-  ({workbench, enrich: enrichApp, files: filesApp, beam: embedded, pdf: embedded, account, admin})[id](w);
+  ({workbench, enrich: enrichApp, files: filesApp, approvals, beam: embedded, pdf: embedded, myagent: myAgent, account, admin})[id](w);
   close.focus();
   return w;
 }
@@ -182,6 +187,28 @@ for (const [id, name] of APPS) {
 $('#app-launcher').addEventListener('pointermove', e => { if (mobile() || matchMedia('(prefers-reduced-motion: reduce)').matches) return; for (const b of launchers.values()) { const r = b.getBoundingClientRect(); const distance = Math.abs(e.clientX - r.x - r.width / 2); b.style.setProperty('--scale', String(distance < 120 ? 1 + .12 * (1 + Math.cos(distance / 120 * Math.PI)) : 1)); } });
 $('#app-launcher').addEventListener('pointerleave', () => launchers.forEach(b => b.style.removeProperty('--scale')));
 
+// ---------------- Approvals badge and #approvals/<id> deep link ----------------
+let waiting = 0;
+function paintBadge() {
+  const dock = launchers.get('approvals'), desk = desktopIcons.get('approvals');
+  for (const host of [dock.querySelector('.dock-symbol'), desk.querySelector('.app-icon')]) {
+    const b = host.querySelector('.badge') || host.appendChild(el('span', '', 'badge'));
+    b.setAttribute('aria-hidden', 'true'); b.textContent = String(waiting); b.hidden = !waiting;
+  }
+  const name = waiting ? `Approvals, ${waiting} waiting` : 'Approvals';
+  dock.setAttribute('aria-label', name); desk.setAttribute('aria-label', name + '. Double click or press Enter to open');
+}
+async function refreshApprovals() {
+  const epoch = authEpoch; let n = 0;
+  if (signedIn()) { try { n = (await session.api('staged_list', {})).items.length; } catch { return; } } // the window shows its own error; the badge keeps its last count
+  if (epoch === authEpoch) { waiting = n; paintBadge(); }
+}
+function deepLink() {
+  const m = /^#approvals(?:\/([\w-]{1,64}))?$/.exec(location.hash);
+  if (m && signedIn()) openApp('approvals')?.focusItem(m[1]);
+}
+addEventListener('hashchange', deepLink);
+
 // ---------------- Files on the desktop ----------------
 async function refreshDesktopFiles() {
   const epoch = authEpoch;
@@ -242,9 +269,10 @@ async function connect() {
 }
 async function authChanged(s) {
   const epoch = ++authEpoch; $('#signin-link').hidden = s.signedIn; $('#signout').hidden = !s.signedIn;
-  if (!s.signedIn) { usage = null; for (const id of [...windows.keys()]) closeWindow(id); await refreshDesktopFiles(); paintUsage(); setStatus('Signed out. Sign in to access private runs and quotes.', 'off'); return; }
+  if (!s.signedIn) { usage = null; for (const id of [...windows.keys()]) closeWindow(id); await refreshDesktopFiles(); paintUsage(); waiting = 0; paintBadge(); setStatus('Signed out. Sign in to access private runs and quotes.', 'off'); return; }
   try {
-    await Promise.all([refreshUsage(), refreshDesktopFiles()]); if (epoch !== authEpoch) return;
+    await Promise.all([refreshUsage(), refreshDesktopFiles(), refreshApprovals()]); if (epoch !== authEpoch) return;
+    deepLink();
     const u = usage.usage;
     setStatus(u.disabled ? 'Account disabled. Contact an administrator.' : !usage.providers.treg && !usage.providers.jev ? 'Setup needed. Providers are not configured yet.' : u.daily_credit_cap === 0 ? 'No daily allowance enabled. Ask an administrator to set your limits.' : 'Workspace connected. Choose an app below.', u.disabled || u.daily_credit_cap === 0 ? 'bad' : 'ok');
   } catch (e) { setStatus(errorText(e), 'bad'); }
@@ -338,6 +366,7 @@ function jobEngine(w, box, runId, ui = {}) {
         at = i; trace?.chunk(i, 'running');
         const body = {tool_id: 'data-workbench', job_id: jobId, chunk_index: i, chunk_count: batches.length, source_name: name.replace(/\.(csv|xlsx)$/i, ''), request_id: crypto.randomUUID(), list_name: name, rows: batches[i], columns, max_credits: quotes[0].max_credits};
         pending = body; const result = await session.api('run', body); pending = null; last = result; spent += result.spent_micro || 0;
+        if (i === 0) ui.started?.(jobId); // the run is on the ledger now, so a staged approval can name it
         const added = wl.resultRows(body.rows, columns, result.results); outputs.push(...added); bar.value = outputs.length; trace?.chunk(i, result.status, added, outputs.length - added.length, spent);
         line.textContent = `Chunk ${i + 1} of ${batches.length} ${result.status}. ${outputs.length} of ${total} rows done, ${money(spent)} spent.`;
         if (result.status !== 'completed') { stopped = 'Run stopped: ' + (result.error || result.status) + '. Finished results are kept. Held costs are not free.'; break; }
@@ -420,7 +449,8 @@ function workbench(w) {
   const qBox = el('div'), rBox = el('div'), resBox = el('div');
   const toReport = button('See the report', () => go(5), 'btn btn-gold'); toReport.hidden = true;
   S[3].append(qBox, foot(back(2))); S[4].append(rBox, foot(back(3), toReport)); S[5].append(resBox, foot(back(2)));
-  const eng = jobEngine(w, qBox, 'wb-run', {boxes: {quote: qBox, run: rBox, results: resBox}, stage: n => go({quote: 3, run: 4, results: 5}[n]), trace, report});
+  let onStarted = null; // set by reviewStaged: told the job id once the user's own Run is on the ledger
+  const eng = jobEngine(w, qBox, 'wb-run', {boxes: {quote: qBox, run: rBox, results: resBox}, stage: n => go({quote: 3, run: 4, results: 5}[n]), trace, report, started: id => { const f = onStarted; onStarted = null; f?.(id); }});
 
   let source = null, filename = '', fileSize = 0, turns = [], mapping = [], plan = [], specs = [], asking = false, manual = false, aiSpent = 0, aiModel = '';
   function changed() { eng.reset(); reached = Math.min(reached, current); steps.at(current, reached); }
@@ -439,13 +469,23 @@ function workbench(w) {
     if (eng.busy()) return;
     try { source = await readTable(f, true); } catch (e) { say(fileMsg, e.message, true); return; }
     filename = f.name; fileSize = f.size; turns = []; plan = []; manual = false; aiSpent = 0; aiModel = '';
+    onStarted = null; // a new file is not the staged job any more
     mapping = wl.guessFields(source.headers).map(m => ({...m, sure: wl.guessSure(m.field, samplesOf(m.source))}));
     eng.reset(); reached = 0; go(0); say(fileMsg, loadedText(source.rows.length));
     fileInfo.replaceChildren(metrics([['File', f.name], ['Rows', source.rows.length.toLocaleString('en-US')], ['Columns', String(source.headers.length)], ['Size', size(f.size)]]),
       el('h4', 'First 5 rows'), table(source.headers, source.rows.slice(0, 5).map(r => source.headers.map(h => r[h])), 'File preview'));
     fileFoot.hidden = false; S[0].querySelector('.or-row').hidden = true; reached = 1; steps.at(0, 1); renderColumns(); renderAsk(); toCols.focus();
+    return true;
   }
   w.load = load; file.addEventListener('change', () => load(file.files[0])); dropTarget(drop, load, 'workbench');
+  // Approvals "Review and run": a staged file from Files and its plan, priced again here. Nothing runs until the user presses Run.
+  w.reviewStaged = async (fileId, stagedPlan, started) => {
+    if (eng.busy()) return 'busy'; // load() would refuse silently; the caller says why
+    let f; try { f = await session.fetchFile(fileId); } catch (e) { go(0); say(fileMsg, errorText(e), true); return false; }
+    if (!(await load(new File([f], f.name || 'staged.csv', {type: f.type || 'text/csv'})))) return false;
+    plan = (Array.isArray(stagedPlan) ? stagedPlan : []).slice(0, 8).map(p => wl.planItem(p, source.headers)); manual = true; reached = 2; renderAsk();
+    onStarted = started; await getQuote(); return true;
+  };
   function samplesOf(h) { const seen = new Set(); for (const r of source.originals) { const v = String(r[h] ?? '').trim(); if (v) seen.add(v); if (seen.size >= 3) break; } return [...seen]; }
 
   // ---- 2. Columns: 21st.dev Import Patchbay (26969), vanilla port. Source jack, cable, field socket. ----
@@ -720,6 +760,7 @@ function account(w) {
   const head = el('div', undefined, 'app-head row'); head.append(el('h3', 'Balance and runs', 'app-title'));
   const refresh = button('Refresh account', load); head.append(refresh); b.append(head);
   const content = el('div'); b.append(content);
+  agentAccess(b);
   async function load() {
     refresh.disabled = true;
     try {
@@ -730,6 +771,400 @@ function account(w) {
       if (!usage.runs.length) notice(content, 'No runs yet. Start in Data Workbench to get a quote.');
       else content.append(table(['Run', 'Status', 'Rows', 'Spent', 'Held', 'When'], usage.runs.map(r => [r.list_name || r.tool_id, r.status, r.row_count, money(r.spent_micro), money(r.held_micro), age(r.created_at)]), 'Run history'));
     } catch (e) { notice(content, errorText(e), true); } finally { refresh.disabled = false; }
+  }
+  load();
+}
+
+// ---------------- My agent: the user's own MCP server and webhooks (docs/toolkit-v4-api.md section 12) ----------------
+const URL_NOT_ALLOWED = 'That URL is not allowed. It must be a public https address on port 443.';
+// Mirrors the parse-time checks of checkOutboundUrl (worker/outbound-guard.js) and its one message; the server, which also resolves DNS, decides.
+function outboundUrlError(raw) {
+  let u; try { u = new URL(raw); } catch { return URL_NOT_ALLOWED; }
+  const host = u.hostname.replace(/\.$/, '');
+  return raw.length > 2048 || u.protocol !== 'https:' || (u.port && u.port !== '443') || u.username || u.password || host.startsWith('[') || /^[\d.]+$/.test(host) || /(^|\.)0x[0-9a-f]*$/i.test(host) || !host.includes('.') ? URL_NOT_ALLOWED : '';
+}
+const agentError = e => e.message === 'timeout' ? 'Your agent did not answer in time.' : errorText(e);
+async function copyText(text, btn, done = 'Copied') { try { await navigator.clipboard.writeText(text); btn.textContent = done; return true; } catch { btn.textContent = 'Copy blocked. Select and copy by hand'; return false; } }
+const AGENT_MODES = [['off', 'Off'], ['read', 'Read'], ['ask', 'Ask me']];
+const READ_WARNING = 'DeepBot will call this tool without asking, and may pass text from your files to it. Use Read only for tools that do not change anything.';
+const CHANGED_TEXT = 'Your agent\'s tools changed. Review them before DeepBot can use them.';
+const RECONNECT_TEXT = 'Saving reconnects your agent. Every tool goes back to Off, and a blank token field removes the saved token. Press Save and list tools again to go ahead.';
+const HOOK_EVENTS = ['staged.created', 'staged.decided', 'job.completed'];
+// Verbatim from docs/toolkit-v4-api.md section 12, "Verifying a delivery"; tests/my_agent_flows.py compares the two.
+const VERIFY_SNIPPET = [
+  'import { createHmac, timingSafeEqual } from \'node:crypto\';',
+  '// secret: your whsec_ value. header: the X-Toolkit-Signature header. body: the raw body as a string.',
+  'export function verifyToolkitSignature(secret, header, body, toleranceSec = 300) {',
+  '  const parts = Object.fromEntries(String(header).split(\',\').map((p) => p.split(\'=\', 2)));',
+  '  const t = Number(parts.t);',
+  '  if (!parts.v1 || !Number.isInteger(t) || Math.abs(Date.now() / 1000 - t) > toleranceSec) return false;',
+  '  const want = Buffer.from(createHmac(\'sha256\', secret).update(`${t}.${body}`).digest(\'hex\'));',
+  '  const got = Buffer.from(parts.v1);',
+  '  return got.length === want.length && timingSafeEqual(got, want);',
+  '}',
+].join('\n');
+
+function myAgent(w) {
+  const b = w.body; if (!requireSignIn(b)) return;
+  const head = el('div', undefined, 'app-head'); head.append(el('h3', 'Connect your own agent', 'app-title'), el('p', 'Two directions. DeepBot can call the tools you approve on your MCP server, and the toolkit can notify your agent when something happens here.', 'plain'));
+  const wait = el('p', 'Loading your agent connection...', 'notice loading'); wait.setAttribute('role', 'status');
+  b.append(head, wait);
+  (async function load() {
+    let st;
+    try { st = await session.api('agent_status', {}); }
+    catch (e) { if (!w.node.isConnected) return; wait.remove(); const n = notice(b, 'My agent did not load: ' + errorText(e), true); n.append(' ', button('Try again', () => { n.remove(); b.append(wait); load(); }, 'btn btn-text')); return; }
+    if (!w.node.isConnected) return; wait.remove();
+    if (!st.configured) { notice(b, 'Connections are not switched on yet.'); return; }
+    const tabs = el('div', undefined, 'tabs'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'My agent sections'); b.append(tabs);
+    const sections = [['mcp', 'MCP server', p => mcpPanel(p, st.mcp)], ['hooks', 'Webhooks', p => hooksPanel(p, st.webhook)], ['verify', 'Verify deliveries', verifyPanel]], panels = {};
+    for (const [key, label, render] of sections) {
+      const t = button(label, () => show(key), 'tab'); t.setAttribute('role', 'tab'); t.id = 'myagent-tab-' + key; t.dataset.tab = key; tabs.append(t);
+      const p = el('div', undefined, 'tab-panel'); p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', t.id); p.dataset.panel = key; p.hidden = true; panels[key] = {p, t}; b.append(p); render(p);
+    }
+    // Each panel renders once and keeps its state, so switching tabs never refetches or drops a typed URL.
+    function show(key) { for (const [k, x] of Object.entries(panels)) { x.p.hidden = k !== key; x.t.setAttribute('aria-selected', String(k === key)); x.t.tabIndex = k === key ? 0 : -1; } }
+    tabs.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; const keys = sections.map(s => s[0]), next = keys[(keys.indexOf(document.activeElement.dataset.tab) + d + keys.length) % keys.length]; show(next); panels[next].t.focus(); });
+    show('mcp');
+  })();
+
+  function mcpPanel(p, saved) {
+    let conn = saved && {id: saved.connection_id, status: saved.status}, modes = {};
+    const warned = new Set();
+    const form = el('form', undefined, 'card-form agent-conn'); form.noValidate = true;
+    const top = el('div', undefined, 'conn-head'), chip = el('span', undefined, 'state-chip'), note = el('p', undefined, 'chip-note'); note.setAttribute('role', 'status');
+    top.append(el('h4', 'Your MCP server'), chip);
+    const url = input(saved?.url || '', 'url'), token = input('', 'password'); url.placeholder = 'https://agent.example.com/mcp'; url.spellcheck = false; url.autocomplete = 'off'; token.autocomplete = 'new-password';
+    const grid = el('div', undefined, 'form-grid'); grid.append(field('Server URL, https only', url, 'wide'), field('Bearer token, optional. Saving replaces the saved one.', token, 'wide'));
+    const hint = el('p', undefined, 'plain key-hint');
+    const save = button('Save and list tools', () => {}, 'btn btn-gold'); save.type = 'submit';
+    const test = button('Test', testConn), bar = el('div', undefined, 'toolbar'); bar.append(save, test);
+    // A saved connection gets one warning press first: agent_connect replaces it, drops the token if the field is blank and resets every mode.
+    const again = el('p', RECONNECT_TEXT, 'notice warn reconnect-warn'); again.setAttribute('role', 'alert'); again.hidden = true;
+    form.append(top, note, grid, hint, bar, again);
+    const list = el('div', undefined, 'agent-tools'), out = el('div', undefined, 'msg'); out.setAttribute('aria-live', 'polite');
+    const saveModes = button('Save tool modes', saveTools, 'btn btn-gold'), foot = el('div', undefined, 'toolbar'); foot.append(saveModes);
+    p.append(form, el('h4', 'Tools'), el('p', 'Names and descriptions come from your agent. They are shown as plain text, and DeepBot treats them as untrusted. Every tool starts Off.', 'plain'), list, foot, out);
+    const showHint = h => { hint.textContent = h ? 'Saved token: ' + h : 'No token saved.'; };
+    function setChip(state, text) {
+      chip.dataset.state = state;
+      chip.textContent = {off: 'Not connected', loading: 'Checking', connected: 'Connected', changed: 'Tools changed', error: 'Error'}[state];
+      note.textContent = text ?? {off: 'Connect an MCP server and DeepBot can call the tools you approve.', loading: 'Asking your agent for its tools...', changed: CHANGED_TEXT, connected: conn?.status === 'pending' ? 'Nothing is approved yet. Choose a mode for each tool and save.' : 'DeepBot can use the tools you set to Read or Ask me.'}[state] ?? '';
+    }
+    const busy = on => { save.disabled = saveModes.disabled = on; test.disabled = on || !conn; };
+    const emptyList = text => { list.replaceChildren(el('p', text, 'empty-line')); foot.hidden = true; };
+    function renderTools(tools) {
+      modes = Object.fromEntries(tools.map(t => [t.name, t.mode || 'off']));
+      if (!tools.length) return emptyList('Your agent lists no tools.');
+      list.replaceChildren(...tools.map(row)); foot.hidden = false;
+    }
+    function row(t, i) {
+      const r = el('div', undefined, 'agent-tool'); r.dataset.tool = t.name;
+      const text = el('div', undefined, 'agent-tool-text'); text.append(el('p', t.name, 'tool-name'), el('p', String(t.description ?? '').slice(0, 300), 'tool-desc'));
+      if (String(t.description ?? '').length >= 300) text.append(el('p', 'Your agent\'s description may go on. The toolkit shows its first 300 characters.', 'tool-hint'));
+      if (t.read_only_hint) text.append(el('p', 'Your agent says this tool only reads. DeepBot does not rely on that.', 'tool-hint'));
+      const seg = el('fieldset', undefined, 'seg'); seg.setAttribute('aria-label', 'Mode for ' + t.name);
+      for (const [v, label] of AGENT_MODES) {
+        const radio = input(v, 'radio'); radio.name = 'agent-mode-' + i; radio.checked = modes[t.name] === v;
+        radio.addEventListener('change', () => { modes[t.name] = v; if (v === 'read' && !warned.has(t.name)) { warned.add(t.name); const n = el('p', READ_WARNING, 'read-warning'); n.setAttribute('role', 'note'); r.append(n); } });
+        const l = el('label', undefined, 'seg-opt'); l.append(radio, el('span', label)); seg.append(l);
+      }
+      r.append(text, seg); return r;
+    }
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); out.replaceChildren();
+      const raw = url.value.trim(), bad = outboundUrlError(raw);
+      if (bad) { setChip('error', bad); url.focus(); return; }
+      if (conn && again.hidden) { again.hidden = false; return; }
+      again.hidden = true; busy(true); setChip('loading');
+      try { const r = await session.api('agent_connect', token.value ? {url: raw, token: token.value} : {url: raw}); token.value = ''; conn = {id: r.connection_id, status: r.status}; url.value = r.url; showHint(r.key_hint); setChip('connected'); renderTools(r.tools || []); }
+      catch (err) { setChip('error', agentError(err)); } finally { busy(false); }
+    });
+    async function testConn() {
+      if (!conn) return; busy(true); setChip('loading'); out.replaceChildren();
+      try { const r = await session.api('agent_test', {connection_id: conn.id}); conn.status = r.status; setChip(r.changed || r.status === 'changed' ? 'changed' : 'connected'); renderTools(r.tools || []); }
+      catch (err) { setChip('error', agentError(err)); emptyList('Tools did not load. Press Test to try again.'); } finally { busy(false); }
+    }
+    async function saveTools() {
+      busy(true); out.replaceChildren();
+      try {
+        const r = await session.api('agent_tools_set', {connection_id: conn.id, tools: modes}); conn.status = r.status; setChip('connected'); renderTools(r.tools || []);
+        const n = m => (r.tools || []).filter(t => t.mode === m).length, msg = notice(out, `Saved. Read: ${n('read')}. Ask me: ${n('ask')}. Off: ${n('off')}.` + (n('ask') ? ' DeepBot puts each Ask me call in Approvals and runs it only after you approve it.' : ''));
+        if (n('ask') && NAME.approvals) msg.append(' ', button('Open Approvals', () => openApp('approvals'), 'btn btn-text'));
+      } catch (err) {
+        // The chip sits at the top of the form; the same line goes beside the Save button the user just pressed.
+        if (err.message === 'tools_changed') { conn.status = 'changed'; setChip('changed'); renderTools(err.data?.tools || []); const n = notice(out, CHANGED_TEXT); n.classList.add('warn'); n.scrollIntoView({block: 'nearest'}); }
+        else notice(out, agentError(err), true);
+      } finally { busy(false); }
+    }
+    showHint(saved?.key_hint); emptyList(conn ? 'Loading tools from your agent...' : 'No tools yet. Save your server URL to list them.'); busy(false);
+    if (conn) testConn(); else setChip('off');
+  }
+
+  function hooksPanel(p, saved) {
+    let hook = saved;
+    const events = new Set(hook?.events || HOOK_EVENTS);
+    const form = el('form', undefined, 'card-form'); form.noValidate = true;
+    const url = input(hook?.url || '', 'url'); url.placeholder = 'https://agent.example.com/toolkit-events'; url.spellcheck = false; url.autocomplete = 'off';
+    const evBox = el('fieldset', undefined, 'hook-events'); evBox.append(el('legend', 'Send these events'));
+    for (const e of HOOK_EVENTS) { const c = check(e, events.has(e), on => on ? events.add(e) : events.delete(e)); c.querySelector('span').className = 'mono'; evBox.append(c); }
+    const hint = el('p', undefined, 'plain key-hint'), save = button('Save webhook', () => {}, 'btn btn-gold'); save.type = 'submit';
+    const rotate = button('Rotate secret', rotateSecret), bar = el('div', undefined, 'toolbar'); bar.append(save, rotate);
+    const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
+    const slot = el('div');
+    form.append(el('h4', 'Webhook'), el('p', 'The toolkit posts a signed event to this URL. Events carry ids, counts and status, never a cell value, a file name or a note. One attempt each, so poll Approvals when it matters.', 'plain'), field('Webhook URL, https only', url), evBox, hint, bar, msg);
+    const logHead = el('div', undefined, 'app-head row'), logBox = el('div'), logMsg = el('div', undefined, 'msg'); logMsg.setAttribute('aria-live', 'polite');
+    logHead.append(el('h4', 'Delivery log'), button('Refresh log', loadLog));
+    p.append(form, slot, logHead, logMsg, logBox);
+    // The signing secret's masked form starts with whsec_; only its last four characters are shown here.
+    function paint() { hint.textContent = hook ? 'Signing secret ends in ' + String(hook.key_hint || '').slice(-4) + '. Saving again or rotating makes a new one, and the old one stops working at once.' : 'No webhook yet. Saving shows the signing secret once.'; rotate.hidden = !hook; }
+    function reveal(secret) {
+      // The one copy of the secret lives in this closure and the code element; Close drops both.
+      const panel = el('div', undefined, 'secret-reveal'); panel.setAttribute('role', 'group'); panel.setAttribute('aria-label', 'New signing secret');
+      const code = el('code', secret, 'secret-value'), copy = button('Copy', () => copyText(secret, copy));
+      const close = button('I saved it, close', () => { secret = null; code.textContent = ''; panel.remove(); save.focus(); }, 'btn btn-gold');
+      const acts = el('div', undefined, 'toolbar'); acts.append(copy, close);
+      panel.append(el('h4', 'Your signing secret'), el('p', 'You will not see this again. Put it in your agent now: it checks that each delivery came from the toolkit.', 'reveal-warn'), code, acts);
+      slot.replaceChildren(panel); copy.focus();
+    }
+    const keep = r => ({webhook_id: r.webhook_id, url: r.url ?? hook?.url, events: r.events ?? hook?.events, key_hint: r.key_hint});
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); msg.replaceChildren();
+      const raw = url.value.trim(), bad = outboundUrlError(raw);
+      if (bad) { notice(msg, bad, true); url.focus(); return; }
+      if (!events.size) { notice(msg, 'Pick at least one event.', true); return; }
+      save.disabled = true;
+      try { const r = await session.api('webhook_set', {url: raw, events: HOOK_EVENTS.filter(x => events.has(x))}); hook = keep(r); paint(); reveal(r.secret); loadLog(); }
+      catch (err) { notice(msg, errorText(err), true); } finally { save.disabled = false; }
+    });
+    async function rotateSecret() {
+      rotate.disabled = true; msg.replaceChildren();
+      try { const r = await session.api('webhook_rotate', {}); hook = keep(r); paint(); reveal(r.secret); }
+      catch (err) { notice(msg, errorText(err), true); } finally { rotate.disabled = false; }
+    }
+    async function loadLog() {
+      logBox.replaceChildren(el('p', 'Loading deliveries...', 'notice loading'));
+      try {
+        const ds = (await session.api('webhook_deliveries', {})).deliveries || []; if (!w.node.isConnected) return;
+        const log = ds.length && table(['Event', 'Status', 'Time', 'When', 'Action'], ds.map(d => {
+          const ok = d.status_code >= 200 && d.status_code < 300, c = el('span', d.status_code ? String(d.status_code) : d.error || 'No answer', 'code-chip'); c.dataset.ok = String(ok);
+          const again = button('Resend', async () => { again.disabled = true; logMsg.replaceChildren(); try { const r = await session.api('webhook_resend', {delivery_id: d.id}); notice(logMsg, 'Sent ' + d.event + ' again: ' + (r.delivery?.status_code || r.delivery?.error || 'no answer') + '.'); await loadLog(); } catch (err) { notice(logMsg, errorText(err), true); again.disabled = false; } }, 'btn btn-outline');
+          again.setAttribute('aria-label', 'Resend ' + d.event + ' from ' + ago(d.ts));
+          return [el('span', d.event, 'mono'), c, (d.ms ?? 0) + ' ms', ago(d.ts), again];
+        }), 'Webhook deliveries');
+        if (log) log.classList.add('delivery-log');
+        logBox.replaceChildren(log || el('p', hook ? 'No deliveries yet. Each event the toolkit sends shows here.' : 'Set a webhook to see deliveries here.', 'empty-line'));
+      } catch (e) { logBox.replaceChildren(); notice(logBox, 'Deliveries did not load: ' + errorText(e), true); }
+    }
+    paint(); loadLog();
+  }
+
+  function verifyPanel(p) {
+    const pre = el('pre', VERIFY_SNIPPET, 'snippet-code'); pre.tabIndex = 0; pre.setAttribute('aria-label', 'Signature check in JavaScript');
+    const copy = button('Copy code', () => copyText(VERIFY_SNIPPET, copy)), bar = el('div', undefined, 'toolbar'); bar.append(copy);
+    p.append(el('h4', 'Check the signature on your side'), el('p', 'Node 18 or later. Pass the raw request body exactly as received, before any JSON parsing. Each delivery carries X-Toolkit-Signature: t=<unix seconds>,v1=<hex HMAC-SHA256 of t, a dot and the body>.', 'plain'), pre, bar);
+  }
+}
+
+// ---------------- Approvals: staged items from DeepBot and the user's own agents (docs/toolkit-v4-api.md section 10) ----------------
+// Agent text never reaches innerHTML: title, source and note are text nodes, and the note is labelled as the agent's.
+const KIND_NAME = {run: 'Run', files_move: 'Move', connector_act: 'Connector'};
+const PILL = {pending: 'Waiting', approving: 'Approving', approved: 'Approved', rejected: 'Rejected', expired: 'Expired', failed: 'Failed'};
+function approvals(w) {
+  const b = w.body; w.focusItem = () => {};
+  if (!requireSignIn(b)) return;
+  const head = el('div', undefined, 'app-head row'), ht = el('div');
+  ht.append(eyebrow('Approvals'), el('h3', 'Nothing runs, moves or sends until you say yes.', 'app-title'));
+  const refresh = button('Refresh', () => load()); head.append(ht, refresh);
+  const msg = el('div', undefined, 'msg'); msg.setAttribute('aria-live', 'polite');
+  const list = el('ol', undefined, 'staged-list'); list.setAttribute('aria-label', 'Staged items, newest first');
+  b.append(head, msg, list);
+  const say = (text, bad = false) => { msg.replaceChildren(); if (text) notice(msg, text, bad); };
+  // target: a deep link still to scroll to and focus, once. outlined: the row that keeps its outline across reloads.
+  let target = null, outlined = null, labels = new Map(), loaded = false;
+  // a warm deep link (item staged after the list loaded, e.g. an approve_url) needs a fresh list, not the cached one
+  w.focusItem = id => { target = id || null; if (loaded) target ? load() : mark(); };
+  function mark() {
+    const want = target || outlined; if (!want) return;
+    const row = [...list.children].find(r => r.dataset.staged === want);
+    list.querySelectorAll('[data-target]').forEach(r => r.removeAttribute('data-target'));
+    if (!row) { if (target) say('That item is not in your newest 50. It may have been staged for another account.', true); target = null; return; }
+    row.dataset.target = 'true'; outlined = want;
+    if (target) { target = null; row.scrollIntoView({block: 'center'}); row.focus({preventScroll: true}); }
+  }
+  const sourceName = s => s === 'deepbot' ? 'DeepBot' : s === 'user' ? 'You' : String(s).startsWith('key:') ? labels.get(String(s).slice(4)) || 'A revoked agent key' : 'Unknown source';
+  async function load() {
+    say(''); refresh.disabled = true; loaded = false; // a retry or a later link starts clean; mark() re-reports a real not-found
+    const wait = el('li', 'Loading what is waiting for you...', 'empty'); list.replaceChildren(wait);
+    try {
+      const [r, k] = await Promise.all([session.api('staged_list', {status: 'all'}), session.api('api_keys_list', {}).catch(() => ({keys: []})), refreshUsage().catch(() => {})]);
+      if (!w.node.isConnected) return;
+      labels = new Map((k.keys || []).map(x => [x.id, x.label]));
+      const items = [...(r.items || [])].sort((x, y) => Date.parse(y.created_at) - Date.parse(x.created_at));
+      list.replaceChildren(...(items.length ? items.map(row) : [el('li', 'Nothing waiting. When DeepBot or your agent prepares something, it lands here.', 'empty')]));
+      loaded = true; mark(); refreshApprovals();
+    } catch (e) {
+      list.replaceChildren(); const n = notice(msg, 'Approvals did not load: ' + errorText(e), true); msg.replaceChildren(n); n.append(' ', button('Try again', load, 'btn btn-outline'));
+    } finally { refresh.disabled = false; }
+  }
+  function row(it) {
+    const state = it.expired ? 'expired' : it.status;
+    const li = el('li', undefined, 'staged'); li.dataset.staged = it.id; li.dataset.state = state; li.dataset.kind = it.kind; li.tabIndex = -1;
+    const kind = KIND_NAME[it.kind] ? it.kind : 'unknown', glyph = el('span', undefined, 'kind-glyph'); glyph.dataset.kind = kind; glyph.append(icon(ICON[kind]));
+    const main = el('div', undefined, 'staged-main'), top = el('div', undefined, 'staged-top');
+    const pill = el('span', PILL[state] || state, 'pill'); pill.dataset.state = state;
+    top.append(el('span', sourceName(it.source), 'source-chip'), el('span', KIND_NAME[it.kind] || it.kind, 'kind-name'), el('span', 'staged ' + ago(it.created_at), 'staged-age'), pill);
+    main.append(top, el('h4', it.title, 'staged-title'));
+    if (it.kind === 'run') main.append(creditsMeter(Number(it.payload?.quote?.max_credits)));
+    if (it.note) { const f = el('figure', undefined, 'agent-note'); f.append(el('figcaption', 'Note from the agent'), el('blockquote', it.note)); main.append(f); }
+    if (state === 'expired') main.append(el('p', 'Expired after 7 days without a decision. Ask the agent to stage it again.', 'staged-line'));
+    else if (['approved', 'rejected'].includes(state) && it.decided_at) main.append(el('p', `${PILL[state]} ${ago(it.decided_at)}.`, 'staged-line'));
+    else if (state === 'failed') main.append(el('p', 'It did not go through: ' + (it.result?.message || it.result?.error || 'no reason given') + ' Stage it again to retry.', 'staged-line bad'));
+    const acts = el('div', undefined, 'staged-acts'), m = el('div', undefined, 'msg'); m.setAttribute('aria-live', 'polite');
+    async function decide(decision) {
+      const btns = [...acts.querySelectorAll('button')]; btns.forEach(x => { x.disabled = true; });
+      m.replaceChildren(); notice(m, decision === 'reject' ? 'Rejecting...' : 'Approving...').classList.add('loading');
+      try { const r = await session.api('staged_decide', {id: it.id, decision}); li.replaceWith(row(r.item)); refreshApprovals(); }
+      catch (e) {
+        if (e.data?.item) { const n = row(e.data.item); li.replaceWith(n); notice(n.querySelector('.msg'), errorText(e), true); refreshApprovals(); return; }
+        m.replaceChildren(); notice(m, errorText(e), true); btns.forEach(x => { x.disabled = false; });
+      }
+    }
+    async function review() {
+      const wb = openApp('workbench'); if (!wb?.reviewStaged) return;
+      m.replaceChildren(); notice(m, 'Opening it in Data Workbench at the quote. Nothing runs until you press Run there.');
+      const ok = await wb.reviewStaged(it.payload?.file_id, it.payload?.plan, async jobId => {
+        try { await session.api('staged_decide', {id: it.id, decision: 'approve', job_id: jobId}); status('Run started and the staged item is approved.'); }
+        catch (e) { status('The run started, but the approval was not recorded: ' + errorText(e)); }
+        if (w.node.isConnected) load(); else refreshApprovals();
+      });
+      if (ok === 'busy' && li.isConnected) { m.replaceChildren(); notice(m, 'Data Workbench is running a job. Press Review and run again when it finishes.', true); }
+      else if (!ok && li.isConnected) { m.replaceChildren(); notice(m, 'Data Workbench could not load it. It says why on its first stage.', true); }
+    }
+    if (state === 'pending') {
+      acts.append(it.kind === 'run' ? button('Review and run', review, 'btn btn-gold') : button('Approve', () => decide('approve'), 'btn btn-gold'), button('Reject', () => decide('reject'), 'btn btn-outline'));
+      for (const x of acts.children) x.setAttribute('aria-label', x.textContent + ': ' + it.title);
+      main.append(acts);
+    }
+    main.append(m); li.append(glyph, main);
+    return li;
+  }
+  // max_credits against the balance the account has now; text carries the numbers, the bar only shows the share.
+  function creditsMeter(max) {
+    const wrap = el('div', undefined, 'credit-meter'), avail = Number(usage?.usage?.credits_available);
+    if (!Number.isFinite(max)) { wrap.append(el('span', 'Price not known. Review it for a fresh quote.', 'cm-of')); return wrap; }
+    const has = Number.isFinite(avail), over = has && max > avail, bar = el('span', undefined, 'cm-bar'), fill = el('i');
+    fill.style.setProperty('--w', String(has && avail > 0 ? Math.min(1, max / avail) : 1)); bar.append(fill); bar.setAttribute('aria-hidden', 'true');
+    wrap.dataset.over = String(over);
+    wrap.append(el('span', `up to ${max.toLocaleString('en-US')} credits`, 'cm-max'), bar, el('span', !has ? 'balance unavailable' : over ? `more than your ${avail.toLocaleString('en-US')} available` : `of ${avail.toLocaleString('en-US')} available`, 'cm-of'));
+    return wrap;
+  }
+  load();
+}
+
+// ---------------- Agent access: toolkit API keys (docs/toolkit-v4-api.md section 11) ----------------
+// 21st.dev Environment Variables (36559), vanilla port: secret rows, label over a mono masked value, scope chips, hairlines,
+// a copy button whose icon swaps to a check. No reveal toggle: the server never returns a key after creation.
+const SCOPES = [['files:read', 'Read your files and folders.', true], ['files:write', 'Save new files. It never overwrites or deletes.', false],
+  ['jobs:read', 'See your balance, runs and what waits in Approvals.', true], ['jobs:plan', 'Plan and price jobs. The planning assistant uses a few credits.', true],
+  ['jobs:stage', 'Stage runs and moves for you to approve here.', true], ['connections:read', 'Read from your connected tools.', false],
+  ['connections:stage', 'Stage actions in your connected tools for your approval.', false]];
+const SNIPPETS = [
+  ['mcp', 'MCP config', 'For Claude Desktop, Cursor or VS Code. Paste it into the MCP settings and put your key where it says <your key>.',
+    JSON.stringify({mcpServers: {'deependhq-toolkit': {url: 'https://toolkit.deependhq.com/api/toolkit/mcp', headers: {Authorization: 'Bearer <your key>'}}}}, null, 2), 'Copy MCP config'],
+  ['openai', 'OpenAI tools', 'Lists the tools in the OpenAI function format, ready for the tools field of a chat completions request.',
+    'curl -H "Authorization: Bearer <your key>" https://toolkit.deependhq.com/api/toolkit/v1/tools', 'Copy curl command'],
+];
+function copyButton(text, label) {
+  const b = button('', async () => {
+    const t = text(); if (!t) return;
+    try { await navigator.clipboard.writeText(t); b.dataset.copied = 'true'; word.textContent = 'Copied'; setTimeout(() => { b.dataset.copied = 'false'; word.textContent = label; }, 1500); }
+    catch { word.textContent = 'Select it and copy by hand'; }
+  }, 'btn btn-outline copy-btn');
+  const swap = el('span', undefined, 'copy-swap'), word = el('span', label); swap.setAttribute('aria-hidden', 'true'); swap.append(icon(ICON.copy), icon(CHECK));
+  b.dataset.copied = 'false'; b.append(swap, word); return b;
+}
+function agentAccess(container) {
+  const sec = el('section', undefined, 'agent-access'), h = el('h3', 'Agent access'); h.id = 'aa-title'; h.tabIndex = -1; sec.setAttribute('aria-labelledby', 'aa-title');
+  sec.append(h, el('p', 'Loading agent access...', 'plain')); container.append(sec);
+  const reveal = el('div'), msg = el('div', undefined, 'msg'), listBox = el('div'), formBox = el('div'), snippets = el('div'); msg.setAttribute('aria-live', 'polite');
+  const say = (text, bad = false) => { msg.replaceChildren(); if (text) notice(msg, text, bad); };
+  let keys = [];
+  async function load() {
+    let r; try { r = await session.api('api_keys_list', {}); } catch (e) { sec.replaceChildren(h); notice(sec, 'Agent keys did not load: ' + errorText(e), true); sec.append(button('Try again', load)); return; }
+    if (!sec.isConnected) return;
+    if (!r.open && !usage?.user.is_admin) { sec.replaceChildren(el('p', 'Agent access is not switched on yet.', 'plain')); return; }
+    keys = r.keys || [];
+    sec.replaceChildren(h, el('p', 'Let your own agent (Claude Desktop, Cursor, a script) read your files, plan and price jobs, and stage work for you to approve. It can never run a job, send, move or delete anything.', 'plain'), reveal, msg, listBox, formBox, snippets);
+    renderList(); renderForm(); if (!snippets.childElementCount) renderSnippets();
+  }
+  function renderList() {
+    const ul = el('ul', undefined, 'key-list'); ul.setAttribute('aria-label', 'Your agent keys');
+    if (!keys.length) ul.append(el('li', 'No keys yet. Create one below, then paste it into your agent.', 'empty'));
+    for (const k of keys) {
+      const li = el('li', undefined, 'key-row'), info = el('div', undefined, 'key-info'), top = el('div', undefined, 'key-top'), chips = el('span', undefined, 'scope-chips');
+      li.dataset.key = k.id; for (const s of k.scopes || []) chips.append(el('span', s, 'scope-chip'));
+      top.append(el('strong', k.label, 'key-label'), chips);
+      info.append(top, el('code', k.prefix + '…', 'key-prefix'), el('small', `Created ${ago(k.created_at)}. ${k.last_used_at ? 'Last used ' + ago(k.last_used_at) : 'Never used'}.`, 'key-meta'));
+      const sym = el('span', undefined, 'key-sym'); sym.append(icon(ICON.key));
+      const revoke = button('Revoke', () => confirmRevoke(li, k, revoke), 'btn btn-ghost danger'); revoke.setAttribute('aria-label', 'Revoke ' + k.label);
+      li.append(sym, info, revoke); ul.append(li);
+    }
+    listBox.replaceChildren(el('h4', `Your keys (${keys.length} of 5)`), ul);
+  }
+  function confirmRevoke(li, k, trigger) {
+    li.querySelector('.confirm')?.remove();
+    const c = el('div', undefined, 'confirm'); c.setAttribute('role', 'alertdialog'); c.setAttribute('aria-label', 'Confirm revoke');
+    c.append(el('p', `Revoke ${k.label}? Agents using it stop at once.`));
+    const yes = button('Revoke key', async () => {
+      yes.disabled = no.disabled = true;
+      try { await session.api('api_key_revoke', {id: k.id}); say(`Revoked ${k.label}. Calls with it are refused from now on.`); await load(); }
+      catch (e) { yes.disabled = no.disabled = false; notice(c, errorText(e), true); }
+    }, 'btn btn-danger');
+    const no = button('Keep it', () => { c.remove(); trigger.focus(); }, 'btn btn-ghost');
+    c.append(yes, no); li.append(c); yes.focus();
+  }
+  function renderForm() {
+    const full = keys.length >= 5, f = el('form', undefined, 'card-form key-form'), fs = el('fieldset');
+    fs.disabled = full;
+    const label = input(); label.maxLength = 40; label.required = true; label.autocomplete = 'off'; label.placeholder = 'For example: Claude Desktop on my laptop';
+    const picks = el('fieldset', undefined, 'scope-picks'); picks.append(el('legend', 'What the agent may do'));
+    for (const [s, line, on] of SCOPES) { const c = input('', 'checkbox'); c.checked = on; c.value = s; const l = el('label', undefined, 'scope-pick'), t = el('span'); t.append(el('code', s), el('span', line)); l.append(c, t); picks.append(l); }
+    const submit = button('Create key', () => {}, 'btn btn-gold'); submit.type = 'submit';
+    fs.append(field('Name for this key, 1 to 40 characters', label), picks, submit);
+    f.append(el('h4', 'Create a key'));
+    if (full) f.append(el('p', 'Five keys is the limit. Revoke one to add another.', 'notice'));
+    f.append(fs);
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name = label.value.trim(), want = [...picks.querySelectorAll('input:checked')].map(c => c.value);
+      if (!name || name.length > 40 || /[\u0000-\u001f\u007f]/.test(name)) { say('Give the key a name of 1 to 40 characters.', true); label.focus(); return; }
+      if (!want.length) { say('Pick at least one thing the agent may do.', true); return; }
+      submit.disabled = true; say();
+      try { const r = await session.api('api_key_create', {label: name, scopes: want}); showKey(r.key, r.label); r.key = null; await load(); }
+      catch (err) { say(errorText(err), true); submit.disabled = false; }
+    });
+    formBox.replaceChildren(f);
+  }
+  // The only place the full key ever appears. Close drops it from the DOM and from the closure.
+  function showKey(secret, name) {
+    const p = el('section', undefined, 'key-reveal'), t = el('h4', 'Your new key: ' + name), code = el('code', secret, 'key-secret'), line = el('div', undefined, 'kr-row');
+    p.setAttribute('aria-label', 'New key, shown once');
+    const copy = copyButton(() => secret, 'Copy key');
+    const close = button('I saved it, close', () => { secret = null; code.textContent = ''; p.remove(); h.focus(); }, 'btn btn-outline');
+    line.append(code, copy); p.append(t, el('p', 'Copy it now. You will not see this key again.', 'kr-warn'), line, close);
+    reveal.replaceChildren(p); copy.focus();
+  }
+  function renderSnippets() {
+    const tabs = el('div', undefined, 'tabs'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Connect your agent');
+    const panels = SNIPPETS.map(([k, name, help, text, copyLabel], i) => {
+      const t = button(name, () => show(i), 'tab'), p = el('div', undefined, 'tab-panel snippet'), pre = el('pre');
+      t.setAttribute('role', 'tab'); t.id = 'aa-tab-' + k; p.id = 'aa-panel-' + k; t.setAttribute('aria-controls', p.id); p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', t.id);
+      pre.tabIndex = 0; pre.setAttribute('aria-label', name + ' snippet'); pre.append(el('code', text));
+      p.append(el('p', help, 'plain'), pre, copyButton(() => text, copyLabel)); tabs.append(t); return {t, p};
+    });
+    function show(i) { panels.forEach((x, j) => { x.p.hidden = j !== i; x.t.setAttribute('aria-selected', String(j === i)); x.t.tabIndex = j === i ? 0 : -1; }); }
+    tabs.addEventListener('keydown', e => { const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return; const i = panels.findIndex(x => x.t === document.activeElement); const n = (i + d + panels.length) % panels.length; show(n); panels[n].t.focus(); });
+    snippets.replaceChildren(el('h4', 'Connect your agent'), tabs, ...panels.map(x => x.p)); show(0);
   }
   load();
 }

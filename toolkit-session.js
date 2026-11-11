@@ -192,7 +192,11 @@ export async function fetchFile(id) {
   const r = await authed('/api/toolkit/files/' + encodeURIComponent(id), { method: 'GET', headers: {} });
   if (r.status === 404) throw new Error('That file is not in your storage any more.');
   if (!r.ok) throw new Error('Download failed (HTTP ' + r.status + ').');
-  return r.blob();
+  // A File (still a Blob) named from Content-Disposition, so a file opened by id keeps its name.
+  let name = '';
+  try { name = decodeURIComponent((/filename\*=UTF-8''([^;]+)/.exec(r.headers.get('content-disposition') || '') || [])[1] || ''); } catch (e) { name = ''; }
+  const blob = await r.blob();
+  return name ? new File([blob], name, { type: blob.type }) : blob;
 }
 
 // Shared appearance so native Clerk components sit on the page tokens instead

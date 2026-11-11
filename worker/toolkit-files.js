@@ -42,7 +42,7 @@ const ext = (name) => (name.includes('.') ? name.slice(name.lastIndexOf('.') + 1
 const entry = (r) => ({ id: r.id, kind: r.kind, name: r.name, path: r.path, size: r.size, mime: r.mime, updated: r.updated_at });
 
 // --- content checks -------------------------------------------------------------
-function decodeBase64(s) {
+export function decodeBase64(s) {
   if (typeof s !== 'string' || s.length % 4 !== 0 || !/^[A-Za-z0-9+/]*={0,2}$/.test(s)) fail(400, 'bad_content', 'content_base64 is not valid base64.');
   const size = (s.length / 4) * 3 - (s.endsWith('==') ? 2 : s.endsWith('=') ? 1 : 0);
   if (size > FILE_MAX_BYTES) fail(413, 'file_too_large', 'Files are limited to 10 MB.');
