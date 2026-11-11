@@ -61,6 +61,8 @@ globalThis.fetch = async (input, init = {}) => {
 const reset = () => { fx.calls = []; fx.script = []; fx.chat = []; fx.deny = new Set(); fx.down = new Set(); fx.forbid = new Set(); fx.errors = []; resetClerkFixtures(); };
 
 const { handleToolkit } = await import('../worker/toolkit.js');
+const { KEY_RE } = await import('../worker/connectors.js');
+check('scrub: connector keys, API keys (dhk_live_) and webhook secrets (whsec_) are all replaced; plain words are not', ['hb_live_ABCDEFGH12', 'cb_live_ABCDEFGH12', 'dhk_live_' + 'A'.repeat(43), 'whsec_' + 'b'.repeat(40)].every((k) => `my key ${k} ok`.replace(KEY_RE, '[key]') === 'my key [key] ok') && 'live whsec dhk plain'.replace(KEY_RE, '[key]') === 'live whsec dhk plain');
 const baseEnv = (d1, over = {}) => ({ TOOLKIT_DB: d1, TOOLKIT_FILES: makeR2(), CLERK_PUBLISHABLE_KEY: PK, CLERK_SECRET_KEY: SK, CLERK_JWT_KEY: JWT_PUBLIC_PEM, CLERK_JS_URL, OPENROUTER_API_KEY: 'or-key', CLERK_ADMIN_IDS: 'user_admin', CLERK_ADMIN_EMAILS: 'deep1499@gmail.com', CONNECTIONS_SECRET: 'test-connections-secret-0123456789', ...over });
 const fresh = (over) => {
   const d1 = makeD1();

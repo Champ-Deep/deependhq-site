@@ -97,6 +97,13 @@ check('admin_settings_set: api_daily_calls_per_key 2000 saved', (await post({ ac
 
 // 3. auth on the four paths
 const noKey = await agent('/api/toolkit/v1/tools', { key: null });
+// an admin-disabled account loses its keys too, and gets them back when re-enabled
+const setDisabled = (n) => d1.raw.prepare(`INSERT INTO toolkit_accounts (user_id, email, disabled, created_at) VALUES ('user_a', '', ?1, '2026-01-01') ON CONFLICT(user_id) DO UPDATE SET disabled=?1`).run(n);
+setDisabled(1);
+const dis = await agent('/api/toolkit/v1/tools', { key: KEY });
+check('disabled account: its key gets 403 account_disabled', dis.status === 403 && dis.body.error === 'account_disabled', JSON.stringify(dis.body));
+setDisabled(0);
+check('re-enabled account: the same key works again', (await agent('/api/toolkit/v1/tools', { key: KEY })).status === 200);
 check('no key: 401 unauthorized', noKey.status === 401 && noKey.body.error === 'unauthorized');
 check('no key on /mcp and /v1/tools/call and /v1/files: 401', (await rpc(null, 'tools/list')).status === 401 && (await v1Call(null, 'catalog', {})).status === 401 && (await agent('/api/toolkit/v1/files/x', { key: null })).status === 401);
 check('a Clerk session token on an agent path: 401 (keys only)', (await agent('/api/toolkit/v1/tools', { key: sessionToken() })).status === 401);

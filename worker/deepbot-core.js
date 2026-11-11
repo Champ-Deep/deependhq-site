@@ -6,7 +6,7 @@ export const STEP_OPS = ['open', 'go', 'point', 'click', 'say'];
 export const DESKTOP_APPS = ['workbench', 'enrich', 'files', 'beam', 'pdf', 'account', 'approvals']; // admin is never opened for a user
 export const MAX_STEPS = 8;
 // Spend and approval stay a human click: the agent may point at these but never press them.
-const HUMAN_CLICK = /(^|\.)(run|approve)$/;
+const HUMAN_CLICK = /(^|[._-])(run|approve)$/i; // also the real DOM ids wb-run and en-run
 const DASH = /\s*[\u2014\u2013]\s*/g;
 
 // open and go take fixed ids; point and click take ids the page says it has (context.targets).

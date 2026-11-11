@@ -66,8 +66,9 @@ function badArgs(schema, a) {
 export async function authKey(request, env, db) {
   const m = BEARER_RE.exec(request.headers.get('authorization') || '');
   if (!m) return { error: 'unauthorized', message: 'Send Authorization: Bearer dhk_live_...', status: 401 };
-  const row = await db.prepare(`SELECT id, user_id, scopes, revoked_at FROM toolkit_api_keys WHERE key_hash=?1`).bind(await sha256Hex(m[1])).first();
+  const row = await db.prepare(`SELECT k.id, k.user_id, k.scopes, k.revoked_at, COALESCE(a.disabled, 0) AS disabled FROM toolkit_api_keys k LEFT JOIN toolkit_accounts a ON a.user_id=k.user_id WHERE k.key_hash=?1`).bind(await sha256Hex(m[1])).first();
   if (!row || row.revoked_at) return { error: 'unauthorized', message: 'This key is not valid.', status: 401 };
+  if (row.disabled) return { error: 'account_disabled', message: 'Account disabled. Contact an administrator.', status: 403 };
   const perDay = (await store.readSettings(db)).api_daily_calls_per_key;
   if (perDay <= 0) return { error: 'api_disabled', message: 'The agent API is switched off.', status: 403 };
   const today = await db.prepare(`SELECT COUNT(*) AS n FROM toolkit_api_calls WHERE key_id=?1 AND ts>=?2`).bind(row.id, store.utcDayStart()).first();

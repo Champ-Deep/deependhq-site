@@ -21,7 +21,7 @@ export async function unseal(secret, aad, sealed) {
   return dec.decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv, additionalData: enc.encode(aad) }, await aes(secret), ct));
 }
 
-export const KEY_RE = /\b(?:hb|cb)_live_[A-Za-z0-9_-]{8,}/g; // a pasted key must not reach the model, a turn or ai_log
+export const KEY_RE = /\b(?:(?:hb|cb|dhk)_live_|whsec_)[A-Za-z0-9_-]{8,}/g; // a pasted key must not reach the model, a turn or ai_log
 export const maskKey = (key) => `${key.slice(0, 8)}****${key.slice(-4)}`;
 
 const HB_MAX_CONTACTS = 2000;

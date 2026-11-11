@@ -81,6 +81,9 @@ const EXPECTED_TOOLS = ['catalog', 'files_list', 'file_peek', 'file_read', 'acco
   fx.script = [tool('page_steps', { steps: [{ op: 'click', target: 'workbench.run' }] }), say('ok')];
   const run = await post(env, { action: 'deepbot', message: 'run it', context: ctx });
   check('page_steps: click on a registered Run button is still refused (spend is a human click)', toolMsgs(fx.chat.at(-1))[0].error === 'step_refused' && run.body.steps.length === 0);
+  fx.script = [tool('page_steps', { steps: [{ op: 'click', target: 'wb-run' }] }), say('ok')];
+  const run2 = await post(env, { action: 'deepbot', message: 'run it', context: { stage: 'file', targets: ['wb-run', 'en-run', 'x_Approve'] } });
+  check('page_steps: the real Run button ids (wb-run, en-run, x_Approve) are refused too', toolMsgs(fx.chat.at(-1))[0].error === 'step_refused' && run2.body.steps.length === 0);
   fx.script = [tool('page_steps', { steps: [{ op: 'open', target: 'files' }, { op: 'go', target: 'quote' }, { op: 'point', target: 'workbench.file.drop', say: 'Drop a file here \u2014 CSV or Excel.' }, { op: 'say', say: 'Then pick columns.' }] }), say('Follow along.')];
   const ok = await post(env, { action: 'deepbot', message: 'show me', context: ctx });
   check('page_steps: open, go, point, say all validate; steps returned in order with dashes cleaned', JSON.stringify(ok.body.steps.map((s) => s.op)) === '["open","go","point","say"]' && !/[\u2014\u2013]/.test(ok.body.steps[2].say), JSON.stringify(ok.body.steps));
