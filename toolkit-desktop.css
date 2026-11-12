@@ -114,7 +114,7 @@ legend{padding:0 8px;font:600 13px var(--font-ui);color:var(--text)}
 .recent-runs .empty{color:var(--muted);font-size:14px}
 
 /* dock: the site-v3.css .v3-dock family. Same glass surface, border, radius, shadow, 24px icons, 11px labels. */
-.dock{position:fixed;z-index:900;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:20px;width:max-content;max-width:calc(100% - 32px);padding:12px 16px;background:color-mix(in oklab,var(--surface) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3)}
+.dock{position:fixed;z-index:900;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:20px;width:max-content;max-width:calc(100% - 32px);padding:12px 16px;background:color-mix(in srgb,var(--surface) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-3)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.dock{background:var(--surface)}}
 @media(prefers-reduced-transparency:reduce){.dock{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}}
 .dock-app{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;min-width:44px;min-height:44px;padding:0 2px;border:0;border-radius:var(--r-md);background:transparent;color:var(--muted);cursor:pointer;font:500 11px/1.2 var(--font-ui);white-space:nowrap}
@@ -577,3 +577,46 @@ progress{width:100%;height:10px;accent-color:var(--build);margin:8px 0}
   .delivery-log td:nth-child(5){grid-column:1/-1}
 }
 @media (prefers-reduced-motion:reduce){.state-chip[data-state=loading]::before{animation:none}}
+
+/* ---- Connections (Account) and the connector mini windows. Hairlines, a mono key hint, one Lamp Approve per staged item. ---- */
+.connections{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.connections h3{margin:0 0 6px}
+.conn-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:12px}
+.conn-list>.empty,.conn-win .empty{color:var(--muted)}
+.conn-row{padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg)}
+.conn-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.conn-top .btn{margin-left:auto}
+.conn-name{font:700 15px/1.3 var(--font-ui);color:var(--text)}
+.conn-meta{margin:10px 0 0;color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.conn-meta.mono,.conn-win .mono{font-family:var(--font-mono)}
+.conn-meta .btn{margin-left:4px}
+.conn-chip{display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:0 12px;border:1px solid var(--line-2);border-radius:var(--r-pill);font:600 13px var(--font-ui);color:var(--muted);white-space:nowrap}
+.conn-chip::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+.conn-chip[data-state=connected]{color:var(--build-text);border-color:color-mix(in srgb,var(--build) 45%,var(--card))}
+.conn-chip[data-state=invalid],.conn-chip[data-state=down]{color:var(--danger-text);border-color:var(--danger)}
+.conn-chip[data-state=invite]{color:var(--win-text);border-color:var(--win)}
+.conn-key{margin-top:12px}
+.conn-key-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px}
+.conn-key-row>label{flex:1 1 220px;display:grid;gap:6px}
+.conn-key input,.conn-act textarea,.conn-act select,.conn-pull input{width:100%;min-height:44px;padding:8px 12px;background:var(--bg);color:var(--text);border:1px solid var(--line-2);border-radius:var(--r-md);font:400 16px/1.4 var(--font-mono)}
+.conn-key[data-state=invalid] input{border-color:var(--danger)}
+.conn-win .app-head .btn{margin-left:auto}
+.conn-win .app-head .conn-chip{margin-left:auto}
+.conn-win .app-head .conn-chip+.btn{margin-left:0}
+.conn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;align-items:stretch}
+.conn-pulls,.conn-acts{display:grid;align-content:start;gap:14px;min-width:0}
+.conn-pull,.conn-act,.conn-empty{padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);display:grid;gap:10px;min-width:0}
+.conn-empty{grid-column:1/-1;max-width:640px}
+.conn-pull h4,.conn-act h4{margin:0;font:700 14px/1.3 var(--font-ui);color:var(--text)}
+.conn-act>label,.conn-pull>label{display:grid;gap:6px}
+.conn-act .btn,.conn-pull .btn{justify-self:start}
+.conn-items{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.conn-items li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--text)}
+.ci-name{overflow-wrap:anywhere;min-width:0}
+.ci-side{color:var(--muted);white-space:nowrap}
+.conn-kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:0;font-size:14px}
+.conn-kv>div{display:contents}
+.conn-kv dt{color:var(--muted)}
+.conn-kv dd{margin:0;color:var(--text);overflow-wrap:anywhere}
+.conn-staged{padding:12px;border:1px solid var(--win);border-radius:var(--r-md);display:grid;gap:10px}
+.conn-staged .eyebrow{margin:0}

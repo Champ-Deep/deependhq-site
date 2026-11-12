@@ -1297,6 +1297,20 @@ async function actionDeepbot(db, env, uid, body) {
   return json({ thread_id: threadId, reply, steps: out.steps, cards: out.cards, asks: out.asks, cost_micro: known, model: llm.id });
 }
 
+// The panel's thread list and one thread's turns (read only, owner only). Turns are stored already redacted.
+async function actionDeepbotThreads(db, uid, action, body) {
+  if (action === 'deepbot_threads') {
+    const rows = (await db.prepare(`SELECT t.id, t.title, t.created_at, MAX(u.ts) AS last_ts FROM deepbot_threads t LEFT JOIN deepbot_turns u ON u.thread_id = t.id
+      WHERE t.user_id=?1 GROUP BY t.id ORDER BY COALESCE(MAX(u.ts), t.created_at) DESC LIMIT 30`).bind(uid).all()).results;
+    return json({ threads: rows });
+  }
+  if (!UUID_RE.test(String(body.thread_id))) return json({ error: 'invalid_deepbot', message: 'thread_id is not valid.' }, 400);
+  const t = await db.prepare(`SELECT id, title, created_at FROM deepbot_threads WHERE id=?1 AND user_id=?2`).bind(body.thread_id, uid).first();
+  if (!t) return json({ error: 'thread_not_found' }, 404);
+  const turns = (await db.prepare(`SELECT seq, role, content_json, ts FROM deepbot_turns WHERE thread_id=?1 ORDER BY seq DESC LIMIT 40`).bind(t.id).all()).results.reverse();
+  return json({ thread: t, turns: turns.map((r) => ({ seq: r.seq, role: r.role, ts: r.ts, content: safeJson(r.content_json) || {} })) });
+}
+
 // Agent API switches (docs section 11). Both default to 0: keys closed to non-admins, and the API answers api_disabled.
 const API_SETTINGS = { api_keys_open: 1, api_daily_calls_per_key: 1000000 };
 async function actionAdminSettings(db, action, body) {
@@ -1408,6 +1422,7 @@ async function handleAction(request, env, url, preAuth) {
   if (action === 'intake') return actionIntake(db, env, auth.uid, body);
   if (action === 'guide') return actionGuide(db, env, auth.uid, body);
   if (action === 'deepbot') return actionDeepbot(db, env, auth.uid, body);
+  if (action === 'deepbot_threads' || action === 'deepbot_thread') return actionDeepbotThreads(db, auth.uid, action, body);
   if (action === 'connection_list') return json(await connectionList(db, env, auth.uid));
   if (action === 'connection_save') return connectionSave(db, env, auth.uid, body);
   if (action === 'connection_delete') {

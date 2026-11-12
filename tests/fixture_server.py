@@ -23,6 +23,9 @@ V4 (docs/toolkit-v4-api.md), deterministic and in memory:
   POST /fixture/config {"admin":0|1, "api_keys_open":0|1, "decide_fail":0|1}   flip the agent access switches
   POST /api/toolkit agent_*, webhook_*    section 12 My agent: a fixture MCP tool list and webhook log, no network
   POST /fixture/agent {"changed":1, "mode":"ok"|"timeout"|"down", "deliveries":1}   change the fixture agent
+  POST /api/toolkit deepbot, deepbot_threads, deepbot_thread   section 8 with a scripted fixture model (no provider)
+  POST /api/toolkit connection_*, connector_pull/act, invite_request_create   section 9 fixture adapters
+  POST /fixture/conn {"provider", "mode": "ok"|"invalid"|"invite"|"down", "connected":0|1, "configured":0|1}   returns model_calls
   GET  /api/now-playing                  the launch state (no Spotify, favorites)
 
 No live keys, no provider calls, no real people. Run a port and point a
@@ -330,6 +333,173 @@ def seed_agent():
 
 
 FIXTURE_TOKEN = "FIXTURE_SESSION_TOKEN"
+
+
+# ---- Sections 8 and 9: Deepbot with a scripted FIXTURE model, threads, connections and connector adapters ----
+# The model is a lookup on the message, not a provider call; DB["model_calls"] counts the turns that would have
+# called one, so a test can prove the catalog answer made none. Step plans are checked like validateSteps on the
+# server, except "click the hidden button", which returns an unregistered click on purpose so the browser's own
+# refusal can be tested.
+CATALOG_RE = __import__("re").compile(r"^\s*(what can you do|what do you do|what are you|help)\b[\s?!.]*$", 2)
+DB = {}
+
+
+def deepbot_reset():
+    DB.update(threads={}, turns={}, model_calls=0, invites=[], configured=1,
+              conn={"harbinger": None, "beam": None}, mode={"harbinger": "ok", "beam": "ok"})
+
+
+deepbot_reset()
+CONN = {"harbinger": ("ChampHarbinger", "hb_live_", ["capacity_today", "campaigns", "drafts_pending"], ["plan_campaign", "push_campaign"]),
+        "beam": ("ChampBeam", "cb_live_", ["stats"], ["share_file"])}
+STEP_OPS = ["open", "go", "point", "click", "say"]
+APPS_OPEN = ["workbench", "enrich", "files", "beam", "pdf", "account", "approvals"]
+STAGES = ["gallery", "sign_in", "file", "columns", "ask", "quote", "run", "report", "account"]
+
+
+def catalog():
+    return {"apps": [{"id": "workbench", "label": "Data Workbench", "does": "Clean, classify, verify and research a spreadsheet column by column. Quote first, then run."},
+                     {"id": "files", "label": "Files", "does": "Your desktop storage. CSV, Excel, JSON, text, Markdown and PDF."},
+                     {"id": "account", "label": "Account", "does": "Credits, daily limits, past runs and your connections."},
+                     {"id": "approvals", "label": "Approvals", "does": "Runs, moves and connector actions waiting for you. Nothing happens until you approve."}],
+            "deepbot": [], "connectors": [{"id": p, "label": CONN[p][0], "status": "connected" if DB["conn"][p] else "not_connected", "pulls": CONN[p][2], "acts": CONN[p][3]} for p in CONN],
+            "limits": "DeepBot never runs a paid job, sends, moves or deletes. It prepares, quotes and stages; you approve and press Run."}
+
+
+def check_steps(steps, targets):
+    for s in steps:
+        allowed = APPS_OPEN if s["op"] == "open" else STAGES if s["op"] == "go" else targets
+        if s["op"] != "say" and s["target"] not in allowed:
+            raise AssertionError("fixture model planned an unregistered target " + s["target"])
+    return steps
+
+
+def stage_conn(provider, op, args, source):
+    now = datetime.now(timezone.utc)
+    preview = {"goal": args.get("goal", ""), "note": "Creates a plan in ChampHarbinger from this goal only. Spends nothing and sends nothing."} if op == "plan_campaign" \
+        else {"file": args.get("file_id", ""), "note": "Uploads this file to ChampBeam and creates a share link."}
+    sid = str(uuid.uuid4())
+    STATE["staged"].append({"id": sid, "kind": "connector_act", "source": source, "title": CONN[provider][0] + " " + op, "note": "", "status": "pending",
+                            "payload": {"provider": provider, "op": op, "args": args, "preview": preview},
+                            "created_at": iso(now), "expires_at": iso(now + timedelta(days=7))})
+    return {"staged_id": sid, "provider": provider, "op": op, "status": "staged", "preview": preview,
+            "approve": {"action": "connector_approve", "staged_id": sid}, "approve_url": "https://toolkit.deependhq.com/#approvals/" + sid, "expires_at": iso(now + timedelta(days=7))}
+
+
+def fixture_model(msg, targets):
+    m = msg.lower()
+    out = {"reply": "", "steps": [], "cards": [], "asks": []}
+    if "connect my" in m and "harbinger" in m:
+        out["reply"] = "Your key goes in Account, under Connections. Paste your hb_live_ key there and press Save key. It is tested before it is saved."
+        out["steps"] = [{"op": "open", "target": "account", "say": "Open Account."},
+                        {"op": "point", "target": "account.connections.harbinger.key", "say": "Paste your hb_live_ key here."},
+                        {"op": "point", "target": "account.connections.harbinger.save", "say": "Then press Save key."}]
+    elif "stages" in m:
+        out["reply"] = "Six stages. Here are the first two."
+        out["steps"] = [{"op": "open", "target": "workbench", "say": "Data Workbench."},
+                        {"op": "point", "target": "workbench.stage.file", "say": "Start here: drop a file."},
+                        {"op": "point", "target": "workbench.stage.columns", "say": "Then map the columns."}]
+    elif "hidden button" in m:
+        out["reply"] = "Trying it."
+        out["steps"] = [{"op": "click", "target": "workbench.secret_button", "say": "Clicking it."}]
+        return out  # deliberately unchecked: the page must refuse it
+    elif "quote" in m:
+        out["reply"] = "Here is the price. Nothing runs until you press Run in Data Workbench."
+        out["cards"] = [{"kind": "quote", "data": {"file_id": "fx-file", "plan": [{"column": "Title", "op": "normalize_title"}], "row_count": 12, "max_cost_micro": 5000, "max_credits": 5, "can_run": True}}]
+    elif "plan a campaign" in m:
+        out["reply"] = "I staged a plan in ChampHarbinger. It spends nothing. Approve it when you are ready."
+        out["cards"] = [{"kind": "staged", "data": stage_conn("harbinger", "plan_campaign", {"goal": "300 CFO meetings this quarter"}, "deepbot")}]
+    elif "which" in m:
+        out["reply"] = "One question first."
+        out["asks"] = [{"id": "q1", "question": "Which column holds the job title?", "options": ["Title", "Role"]}]
+    else:
+        out["reply"] = "Fixture reply to: " + msg[:80]
+    check_steps(out["steps"], targets)
+    return out
+
+
+def deepbot_action(action, body):
+    now = iso(datetime.now(timezone.utc))
+    if action == "deepbot_threads":
+        rows = [dict(t, last_ts=DB["turns"][t["id"]][-1]["ts"] if DB["turns"].get(t["id"]) else None) for t in DB["threads"].values()]
+        return 200, {"threads": sorted(rows, key=lambda t: t["last_ts"] or t["created_at"], reverse=True)}
+    if action == "deepbot_thread":
+        t = DB["threads"].get(body.get("thread_id"))
+        if not t:
+            return 404, {"error": "thread_not_found"}
+        return 200, {"thread": t, "turns": DB["turns"][t["id"]]}
+    msg = body.get("message")
+    if not isinstance(msg, str) or not msg.strip() or len(msg) > 2000:
+        return 400, {"error": "invalid_deepbot", "message": "message must be 1 to 2000 characters."}
+    if CATALOG_RE.match(msg):
+        return 200, {"thread_id": body.get("thread_id"), "reply": "Here is what I can do.", "steps": [], "cards": [{"kind": "catalog", "data": catalog()}], "asks": [], "cost_micro": 0, "model": None}
+    tid = body.get("thread_id")
+    if tid and tid not in DB["threads"]:
+        return 404, {"error": "thread_not_found"}
+    DB["model_calls"] += 1
+    out = fixture_model(msg, (body.get("context") or {}).get("targets") or [])
+    if not tid:
+        tid = str(uuid.uuid4())
+        DB["threads"][tid] = {"id": tid, "title": msg[:80], "created_at": now}
+        DB["turns"][tid] = []
+    seq = len(DB["turns"][tid])
+    DB["turns"][tid] += [{"seq": seq + 1, "role": "user", "ts": now, "content": {"text": msg}}, {"seq": seq + 2, "role": "assistant", "ts": now, "content": out}]
+    return 200, dict(out, thread_id=tid, cost_micro=1000, model="fixture/deepbot")
+
+
+def conn_action(action, body):
+    p = body.get("provider")
+    if action == "invite_request_create":
+        if DB["invites"]:
+            return 200, {"request": DB["invites"][0], "already_open": True}
+        DB["invites"].append({"id": str(uuid.uuid4()), "status": "open", "created_at": iso(datetime.now(timezone.utc))})
+        return 201, {"request": DB["invites"][0], "already_open": False}
+    if action == "connection_list":
+        return 200, {"configured": bool(DB["configured"]), "connections": [dict({"provider": k, "label": v[0], "key_prefix": v[1], "state": "connected" if DB["conn"][k] else "not_connected", "pulls": v[2], "acts": v[3]}, **(DB["conn"][k] or {})) for k, v in CONN.items()]}
+    if p not in CONN:
+        return 400, {"error": "unknown_provider"}
+    if not DB["configured"]:
+        return 503, {"error": "connections_not_configured", "message": "Connections are not switched on yet."}
+    label, prefix, pulls, acts = CONN[p]
+    if action == "connection_save":
+        key = str(body.get("api_key") or "").strip()
+        if not key.startswith(prefix) or len(key) < len(prefix) + 8:
+            return 400, {"error": "invalid_key_format", "message": label + " keys start with " + prefix + "."}
+        if "down" in key:
+            return 502, {"error": "provider_down", "message": label + " did not answer."}
+        if "bad" in key:
+            return 400, {"error": "key_rejected", "message": label + " refused this key. Check it and try again."}
+        DB["conn"][p] = {"key_hint": prefix + "****" + key[-4:], "account": "fixture.user@example.com", "connected_at": iso(datetime.now(timezone.utc))}
+        return 200, {"provider": p, "state": "connected", "key_hint": DB["conn"][p]["key_hint"], "account": "fixture.user@example.com"}
+    if action == "connection_delete":
+        DB["conn"][p] = None
+        return 200, {"provider": p, "state": "not_connected"}
+    if not DB["conn"][p]:
+        return 400, {"error": "not_connected", "message": label + " is not connected. Add a key under Connections."}
+    mode = DB["mode"][p]
+    if mode == "invalid":
+        return 400, {"error": "invalid_key", "message": label + " no longer accepts this key. Save a new one."}
+    if mode == "invite":
+        return 400, {"error": "not_allowed", "message": "This key is not allowed to do that. ChampHarbinger is invite-only."}
+    if mode == "down":
+        return 400, {"error": "provider_down", "message": label + " did not answer. Try again later."}
+    op = body.get("op")
+    if action == "connector_pull":
+        if op not in pulls:
+            return 400, {"error": "unknown_op"}
+        data = {"capacity_today": {"sends_left": 140, "mailboxes": [{"mailbox": "outreach-1@fixture.example", "remaining": 80}, {"mailbox": "outreach-2@fixture.example", "remaining": 60}]},
+                "campaigns": [{"id": "cmp_1", "name": "Fixture Q4 CFOs", "status": "active"}, {"id": "cmp_2", "name": "Fixture SaaS founders", "status": "draft"}],
+                "drafts_pending": [{"id": "d1", "subject": "Fixture intro, row 1"}],
+                "stats": {"views": 12, "unique_viewers": 4}}[op]
+        return 200, {"provider": p, "op": op, "data": data}
+    if op not in acts:
+        return 400, {"error": "unknown_op"}
+    args = body.get("args") or {}
+    if op == "plan_campaign" and len(str(args.get("goal") or "").strip()) < 3:
+        return 400, {"error": "invalid_args", "message": "goal takes 3 to 500 characters."}
+    return 200, stage_conn(p, op, args, "user")
+
+
 PK = "pk_test_" + base64.b64encode(b"fixture.example.accounts.dev$").decode()
 
 EMAIL_STATES = ["deliverable", "risky", "undeliverable", "unknown", "not_checked"]
@@ -621,6 +791,10 @@ def handle_toolkit(body, auth_ok):
             rec["payload"] = {k: v for k, v in body.items() if k != "token"}
         if action == "api_key_create":
             rec["payload"] = {"label": body.get("label"), "scopes": body.get("scopes")}
+        if action in ("deepbot", "deepbot_thread", "connector_pull", "connector_act", "connection_delete"):
+            rec["payload"] = {k: v for k, v in body.items() if k != "context"}
+        if action == "connection_save":
+            rec["payload"] = {"provider": body.get("provider")}  # the key stays out of the call log
         if action == "run":
             rec["job_id"] = body.get("job_id")
         STATE["calls"].append(rec)
@@ -635,6 +809,12 @@ def handle_toolkit(body, auth_ok):
     if action in ("staged_list", "staged_get", "staged_decide"):
         with LOCK:
             return staged_action(action, body)
+    if action in ("deepbot", "deepbot_threads", "deepbot_thread"):
+        with LOCK:
+            return deepbot_action(action, body)
+    if action in ("connection_list", "connection_save", "connection_delete", "connector_pull", "connector_act", "invite_request_create"):
+        with LOCK:
+            return conn_action(action, body)
     if action in ("api_keys_list", "api_key_create", "api_key_revoke"):
         with LOCK:
             return keys_action(action, body)
@@ -1013,6 +1193,7 @@ class Handler(BaseHTTPRequestHandler):
                 STATE["files"] = {}
                 STATE["ai_log"] = []
                 agent_reset()
+                deepbot_reset()
                 STATE["staged"], STATE["keys"], STATE["wb_jobs"] = [], [], set()
                 STATE["admin"], STATE["api_keys_open"], STATE["decide_fail"] = 1, 0, 0
             return self._send(200, {"ok": True})
@@ -1022,6 +1203,16 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, {"ok": True})
         if path == "/fixture/agent":
             return self._send(200, agent_fixture(body))
+        if path == "/fixture/conn":  # {"provider", "mode": ok|invalid|invite|down, "connected": 0|1, "configured": 0|1}
+            with LOCK:
+                pr = body.get("provider")
+                if pr in CONN and body.get("mode"):
+                    DB["mode"][pr] = body["mode"]
+                if pr in CONN and "connected" in body:
+                    DB["conn"][pr] = {"key_hint": CONN[pr][1] + "****wxyz", "account": "fixture.user@example.com", "connected_at": iso(datetime.now(timezone.utc))} if int(body["connected"]) else None
+                if "configured" in body:
+                    DB["configured"] = 1 if int(body["configured"]) else 0
+                return self._send(200, {"ok": True, "model_calls": DB["model_calls"], "invites": len(DB["invites"])})
         if path == "/fixture/delay":
             STATE["run_delay_ms"] = int(body.get("ms") or 0)
             return self._send(200, {"ok": True, "ms": STATE["run_delay_ms"]})
