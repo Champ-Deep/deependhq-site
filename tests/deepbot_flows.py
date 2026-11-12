@@ -207,6 +207,12 @@ def harbinger_conversation(page):
     check("hb_live_****1234" in row.inner_text() and "hb_live_fixture00001234" not in page.content(), "state flips to Connected and only the masked hint is on the page")
     check(calls("connection_save") == [{"provider": "harbinger"}], "one connection_save, the key kept out of the call log")
     shot(page, "connect-04-connected-1280")
+    # Do it never deletes: a plan clicking Remove twice (the two-press key) is refused out loud and posts nothing
+    check("account.connections.harbinger.remove" not in page.evaluate("import('/toolkit-pointer.js').then(m => m.targets())"), "the remove ids are never offered to Deepbot as targets")
+    r = page.evaluate("import('/toolkit-pointer.js').then(m => m.run([{op:'click',target:'account.connections.harbinger.remove'},{op:'click',target:'account.connections.harbinger.remove'}],{mode:'do'}))")
+    check(r.get("status") == "refused" and r.get("index") == 0 and page.locator(".tp-text").inner_text() == "I can't reach that.", "a Do it Remove click is refused out loud: I can't reach that.")
+    check(not calls("connection_delete") and row.locator('.conn-chip[data-state="connected"]').count() == 1, "zero connection_delete calls and the row stays Connected")
+    page.locator(".tp-acts button").click()
     page.locator(".tg-close").click()
     row.locator('[data-guide="account.connections.harbinger.open"]').click()
     w = page.locator('.window[data-app="conn-harbinger"]')

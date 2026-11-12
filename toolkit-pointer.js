@@ -3,11 +3,11 @@
 // Vanilla port of the 21st.dev 26918 "Product Tour" pattern (laziekiki): a ring that glides to a real element, a caption
 // beside it, keyboard driven, reduced-motion aware. No dimming layer: the toolkit stays usable while it points.
 // The page decides what is reachable: only elements carrying data-guide="<id>" and the dock launchers. A step the page
-// cannot resolve is refused out loud and nothing happens. Spend and approval (ids ending .run or .approve) are never clicked.
+// cannot resolve is refused out loud and nothing happens. Spend, approval and deletion (ids ending .run, .approve, .remove or .delete) are never clicked.
 const OPS = ['open', 'go', 'point', 'click', 'say'];
 const APPS = ['workbench', 'enrich', 'files', 'beam', 'pdf', 'account', 'approvals'];
 const STAGES = ['file', 'columns', 'ask', 'quote', 'run', 'report'];
-const HUMAN = /(^|[._-])(run|approve)$/i;
+const HUMAN = /(^|[._-])(run|approve|remove|delete)$/i;
 export const REFUSED = 'I can\'t reach that.';
 export const PAUSE_MS = 400;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)');
@@ -23,11 +23,12 @@ const KNOWN = [
   ...['file', 'columns', 'ask', 'quote', 'run', 'report'].map(s => 'workbench.stage.' + s),
   'workbench.file.drop', 'workbench.file.sample', 'workbench.file.next', 'workbench.columns.confirm', 'workbench.ask.goal', 'workbench.ask.quote',
   'files.upload', 'files.new_folder', 'approvals.refresh', 'account.refresh', 'account.connections',
-  ...['harbinger', 'beam'].flatMap(p => ['key', 'save', 'open', 'remove', ...(p === 'harbinger' ? ['invite'] : [])].map(x => `account.connections.${p}.${x}`)),
+  ...['harbinger', 'beam'].flatMap(p => ['key', 'save', 'open', ...(p === 'harbinger' ? ['invite'] : [])].map(x => `account.connections.${p}.${x}`)),
 ];
 export function targets() {
   const live = [...document.querySelectorAll('[data-guide]')].map(n => n.dataset.guide);
-  return [...new Set([...live, ...KNOWN])].filter(t => /^[\w.-]{1,80}$/.test(t)).slice(0, 200);
+  // never offer a delete control to the model; .run and .approve stay offered so Show me can point at them
+  return [...new Set([...live, ...KNOWN])].filter(t => /^[\w.-]{1,80}$/.test(t) && !/(^|[._-])(remove|delete)$/i.test(t)).slice(0, 200);
 }
 
 // ---- the ring and the caption ----
