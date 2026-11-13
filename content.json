@@ -6,8 +6,8 @@
     "pillars_note": "Four doors over the twelve companies. companies[].pillar is the source of truth for membership. pillars[].arcs lists the journey arc labels that count as activity for that pillar, because the log's arcs are free text rather than a controlled vocabulary. Champions Operations (57 entries) and ChampOps (13) name no company or product and are deliberately unmapped: they are cross-pillar operating work, and folding them into a pillar would make that card look busy for the wrong reason. Champions Club sits under InfraTech and Lagoons as the HNI membership surface. last_ship and entries_30d are derived in scripts/derive.mjs, never stored."
   },
   "brand": {
-    "today_day": 376,
-    "today_date": "2026-11-11",
+    "today_day": 378,
+    "today_date": "2026-11-13",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -330,6 +330,31 @@
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-13",
+      "day": 378,
+      "mood": "🛠️",
+      "shipping_now": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is being counted as a client delivery.",
+      "yesterday_thread": "the champbeam refresh is in review with test results recorded. production approval is still a separate step.",
+      "raw_thought": "a lot of today's work ended at a review gate. the pdfs exist. whether anyone received them is a different question.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green"
+    },
+    {
+      "date": "2026-11-12",
+      "day": 377,
+      "mood": "📝",
+      "shipping_now": "wrote the ai sdr co-build brief and the onboarding checklist. the questions cover ownership, existing access and what we still need before spending.",
+      "yesterday_thread": "the marketplace discussion and next week's product architecture work are separate tracks. both still need source-owner follow-through.",
+      "raw_thought": "the work today was preparation. i have a brief to use; i do not have a finished integration to claim.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "blue"
+    },
     {
       "date": "2026-11-11",
       "day": 376,
@@ -2455,20 +2480,20 @@
     ],
     "recently": [
       {
+        "text": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review c...",
+        "tag": "shipped d378"
+      },
+      {
+        "text": "wrote the ai sdr co-build brief and the onboarding checklist. the questions cover owner...",
+        "tag": "shipped d377"
+      },
+      {
         "text": "ran a 96-round messaging stress test with six simulated agents and finished the compari...",
         "tag": "shipped d376"
       },
       {
         "text": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today....",
         "tag": "shipped d375"
-      },
-      {
-        "text": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot r...",
-        "tag": "shipped d374"
-      },
-      {
-        "text": "one support review now has a source digest. the ownership, schema and logging requireme...",
-        "tag": "shipped d373"
       }
     ],
     "soon": [

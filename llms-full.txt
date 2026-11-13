@@ -1,8 +1,32 @@
 # deep >_ (deependhq.com): full text
 
-> Every public journey entry (154) and every weekly essay (21), newest first. Rebuilt 2026-11-11. Cite the day number and date when quoting, for example "day 376, 2026-11-11".
+> Every public journey entry (156) and every weekly essay (21), newest first. Rebuilt 2026-11-13. Cite the day number and date when quoting, for example "day 378, 2026-11-13".
 
 ## Journey
+
+### Day 378, 2026-11-13 (building)
+
+finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is being counted as a client delivery.
+
+Thread: the champbeam refresh is in review with test results recorded. production approval is still a separate step.
+
+Raw thought: a lot of today's work ended at a review gate. the pdfs exist. whether anyone received them is a different question.
+
+Arcs: Lake B2B, Champions Operations
+
+Link: https://deependhq.com/journey.html#day-378
+
+### Day 377, 2026-11-12 (thinking)
+
+wrote the ai sdr co-build brief and the onboarding checklist. the questions cover ownership, existing access and what we still need before spending.
+
+Thread: the marketplace discussion and next week's product architecture work are separate tracks. both still need source-owner follow-through.
+
+Raw thought: the work today was preparation. i have a brief to use; i do not have a finished integration to claim.
+
+Arcs: Champions Operations
+
+Link: https://deependhq.com/journey.html#day-377
 
 ### Day 376, 2026-11-11 (building)
 

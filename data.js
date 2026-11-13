@@ -1,11 +1,11 @@
 // data.js : GENERATED FILE. Do not edit by hand.
 // Source of truth is content.json. Regenerate with: node scripts/build-data.mjs
-// Built 2026-11-11T20:01:48.434Z
+// Built 2026-11-13T20:00:36.558Z
 
 window.DH_DATA = {
   "brand": {
-    "today_day": 376,
-    "today_date": "2026-11-11",
+    "today_day": 378,
+    "today_date": "2026-11-13",
     "location": "bangalore",
     "booking_url": "scheduler.zoom.us/sreedeep"
   },
@@ -24,6 +24,18 @@ window.DH_DATA = {
       "pillar": "accelerator",
       "slug": "champions-accelerator",
       "related_journey": [
+        {
+          "day": 378,
+          "date": "2026-11-13",
+          "shipping_now": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is being counted as a…",
+          "arc_color": "green"
+        },
+        {
+          "day": 377,
+          "date": "2026-11-12",
+          "shipping_now": "wrote the ai sdr co-build brief and the onboarding checklist. the questions cover ownership, existing access and what we still…",
+          "arc_color": "blue"
+        },
         {
           "day": 376,
           "date": "2026-11-11",
@@ -82,18 +94,6 @@ window.DH_DATA = {
           "day": 365,
           "date": "2026-10-31",
           "shipping_now": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time.…",
-          "arc_color": "gold"
-        },
-        {
-          "day": 364,
-          "date": "2026-10-30",
-          "shipping_now": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what…",
-          "arc_color": "gold"
-        },
-        {
-          "day": 363,
-          "date": "2026-10-29",
-          "shipping_now": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT…",
           "arc_color": "gold"
         }
       ],
@@ -250,6 +250,12 @@ window.DH_DATA = {
       "slug": "lake-b2b",
       "related_journey": [
         {
+          "day": 378,
+          "date": "2026-11-13",
+          "shipping_now": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is being counted as a…",
+          "arc_color": "green"
+        },
+        {
           "day": 374,
           "date": "2026-11-09",
           "shipping_now": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot report is on disk; the hosted service still…",
@@ -314,12 +320,6 @@ window.DH_DATA = {
           "date": "2026-10-15",
           "shipping_now": "closed out a vendor relationship that had been circling the drain for six days. an account lead wanted to cut it, i had been…",
           "arc_color": "gold"
-        },
-        {
-          "day": 348,
-          "date": "2026-10-14",
-          "shipping_now": "shipped a full onboarding kit for a new apac account manager who started today. 30 day plan, handover docs for every live…",
-          "arc_color": "green"
         }
       ],
       "related_writing": [
@@ -590,7 +590,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-11-02",
       "last_ship_day": 367,
-      "days_since": 10,
+      "days_since": 12,
       "entries_30d": 3,
       "recent": [
         {
@@ -659,7 +659,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-07",
       "last_ship_day": 341,
-      "days_since": 36,
+      "days_since": 38,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -715,11 +715,16 @@ window.DH_DATA = {
         "Five-Level Personalizer",
         "Cadence"
       ],
-      "last_ship": "2026-11-09",
-      "last_ship_day": 374,
-      "days_since": 3,
-      "entries_30d": 13,
+      "last_ship": "2026-11-13",
+      "last_ship_day": 378,
+      "days_since": 1,
+      "entries_30d": 12,
       "recent": [
+        {
+          "day": 378,
+          "date": "2026-11-13",
+          "ship": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is bein"
+        },
         {
           "day": 374,
           "date": "2026-11-09",
@@ -734,11 +739,6 @@ window.DH_DATA = {
           "day": 371,
           "date": "2026-11-06",
           "ship": "a sales kit is on disk: one capability deck, five pdf one-pagers and a lead tracker. useful artifacts, not a c"
-        },
-        {
-          "day": 370,
-          "date": "2026-11-05",
-          "ship": "a bank-fraud software vendor wanted appointment setting only: banks, two markets, about seven meetings a month"
         }
       ],
       "company_slugs": [
@@ -787,7 +787,7 @@ window.DH_DATA = {
       ],
       "last_ship": "2026-10-06",
       "last_ship_day": 340,
-      "days_since": 37,
+      "days_since": 39,
       "entries_30d": 0,
       "recent": [],
       "company_slugs": [
@@ -847,6 +847,53 @@ window.DH_DATA = {
     "systems": null
   },
   "journey": [
+    {
+      "date": "2026-11-13",
+      "day": 378,
+      "mood": "🛠️",
+      "shipping_now": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is being counted as a client delivery.",
+      "yesterday_thread": "the champbeam refresh is in review with test results recorded. production approval is still a separate step.",
+      "raw_thought": "a lot of today's work ended at a review gate. the pdfs exist. whether anyone received them is a different question.",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "arc_color": "green",
+      "company_links": [
+        {
+          "arc": "Lake B2B",
+          "company_name": "Lake B2B",
+          "slug": "lake-b2b"
+        },
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ],
+      "pillars": [
+        "lakeb2b"
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "day": 377,
+      "mood": "📝",
+      "shipping_now": "wrote the ai sdr co-build brief and the onboarding checklist. the questions cover ownership, existing access and what we still need before spending.",
+      "yesterday_thread": "the marketplace discussion and next week's product architecture work are separate tracks. both still need source-owner follow-through.",
+      "raw_thought": "the work today was preparation. i have a brief to use; i do not have a finished integration to claim.",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "arc_color": "blue",
+      "company_links": [
+        {
+          "arc": "Champions Operations",
+          "company_name": "Champions Accelerator",
+          "slug": "champions-accelerator"
+        }
+      ]
+    },
     {
       "date": "2026-11-11",
       "day": 376,
@@ -5061,7 +5108,7 @@ window.DH_DATA = {
   },
   "status": {
     "location": "Bangalore, IN",
-    "last_ship": "day 376 · Nov 11",
+    "last_ship": "day 378 · Nov 13",
     "state": "shipping"
   },
   "status_board": {
@@ -5085,20 +5132,20 @@ window.DH_DATA = {
     ],
     "recently": [
       {
+        "text": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review c...",
+        "tag": "shipped d378"
+      },
+      {
+        "text": "wrote the ai sdr co-build brief and the onboarding checklist. the questions cover owner...",
+        "tag": "shipped d377"
+      },
+      {
         "text": "ran a 96-round messaging stress test with six simulated agents and finished the compari...",
         "tag": "shipped d376"
       },
       {
         "text": "signal desk went from a local prototype to a cloud-hosted account-signal cockpit today....",
         "tag": "shipped d375"
-      },
-      {
-        "text": "champoracle now has a messaging-report workflow and a hosted backend. the first pilot r...",
-        "tag": "shipped d374"
-      },
-      {
-        "text": "one support review now has a source digest. the ownership, schema and logging requireme...",
-        "tag": "shipped d373"
       }
     ],
     "soon": [
@@ -11323,33 +11370,54 @@ window.DH_DATA = {
     ]
   },
   "health": {
-    "built": "2026-11-11T20:01:48.402Z",
-    "built_date": "2026-11-12",
+    "built": "2026-11-13T20:00:36.465Z",
+    "built_date": "2026-11-14",
     "newest_entry": {
-      "date": "2026-11-11",
-      "day": 376
+      "date": "2026-11-13",
+      "day": 378
     },
-    "weekdays_stale": 1,
+    "weekdays_stale": 0,
     "stale": false,
     "sections": {
       "now": {
         "date": "2026-06-12",
-        "days_old": 153,
+        "days_old": 155,
         "stale": true
       },
       "build_lanes": {
         "date": "2026-06-24",
-        "days_old": 141,
+        "days_old": 143,
         "stale": true
       },
       "shoutouts": {
         "date": "2026-06-24",
-        "days_old": 141,
+        "days_old": 143,
         "stale": true
       }
     }
   },
   "recent": [
+    {
+      "day": 378,
+      "date": "2026-11-13",
+      "mood": "🛠️",
+      "arc_color": "green",
+      "arcs": [
+        "Lake B2B",
+        "Champions Operations"
+      ],
+      "ship": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is being counted as a client delivery."
+    },
+    {
+      "day": 377,
+      "date": "2026-11-12",
+      "mood": "📝",
+      "arc_color": "blue",
+      "arcs": [
+        "Champions Operations"
+      ],
+      "ship": "wrote the ai sdr co-build brief and the onboarding checklist. the questions cover ownership, existing access and what we still need before spending."
+    },
     {
       "day": 376,
       "date": "2026-11-11",
@@ -11480,27 +11548,6 @@ window.DH_DATA = {
         "ChampOps"
       ],
       "ship": "sat in on lake b2b's monthly sales review tonight: the business crossed one million dollars in a single month for the first time. roughly two thirds of it traces back to one account with a dedicated closer running the calls, the rest from upsells on data, enrichment and reactivation tooling. first time i've seen that number on a slide instead of a spreadsheet."
-    },
-    {
-      "day": 364,
-      "date": "2026-10-30",
-      "mood": "🧹",
-      "arc_color": "gold",
-      "arcs": [
-        "ChampOps",
-        "Lake B2B"
-      ],
-      "ship": "cleared twenty stale P0s off the backlog tonight in one sitting, a few going back to september. the list does not lie about what gets ignored when the days get loud, so tonight i finally sat down and triaged twenty of them instead of carrying them forward again."
-    },
-    {
-      "day": 363,
-      "date": "2026-10-29",
-      "mood": "🛠️",
-      "arc_color": "gold",
-      "arcs": [
-        "ChampOps"
-      ],
-      "ship": "broke a three day standoff over which AI coding tool the team gets. shipped the comparison doc and the rollout pack to IT tonight: data team on one tool, team leads on the other, split by role instead of picking a winner."
     }
   ],
   "heatmap": {
@@ -12376,21 +12423,21 @@ window.DH_DATA = {
         "date": "2026-11-12",
         "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 377,
+        "arc_color": "blue",
+        "ship": "wrote the ai sdr co-build brief and the onboarding checklist. the questions cover ownership, existing access a"
       },
       {
         "date": "2026-11-13",
-        "future": true,
+        "future": false,
         "weekend": false,
-        "day": null,
-        "arc_color": null,
-        "ship": null
+        "day": 378,
+        "arc_color": "green",
+        "ship": "finished five gtm pillar one-pagers as pdfs with a verification note. they are review candidates; none is bein"
       },
       {
         "date": "2026-11-14",
-        "future": true,
+        "future": false,
         "weekend": true,
         "day": null,
         "arc_color": null,
@@ -12407,11 +12454,11 @@ window.DH_DATA = {
     ]
   },
   "stats": {
-    "days_public": 376,
-    "entries": 154,
+    "days_public": 378,
+    "entries": 156,
     "entries_30d": 30,
-    "entries_this_month": 11,
-    "streak_weekdays": 105,
+    "entries_this_month": 13,
+    "streak_weekdays": 107,
     "essays": 21,
     "companies": 12,
     "companies_active_90d": 4,
@@ -12423,12 +12470,12 @@ window.DH_DATA = {
         "n": 17
       },
       {
-        "arc": "Lake B2B",
+        "arc": "ChampOps",
         "n": 13
       },
       {
-        "arc": "ChampOps",
-        "n": 13
+        "arc": "Lake B2B",
+        "n": 12
       },
       {
         "arc": "TheDeepEndHQ",
@@ -12484,6 +12531,19 @@ window.DH_DATA = {
   "stack_now": {
     "items": [
       {
+        "name": "ChampBeam",
+        "what": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
+        "url": "https://github.com/Champ-Deep/ChampBeam",
+        "site": "https://champbeam.com",
+        "status": null,
+        "kind": "built",
+        "category": "tool",
+        "featured": true,
+        "last_seen": "2026-11-13",
+        "mentions_90d": 2,
+        "days_since": 1
+      },
+      {
         "name": "ChampOps",
         "what": "Autonomous feedback triage and maintenance loop. Widget to GitHub to agent to deploy.",
         "url": null,
@@ -12494,7 +12554,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-11-07",
         "mentions_90d": 30,
-        "days_since": 5
+        "days_since": 7
       },
       {
         "name": "Cloudflare",
@@ -12504,20 +12564,7 @@ window.DH_DATA = {
         "category": "infra",
         "last_seen": "2026-10-28",
         "mentions_90d": 4,
-        "days_since": 15
-      },
-      {
-        "name": "ChampBeam",
-        "what": "Smart links, QR codes and file tracking in one product. Send it, know they saw it. ChampUTM lives inside it now.",
-        "url": "https://github.com/Champ-Deep/ChampBeam",
-        "site": "https://champbeam.com",
-        "status": null,
-        "kind": "built",
-        "category": "tool",
-        "featured": true,
-        "last_seen": "2026-10-12",
-        "mentions_90d": 1,
-        "days_since": 31
+        "days_since": 17
       },
       {
         "name": "Obsidian + Celsus",
@@ -12527,7 +12574,7 @@ window.DH_DATA = {
         "category": "system",
         "last_seen": "2026-10-11",
         "mentions_90d": 6,
-        "days_since": 32
+        "days_since": 34
       },
       {
         "name": "Claude + Cowork",
@@ -12537,7 +12584,7 @@ window.DH_DATA = {
         "category": "ai",
         "last_seen": "2026-10-10",
         "mentions_90d": 2,
-        "days_since": 33
+        "days_since": 35
       },
       {
         "name": "Event Scout",
@@ -12550,7 +12597,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-09-14",
         "mentions_90d": 1,
-        "days_since": 59
+        "days_since": 61
       },
       {
         "name": "ChampUTM",
@@ -12563,7 +12610,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-09-12",
         "mentions_90d": 1,
-        "days_since": 61
+        "days_since": 63
       },
       {
         "name": "LakeStream",
@@ -12576,7 +12623,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 100
+        "days_since": 102
       },
       {
         "name": "ChamPDF",
@@ -12589,7 +12636,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-04",
         "mentions_90d": 0,
-        "days_since": 100
+        "days_since": 102
       },
       {
         "name": "ChampMail",
@@ -12602,7 +12649,7 @@ window.DH_DATA = {
         "featured": true,
         "last_seen": "2026-08-02",
         "mentions_90d": 0,
-        "days_since": 102
+        "days_since": 104
       },
       {
         "name": "Supabase",
@@ -12613,7 +12660,7 @@ window.DH_DATA = {
         "repo": "supabase/supabase",
         "last_seen": "2026-07-01",
         "mentions_90d": 0,
-        "days_since": 134
+        "days_since": 136
       },
       {
         "name": "ChampGraph",
@@ -12626,7 +12673,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-23",
         "mentions_90d": 0,
-        "days_since": 142
+        "days_since": 144
       },
       {
         "name": "ChampQuest",
@@ -12639,7 +12686,7 @@ window.DH_DATA = {
         "featured": false,
         "last_seen": "2026-06-03",
         "mentions_90d": 0,
-        "days_since": 162
+        "days_since": 164
       },
       {
         "name": "Deep Scanner",
@@ -13113,17 +13160,17 @@ window.DH_DATA = {
       }
     ],
     "counts": {
-      "using": 15,
       "built": 20,
+      "using": 15,
       "trying": 4,
       "watching": 5,
       "skill": 8
     },
-    "active_30d": 2,
+    "active_30d": 3,
     "mined_from": {
-      "entries": 154,
+      "entries": 156,
       "essays": 21
     }
   },
-  "built": "2026-11-11T20:01:48.434Z"
+  "built": "2026-11-13T20:00:36.558Z"
 };
